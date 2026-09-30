@@ -9,12 +9,20 @@ const context=vm.createContext({S,window:{},console,setTimeout:f=>timers.push(f)
  reactionBox:{style:{}},hideDefensePopup:()=>{},hideUnitMenu:()=>{},hideAttackPopup:()=>{},renderBoard:()=>{},updateUI:()=>{},checkWin:()=>{},lg:()=>{},
  defenseEquipmentWins:()=>false,effectValue:()=>0,guardTargetHint:{classList:{remove:()=>{}}},
  clearGuardHighlights:()=>{},boardSvg:{querySelector:()=>null}});
-for(const file of ['src/content/content-prelude-runtime.js','src/presentation/asset-definitions-runtime.js','locales/vi-VN-runtime.js','src/content/content-runtime.js'])new vm.Script(read(file),{filename:file}).runInContext(context);
+for(const file of ['src/content/content-prelude-runtime.js','src/presentation/asset-definitions-runtime.js','locales/vi-VN-runtime.js','src/content/content-runtime.js']){
+ let code=read(file);
+ // Future Archer/Cavalry Heroes are test fixtures only; removed defaults stay absent from the game.
+ if(file==='src/content/content-runtime.js')code=code.replace('const HERO_DB=normalizeContentTable',
+ `RAW_HERO_DB.HERO_TEST_ARCH={id:'HERO_TEST_ARCH',nameKey:'HERO_INF_RODOC_NAME',class:'ARCH',stats:{hp:3,move:1,attackRange:3},skillIds:[],assets:{}};
+ RAW_HERO_DB.HERO_TEST_CAV={id:'HERO_TEST_CAV',nameKey:'HERO_INF_RODOC_NAME',class:'CAV',stats:{hp:3,move:3,attackRange:1},skillIds:[],assets:{}};
+ const HERO_DB=normalizeContentTable`);
+ new vm.Script(code,{filename:file}).runInContext(context);
+}
 new vm.Script(['unitSpec','axial','distU','aligned','canAttack','guardCandidates','chooseGuardFromMap','validCardFor','resolveCombat','doPierce','unitAt'].map(fn).join('\n')+'\nthis.api={unitSpec,canAttack,guardCandidates,chooseGuardFromMap,validCardFor,resolveCombat};this.views=ContentViews;').runInContext(context);
 const a=context.api;
 const hero=(definitionId,id,q=0,r=0)=>({definitionId,id,hero:true,side:2,hp:3,q,r});
 const ally={definitionId:'UNIT_ARCH_001',id:'ally',side:2,hp:1,q:1,r:0};
-for(const id of ['HERO_INF_001','HERO_INF_RODOC','HERO_INF_EST']){
+for(const id of ['HERO_INF_RODOC','HERO_INF_EST']){
  const h=hero(id,id);assert.equal(a.unitSpec(h).hp,3);assert.equal(a.unitSpec(h).move,1);assert.equal(a.unitSpec(h).skillIds.length,3);
  const troop={definitionId:'UNIT_INF_001',id:'troop',side:2,hp:2,q:1,r:1};
  S.units=[ally,h,troop,hero('HERO_INF_RODOC','enemy',0,1),hero(id,'far',4,0),{...hero(id,'dead'),hp:0}];S.units[3].side=1;
@@ -25,11 +33,11 @@ for(const id of ['HERO_INF_001','HERO_INF_RODOC','HERO_INF_EST']){
  const attacker={definitionId:'UNIT_CAV_001',id:'attacker',side:1,hp:1,q:2,r:0};S.units.push(attacker);
  timers.shift()();assert.equal(ally.hp,1,'ally protected');assert.equal(h.hp,2,'Hero absorbs damage immediately in resolution');assert.equal(S.pending,null);
 }
-const arch=hero('HERO_ARCH_001','arch');S.units=[arch,ally];
+const arch=hero('HERO_TEST_ARCH','arch');S.units=[arch,ally];
 assert.equal(a.canAttack(arch,{q:3,r:0}),true,'line range3 through occupied cell');
 assert.equal(a.canAttack(arch,{q:2,r:1}),false,'off-line disallowed');
 assert.equal(a.canAttack(arch,{q:4,r:0}),false,'range limit');
-const cav=hero('HERO_CAV_001','cav');assert.equal(a.unitSpec(cav).move,3);
+const cav=hero('HERO_TEST_CAV','cav');assert.equal(a.unitSpec(cav).move,3);
 for(const h of [hero('HERO_INF_RODOC','r'),hero('HERO_INF_EST','e'),arch,cav]){
  for(const cls of ['infantry','archer','cavalry','neutral'])for(const type of ['atk','def']){
   assert.equal(a.validCardFor({cls,type},h,type),cls==='neutral'||cls===a.unitSpec(h).base,'equipment class eligibility');

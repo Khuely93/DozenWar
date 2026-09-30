@@ -169,16 +169,17 @@ function finishDice(){
 }
 ShellDOM.dice.continueButton.onclick=()=>beginTeam(S.loser);
 
-let tempHeroDefinitionId='HERO_INF_001', tempTroops={inf:0,arch:0,cav:0};
+let tempHeroDefinitionId='HERO_INF_RODOC', tempTroops={inf:0,arch:0,cav:0};
 function beginTeam(p){
   S.phase='team';S.selecting=p;show('team');
   ShellDOM.team.title.textContent='PLAYER '+p+' — CHỌN ĐỘI HÌNH';
   ShellDOM.team.subtitle.textContent=(p===S.loser?'Người đi sau chọn trước':'Người đi trước chọn sau')+' · 1 Hero + đúng 5 lính';
-  if(S.teams[p]){tempHeroDefinitionId=S.teams[p].heroDefinitionId||HERO_KEY[S.teams[p].hero]||'HERO_INF_001';tempTroops={...S.teams[p].troops};}
-  else{tempHeroDefinitionId='HERO_INF_001';tempTroops={inf:0,arch:0,cav:0};}
+  if(S.teams[p]){tempHeroDefinitionId=S.teams[p].heroDefinitionId||HERO_KEY[S.teams[p].hero]||'HERO_INF_RODOC';tempTroops={...S.teams[p].troops};}
+  else{tempHeroDefinitionId='HERO_INF_RODOC';tempTroops={inf:0,arch:0,cav:0};}
   renderTeamPicker();
 }
 function renderTeamPicker(){
+  if(!HeroRegistry.list().some(h=>h.id===tempHeroDefinitionId))tempHeroDefinitionId=HeroRegistry.list()[0]?.id||null;
   ShellDOM.team.heroChoices.innerHTML='';
   HeroRegistry.list().forEach(def=>{let h=ContentViews.hero(def.id);let d=document.createElement('button');d.className='choice'+(tempHeroDefinitionId===def.id?' on':'');d.innerHTML='<div class="sym">'+h.sym+'</div><b>'+h.name+'</b><div class="muted">HP '+h.stats.hp+' · '+(HERO_CLASS_RULES[h.class]?.name||h.class)+'</div>';d.onclick=()=>{tempHeroDefinitionId=def.id;renderTeamPicker()};ShellDOM.team.heroChoices.appendChild(d)});
   ShellDOM.team.troopChoices.innerHTML='';

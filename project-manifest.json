@@ -1,8 +1,8 @@
 {
   "project": "DOZEN WAR II",
-  "version": "1.40.17",
+  "version": "1.40.19",
   "phase": "DUEL_RULE_MODE_1VS1_180_30",
-  "baseline": "v1.40.17 Alchemist Hero-only class with common equipment",
+  "baseline": "v1.40.19 Remove three default Heroes; registry-driven Bot roster",
   "entry": "index.html",
   "styles": "styles/main.css",
   "runtimeOrder": [

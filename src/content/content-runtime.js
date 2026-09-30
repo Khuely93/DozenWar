@@ -33,11 +33,8 @@ const RAW_SKILLS={
   SKILL_HERO_CAV_001_S3:{id:'SKILL_HERO_CAV_001_S3',nameKey:'SKILL_HERO_CAV_001_S3_NAME',descriptionKey:'SKILL_HERO_CAV_001_S3_DESC',class:'CAV',timing:'ACTIVE',target:{side:'ENEMY',range:1,maxTargets:1},effects:['EFFECT_DAMAGE_2','EFFECT_IGNORE_INF_GUARD']}
 };
 const RAW_HERO_DB={
-  HERO_INF_001:{id:'HERO_INF_001',nameKey:'HERO_INF_001_NAME',class:'INF',stats:{hp:3,move:1,attackRange:1},attackPattern:'RANGE',skillIds:['SKILL_HERO_INF_001_S1','SKILL_HERO_INF_001_S2','SKILL_HERO_INF_001_S3'],assets:{token:'IMG_HERO_INF_001_TOKEN',attackAnimation:'ANIM_HERO_INF_001_ATTACK'}},
   HERO_INF_RODOC:{id:'HERO_INF_RODOC',nameKey:'HERO_INF_RODOC_NAME',class:'INF',stats:{hp:3,move:1,attackRange:1},attackPattern:'RANGE',skillIds:['SKILL_HERO_RODOC_S1','SKILL_HERO_RODOC_S2','SKILL_HERO_RODOC_S3'],assets:{token:'IMG_HERO_RODOC_TOKEN',attackAnimation:'ANIM_HERO_RODOC_ATTACK'}},
   HERO_INF_EST:{id:'HERO_INF_EST',nameKey:'HERO_INF_EST_NAME',class:'INF',stats:{hp:3,move:1,attackRange:1},attackPattern:'RANGE',skillIds:['SKILL_HERO_EST_S1','SKILL_HERO_EST_S2','SKILL_HERO_EST_S3'],assets:{token:'IMG_HERO_EST_TOKEN',attackAnimation:'ANIM_HERO_EST_ATTACK'}},
-  HERO_ARCH_001:{id:'HERO_ARCH_001',nameKey:'HERO_ARCH_001_NAME',class:'ARCH',stats:{hp:3,move:1,attackRange:3},attackPattern:'LINE',skillIds:['SKILL_HERO_ARCH_001_S1','SKILL_HERO_ARCH_001_S2','SKILL_HERO_ARCH_001_S3'],assets:{token:'IMG_HERO_ARCH_001_TOKEN',attackAnimation:'ANIM_HERO_ARCH_001_ATTACK'}},
-  HERO_CAV_001:{id:'HERO_CAV_001',nameKey:'HERO_CAV_001_NAME',class:'CAV',stats:{hp:3,move:3,attackRange:1},attackPattern:'RANGE',skillIds:['SKILL_HERO_CAV_001_S1','SKILL_HERO_CAV_001_S2','SKILL_HERO_CAV_001_S3'],assets:{token:'IMG_HERO_CAV_001_TOKEN',attackAnimation:'ANIM_HERO_CAV_001_ATTACK'}}
 };
 const RAW_UNIT_DB={
   UNIT_INF_001:{id:'UNIT_INF_001',nameKey:'UNIT_INF_001_NAME',class:'INF',stats:{hp:2,move:1,attackRange:1},attackPattern:'RANGE',passives:['INF_GUARD'],assets:{token:'IMG_UNIT_INF_001_TOKEN'}},
@@ -582,7 +579,7 @@ const BackwardCompatibilityLoader=Object.freeze({
 });
 
 // Runtime adapters keep stable Duel gameplay unchanged while canonical registries become the source boundary.
-const HERO_KEY={inf:'HERO_INF_001',arch:'HERO_ARCH_001',cav:'HERO_CAV_001'};
+const HERO_KEY={rodoc:'HERO_INF_RODOC',est:'HERO_INF_EST'};
 const UNIT_KEY={inf:'UNIT_INF_001',arch:'UNIT_ARCH_001',cav:'UNIT_CAV_001'};
 const HEROES=Object.fromEntries(Object.entries(HERO_KEY).map(([k,id])=>{let h=ContentViews.hero(id);return [k,{canonicalId:id,name:h.name,sym:h.sym,base:CLASS_RUNTIME[h.class],classId:h.class,hp:h.stats.hp,move:h.stats.move,range:h.stats.attackRange,attackPattern:h.attackPattern,passives:h.passives,skillIds:h.skillIds,skills:h.skillIds.map(s=>ContentViews.skill(s).description)}]}));
 const TROOPS=Object.fromEntries(Object.entries(UNIT_KEY).map(([k,id])=>{let u=ContentViews.unit(id);return [k,{canonicalId:id,name:u.name,sym:u.sym,base:CLASS_RUNTIME[u.class],classId:u.class,hp:u.stats.hp,move:u.stats.move,range:u.stats.attackRange,passives:u.passives}]}));

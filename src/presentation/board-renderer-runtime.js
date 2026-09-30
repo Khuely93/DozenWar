@@ -122,6 +122,39 @@ const CoreActionStatusLayer = {
     group.appendChild(icon);
   }
 };
+// Read the active damage recipient from combat state; no input or combat mutations.
+const CoreIncomingAttackLayer = {
+  targetId(){
+    const p=S.pending;
+    if(S.phase!=="battle"||S.matchEnded||!p)return null;
+    const redirect=p.replacementTargetId||(!p.ignoreGuard&&p.guard?p.guardUnitId:null);
+    return S.units.some(u=>u.id===redirect&&u.hp>0)?redirect:p.d;
+  },
+  isTarget(unit){return !!unit&&unit.hp>0&&unit.id===this.targetId()},
+  hexClasses(cell,unit){return this.isTarget(unit)?" incomingAttackHex":""},
+  unitClasses(unit){return this.isTarget(unit)?" incomingAttackTarget":""},
+  renderAfterUnit(group,unit,cell){
+    if(!this.isTarget(unit))return;
+    const ns="http://www.w3.org/2000/svg",visual=document.createElementNS(ns,"g");
+    visual.setAttribute("class","incomingAttackVisual");
+    visual.setAttribute("aria-label","Đang bị tấn công");
+    const ring=document.createElementNS(ns,"circle");
+    ring.setAttribute("cx",cell.x);ring.setAttribute("cy",cell.y);ring.setAttribute("r",34);
+    ring.setAttribute("class","incomingAttackRing");visual.appendChild(ring);
+    const badge=document.createElementNS(ns,"circle");
+    badge.setAttribute("cx",cell.x-30);badge.setAttribute("cy",cell.y-27);badge.setAttribute("r",12);
+    badge.setAttribute("class","incomingAttackBadge");visual.appendChild(badge);
+    const mark=document.createElementNS(ns,"path");
+    mark.setAttribute("d","M -7 0 H 7 M 0 -7 V 7");
+    mark.setAttribute("transform",`translate(${cell.x-30} ${cell.y-27})`);
+    mark.setAttribute("class","incomingAttackCrosshair");visual.appendChild(mark);
+    const label=document.createElementNS(ns,"text");
+    label.setAttribute("x",cell.x);label.setAttribute("y",cell.y-45);
+    label.setAttribute("class","incomingAttackLabel");label.textContent="BỊ TẤN CÔNG";
+    visual.appendChild(label);group.appendChild(visual);
+  }
+};
+CoreBoardRenderer.registerLayer("CORE_RENDER_INCOMING_ATTACK",70,CoreIncomingAttackLayer);
 CoreBoardRenderer.registerLayer("CORE_RENDER_BUFF",30,CoreBuffController);
 CoreBoardRenderer.registerLayer("CORE_RENDER_SKILL",40,CoreSkillController);
 CoreBoardRenderer.registerLayer("CORE_RENDER_GUARD",50,CoreGuardController);

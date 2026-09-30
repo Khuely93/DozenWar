@@ -45,9 +45,13 @@ html = html.replace(/src="data:image\/(png|jpeg|jpg|webp);base64,([A-Za-z0-9+/=]
   externalized.push({name, bytes:buf.length, sha256:sha(buf)});
   return `src="./assets/${name}"`;
 });
+// Root source may reference an already externalized image after GitHub deployment.
+for(const match of html.matchAll(/src="\.\/assets\/(embedded-[a-f0-9]+\.(?:png|jpg|webp))"/g)){
+  fs.copyFileSync(path.join(ROOT,'assets',match[1]),path.join(DIST,'assets',match[1]));
+}
 html = html.replace(/<link\s+rel="stylesheet"\s+href="\.\/styles\/main\.css"\s*\/?>/, `<link rel="stylesheet" href="./assets/${cssName}">`);
 html = html.replace(/(?:\s*<script\s+defer\s+src="\.\/[^\"]+"><\/script>\s*)+/g, '\n<script defer src="./assets/' + jsName + '"></script>\n');
-html = html.replace(/LATEST PLAYTEST v1\.40\.17[^<]*/, 'LATEST PLAYTEST v1.40.17 · PROD BUNDLE · ACTION STATUS · CONTENT SCHEMA v1.5 · CORE / MODE / SHELL / CONTENT / PRESENTATION');
+html = html.replace(/LATEST PLAYTEST v1\.40\.19[^<]*/, 'LATEST PLAYTEST v1.40.19 · PROD BUNDLE · ACTION STATUS · CONTENT SCHEMA v1.5 · CORE / MODE / SHELL / CONTENT / PRESENTATION');
 fs.writeFileSync(path.join(DIST, 'index.html'), html);
 
 copyDir(path.join(ROOT, 'assets'), path.join(DIST, 'assets', 'source-assets'));
@@ -63,7 +67,7 @@ const report = files.map(([name,b]) => ({
   sha256:sha(b)
 }));
 const buildManifest = {
-  project:'DOZEN WAR II', version:'1.40.17', phase:manifest.phase,
+  project:'DOZEN WAR II', version:'1.40.19', phase:manifest.phase,
   generatedAt:new Date().toISOString(),
   runtimeOrder:manifest.runtimeOrder,
   bundles:{runtime:`assets/${jsName}`,styles:`assets/${cssName}`},

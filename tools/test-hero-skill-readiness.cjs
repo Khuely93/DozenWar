@@ -29,14 +29,12 @@ check(/effect\?\.type==='MODIFY_DAMAGE'&&effect\.operation==='ADD'/.test(files.c
 check(/timing==='DEFENSE_REACTION'/.test(files.coreA),'defense reaction discovery is timing-driven');
 check(!/skill\.id\s*===\s*['"]SKILL_HERO_/.test(files.coreA),'Core has zero explicit current Skill-ID branches');
 check(!/kind==='arch'.*isSkillUsed/s.test(files.ai),'Bot defense no longer identifies defense Skill by Archer class hardcode');
-check(files.content.includes("HERO_INF_001:{id:'HERO_INF_001',nameKey:'HERO_INF_001_NAME',class:'INF',stats:{hp:3,move:1,attackRange:1}"),'INF Hero stats unchanged');
-check(files.content.includes("HERO_ARCH_001:{id:'HERO_ARCH_001',nameKey:'HERO_ARCH_001_NAME',class:'ARCH',stats:{hp:3,move:1,attackRange:3}"),'ARCH Hero stats unchanged');
-check(files.content.includes("HERO_CAV_001:{id:'HERO_CAV_001',nameKey:'HERO_CAV_001_NAME',class:'CAV',stats:{hp:3,move:3,attackRange:1}"),'CAV Hero stats unchanged');
 check(files.content.includes("SKILL_HERO_INF_001_S1:{id:'SKILL_HERO_INF_001_S1'")&&files.content.includes("range:3,maxTargets:1,requireMissingHp:true},effects:['EFFECT_HEAL_1']"),'INF S1 range/effect unchanged');
 check(files.content.includes("SKILL_HERO_INF_001_S3:{id:'SKILL_HERO_INF_001_S3'")&&files.content.includes("range:4,maxTargets:4,selection:{lineLock:true}},effects:['EFFECT_DAMAGE_1']"),'INF S3 range/targets/damage unchanged');
 check(files.content.includes("SKILL_HERO_ARCH_001_S1:{id:'SKILL_HERO_ARCH_001_S1'")&&files.content.includes("star:1,timing:'DEFENSE_REACTION'")&&files.content.includes("effects:['EFFECT_EVADE_ATTACK']"),'ARCH S1 Star/timing/effect unchanged');
 check(files.content.includes("SKILL_HERO_ARCH_001_S3:{id:'SKILL_HERO_ARCH_001_S3'")&&files.content.includes("pattern:'LINE',range:3,maxTargets:2},effects:['EFFECT_DAMAGE_2']"),'ARCH S3 range/targets/damage unchanged');
 check(files.content.includes("SKILL_HERO_CAV_001_S3:{id:'SKILL_HERO_CAV_001_S3'")&&files.content.includes("range:1,maxTargets:1},effects:['EFFECT_DAMAGE_2','EFFECT_IGNORE_INF_GUARD']"),'CAV S3 damage/Guard bypass unchanged');
+for(const id of ['HERO_INF_001','HERO_ARCH_001','HERO_CAV_001'])check(!files.content.includes('  '+id+':{'),id+' removed from playable Hero content');
 for(const p of passes)console.log('PASS | '+p);
 for(const f of failures)console.error('FAIL | '+f);
 console.log(`Checks: ${passes.length}/${passes.length+failures.length} PASS`);

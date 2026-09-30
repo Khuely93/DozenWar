@@ -1,4 +1,4 @@
-# DOZEN WAR II v1.40.17 - Alchemist Hero class
+# DOZEN WAR II v1.40.19 - Rodoc and EST roster
 
 This step continues the regression-gated Part 13.8 cleanup without redesigning locked Core gameplay.
 
@@ -162,4 +162,17 @@ EST is an Infantry Hero with 3 HP, Move 1 and a 1-damage normal Attack in radius
 - Chưa có nội tại của hệ. Không kế thừa Guard, bắn đường thẳng hoặc Pierce.
 - Chưa tạo Hero cụ thể: tên, máu, ba Skill và hình ảnh sẽ được thêm theo yêu cầu sau. Hero mới khai báo class ALCH tự nhận mặc định của hệ và xuất hiện qua HeroRegistry.
 - Không thêm Lính ALCH; bộ chọn 5 Lính vẫn gồm ba hệ hiện tại.
-# DozenWar
+
+## v1.40.18 — Highlight mục tiêu đang bị tấn công
+
+- Ô mục tiêu sáng cam, vòng sáng quanh quân, biểu tượng tâm ngắm và nhãn BỊ TẤN CÔNG.
+- Hiện ngay khi mở phản ứng phòng thủ cho đánh thường hoặc từng mục tiêu Skill, áp dụng Player và Bot.
+- Chuyển sang quân đỡ đòn khi chọn Guard; tự xóa sau resolve, hủy hoặc kết thúc trận.
+- Visual không chặn thao tác và không thay đổi chỉ số; hỗ trợ tắt chuyển động theo cài đặt hệ thống.
+
+## v1.40.19 — Xóa ba Hero mặc định
+
+- Xóa Hero Bộ binh, Hero Cung thủ, Hero Kỵ binh khỏi HeroRegistry và gói nội dung chơi.
+- Danh sách hiện có: Rodoc và EST. Mặc định chọn Rodoc. Bot chọn từ HeroRegistry để không gọi Hero đã xóa.
+- Giữ các hệ và Lính Bộ binh, Cung thủ, Kỵ binh cùng cơ chế kế thừa cho Hero mới.
+- Giả Kim Thuật vẫn là hệ đã hỗ trợ, chưa có Hero cụ thể.
