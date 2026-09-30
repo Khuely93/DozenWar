@@ -1,0 +1,80 @@
+DOZEN WAR II v1.36 - PART 13.8D FINAL CONTENT / MODE BOUNDARY GATE QA REPORT
+
+Build:
+DOZEN_WAR_II_v1_36_PART13_8D_FINAL_CONTENT_MODE_BOUNDARY_GATE.zip
+
+Scope:
+PROJECT ARCHITECTURE + CONTENT/MODE READINESS AUDIT
+ADD validation/documentation + MODIFY release/build metadata only.
+No gameplay-rule modification authorized or performed.
+
+Gate result:
+CONDITIONAL
+
+GREEN boundaries:
+- Equipment definition expansion via EquipmentRegistry
+- Mode definition expansion via DW_MODES.registerMode
+- Mode Rule expansion via DW_MODES.registerRule
+- Localization expansion via separated locale runtime
+- Presentation asset metadata expansion via separated asset runtime
+
+BLOCKERS before multiple new Heroes / generic new Skills are safely playable:
+1. Playable runtime still consumes HEROES[unit.kind] in Core/Shell/Presentation; current kind is class-shaped (inf/arch/cav), which implicitly keeps one playable Hero per class.
+2. Core Skill targeting/effect application still contains explicit current Skill ID branches (line-lock, missing-HP heal condition, Archer +Damage application).
+3. Temporary HEROES/TROOPS/CARDS compatibility views are still consumed by several runtime modules, even though their definitions are generated from canonical Content registries.
+
+Safety decision:
+Part 13.8D does NOT falsely mark Hero expansion ready. The next targeted step is a behavior-preserving Hero/Skill Content Readiness Fix: definitionId-first Hero identity + data-driven Skill target/effect metadata, followed by regression of the current three Heroes before adding new content.
+
+Locked KEEP / NOT AFFECTED:
+- Combat rules
+- Star / Power semantics
+- Movement
+- Targeting semantics
+- Infantry Guard
+- Cavalry Pierce / propagation
+- Reflect
+- Current Hero Skill behavior / usage policy
+- Equipment gameplay
+- Duel Hero Death / simultaneous-death DRAW
+- Mode policies
+- Flexible Deck size/copy policy
+- Content manifest / gameplayHash handshake
+- Backward compatibility
+- Board Renderer behavior
+- UI/UX visual behavior
+
+Validation:
+PASS | npm run validate: 98/98
+PASS | JavaScript syntax for every src/**/*.js and locales/**/*.js
+PASS | Production build completed
+PASS | Development source server served v1.36 entry
+PASS | Production server served v1.36 dist entry
+PASS | runtimeOrder matches index classic-script order
+PASS | EquipmentRegistry Content ownership
+PASS | HeroRegistry Content ownership
+PASS | SkillRegistry Content ownership
+PASS | Mode definitions registry-driven
+PASS | Mode Rules registry-driven
+PASS | Flexible deck remains declaredSize:null
+PASS | known Hero identity blocker explicitly detected and recorded
+PASS | known Skill-ID Core blocker explicitly detected and recorded
+PASS | temporary compatibility views remain localized in Content definitions
+PASS | no gameplay runtime source change outside behavior-neutral bootstrap metadata
+
+Behavior preservation:
+v1.35 runtime sequence excluding bootstrap SHA256:
+1fa557457ca891cf7c105aced752c901b33096da008303bd19430608c4fdbd6e
+
+v1.36 runtime sequence excluding bootstrap SHA256:
+1fa557457ca891cf7c105aced752c901b33096da008303bd19430608c4fdbd6e
+
+The two sequences are byte-for-byte identical.
+
+Production measurements:
+- runtime bundle: ~206.3 KiB raw / ~68.2 KiB gzip / ~57.9 KiB Brotli
+- CSS bundle: ~20.2 KiB raw / ~4.8 KiB gzip / ~4.1 KiB Brotli
+- embedded images externalized: 1
+
+Browser QA note:
+No full GUI click-through claim is made for Part 13.8D. This step is a boundary/readiness gate, validated through exact gameplay-runtime source preservation, static dependency audits, syntax checks, production build, and source/prod HTTP serve checks.

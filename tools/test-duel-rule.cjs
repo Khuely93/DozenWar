@@ -1,0 +1,93 @@
+const assert=require('node:assert/strict');
+const fs=require('node:fs');const path=require('node:path');const vm=require('node:vm');
+const root=path.join(__dirname,'..');const read=p=>fs.readFileSync(path.join(root,p),'utf8');
+const core=read('src/core/core-runtime-a.js'),clock=read('src/mode/duel-turn-runtime.js');
+const flow=read('src/shell/shell-flow-runtime.js'),prelude=read('src/legacy/legacy-prelude-c.js');
+function fn(source,name){const start=source.indexOf('function '+name+'(');assert.ok(start>=0,name);let i=source.indexOf('{',start),depth=0;for(;i<source.length;i++){if(source[i]==='{')depth++;if(source[i]==='}'&&--depth===0)break}return source.slice(start,i+1)}
+const modeScript=read('src/mode/mode-registry-runtime.js')+'\n'+read('src/mode/mode-definitions-runtime.js')+'\nthis.registry=DW_MODES;';
+function registry(S={selectedMode:'MODE_DUEL_001'}){const ctx=vm.createContext({S,DW_SHELL:{onMatchEnd:()=>{}}});new vm.Script(modeScript).runInContext(ctx);return ctx.registry}
+const mode=registry().get('MODE_DUEL_001');
+assert.equal(mode.turnPolicy.turnTimerSeconds,180);assert.equal(mode.turnPolicy.defenseTimerSeconds,30);
+assert.equal(mode.equipmentRules.attackPerTurn,1);assert.equal(mode.equipmentRules.defensePerOpponentTurn,1);
+const win=registry().evaluate('MODE_DUEL_001',{type:'CORE_EVENT_FIRST_PLAYER_INACTIVITY',side:1,count:5});
+assert.equal(win.winnerSide,2);
+assert.equal(registry().evaluate('MODE_DUEL_001',{type:'CORE_EVENT_FIRST_PLAYER_INACTIVITY',side:1,count:4}),null);
+const fakeBadge={style:{},innerHTML:''};let now=0,ended=0,passed=0;
+const S={selectedMode:'MODE_DUEL_001',phase:'battle',matchEnded:false,battleSide:1,pending:null,units:[]};
+const DateFake={now:()=>now};
+const clockStart=clock.indexOf('const DuelTurnClock='),clockEnd=clock.indexOf('\n};',clockStart)+3;
+const ctx=vm.createContext({S,Date:DateFake,duelTimerBadge:fakeBadge,DW_MODES:registry(S),setInterval:()=>1,clearInterval:()=>{},
+  endTurn:()=>{ended++;S.battleSide=2},resolveCombat:()=>{passed++;S.pending=null},hideGuardTargeting:()=>{},lg:()=>{}});
+new vm.Script(clock.slice(clockStart,clockEnd)+'\nthis.timer=DuelTurnClock;').runInContext(ctx);
+ctx.timer.startTurn();now=48000;ctx.timer.tick();assert.equal(ctx.timer.turnRemainingMs,132000);
+const first={a:'a',d:'d'};S.pending=first;ctx.timer.openDefense(first);
+now=60000;ctx.timer.tick();assert.equal(ctx.timer.turnRemainingMs,132000);assert.equal(ctx.timer.defenseRemainingMs,18000);
+S.pending=null;ctx.timer.afterResolve();now=192000;ctx.timer.tick();assert.equal(ended,1);
+now=193000;ctx.timer.tick();assert.equal(ended,1,'a completed timeout cannot fire on every clock tick');
+S.battleSide=1;now=200000;ctx.timer.startTurn();const second={a:'a',d:'d'};S.pending=second;ctx.timer.openDefense(second);
+now=230000;ctx.timer.tick();assert.equal(passed,1);assert.equal(S.pending,null);assert.equal(ended,1);
+ctx.timer.afterResolve();const third={a:'a',d:'d2'};S.pending=third;ctx.timer.openDefense(third);
+assert.equal(ctx.timer.defenseRemainingMs,30000);
+now=260000;ctx.timer.tick();ctx.timer.tick();assert.equal(passed,2,'defense timeout resolves each pending attack once');
+console.log('PASS | attack 180s pauses/resumes; each defense has 30s and auto-passes');
+const blockedS={selectedMode:'MODE_DUEL_001',phase:'battle',matchEnded:false,battleSide:1,pending:null,units:[],skillSequence:{targetIds:['stale']}};
+let blockedAttempts=0,timeoutLogs=0;
+const blockedCtx=vm.createContext({S:blockedS,Date:DateFake,duelTimerBadge:{style:{},innerHTML:''},DW_MODES:registry(blockedS),setInterval:()=>1,clearInterval:()=>{},
+  endTurn:()=>{blockedAttempts++;return false},hideGuardTargeting:()=>{},lg:()=>{timeoutLogs++}});
+new vm.Script(clock.slice(clockStart,clockEnd)+'\nthis.timer=DuelTurnClock;').runInContext(blockedCtx);
+now=0;blockedCtx.timer.startTurn();now=180000;blockedCtx.timer.tick();now=185000;blockedCtx.timer.tick();
+assert.equal(blockedAttempts,1);assert.equal(timeoutLogs,1);assert.equal(blockedS.skillSequence,null);
+console.log('PASS | blocked 180s timeout logs and attempts once; stale Skill selection is cleared');
+const usedS={selectedMode:'MODE_DUEL_001',battleSide:1,pending:null,duelUsage:null,skillUsed:{}};
+const usageCode=prelude.split('\n').filter(line=>/^function (duelUsage|skillUsageKey|isSkillUsed|markSkillUsed)\(/.test(line)).join('\n');
+const cardCtx=vm.createContext({S:usedS,ContentViews:{hero:()=>({skillIds:['a','b']}),skill:id=>({timing:id==='b'?'DEFENSE_REACTION':'ACTIVE'})},unitSpec:()=>({base:'infantry'})});
+new vm.Script(usageCode+'\n'+fn(core,'markDuelCardUsed')+'\n'+fn(core,'validCardFor')+'\nthis.api={markSkillUsed,isSkillUsed,markDuelCardUsed,validCardFor};').runInContext(cardCtx);
+const h={id:'h',side:1,definitionId:'hero',kind:'inf'},card={cls:'infantry',type:'atk'};
+cardCtx.api.markSkillUsed(h,1);assert.equal(cardCtx.api.isSkillUsed(h,1),true);assert.equal(cardCtx.api.isSkillUsed(h,2),false);
+cardCtx.api.markDuelCardUsed(1,'atk');assert.equal(cardCtx.api.validCardFor(card,h,'atk'),false);
+usedS.battleSide=2;usedS.pending={d:'h'};cardCtx.api.markSkillUsed(h,2);assert.equal(cardCtx.api.isSkillUsed(h,2),true);
+assert.equal(usedS.duelUsage.activeSkill[1],1);assert.equal(usedS.duelUsage.defenseSkill[1],1);
+console.log('PASS | active and defensive skill/card budgets are separate');
+const moveContext=vm.createContext({S:{selectedMode:'MODE_DUEL_001'},remainingMove:()=>2});
+new vm.Script(fn(core,'canMoveFurther')+'\nthis.canMove=canMoveFurther;').runInContext(moveContext);
+assert.equal(moveContext.canMove({hp:2,attacked:false,moved:false}),true);
+assert.equal(moveContext.canMove({hp:2,attacked:false,moved:true}),false);
+console.log('PASS | Duel movement is one action even when movement budget remains');
+const actionS={selectedMode:'MODE_DUEL_001'};
+const actionCtx=vm.createContext({S:actionS,DW_MODES:registry(actionS),effectOf:(skill,id)=>skill.effects?.includes(id)});
+new vm.Script(fn(core,'skillDamageValue')+'\n'+fn(core,'commitActiveSkillAction')+'\nthis.commit=commitActiveSkillAction;').runInContext(actionCtx);
+const supporter={attacked:false},fighter={attacked:false};
+actionCtx.commit(supporter,{effects:['EFFECT_MOVE_PLUS_2']});
+actionCtx.commit(fighter,{effects:['EFFECT_DAMAGE_1']});
+assert.equal(supporter.attacked,false);assert.equal(fighter.attacked,true);
+console.log('PASS | support Skill preserves Hero Attack; Hero Attack Skill commits it');
+const deployS={winner:1,loser:2,units:[],history:[]};
+const deployCtx=vm.createContext({S:deployS,hideDeployMenu:()=>{},show:()=>{},renderBoard:()=>{},updateUI:()=>{}});
+new vm.Script(fn(core,'beginDeploy')+'\nthis.start=beginDeploy;').runInContext(deployCtx);deployCtx.start();
+assert.deepEqual([...deployS.deployOrder],[2,1]);
+assert.match(flow,/continueButton\.onclick=\(\)=>beginTeam\(S\.loser\)/);
+assert.match(core,/S\.battleSide=S\.winner;S\.turn=1/);
+console.log('PASS | second player chooses/deploys first; dice winner attacks first');
+const turnSrc=clock.slice(clock.indexOf('const _duelEndTurn=endTurn;'),clock.indexOf('const _duelShowReaction=showReaction;'));
+const autoS={selectedMode:'MODE_DUEL_001',phase:'battle',matchEnded:false,battleSide:1,turn:1,winner:1,units:[],pending:null};
+const autoCtx=vm.createContext({S:autoS,Date:DateFake,duelTimerBadge:{style:{},innerHTML:''},DW_MODES:registry(autoS),setInterval:()=>1,clearInterval:()=>{},
+  endTurn:()=>{autoS.battleSide=autoS.battleSide===1?2:1;autoS.turn++;return true},DW_CORE:{emitGameEvent:()=>null},updateUI:()=>{},lg:()=>{}});
+new vm.Script(clock.slice(clockStart,clockEnd)+'\n'+turnSrc+'\nthis.timer=DuelTurnClock;').runInContext(autoCtx);
+now=0;autoCtx.timer.startTurn();now=180000;autoCtx.timer.tick();assert.equal(autoS.battleSide,2);
+now=180200;autoCtx.timer.tick();assert.equal(autoS.battleSide,2);assert.equal(autoCtx.timer.turnRemainingMs,179800);
+now=360000;autoCtx.timer.tick();assert.equal(autoS.battleSide,1);assert.equal(autoS.turn,3);
+console.log('PASS | complete turn wrapper resets 180s after each successful automatic End Turn');
+const turnS={selectedMode:'MODE_DUEL_001',phase:'battle',battleSide:1,winner:1,firstPlayerNoAttackTurns:0,firstPlayerAttackedThisTurn:false,matchEnded:false,units:[]};
+const events=[];const turnCtx=vm.createContext({S:turnS,endTurn:()=>{turnS.battleSide=turnS.battleSide===1?2:1;return true},
+  DW_CORE:{emitGameEvent:e=>{events.push(e);turnS.matchEnded=true}},DuelTurnClock:{startTurn:()=>{},stop:()=>{}},updateUI:()=>{}});
+new vm.Script(turnSrc+'\nthis.next=endTurn;').runInContext(turnCtx);
+for(let i=0;i<4;i++){turnCtx.next();turnCtx.next()}
+assert.equal(events.length,0);turnCtx.next();assert.equal(events[0].count,5);assert.equal(events[0].side,1);
+console.log('PASS | first player forfeits after five own turns without an attack');
+const attackS={selectedMode:'MODE_DUEL_001',winner:1,firstPlayerAttackedThisTurn:false,
+  units:[{id:'h',side:1}],pending:{a:'h',sourceType:'SKILL'}};
+const attackCtx=vm.createContext({S:attackS,showReaction:()=>{},DuelTurnClock:{openDefense:()=>{}}});
+const reactionSrc=clock.slice(clock.indexOf('const _duelShowReaction=showReaction;'),clock.indexOf('const _duelResolveCombat=resolveCombat;'));
+new vm.Script(reactionSrc+'\nthis.react=showReaction;').runInContext(attackCtx);
+attackCtx.react(true);assert.equal(attackS.firstPlayerAttackedThisTurn,true);
+console.log('PASS | an offensive Hero Skill counts as an attack for the first player');

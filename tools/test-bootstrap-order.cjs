@@ -1,0 +1,12 @@
+const assert=require('node:assert/strict');
+const fs=require('node:fs');
+const vm=require('node:vm');
+const path=require('node:path');
+const root=path.join(__dirname,'..');
+const source=fs.readFileSync(path.join(root,'src/legacy/legacy-prelude-a-tail.js'),'utf8');
+const context=vm.createContext({});
+new vm.Script(source,{filename:'legacy-prelude-a-tail.js'}).runInContext(context);
+assert.equal(vm.runInContext('DW_CORE.id',context),'CORE_GAME');
+assert.equal(vm.runInContext('Object.isFrozen(CORE_ARCHITECTURE_V18.map)',context),true);
+assert.equal(vm.runInContext('Object.isFrozen(CORE_ARCHITECTURE_V18.map.mountain)',context),true);
+console.log('PASS | Core initializes before Content and provides a frozen architecture snapshot');

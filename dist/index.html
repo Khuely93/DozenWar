@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Dozen War II - Mode Architecture Update</title>
+<link rel="stylesheet" href="./assets/app.fe4df8aab618.css">
+</head>
+<body>
+<div class="wrap">
+  <div class="top"><div class="brand">DOZEN WAR <b>II</b> <span class="runtimeBadge">OFFLINE LOCAL ENGINE</span> <span style="font-size:12px;color:#9fb3c2">LATEST PLAYTEST v1.40.17 · PROD BUNDLE · ACTION STATUS · CONTENT SCHEMA v1.5 · CORE / MODE / SHELL / CONTENT / PRESENTATION</span></div><div class="phase" id="phaseLabel" data-dw-id="SHELL_UI_PHASE_LABEL">MODE SELECT</div></div>
+  <div class="grid">
+    <section class="panel main">
+
+      <div id="playMenuScreen" data-dw-id="SHELL_UI_PLAY_MENU" class="screen">
+        <div class="playHubWrap">
+          <div class="center"><div class="bigNotice">DOZEN WAR II</div><div class="muted">Chọn cách bắt đầu trận · visual chính thức sẽ được thay thế sau</div><div class="modeContextBar"><span class="modeContextPill" id="playMenuModeLabel" data-dw-id="SHELL_UI_PLAY_MENU_MODE_LABEL">CHƯA CHỌN MODE</span><button class="btn" id="changeModeBtn" data-dw-id="SHELL_UI_PLAY_MENU_CHANGE_MODE" type="button">ĐỔI MODE</button></div></div>
+          <div class="playHubGrid">
+            <div class="playHubCard"><span class="hubBadge ai">AI PLAY</span><h2>ĐẤU VỚI MÁY</h2><div class="playHubMeta"><span>Chơi trực tiếp với Bot.</span><span>Dễ: dành cho người mới làm quen.</span><span>Bình thường: đánh giá mục tiêu và vị trí.</span><span>Khó: ưu tiên Hero và đòn kết liễu.</span></div><button class="btn gold" id="openAiPlay" data-dw-id="SHELL_UI_PLAY_MENU_AI">CHỌN ĐỘ KHÓ</button></div>
+            <div class="playHubCard"><span class="hubBadge casual">CASUAL</span><h2>ĐÁNH THƯỜNG</h2><div class="playHubMeta"><span>Tự ghép trận hoặc tạo phòng riêng có ID.</span><span>Online sẽ kết nối ở phiên bản sau.</span><span>Nếu ghép trận chưa có người, prototype fallback sang Bot theo Rating.</span></div><button class="btn primary" id="openCasualPlay" data-dw-id="SHELL_UI_PLAY_MENU_CASUAL">MỞ MENU</button></div>
+            <div class="playHubCard"><span class="hubBadge rank">RANKED</span><h2>XẾP HẠNG</h2><div class="playHubMeta"><span>Matchmaking / phòng riêng.</span><span>Thắng +Elo, thua −Elo.</span><span>Điểm trừ = 130% điểm cộng tương ứng.</span></div><div class="ratingBox"><span>Rating phiên này</span><b id="hubRating" data-dw-id="SHELL_UI_PLAY_MENU_RATING">100</b></div><button class="btn gold" id="openRankedPlay" data-dw-id="SHELL_UI_PLAY_MENU_RANKED">MỞ XẾP HẠNG</button></div>
+          </div>
+          <div class="hubOverlay" id="hubOverlay" data-dw-id="SHELL_UI_PLAY_MENU_OVERLAY" aria-hidden="true"><div class="hubPopup" role="dialog" aria-modal="true"><div class="row" style="justify-content:space-between"><h2 id="hubPopupTitle" data-dw-id="SHELL_UI_PLAY_MENU_OVERLAY_TITLE">MENU</h2><button class="unitMenuClose" id="hubClose" data-dw-id="SHELL_UI_PLAY_MENU_OVERLAY_CLOSE" type="button">×</button></div><div id="hubPopupBody" data-dw-id="SHELL_UI_PLAY_MENU_OVERLAY_BODY"></div><div class="hubFooter"><button class="btn" id="hubBack" data-dw-id="SHELL_UI_PLAY_MENU_OVERLAY_BACK" type="button">QUAY LẠI</button></div></div></div>
+        </div>
+      </div>
+      <div id="modeScreen" data-dw-id="SHELL_UI_MODE_SELECT" class="screen active">
+        <div class="modeWrap">
+          <div class="center"><div class="bigNotice">CHỌN CHẾ ĐỘ CHƠI</div><div class="muted">Core Game dùng chung Hero · Lính · Equipment · Skill · Combat. Mỗi Mode sở hữu Map/Rule/Event/Win Condition riêng.</div></div>
+          <div class="modeGrid">
+            <div class="modeCard activeMode">
+              <div class="row" style="justify-content:space-between"><h2>ĐỐI ĐẦU</h2><span class="modeBadge live">CÓ THỂ CHƠI</span></div>
+              <div class="modeMeta"><span>1 Hero + 5 Lính</span><span>5 Equipment khởi đầu · không rút thêm</span><span>Roll Dice chọn thứ tự setup / First Turn</span><span>Win Rule: Hero HP ≤ 0 → Thua</span></div>
+              <button class="btn gold" id="playDuelMode" data-dw-id="SHELL_UI_MODE_DUEL_BUTTON">CHỌN ĐỐI ĐẦU</button>
+            </div>
+            <div class="modeCard locked">
+              <div class="row" style="justify-content:space-between"><h2>CHIẾN THẦN</h2><span class="modeBadge soon">COMING SOON</span></div>
+              <div class="modeMeta"><span>Map lớn hơn / camera mở rộng</span><span>Equipment, Event và Terrain riêng</span><span>Win/Lose Rule riêng theo Mode</span><span>Không kế thừa RULE_DUEL_HERO_DEATH mặc định</span></div>
+              <button class="btn" id="openWarGodMode" data-dw-id="SHELL_UI_MODE_WARGOD_BUTTON">XEM CHẾ ĐỘ</button>
+            </div>
+          </div>
+          <div class="modeConfirmOverlay" id="modeConfirmOverlay" data-dw-id="SHELL_UI_MODE_CONFIRM" aria-hidden="true">
+            <div class="modeConfirmPopup" role="dialog" aria-modal="true" aria-labelledby="modeConfirmTitle">
+              <div class="row" style="justify-content:space-between;align-items:flex-start">
+                <div><span class="modeBadge" id="modeConfirmBadge" data-dw-id="SHELL_UI_MODE_CONFIRM_BADGE"></span><h2 id="modeConfirmTitle" data-dw-id="SHELL_UI_MODE_CONFIRM_TITLE" style="margin-top:6px"></h2></div>
+                <button class="unitMenuClose" id="modeConfirmClose" data-dw-id="SHELL_UI_MODE_CONFIRM_CLOSE" type="button" aria-label="Đóng">×</button>
+              </div>
+              <div class="modeMeta" id="modeConfirmMeta" data-dw-id="SHELL_UI_MODE_CONFIRM_META"></div>
+              <div class="modeConfirmRule" id="modeConfirmRule" data-dw-id="SHELL_UI_MODE_CONFIRM_RULE"></div>
+              <div class="modeConfirmActions">
+                <button class="btn gold" id="modeConfirmPlay" data-dw-id="SHELL_UI_MODE_CONFIRM_PLAY" type="button">CHƠI</button>
+                <button class="btn" id="modeConfirmBack" data-dw-id="SHELL_UI_MODE_CONFIRM_BACK" type="button">QUAY LẠI</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="readyScreen" data-dw-id="SHELL_UI_READY" class="screen">
+        <div class="readyWrap">
+          <div class="center"><div class="bigNotice">READY CHECK</div><div class="muted">Cả hai cùng sẵn sàng hoặc game tự bắt đầu sau 20 giây</div></div>
+          <div class="readyTimer" id="readyTimer" data-dw-id="SHELL_UI_READY_TIMER">20</div>
+          <div class="readyCards">
+            <div class="readyCard"><h3>PLAYER 1</h3><div class="readyState" id="r1state" data-dw-id="SHELL_UI_READY_P1_STATE">Đang chờ</div><button class="btn primary" id="r1btn" data-dw-id="SHELL_UI_READY_P1_BUTTON">SẴN SÀNG</button></div>
+            <div class="readyCard"><h3>PLAYER 2</h3><div class="readyState" id="r2state" data-dw-id="SHELL_UI_READY_P2_STATE">Đang chờ</div><button class="btn primary" id="r2btn" data-dw-id="SHELL_UI_READY_P2_BUTTON">SẴN SÀNG</button></div>
+          </div>
+        </div>
+      </div>
+
+      <div id="diceScreen" data-dw-id="SHELL_UI_DICE" class="screen">
+        <div class="diceWrap">
+          <div class="center"><div class="bigNotice">ROLL DICE</div><div class="muted">Kết quả công khai ngay khi tung</div></div>
+          <div class="diceArea">
+            <div class="dieBox"><h3>PLAYER 1</h3><div class="die" id="die1" data-dw-id="SHELL_UI_DICE_P1">⚀</div><div id="d1txt" data-dw-id="SHELL_UI_DICE_P1_TEXT" class="result">Chưa tung</div><button class="btn" id="roll1" data-dw-id="SHELL_UI_DICE_P1_ROLL">TUNG XÚC XẮC</button></div>
+            <div class="vs">VS</div>
+            <div class="dieBox"><h3>PLAYER 2</h3><div class="die" id="die2" data-dw-id="SHELL_UI_DICE_P2">⚀</div><div id="d2txt" data-dw-id="SHELL_UI_DICE_P2_TEXT" class="result">Chưa tung</div><button class="btn" id="roll2" data-dw-id="SHELL_UI_DICE_P2_ROLL" disabled>TUNG XÚC XẮC</button></div>
+          </div>
+          <div class="center"><div id="diceResult" data-dw-id="SHELL_UI_DICE_RESULT" class="bigNotice"></div><div id="diceRule" data-dw-id="SHELL_UI_DICE_RULE" class="muted"></div><button class="btn gold" id="toTeam" data-dw-id="SHELL_UI_DICE_CONTINUE" style="display:none">TIẾP TỤC</button></div>
+        </div>
+      </div>
+
+      <div id="teamScreen" data-dw-id="SHELL_UI_TEAM_SELECT" class="screen">
+        <div class="selectWrap">
+          <div class="center"><div class="bigNotice" id="teamTitle" data-dw-id="SHELL_UI_TEAM_TITLE">CHỌN ĐỘI HÌNH</div><div class="muted" id="teamSub" data-dw-id="SHELL_UI_TEAM_SUBTITLE"></div></div>
+          <div class="teamCols">
+            <div class="box"><h3>Hero</h3><div class="heroList" id="heroChoices" data-dw-id="SHELL_UI_TEAM_HERO_CHOICES"></div></div>
+            <div class="box"><h3>5 quân lính</h3><div class="troopList" id="troopChoices" data-dw-id="SHELL_UI_TEAM_TROOP_CHOICES"></div><div class="muted" style="margin-top:8px">Tổng lính: <b id="troopTotal" data-dw-id="SHELL_UI_TEAM_TROOP_TOTAL">0</b>/5</div></div>
+          </div>
+          <button class="btn gold" id="confirmTeam" data-dw-id="SHELL_UI_TEAM_CONFIRM">XÁC NHẬN ĐỘI HÌNH</button>
+        </div>
+      </div>
+
+      <div id="dealScreen" data-dw-id="SHELL_UI_EQUIPMENT_DEAL" class="screen">
+        <div class="dealWrap">
+          <div class="center"><div class="bigNotice">PHÁT EQUIPMENT</div><div class="muted">Mỗi Player nhận ngẫu nhiên 5 lá. Trong PvP thật, mỗi người chỉ thấy hand của mình.</div></div>
+          <div class="dealHands"><div class="box"><h3>PLAYER 1 HAND</h3><div class="hand" id="dealHand1" data-dw-id="SHELL_UI_DEAL_P1_HAND"></div></div><div class="box"><h3>PLAYER 2 HAND</h3><div class="hand" id="dealHand2" data-dw-id="SHELL_UI_DEAL_P2_HAND"></div></div></div>
+          <button class="btn gold" id="toDeploy" data-dw-id="SHELL_UI_DEAL_TO_DEPLOY">BẮT ĐẦU DEPLOYMENT</button>
+        </div>
+      </div>
+
+      <div id="gameScreen" data-dw-id="SHELL_UI_MATCH_SCREEN" class="screen">
+        <div class="statusLine"><div><b id="gameTitle" data-dw-id="CORE_UI_MATCH_TITLE">DEPLOYMENT</b><div class="muted" id="gameHint" data-dw-id="CORE_UI_MATCH_HINT"></div></div><div class="row"><button class="btn" id="undoBtn" data-dw-id="CORE_UI_UNDO">Hoàn tác</button><button class="btn gold" id="mainBtn" data-dw-id="CORE_UI_MAIN_ACTION">XÁC NHẬN</button><button class="btn danger" id="resetBtn" data-dw-id="CORE_UI_RESET">Chơi lại</button></div></div>
+        <div class="boardWrap" data-dw-id="CORE_UI_BOARD_WRAP" style="margin-top:10px"><img class="boardBg" src="./assets/embedded-6d86225d311e.png" alt="Dozen War II map"><svg id="board" data-dw-id="CORE_UI_BOARD" class="boardOverlay" viewBox="0 0 1000 1000" aria-label="Bàn cờ hex"></svg><div id="unitMenu" data-dw-id="CORE_UI_UNIT_ACTION" class="unitMenu" role="dialog" aria-label="Hành động đơn vị"><div class="unitMenuTitle"><b id="unitMenuName" data-dw-id="CORE_UI_UNIT_ACTION_NAME">Đơn vị</b><button type="button" class="unitMenuClose" id="unitMenuClose" data-dw-id="CORE_UI_UNIT_ACTION_CLOSE" aria-label="Đóng">×</button></div><div class="unitMenuActions"><button type="button" class="btn good" id="unitMoveQuick" data-dw-id="CORE_UI_UNIT_ACTION_MOVE">MOVE</button><button type="button" class="btn danger" id="unitAttackQuick" data-dw-id="CORE_UI_UNIT_ACTION_ATTACK">ATTACK</button><button type="button" class="btn gold skillAction" id="unitSkillQuick" data-dw-id="CORE_UI_UNIT_ACTION_SKILL">SKILL</button></div><div id="unitMenuSkills" data-dw-id="CORE_UI_UNIT_ACTION_SKILLS" class="unitMenuSkills"></div><div class="unitMenuHint" id="unitMenuHint" data-dw-id="CORE_UI_UNIT_ACTION_HINT">Chọn hành động trực tiếp tại đơn vị</div></div><div id="deployMenu" data-dw-id="CORE_UI_DEPLOY_MENU" class="deployMenu" role="dialog" aria-label="Đặt quân"><div class="deployMenuTitle"><b id="deployMenuTitle" data-dw-id="CORE_UI_DEPLOY_TITLE">ĐẶT QUÂN</b><button type="button" class="deployMenuClose" id="deployMenuClose" data-dw-id="CORE_UI_DEPLOY_CLOSE" aria-label="Đóng">×</button></div><div class="deployMenuMain"><button type="button" class="btn gold" id="deployHeroBtn" data-dw-id="CORE_UI_DEPLOY_HERO">HERO</button><button type="button" class="btn primary" id="deployTroopBtn" data-dw-id="CORE_UI_DEPLOY_TROOP">LÍNH</button></div><div id="deployTroops" data-dw-id="CORE_UI_DEPLOY_TROOPS" class="deployTroops"></div><div id="deployHint" data-dw-id="CORE_UI_DEPLOY_HINT" class="deployHint">Chọn loại quân để đặt tại ô này</div></div></div>
+      </div>
+    </section>
+
+    <aside class="panel side">
+      <div class="box"><h3>Trạng thái trận</h3><div id="summary" data-dw-id="SHELL_UI_SUMMARY" class="muted">Đang chờ bắt đầu.</div></div>
+      <div class="box" id="unitPanel" data-dw-id="CORE_UI_UNIT_PANEL"><h3>Đơn vị đang chọn</h3><div id="unitInfo" data-dw-id="CORE_UI_UNIT_INFO" class="muted">Chưa chọn đơn vị.</div><div class="actions" style="margin-top:8px"><button class="btn" id="moveBtn" data-dw-id="CORE_UI_MOVE" disabled>MOVE</button><button class="btn danger" id="attackBtn" data-dw-id="CORE_UI_ATTACK" disabled>ATTACK</button></div></div>
+      <div class="box"><h3>HERO SKILLS</h3><div class="skills" id="skillBar" data-dw-id="CORE_UI_SKILL_BAR"></div></div>
+      <div class="box wide"><h3>EQUIPMENT HAND</h3><div class="muted" id="handOwner" data-dw-id="CORE_UI_HAND_OWNER">Chưa có hand.</div><div class="handBar" id="handBar" data-dw-id="CORE_UI_HAND_BAR" style="margin-top:8px"></div></div>
+      <div class="box reaction" id="reactionBox" data-dw-id="CORE_UI_REACTION" style="display:none"><h3>DEFENSE REACTION</h3><div id="reactionInfo" data-dw-id="CORE_UI_REACTION_INFO" class="muted"></div><div class="row" style="margin-top:8px"><button class="btn good" id="guardBtn" data-dw-id="CORE_UI_GUARD">INFANTRY GUARD</button><button class="btn" id="skipReact" data-dw-id="CORE_UI_REACTION_SKIP">BỎ QUA</button><button class="btn gold" id="resolveBtn" data-dw-id="CORE_UI_REACTION_RESOLVE">RESOLVE</button></div></div>
+      <div class="box wide"><h3>Combat Log</h3><div class="log" id="log" data-dw-id="CORE_UI_LOG"></div></div>
+    </aside>
+  </div>
+</div>
+<div class="gameOverOverlay" id="gameOverOverlay" data-dw-id="SHELL_UI_GAME_OVER" aria-hidden="true"><div class="gameOverPopup"><div class="gameOverTitle" id="gameOverTitle" data-dw-id="SHELL_UI_GAME_OVER_TITLE">KẾT THÚC TRẬN</div><div class="muted" id="gameOverText" data-dw-id="SHELL_UI_GAME_OVER_TEXT" style="margin-top:8px"></div><div class="resultGrid" id="gameOverResultGrid" data-dw-id="SHELL_UI_GAME_OVER_RESULT_GRID"><div class="resultCard" id="playerResult1" data-dw-id="SHELL_UI_GAME_OVER_P1_CARD"><div class="resultPlayer">PLAYER 1</div><div class="resultOutcome" id="playerResult1Outcome" data-dw-id="SHELL_UI_GAME_OVER_P1_OUTCOME">—</div></div><div class="resultCard" id="playerResult2" data-dw-id="SHELL_UI_GAME_OVER_P2_CARD"><div class="resultPlayer" id="playerResult2Name" data-dw-id="SHELL_UI_GAME_OVER_P2_NAME">PLAYER 2</div><div class="resultOutcome" id="playerResult2Outcome" data-dw-id="SHELL_UI_GAME_OVER_P2_OUTCOME">—</div></div></div><div class="rematchMeta"><div><span class="roomPersistTag">ROOM PERSISTENT</span></div><div><b>Room:</b> <span id="gameOverRoom" data-dw-id="SHELL_UI_GAME_OVER_ROOM">-</span></div><div><b>Mode:</b> <span id="gameOverMode" data-dw-id="SHELL_UI_GAME_OVER_MODE">-</span></div><div><b>Match:</b> <span id="gameOverMatch" data-dw-id="SHELL_UI_GAME_OVER_MATCH">-</span></div></div><div class="rematchPlayers" id="rematchPlayers" data-dw-id="SHELL_UI_REMATCH"></div><div class="rematchHint" id="rematchHint" data-dw-id="SHELL_UI_REMATCH_HINT">Chơi lại sẽ giữ nguyên Room/Mode/Player Slot và tạo Match mới sau khi đủ người đồng ý.</div><div class="gameOverActions" id="gameOverActions" data-dw-id="SHELL_UI_GAME_OVER_ACTIONS"><button class="btn gold" id="rematchBtn" data-dw-id="SHELL_UI_REMATCH_BUTTON">CHƠI LẠI</button><button class="btn" id="leaveMatchBtn" data-dw-id="SHELL_UI_LEAVE_BUTTON">RỜI KHỎI</button></div></div></div>
+<script defer src="./assets/runtime.570097ca8c2c.js"></script>
+</body>
+</html>

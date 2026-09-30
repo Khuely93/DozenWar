@@ -1,0 +1,94 @@
+DOZEN WAR II v1.35 - PART 13.8C REMAINING LEGACY DEPENDENCY REDUCTION QA REPORT
+
+Build:
+DOZEN_WAR_II_v1_35_PART13_8C_REMAINING_LEGACY_REDUCTION.zip
+
+Scope:
+PROJECT ARCHITECTURE + PRESENTATION + SHELL + DEBUG ownership cleanup
+RELOCATE + REMOVE only
+No gameplay-rule modification authorized.
+
+Part 13.8C implemented:
+- RELOCATED the embedded heroImg fallback byte-for-byte from:
+  src/legacy/legacy-prelude-c.js
+  to:
+  src/presentation/hero-fallback-runtime.js
+- REMOVED mixed src/legacy/legacy-post-runtime.js after an exact source split into:
+  - src/debug/playtest-qa-runtime.js (window.DOZEN_QA playtest QA API)
+  - src/shell/shell-boot-runtime.js (reset/main button + initial Shell boot wiring)
+- Preserved exact original runtime execution order.
+- Updated runtime manifest, build metadata, docs and validation gates.
+- No Hero, Equipment, Skill, Mode rule, Combat rule or balance value was changed.
+
+Ownership result:
+- PRESENTATION owns visual fallback resource heroImg.
+- DEBUG owns playtest-only QA API.
+- SHELL owns initial boot/reset/main-button wiring.
+- Remaining legacy runtime is reduced to:
+  - legacy-prelude-a-tail.js (mixed architecture/action/network/Core declarations)
+  - legacy-prelude-c.js (MatchState S + skill usage/shared runtime helpers)
+  - legacy-ai-runtime.js (Bot automation + hook wrappers)
+
+Locked KEEP / NOT AFFECTED:
+- Combat rules
+- Star / Power semantics
+- Movement
+- Targeting
+- Infantry Guard
+- Cavalry Pierce / propagation
+- Reflect
+- Hero Skill behavior / usage policy
+- Equipment gameplay
+- Duel Hero Death / simultaneous-death DRAW
+- Mode policies
+- Flexible Deck size/copy policy
+- Content manifest / gameplayHash handshake
+- Backward compatibility
+- Board Renderer behavior
+- UI/UX visual behavior
+
+Validation:
+PASS | npm run validate: 81/81
+PASS | JavaScript syntax for every src/**/*.js and locales/**/*.js
+PASS | Production build completed
+PASS | Production runtime bundle syntax through build pipeline
+PASS | Development static server served v1.35 source entry
+PASS | Production static server served v1.35 dist entry
+PASS | runtimeOrder matches index classic-script order
+PASS | heroImg fallback now owned by PRESENTATION
+PASS | heroImg removed from remaining legacy-prelude-c.js
+PASS | mixed legacy-post-runtime.js removed
+PASS | DOZEN_QA API preserved in DEBUG
+PASS | Shell boot/reset wiring preserved in SHELL
+PASS | GAME_MODES/RULES legacy adapter remains removed
+PASS | legacy Core bridge remains removed
+PASS | window.DOZEN_CORE_RULES remains removed
+PASS | locked invariant tokens preserved
+
+Strong behavior-preservation comparison:
+v1.34 runtime sequence excluding behavior-neutral bootstrap metadata is byte-for-byte identical to v1.35 runtime sequence excluding bootstrap metadata.
+
+v1.34 normalized behavior SHA256:
+1fa557457ca891cf7c105aced752c901b33096da008303bd19430608c4fdbd6e
+
+v1.35 normalized behavior SHA256:
+1fa557457ca891cf7c105aced752c901b33096da008303bd19430608c4fdbd6e
+
+Exact relocation equivalence:
+- v1.34 legacy-prelude-c.js == v1.35 hero-fallback-runtime.js + legacy-prelude-c.js
+  SHA256: 1f49c23d3c4fde27eb414171f404af7b503000b818e02187fe075b7a53b0a3b2
+- v1.34 legacy-post-runtime.js == v1.35 playtest-qa-runtime.js + shell-boot-runtime.js
+  SHA256: 489fb11d5f0cc26fd3fd2655eb23d1f2d3ae06e3cb907e0290d775138371b51e
+
+Production measurements:
+- index.html: 16,580 bytes
+- runtime bundle: 211,219 bytes raw / 69,844 gzip / 59,325 Brotli
+- CSS bundle: 20,729 bytes raw / 4,874 gzip / 4,191 Brotli
+- Embedded images externalized: 1
+
+Browser QA note:
+No full GUI click-through claim is made for Part 13.8C. Validation consists of exact behavior-source equivalence, exact relocation equivalence, syntax checks, production build, source/prod HTTP serve checks and locked-rule invariant checks.
+
+Next:
+PART 13.8D - FINAL CONTENT / MODE BOUNDARY GATE
+After that gate, normal ADD Hero / Equipment / Skill / Mode Rule expansion can resume as the primary workflow.

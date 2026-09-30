@@ -1,0 +1,67 @@
+{
+  "project": "DOZEN WAR II",
+  "version": "1.40.17",
+  "phase": "DUEL_RULE_MODE_1VS1_180_30",
+  "generatedAt": "2026-09-30T08:10:47.667Z",
+  "runtimeOrder": [
+    "src/architecture/module-boundaries.js",
+    "src/ui/ui-dom-runtime.js",
+    "src/legacy/legacy-prelude-a-tail.js",
+    "src/mode/mode-registry-runtime.js",
+    "src/shell/shell-kernel-runtime.js",
+    "src/mode/mode-definitions-runtime.js",
+    "src/presentation/hero-fallback-runtime.js",
+    "src/legacy/legacy-prelude-c.js",
+    "src/content/content-prelude-runtime.js",
+    "src/presentation/asset-definitions-runtime.js",
+    "locales/vi-VN-runtime.js",
+    "src/content/content-runtime.js",
+    "src/core/core-foundation-runtime.js",
+    "src/shell/shell-flow-runtime.js",
+    "src/core/core-runtime-a.js",
+    "src/presentation/board-renderer-runtime.js",
+    "src/core/core-runtime-b.js",
+    "src/shell/shell-session-runtime.js",
+    "src/legacy/legacy-ai-runtime.js",
+    "src/shell/shell-gameover-runtime.js",
+    "src/mode/duel-turn-runtime.js",
+    "src/debug/playtest-qa-runtime.js",
+    "src/shell/shell-boot-runtime.js",
+    "src/bootstrap.js"
+  ],
+  "bundles": {
+    "runtime": "assets/runtime.570097ca8c2c.js",
+    "styles": "assets/app.fe4df8aab618.css"
+  },
+  "externalizedEmbeddedAssets": [
+    {
+      "name": "embedded-6d86225d311e.png",
+      "bytes": 8268133,
+      "sha256": "6d86225d311e524c933dadda9000bdcc96bbb19d2e040a8039728f9b7b1e329e"
+    }
+  ],
+  "note": "Build hashes are deployment artifact hashes. Gameplay compatibility remains authoritative in runtime ContentManifestBuilder/gameplayHash.",
+  "files": [
+    {
+      "file": "index.html",
+      "bytes": 16530,
+      "gzipBytes": 4570,
+      "brotliBytes": 3763,
+      "sha256": "619c7a0926ad73e180af1cebda8e08deefcbbc9771fcfdcda63d44fb051462a4"
+    },
+    {
+      "file": "assets/runtime.570097ca8c2c.js",
+      "bytes": 252121,
+      "gzipBytes": 80140,
+      "brotliBytes": 67324,
+      "sha256": "570097ca8c2c020bd96461deb820380a1c0f1291f72e5e44bf4b33ea817f5a4a"
+    },
+    {
+      "file": "assets/app.fe4df8aab618.css",
+      "bytes": 21921,
+      "gzipBytes": 5182,
+      "brotliBytes": 4471,
+      "sha256": "fe4df8aab618e79c34fde79e770e38891a561af1f07d9eeb6193cc277bff4cbe"
+    }
+  ]
+}

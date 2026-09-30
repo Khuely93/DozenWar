@@ -1,0 +1,26 @@
+{
+  "name": "dozen-war-ii",
+  "version": "1.40.17",
+  "private": true,
+  "description": "DOZEN WAR II v1.40.17 Alchemist Hero class",
+  "scripts": {
+    "dev": "node tools/static-server.cjs --root . --port 5173",
+    "validate": "node tools/validate-project.cjs",
+    "build": "npm run validate && npm run test:content-readiness && npm run test:gameplay && npm run test:bootstrap-order && npm run test:result-ui && npm run test:action-visual && npm run test:rodoc && npm run test:est && npm run test:duel-rule && npm run test:hero-class && npm run test:alchemist && node tools/build-prod.cjs",
+    "preview": "node tools/static-server.cjs --root dist --port 4173",
+    "report": "node tools/build-report.cjs",
+    "test:content-readiness": "node tools/test-hero-skill-readiness.cjs",
+    "test:gameplay": "node tools/test-gameplay-regression.cjs",
+    "test:result-ui": "node tools/test-result-ui.cjs",
+    "test:action-visual": "node tools/test-action-visual.cjs",
+    "test:rodoc": "node tools/test-rodoc.cjs",
+    "test:est": "node tools/test-est.cjs",
+    "test:duel-rule": "node tools/test-duel-rule.cjs",
+    "test:bootstrap-order": "node tools/test-bootstrap-order.cjs",
+    "test:hero-class": "node tools/test-hero-class.cjs",
+    "test:alchemist": "node tools/test-alchemist.cjs"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

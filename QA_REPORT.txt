@@ -1,0 +1,90 @@
+DOZEN WAR II v1.32 — PART 13.7 BUILD PIPELINE + DEV / PRODUCTION BUNDLE QA REPORT
+
+Build:
+DOZEN_WAR_II_v1_32_PART13_7_BUILD_PIPELINE.zip
+
+Scope:
+PROJECT ARCHITECTURE + BUILD / DEPLOY TOOLING
+ADD + MODIFY metadata only; gameplay runtime unchanged.
+
+Part 13.7 implemented:
+- package.json command surface:
+  - npm run dev
+  - npm run validate
+  - npm run build
+  - npm run preview
+  - npm run report
+- dependency-free Node static development/preview server.
+- project validator for runtime file existence/order, JavaScript syntax, version metadata, and locked invariant tokens.
+- production builder preserving the proven classic-script execution order in a single content-hashed runtime bundle.
+- content-hashed stylesheet output.
+- production-only externalization of inline base64 <img> resources into hashed image assets.
+- dist/build-manifest.json with deployment file hashes and raw/gzip/Brotli size reporting.
+- source dev tree remains readable and unchanged in architecture.
+
+Important safety decision:
+Part 13.7 does NOT perform aggressive JavaScript minification or rewrite current classic scripts into ES modules.
+Reason: exact gameplay source preservation is higher priority while temporary legacy bridges still exist.
+Network transfer is already substantially reduced by gzip/Brotli, and proper ES-module/minifier cleanup can occur after bridge removal.
+
+Compatibility / authority rule:
+- Deployment artifact hash != gameplay compatibility hash.
+- Gameplay compatibility remains authoritative through runtime ContentManifestBuilder / gameplayHash.
+- Build pipeline does not replace or bypass the Part 12.4 handshake design.
+
+Validation results:
+PASS | npm run validate: 62/62 checks
+PASS | JavaScript syntax for every src/**/*.js and locales/**/*.js
+PASS | Production runtime bundle node --check
+PASS | index classic-script order == project-manifest runtimeOrder
+PASS | v1.32 / PART 13.7 banner
+PASS | CONTENT_SCHEMA token preserved
+PASS | RULE_DUEL_HERO_DEATH token preserved
+PASS | DRAW branch token preserved
+PASS | MATCH / ROUND policy tokens preserved
+PASS | Flexible deck declaredSize:null preserved
+PASS | CoreInputRouter preserved
+PASS | CoreBoardRenderer compatibility API preserved
+PASS | ContentManifestBuilder preserved
+PASS | BackwardCompatibilityLoader preserved
+PASS | v1.31 -> v1.32 gameplay/runtime sequence excluding behavior-neutral bootstrap is byte-identical
+PASS | Development static server served v1.32 source entry
+PASS | Production static server served PROD BUNDLE entry
+PASS | Production build completed
+PASS | Hashed runtime bundle generated
+PASS | Hashed CSS bundle generated
+PASS | 1 embedded base64 image externalized to hashed production asset
+
+Gameplay source preservation:
+v1.31 gameplay/runtime sequence excluding bootstrap SHA256:
+f80de0ec497ed5bfe98b472f7a0d004445388c8139fc1984e1e220047244c237
+
+v1.32 gameplay/runtime sequence excluding bootstrap SHA256:
+f80de0ec497ed5bfe98b472f7a0d004445388c8139fc1984e1e220047244c237
+
+Production output measurements:
+- Source index.html: 11,042,178 bytes
+- Production index.html: 16,513 bytes
+- Runtime bundle: 213,296 bytes raw / 70,295 gzip / 59,697 Brotli
+- CSS bundle: 20,729 bytes raw / 4,874 gzip / 4,191 Brotli
+- Externalized image: 8,268,133 bytes
+- Total dist files: 8,521,285 bytes
+
+This demonstrates that the HTML itself is no longer carrying the ~8.27 MB board background in production. The visual asset remains the same bytes, but is now cacheable as a separate hashed file.
+
+Not changed intentionally:
+- Combat / Star / Power
+- Movement / Targeting
+- Guard / Pierce / propagation
+- Reflect
+- Hero Skill / Equipment gameplay
+- Duel Hero-death / simultaneous-death DRAW semantics
+- Flexible deck size/copy policy
+- Mode rules
+- Shell / Game Over / Rematch behavior
+- Content manifest / backward compatibility
+- Board renderer behavior
+- UI/UX / CSS design semantics
+
+Browser QA note:
+No full GUI browser click-through claim is made for Part 13.7. Validation includes exact gameplay-source preservation, JavaScript syntax, project/runtime-order validation, production bundle syntax, successful dev/prod HTTP serving, locked-rule/static invariants, and successful reproducible production generation.

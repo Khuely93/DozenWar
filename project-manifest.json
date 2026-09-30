@@ -1,0 +1,121 @@
+{
+  "project": "DOZEN WAR II",
+  "version": "1.40.17",
+  "phase": "DUEL_RULE_MODE_1VS1_180_30",
+  "baseline": "v1.40.17 Alchemist Hero-only class with common equipment",
+  "entry": "index.html",
+  "styles": "styles/main.css",
+  "runtimeOrder": [
+    "src/architecture/module-boundaries.js",
+    "src/ui/ui-dom-runtime.js",
+    "src/legacy/legacy-prelude-a-tail.js",
+    "src/mode/mode-registry-runtime.js",
+    "src/shell/shell-kernel-runtime.js",
+    "src/mode/mode-definitions-runtime.js",
+    "src/presentation/hero-fallback-runtime.js",
+    "src/legacy/legacy-prelude-c.js",
+    "src/content/content-prelude-runtime.js",
+    "src/presentation/asset-definitions-runtime.js",
+    "locales/vi-VN-runtime.js",
+    "src/content/content-runtime.js",
+    "src/core/core-foundation-runtime.js",
+    "src/shell/shell-flow-runtime.js",
+    "src/core/core-runtime-a.js",
+    "src/presentation/board-renderer-runtime.js",
+    "src/core/core-runtime-b.js",
+    "src/shell/shell-session-runtime.js",
+    "src/legacy/legacy-ai-runtime.js",
+    "src/shell/shell-gameover-runtime.js",
+    "src/mode/duel-turn-runtime.js",
+    "src/debug/playtest-qa-runtime.js",
+    "src/shell/shell-boot-runtime.js",
+    "src/bootstrap.js"
+  ],
+  "extractedLayers": [
+    "content",
+    "core",
+    "mode",
+    "shell",
+    "ui",
+    "presentation",
+    "asset",
+    "localization"
+  ],
+  "buildPipeline": {
+    "strategy": "NO_DEPENDENCY_NODE_PIPELINE",
+    "devServer": "npm run dev",
+    "validate": "npm run validate",
+    "productionBuild": "npm run build",
+    "preview": "npm run preview",
+    "output": "dist/",
+    "productionBundle": "ordered classic-script concatenation with content-hashed filenames",
+    "embeddedAssetPolicy": "externalize base64 image sources into hashed production assets",
+    "gameplayCompatibility": "runtime ContentManifestBuilder/gameplayHash remains authoritative"
+  },
+  "next": "CONTENT_EXPANSION_HERO_EQUIPMENT_MODE_RULE",
+  "boundaries": [
+    "core",
+    "mode",
+    "content",
+    "shell",
+    "ui",
+    "presentation",
+    "network",
+    "shared"
+  ],
+  "legacyBridgeCleanup": {
+    "strategy": "INCREMENTAL_REGRESSION_GATED",
+    "removed": [
+      "mode GAME_MODES/RULES compatibility adapter",
+      "unused window.DOZEN_CORE_RULES export",
+      "comment-only legacy-prelude-a-head runtime entry",
+      "legacy ownership of DW_SHELL kernel",
+      "legacy hero fallback ownership",
+      "legacy-post mixed QA/boot ownership"
+    ],
+    "relocated": [
+      "CORE Star/Power audit + axial directions -> src/core/core-foundation-runtime.js",
+      "DW_SHELL result-delivery kernel -> src/shell/shell-kernel-runtime.js",
+      "embedded Hero fallback -> src/presentation/hero-fallback-runtime.js",
+      "playtest QA -> src/debug/playtest-qa-runtime.js",
+      "boot/reset wiring -> src/shell/shell-boot-runtime.js"
+    ],
+    "remaining": [
+      "legacy-prelude-a-tail.js (architecture/action/network/core constants; mixed ownership)",
+      "legacy-prelude-c.js (MatchState S + skill usage/shared runtime helpers after hero fallback extraction)",
+      "legacy-ai-runtime.js (bot gameplay automation; dedicated AI owner still pending)"
+    ],
+    "gameplayRuleChanges": false
+  },
+  "contentModeBoundaryGate": {
+    "status": "READY",
+    "gameplayRuleChanges": false,
+    "ready": {
+      "equipmentDefinitionExpansion": true,
+      "modeDefinitionExpansion": true,
+      "modeRuleExpansion": true,
+      "localizationExpansion": true,
+      "assetMetadataExpansion": true
+    },
+    "blocked": {
+      "multipleHeroesPerClassPlayable": false,
+      "fullyGenericSkillExpansion": false
+    },
+    "blockers": []
+  },
+  "heroSkillReadiness": {
+    "status": "READY_FOR_CONTENT_EXPANSION",
+    "gameplayRuleChanges": false,
+    "identityModel": "definitionId-first + classId/class kind separate",
+    "multipleHeroesPerClassPlayable": true,
+    "skillRuntime": "data-driven for current targeting/effect special cases",
+    "heroCompatibilityViewRuntimeConsumers": 0,
+    "notes": [
+      "Hero selection stores heroDefinitionId instead of class-shaped hero key.",
+      "Hero runtime instances keep definitionId as content identity and classId/kind as class semantics.",
+      "Core/Shell/Presentation resolve Hero data through ContentViews.hero(definitionId), not HEROES[kind].",
+      "Current line-lock, missing-HP heal, damage buff, and defense-reaction behavior are driven by Skill metadata/effects.",
+      "New mechanics outside existing primitives still require an explicit CORE ADD after requirement lock."
+    ]
+  }
+}
