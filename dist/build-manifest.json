@@ -2,7 +2,7 @@
   "project": "DOZEN WAR II",
   "version": "1.40.19",
   "phase": "DUEL_RULE_MODE_1VS1_180_30",
-  "generatedAt": "2026-09-30T09:41:40.450Z",
+  "generatedAt": "2026-09-30T09:47:02.348Z",
   "runtimeOrder": [
     "src/architecture/module-boundaries.js",
     "src/ui/ui-dom-runtime.js",

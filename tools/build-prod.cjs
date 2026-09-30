@@ -49,7 +49,7 @@ html = html.replace(/src="data:image\/(png|jpeg|jpg|webp);base64,([A-Za-z0-9+/=]
 for(const match of html.matchAll(/src="\.\/assets\/(embedded-[a-f0-9]+\.(?:png|jpg|webp))"/g)){
   fs.copyFileSync(path.join(ROOT,'assets',match[1]),path.join(DIST,'assets',match[1]));
 }
-html = html.replace(/<link\s+rel="stylesheet"\s+href="\.\/styles\/main\.css"\s*\/?>/, `<link rel="stylesheet" href="./assets/${cssName}">`);
+html = html.replace(/<link\s+rel="stylesheet"\s+href="\.\/styles\/main\.css(?:\?[^\"]*)?"\s*\/?>/, `<link rel="stylesheet" href="./assets/${cssName}">`);
 html = html.replace(/(?:\s*<script\s+defer\s+src="\.\/[^\"]+"><\/script>\s*)+/g, '\n<script defer src="./assets/' + jsName + '"></script>\n');
 html = html.replace(/LATEST PLAYTEST v1\.40\.19[^<]*/, 'LATEST PLAYTEST v1.40.19 · PROD BUNDLE · ACTION STATUS · CONTENT SCHEMA v1.5 · CORE / MODE / SHELL / CONTENT / PRESENTATION');
 fs.writeFileSync(path.join(DIST, 'index.html'), html);

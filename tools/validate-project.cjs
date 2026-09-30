@@ -31,7 +31,7 @@ for (const f of jsFiles) {
 }
 
 const html = read('index.html');
-const scriptRefs = [...html.matchAll(/<script\s+defer\s+src="\.\/(.*?)"><\/script>/g)].map(m => m[1]);
+const scriptRefs = [...html.matchAll(/<script\s+defer\s+src="\.\/(.*?)"><\/script>/g)].map(m => m[1].split('?')[0]);
 check(JSON.stringify(scriptRefs) === JSON.stringify(manifest.runtimeOrder), 'index classic-script order matches runtimeOrder');
 check(/LATEST PLAYTEST v1\.40\.19/.test(html), 'v1.40.19 banner present');
 check(/HERO \/ SKILL CONTENT READINESS/.test(html), 'Hero / Skill Content Readiness banner present');
