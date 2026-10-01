@@ -1,8 +1,8 @@
 {
   "project": "DOZEN WAR II",
-  "version": "1.40.20",
+  "version": "1.40.21",
   "phase": "DUEL_RULE_MODE_1VS1_180_30",
-  "baseline": "v1.40.20 Fit Duel map to desktop viewport",
+  "baseline": "v1.40.21 Fit Duel map to desktop viewport",
   "entry": "index.html",
   "styles": "styles/main.css",
   "runtimeOrder": [

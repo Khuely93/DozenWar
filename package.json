@@ -1,8 +1,8 @@
 {
   "name": "dozen-war-ii",
-  "version": "1.40.20",
+  "version": "1.40.21",
   "private": true,
-  "description": "DOZEN WAR II v1.40.20 Desktop Duel board fit",
+  "description": "DOZEN WAR II v1.40.21 Desktop Duel board fit",
   "scripts": {
     "dev": "node tools/static-server.cjs --root . --port 5173",
     "validate": "node tools/validate-project.cjs",

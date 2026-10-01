@@ -5,6 +5,7 @@ const window={innerWidth:1366,innerHeight:768,scrollY:0,addEventListener(){}};
 const S={selectedMode:'MODE_DUEL_001',phase:'deploy'};
 let queue=[];const context=vm.createContext({window,S,CoreDOM:{board:{wrap:board}},requestAnimationFrame:f=>(queue.push(f),queue.length)});
 new vm.Script(read('src/presentation/duel-board-layout-runtime.js')+'\nthis.layout=DuelBoardLayout;').runInContext(context);
+assert.equal(context.layout.dockHeight(768),190);assert.equal(context.layout.dockHeight(1080),260);assert.equal(context.layout.dockHeight(936),228);
 queue.shift()();assert.equal(style.width,'564px','1366x768 map fits below toolbar');
 window.innerWidth=1920;window.innerHeight=1080;parent.clientWidth=1080;context.layout.fit();assert.equal(style.width,'876px');
 window.innerWidth=1101;window.innerHeight=720;parent.clientWidth=650;context.layout.fit();assert.equal(style.width,'516px');

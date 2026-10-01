@@ -51,7 +51,7 @@ for(const match of html.matchAll(/src="\.\/assets\/(embedded-[a-f0-9]+\.(?:png|j
 }
 html = html.replace(/<link\s+rel="stylesheet"\s+href="\.\/styles\/main\.css(?:\?[^\"]*)?"\s*\/?>/, `<link rel="stylesheet" href="./assets/${cssName}">`);
 html = html.replace(/(?:\s*<script\s+defer\s+src="\.\/[^\"]+"><\/script>\s*)+/g, '\n<script defer src="./assets/' + jsName + '"></script>\n');
-html = html.replace(/LATEST PLAYTEST v1\.40\.20[^<]*/, 'LATEST PLAYTEST v1.40.20 · PROD BUNDLE · ACTION STATUS · CONTENT SCHEMA v1.5 · CORE / MODE / SHELL / CONTENT / PRESENTATION');
+html = html.replace(/LATEST PLAYTEST v1\.40\.21[^<]*/, 'LATEST PLAYTEST v1.40.21 · PROD BUNDLE · ACTION STATUS · CONTENT SCHEMA v1.5 · CORE / MODE / SHELL / CONTENT / PRESENTATION');
 fs.writeFileSync(path.join(DIST, 'index.html'), html);
 
 copyDir(path.join(ROOT, 'assets'), path.join(DIST, 'assets', 'source-assets'));
@@ -67,7 +67,7 @@ const report = files.map(([name,b]) => ({
   sha256:sha(b)
 }));
 const buildManifest = {
-  project:'DOZEN WAR II', version:'1.40.20', phase:manifest.phase,
+  project:'DOZEN WAR II', version:'1.40.21', phase:manifest.phase,
   generatedAt:new Date().toISOString(),
   runtimeOrder:manifest.runtimeOrder,
   bundles:{runtime:`assets/${jsName}`,styles:`assets/${cssName}`},

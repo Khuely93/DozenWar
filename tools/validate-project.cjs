@@ -11,7 +11,7 @@ const passes = [];
 function check(ok, label) { (ok ? passes : failures).push(label); }
 function read(rel) { return fs.readFileSync(path.join(ROOT, rel), 'utf8'); }
 
-check(manifest.version === '1.40.20', 'project manifest version = 1.40.20');
+check(manifest.version === '1.40.21', 'project manifest version = 1.40.21');
 check(manifest.phase === 'DUEL_RULE_MODE_1VS1_180_30', 'project manifest phase = DUEL_RULE_MODE_1VS1_180_30');
 check(Array.isArray(manifest.runtimeOrder) && manifest.runtimeOrder.length > 0, 'runtimeOrder exists');
 for (const rel of manifest.runtimeOrder || []) check(fs.existsSync(path.join(ROOT, rel)), `runtime file exists: ${rel}`);
@@ -33,7 +33,7 @@ for (const f of jsFiles) {
 const html = read('index.html');
 const scriptRefs = [...html.matchAll(/<script\s+defer\s+src="\.\/(.*?)"><\/script>/g)].map(m => m[1].split('?')[0]);
 check(JSON.stringify(scriptRefs) === JSON.stringify(manifest.runtimeOrder), 'index classic-script order matches runtimeOrder');
-check(/LATEST PLAYTEST v1\.40\.20/.test(html), 'v1.40.20 banner present');
+check(/LATEST PLAYTEST v1\.40\.21/.test(html), 'v1.40.21 banner present');
 check(/HERO \/ SKILL CONTENT READINESS/.test(html), 'Hero / Skill Content Readiness banner present');
 
 const allRuntime = (manifest.runtimeOrder || []).map(read).join('');
