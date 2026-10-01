@@ -20,3 +20,11 @@ const scaled=vm.createContext({boardSvg:{getBoundingClientRect:()=>({left:20,top
 const p=scaled.svgPointFromPointer({clientX:20+516*.5,clientY:180+516*.5});assert.equal(p.x,500);assert.equal(p.y,500);
 assert.match(read('styles/main.css'),/aspect-ratio:1/);
 console.log('Duel board fit: laptop/desktop/narrow PC, mobile, resize, stable scrolling and scaled pointer coordinates: PASS');
+
+// Presentation labels preserve disabled state and original gameplay handlers.
+const handler=()=>{},buttons=[0,1,2].map(i=>({disabled:i===0,onclick:handler,attrs:{},setAttribute(k,v){this.attrs[k]=v},replaceChildren(...nodes){this.nodes=nodes}}));
+context.document={querySelectorAll:()=>buttons,createElement:()=>({})};
+context.unitSpec=()=>({skillIds:['heal','move','hit']});context.ContentViews={skill:id=>({name:id,description:'Full '+id,star:id==='heal'?3:1,timing:id==='heal'?'DEFENSE_REACTION':'ACTIVE'})};
+S.selected={hero:true};context.layout.mounted=true;context.layout.decorateSkills();
+assert.equal(buttons[0].disabled,true);assert.equal(buttons[1].disabled,false);assert.equal(buttons[1].onclick,handler);assert.equal(buttons[0].nodes[1].textContent,'★★★');assert.equal(buttons[0].title,'Full heal');assert.equal(buttons[1].nodes[0].textContent,'move');
+console.log('Dock skill labels preserve event handlers, disabled state, stars and full tooltips: PASS');

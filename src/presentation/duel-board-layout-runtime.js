@@ -23,6 +23,20 @@ const DuelBoardLayout = {
     stage.appendChild(document.getElementById('reactionBox'));
     this.stage=stage;this.mounted=true;
   },
+  decorateSkills(){
+    if(!this.mounted||!S.selected?.hero)return;
+    const spec=unitSpec(S.selected);
+    document.querySelectorAll('#skillBar button').forEach((button,i)=>{
+      const skill=ContentViews.skill(spec.skillIds[i]);if(!skill)return;
+      button.title=skill.description;
+      button.setAttribute('aria-label',skill.name+' · '+skill.description);
+      const title=document.createElement('strong');title.textContent=skill.name;
+      const stars=document.createElement('span');stars.className='dockSkillStars';stars.textContent='★'.repeat(skill.star||0);
+      const timing=document.createElement('small');timing.textContent=skill.timing==='DEFENSE_REACTION'?'PHÒNG THỦ':'CHỦ ĐỘNG';
+      const target=document.createElement('small');target.textContent=S.skillTarget?.skillNo===i+1?'ĐANG CHỌN MỤC TIÊU':'';
+      button.replaceChildren(title,stars,timing,target);
+    });
+  },
   dockHeight(viewportHeight){return Math.round(Math.max(190,Math.min(260,190+(viewportHeight-768)*70/312)))},
   fit(){
     const board=CoreDOM.board.wrap;
@@ -33,6 +47,7 @@ const DuelBoardLayout = {
     if(typeof document!=='undefined'){
       document.body.classList.toggle('duelDesktopLayout',desktop&&active);
       if(this.portrait)this.portrait.textContent=S.selected?unitSpec(S.selected).sym:'♟';
+      if(desktop&&active)this.decorateSkills();
       document.documentElement.style.setProperty('--duel-dock-height',this.dockHeight(window.innerHeight)+'px');
     }
     if(!desktop||!active){board.style.removeProperty('width');return}
