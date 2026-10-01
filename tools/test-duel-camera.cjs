@@ -27,3 +27,5 @@ c.panY=200;c.resize(1920,756);assert.equal(c.panY,200);
 S.matchSession.matchId='M2';c.resize(1366,530);assert.equal(c.base,530);assert.equal(c.panX,0);assert.equal(c.panY,0);
 c.disable();assert.equal(c.enabled,false);assert.equal(c.scene.style.transform,'none');assert.ok(!set.has('cameraAnchored'));
 console.log('Duel camera: viewport, cursor zoom, limits/reset, transformed deploy coordinates, popup clamping, reaction focus and rematch reset: PASS');
+
+assert.match(fs.readFileSync('styles/main.css','utf8'),/duelMapStage\{overflow:clip;/,'camera viewport must not become a native scroll container');
