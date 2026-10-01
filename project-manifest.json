@@ -1,8 +1,8 @@
 {
   "project": "DOZEN WAR II",
-  "version": "1.40.19",
+  "version": "1.40.20",
   "phase": "DUEL_RULE_MODE_1VS1_180_30",
-  "baseline": "v1.40.19 Remove three default Heroes; registry-driven Bot roster",
+  "baseline": "v1.40.20 Fit Duel map to desktop viewport",
   "entry": "index.html",
   "styles": "styles/main.css",
   "runtimeOrder": [
@@ -22,6 +22,7 @@
     "src/shell/shell-flow-runtime.js",
     "src/core/core-runtime-a.js",
     "src/presentation/board-renderer-runtime.js",
+    "src/presentation/duel-board-layout-runtime.js",
     "src/core/core-runtime-b.js",
     "src/shell/shell-session-runtime.js",
     "src/legacy/legacy-ai-runtime.js",

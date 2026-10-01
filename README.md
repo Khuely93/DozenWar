@@ -1,4 +1,4 @@
-# DOZEN WAR II v1.40.19 - Rodoc and EST roster
+# DOZEN WAR II v1.40.20 - Duel desktop map fit
 
 This step continues the regression-gated Part 13.8 cleanup without redesigning locked Core gameplay.
 
@@ -176,3 +176,10 @@ EST is an Infantry Hero with 3 HP, Move 1 and a 1-damage normal Attack in radius
 - Danh sách hiện có: Rodoc và EST. Mặc định chọn Rodoc. Bot chọn từ HeroRegistry để không gọi Hero đã xóa.
 - Giữ các hệ và Lính Bộ binh, Cung thủ, Kỵ binh cùng cơ chế kế thừa cho Hero mới.
 - Giả Kim Thuật vẫn là hệ đã hỗ trợ, chưa có Hero cụ thể.
+
+## v1.40.20 — Map Đối Đầu vừa khung PC
+
+- Map cân theo chiều rộng khung chơi và chiều cao còn lại của cửa sổ PC, căn giữa và giữ tỷ lệ 1:1.
+- Nền map và SVG/ô/quân cùng co giãn; không thay đổi 61 ô hoặc tọa độ Core.
+- Tự cập nhật khi resize hoặc chuyển sang triển khai/trận đấu. Màn nhỏ dưới 900px giữ cách hiển thị theo chiều rộng.
+- Khắc phục chiều rộng tối thiểu của cột map gây tràn ngang ở màn PC hẹp.

@@ -161,7 +161,7 @@ CoreBoardRenderer.registerLayer("CORE_RENDER_GUARD",50,CoreGuardController);
 CoreBoardRenderer.registerLayer("CORE_RENDER_ACTION_STATUS",60,CoreActionStatusLayer);
 
 // Single authoritative renderer entry point.
-function renderBoard(){ return CoreBoardRenderer.render(); }
+function renderBoard(){ const result=CoreBoardRenderer.render();if(typeof DuelBoardLayout!=='undefined')DuelBoardLayout.schedule();return result; }
 
 // Compatibility entry point for any legacy code that still calls cellClick().
 function cellClick(cell){ return CoreInputRouter.handleHexClick(cell); }
