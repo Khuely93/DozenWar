@@ -1,12 +1,12 @@
 {
   "name": "dozen-war-ii",
-  "version": "1.40.21",
+  "version": "1.40.22",
   "private": true,
-  "description": "DOZEN WAR II v1.40.21 Desktop Duel board fit",
+  "description": "DOZEN WAR II v1.40.22 Desktop Duel board fit",
   "scripts": {
     "dev": "node tools/static-server.cjs --root . --port 5173",
     "validate": "node tools/validate-project.cjs",
-    "build": "npm run validate && npm run test:content-readiness && npm run test:gameplay && npm run test:bootstrap-order && npm run test:result-ui && npm run test:action-visual && npm run test:rodoc && npm run test:est && npm run test:duel-rule && npm run test:hero-class && npm run test:alchemist && npm run test:attack-visual && npm run test:hero-roster && npm run test:board-layout && node tools/build-prod.cjs",
+    "build": "npm run validate && npm run test:content-readiness && npm run test:gameplay && npm run test:bootstrap-order && npm run test:result-ui && npm run test:action-visual && npm run test:rodoc && npm run test:est && npm run test:duel-rule && npm run test:hero-class && npm run test:alchemist && npm run test:attack-visual && npm run test:hero-roster && npm run test:board-layout && npm run test:camera && node tools/build-prod.cjs",
     "preview": "node tools/static-server.cjs --root dist --port 4173",
     "report": "node tools/build-report.cjs",
     "test:content-readiness": "node tools/test-hero-skill-readiness.cjs",
@@ -21,7 +21,8 @@
     "test:alchemist": "node tools/test-alchemist.cjs",
     "test:attack-visual": "node tools/test-attack-visual.cjs",
     "test:hero-roster": "node tools/test-hero-roster.cjs",
-    "test:board-layout": "node tools/test-board-layout.cjs"
+    "test:board-layout": "node tools/test-board-layout.cjs",
+    "test:camera": "node tools/test-duel-camera.cjs"
   },
   "engines": {
     "node": ">=18"

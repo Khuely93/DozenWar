@@ -50,10 +50,11 @@ const DuelBoardLayout = {
       if(desktop&&active)this.decorateSkills();
       document.documentElement.style.setProperty('--duel-dock-height',this.dockHeight(window.innerHeight)+'px');
     }
-    if(!desktop||!active){board.style.removeProperty('width');return}
+    if(!desktop||!active){board.style.removeProperty('width');if(typeof DuelCamera!=='undefined')DuelCamera.disable();return}
     if(this.stage){
       const bounds=this.stage.getBoundingClientRect();
-      board.style.width=Math.floor(Math.max(0,Math.min(bounds.width,bounds.height)))+'px';
+      if(typeof DuelCamera!=='undefined'){board.style.width='100%';DuelCamera.mount(this.stage,board);DuelCamera.resize(bounds.width,bounds.height)}
+      else board.style.width=Math.floor(Math.max(0,Math.min(bounds.width,bounds.height)))+'px';
       return;
     }
     const parent=board.parentElement;

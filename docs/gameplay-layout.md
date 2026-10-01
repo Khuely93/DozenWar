@@ -14,3 +14,6 @@ Dock height interpolates from 190 to 260 px across viewport heights 768–1080. 
 Editable CSS tokens: --duel-status-height, --duel-dock-height, --duel-hero-ratio, --duel-skill-ratio, --duel-card-ratio in styles/main.css. Dock height calculation: DuelBoardLayout.dockHeight in src/presentation/duel-board-layout-runtime.js.
 
 Combat log and match summary are expandable over the map. End Turn remains in the status bar for this layout-only stage. Defense and result UI retain existing logic.
+
+## v1.40.22 — Camera viewport
+Map viewport fills the whole region above the dock. Backdrop covers its width; the square world and hexes preserve their proportions. Default zoom 140%, min 65%, max 260%. Wheel zoom anchors to pointer; buttons zoom around viewport center. Drag empty map or hold middle mouse to pan; Pan toggle permits dragging anywhere on the world. Deploy unit left drag retains its original placement behavior. Pan does not commit a click or a gameplay action. Reset returns default framing. Unit/deploy/attack/defense popups remain unscaled and follow transformed cells, clamped into viewport. A new offscreen reaction target is brought into view. Logical hex coordinates and core combat rules stay unchanged.
