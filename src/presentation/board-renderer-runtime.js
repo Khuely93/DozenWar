@@ -4,9 +4,9 @@ const TroopVisual={
   source(unit){return !unit.hero&&['inf','arch','cav'].includes(unit.kind)?'./assets/troops-v2/'+unit.kind+'-'+(unit.side===1?5:1)+'.png':null},
   render(group,unit,cell,symbol){
     const src=this.source(unit);if(!src)return;
-    const ns='http://www.w3.org/2000/svg',size=unit.kind==='cav'?110:92;
+    const ns='http://www.w3.org/2000/svg',baseSize=unit.kind==='cav'?110:92,size=baseSize*.8,yOffset=baseSize*.1;
     const image=document.createElementNS(ns,'image');
-    image.setAttribute('href',src);image.setAttribute('x',cell.x-size/2);image.setAttribute('y',cell.y+10-size*248/256);
+    image.setAttribute('href',src);image.setAttribute('x',cell.x-size/2);image.setAttribute('y',cell.y+10+yOffset-size*248/256);
     image.setAttribute('width',size);image.setAttribute('height',size);image.setAttribute('class','troopSprite');
     image.setAttribute('pointer-events','none');symbol.setAttribute('visibility','hidden');
     image.addEventListener('error',()=>{image.setAttribute('visibility','hidden');symbol.setAttribute('visibility','visible')});
