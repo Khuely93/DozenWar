@@ -183,3 +183,24 @@ console.log('EST: defensive reactions, manual target selection, optional multi-l
  x.api.resolveCombat();assert.equal(x.S.skillTarget,null,'defense timeout clears map targeting');assert.deepEqual(x.used,[]);
 }
 console.log('EST manual retaliation: valid highlight, chosen subset, cancel, stale/dead target and timeout cleanup: PASS');
+
+// Phi than shares the defense map selector and swaps only after confirmation.
+{
+ const x=scenario();x.S.selected=x.est;
+ const choice=x.api.defenseSkillChoices(x.est).find(c=>c.skillNo===1);
+ assert.equal(x.api.beginDefenseSkillTarget(choice),true);
+ assert.equal(x.api.isSkillCandidate(x.infantry),true);
+ assert.equal(x.api.isSkillCandidate(x.est),false);
+ assert.equal(x.api.isSkillCandidate(x.attacker),false);
+ x.api.CoreSkillController.handleUnitClick(x.infantry);
+ assert.match(x.api.CoreSkillController.hexClasses({},x.infantry),/skill-selected/);
+ assert.equal(x.est.q,0);assert.deepEqual(x.used,[]);
+ x.api.cancelSkillTarget();assert.ok(x.events.includes('defense-reopened'));assert.deepEqual(x.used,[]);
+ x.api._beginSkillTargetInternal(1);assert.ok(x.S.skillTarget?.defense);
+ x.api.CoreSkillController.handleUnitClick(x.infantry);
+ assert.equal(x.api.applySkillTarget(),true);
+ assert.equal(x.est.q,1);assert.equal(x.infantry.q,0);
+ assert.equal(x.est.hp,3);assert.equal(x.infantry.hp,1);
+ assert.deepEqual(x.used,[1]);assert.equal(x.S.skillTarget,null);assert.equal(x.S.pending,null);
+}
+console.log('EST manual Phi than: allied troop highlight, cancel, deferred swap and replacement damage: PASS');

@@ -311,7 +311,7 @@ function defenseSkillChoices(d){
 function beginDefenseSkillTarget(choice,card=null){
   if(!S.pending||!choice)return false;
   const current=defenseSkillChoices(S.units.find(u=>u.id===S.pending.d)).find(c=>c.hero.id===choice.hero.id&&c.skillNo===choice.skillNo);
-  if(!current||!effectOf(current.skill,'EFFECT_RETALIATE_1')||current.hero.side===S.botSide)return false;
+  if(!current||!(effectOf(current.skill,'EFFECT_RETALIATE_1')||effectOf(current.skill,'EFFECT_SWAP_ALLY'))||current.hero.side===S.botSide)return false;
   if(card&&(!(S.hands[current.hero.side]||[]).some(c=>c.uid===card.uid)||!validCardFor(card,current.hero,'def')))return false;
   S.skillTarget={heroId:current.hero.id,skillNo:current.skillNo,skillId:current.skill.id,selected:[],ray:null,cardUid:card?.uid||null,defense:true,defensePending:S.pending};
   S.selected=current.hero;S.mode='skill';hideDefensePopup();hideUnitMenu();reactionBox.style.display='none';
@@ -373,7 +373,7 @@ defHeroSkillChoice.onclick=()=>{
   const d=S.units.find(u=>u.id===S.pending.d),choices=defenseSkillChoices(d);
   defGuardList.classList.remove('show');defCardList.innerHTML='';
   for(const choice of choices){
-    if(effectOf(choice.skill,'EFFECT_RETALIATE_1')){
+    if(effectOf(choice.skill,'EFFECT_RETALIATE_1')||effectOf(choice.skill,'EFFECT_SWAP_ALLY')){
       const b=document.createElement('button');b.className='btn mini';
       b.textContent='✨ '+unitSpec(choice.hero).name+' · '+choice.skill.name+' · CHỌN TRÊN MAP';
       b.onclick=()=>beginDefenseSkillTarget(choice);defCardList.appendChild(b);continue;
@@ -472,7 +472,7 @@ function updateSkillTargetPanel(){
   skillTargetConfirm.textContent=manualAdjacent?'⚔️ TẤN CÔNG':'XÁC NHẬN';
   const selectedCard=cards.find(card=>card.uid===st.cardUid);
   skillTargetConfirm.disabled=count===0||!!(st.defense&&CorePowerResolver.resolve(pendingAttackPower(S.pending),Math.max(skill.star||0,selectedCard?.star||0)).winner!=='RESPONSE');
-  if(st.defense)skillTargetHint.textContent+=' Chỉ chọn kẻ địch đã tấn công phe mình. HỦY quay lại phòng thủ; thời gian phòng thủ vẫn tiếp tục.';
+  if(st.defense)skillTargetHint.textContent+=(effectOf(skill,'EFFECT_SWAP_ALLY')?' Chọn 1 lính đồng minh để đổi chỗ và nhận sát thương thay EST.':' Chỉ chọn kẻ địch đã tấn công phe mình.')+' HỦY quay lại phòng thủ; thời gian phòng thủ vẫn tiếp tục.';
   skillTargetPanel.classList.add('show');
 }
 skillEquipSelect.onchange=()=>{if(S.skillTarget){S.skillTarget.cardUid=skillEquipSelect.value||null;updateSkillTargetPanel()}};
@@ -483,7 +483,7 @@ function _beginSkillTargetInternal(n){
   if(skill.timing==='DEFENSE_REACTION'||skill.timing==='BOTH'&&S.pending){
     if(!S.pending)return;
     const d=S.units.find(u=>u.id===S.pending.d),choice=defenseSkillChoices(d).find(c=>c.hero.id===h.id&&c.skillNo===n);
-    if(choice){if(effectOf(skill,'EFFECT_RETALIATE_1'))beginDefenseSkillTarget(choice);else useDefenseSkill(choice,choice.targets.find(u=>u.id===d.id)||choice.targets[0]);}
+    if(choice){if(effectOf(skill,'EFFECT_RETALIATE_1')||effectOf(skill,'EFFECT_SWAP_ALLY'))beginDefenseSkillTarget(choice);else useDefenseSkill(choice,choice.targets.find(u=>u.id===d.id)||choice.targets[0]);}
     return;
   }
   if(h.attacked)return;
