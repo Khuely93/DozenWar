@@ -7,9 +7,9 @@ assert.match(content,/HERO_INF_EST:\{[^\n]*stats:\{hp:3,move:1,attackRange:1\},a
 for(const no of [1,2,3])assert.match(content,new RegExp('SKILL_HERO_EST_S'+no+':\\{'));
 function extract(text,name){let start=text.indexOf('function '+name+'(');assert.ok(start>=0,name);let i=text.indexOf('{',start),depth=0;for(;i<text.length;i++){if(text[i]==='{')depth++;if(text[i]==='}'&&--depth===0)break}return text.slice(start,i+1)}
 const fn=name=>extract(src,name);
-const names=['baseSkillCandidate','isSkillCandidate','handleSkillTargetClick','defenseSkillChoices','useDefenseSkill','resolveCombat','defenseEquipmentWins','cancelSkillTarget','_beginSkillTargetInternal','applySkillTarget','skillDamageValue','beginSkillDamageSequence','commitActiveSkillAction','resolveNextSkillSequenceTarget','endTurn','resetTurnFlags','markDuelCardUsed'];
+const names=['selectedSkillTarget','beginDefenseSkillTarget','clearDefenseSkillTarget','baseSkillCandidate','isSkillCandidate','handleSkillTargetClick','defenseSkillChoices','useDefenseSkill','resolveCombat','defenseEquipmentWins','cancelSkillTarget','_beginSkillTargetInternal','applySkillTarget','skillDamageValue','beginSkillDamageSequence','commitActiveSkillAction','resolveNextSkillSequenceTarget','endTurn','resetTurnFlags','markDuelCardUsed'];
 const routerStart=src.indexOf('const CoreSkillController = Object.freeze({');const routerEnd=src.indexOf('\n});',routerStart)+4;
-function run(state){const random=Object.create(Math);random.random=()=>.99;const context=vm.createContext({...state,Math:random});new vm.Script(names.map(fn).join('\n')+'\n'+src.slice(routerStart,routerEnd)+'\n'+extract(ai,'botChooseClose')+'\n'+extract(ai,'planBotSkill')+'\n'+extract(ai,'botUseSkill')+'\nthis.api={baseSkillCandidate,defenseSkillChoices,useDefenseSkill,resolveCombat,cancelSkillTarget,_beginSkillTargetInternal,applySkillTarget,endTurn,CoreSkillController,planBotSkill,botUseSkill};').runInContext(context);return context.api}
+function run(state){const random=Object.create(Math);random.random=()=>.99;const context=vm.createContext({...state,Math:random});new vm.Script(names.map(fn).join('\n')+'\n'+src.slice(routerStart,routerEnd)+'\n'+extract(ai,'botChooseClose')+'\n'+extract(ai,'planBotSkill')+'\n'+extract(ai,'botUseSkill')+'\nthis.api={beginDefenseSkillTarget,clearDefenseSkillTarget,isSkillCandidate,baseSkillCandidate,defenseSkillChoices,useDefenseSkill,resolveCombat,cancelSkillTarget,_beginSkillTargetInternal,applySkillTarget,endTurn,CoreSkillController,planBotSkill,botUseSkill};').runInContext(context);return context.api}
 const skills=[
  {id:'SKILL_HERO_EST_S1',name:'Phi thân',star:1,timing:'DEFENSE_REACTION',target:{side:'ALLY',unitType:'TROOP',range:3,maxTargets:1},effects:['EFFECT_SWAP_ALLY']},
  {id:'SKILL_HERO_EST_S2',name:'Phục thù',star:1,timing:'DEFENSE_REACTION',target:{side:'ENEMY',range:3,maxTargets:2,requireRecentAttacker:true},effects:['EFFECT_RETALIATE_1']},
@@ -37,8 +37,8 @@ function scenario(){
  movementCostToCell:()=>2,movementCostSpent:u=>u.movementCostSpent||0,
  updateSkillTargetPanel:()=>{},renderUnitMenu:()=>{},remainingMove:u=>3-(u.movementCostSpent||0),
  heroSkill:(_u,n)=>skills[n-1],heroDefinition:()=>({skillIds:['SKILL_HERO_EST_S1','SKILL_HERO_EST_S2','SKILL_HERO_EST_S3']}),
- skillNeedsLineLock:()=>false,botAttackScore:()=>0,botAttackCard:()=>null,reachableCellCosts:()=>new Map([['1,0',1]]),attackCardsFor:()=>[],ContentViews:{skill:()=>skills[2]},
- hideAttackPopup:()=>{},showReaction:()=>{},save:()=>S.history.push(JSON.stringify({units:S.units})),
+ skillNeedsLineLock:()=>false,botAttackScore:()=>0,botAttackCard:()=>null,reachableCellCosts:()=>new Map([['1,0',1]]),attackCardsFor:()=>[],ContentViews:{skill:id=>skills.find(s=>s.id===id)},
+ showDefensePopup:()=>events.push("defense-reopened"),hideAttackPopup:()=>{},showReaction:()=>{},save:()=>S.history.push(JSON.stringify({units:S.units})),
  DW_MODES:{get:()=>({actionPolicy:{activeSkillConsumesAction:true}})},
  skillTargetCancel:{},skillTargetConfirm:{},CoreBuffController:{addMove:()=>{}},
  resetSkillUsageForModeBoundary:()=>{}};
@@ -104,7 +104,7 @@ function scenario(){
  const hero={id:'est',q:0,r:0,hp:3,attacked:false,moved:false,movementCostSpent:0,moveBuff:2};
  const cells=[0,1,2,3].map(q=>({q,r:0}));
  const S={phase:'battle',skillTarget:{heroId:'est',skillId:'SKILL_HERO_EST_S3',moving:true}};
- const context=vm.createContext({S,cells,ContentViews:{skill:()=>skills[2]},remainingMove:u=>3-u.movementCostSpent,
+ const context=vm.createContext({S,cells,ContentViews:{skill:id=>skills.find(s=>s.id===id)},remainingMove:u=>3-u.movementCostSpent,
   canMoveFurther:u=>!u.moved,cellNeighbors:c=>cells.filter(n=>Math.abs(n.q-c.q)===1),unitAt:()=>null});
  new vm.Script(fn('reachableCellCosts')+'\n'+fn('movementCostToCell')+'\nthis.cost=movementCostToCell;').runInContext(context);
  assert.equal(context.cost(hero,{q:1,r:0}),1);hero.q=1;hero.movementCostSpent=1;hero.moved=true;
@@ -119,7 +119,7 @@ function scenario(){
  const skillTargetPanel=control(),skillTargetName=control(),skillTargetHint=control(),skillMoveButton=control(),skillTargetConfirm=control(),skillEquipWrap=control();
  const skillEquipSelect={value:'',replaceChildren:()=>{},add:()=>{}};
  const context=vm.createContext({S,skillTargetPanel,skillTargetName,skillTargetHint,skillMoveButton,skillTargetConfirm,skillEquipWrap,skillEquipSelect,
-  ContentViews:{skill:()=>skills[2]},attackCardsFor:()=>[],remainingMove:()=>2,Option:function(label,value){this.label=label;this.value=value},
+  ContentViews:{skill:id=>skills.find(s=>s.id===id)},attackCardsFor:()=>[],remainingMove:()=>2,Option:function(label,value){this.label=label;this.value=value},
   baseSkillCandidate:(h,s,u)=>u.side!==h.side&&Math.abs(h.q-u.q)<=1&&h.r===u.r,skillNeedsLineLock:()=>false,cancelSkillTarget:()=>{}});
  new vm.Script(fn('updateSkillTargetPanel')+'\nthis.refresh=updateSkillTargetPanel;').runInContext(context);
  context.refresh();assert.equal(skillTargetConfirm.textContent,'⚔️ TẤN CÔNG');assert.equal(skillTargetConfirm.disabled,true);
@@ -161,3 +161,25 @@ function scenario(){
  assert.equal(x.api.botUseSkill(x.est,plan),true);assert.equal(x.est.q,1);assert.equal(x.est.attacked,true);assert.equal(x.S.pending.d,'enemy')}
 {const x=scenario();x.S.pending=null;x.api.endTurn();assert.deepEqual(Array.from(x.S.recentAttackers[1]),[]);assert.deepEqual(Array.from(x.S.recentAttackers[2]),[])}
 console.log('EST: defensive reactions, manual target selection, optional multi-leg Move, Card, and immediate attack commit: PASS');
+
+// Manual retaliation uses only recent, living enemies in range and commits on confirm.
+{
+ const x=scenario();x.S.selected=x.est;
+ const choice=x.api.defenseSkillChoices(x.est).find(c=>c.skillNo===2);
+ assert.equal(x.api.beginDefenseSkillTarget(choice),true);assert.equal(x.S.mode,'skill');assert.equal(x.S.skillTarget.defense,true);
+ assert.deepEqual(x.used,[]);assert.equal(x.attacker.hp,3);
+ assert.equal(x.api.isSkillCandidate(x.attacker),true);assert.equal(x.api.isSkillCandidate(x.prior),true);assert.equal(x.api.isSkillCandidate(x.far),false);assert.equal(x.api.isSkillCandidate(x.infantry),false);
+ x.api.CoreSkillController.handleUnitClick(x.far);assert.equal(x.S.skillTarget.selected.length,0);
+ x.api.CoreSkillController.handleUnitClick(x.attacker);x.api.CoreSkillController.handleUnitClick(x.prior);
+ assert.equal(x.S.skillTarget.selected.length,2);assert.match(x.api.CoreSkillController.hexClasses({},x.prior),/skill-selected/);
+ x.api.cancelSkillTarget();assert.equal(x.S.skillTarget,null);assert.ok(x.S.pending);assert.deepEqual(x.used,[]);assert.ok(x.events.includes('defense-reopened'));
+ x.api.beginDefenseSkillTarget(choice);x.api.CoreSkillController.handleUnitClick(x.prior);assert.equal(x.api.applySkillTarget(),true);
+ assert.deepEqual(x.used,[2]);assert.equal(x.prior.hp,1);assert.equal(x.attacker.hp,3);assert.equal(x.S.skillTarget,null);assert.equal(x.S.pending,null);
+}
+{
+ const x=scenario();x.S.selected=x.est;const choice=x.api.defenseSkillChoices(x.est).find(c=>c.skillNo===2);
+ x.api.beginDefenseSkillTarget(choice);x.api.CoreSkillController.handleUnitClick(x.prior);x.prior.hp=0;
+ assert.equal(x.api.applySkillTarget(),false);assert.deepEqual(x.used,[]);
+ x.api.resolveCombat();assert.equal(x.S.skillTarget,null,'defense timeout clears map targeting');assert.deepEqual(x.used,[]);
+}
+console.log('EST manual retaliation: valid highlight, chosen subset, cancel, stale/dead target and timeout cleanup: PASS');

@@ -125,6 +125,7 @@ function pendingAttackPower(p=S.pending){
 }
 function defenseEquipmentWins(p,card){return !!(card&&CorePowerResolver.resolve(pendingAttackPower(p),Math.max(card.star||0,p.defenseSkillStar||0)).winner==='RESPONSE')}
 function resolveCombat(){
+  if(typeof clearDefenseSkillTarget==='function')clearDefenseSkillTarget();
   hideUnitMenu();
   const p=S.pending;if(!p)return;
   const a=S.units.find(x=>x.id===p.a),originalTarget=S.units.find(x=>x.id===p.d);
@@ -171,7 +172,7 @@ function guardCandidates(d){return S.units.filter(u=>u.side===d.side&&u.hp>0&&(u
 function findGuard(d){return guardCandidates(d)[0]||null}
 guardBtn.style.display='none';guardBtn.onclick=()=>{};
 skipReact.onclick=()=>{if(!S.pending)return;let a=S.units.find(x=>x.id===S.pending.a),d=S.units.find(x=>x.id===S.pending.d);if(reactionInfo.textContent.startsWith('Attacker'))showReaction(true);else resolveCombat()};
-function renderSkills(){skillBar.innerHTML='';if(!S.selected||!S.selected.hero){for(let i=0;i<3;i++){let b=document.createElement('button');b.className='btn skill';b.disabled=true;b.textContent='Skill '+(i+1);skillBar.appendChild(b)}return}let h=unitSpec(S.selected);h.skills.forEach((s,i)=>{let b=document.createElement('button');b.className='btn skill';b.innerHTML='<b>S'+(i+1)+'</b><br><span class="muted">'+s+'</span>';let defensive=heroSkill(S.selected,i+1)?.timing==='DEFENSE_REACTION';b.disabled=isSkillUsed(S.selected,i+1)||S.selected.attacked||(defensive&&!S.pending);b.onclick=()=>useSkill(i+1);skillBar.appendChild(b)})}
+function renderSkills(){skillBar.innerHTML='';if(!S.selected||!S.selected.hero){for(let i=0;i<3;i++){let b=document.createElement('button');b.className='btn skill';b.disabled=true;b.textContent='Skill '+(i+1);skillBar.appendChild(b)}return}let h=unitSpec(S.selected);h.skills.forEach((s,i)=>{let b=document.createElement('button');b.className='btn skill';b.innerHTML='<b>S'+(i+1)+'</b><br><span class="muted">'+s+'</span>';let defensive=heroSkill(S.selected,i+1)?.timing==='DEFENSE_REACTION';b.disabled=isSkillUsed(S.selected,i+1)||(!defensive&&S.selected.attacked)||(defensive&&!S.pending);b.onclick=()=>useSkill(i+1);skillBar.appendChild(b)})}
 function useSkill(n){return CoreSkillController.begin(n)}
 function lineSkill(h,len,maxT,dmg){for(let dir of dirs){let hits=[];for(let n=1;n<=len;n++){let targetCell=findCellAxialStep(h,dir,n);if(!targetCell)continue;let u=unitAt(targetCell.q,targetCell.r);if(u&&u.side!==h.side)hits.push(u)}if(hits.length){hits.slice(0,maxT).forEach(u=>u.hp=Math.max(0,u.hp-dmg));lg('✨ Skill đường thẳng trúng '+Math.min(maxT,hits.length)+' mục tiêu');return}}lg('Skill không tìm thấy mục tiêu trên đường thẳng.')}
 function findCellAxialStep(u,dir,n){let [aq,ar]=axial(u),tq=aq+dir[0]*n,tr=ar+dir[1]*n;return cells.find(c=>{let [q,r]=axial(c);return q===tq&&r===tr})}
@@ -306,6 +307,20 @@ function defenseSkillChoices(d){
     });
   });
 }
+// Manual map targeting shares the existing skill selector, scoped to one defense window.
+function beginDefenseSkillTarget(choice,card=null){
+  if(!S.pending||!choice)return false;
+  const current=defenseSkillChoices(S.units.find(u=>u.id===S.pending.d)).find(c=>c.hero.id===choice.hero.id&&c.skillNo===choice.skillNo);
+  if(!current||!effectOf(current.skill,'EFFECT_RETALIATE_1')||current.hero.side===S.botSide)return false;
+  if(card&&(!(S.hands[current.hero.side]||[]).some(c=>c.uid===card.uid)||!validCardFor(card,current.hero,'def')))return false;
+  S.skillTarget={heroId:current.hero.id,skillNo:current.skillNo,skillId:current.skill.id,selected:[],ray:null,cardUid:card?.uid||null,defense:true,defensePending:S.pending};
+  S.selected=current.hero;S.mode='skill';hideDefensePopup();hideUnitMenu();reactionBox.style.display='none';
+  updateSkillTargetPanel();renderBoard();updateUI();return true;
+}
+function clearDefenseSkillTarget(){
+  if(!S.skillTarget?.defense)return;
+  S.skillTarget=null;if(S.mode==='skill')S.mode=null;skillTargetPanel.classList.remove('show');
+}
 function useDefenseSkill(choice,target,card=null){
   const selected=Array.isArray(target)?target:[target];
   if(!S.pending||!choice||!selected.length||selected.length>(choice.skill.target?.maxTargets||1)||
@@ -358,6 +373,11 @@ defHeroSkillChoice.onclick=()=>{
   const d=S.units.find(u=>u.id===S.pending.d),choices=defenseSkillChoices(d);
   defGuardList.classList.remove('show');defCardList.innerHTML='';
   for(const choice of choices){
+    if(effectOf(choice.skill,'EFFECT_RETALIATE_1')){
+      const b=document.createElement('button');b.className='btn mini';
+      b.textContent='✨ '+unitSpec(choice.hero).name+' · '+choice.skill.name+' · CHỌN TRÊN MAP';
+      b.onclick=()=>beginDefenseSkillTarget(choice);defCardList.appendChild(b);continue;
+    }
     const options=choice.targets.map(u=>[u]);
     if((choice.skill.target?.maxTargets||1)>1)for(let i=0;i<choice.targets.length;i++)for(let j=i+1;j<choice.targets.length;j++)options.push([choice.targets[i],choice.targets[j]]);
     for(const targets of options)for(const card of [null,...(S.hands[choice.hero.side]||[]).filter(c=>validCardFor(c,choice.hero,'def'))]){
@@ -416,6 +436,11 @@ function baseSkillCandidate(hero,skill,u){
 function isSkillCandidate(u){
   let st=S.skillTarget;if(!st)return false;
   let hero=S.units.find(x=>x.id===st.heroId),skill=ContentViews.skill(st.skillId);if(!hero||!skill||!baseSkillCandidate(hero,skill,u))return false;
+  if(st.defense){
+    if(!S.pending||S.pending!==st.defensePending)return false;
+    const choice=defenseSkillChoices(S.units.find(x=>x.id===S.pending.d)).find(c=>c.hero.id===hero.id&&c.skillNo===st.skillNo);
+    return !!choice?.targets.some(t=>t.id===u.id);
+  }
   if(skillNeedsLineLock(skill)&&st.ray&&!onRay(hero,u,st.ray,skill.target.range))return false;
   return true;
 }
@@ -430,7 +455,7 @@ function updateSkillTargetPanel(){
   if(skill.target.class)rule+=' · '+skill.target.class;
   if(skill.target.range!=null)rule+=' · phạm vi '+skill.target.range+' ô';
   if(skillNeedsLineLock(skill))rule+=' · các mục tiêu phải cùng một đường thẳng';
-  const cards=skill.timing==='ACTIVE'||skill.timing==='BOTH'?attackCardsFor(hero):[];
+  const cards=st.defense?(S.hands[hero.side]||[]).filter(card=>validCardFor(card,hero,'def')):(skill.timing==='ACTIVE'||skill.timing==='BOTH'?attackCardsFor(hero):[]);
   if(st.cardUid&&!cards.some(card=>card.uid===st.cardUid))st.cardUid=null;
   skillTargetHint.textContent=manualAdjacent?
     'Chạm ô trống để di chuyển (còn '+remainingMove(hero)+' Move) hoặc đứng yên. Chạm địch kề bên để chọn/bỏ chọn ('+count+'/'+max+'). '+
@@ -439,25 +464,29 @@ function updateSkillTargetPanel(){
     rule+' · đã chọn '+count+'/'+max+'. Click mục tiêu để chọn/bỏ chọn.'+
     (st.cardUid&&skillDamageValue(skill)===0?' Card sẽ chuyển hiệu ứng và ★ sang đòn đánh thường kế tiếp của Hero.':'');
   if(skill.maneuver&&!manualAdjacent){skillMoveButton.style.display='block';skillMoveButton.disabled=remainingMove(hero)<=0;skillMoveButton.textContent=st.moving?'👟 CHỌN Ô TRỐNG · HỦY CHỌN':'👟 DI CHUYỂN · còn '+remainingMove(hero)+' ô';skillTargetHint.textContent+=' Có thể di chuyển trước khi chọn mục tiêu; HỦY sẽ trả lại vị trí và Move.'}else skillMoveButton.style.display='none';
+  if(skillEquipWrap.firstChild?.nodeType===3)skillEquipWrap.firstChild.nodeValue=st.defense?'Trang bị phòng thủ (tùy chọn)':'Trang bị tấn công (tùy chọn)';
   skillEquipWrap.style.display=cards.length?'block':'none';
   skillEquipSelect.replaceChildren(new Option('Không dùng Card',''));
   cards.forEach(card=>skillEquipSelect.add(new Option(card.name+' · '+'★'.repeat(card.star)+' · '+card.text,card.uid)));
   skillEquipSelect.value=cards.some(card=>card.uid===st.cardUid)?st.cardUid:'';
   skillTargetConfirm.textContent=manualAdjacent?'⚔️ TẤN CÔNG':'XÁC NHẬN';
-  skillTargetConfirm.disabled=count===0;
+  const selectedCard=cards.find(card=>card.uid===st.cardUid);
+  skillTargetConfirm.disabled=count===0||!!(st.defense&&CorePowerResolver.resolve(pendingAttackPower(S.pending),Math.max(skill.star||0,selectedCard?.star||0)).winner!=='RESPONSE');
+  if(st.defense)skillTargetHint.textContent+=' Chỉ chọn kẻ địch đã tấn công phe mình. HỦY quay lại phòng thủ; thời gian phòng thủ vẫn tiếp tục.';
   skillTargetPanel.classList.add('show');
 }
 skillEquipSelect.onchange=()=>{if(S.skillTarget){S.skillTarget.cardUid=skillEquipSelect.value||null;updateSkillTargetPanel()}};
 skillMoveButton.onclick=()=>{if(!S.skillTarget)return;S.skillTarget.moving=!S.skillTarget.moving;updateSkillTargetPanel();renderBoard()};
 function _beginSkillTargetInternal(n){
-  let h=S.selected;if(!h||!h.hero||isSkillUsed(h,n)||h.attacked)return;
+  let h=S.selected;if(!h||!h.hero||isSkillUsed(h,n))return;
   let skill=heroSkill(h,n);if(!skill)return;
   if(skill.timing==='DEFENSE_REACTION'||skill.timing==='BOTH'&&S.pending){
     if(!S.pending)return;
     const d=S.units.find(u=>u.id===S.pending.d),choice=defenseSkillChoices(d).find(c=>c.hero.id===h.id&&c.skillNo===n);
-    if(choice)useDefenseSkill(choice,choice.targets.find(u=>u.id===d.id)||choice.targets[0]);
+    if(choice){if(effectOf(skill,'EFFECT_RETALIATE_1'))beginDefenseSkillTarget(choice);else useDefenseSkill(choice,choice.targets.find(u=>u.id===d.id)||choice.targets[0]);}
     return;
   }
+  if(h.attacked)return;
   let candidates=S.units.filter(u=>baseSkillCandidate(h,skill,u));
   if(!candidates.length&&!skill.maneuver)return alert('Không có mục tiêu hợp lệ cho skill này.');
   const pendingCard=S.equipPendingActorId===h.id&&attackCardsFor(h).some(c=>c.uid===S.equipSelectedCard?.uid)?S.equipSelectedCard:null;
@@ -477,7 +506,7 @@ function handleSkillTargetClick(u){
   if(skillNeedsLineLock(skill)&&st.selected.length && !st.ray){let first=S.units.find(x=>x.id===st.selected[0]);st.ray=rayFrom(hero,first)}
   updateSkillTargetPanel();renderBoard();updateUI();
 }
-function cancelSkillTarget(){let st=S.skillTarget;if(st?.maneuverStart){let h=S.units.find(u=>u.id===st.heroId);if(h)Object.assign(h,st.maneuverStart)}S.skillTarget=null;if(S.mode==='skill')S.mode=null;skillTargetPanel.classList.remove('show');renderBoard();updateUI();if(S.selected?.hero&&!S.pending)renderUnitMenu()}
+function cancelSkillTarget(){let st=S.skillTarget;if(st?.defense){const pending=st.defensePending;clearDefenseSkillTarget();renderBoard();updateUI();if(S.pending===pending&&!S.matchEnded)showDefensePopup(S.units.find(u=>u.id===pending.d));return;}if(st?.maneuverStart){let h=S.units.find(u=>u.id===st.heroId);if(h)Object.assign(h,st.maneuverStart)}S.skillTarget=null;if(S.mode==='skill')S.mode=null;skillTargetPanel.classList.remove('show');renderBoard();updateUI();if(S.selected?.hero&&!S.pending)renderUnitMenu()}
 function skillDamageValue(skill){if(effectOf(skill,'EFFECT_DAMAGE_2'))return 2;if(effectOf(skill,'EFFECT_DAMAGE_1'))return 1;return 0}
 function commitActiveSkillAction(hero,skill){
   const policy=DW_MODES.get(S.selectedMode)?.actionPolicy;
@@ -505,6 +534,13 @@ function applySkillTarget(){
   let st=S.skillTarget;if(!st)return;
   let hero=S.units.find(x=>x.id===st.heroId),skill=ContentViews.skill(st.skillId);if(!hero||!skill)return cancelSkillTarget();
   const targets=st.selected.map(id=>S.units.find(u=>u.id===id)).filter(Boolean);
+  if(st.defense){
+    if(!S.pending||S.pending!==st.defensePending||!targets.length||targets.some(t=>!isSkillCandidate(t)))return false;
+    const choice=defenseSkillChoices(S.units.find(u=>u.id===S.pending.d)).find(c=>c.hero.id===hero.id&&c.skillNo===st.skillNo);
+    const card=st.cardUid?(S.hands[hero.side]||[]).find(c=>c.uid===st.cardUid):null;
+    if(!choice||(st.cardUid&&!card))return false;
+    return useDefenseSkill(choice,targets,card);
+  }
   if(S.phase!=='battle'||hero.side!==S.battleSide||hero.hp<=0||hero.attacked||isSkillUsed(hero,st.skillNo)||!targets.length||targets.some(t=>!baseSkillCandidate(hero,skill,t)))return false;
   const card=st.cardUid?(S.hands?.[hero.side]||[]).find(c=>c.uid===st.cardUid):null;
   if(st.cardUid&&(!card||hero.queuedAttackEquipment||!['ACTIVE','BOTH'].includes(skill.timing)||!validCardFor(card,hero,'atk')))return false;
@@ -536,7 +572,7 @@ skillTargetCancel.onclick=cancelSkillTarget;skillTargetConfirm.onclick=applySkil
 useSkill=(n)=>CoreSkillController.begin(n);
 renderSkills=function(){
   skillBar.innerHTML='';if(!S.selected||!S.selected.hero){for(let i=0;i<3;i++){let b=document.createElement('button');b.className='btn skill';b.disabled=true;b.textContent='Skill '+(i+1);skillBar.appendChild(b)}return}
-  let h=unitSpec(S.selected);h.skills.forEach((txt,i)=>{let b=document.createElement('button');b.className='btn skill';let active=S.skillTarget?.skillNo===i+1;b.innerHTML='<b>S'+(i+1)+(active?' · TARGETING':'')+'</b><br><span class="muted">'+txt+'</span>';let defensive=heroSkill(S.selected,i+1)?.timing==='DEFENSE_REACTION';b.disabled=(S.battleSide===S.botSide&&!S.pending)||isSkillUsed(S.selected,i+1)||S.selected.attacked||(defensive&&!S.pending)||!!(S.skillTarget&&!active);b.onclick=()=>CoreSkillController.begin(i+1);skillBar.appendChild(b)})
+  let h=unitSpec(S.selected);h.skills.forEach((txt,i)=>{let b=document.createElement('button');b.className='btn skill';let active=S.skillTarget?.skillNo===i+1;b.innerHTML='<b>S'+(i+1)+(active?' · TARGETING':'')+'</b><br><span class="muted">'+txt+'</span>';let defensive=heroSkill(S.selected,i+1)?.timing==='DEFENSE_REACTION';b.disabled=(S.battleSide===S.botSide&&!S.pending)||isSkillUsed(S.selected,i+1)||(!defensive&&S.selected.attacked)||(defensive&&!S.pending)||!!(S.skillTarget&&!active);b.onclick=()=>CoreSkillController.begin(i+1);skillBar.appendChild(b)})
 };
 
 renderUnitMenu=function(){
