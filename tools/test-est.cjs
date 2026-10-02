@@ -7,7 +7,7 @@ assert.match(content,/HERO_INF_EST:\{[^\n]*stats:\{hp:3,move:1,attackRange:1\},a
 for(const no of [1,2,3])assert.match(content,new RegExp('SKILL_HERO_EST_S'+no+':\\{'));
 function extract(text,name){let start=text.indexOf('function '+name+'(');assert.ok(start>=0,name);let i=text.indexOf('{',start),depth=0;for(;i<text.length;i++){if(text[i]==='{')depth++;if(text[i]==='}'&&--depth===0)break}return text.slice(start,i+1)}
 const fn=name=>extract(src,name);
-const names=['selectedSkillTarget','beginDefenseSkillTarget','clearDefenseSkillTarget','baseSkillCandidate','isSkillCandidate','handleSkillTargetClick','defenseSkillChoices','useDefenseSkill','resolveCombat','defenseEquipmentWins','cancelSkillTarget','_beginSkillTargetInternal','applySkillTarget','skillDamageValue','beginSkillDamageSequence','commitActiveSkillAction','resolveNextSkillSequenceTarget','endTurn','resetTurnFlags','markDuelCardUsed'];
+const names=['showPhiThanDefenseCards','defenseCards','finishPhiThanTarget','selectedSkillTarget','beginDefenseSkillTarget','clearDefenseSkillTarget','baseSkillCandidate','isSkillCandidate','handleSkillTargetClick','defenseSkillChoices','useDefenseSkill','resolveCombat','defenseEquipmentWins','cancelSkillTarget','_beginSkillTargetInternal','applySkillTarget','skillDamageValue','beginSkillDamageSequence','commitActiveSkillAction','resolveNextSkillSequenceTarget','endTurn','resetTurnFlags','markDuelCardUsed'];
 const routerStart=src.indexOf('const CoreSkillController = Object.freeze({');const routerEnd=src.indexOf('\n});',routerStart)+4;
 function run(state){const random=Object.create(Math);random.random=()=>.99;const context=vm.createContext({...state,Math:random});new vm.Script(names.map(fn).join('\n')+'\n'+src.slice(routerStart,routerEnd)+'\n'+extract(ai,'botChooseClose')+'\n'+extract(ai,'planBotSkill')+'\n'+extract(ai,'botUseSkill')+'\nthis.api={beginDefenseSkillTarget,clearDefenseSkillTarget,isSkillCandidate,baseSkillCandidate,defenseSkillChoices,useDefenseSkill,resolveCombat,cancelSkillTarget,_beginSkillTargetInternal,applySkillTarget,endTurn,CoreSkillController,planBotSkill,botUseSkill};').runInContext(context);return context.api}
 const skills=[
@@ -38,7 +38,9 @@ function scenario(){
  updateSkillTargetPanel:()=>{},renderUnitMenu:()=>{},remainingMove:u=>3-(u.movementCostSpent||0),
  heroSkill:(_u,n)=>skills[n-1],heroDefinition:()=>({skillIds:['SKILL_HERO_EST_S1','SKILL_HERO_EST_S2','SKILL_HERO_EST_S3']}),
  skillNeedsLineLock:()=>false,botAttackScore:()=>0,botAttackCard:()=>null,reachableCellCosts:()=>new Map([['1,0',1]]),attackCardsFor:()=>[],ContentViews:{skill:id=>skills.find(s=>s.id===id)},
- showDefensePopup:()=>events.push("defense-reopened"),hideAttackPopup:()=>{},showReaction:()=>{},save:()=>S.history.push(JSON.stringify({units:S.units})),
+ document:{createElement:()=>({})},defCardList:{innerHTML:'',children:[],appendChild(b){this.children.push(b)},classList:{add(){}}},
+ defPopupTitle:{},defPopupTarget:{},defPopupHint:{},defGuardChoice:{style:{}},defHeroSkillChoice:{style:{}},defEquipChoice:{style:{}},
+ positionDefensePopup:()=>events.push('phi-than-card-window'),showDefensePopup:()=>events.push("defense-reopened"),hideAttackPopup:()=>{},showReaction:()=>{},save:()=>S.history.push(JSON.stringify({units:S.units})),
  DW_MODES:{get:()=>({actionPolicy:{activeSkillConsumesAction:true}})},
  skillTargetCancel:{},skillTargetConfirm:{},CoreBuffController:{addMove:()=>{}},
  resetSkillUsageForModeBoundary:()=>{}};
@@ -184,23 +186,37 @@ console.log('EST: defensive reactions, manual target selection, optional multi-l
 }
 console.log('EST manual retaliation: valid highlight, chosen subset, cancel, stale/dead target and timeout cleanup: PASS');
 
-// Phi than shares the defense map selector and swaps only after confirmation.
+
+// Phi than selects a troop, then offers only that troop's legal defense cards.
 {
  const x=scenario();x.S.selected=x.est;
  const choice=x.api.defenseSkillChoices(x.est).find(c=>c.skillNo===1);
  assert.equal(x.api.beginDefenseSkillTarget(choice),true);
- assert.equal(x.api.isSkillCandidate(x.infantry),true);
- assert.equal(x.api.isSkillCandidate(x.est),false);
- assert.equal(x.api.isSkillCandidate(x.attacker),false);
- x.api.CoreSkillController.handleUnitClick(x.infantry);
- assert.match(x.api.CoreSkillController.hexClasses({},x.infantry),/skill-selected/);
- assert.equal(x.est.q,0);assert.deepEqual(x.used,[]);
- x.api.cancelSkillTarget();assert.ok(x.events.includes('defense-reopened'));assert.deepEqual(x.used,[]);
- x.api._beginSkillTargetInternal(1);assert.ok(x.S.skillTarget?.defense);
- x.api.CoreSkillController.handleUnitClick(x.infantry);
- assert.equal(x.api.applySkillTarget(),true);
+ assert.equal(x.api.isSkillCandidate(x.infantry),true);assert.equal(x.api.isSkillCandidate(x.est),false);
+ x.api.cancelSkillTarget();assert.deepEqual(x.used,[]);
+ x.api._beginSkillTargetInternal(1);x.api.CoreSkillController.handleUnitClick(x.infantry);
  assert.equal(x.est.q,1);assert.equal(x.infantry.q,0);
  assert.equal(x.est.hp,3);assert.equal(x.infantry.hp,1);
- assert.deepEqual(x.used,[1]);assert.equal(x.S.skillTarget,null);assert.equal(x.S.pending,null);
+ assert.deepEqual(x.used,[1]);assert.equal(x.S.pending,null);assert.equal(x.S.skillTarget,null);
 }
-console.log('EST manual Phi than: allied troop highlight, cancel, deferred swap and replacement damage: PASS');
+{
+ const x=scenario();const card={uid:'troop-def',type:'def',star:1};x.S.hands[1]=[card];
+ const choice=x.api.defenseSkillChoices(x.est).find(c=>c.skillNo===1);
+ x.api.beginDefenseSkillTarget(choice);x.api.CoreSkillController.handleUnitClick(x.infantry);
+ assert.equal(x.S.pending.replacementTargetId,'inf');assert.equal(x.infantry.hp,2);
+ assert.deepEqual(x.used,[1]);assert.equal(x.S.hands[1].length,1);assert.equal(x.S.skillTarget,null);
+ assert.ok(x.events.includes('phi-than-card-window'));
+ x.api.resolveCombat();assert.equal(x.infantry.hp,1);assert.equal(x.est.hp,3);assert.equal(x.S.pending,null);
+}
+console.log('EST Phi than: troop card window, no-card auto resolve and timeout/pass replacement damage: PASS');
+
+{
+ const x=scenario();const card={uid:'troop-def',type:'def',star:1,effects:['EFFECT_DAMAGE_REDUCE_1']};x.S.hands[1]=[card];
+ x.api.beginDefenseSkillTarget(x.api.defenseSkillChoices(x.est).find(c=>c.skillNo===1));
+ x.api.CoreSkillController.handleUnitClick(x.infantry);
+ assert.equal(x.state.defCardList.children.length,1);
+ assert.equal(x.state.defGuardChoice.style.display,'none');
+ x.state.defCardList.children[0].onclick();
+ assert.equal(x.S.hands[1].length,0);assert.equal(x.infantry.hp,2);assert.equal(x.est.hp,3);assert.equal(x.S.pending,null);
+}
+console.log('EST Phi than troop equipment click: consumption, damage reduction and resolve: PASS');
