@@ -82,7 +82,7 @@ const CoreBoardRenderer = {
       let circle=document.createElementNS("http://www.w3.org/2000/svg","circle");
       circle.setAttribute("cx",cell.x);circle.setAttribute("cy",cell.y);circle.setAttribute("r",28);
       circle.setAttribute("fill",unit.side===1?"#2f86c7":"#c54b4b");
-      if(TroopVisual.source(unit)){circle.setAttribute('fill-opacity','.22');circle.setAttribute('class','troopTeamRing');}
+      if(TroopVisual.source(unit)){circle.setAttribute('fill-opacity','.22');circle.setAttribute('class','troopTeamRing team'+unit.side);}
       group.appendChild(circle);
 
       let symbol=document.createElementNS("http://www.w3.org/2000/svg","text");
@@ -94,6 +94,7 @@ const CoreBoardRenderer = {
 
       let hp=document.createElementNS("http://www.w3.org/2000/svg","text");
       hp.setAttribute("x",cell.x);hp.setAttribute("y",cell.y+(TroopVisual.source(unit)?29:20));
+      if(TroopVisual.source(unit))hp.setAttribute('class','troopHP');
       hp.textContent="❤"+unit.hp;hp.setAttribute("fill","#fff");
       group.appendChild(hp);
 

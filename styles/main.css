@@ -156,3 +156,6 @@
 /* Troop images retain a team ring and independent action/attack badges. */
 .troopSprite{pointer-events:none}.troopTeamRing{stroke-width:2.4!important}
 .troopHit{cursor:pointer}.unit.deployDraggable .troopHit{cursor:grab}
+
+.troopTeamRing.team1{stroke:#38b7ff!important}.troopTeamRing.team2{stroke:#ff5c65!important}
+.unit text.troopHP{font-size:12px;stroke:#071019;stroke-width:3px;paint-order:stroke;stroke-linejoin:round}
