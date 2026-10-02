@@ -149,6 +149,6 @@
 .cameraEnabled .cameraAnchored{transform:none!important;max-height:calc(100% - 16px);overflow:auto}
 .cameraEnabled .skillTargetPanel{top:54px}.cameraEnabled .duelTimers{top:8px}
 
-/* Duel map: keep all logical hit cells, reveal only contextual targeting. */
+/* Duel map: visible black grid with contextual targeting colors preserved. */
 .duelCleanMap .hex{pointer-events:all}
-.duelCleanMap .hex:not(.hl):not(.attack):not(.skill-valid):not(.skill-hostile):not(.skill-selected):not(.drag-valid):not(.drag-over):not(.attack-ready):not(.incomingAttackHex){fill:transparent;stroke:transparent;filter:none}
+.duelCleanMap .hex:not(.hl):not(.attack):not(.skill-valid):not(.skill-hostile):not(.skill-selected):not(.drag-valid):not(.drag-over):not(.attack-ready):not(.incomingAttackHex){fill:transparent;stroke:#000;stroke-opacity:.8;stroke-width:1.6;filter:none}
