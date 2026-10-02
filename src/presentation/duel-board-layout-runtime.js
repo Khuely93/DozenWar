@@ -42,6 +42,17 @@ const DuelBoardLayout = {
     const board=CoreDOM.board.wrap;
     if(!board)return;
     this.mount();
+    // Background and hit cells are presentation-only and scoped to 1vs1.
+    const cleanDuel=S.selectedMode==='MODE_DUEL_001';
+    CoreDOM.board.svg?.classList?.toggle('duelCleanMap',cleanDuel);
+    const img=board.querySelector?.('.boardBg');
+    if(img){
+      if(!img.dataset.defaultSrc)img.dataset.defaultSrc=img.getAttribute('src');
+      const src=cleanDuel?img.dataset.duelSrc:img.dataset.defaultSrc;
+      if(src&&img.getAttribute('src')!==src)img.setAttribute('src',src);
+      const backdrop=board.querySelector('.duelMapBackdrop');
+      if(backdrop&&src)backdrop.style.backgroundImage='url("'+src+'")';
+    }
     const desktop=window.innerWidth>=900;
     const active=S.selectedMode==='MODE_DUEL_001'&&(S.phase==='deploy'||S.phase==='battle');
     if(typeof document!=='undefined'){
