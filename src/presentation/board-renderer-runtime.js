@@ -1,4 +1,21 @@
 
+// Static sprite facing is presentation-only; no combat or movement flags change.
+const TroopVisual={
+  source(unit){return !unit.hero&&['inf','arch','cav'].includes(unit.kind)?'./assets/troops-v2/'+unit.kind+'-'+(unit.side===1?5:1)+'.png':null},
+  render(group,unit,cell,symbol){
+    const src=this.source(unit);if(!src)return;
+    const ns='http://www.w3.org/2000/svg',size=unit.kind==='cav'?110:92;
+    const image=document.createElementNS(ns,'image');
+    image.setAttribute('href',src);image.setAttribute('x',cell.x-size/2);image.setAttribute('y',cell.y+10-size*248/256);
+    image.setAttribute('width',size);image.setAttribute('height',size);image.setAttribute('class','troopSprite');
+    image.setAttribute('pointer-events','none');symbol.setAttribute('visibility','hidden');
+    image.addEventListener('error',()=>{image.setAttribute('visibility','hidden');symbol.setAttribute('visibility','visible')});
+    group.appendChild(image);
+    const hit=document.createElementNS(ns,'rect');
+    hit.setAttribute('x',cell.x-27);hit.setAttribute('y',cell.y-52);hit.setAttribute('width',54);hit.setAttribute('height',66);
+    hit.setAttribute('fill','transparent');hit.setAttribute('pointer-events','all');hit.setAttribute('class','troopHit');group.appendChild(hit);
+  }
+};
 const CoreBoardRenderer = {
   id: "CORE_BOARD_RENDERER",
   layers: [],
@@ -65,6 +82,7 @@ const CoreBoardRenderer = {
       let circle=document.createElementNS("http://www.w3.org/2000/svg","circle");
       circle.setAttribute("cx",cell.x);circle.setAttribute("cy",cell.y);circle.setAttribute("r",28);
       circle.setAttribute("fill",unit.side===1?"#2f86c7":"#c54b4b");
+      if(TroopVisual.source(unit)){circle.setAttribute('fill-opacity','.22');circle.setAttribute('class','troopTeamRing');}
       group.appendChild(circle);
 
       let symbol=document.createElementNS("http://www.w3.org/2000/svg","text");
@@ -72,9 +90,10 @@ const CoreBoardRenderer = {
       symbol.textContent=unitSpec(unit).sym;
       symbol.setAttribute("font-size","24");
       group.appendChild(symbol);
+      TroopVisual.render(group,unit,cell,symbol);
 
       let hp=document.createElementNS("http://www.w3.org/2000/svg","text");
-      hp.setAttribute("x",cell.x);hp.setAttribute("y",cell.y+20);
+      hp.setAttribute("x",cell.x);hp.setAttribute("y",cell.y+(TroopVisual.source(unit)?29:20));
       hp.textContent="❤"+unit.hp;hp.setAttribute("fill","#fff");
       group.appendChild(hp);
 
