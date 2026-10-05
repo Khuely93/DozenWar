@@ -17,6 +17,7 @@ const copyDir = (src, dst) => {
     if (e.isDirectory()) copyDir(a,b); else fs.copyFileSync(a,b);
   }
 };
+if (path.dirname(DIST) !== ROOT || path.basename(DIST) !== 'dist') throw new Error('Build output must be the project dist directory');
 fs.rmSync(DIST, {recursive:true, force:true});
 ensure(path.join(DIST, 'assets'));
 
@@ -51,10 +52,10 @@ for(const match of html.matchAll(/src="\.\/assets\/(embedded-[a-f0-9]+\.(?:png|j
 }
 html = html.replace(/<link\s+rel="stylesheet"\s+href="\.\/styles\/main\.css(?:\?[^\"]*)?"\s*\/?>/, `<link rel="stylesheet" href="./assets/${cssName}">`);
 html = html.replace(/(?:\s*<script\s+defer\s+src="\.\/[^\"]+"><\/script>\s*)+/g, '\n<script defer src="./assets/' + jsName + '"></script>\n');
-html = html.replace(/LATEST PLAYTEST v1\.40\.22[^<]*/, 'LATEST PLAYTEST v1.40.22 · PROD BUNDLE · ACTION STATUS · CONTENT SCHEMA v1.5 · CORE / MODE / SHELL / CONTENT / PRESENTATION');
+html = html.replace(/LATEST PLAYTEST v\d+\.\d+\.\d+[^<]*/, 'LATEST PLAYTEST v' + manifest.version + ' · PROD BUNDLE · ACTION STATUS · CONTENT SCHEMA v1.5 · CORE / MODE / SHELL / CONTENT / PRESENTATION');
 fs.writeFileSync(path.join(DIST, 'index.html'), html);
 
-copyDir(path.join(ROOT, 'assets'), path.join(DIST, 'assets', 'source-assets'));
+copyDir(path.join(ROOT, 'assets'), path.join(DIST, 'assets'));
 
 const files = [
   ['index.html', fs.readFileSync(path.join(DIST,'index.html'))],
@@ -67,7 +68,7 @@ const report = files.map(([name,b]) => ({
   sha256:sha(b)
 }));
 const buildManifest = {
-  project:'DOZEN WAR II', version:'1.40.22', phase:manifest.phase,
+  project:'DOZEN WAR II', version:manifest.version, phase:manifest.phase,
   generatedAt:new Date().toISOString(),
   runtimeOrder:manifest.runtimeOrder,
   bundles:{runtime:`assets/${jsName}`,styles:`assets/${cssName}`},

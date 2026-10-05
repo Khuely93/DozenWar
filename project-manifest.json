@@ -1,8 +1,8 @@
 {
   "project": "DOZEN WAR II",
-  "version": "1.40.22",
+  "version": "1.40.26",
   "phase": "DUEL_RULE_MODE_1VS1_180_30",
-  "baseline": "v1.40.22 Fit Duel map to desktop viewport",
+  "baseline": "v1.40.26 Troops v3: supplied four-faction sheets, 96 lossless WebP sprites",
   "entry": "index.html",
   "styles": "styles/main.css",
   "runtimeOrder": [

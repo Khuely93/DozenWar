@@ -1,7 +1,13 @@
 
 // Static sprite facing is presentation-only; no combat or movement flags change.
 const TroopVisual={
-  source(unit){return !unit.hero&&['inf','arch','cav'].includes(unit.kind)?'./assets/troops-v2/'+unit.kind+'-'+(unit.side===1?5:1)+'.png':null},
+  source(unit){
+    if(unit.hero||!['inf','arch','cav'].includes(unit.kind))return null;
+    const sides={1:'blue',2:'red',3:'gold',4:'silver'};
+    const faction=['red','blue','gold','silver'].includes(unit.visualFaction)?unit.visualFaction:(sides[unit.side]||'red');
+    const view=Number.isInteger(unit.visualView)&&unit.visualView>=1&&unit.visualView<=8?unit.visualView:(unit.side===1?5:1);
+    return './assets/troops-v3/'+unit.kind+'-'+faction+'-'+view+'.webp';
+  },
   render(group,unit,cell,symbol){
     const src=this.source(unit);if(!src)return;
     const ns='http://www.w3.org/2000/svg',baseSize=unit.kind==='cav'?110:92,size=baseSize*.8,yOffset=baseSize*.1;

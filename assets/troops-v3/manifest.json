@@ -1,0 +1,56 @@
+{
+  "format": "lossless WebP",
+  "canvas": [
+    256,
+    256
+  ],
+  "anchor": [
+    128,
+    248
+  ],
+  "rows": [
+    "red",
+    "blue",
+    "gold",
+    "silver"
+  ],
+  "views": [
+    "front",
+    "front-right",
+    "right",
+    "back-right",
+    "back",
+    "back-left",
+    "left",
+    "front-left"
+  ],
+  "count": 96,
+  "alphaThreshold": 12,
+  "sources": [
+    {
+      "kind": "inf",
+      "source": "Ảnh ChatGPT 21_54_08 5 thg 10, 2026-1.png",
+      "sha256": "67bcf42de6a9690de80dbedb104a98e8d3322e0980b4de560adbd6b56a789866",
+      "width": 1774,
+      "height": 887
+    },
+    {
+      "kind": "arch",
+      "source": "Ảnh ChatGPT 21_54_15 5 thg 10, 2026-2.png",
+      "sha256": "e33219fd53e63ae9e5ec756bd55c7091792fb32ee02ccef319662dc209ebf26d",
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "kind": "cav",
+      "source": "Ảnh ChatGPT 21_54_20 5 thg 10, 2026-3.png",
+      "sha256": "a31ebbea57944a356dfadbb752ec542851c73c237d1b6bf88d605ce31171c61b",
+      "width": 1536,
+      "height": 1024
+    }
+  ],
+  "notes": [
+    "Source directions are retained as supplied; exact 45-degree rotation is not guaranteed.",
+    "Mechanical crop, alpha cleanup and fit; no regenerated artwork."
+  ]
+}
