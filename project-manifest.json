@@ -1,8 +1,8 @@
 {
   "project": "DOZEN WAR II",
-  "version": "1.40.26",
+  "version": "1.41.0",
   "phase": "DUEL_RULE_MODE_1VS1_180_30",
-  "baseline": "v1.40.26 Troops v3: supplied four-faction sheets, 96 lossless WebP sprites",
+  "baseline": "v1.41.0 Confirmed 12-Hero roster",
   "entry": "index.html",
   "styles": "styles/main.css",
   "runtimeOrder": [
@@ -30,6 +30,8 @@
     "src/shell/shell-gameover-runtime.js",
     "src/mode/duel-turn-runtime.js",
     "src/debug/playtest-qa-runtime.js",
+    "src/core/hero-roster-runtime.js",
+    "src/ui/hero-skill-ui-runtime.js",
     "src/shell/shell-boot-runtime.js",
     "src/bootstrap.js"
   ],

@@ -66,7 +66,7 @@ function isAttackHL(c){
   let u=unitAt(c.q,c.r);return !!(u&&u.side!==S.selected.side&&canAttack(S.selected,u));
 }
 function currentDeployPlayer(){return S.deployOrder[S.deployIndex]}
-function save(){S.history.push(JSON.stringify({units:S.units,deployIndex:S.deployIndex,battleSide:S.battleSide,turn:S.turn,phase:S.phase,hands:S.hands,skillUsed:S.skillUsed,cardUsed:S.cardUsed,pending:S.pending,recentAttackers:S.recentAttackers}))}
+function save(){S.history.push(JSON.stringify({units:S.units,deployIndex:S.deployIndex,battleSide:S.battleSide,turn:S.turn,phase:S.phase,hands:S.hands,skillUsed:S.skillUsed,cardUsed:S.cardUsed,pending:S.pending,recentAttackers:S.recentAttackers,duelUsage:S.duelUsage,attackHistory:S.attackHistory,heroSkillHistory:S.heroSkillHistory,troopDeaths:S.troopDeaths,firstPlayerAttackedThisTurn:S.firstPlayerAttackedThisTurn}))}
 function undo(){hideDeployMenu();hideUnitMenu();if(!S.history.length)return;let o=JSON.parse(S.history.pop());Object.assign(S,o);S.selected=null;S.mode=null;S.skillTarget=null;skillTargetPanel.classList.remove('show');renderBoard();updateUI()}
 undoBtn.onclick=undo;resetBtn.onclick=()=>location.reload();
 function legacyRenderBoardBase(){boardSvg.innerHTML='';for(let c of cells){let p=document.createElementNS('http://www.w3.org/2000/svg','polygon');p.setAttribute('points',hexPts(c.x,c.y));p.setAttribute('stroke','#fff');p.setAttribute('stroke-width','1.2');p.setAttribute('vector-effect','non-scaling-stroke');p.setAttribute('class','hex '+(c.zone===1?'zoneBottom':c.zone===2?'zoneTop':'border')+(isHighlight(c)?' hl':'')+(isAttackHL(c)?' attack':''));p.dataset.q=c.q;p.dataset.r=c.r;p.addEventListener('click',()=>cellClick(c));boardSvg.appendChild(p)}for(let u of S.units.filter(x=>x.hp>0)){let g=document.createElementNS('http://www.w3.org/2000/svg','g');let guardCls='';if(S.guardTargeting&&S.pending){let gd=S.units.find(x=>x.id===S.pending.d);if(gd&&u.id===gd.id)guardCls=' guardTarget';else if(gd&&guardCandidates(gd).some(x=>x.id===u.id))guardCls=' guardCandidate';}g.setAttribute('class','unit'+(S.phase==='deploy'&&u.side===currentDeployPlayer()?' deployDraggable':'')+guardCls);g.dataset.unitId=u.id;let c=cells.find(c=>c.q===u.q&&c.r===u.r);let cir=document.createElementNS('http://www.w3.org/2000/svg','circle');cir.setAttribute('cx',c.x);cir.setAttribute('cy',c.y);cir.setAttribute('r',28);cir.setAttribute('fill',u.side===1?'#2f86c7':'#c54b4b');g.appendChild(cir);let tx=document.createElementNS('http://www.w3.org/2000/svg','text');tx.setAttribute('x',c.x);tx.setAttribute('y',c.y-2);tx.textContent=unitSpec(u).sym;tx.setAttribute('font-size','24');g.appendChild(tx);let hp=document.createElementNS('http://www.w3.org/2000/svg','text');hp.setAttribute('x',c.x);hp.setAttribute('y',c.y+20);hp.textContent='❤'+u.hp;hp.setAttribute('fill','#fff');g.appendChild(hp);g.addEventListener('click',(e)=>{e.stopPropagation();if(Date.now()-lastDragEnd<280)return;if(S.guardTargeting){if(chooseGuardFromMap(u))return;let d=S.pending&&S.units.find(x=>x.id===S.pending.d);if(d&&u.id===d.id){cancelGuardTargeting(true);return}return;}if(S.phase==='deploy')return;if(S.phase==='battle'&&S.mode==='attack'&&S.selected&&u.side!==S.selected.side){if(canAttack(S.selected,u)){startAttack(S.selected,u)}else{lg('❌ Mục tiêu nằm ngoài tầm tấn công.')}return}selectUnit(u)});if(S.phase==='deploy'&&u.side===currentDeployPlayer())bindDeployDrag(g,u);boardSvg.appendChild(g)}}
@@ -127,6 +127,7 @@ function defenseEquipmentWins(p,card){return !!(card&&CorePowerResolver.resolve(
 function resolveCombat(){
   if(typeof clearDefenseSkillTarget==='function')clearDefenseSkillTarget();
   hideUnitMenu();
+  if(typeof HeroCore!=='undefined'&&HeroCore.selection){HeroCore.selection=null;HeroCore.draw()}
   const p=S.pending;if(!p)return;
   const a=S.units.find(x=>x.id===p.a),originalTarget=S.units.find(x=>x.id===p.d);
   if(!a||!originalTarget){
@@ -153,8 +154,10 @@ function resolveCombat(){
   if(p.cancel){dmg=0;p.hitResult=p.cancelReason==='DODGE'?'MISS':'CANCELLED'}else p.hitResult='HIT';
   const appliedDamage=Math.max(0,dmg);
   if(p.hitResult==='HIT'&&appliedDamage>0)finalTarget.hp=Math.max(0,finalTarget.hp-appliedDamage);
+  if(typeof HeroCore!=='undefined'&&p.drain){a.hp=Math.min(unitSpec(a).hp,a.hp+p.drain);p.drainApplied=true}
   if(p.reflect&&defenseWon&&p.hitResult==='HIT'&&appliedDamage>0){a.hp=Math.max(0,a.hp-appliedDamage);lg('↩️ Reflect trả '+appliedDamage+' damage về '+unitSpec(a).name+' — vẫn resolve kể cả Defender lethal.')}
   if(p.retaliationTargetIds)for(const id of p.retaliationTargetIds){const foe=S.units.find(u=>u.id===id&&u.hp>0);if(foe){const retaliation=1+(dc?effectValue(dc,'EFFECT_DAMAGE_PLUS_1'):0);foe.hp=Math.max(0,foe.hp-retaliation);lg('✨ Phục thù gây '+retaliation+' sát thương cho '+unitSpec(foe).name+'.')}}
+  if(typeof HeroCore!=='undefined')HeroCore.afterHit(p,a,finalTarget,appliedDamage);
   if(p.sourceType!=='SKILL')a.attacked=true;
   lg(p.hitResult==='MISS'?'✨ Kết quả: MISS (Dodge).':p.hitResult==='CANCELLED'?'⛔ Attack bị CANCEL.':'⚔️ Damage resolve: '+appliedDamage);
   const passives=unitSpec(a).passives||[];
@@ -676,6 +679,7 @@ const CoreSkillController = Object.freeze({
     if(![1,2,3].includes(skillNo))return false;
     const skill=heroSkill(S.selected,skillNo);
     if(!skill||isSkillUsed(S.selected,skillNo))return false;
+    if(typeof HeroCore!=='undefined'&&skill.mechanic)return HeroCore.canUse(S.selected,skillNo,skill);
     if(skill.timing==='DEFENSE_REACTION'||skill.timing==='BOTH'&&S.pending)return !!S.pending&&defenseSkillChoices(S.units.find(u=>u.id===S.pending.d)).some(c=>c.hero.id===S.selected.id&&c.skillNo===skillNo);
     if(S.pending||S.selected.side!==S.battleSide||S.selected.attacked)return false;
     return true;
@@ -798,6 +802,7 @@ const CoreAttackController = Object.freeze({
     if(S.battleSide===S.botSide)return false;
     if(!S.selected || S.selected.hp<=0)return false;
     if(S.selected.attacked)return false;
+    if(typeof HeroCore!=='undefined'&&HeroCore.blocked(S.selected,'attack'))return false;
     return true;
   },
 
@@ -836,6 +841,7 @@ const CoreInputRouter = Object.freeze({
   id: "CORE_INPUT_ROUTER",
 
   handleUnitClick(unit){
+    if(typeof HeroCore!=='undefined'&&HeroCore.selection)return HeroCore.inputUnit(unit);
     if(Date.now()-lastDragEnd<280)return;
     if(S.phase==="battle"&&(S.pending?S.units.find(u=>u.id===S.pending.d)?.side===S.botSide:S.battleSide===S.botSide))return false;
 
@@ -849,6 +855,7 @@ const CoreInputRouter = Object.freeze({
   },
 
   handleHexClick(cell){
+    if(typeof HeroCore!=='undefined'&&HeroCore.selection)return HeroCore.inputHex(cell);
     if(S.phase==="battle"&&(S.pending?S.units.find(u=>u.id===S.pending.d)?.side===S.botSide:S.battleSide===S.botSide))return false;
     if(CoreGuardController.active())return CoreGuardController.handleHexClick(cell);
 
@@ -874,3 +881,4 @@ const CoreInputRouter = Object.freeze({
     }
   }
 });
+

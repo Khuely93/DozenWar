@@ -38,6 +38,7 @@ const DuelTurnClock={
   autoEndTurn(){
     if(!this.enabled()||S.pending||this.timeoutHandled)return;
     this.timeoutHandled=true;
+    if(typeof HeroCore!=='undefined'&&HeroCore.selection){if(HeroCore.selection.continuation){HeroCore.selection=null;S.heroSequence=null;S.skillSequence=null;HeroCore.draw()}else HeroCore.cancel()}
     if(S.skillTarget)cancelSkillTarget();
     if(S.guardTargeting)hideGuardTargeting();
     // A timed-out multi-target selection cannot keep the turn blocked forever.
@@ -95,7 +96,7 @@ const _duelShowReaction=showReaction;
 showReaction=function(defPhase){
   const p=S.pending;
   if(S.selectedMode==='MODE_DUEL_001'&&p&&S.units.find(u=>u.id===p.a)?.side===S.winner&&
-     (p.sourceType==='ATTACK'||p.sourceType==='SKILL'))S.firstPlayerAttackedThisTurn=true;
+     (p.sourceType==='ATTACK'||p.sourceType==='SKILL'&&(!p.heroMechanic||p.heroMechanic.heroAttack)))S.firstPlayerAttackedThisTurn=true;
   const result=_duelShowReaction(defPhase);
   if(defPhase&&p)DuelTurnClock.openDefense(p);
   return result;
@@ -104,3 +105,4 @@ const _duelResolveCombat=resolveCombat;
 resolveCombat=function(){const p=S.pending;const result=_duelResolveCombat();if(p&&S.pending!==p)DuelTurnClock.afterResolve();return result};
 const _duelResetMatchState=resetMatchState;
 resetMatchState=function(){DuelTurnClock.stop();const result=_duelResetMatchState();S.duelUsage=null;S.firstPlayerNoAttackTurns=0;S.firstPlayerAttackedThisTurn=false;return result};
+

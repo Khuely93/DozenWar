@@ -5,7 +5,7 @@ const http=require('node:http');
 const {chromium}=require('playwright');
 const root=path.resolve(__dirname,'..');
 const dist=path.join(root,'dist');
-const output=path.resolve(root,'../../outputs/troops-v3');
+const output=path.resolve(root,'outputs/troops-v3');
 const mime={'.html':'text/html','.js':'text/javascript','.css':'text/css','.webp':'image/webp','.png':'image/png','.svg':'image/svg+xml','.json':'application/json'};
 async function run(){
   let browser;
@@ -17,7 +17,7 @@ async function run(){
   });
   try{
     await new Promise((resolve,reject)=>{server.once('error',reject);server.listen(0,'127.0.0.1',resolve)});
-    browser=await chromium.launch({channel:process.env.DOZEN_BROWSER_CHANNEL||'msedge',headless:true});
+    browser=await chromium.launch(process.env.DOZEN_BROWSER_EXECUTABLE?{executablePath:process.env.DOZEN_BROWSER_EXECUTABLE,headless:true,args:['--no-sandbox']}:{channel:process.env.DOZEN_BROWSER_CHANNEL||'msedge',headless:true});
     const page=await browser.newPage({viewport:{width:1920,height:1080}});
     const errors=[],missing=[];
     page.on('pageerror',error=>errors.push(error.message));
@@ -68,3 +68,4 @@ async function run(){
   }
 }
 run().catch(error=>{console.error(error);process.exitCode=1});
+

@@ -11,7 +11,7 @@ function load(extra=''){
  new vm.Script(['unitSpec','axial','distU','aligned','canAttack','validCardFor','guardCandidates','unitAt','movementBudgetTotal','movementCostSpent','remainingMove','canMoveFurther','reachableCellCosts','cellNeighbors'].map(fn).join('\n')+'\nthis.api={unitSpec,canAttack,validCardFor,guardCandidates,reachableCellCosts};this.views=ContentViews;this.registry=HeroRegistry;this.create=createRuntimeEntityInstance;this.validate=validateContentSchema;this.rules=HERO_CLASS_RULES;this.troops=TROOPS;this.duelUsage=()=>({attackCard:{1:0,2:0},defenseCard:{1:0,2:0}});').runInContext(ctx);
  return ctx;
 }
-const original=load();assert.equal(original.registry.list().length,2,'no invented playable Hero');assert.equal(original.validate().ok,true);
+const original=load();assert.equal(original.registry.list().length,12,'confirmed playable Hero roster');assert.equal(original.validate().ok,true);
 assert.deepEqual(Object.keys(original.troops),['inf','arch','cav'],'no Alchemist soldier');
 // A future Hero is inserted only in this test fixture before real normalization.
 const ctx=load("RAW_HERO_DB.HERO_ALCH_TEST={id:'HERO_ALCH_TEST',nameKey:'HERO_INF_001_NAME',class:'ALCH',stats:{hp:4},skillIds:[],assets:{}};");
@@ -28,3 +28,4 @@ const ally={id:'ally',definitionId:'UNIT_ARCH_001',side:1,hp:1,q:1,r:0};ctx.S.un
 assert.equal(vm.runInContext("EquipmentRegistry.list().filter(e=>e.class==='NEU').every(e=>e.eligibility.classIds.includes('ALCH'))",ctx),true,'common equipment metadata includes new class');
 assert.throws(()=>load("RAW_UNIT_DB.UNIT_ALCH_TEST={id:'UNIT_ALCH_TEST',nameKey:'UNIT_INF_001_NAME',class:'ALCH',stats:{hp:1,move:1,attackRange:1},passives:[],assets:{}};"),/validation failed/,'soldier content rejected');
 console.log('Alchemist: class registration, future Hero defaults/deployment, movement/attack, common equipment only, no inherited guard/Pierce and no soldiers: PASS');
+

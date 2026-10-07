@@ -53,6 +53,1056 @@ const RAW_CARD_DB={
   CARD_NEU_UTILITY_001:{id:'CARD_NEU_UTILITY_001',nameKey:'CARD_NEU_UTILITY_001_NAME',textKey:'CARD_NEU_UTILITY_001_TEXT',class:'NEU',category:'UTILITY',star:1,timing:['ATTACK','DEFENSE'],effects:['EFFECT_IGNORE_INF_GUARD']}
 };
 
+// Confirmed 12-Hero roster; effects are resolved by generic Core primitives.
+Object.assign(RAW_SKILLS,{
+  "SKILL_HERO_EST_S1": {
+    "id": "SKILL_HERO_EST_S1",
+    "nameKey": "SKILL_HERO_EST_S1_NAME",
+    "descriptionKey": "SKILL_HERO_EST_S1_DESC",
+    "class": "INF",
+    "star": 1,
+    "timing": "DEFENSE_REACTION",
+    "target": {
+      "maxTargets": 1,
+      "side": "ALLY",
+      "unitType": "TROOP",
+      "range": 3
+    },
+    "effects": [],
+    "mechanic": "SWAP",
+    "heroAttack": false,
+    "parameters": {},
+    "version": 2
+  },
+  "SKILL_HERO_EST_S2": {
+    "id": "SKILL_HERO_EST_S2",
+    "nameKey": "SKILL_HERO_EST_S2_NAME",
+    "descriptionKey": "SKILL_HERO_EST_S2_DESC",
+    "class": "INF",
+    "star": 1,
+    "timing": "DEFENSE_REACTION",
+    "target": {
+      "maxTargets": 2,
+      "side": "ENEMY",
+      "range": 99
+    },
+    "effects": [],
+    "mechanic": "REVENGE",
+    "heroAttack": false,
+    "parameters": {},
+    "version": 2
+  },
+  "SKILL_HERO_EST_S3": {
+    "id": "SKILL_HERO_EST_S3",
+    "nameKey": "SKILL_HERO_EST_S3_NAME",
+    "descriptionKey": "SKILL_HERO_EST_S3_DESC",
+    "class": "INF",
+    "star": 1,
+    "timing": "ACTIVE",
+    "target": {
+      "maxTargets": 1,
+      "side": "SELF"
+    },
+    "effects": [],
+    "mechanic": "BUFF",
+    "heroAttack": false,
+    "parameters": {
+      "move": 2,
+      "targets": 3
+    },
+    "version": 2
+  },
+  "SKILL_HERO_KAZU_S1": {
+    "id": "SKILL_HERO_KAZU_S1",
+    "nameKey": "SKILL_HERO_KAZU_S1_NAME",
+    "descriptionKey": "SKILL_HERO_KAZU_S1_DESC",
+    "class": "INF",
+    "star": 1,
+    "timing": "DEFENSE_REACTION",
+    "target": {
+      "maxTargets": 1,
+      "side": "ALLY",
+      "range": 1
+    },
+    "effects": [],
+    "mechanic": "CANCEL",
+    "heroAttack": false,
+    "parameters": {},
+    "version": 2
+  },
+  "SKILL_HERO_KAZU_S2": {
+    "id": "SKILL_HERO_KAZU_S2",
+    "nameKey": "SKILL_HERO_KAZU_S2_NAME",
+    "descriptionKey": "SKILL_HERO_KAZU_S2_DESC",
+    "class": "INF",
+    "star": 2,
+    "timing": "ACTIVE",
+    "target": {
+      "maxTargets": 1,
+      "side": "ENEMY",
+      "range": 3,
+      "pattern": "LINE"
+    },
+    "effects": [],
+    "mechanic": "STRIKE",
+    "heroAttack": true,
+    "parameters": {
+      "damage": 2,
+      "status": "STUN",
+      "attack": true
+    },
+    "version": 2
+  },
+  "SKILL_HERO_KAZU_S3": {
+    "id": "SKILL_HERO_KAZU_S3",
+    "nameKey": "SKILL_HERO_KAZU_S3_NAME",
+    "descriptionKey": "SKILL_HERO_KAZU_S3_DESC",
+    "class": "INF",
+    "star": 3,
+    "timing": "ACTIVE",
+    "target": {
+      "maxTargets": 1,
+      "side": "ENEMY",
+      "range": 4,
+      "pattern": "LINE"
+    },
+    "effects": [],
+    "mechanic": "STRIKE",
+    "heroAttack": true,
+    "parameters": {
+      "damage": 1,
+      "pull": true,
+      "ignoreGuard": true,
+      "attack": true
+    },
+    "version": 2
+  },
+  "SKILL_HERO_RODOC_S1": {
+    "id": "SKILL_HERO_RODOC_S1",
+    "nameKey": "SKILL_HERO_RODOC_S1_NAME",
+    "descriptionKey": "SKILL_HERO_RODOC_S1_DESC",
+    "class": "INF",
+    "star": 3,
+    "timing": "DEFENSE_REACTION",
+    "target": {
+      "maxTargets": 1,
+      "side": "ALLY",
+      "class": "INF",
+      "range": 3,
+      "requireMissingHp": true
+    },
+    "effects": [],
+    "mechanic": "HEAL",
+    "heroAttack": false,
+    "parameters": {},
+    "version": 2
+  },
+  "SKILL_HERO_RODOC_S2": {
+    "id": "SKILL_HERO_RODOC_S2",
+    "nameKey": "SKILL_HERO_RODOC_S2_NAME",
+    "descriptionKey": "SKILL_HERO_RODOC_S2_DESC",
+    "class": "INF",
+    "star": 1,
+    "timing": "ACTIVE",
+    "target": {
+      "maxTargets": 2,
+      "side": "ALLY",
+      "class": "INF",
+      "range": 3
+    },
+    "effects": [],
+    "mechanic": "BUFF",
+    "heroAttack": false,
+    "parameters": {
+      "move": 2
+    },
+    "version": 2
+  },
+  "SKILL_HERO_RODOC_S3": {
+    "id": "SKILL_HERO_RODOC_S3",
+    "nameKey": "SKILL_HERO_RODOC_S3_NAME",
+    "descriptionKey": "SKILL_HERO_RODOC_S3_DESC",
+    "class": "INF",
+    "star": 1,
+    "timing": "ACTIVE",
+    "target": {
+      "maxTargets": 4,
+      "side": "ENEMY",
+      "range": 4,
+      "pattern": "LINE",
+      "selection": {
+        "lineLock": true
+      }
+    },
+    "effects": [],
+    "mechanic": "STRIKE",
+    "heroAttack": true,
+    "parameters": {
+      "damage": 1,
+      "attack": true
+    },
+    "version": 2
+  },
+  "SKILL_HERO_MASK_S1": {
+    "id": "SKILL_HERO_MASK_S1",
+    "nameKey": "SKILL_HERO_MASK_S1_NAME",
+    "descriptionKey": "SKILL_HERO_MASK_S1_DESC",
+    "class": "CAV",
+    "star": 1,
+    "timing": "ACTIVE",
+    "target": {
+      "maxTargets": 2,
+      "side": "ENEMY",
+      "range": 3,
+      "pattern": "LINE",
+      "selection": {
+        "lineLock": true
+      }
+    },
+    "effects": [],
+    "mechanic": "STRIKE",
+    "heroAttack": true,
+    "parameters": {
+      "damage": 1,
+      "attack": true
+    },
+    "version": 2
+  },
+  "SKILL_HERO_MASK_S2": {
+    "id": "SKILL_HERO_MASK_S2",
+    "nameKey": "SKILL_HERO_MASK_S2_NAME",
+    "descriptionKey": "SKILL_HERO_MASK_S2_DESC",
+    "class": "CAV",
+    "star": 1,
+    "timing": "ACTIVE",
+    "target": {
+      "maxTargets": 1,
+      "side": "ALLY",
+      "class": "CAV",
+      "range": 3
+    },
+    "effects": [],
+    "mechanic": "BUFF",
+    "heroAttack": false,
+    "parameters": {
+      "attacks": 1
+    },
+    "version": 2
+  },
+  "SKILL_HERO_MASK_S3": {
+    "id": "SKILL_HERO_MASK_S3",
+    "nameKey": "SKILL_HERO_MASK_S3_NAME",
+    "descriptionKey": "SKILL_HERO_MASK_S3_DESC",
+    "class": "CAV",
+    "star": 4,
+    "timing": "ACTIVE",
+    "target": {
+      "maxTargets": 1,
+      "side": "ENEMY",
+      "unitType": "HERO",
+      "range": 3,
+      "pattern": "LINE"
+    },
+    "effects": [],
+    "mechanic": "STRIKE",
+    "heroAttack": true,
+    "parameters": {
+      "diceDrain": true,
+      "damage": 1,
+      "ignoreGuard": true,
+      "attack": true
+    },
+    "version": 2
+  },
+  "SKILL_HERO_SOUL_S1": {
+    "id": "SKILL_HERO_SOUL_S1",
+    "nameKey": "SKILL_HERO_SOUL_S1_NAME",
+    "descriptionKey": "SKILL_HERO_SOUL_S1_DESC",
+    "class": "CAV",
+    "star": 1,
+    "timing": "ACTIVE",
+    "target": {
+      "maxTargets": 1,
+      "side": "SELF"
+    },
+    "effects": [],
+    "mechanic": "BUFF",
+    "heroAttack": false,
+    "parameters": {
+      "damage": 1,
+      "move": 1
+    },
+    "version": 2
+  },
+  "SKILL_HERO_SOUL_S2": {
+    "id": "SKILL_HERO_SOUL_S2",
+    "nameKey": "SKILL_HERO_SOUL_S2_NAME",
+    "descriptionKey": "SKILL_HERO_SOUL_S2_DESC",
+    "class": "CAV",
+    "star": 1,
+    "timing": "ACTIVE",
+    "target": {
+      "maxTargets": 1,
+      "side": "SELF"
+    },
+    "effects": [],
+    "mechanic": "SUMMON",
+    "heroAttack": false,
+    "parameters": {
+      "summonClass": "CAV",
+      "hpCost": 1
+    },
+    "version": 2
+  },
+  "SKILL_HERO_SOUL_S3": {
+    "id": "SKILL_HERO_SOUL_S3",
+    "nameKey": "SKILL_HERO_SOUL_S3_NAME",
+    "descriptionKey": "SKILL_HERO_SOUL_S3_DESC",
+    "class": "CAV",
+    "star": 3,
+    "timing": "DEFENSE_REACTION",
+    "target": {
+      "maxTargets": 1,
+      "side": "ALLY",
+      "unitType": "TROOP",
+      "range": 3
+    },
+    "effects": [],
+    "mechanic": "SWAP",
+    "heroAttack": false,
+    "parameters": {
+      "directRetaliation": 1
+    },
+    "version": 2
+  },
+  "SKILL_HERO_SIRI_S1": {
+    "id": "SKILL_HERO_SIRI_S1",
+    "nameKey": "SKILL_HERO_SIRI_S1_NAME",
+    "descriptionKey": "SKILL_HERO_SIRI_S1_DESC",
+    "class": "CAV",
+    "star": 1,
+    "timing": "ACTIVE",
+    "target": {
+      "maxTargets": 1,
+      "side": "SELF"
+    },
+    "effects": [],
+    "mechanic": "BUFF",
+    "heroAttack": false,
+    "parameters": {
+      "ignoreGuard": true
+    },
+    "version": 2
+  },
+  "SKILL_HERO_SIRI_S2": {
+    "id": "SKILL_HERO_SIRI_S2",
+    "nameKey": "SKILL_HERO_SIRI_S2_NAME",
+    "descriptionKey": "SKILL_HERO_SIRI_S2_DESC",
+    "class": "CAV",
+    "star": 1,
+    "timing": "DEFENSE_REACTION",
+    "target": {
+      "maxTargets": 1,
+      "side": "SELF"
+    },
+    "effects": [],
+    "mechanic": "ESCAPE",
+    "heroAttack": false,
+    "parameters": {
+      "escapeRange": 3,
+      "teleport": false
+    },
+    "version": 2
+  },
+  "SKILL_HERO_SIRI_S3": {
+    "id": "SKILL_HERO_SIRI_S3",
+    "nameKey": "SKILL_HERO_SIRI_S3_NAME",
+    "descriptionKey": "SKILL_HERO_SIRI_S3_DESC",
+    "class": "CAV",
+    "star": 1,
+    "timing": "ACTIVE",
+    "target": {
+      "maxTargets": 1,
+      "side": "ALLY",
+      "range": 3
+    },
+    "effects": [],
+    "mechanic": "BUFF",
+    "heroAttack": false,
+    "parameters": {
+      "move": 3
+    },
+    "version": 2
+  },
+  "SKILL_HERO_RAEN_S1": {
+    "id": "SKILL_HERO_RAEN_S1",
+    "nameKey": "SKILL_HERO_RAEN_S1_NAME",
+    "descriptionKey": "SKILL_HERO_RAEN_S1_DESC",
+    "class": "ARCH",
+    "star": 1,
+    "timing": "ACTIVE",
+    "target": {
+      "maxTargets": 1,
+      "side": "ALLY",
+      "class": "ARCH",
+      "range": 3
+    },
+    "effects": [],
+    "mechanic": "BUFF",
+    "heroAttack": false,
+    "parameters": {
+      "range": 1
+    },
+    "version": 2
+  },
+  "SKILL_HERO_RAEN_S2": {
+    "id": "SKILL_HERO_RAEN_S2",
+    "nameKey": "SKILL_HERO_RAEN_S2_NAME",
+    "descriptionKey": "SKILL_HERO_RAEN_S2_DESC",
+    "class": "ARCH",
+    "star": 2,
+    "timing": "DEFENSE_REACTION",
+    "target": {
+      "maxTargets": 1,
+      "side": "ENEMY",
+      "range": "ATTACK"
+    },
+    "effects": [],
+    "mechanic": "PUSH",
+    "heroAttack": false,
+    "parameters": {
+      "push": 4
+    },
+    "version": 2
+  },
+  "SKILL_HERO_RAEN_S3": {
+    "id": "SKILL_HERO_RAEN_S3",
+    "nameKey": "SKILL_HERO_RAEN_S3_NAME",
+    "descriptionKey": "SKILL_HERO_RAEN_S3_DESC",
+    "class": "ARCH",
+    "star": 3,
+    "timing": "ACTIVE",
+    "target": {
+      "maxTargets": 1,
+      "side": "ENEMY",
+      "range": 4,
+      "pattern": "LINE"
+    },
+    "effects": [],
+    "mechanic": "STRIKE",
+    "heroAttack": true,
+    "parameters": {
+      "damage": 1,
+      "attack": true,
+      "status": "FREEZE",
+      "ignoreGuard": true,
+      "throughTerrain": true
+    },
+    "version": 2
+  },
+  "SKILL_HERO_XACNAS_S1": {
+    "id": "SKILL_HERO_XACNAS_S1",
+    "nameKey": "SKILL_HERO_XACNAS_S1_NAME",
+    "descriptionKey": "SKILL_HERO_XACNAS_S1_DESC",
+    "class": "ARCH",
+    "star": 1,
+    "timing": "ACTIVE",
+    "target": {
+      "maxTargets": 1,
+      "side": "ALLY",
+      "class": "ARCH",
+      "range": 3
+    },
+    "effects": [],
+    "mechanic": "BUFF",
+    "heroAttack": false,
+    "parameters": {
+      "damage": 1
+    },
+    "version": 2
+  },
+  "SKILL_HERO_XACNAS_S2": {
+    "id": "SKILL_HERO_XACNAS_S2",
+    "nameKey": "SKILL_HERO_XACNAS_S2_NAME",
+    "descriptionKey": "SKILL_HERO_XACNAS_S2_DESC",
+    "class": "ARCH",
+    "star": 1,
+    "timing": "ACTIVE",
+    "target": {
+      "maxTargets": 2,
+      "side": "ENEMY",
+      "range": "ATTACK"
+    },
+    "effects": [],
+    "mechanic": "STRIKE",
+    "heroAttack": true,
+    "parameters": {
+      "damage": 1,
+      "attack": true
+    },
+    "version": 2
+  },
+  "SKILL_HERO_XACNAS_S3": {
+    "id": "SKILL_HERO_XACNAS_S3",
+    "nameKey": "SKILL_HERO_XACNAS_S3_NAME",
+    "descriptionKey": "SKILL_HERO_XACNAS_S3_DESC",
+    "class": "ARCH",
+    "star": 3,
+    "timing": "DEFENSE_REACTION",
+    "target": {
+      "maxTargets": 1,
+      "side": "SELF"
+    },
+    "effects": [],
+    "mechanic": "DICE_WARD",
+    "heroAttack": false,
+    "parameters": {},
+    "version": 2
+  },
+  "SKILL_HERO_LUCY_S1": {
+    "id": "SKILL_HERO_LUCY_S1",
+    "nameKey": "SKILL_HERO_LUCY_S1_NAME",
+    "descriptionKey": "SKILL_HERO_LUCY_S1_DESC",
+    "class": "ARCH",
+    "star": 1,
+    "timing": "DEFENSE_REACTION",
+    "target": {
+      "maxTargets": 1,
+      "side": "SELF"
+    },
+    "effects": [],
+    "mechanic": "CANCEL",
+    "heroAttack": false,
+    "parameters": {},
+    "version": 2
+  },
+  "SKILL_HERO_LUCY_S2": {
+    "id": "SKILL_HERO_LUCY_S2",
+    "nameKey": "SKILL_HERO_LUCY_S2_NAME",
+    "descriptionKey": "SKILL_HERO_LUCY_S2_DESC",
+    "class": "ARCH",
+    "star": 1,
+    "timing": "DEFENSE_REACTION",
+    "target": {
+      "maxTargets": 2,
+      "side": "ENEMY",
+      "range": "BASE_ATTACK"
+    },
+    "effects": [],
+    "mechanic": "COUNTER",
+    "heroAttack": false,
+    "parameters": {},
+    "version": 2
+  },
+  "SKILL_HERO_LUCY_S3": {
+    "id": "SKILL_HERO_LUCY_S3",
+    "nameKey": "SKILL_HERO_LUCY_S3_NAME",
+    "descriptionKey": "SKILL_HERO_LUCY_S3_DESC",
+    "class": "ARCH",
+    "star": 1,
+    "timing": "ACTIVE",
+    "target": {
+      "maxTargets": 1,
+      "side": "ENEMY",
+      "range": "ATTACK"
+    },
+    "effects": [],
+    "mechanic": "STRIKE",
+    "heroAttack": true,
+    "parameters": {
+      "damage": 2,
+      "attack": true,
+      "repeats": 2
+    },
+    "version": 2
+  },
+  "SKILL_HERO_GRIM_S1": {
+    "id": "SKILL_HERO_GRIM_S1",
+    "nameKey": "SKILL_HERO_GRIM_S1_NAME",
+    "descriptionKey": "SKILL_HERO_GRIM_S1_DESC",
+    "class": "ALCH",
+    "star": 1,
+    "timing": "BOTH",
+    "target": {
+      "maxTargets": 1,
+      "side": "SELF"
+    },
+    "effects": [],
+    "mechanic": "MORPH",
+    "heroAttack": false,
+    "parameters": {},
+    "version": 2
+  },
+  "SKILL_HERO_GRIM_S2": {
+    "id": "SKILL_HERO_GRIM_S2",
+    "nameKey": "SKILL_HERO_GRIM_S2_NAME",
+    "descriptionKey": "SKILL_HERO_GRIM_S2_DESC",
+    "class": "ALCH",
+    "star": 1,
+    "timing": "BOTH",
+    "target": {
+      "maxTargets": 1,
+      "side": "ALLY",
+      "unitType": "TROOP",
+      "range": 3
+    },
+    "effects": [],
+    "mechanic": "CONVERT",
+    "heroAttack": false,
+    "parameters": {},
+    "version": 2
+  },
+  "SKILL_HERO_GRIM_S3": {
+    "id": "SKILL_HERO_GRIM_S3",
+    "nameKey": "SKILL_HERO_GRIM_S3_NAME",
+    "descriptionKey": "SKILL_HERO_GRIM_S3_DESC",
+    "class": "ALCH",
+    "star": 3,
+    "timing": "BOTH",
+    "target": {
+      "maxTargets": 1,
+      "side": "SELF"
+    },
+    "effects": [],
+    "mechanic": "COPY",
+    "heroAttack": false,
+    "parameters": {},
+    "version": 2
+  },
+  "SKILL_HERO_NEURO_S1": {
+    "id": "SKILL_HERO_NEURO_S1",
+    "nameKey": "SKILL_HERO_NEURO_S1_NAME",
+    "descriptionKey": "SKILL_HERO_NEURO_S1_DESC",
+    "class": "ALCH",
+    "star": 4,
+    "timing": "ACTIVE",
+    "target": {
+      "maxTargets": 1,
+      "side": "ENEMY",
+      "unitType": "HERO",
+      "range": 3
+    },
+    "effects": [],
+    "mechanic": "SILENCE",
+    "heroAttack": false,
+    "parameters": {},
+    "version": 2
+  },
+  "SKILL_HERO_NEURO_S2": {
+    "id": "SKILL_HERO_NEURO_S2",
+    "nameKey": "SKILL_HERO_NEURO_S2_NAME",
+    "descriptionKey": "SKILL_HERO_NEURO_S2_DESC",
+    "class": "ALCH",
+    "star": 1,
+    "timing": "BOTH",
+    "target": {
+      "maxTargets": 1,
+      "side": "SELF"
+    },
+    "effects": [],
+    "mechanic": "SUMMON",
+    "heroAttack": false,
+    "parameters": {
+      "requiresDeath": true
+    },
+    "version": 2
+  },
+  "SKILL_HERO_NEURO_S3": {
+    "id": "SKILL_HERO_NEURO_S3",
+    "nameKey": "SKILL_HERO_NEURO_S3_NAME",
+    "descriptionKey": "SKILL_HERO_NEURO_S3_DESC",
+    "class": "ALCH",
+    "star": 1,
+    "timing": "ACTIVE",
+    "target": {
+      "maxTargets": 2,
+      "side": "ALLY",
+      "range": 3
+    },
+    "effects": [],
+    "mechanic": "BUFF",
+    "heroAttack": false,
+    "parameters": {
+      "move": 2
+    },
+    "version": 2
+  },
+  "SKILL_HERO_RANUS_S1": {
+    "id": "SKILL_HERO_RANUS_S1",
+    "nameKey": "SKILL_HERO_RANUS_S1_NAME",
+    "descriptionKey": "SKILL_HERO_RANUS_S1_DESC",
+    "class": "ALCH",
+    "star": 1,
+    "timing": "BOTH",
+    "target": {
+      "maxTargets": 1,
+      "side": "SELF"
+    },
+    "effects": [],
+    "mechanic": "ESCAPE",
+    "heroAttack": false,
+    "parameters": {
+      "escapeRange": 4,
+      "teleport": true
+    },
+    "version": 2
+  },
+  "SKILL_HERO_RANUS_S2": {
+    "id": "SKILL_HERO_RANUS_S2",
+    "nameKey": "SKILL_HERO_RANUS_S2_NAME",
+    "descriptionKey": "SKILL_HERO_RANUS_S2_DESC",
+    "class": "ALCH",
+    "star": 1,
+    "timing": "ACTIVE",
+    "target": {
+      "maxTargets": 1,
+      "side": "ALLY",
+      "range": 2
+    },
+    "effects": [],
+    "mechanic": "BUFF",
+    "heroAttack": false,
+    "parameters": {
+      "attacks": 1,
+      "move": 1
+    },
+    "version": 2
+  },
+  "SKILL_HERO_RANUS_S3": {
+    "id": "SKILL_HERO_RANUS_S3",
+    "nameKey": "SKILL_HERO_RANUS_S3_NAME",
+    "descriptionKey": "SKILL_HERO_RANUS_S3_DESC",
+    "class": "ALCH",
+    "star": 1,
+    "timing": "ACTIVE",
+    "target": {
+      "maxTargets": 4,
+      "side": "ENEMY",
+      "range": 2
+    },
+    "effects": [],
+    "mechanic": "STRIKE",
+    "heroAttack": true,
+    "parameters": {
+      "damage": 1,
+      "attack": true,
+      "throughTerrain": true
+    },
+    "version": 2
+  }
+});
+Object.assign(RAW_HERO_DB,{
+  "HERO_INF_EST": {
+    "id": "HERO_INF_EST",
+    "nameKey": "HERO_INF_EST_NAME",
+    "class": "INF",
+    "stats": {
+      "hp": 3,
+      "move": 1,
+      "attackRange": 1
+    },
+    "attackPattern": "RANGE",
+    "skillIds": [
+      "SKILL_HERO_EST_S1",
+      "SKILL_HERO_EST_S2",
+      "SKILL_HERO_EST_S3"
+    ],
+    "assets": {},
+    "version": 2
+  },
+  "HERO_INF_KAZU": {
+    "id": "HERO_INF_KAZU",
+    "nameKey": "HERO_INF_KAZU_NAME",
+    "class": "INF",
+    "stats": {
+      "hp": 3,
+      "move": 1,
+      "attackRange": 1
+    },
+    "attackPattern": "RANGE",
+    "skillIds": [
+      "SKILL_HERO_KAZU_S1",
+      "SKILL_HERO_KAZU_S2",
+      "SKILL_HERO_KAZU_S3"
+    ],
+    "assets": {},
+    "version": 2
+  },
+  "HERO_INF_RODOC": {
+    "id": "HERO_INF_RODOC",
+    "nameKey": "HERO_INF_RODOC_NAME",
+    "class": "INF",
+    "stats": {
+      "hp": 3,
+      "move": 1,
+      "attackRange": 1
+    },
+    "attackPattern": "RANGE",
+    "skillIds": [
+      "SKILL_HERO_RODOC_S1",
+      "SKILL_HERO_RODOC_S2",
+      "SKILL_HERO_RODOC_S3"
+    ],
+    "assets": {},
+    "version": 2
+  },
+  "HERO_CAV_MASK": {
+    "id": "HERO_CAV_MASK",
+    "nameKey": "HERO_CAV_MASK_NAME",
+    "class": "CAV",
+    "stats": {
+      "hp": 3,
+      "move": 3,
+      "attackRange": 1
+    },
+    "attackPattern": "RANGE",
+    "skillIds": [
+      "SKILL_HERO_MASK_S1",
+      "SKILL_HERO_MASK_S2",
+      "SKILL_HERO_MASK_S3"
+    ],
+    "assets": {},
+    "version": 2
+  },
+  "HERO_CAV_SOUL": {
+    "id": "HERO_CAV_SOUL",
+    "nameKey": "HERO_CAV_SOUL_NAME",
+    "class": "CAV",
+    "stats": {
+      "hp": 3,
+      "move": 3,
+      "attackRange": 1
+    },
+    "attackPattern": "RANGE",
+    "skillIds": [
+      "SKILL_HERO_SOUL_S1",
+      "SKILL_HERO_SOUL_S2",
+      "SKILL_HERO_SOUL_S3"
+    ],
+    "assets": {},
+    "version": 2
+  },
+  "HERO_CAV_SIRI": {
+    "id": "HERO_CAV_SIRI",
+    "nameKey": "HERO_CAV_SIRI_NAME",
+    "class": "CAV",
+    "stats": {
+      "hp": 3,
+      "move": 3,
+      "attackRange": 1
+    },
+    "attackPattern": "RANGE",
+    "skillIds": [
+      "SKILL_HERO_SIRI_S1",
+      "SKILL_HERO_SIRI_S2",
+      "SKILL_HERO_SIRI_S3"
+    ],
+    "assets": {},
+    "version": 2
+  },
+  "HERO_ARCH_RAEN": {
+    "id": "HERO_ARCH_RAEN",
+    "nameKey": "HERO_ARCH_RAEN_NAME",
+    "class": "ARCH",
+    "stats": {
+      "hp": 3,
+      "move": 1,
+      "attackRange": 3
+    },
+    "attackPattern": "LINE",
+    "skillIds": [
+      "SKILL_HERO_RAEN_S1",
+      "SKILL_HERO_RAEN_S2",
+      "SKILL_HERO_RAEN_S3"
+    ],
+    "assets": {},
+    "version": 2
+  },
+  "HERO_ARCH_XACNAS": {
+    "id": "HERO_ARCH_XACNAS",
+    "nameKey": "HERO_ARCH_XACNAS_NAME",
+    "class": "ARCH",
+    "stats": {
+      "hp": 3,
+      "move": 1,
+      "attackRange": 3
+    },
+    "attackPattern": "LINE",
+    "skillIds": [
+      "SKILL_HERO_XACNAS_S1",
+      "SKILL_HERO_XACNAS_S2",
+      "SKILL_HERO_XACNAS_S3"
+    ],
+    "assets": {},
+    "version": 2
+  },
+  "HERO_ARCH_LUCY": {
+    "id": "HERO_ARCH_LUCY",
+    "nameKey": "HERO_ARCH_LUCY_NAME",
+    "class": "ARCH",
+    "stats": {
+      "hp": 3,
+      "move": 1,
+      "attackRange": 3
+    },
+    "attackPattern": "LINE",
+    "skillIds": [
+      "SKILL_HERO_LUCY_S1",
+      "SKILL_HERO_LUCY_S2",
+      "SKILL_HERO_LUCY_S3"
+    ],
+    "assets": {},
+    "version": 2
+  },
+  "HERO_ALCH_GRIM": {
+    "id": "HERO_ALCH_GRIM",
+    "nameKey": "HERO_ALCH_GRIM_NAME",
+    "class": "ALCH",
+    "stats": {
+      "hp": 3,
+      "move": 1,
+      "attackRange": 1
+    },
+    "attackPattern": "RANGE",
+    "skillIds": [
+      "SKILL_HERO_GRIM_S1",
+      "SKILL_HERO_GRIM_S2",
+      "SKILL_HERO_GRIM_S3"
+    ],
+    "assets": {},
+    "version": 2
+  },
+  "HERO_ALCH_NEURO": {
+    "id": "HERO_ALCH_NEURO",
+    "nameKey": "HERO_ALCH_NEURO_NAME",
+    "class": "ALCH",
+    "stats": {
+      "hp": 3,
+      "move": 1,
+      "attackRange": 1
+    },
+    "attackPattern": "RANGE",
+    "skillIds": [
+      "SKILL_HERO_NEURO_S1",
+      "SKILL_HERO_NEURO_S2",
+      "SKILL_HERO_NEURO_S3"
+    ],
+    "assets": {},
+    "version": 2
+  },
+  "HERO_ALCH_RANUS": {
+    "id": "HERO_ALCH_RANUS",
+    "nameKey": "HERO_ALCH_RANUS_NAME",
+    "class": "ALCH",
+    "stats": {
+      "hp": 3,
+      "move": 1,
+      "attackRange": 1
+    },
+    "attackPattern": "RANGE",
+    "skillIds": [
+      "SKILL_HERO_RANUS_S1",
+      "SKILL_HERO_RANUS_S2",
+      "SKILL_HERO_RANUS_S3"
+    ],
+    "assets": {},
+    "version": 2
+  }
+});
+Object.assign(RAW_LOCALES["vi-VN"],{
+  "SKILL_HERO_EST_S1_NAME": "Phi Thân",
+  "SKILL_HERO_EST_S1_DESC": "Phi Thân · ★ · Đổi chỗ với một lính đồng đội cách 3 ô; lính nhận đòn thay và được phòng thủ.",
+  "SKILL_HERO_EST_S2_NAME": "Phục Thù",
+  "SKILL_HERO_EST_S2_DESC": "Phục Thù · ★ · Gây 1 sát thương lên tối đa 2 địch đã đánh đồng đội cách Est 3 ô trong lượt công này, kể cả đồng đội đã chết.",
+  "SKILL_HERO_EST_S3_NAME": "Ác Mộng Phía Đông",
+  "SKILL_HERO_EST_S3_DESC": "Ác Mộng Phía Đông · ★ · +2 Move, +3 mục tiêu cho đòn đánh; dùng sát thương cơ bản và trang bị. Hết lượt công.",
+  "HERO_INF_EST_NAME": "Est",
+  "SKILL_HERO_KAZU_S1_NAME": "Khiên Rồng",
+  "SKILL_HERO_KAZU_S1_DESC": "Khiên Rồng · ★ · Hủy sát thương và hiệu ứng lên Kazu hoặc một lính cách 1 ô.",
+  "SKILL_HERO_KAZU_S2_NAME": "Khóa Xích",
+  "SKILL_HERO_KAZU_S2_DESC": "Khóa Xích · ★★ · Gây 2 sát thương, stun đến hết lượt công kế tiếp của bên bị stun.",
+  "SKILL_HERO_KAZU_S3_NAME": "Xích Quỷ Kazu",
+  "SKILL_HERO_KAZU_S3_DESC": "Xích Quỷ Kazu · ★★★ · Gây 1 sát thương rồi kéo 1 địch còn sống về hex trước mặt; đường và ô đích trống. Cấm Guard bộ binh.",
+  "HERO_INF_KAZU_NAME": "Kazu",
+  "SKILL_HERO_RODOC_S1_NAME": "Hồi Sức",
+  "SKILL_HERO_RODOC_S1_DESC": "Hồi Sức · ★★★ · Hồi 1 HP cho bộ binh còn sống. Khi nhận đòn, HP sau tổng hồi phải lớn hơn sát thương sẽ nhận.",
+  "SKILL_HERO_RODOC_S2_NAME": "Tiếng Thét Xung Trận",
+  "SKILL_HERO_RODOC_S2_DESC": "Tiếng Thét Xung Trận · ★ · +2 Move cho tối đa 2 bộ binh chưa Attack, được đi thêm ngay. Hết lượt công.",
+  "SKILL_HERO_RODOC_S3_NAME": "Chiến Thần",
+  "SKILL_HERO_RODOC_S3_DESC": "Chiến Thần · ★ · Gây 1 sát thương mỗi mục tiêu, tối đa 4 địch cùng đường thẳng; chọn qua quân, không có xuyên mặc định.",
+  "HERO_INF_RODOC_NAME": "Rodoc",
+  "SKILL_HERO_MASK_S1_NAME": "Ma Kích",
+  "SKILL_HERO_MASK_S1_DESC": "Ma Kích · ★ · Gây 1 sát thương lên tối đa 2 địch cùng đường thẳng cách 3 ô; chọn qua quân, không lan.",
+  "SKILL_HERO_MASK_S2_NAME": "Phán Quyết",
+  "SKILL_HERO_MASK_S2_DESC": "Phán Quyết · ★ · +1 lần đánh cho kỵ binh chưa Attack; mỗi lần có phòng thủ riêng. Hết lượt công.",
+  "SKILL_HERO_MASK_S3_NAME": "Cán Cân Công Lý",
+  "SKILL_HERO_MASK_S3_DESC": "Cán Cân Công Lý · ★★★★ · Roll chẵn: 2 sát thương/hồi 2 HP; lẻ: 1/1. Mask vẫn hồi khi đòn bị né/hủy. Cấm Guard bộ binh.",
+  "HERO_CAV_MASK_NAME": "Mask",
+  "SKILL_HERO_SOUL_S1_NAME": "Ám Kỵ",
+  "SKILL_HERO_SOUL_S1_DESC": "Ám Kỵ · ★ · +1 sát thương và +1 Move trong lượt công; chưa Attack được đi thêm ngay.",
+  "SKILL_HERO_SOUL_S2_NAME": "Triệu Gọi Ám Hồn",
+  "SKILL_HERO_SOUL_S2_DESC": "Triệu Gọi Ám Hồn · ★ · Trả 1 HP, tạo kỵ binh mới tại hex trống cạnh Soul. Lính hành động ngay. Soul trả HP cuối vẫn chết/thua Duel.",
+  "SKILL_HERO_SOUL_S3_NAME": "Thây Độc",
+  "SKILL_HERO_SOUL_S3_DESC": "Thây Độc · ★★★ · Đổi chỗ với lính đồng đội, lính được phòng thủ. Kẻ đánh mất trực tiếp 1 HP kể cả đòn bị né/hủy.",
+  "HERO_CAV_SOUL_NAME": "Soul",
+  "SKILL_HERO_SIRI_S1_NAME": "Săn Người",
+  "SKILL_HERO_SIRI_S1_DESC": "Săn Người · ★ · Các đòn thường và skill Attack của Siri cấm Guard bộ binh trong lượt công.",
+  "SKILL_HERO_SIRI_S2_NAME": "Phong Bộ",
+  "SKILL_HERO_SIRI_S2_DESC": "Phong Bộ · ★ · Di chuyển tối đa 3 ô, xuyên quân, tuân địa hình; đổi ô đích hợp lệ để hủy sát thương và hiệu ứng.",
+  "SKILL_HERO_SIRI_S3_NAME": "Ám Phong",
+  "SKILL_HERO_SIRI_S3_DESC": "Ám Phong · ★ · +3 Move cho 1 đồng đội chưa Attack, gồm Siri; đi thêm ngay. Hết lượt công.",
+  "HERO_CAV_SIRI_NAME": "Siri",
+  "SKILL_HERO_RAEN_S1_NAME": "Viễn Tiễn",
+  "SKILL_HERO_RAEN_S1_DESC": "Viễn Tiễn · ★ · +1 tầm cho đòn thường và skill Attack của cung thủ chưa Attack. Hết lượt công.",
+  "SKILL_HERO_RAEN_S2_NAME": "Tên Lưới",
+  "SKILL_HERO_RAEN_S2_DESC": "Tên Lưới · ★★ · Sau khi đồng đội/Raen bị đánh, chọn địch trong tầm, đẩy tối đa 4 ô rồi trói hết lượt công đối phương. Vẫn được dùng trang bị.",
+  "SKILL_HERO_RAEN_S3_NAME": "Hàn Tiễn",
+  "SKILL_HERO_RAEN_S3_DESC": "Hàn Tiễn · ★★★ · Gây 1 sát thương, đóng băng tới hết lượt hiện tại khi trúng kể cả 0 damage; xuyên quân/vật cản. Cấm Guard bộ binh.",
+  "HERO_ARCH_RAEN_NAME": "Raen",
+  "SKILL_HERO_XACNAS_S1_NAME": "Lời Chào Của Quỷ",
+  "SKILL_HERO_XACNAS_S1_DESC": "Lời Chào Của Quỷ · ★ · +1 sát thương cho cung thủ chưa Attack, áp dụng đòn thường/skill Attack. Hết lượt công.",
+  "SKILL_HERO_XACNAS_S2_NAME": "Bão Phi Đao",
+  "SKILL_HERO_XACNAS_S2_DESC": "Bão Phi Đao · ★ · Gây 1 sát thương mỗi mục tiêu, tối đa 2 địch trong tầm hiện tại, không cần cùng đường thẳng.",
+  "SKILL_HERO_XACNAS_S3_NAME": "Phân Bóng",
+  "SKILL_HERO_XACNAS_S3_DESC": "Phân Bóng · ★★★ · Chọn 2 số xúc xắc cho cả lượt thủ; mỗi lần đánh roll riêng, sai số hủy đòn và hiệu ứng. Kết hợp Guard/skill/trang bị hợp lệ.",
+  "HERO_ARCH_XACNAS_NAME": "Xacnas",
+  "SKILL_HERO_LUCY_S1_NAME": "Phân Ảnh",
+  "SKILL_HERO_LUCY_S1_DESC": "Phân Ảnh · ★ · Hủy sát thương và hiệu ứng của một đòn nhắm Lucy, không ảnh hưởng mục tiêu khác.",
+  "SKILL_HERO_LUCY_S2_NAME": "Bắn Trả",
+  "SKILL_HERO_LUCY_S2_DESC": "Bắn Trả · ★ · Sau sát thương, nếu Lucy sống, bắn tối đa 2 địch bằng tầm/sát thương cơ bản, không buff/trang bị; địch không được thủ.",
+  "SKILL_HERO_LUCY_S3_NAME": "Điên Cuồng",
+  "SKILL_HERO_LUCY_S3_DESC": "Điên Cuồng · ★ · Bắn 2 lần trong cùng commit, mỗi lần 2 sát thương; chọn mục tiêu riêng, mở thủ riêng, được thêm buff/trang bị.",
+  "HERO_ARCH_LUCY_NAME": "Lucy",
+  "SKILL_HERO_GRIM_S1_NAME": "Giả Dạng",
+  "SKILL_HERO_GRIM_S1_DESC": "Giả Dạng · ★ · Biến thành chủng lính hợp mode tới lần biến tiếp; giữ Hero và HP. Trang bị không hợp chủng trả về hand.",
+  "SKILL_HERO_GRIM_S2_NAME": "Cải Tạo Nhanh",
+  "SKILL_HERO_GRIM_S2_DESC": "Cải Tạo Nhanh · ★ · Đổi vĩnh viễn chủng 1 lính đồng đội, đầy HP chủng mới, giữ trạng thái hành động; được dùng thủ của chủng mới.",
+  "SKILL_HERO_GRIM_S3_NAME": "Sao Chép",
+  "SKILL_HERO_GRIM_S3_DESC": "Sao Chép · ★★★ · Dùng skill Hero địch đã dùng trong trận, kể cả Hero chết; dùng chỉ số/vị trí Grim, sao hiệu lực min(sao gốc,3).",
+  "HERO_ALCH_GRIM_NAME": "Grim",
+  "SKILL_HERO_NEURO_S1_NAME": "Thuốc Câm",
+  "SKILL_HERO_NEURO_S1_DESC": "Thuốc Câm · ★★★★ · Khóa skill thủ 1 Hero tới hết lượt thủ hiện tại, không damage/commit; được né/hủy trước khi khóa, Guard/trang bị vẫn hợp lệ.",
+  "SKILL_HERO_NEURO_S2_NAME": "Triệu Gọi",
+  "SKILL_HERO_NEURO_S2_DESC": "Triệu Gọi · ★ · Sau khi từng có lính đồng đội chết, tạo mới lính đầy HP cạnh Neuro. Không tiêu thụ xác; giới hạn theo mode.",
+  "SKILL_HERO_NEURO_S3_NAME": "Thuốc Cấm",
+  "SKILL_HERO_NEURO_S3_DESC": "Thuốc Cấm · ★ · +2 Move cho tối đa 2 đồng đội chưa Attack, gồm Neuro; đi thêm ngay. Hết lượt công.",
+  "HERO_ALCH_NEURO_NAME": "Neuro",
+  "SKILL_HERO_RANUS_S1_NAME": "Dịch Chuyển",
+  "SKILL_HERO_RANUS_S1_DESC": "Dịch Chuyển · ★ · Dịch chuyển tới ô khác cách 4 ô, bỏ qua đường/quân/vật cản. Lượt thủ hủy đòn/hiệu ứng. Không tốn Move thường.",
+  "SKILL_HERO_RANUS_S2_NAME": "Thuật Cường Hóa",
+  "SKILL_HERO_RANUS_S2_DESC": "Thuật Cường Hóa · ★ · +1 lần đánh và +1 Move cho đồng đội chưa Attack, gồm Ranus; áp dụng đòn thường/skill Attack. Hết lượt công.",
+  "SKILL_HERO_RANUS_S3_NAME": "Bùng Cháy",
+  "SKILL_HERO_RANUS_S3_DESC": "Bùng Cháy · ★ · Gây 1 sát thương lên tối đa 4 địch quanh 2 ô, chọn qua quân/vật cản; được thêm chỉ số trang bị.",
+  "HERO_ALCH_RANUS_NAME": "Ranus"
+});
+
+// Every Hero has a distinct, readable fallback token until portraits are supplied.
+for(const h of Object.values(RAW_HERO_DB)){
+  const name=RAW_LOCALES['vi-VN'][h.nameKey];const token='IMG_'+h.id+'_ROSTER_TOKEN';
+  RAW_ASSETS[token]={type:'IMAGE',usage:'TOKEN',source:'HERO_INITIALS',fallbackGlyph:name.slice(0,2).toUpperCase()};
+  h.assets={...h.assets,token};
+}
+
 // ===== CONTENT SCHEMA v1.5 / PART 12.5 CONTENT MIGRATION + BACKWARD COMPATIBILITY =====
 // Canonical, data-driven content boundary shared by offline engine and future online server.
 // v1.5 keeps the manifest/handshake architecture and adds explicit schema migration, historical content resolution, persistence envelopes, and backward-compatibility policies.
@@ -596,3 +1646,4 @@ window.DOZEN_CONTENT=Object.freeze({
   views:ContentViews,assets:AssetResolver,runtime:RuntimeInstanceSchema,decks:DeckRuntimeBuilder,manifest:ContentManifestBuilder,compatibility:ContentCompatibilityValidator,handshake:MatchContentHandshake,matchSnapshot:MatchContentSnapshotBuilder,
   migration:Object.freeze({persistedSchema:PersistedSchemaMigrationRegistry,contentVersion:ContentVersionMigrationRegistry,historical:HistoricalContentRegistry,versionResolver:ContentVersionResolver,historicalAvailability:HistoricalContentAvailability,envelope:PersistenceEnvelopeBuilder,loader:BackwardCompatibilityLoader,documentKinds:PERSISTED_DOCUMENT_KIND,policy:BACKWARD_COMPATIBILITY_POLICY,codes:BACKWARD_COMPATIBILITY_CODES,persistedSchemaVersion:PERSISTED_DATA_SCHEMA_VERSION,protocolVersion:CONTENT_MIGRATION_PROTOCOL_VERSION})
 });
+

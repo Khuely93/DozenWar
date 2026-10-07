@@ -181,7 +181,7 @@ function beginTeam(p){
 function renderTeamPicker(){
   if(!HeroRegistry.list().some(h=>h.id===tempHeroDefinitionId))tempHeroDefinitionId=HeroRegistry.list()[0]?.id||null;
   ShellDOM.team.heroChoices.innerHTML='';
-  HeroRegistry.list().forEach(def=>{let h=ContentViews.hero(def.id);let d=document.createElement('button');d.className='choice'+(tempHeroDefinitionId===def.id?' on':'');d.innerHTML='<div class="sym">'+h.sym+'</div><b>'+h.name+'</b><div class="muted">HP '+h.stats.hp+' · '+(HERO_CLASS_RULES[h.class]?.name||h.class)+'</div>';d.onclick=()=>{tempHeroDefinitionId=def.id;renderTeamPicker()};ShellDOM.team.heroChoices.appendChild(d)});
+  HeroRegistry.list().forEach(def=>{let h=ContentViews.hero(def.id);let d=document.createElement('button');d.className='choice'+(tempHeroDefinitionId===def.id?' on':'');d.dataset.heroClass=h.class;d.innerHTML='<div class="sym">'+h.sym+'</div><b>'+h.name+'</b><div class="muted">HP '+h.stats.hp+' · '+({INF:'Bộ binh',CAV:'Kỵ binh',ARCH:'Cung thủ',ALCH:'Giả kim thuật sư'}[h.class]||h.class)+'</div>';d.onclick=()=>{tempHeroDefinitionId=def.id;renderTeamPicker()};ShellDOM.team.heroChoices.appendChild(d)});
   ShellDOM.team.troopChoices.innerHTML='';
   Object.entries(TROOPS).forEach(([k,u])=>{let d=document.createElement('div');d.className='choice';d.innerHTML='<div class="sym">'+u.sym+'</div><b>'+u.name+'</b><div class="muted">HP '+u.hp+' · Move '+u.move+'</div><div class="countCtl"><button class="btn" data-k="'+k+'" data-d="-1">−</button><b>'+tempTroops[k]+'</b><button class="btn" data-k="'+k+'" data-d="1">+</button></div>';ShellDOM.team.troopChoices.appendChild(d)});
   ShellDOM.team.troopChoices.querySelectorAll('button').forEach(b=>b.onclick=()=>{let k=b.dataset.k,d=+b.dataset.d,total=Object.values(tempTroops).reduce((a,b)=>a+b,0);if(d>0&&total>=5)return;tempTroops[k]=Math.max(0,tempTroops[k]+d);renderTeamPicker()});
@@ -202,3 +202,4 @@ function dealCards(){
   summary.textContent='Mỗi Player nhận ngẫu nhiên '+startingHand+' Equipment. Không rút thêm.'
 }
 ShellDOM.deal.toDeployButton.onclick=()=>beginDeploy();
+
