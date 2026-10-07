@@ -956,6 +956,12 @@ const RAW_EFFECTS={
   EFFECT_SWAP_ALLY:{id:'EFFECT_SWAP_ALLY',type:'SWAP_DEFENDER'},
   EFFECT_RETALIATE_1:{id:'EFFECT_RETALIATE_1',type:'RETALIATE',value:1}
 };
+Object.assign(RAW_EFFECTS,{
+  EFFECT_ATTACK_COUNT_PLUS_1:{id:'EFFECT_ATTACK_COUNT_PLUS_1',type:'MODIFY_ATTACK_COUNT',operation:'ADD',value:1,duration:'CURRENT_ACTION'},
+  EFFECT_ATTACK_RANGE_PLUS_1:{id:'EFFECT_ATTACK_RANGE_PLUS_1',type:'MODIFY_ATTACK_RANGE',operation:'ADD',value:1,duration:'CURRENT_ACTION'},
+  EFFECT_EQUIPMENT_MOVE_PLUS_1:{id:'EFFECT_EQUIPMENT_MOVE_PLUS_1',type:'EQUIPMENT_MOVE',value:1,maxTargets:2,duration:'CURRENT_PLAYER_TURN'},
+  EFFECT_EQUIPMENT_PULL_3:{id:'EFFECT_EQUIPMENT_PULL_3',type:'EQUIPMENT_PULL',value:1,range:3}
+});
 const RAW_SKILLS={
   SKILL_HERO_INF_001_S1:{id:'SKILL_HERO_INF_001_S1',nameKey:'SKILL_HERO_INF_001_S1_NAME',descriptionKey:'SKILL_HERO_INF_001_S1_DESC',class:'INF',timing:'ACTIVE',target:{side:'ALLY',range:3,maxTargets:1,requireMissingHp:true},effects:['EFFECT_HEAL_1']},
   SKILL_HERO_INF_001_S2:{id:'SKILL_HERO_INF_001_S2',nameKey:'SKILL_HERO_INF_001_S2_NAME',descriptionKey:'SKILL_HERO_INF_001_S2_DESC',class:'INF',timing:'ACTIVE',target:{side:'ALLY',class:'INF',range:3,maxTargets:1},effects:['EFFECT_MOVE_PLUS_2']},
@@ -990,7 +996,97 @@ const EQUIPMENT_GROUPS=Object.freeze({
   COMMON:{id:'EQUIPMENT_GROUP_COMMON',name:'Dùng chung',classId:'NEU',assetId:'IMG_EQUIPMENT_GROUP_COMMON'}
 });
 const EQUIPMENT_CATEGORIES=Object.freeze({ATTACK:{id:'EQUIPMENT_CATEGORY_ATTACK',name:'Tấn công',timing:'ATTACK',assetId:'ICON_EQUIPMENT_ATTACK'},DEFENSE:{id:'EQUIPMENT_CATEGORY_DEFENSE',name:'Phòng thủ',timing:'DEFENSE',assetId:'ICON_EQUIPMENT_DEFENSE'}});
-const NEW_EQUIPMENT_CATALOG={version:1,cards:[]};
+const NEW_EQUIPMENT_CATALOG={
+  "version": 2,
+  "cards": [
+    {
+      "id": "EQUIP_INF_ATK_001",
+      "group": "INF",
+      "name": "Búa Chiến",
+      "category": "ATTACK",
+      "star": 1,
+      "count": 2,
+      "effects": [
+        "EFFECT_DAMAGE_PLUS_1"
+      ],
+      "text": "+1 sát thương cho đòn thường và skill Attack trong một lần commit."
+    },
+    {
+      "id": "EQUIP_INF_DEF_001",
+      "group": "INF",
+      "name": "Khiên Ma Thuật",
+      "category": "DEFENSE",
+      "star": 4,
+      "count": 2,
+      "effects": [
+        "EFFECT_REFLECT_DAMAGE"
+      ],
+      "text": "Phản toàn bộ sát thương thực nhận sau giảm sát thương khi bị đánh hoặc Guard đồng đội. Vẫn mất HP; vẫn phản khi chết. Không nhận sát thương thì không phản."
+    },
+    {
+      "id": "EQUIP_INF_ATK_002",
+      "group": "INF",
+      "name": "Song Kiếm",
+      "category": "ATTACK",
+      "star": 1,
+      "count": 2,
+      "effects": [
+        "EFFECT_ATTACK_COUNT_PLUS_1"
+      ],
+      "text": "+1 lần đánh trong một lần commit; áp dụng cho đòn thường và skill Attack. Mỗi lần mở phản ứng phòng thủ riêng."
+    },
+    {
+      "id": "EQUIP_INF_ATK_003",
+      "group": "INF",
+      "name": "Giày Nhanh Nhẹn",
+      "category": "ATTACK",
+      "star": 1,
+      "count": 3,
+      "effects": [
+        "EFFECT_EQUIPMENT_MOVE_PLUS_1"
+      ],
+      "text": "Chọn tối đa 2 Bộ binh cùng phe ở bất kỳ đâu chưa Attack: +1 ô di chuyển trong lượt công hiện tại, kể cả đã di chuyển."
+    },
+    {
+      "id": "EQUIP_INF_ATK_004",
+      "group": "INF",
+      "name": "Trường Thương",
+      "category": "ATTACK",
+      "star": 1,
+      "count": 3,
+      "effects": [
+        "EFFECT_ATTACK_RANGE_PLUS_1"
+      ],
+      "text": "+1 ô tầm đánh cho đòn thường và skill Attack trong một lần commit."
+    },
+    {
+      "id": "EQUIP_INF_ATK_005",
+      "group": "INF",
+      "name": "Lao Móc",
+      "category": "ATTACK",
+      "star": 3,
+      "count": 1,
+      "effects": [
+        "EFFECT_EQUIPMENT_PULL_3",
+        "EFFECT_IGNORE_INF_GUARD"
+      ],
+      "text": "Đánh 1 địch trên đường thẳng tối đa 3 ô: gây 1 sát thương rồi kéo mục tiêu sống về hex trống liền kề trước mặt. Đường giữa phải trống quân/vật cản; không Guard Bộ binh."
+    },
+    {
+      "id": "EQUIP_INF_ATK_006",
+      "group": "INF",
+      "name": "Chùy Xích",
+      "category": "ATTACK",
+      "star": 1,
+      "count": 1,
+      "effects": [
+        "EFFECT_ATTACK_RANGE_PLUS_1",
+        "EFFECT_DAMAGE_PLUS_1"
+      ],
+      "text": "+1 ô tầm đánh và +1 sát thương cho đòn thường và skill Attack trong một lần commit."
+    }
+  ]
+};
 // Stable card IDs belong to designs; instance IDs distinguish copies in players' hands.
 function equipmentCatalogDefinition(card){
   const group=EQUIPMENT_GROUPS[card.group],category=EQUIPMENT_CATEGORIES[card.category];
@@ -3014,7 +3110,7 @@ function resolveCombat(){
   const seq=S.skillSequence;
   S.pending=null;reactionBox.style.display='none';hideDefensePopup();S.selected=null;S.mode=null;
   const result=checkWin();
-  if(S.matchEnded)S.skillSequence=null;
+  if(S.matchEnded){S.skillSequence=null;S.heroSequence=null;}
   renderBoard();updateUI();
   if(!S.matchEnded&&seq)resolveNextSkillSequenceTarget();
   return result;
@@ -3028,7 +3124,7 @@ function renderSkills(){skillBar.innerHTML='';if(!S.selected||!S.selected.hero){
 function useSkill(n){return CoreSkillController.begin(n)}
 function lineSkill(h,len,maxT,dmg){for(let dir of dirs){let hits=[];for(let n=1;n<=len;n++){let targetCell=findCellAxialStep(h,dir,n);if(!targetCell)continue;let u=unitAt(targetCell.q,targetCell.r);if(u&&u.side!==h.side)hits.push(u)}if(hits.length){hits.slice(0,maxT).forEach(u=>u.hp=Math.max(0,u.hp-dmg));lg('✨ Skill đường thẳng trúng '+Math.min(maxT,hits.length)+' mục tiêu');return}}lg('Skill không tìm thấy mục tiêu trên đường thẳng.')}
 function findCellAxialStep(u,dir,n){let [aq,ar]=axial(u),tq=aq+dir[0]*n,tr=ar+dir[1]*n;return cells.find(c=>{let [q,r]=axial(c);return q===tq&&r===tr})}
-function renderHand(p,context){handOwner.textContent='PLAYER '+p+' · '+(context==='atk'?'ATTACK':'DEFENSE')+' WINDOW';handBar.innerHTML='';S.hands[p].forEach(c=>{let u=context==='atk'?S.units.find(x=>x.id===S.pending?.a):S.units.find(x=>x.id===S.pending?.d);let ok=u&&validCardFor(c,u,context);let d=document.createElement('button');d.className='card '+c.type+(ok?'':' dim');d.innerHTML='<div><b>'+c.name+'</b><div class="star">'+('★'.repeat(c.star))+'</div></div><div class="muted">'+c.text+'</div>';d.disabled=!ok;d.onclick=()=>{if(context==='atk'){S.pending.atkCard=c;if(effectOf(c,'EFFECT_IGNORE_INF_GUARD'))S.pending.ignoreGuard=true}else{S.pending.defCard=c}S.hands[p]=S.hands[p].filter(x=>x.uid!==c.uid);markDuelCardUsed(p,context);lg('🎴 Player '+p+' dùng '+c.name+' ['+c.canonicalId+']');showReaction(context==='def')};handBar.appendChild(d)})} 
+function renderHand(p,context){handOwner.textContent='PLAYER '+p+' · '+(context==='atk'?'ATTACK':'DEFENSE')+' WINDOW';handBar.innerHTML='';S.hands[p].forEach(c=>{let u=context==='atk'?S.units.find(x=>x.id===S.pending?.a):S.units.find(x=>x.id===S.pending?.d);let ok=u&&validCardFor(c,u,context);let d=document.createElement('button');d.className='card '+c.type+(ok?'':' dim');d.innerHTML=cardHTML(c);d.disabled=!ok;d.onclick=()=>{if(context==='atk'){S.pending.atkCard=c;if(effectOf(c,'EFFECT_IGNORE_INF_GUARD'))S.pending.ignoreGuard=true}else{S.pending.defCard=c}S.hands[p]=S.hands[p].filter(x=>x.uid!==c.uid);markDuelCardUsed(p,context);lg('🎴 Player '+p+' dùng '+c.name+' ['+c.canonicalId+']');showReaction(context==='def')};handBar.appendChild(d)})} 
 let checkWin=()=>null
 function updateUI(){if(S.phase==='battle'&&S.units.filter(u=>u.hero).length===2&&S.units.some(u=>u.hero&&u.hp<=0))checkWin();if(S.phase==='deploy'){let p=currentDeployPlayer(),n=S.units.filter(u=>u.side===p).length;mainBtn.disabled=currentDeployPlayer()===S.botSide;gameTitle.textContent='DEPLOYMENT — PLAYER '+p;gameHint.textContent=(p===S.loser?'Người đi sau xếp trước':'Người đi trước xếp sau')+' · đã xếp '+n+'/6';mainBtn.textContent=n===6?(S.deployIndex===0?'XÁC NHẬN & CHUYỂN PLAYER':'BATTLE START'):'XÁC NHẬN';summary.textContent='Player '+S.loser+' chọn/xếp trước. Player '+S.winner+' đi lượt đầu.';unitInfo.textContent='Nhấn một ô hex trống trong lãnh địa → chọn HERO hoặc LÍNH. Muốn đổi vị trí: kéo trực tiếp quân bằng chuột; trên điện thoại nhấn giữ rồi kéo.';moveBtn.disabled=attackBtn.disabled=true;renderSkills();handBar.innerHTML='';handOwner.textContent='Hand sẽ dùng trong Battle.';reactionBox.style.display='none'}else if(S.phase==='battle'){gameTitle.textContent='TURN '+S.turn+' — PLAYER '+S.battleSide;gameHint.textContent='Mỗi đơn vị có 1 lần Move và 1 lần Attack mỗi lượt; Attack kết thúc hành động của đơn vị.';mainBtn.textContent='KẾT THÚC LƯỢT';attackBtn.textContent=S.skillTarget&&ContentViews.skill(S.skillTarget.skillId)?.maneuver?.attackFlow==='SELECT_ADJACENT'?'TẤN CÔNG SKILL':'ATTACK';mainBtn.disabled=!!(S.pending||S.skillTarget||S.skillSequence||S.guardTargeting||S.matchEnded||S.battleSide===S.botSide);if(S.battleSide===S.botSide&&!S.pending)gameHint.textContent='Bot đang thực hiện lượt của mình.';if(S.pending)gameHint.textContent='Đang chờ phản ứng phòng thủ: chọn cách phòng thủ hoặc KHÔNG ĐỠ ĐÒN để hoàn tất đòn đánh.';else if(S.skillSequence)gameHint.textContent='Đang xử lý các mục tiêu tiếp theo của Skill.';else if(S.skillTarget)gameHint.textContent=ContentViews.skill(S.skillTarget.skillId)?.maneuver?.attackFlow==='SELECT_ADJACENT'?'Di chuyển EST tùy ý, chọn thủ công tối đa 4 địch kề bên rồi nhấn TẤN CÔNG.':'Chọn mục tiêu Skill hoặc hủy chọn mục tiêu để kết thúc lượt.';else if(S.guardTargeting)gameHint.textContent='Chọn Bộ binh đỡ đòn hoặc hủy lựa chọn phòng thủ.';summary.textContent='Lượt đầu thuộc Player '+S.winner+' (người thắng Roll Dice).';if(S.selected){let sp=unitSpec(S.selected);unitInfo.innerHTML='<b>'+sp.name+'</b><br>HP '+S.selected.hp+'/'+sp.hp+' · Move '+movementBudgetTotal(S.selected)+' (đã dùng '+movementCostSpent(S.selected)+', còn '+remainingMove(S.selected)+') · Range '+sp.range+(sp.base==='archer'?' đường thẳng 3 ô, xuyên đơn vị':'');moveBtn.disabled=!!S.skillTarget||S.battleSide===S.botSide||!canMoveFurther(S.selected);attackBtn.disabled=S.skillTarget?!(ContentViews.skill(S.skillTarget.skillId)?.maneuver?.attackFlow==='SELECT_ADJACENT'&&S.skillTarget.selected.length):S.battleSide===S.botSide||S.selected.attacked||(!hasAttackTarget(S.selected)&&(!S.selected.hero||allHeroSkillsUsed(S.selected)))}else{unitInfo.textContent='Chọn một đơn vị của Player '+S.battleSide+'.';moveBtn.disabled=attackBtn.disabled=true}renderSkills();if(!S.pending){handOwner.textContent=S.battleSide===S.botSide?'BOT HAND · đang ẩn':'PLAYER '+S.battleSide+' HAND · card hợp lệ sẽ sáng theo context';handBar.innerHTML=S.battleSide===S.botSide?'':S.hands[S.battleSide].map(c=>cardHTML(c,true)).join('');reactionBox.style.display='none'}}}
 
@@ -3124,7 +3220,7 @@ function chooseGuardFromMap(g){
   let node=boardSvg.querySelector('[data-unit-id="'+g.id+'"]');
   if(node)node.classList.add('guardChosen');
   lg('🛡️ Player '+d.side+' chọn '+unitSpec(g).name+' đỡ đòn cho '+unitSpec(d).name+'.');
-  setTimeout(resolveCombat,120);
+  if(typeof EquipmentCore!=='undefined'&&defenseCards(g).length)EquipmentCore.guardReaction(g);else setTimeout(resolveCombat,120);
   return true;
 }
 
@@ -3247,7 +3343,7 @@ defGuardChoice.onclick=()=>{
 };
 defEquipChoice.onclick=()=>{
   if(!S.pending)return;let d=S.units.find(x=>x.id===S.pending.d),cards=defenseCards(d);defGuardList.classList.remove('show');clearGuardHighlights();defCardList.innerHTML='';
-  cards.forEach(c=>{let b=document.createElement('button');b.className='btn mini';b.innerHTML='🎴 <b>'+c.name+'</b> '+('★'.repeat(c.star))+'<br><span class="muted">'+c.text+'</span>';b.onclick=()=>{S.pending.defCard=c;S.hands[d.side]=S.hands[d.side].filter(x=>x.uid!==c.uid);markDuelCardUsed(d.side,'def');lg('🎴 Player '+d.side+' dùng '+c.name+' để phòng thủ.');resolveCombat()};defCardList.appendChild(b)});
+  cards.forEach(c=>{let b=document.createElement('button');b.className='btn mini';b.innerHTML=cardHTML(c);b.onclick=()=>{S.pending.defCard=c;S.hands[d.side]=S.hands[d.side].filter(x=>x.uid!==c.uid);markDuelCardUsed(d.side,'def');lg('🎴 Player '+d.side+' dùng '+c.name+' để phòng thủ.');resolveCombat()};defCardList.appendChild(b)});
   defCardList.classList.toggle('show');
 };
 defHeroSkillChoice.onclick=()=>{
@@ -4164,7 +4260,7 @@ function attackCardsFor(u){return u?.queuedAttackEquipment?[]:(S.hands[u.side]||
 function renderEquipmentSelect(){
   if(!S.selected)return;atkSkillList.classList.remove('show');atkCardList.innerHTML='';
   let cards=attackCardsFor(S.selected),wrap=document.createElement('div');wrap.className='equipSelectWrap';
-  cards.forEach(c=>{let b=document.createElement('button');b.className='equipCardBtn'+(S.equipSelectedCard?.uid===c.uid?' selected':'');b.innerHTML='🎴 <b>'+c.name+'</b> '+('★'.repeat(c.star))+'<br><span class="muted">'+c.text+'</span>';b.onclick=()=>{S.equipSelectedCard=S.equipSelectedCard?.uid===c.uid?null:c;renderEquipmentSelect()};wrap.appendChild(b)});
+  cards.forEach(c=>{let b=document.createElement('button');b.className='equipCardBtn'+(S.equipSelectedCard?.uid===c.uid?' selected':'');b.innerHTML=cardHTML(c);b.onclick=()=>{S.equipSelectedCard=S.equipSelectedCard?.uid===c.uid?null:c;renderEquipmentSelect()};wrap.appendChild(b)});
   let foot=document.createElement('div');foot.className='equipSelectFooter';
   let back=document.createElement('button');back.className='btn';back.textContent='← QUAY LẠI';back.onclick=()=>{S.equipSelectedCard=null;S.equipPendingActorId=null;atkCardList.classList.remove('show');atkCardList.innerHTML='';};
   let ok=document.createElement('button');ok.className='btn gold';ok.textContent='XÁC NHẬN CARD';ok.disabled=!S.equipSelectedCard;ok.onclick=()=>{if(!S.equipSelectedCard||!attackCardsFor(S.selected).some(c=>c.uid===S.equipSelectedCard.uid))return;S.equipPendingActorId=S.selected.id;atkCardList.classList.remove('show');atkCardList.innerHTML='';atkPopupHint.textContent='Card đang chờ · chọn ĐÁNH THƯỜNG hoặc SKILL chủ động.';};
@@ -4746,6 +4842,7 @@ const HeroCore={
     while(queue.length){const {c,d}=queue.shift();if(d>=range)continue;for(const n of cellNeighbors(c)){const k=n.q+','+n.r;if(seen.has(k)||this.terrainBlocked(n))continue;seen.add(k);queue.push({c:n,d:d+1});if(this.cellAllowed(h,n))out.push(n)}}return out;
   },
   canUse(h,n,sk=heroSkill(h,n),pending=S.pending){
+    if(sk?.equipmentAction)return EquipmentCore.canUse(h,sk.equipmentCard);
     if(S.phase!=='battle'||S.matchEnded||!this.alive(h)||!sk||isSkillUsed(h,n))return false;
     const defense=h.side!==S.battleSide;
     if(defense){if(!['DEFENSE_REACTION','BOTH'].includes(sk.timing)||this.blocked(h,'defense'))return false;
@@ -4766,7 +4863,7 @@ const HeroCore={
   },
   targets(h,sk){return S.units.filter(u=>this.candidate(h,sk,u))},
   copyChoices(h){const defense=h.side!==S.battleSide;return [...new Set((S.heroSkillHistory||[]).filter(e=>e.side!==h.side).map(e=>e.skillId))].map(id=>ContentViews.skill(id)).filter(sk=>sk&&sk.mechanic!=='COPY'&&(defense?['DEFENSE_REACTION','BOTH']:['ACTIVE','BOTH']).includes(sk.timing))},
-  remember(h,sk,n){markSkillUsed(h,n);(S.heroSkillHistory??=[]).push({side:h.side,skillId:sk.id,turn:S.turn})},
+  remember(h,sk,n){if(sk.equipmentAction)return;markSkillUsed(h,n);(S.heroSkillHistory??=[]).push({side:h.side,skillId:sk.id,turn:S.turn})},
   begin(h,n,override=null,continuation=false){
     const sk=override||heroSkill(h,n);if(!continuation&&!this.canUse(h,n,sk))return false;
     this.selection={h,n,sk,selected:[],cell:null,kind:this.troopDefs()[0]?.id,copyId:null,dice:[1,2],cardUid:S.equipPendingActorId===h.id?S.equipSelectedCard?.uid:null,continuation};
@@ -4777,7 +4874,7 @@ const HeroCore={
     const i=s.selected.indexOf(u.id);if(i>=0)s.selected.splice(i,1);else{const max=this.targetLimit(s.h,s.sk,this.selectedCard());if(s.sk.target.selection?.lineLock&&s.selected.length&&!onRay(s.h,u,rayFrom(s.h,S.units.find(x=>x.id===s.selected[0])),this.skillRange(s.h,s.sk)))return false;if(max===1)s.selected=[u.id];else if(s.selected.length<max)s.selected.push(u.id)}this.draw();renderBoard();return true;
   },
   selectCell(c){const s=this.selection;if(!s)return false;const allowed=s.sk.mechanic==='ESCAPE'?this.escapeCells(s.h,s.sk):s.sk.mechanic==='SUMMON'?cells.filter(c=>distU(s.h,c)===1&&this.cellAllowed({side:s.h.side,hero:false,id:null},c)):[];if(!allowed.some(x=>x.q===c.q&&x.r===c.r))return false;s.cell=c;this.draw();renderBoard();return true},
-  selectedCard(){const s=this.selection;return s&&(S.hands[s.h.side]||[]).find(c=>c.uid===s.cardUid)||null},
+  selectedCard(){const s=this.selection;return s&&((S.hands[s.h.side]||[]).find(c=>c.uid===s.cardUid)||(s.continuation?S.heroSequence?.card:null))||null},
   equip(card,h,context){if(!card)return true;if(!validCardFor(card,h,context)||!(S.hands[h.side]||[]).some(c=>c.uid===card.uid))return false;S.hands[h.side]=S.hands[h.side].filter(c=>c.uid!==card.uid);markDuelCardUsed(h.side,context);return true},
   buff(u,p){for(const [field,key] of [['move','moveBuff'],['damage','damageBuff'],['range','rangeBuff'],['targets','targetBuff'],['attacks','attackCountBuff']])if(p[field]){u[key]=(u[key]||0)+p[field];(u.turnModifiers??={})[key]=(u.turnModifiers[key]||0)+p[field]}if(p.move)u.extraMoveGranted=(u.extraMoveGranted||0)+p.move;if(p.ignoreGuard){u.ignoreInfGuard=true;(u.turnModifiers??={}).ignoreInfGuard=true}},
   transform(u,id,hero){const def=UnitRegistry.get(id);if(!def)return false;if(hero){u.morphDefinitionId=id;u.classId=def.class;u.kind=CLASS_KIND[def.class];for(const key of ['equipment','equipmentCards','equipmentIds']){if(Array.isArray(u[key])){const kept=[];for(const c of u[key]){const card=typeof c==='string'?createEquipmentCardInstance(c,u.side):c;if(card&&equipmentEligibleForClass(card,def.class))kept.push(c);else if(card)(S.hands[u.side]??=[]).push({...card,uid:card.uid||crypto.randomUUID(),cls:CLASS_RUNTIME[card.class],type:card.category==='ATTACK'?'atk':card.category==='DEFENSE'?'def':'neu'})}u[key]=kept}}if(u.queuedAttackEquipment&&!equipmentEligibleForClass(u.queuedAttackEquipment,def.class)){S.hands[u.side].push(u.queuedAttackEquipment);u.queuedAttackEquipment=null}}else{u.definitionId=id;u.classId=def.class;u.kind=CLASS_KIND[def.class];u.hp=def.stats.hp}return true},
@@ -4793,13 +4890,14 @@ const HeroCore={
     if(sk.mechanic==='DICE_WARD'&&(s.dice.length!==2||new Set(s.dice).size!==2))return false;
     if(defense&&S.pending&&CorePowerResolver.resolve(pendingAttackPower(S.pending),Math.max(sk.star||0,card?.star||0)).winner!=='RESPONSE')return false;
     if(sk.mechanic==='COPY'){const original=this.copyChoices(h).find(k=>k.id===s.copyId);if(!original)return false;const copy={...original,star:Math.min(original.star||0,3),copied:true};this.selection=null;return this.begin(h,n,copy,true)}
+    if(card&&!defense&&!sk.equipmentAction&&(!sk.heroAttack||typeof EquipmentCore!=='undefined'&&EquipmentCore.standalone(card)))return this.message('Card này phải dùng đúng hành động trang bị hoặc kết hợp skill Attack.');
     if(sk.mechanic==='HEAL'&&S.pending&&ts[0].id===(S.pending.replacementTargetId||S.pending.d)){const total=1+this.cardBonus(card,'HEAL');if(Math.min(this.spec(ts[0]).hp,ts[0].hp+total)<=this.incoming({...S.pending,defCard:card||S.pending.defCard}))return this.message('Hồi máu chưa đủ để sống sau đòn đánh.')}
     if(card&&!(s.continuation&&S.heroSequence)&&(!validCardFor(card,h,defense?'def':'atk')||!(S.hands[h.side]||[]).some(c=>c.uid===card.uid)))return false;
     save();if(card&&!(s.continuation&&S.heroSequence))this.equip(card,h,defense?'def':'atk');if(!s.continuation)this.remember(h,sk,n);else if(!S.heroSequence)this.remember(h,sk,n);
     if(defense&&S.pending&&card){S.pending.defCard=card;S.pending.defenseSkillStar=sk.star}
     this.selection=null;S.mode=null;this.draw();
     switch(sk.mechanic){
-      case 'BUFF':for(const t of ts)this.buff(t,p);if(card)h.queuedAttackEquipment=card;break;
+      case 'BUFF':for(const t of ts)this.buff(t,p);if(card&&!sk.equipmentAction)h.queuedAttackEquipment=card;break;
       case 'MORPH':this.transform(h,s.kind,true);break;
       case 'CONVERT':this.transform(ts[0],s.kind,false);break;
       case 'SUMMON':h.hp=Math.max(0,h.hp-(p.hpCost||0));S.units.push(createRuntimeEntityInstance({definitionId:p.summonClass?this.troopDefs().find(d=>d.class===p.summonClass).id:s.kind,side:h.side,hero:false,q:s.cell.q,r:s.cell.r}));break;
@@ -4872,7 +4970,7 @@ const _rosterUseDefense=useDefenseSkill;
 useDefenseSkill=function(choice,target,card=null,defer=false){if(!choice?.skill.mechanic)return _rosterUseDefense(choice,target,card,defer);if(!HeroCore.begin(choice.hero,choice.skillNo))return false;if(target)HeroCore.selection.selected=(Array.isArray(target)?target:[target]).map(u=>u.id);HeroCore.selection.cardUid=card?.uid||null;if(['MORPH','CONVERT','COPY','ESCAPE','SUMMON','DICE_WARD'].includes(choice.skill.mechanic))return true;return HeroCore.commit()};
 const _rosterStartAttack=startAttack;
 startAttack=function(a,d){if(!HeroCore.alive(a)||a.attacked||HeroCore.blocked(a,'attack')||!canAttack(a,d))return false;
-  if(a.targetBuff||a.attackCountBuff){const card=a.queuedAttackEquipment||S.attackChoice?.card||null;const sk={id:'NORMAL_ATTACK',name:'Đánh thường',star:0,heroAttack:true,mechanic:'STRIKE',target:{side:'ENEMY',range:'ATTACK',maxTargets:1,pattern:unitSpec(a).attackPattern},parameters:{damage:1,attack:true}};HeroCore.selection={h:a,n:0,sk,selected:[d.id],continuation:true,cardUid:card?.uid};S.heroSequence={h:a.id,sk,n:0,targets:[],index:0,round:0,count:1+(a.attackCountBuff||0),card,normal:true};S.skillSequence={roster:true};a.attacked=true;S.mode='hero-skill';HeroCore.draw();if(a.side===S.botSide)HeroCore.autoSelect();return true}
+  if(a.targetBuff||a.attackCountBuff||HeroCore.cardBonus(a.queuedAttackEquipment||S.attackChoice?.card,'MODIFY_ATTACK_COUNT')){const card=a.queuedAttackEquipment||S.attackChoice?.card||null;const sk={id:'NORMAL_ATTACK',name:'Đánh thường',star:0,heroAttack:true,mechanic:'STRIKE',target:{side:'ENEMY',range:'ATTACK',maxTargets:1,pattern:unitSpec(a).attackPattern},parameters:{damage:1,attack:true}};HeroCore.selection={h:a,n:0,sk,selected:[d.id],continuation:true,cardUid:card?.uid};S.heroSequence={h:a.id,sk,n:0,targets:[],index:0,round:0,count:1+(a.attackCountBuff||0)+HeroCore.cardBonus(card,'MODIFY_ATTACK_COUNT'),card,normal:true};S.skillSequence={roster:true};a.attacked=true;S.mode='hero-skill';HeroCore.draw();if(a.side===S.botSide)HeroCore.autoSelect();return true}
   const result=_rosterStartAttack(a,d);if(S.pending)S.pending.ignoreGuard ||=!!a.ignoreInfGuard;return result};
 const _rosterEndTurn=endTurn;
 endTurn=function(){if(HeroCore.selection||S.heroSequence)return false;const side=S.battleSide,turn=S.turn;const snapshot=S.units.map(u=>[u,{...u,heroStatuses:[...(u.heroStatuses||[])]}]);HeroCore.boundary(side);const result=_rosterEndTurn();if(S.turn===turn){for(const [u,data] of snapshot)Object.assign(u,data)}return result};
@@ -4915,7 +5013,7 @@ const HeroSkillUI={
       if(m==='DICE_WARD'){const label=document.createElement('p');label.textContent='Chọn hai số khác nhau:';this.panel.append(label);for(let i=1;i<=6;i++)this.panel.append(this.button((s.dice.includes(i)?'✓ ':'')+i,()=>{if(s.dice.includes(i))s.dice=s.dice.filter(n=>n!==i);else if(s.dice.length<2)s.dice.push(i);this.render()}))}
       if(['ESCAPE','SUMMON'].includes(m)){const hint=document.createElement('p');hint.textContent='Chọn hex đích trên map hoặc trong danh sách:';this.panel.append(hint);const list=document.createElement('div');list.className='heroTargetList';const options=m==='ESCAPE'?HeroCore.escapeCells(s.h,s.sk):cells.filter(c=>distU(s.h,c)===1&&HeroCore.cellAllowed({side:s.h.side,hero:false,id:null},c));for(const c of options)list.append(this.button((s.cell?.q===c.q&&s.cell?.r===c.r?'✓ ':'')+'Hex '+c.q+','+c.r,()=>HeroCore.selectCell(c)));this.panel.append(list)}
       else if(!['MORPH','COPY','DICE_WARD'].includes(m)){const list=document.createElement('div');list.className='heroTargetList';for(const u of HeroCore.targets(s.h,s.sk))list.append(this.button((s.selected.includes(u.id)?'✓ ':'')+unitSpec(u).name+' · HP '+u.hp+' · '+u.q+','+u.r,()=>HeroCore.select(u)));this.panel.append(list)}
-      const defense=s.h.side!==S.battleSide,cards=s.continuation&&S.heroSequence?[]:(S.hands[s.h.side]||[]).filter(c=>validCardFor(c,s.h,defense?'def':'atk'));
+      const defense=s.h.side!==S.battleSide,cards=s.continuation&&S.heroSequence?[]:(S.hands[s.h.side]||[]).filter(c=>validCardFor(c,s.h,defense?'def':'atk')&&(defense||s.sk.heroAttack&&!s.sk.equipmentAction&&!EquipmentCore.standalone(c)));
       if(cards.length){const select=document.createElement('select');select.setAttribute('aria-label','Trang bị kết hợp');select.add(new Option('Không dùng trang bị',''));for(const c of cards)select.add(new Option(c.name+' · '+'★'.repeat(c.star),c.uid));select.value=s.cardUid||'';select.onchange=()=>{s.cardUid=select.value||null;this.render()};this.panel.append(select)}
       this.panel.append(this.button('XÁC NHẬN',()=>HeroCore.commit(),m==='DICE_WARD'&&s.dice.length!==2),this.button('HỦY',()=>HeroCore.cancel(),!!s.continuation&&!!S.heroSequence));
     }
@@ -4941,6 +5039,68 @@ CoreBoardRenderer.registerLayer('HERO_SKILL_STATE',45,{
 const _heroUndo=undo;
 undo=function(){if(HeroCore.selection||S.pending||S.heroSequence||S.matchEnded)return false;return _heroUndo()};
 undoBtn.onclick=()=>undo();
+
+;
+/* Equipment effects are scoped to a combat commit. Movement cards are separate pre-Attack actions. */
+const EquipmentCore={
+  standalone(c){return effectOf(c,'EFFECT_EQUIPMENT_MOVE_PLUS_1')||effectOf(c,'EFFECT_EQUIPMENT_PULL_3')},
+  owned(h,c){return !!h&&!!c&&(S.hands[h.side]||[]).some(x=>x.uid===c.uid)},
+  canUse(h,c){return S.phase==='battle'&&!S.matchEnded&&!S.pending&&!S.heroSequence&&h?.side===S.battleSide&&h.hp>0&&!h.attacked&&!HeroCore.blocked(h,'active')&&this.owned(h,c)&&validCardFor(c,h,'atk')},
+  cardFor(u){
+    if(S.heroSequence?.h===u.id)return S.heroSequence.card;
+    if(S.pending?.a===u.id)return S.pending.atkCard;
+    const s=HeroCore.selection;if(s?.h.id===u.id&&s.sk.heroAttack)return HeroCore.selectedCard();
+    if(u.queuedAttackEquipment)return u.queuedAttackEquipment;
+    if(S.equipPendingActorId===u.id&&this.owned(u,S.equipSelectedCard))return S.equipSelectedCard;
+    if(S.selected?.id===u.id&&this.owned(u,S.attackChoice?.card))return S.attackChoice.card;
+    return null;
+  },
+  begin(h,c){
+    if(!this.canUse(h,c)||HeroCore.selection)return false;
+    S.selected=h;hideAttackPopup();
+    if(!this.standalone(c)){S.equipSelectedCard=c;S.equipPendingActorId=h.id;S.attackChoice=null;showAttackPopup(h);return true}
+    const move=effectOf(c,'EFFECT_EQUIPMENT_MOVE_PLUS_1');
+    const sk={id:c.id,name:c.name,description:c.text,star:c.star,timing:'ACTIVE',heroAttack:!move,equipmentAction:true,equipmentCard:c,
+      mechanic:move?'BUFF':'STRIKE',target:move?{side:'ALLY',class:'INF',range:99,maxTargets:2}:{side:'ENEMY',range:3,pattern:'LINE',maxTargets:1},
+      parameters:move?{move:1}:{damage:1,pull:true,ignoreGuard:true,attack:true}};
+    if(!HeroCore.begin(h,0,sk))return false;HeroCore.selection.cardUid=c.uid;HeroCore.draw();renderBoard();return true;
+  },
+  guardReaction(g){
+    hideDefensePopup();defPopupTitle.textContent='PLAYER '+g.side+' · ĐỠ ĐÒN CHO ĐỒNG ĐỘI';
+    defPopupTarget.textContent=unitSpec(g).name+' · HP '+g.hp+' · Chọn trang bị hoặc nhận đòn';
+    defGuardChoice.style.display='none';defHeroSkillChoice.style.display='none';defEquipChoice.style.display='none';
+    defCardList.replaceChildren();const pending=S.pending;
+    for(const card of defenseCards(g)){const b=HeroSkillUI.button(card.name+' · '+'★'.repeat(card.star),()=>{
+      if(S.pending!==pending||!this.owned(g,card)||!validCardFor(card,g,'def'))return;
+      pending.defCard=card;S.hands[g.side]=S.hands[g.side].filter(c=>c.uid!==card.uid);markDuelCardUsed(g.side,'def');resolveCombat();
+    },!defenseEquipmentWins(pending,card));defCardList.append(b)}
+    defCardList.classList.add('show');defPopupHint.textContent='Trang bị áp dụng cho Bộ binh đang nhận đòn thay. Không nhận sát thương thì không phản.';positionDefensePopup(g);
+  },
+  render(){
+    const host=CoreDOM.board.wrap.closest?.('.duelMapStage')||CoreDOM.board.wrap;if(this.bar.parentElement!==host)host.append(this.bar);
+    this.bar.replaceChildren();this.bar.hidden=S.phase!=='battle'||S.matchEnded||!!S.pending||!!S.heroSequence||!!HeroCore.selection||S.battleSide===S.botSide;
+    if(this.bar.hidden)return;
+    const eligible=S.units.filter(u=>u.side===S.battleSide&&u.hp>0&&!u.attacked&&!HeroCore.blocked(u,'active')&&unitSpec(u).classId==='INF');
+    const h=eligible.find(u=>u.id===S.selected?.id)||eligible[0];if(!h)return;
+    for(const c of (S.hands[h.side]||[]).filter(c=>c.type==='atk'&&validCardFor(c,h,'atk'))){const b=HeroSkillUI.button('🎴 '+c.name+' · '+unitSpec(h).name,()=>this.begin(h,c));b.title=c.text;b.dataset.equipmentId=c.equipmentId;this.bar.append(b)}
+    this.bar.hidden=!this.bar.childElementCount;
+  },
+  bar:document.createElement('div')
+};
+EquipmentCore.bar.className='heroDefenseBar equipmentActionBar';EquipmentCore.bar.setAttribute('aria-label','Trang bị lượt công');CoreDOM.board.wrap.append(EquipmentCore.bar);
+const _equipmentSpec=unitSpec;
+unitSpec=function(u){const spec=_equipmentSpec(u);return spec?{...spec,range:spec.range+HeroCore.cardBonus(EquipmentCore.cardFor(u),'MODIFY_ATTACK_RANGE')}:spec};
+const _equipmentSkillRange=HeroCore.skillRange;
+HeroCore.skillRange=function(h,sk){const range=_equipmentSkillRange.call(this,h,sk);return range+(sk.heroAttack&&typeof sk.target?.range==='number'?this.cardBonus(EquipmentCore.cardFor(h),'MODIFY_ATTACK_RANGE'):0)};
+const _equipmentStart=startAttack;
+startAttack=function(a,d){const c=a.queuedAttackEquipment||S.attackChoice?.card;if(c&&EquipmentCore.standalone(c)){if(!EquipmentCore.begin(a,c))return false;if(!HeroCore.select(d)){HeroCore.cancel();return false}return HeroCore.commit()}return _equipmentStart(a,d)};
+const _equipmentUpdate=updateUI;
+updateUI=function(){const r=_equipmentUpdate();EquipmentCore.render();return r};
+const _equipmentSelect=renderEquipmentSelect;
+renderEquipmentSelect=function(){_equipmentSelect();const ok=atkCardList.querySelector('.equipSelectFooter .gold');if(!ok)return;const previous=ok.onclick;ok.onclick=()=>{const c=S.equipSelectedCard;if(c&&EquipmentCore.standalone(c))return EquipmentCore.begin(S.selected,c);const r=previous();showAttackPopup(S.selected);return r}};
+const _equipmentBotCard=botAttackCard;
+botAttackCard=function(u,t){const card=_equipmentBotCard(u,t);return card&&EquipmentCore.standalone(card)?null:card};
+window.DOZEN_EQUIPMENT=EquipmentCore;
 
 ;
 // Keep manual reset useful during playtest.

@@ -15,6 +15,12 @@ const RAW_EFFECTS={
   EFFECT_SWAP_ALLY:{id:'EFFECT_SWAP_ALLY',type:'SWAP_DEFENDER'},
   EFFECT_RETALIATE_1:{id:'EFFECT_RETALIATE_1',type:'RETALIATE',value:1}
 };
+Object.assign(RAW_EFFECTS,{
+  EFFECT_ATTACK_COUNT_PLUS_1:{id:'EFFECT_ATTACK_COUNT_PLUS_1',type:'MODIFY_ATTACK_COUNT',operation:'ADD',value:1,duration:'CURRENT_ACTION'},
+  EFFECT_ATTACK_RANGE_PLUS_1:{id:'EFFECT_ATTACK_RANGE_PLUS_1',type:'MODIFY_ATTACK_RANGE',operation:'ADD',value:1,duration:'CURRENT_ACTION'},
+  EFFECT_EQUIPMENT_MOVE_PLUS_1:{id:'EFFECT_EQUIPMENT_MOVE_PLUS_1',type:'EQUIPMENT_MOVE',value:1,maxTargets:2,duration:'CURRENT_PLAYER_TURN'},
+  EFFECT_EQUIPMENT_PULL_3:{id:'EFFECT_EQUIPMENT_PULL_3',type:'EQUIPMENT_PULL',value:1,range:3}
+});
 const RAW_SKILLS={
   SKILL_HERO_INF_001_S1:{id:'SKILL_HERO_INF_001_S1',nameKey:'SKILL_HERO_INF_001_S1_NAME',descriptionKey:'SKILL_HERO_INF_001_S1_DESC',class:'INF',timing:'ACTIVE',target:{side:'ALLY',range:3,maxTargets:1,requireMissingHp:true},effects:['EFFECT_HEAL_1']},
   SKILL_HERO_INF_001_S2:{id:'SKILL_HERO_INF_001_S2',nameKey:'SKILL_HERO_INF_001_S2_NAME',descriptionKey:'SKILL_HERO_INF_001_S2_DESC',class:'INF',timing:'ACTIVE',target:{side:'ALLY',class:'INF',range:3,maxTargets:1},effects:['EFFECT_MOVE_PLUS_2']},
@@ -49,7 +55,97 @@ const EQUIPMENT_GROUPS=Object.freeze({
   COMMON:{id:'EQUIPMENT_GROUP_COMMON',name:'Dùng chung',classId:'NEU',assetId:'IMG_EQUIPMENT_GROUP_COMMON'}
 });
 const EQUIPMENT_CATEGORIES=Object.freeze({ATTACK:{id:'EQUIPMENT_CATEGORY_ATTACK',name:'Tấn công',timing:'ATTACK',assetId:'ICON_EQUIPMENT_ATTACK'},DEFENSE:{id:'EQUIPMENT_CATEGORY_DEFENSE',name:'Phòng thủ',timing:'DEFENSE',assetId:'ICON_EQUIPMENT_DEFENSE'}});
-const NEW_EQUIPMENT_CATALOG={version:1,cards:[]};
+const NEW_EQUIPMENT_CATALOG={
+  "version": 2,
+  "cards": [
+    {
+      "id": "EQUIP_INF_ATK_001",
+      "group": "INF",
+      "name": "Búa Chiến",
+      "category": "ATTACK",
+      "star": 1,
+      "count": 2,
+      "effects": [
+        "EFFECT_DAMAGE_PLUS_1"
+      ],
+      "text": "+1 sát thương cho đòn thường và skill Attack trong một lần commit."
+    },
+    {
+      "id": "EQUIP_INF_DEF_001",
+      "group": "INF",
+      "name": "Khiên Ma Thuật",
+      "category": "DEFENSE",
+      "star": 4,
+      "count": 2,
+      "effects": [
+        "EFFECT_REFLECT_DAMAGE"
+      ],
+      "text": "Phản toàn bộ sát thương thực nhận sau giảm sát thương khi bị đánh hoặc Guard đồng đội. Vẫn mất HP; vẫn phản khi chết. Không nhận sát thương thì không phản."
+    },
+    {
+      "id": "EQUIP_INF_ATK_002",
+      "group": "INF",
+      "name": "Song Kiếm",
+      "category": "ATTACK",
+      "star": 1,
+      "count": 2,
+      "effects": [
+        "EFFECT_ATTACK_COUNT_PLUS_1"
+      ],
+      "text": "+1 lần đánh trong một lần commit; áp dụng cho đòn thường và skill Attack. Mỗi lần mở phản ứng phòng thủ riêng."
+    },
+    {
+      "id": "EQUIP_INF_ATK_003",
+      "group": "INF",
+      "name": "Giày Nhanh Nhẹn",
+      "category": "ATTACK",
+      "star": 1,
+      "count": 3,
+      "effects": [
+        "EFFECT_EQUIPMENT_MOVE_PLUS_1"
+      ],
+      "text": "Chọn tối đa 2 Bộ binh cùng phe ở bất kỳ đâu chưa Attack: +1 ô di chuyển trong lượt công hiện tại, kể cả đã di chuyển."
+    },
+    {
+      "id": "EQUIP_INF_ATK_004",
+      "group": "INF",
+      "name": "Trường Thương",
+      "category": "ATTACK",
+      "star": 1,
+      "count": 3,
+      "effects": [
+        "EFFECT_ATTACK_RANGE_PLUS_1"
+      ],
+      "text": "+1 ô tầm đánh cho đòn thường và skill Attack trong một lần commit."
+    },
+    {
+      "id": "EQUIP_INF_ATK_005",
+      "group": "INF",
+      "name": "Lao Móc",
+      "category": "ATTACK",
+      "star": 3,
+      "count": 1,
+      "effects": [
+        "EFFECT_EQUIPMENT_PULL_3",
+        "EFFECT_IGNORE_INF_GUARD"
+      ],
+      "text": "Đánh 1 địch trên đường thẳng tối đa 3 ô: gây 1 sát thương rồi kéo mục tiêu sống về hex trống liền kề trước mặt. Đường giữa phải trống quân/vật cản; không Guard Bộ binh."
+    },
+    {
+      "id": "EQUIP_INF_ATK_006",
+      "group": "INF",
+      "name": "Chùy Xích",
+      "category": "ATTACK",
+      "star": 1,
+      "count": 1,
+      "effects": [
+        "EFFECT_ATTACK_RANGE_PLUS_1",
+        "EFFECT_DAMAGE_PLUS_1"
+      ],
+      "text": "+1 ô tầm đánh và +1 sát thương cho đòn thường và skill Attack trong một lần commit."
+    }
+  ]
+};
 // Stable card IDs belong to designs; instance IDs distinguish copies in players' hands.
 function equipmentCatalogDefinition(card){
   const group=EQUIPMENT_GROUPS[card.group],category=EQUIPMENT_CATEGORIES[card.category];

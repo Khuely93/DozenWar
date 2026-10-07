@@ -1,6 +1,6 @@
 # Bộ trang bị mới — v1.42.0
 
-Toàn bộ 9 card cũ đã được gỡ khỏi catalog và bộ chia bài. Chưa có card mới được chốt: hai bên bắt đầu với tay bài trống, game vẫn dùng Hero/lính bình thường. Hiệu ứng Core dùng chung với skill Hero được giữ lại.
+Toàn bộ 9 card cũ đã được gỡ khỏi catalog và bộ chia bài. v1.43.0 đã có 7 mẫu Bộ binh, tổng 14 bản (12 công, 2 thủ), chia tối đa 5 card mỗi Player. Các nhóm khác đang chờ danh sách. Hiệu ứng Core dùng chung với skill Hero được giữ lại.
 
 ## Nhóm và ID
 

@@ -1,8 +1,8 @@
 {
   "project": "DOZEN WAR II",
-  "version": "1.42.0",
+  "version": "1.43.0",
   "phase": "DUEL_RULE_MODE_1VS1_180_30",
-  "baseline": "v1.42.0 Confirmed 12-Hero roster",
+  "baseline": "v1.43.0 Confirmed 12-Hero roster",
   "entry": "index.html",
   "styles": "styles/main.css",
   "runtimeOrder": [
@@ -32,6 +32,7 @@
     "src/debug/playtest-qa-runtime.js",
     "src/core/hero-roster-runtime.js",
     "src/ui/hero-skill-ui-runtime.js",
+    "src/core/equipment-runtime.js",
     "src/shell/shell-boot-runtime.js",
     "src/bootstrap.js"
   ],

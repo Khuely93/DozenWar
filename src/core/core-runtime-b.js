@@ -31,7 +31,7 @@ function attackCardsFor(u){return u?.queuedAttackEquipment?[]:(S.hands[u.side]||
 function renderEquipmentSelect(){
   if(!S.selected)return;atkSkillList.classList.remove('show');atkCardList.innerHTML='';
   let cards=attackCardsFor(S.selected),wrap=document.createElement('div');wrap.className='equipSelectWrap';
-  cards.forEach(c=>{let b=document.createElement('button');b.className='equipCardBtn'+(S.equipSelectedCard?.uid===c.uid?' selected':'');b.innerHTML='🎴 <b>'+c.name+'</b> '+('★'.repeat(c.star))+'<br><span class="muted">'+c.text+'</span>';b.onclick=()=>{S.equipSelectedCard=S.equipSelectedCard?.uid===c.uid?null:c;renderEquipmentSelect()};wrap.appendChild(b)});
+  cards.forEach(c=>{let b=document.createElement('button');b.className='equipCardBtn'+(S.equipSelectedCard?.uid===c.uid?' selected':'');b.innerHTML=cardHTML(c);b.onclick=()=>{S.equipSelectedCard=S.equipSelectedCard?.uid===c.uid?null:c;renderEquipmentSelect()};wrap.appendChild(b)});
   let foot=document.createElement('div');foot.className='equipSelectFooter';
   let back=document.createElement('button');back.className='btn';back.textContent='← QUAY LẠI';back.onclick=()=>{S.equipSelectedCard=null;S.equipPendingActorId=null;atkCardList.classList.remove('show');atkCardList.innerHTML='';};
   let ok=document.createElement('button');ok.className='btn gold';ok.textContent='XÁC NHẬN CARD';ok.disabled=!S.equipSelectedCard;ok.onclick=()=>{if(!S.equipSelectedCard||!attackCardsFor(S.selected).some(c=>c.uid===S.equipSelectedCard.uid))return;S.equipPendingActorId=S.selected.id;atkCardList.classList.remove('show');atkCardList.innerHTML='';atkPopupHint.textContent='Card đang chờ · chọn ĐÁNH THƯỜNG hoặc SKILL chủ động.';};
@@ -60,3 +60,4 @@ startAttack=function(a,d){hideUnitMenu();hideAttackPopup();S.mode=null;let choic
 // v1.13: legacy beginSkillTarget wrapper removed.
 // Skill entry always goes through CoreSkillController so UI cannot bypass controller checks.
 const _beginSkillFromAttackPopup=(n)=>{S.attackChoice=null;hideAttackPopup();return CoreSkillController.begin(n)};
+

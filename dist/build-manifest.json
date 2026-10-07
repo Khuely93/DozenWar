@@ -1,8 +1,8 @@
 {
   "project": "DOZEN WAR II",
-  "version": "1.42.0",
+  "version": "1.43.0",
   "phase": "DUEL_RULE_MODE_1VS1_180_30",
-  "generatedAt": "2026-10-07T07:17:52.472Z",
+  "generatedAt": "2026-10-07T08:16:22.894Z",
   "runtimeOrder": [
     "src/architecture/module-boundaries.js",
     "src/ui/ui-dom-runtime.js",
@@ -30,12 +30,13 @@
     "src/debug/playtest-qa-runtime.js",
     "src/core/hero-roster-runtime.js",
     "src/ui/hero-skill-ui-runtime.js",
+    "src/core/equipment-runtime.js",
     "src/shell/shell-boot-runtime.js",
     "src/bootstrap.js"
   ],
   "bundles": {
-    "runtime": "assets/runtime.69c6adbcac0c.js",
-    "styles": "assets/app.d8d56ea1cfe8.css"
+    "runtime": "assets/runtime.4533c8f313bf.js",
+    "styles": "assets/app.420b7ec7457f.css"
   },
   "externalizedEmbeddedAssets": [],
   "note": "Build hashes are deployment artifact hashes. Gameplay compatibility remains authoritative in runtime ContentManifestBuilder/gameplayHash.",
@@ -43,23 +44,23 @@
     {
       "file": "index.html",
       "bytes": 16582,
-      "gzipBytes": 4575,
-      "brotliBytes": 3775,
-      "sha256": "b2b2e2e2475593e09d35dd7665d3be56b4dce0d43b361786fb207cc5f80228b0"
+      "gzipBytes": 4579,
+      "brotliBytes": 3776,
+      "sha256": "0caeb607d476a3bd81405ad1eaec11cd1e69a438296876ecb87173a222f997ba"
     },
     {
-      "file": "assets/runtime.69c6adbcac0c.js",
-      "bytes": 338162,
-      "gzipBytes": 101900,
-      "brotliBytes": 83678,
-      "sha256": "69c6adbcac0ccbd1390a1c9ba71c33e7f5236a4ff1549c25a37cbe1025039c7c"
+      "file": "assets/runtime.4533c8f313bf.js",
+      "bytes": 347322,
+      "gzipBytes": 104028,
+      "brotliBytes": 85368,
+      "sha256": "4533c8f313bf733f995d9c2721a5ccb596fdaafa0ac27a4fb8b5802a4348447b"
     },
     {
-      "file": "assets/app.d8d56ea1cfe8.css",
-      "bytes": 31188,
-      "gzipBytes": 7685,
-      "brotliBytes": 6693,
-      "sha256": "d8d56ea1cfe8e8b395ff9dadb8746e0ac222b0b1a3e93b4bbcee4392da5bc6d0"
+      "file": "assets/app.420b7ec7457f.css",
+      "bytes": 31437,
+      "gzipBytes": 7746,
+      "brotliBytes": 6742,
+      "sha256": "420b7ec7457f6ef9ebecdfde08d83528040d96219be4b9a72dfdf3f5a0ea7960"
     }
   ]
 }

@@ -3,7 +3,7 @@ const read=p=>fs.readFileSync(path.join(__dirname,'..',p),'utf8');
 function load(cards=[]){
  const ctx=vm.createContext({window:{},console,crypto:require('node:crypto').webcrypto});
  for(const file of ['src/content/content-prelude-runtime.js','src/presentation/asset-definitions-runtime.js','locales/vi-VN-runtime.js','src/content/content-runtime.js']){
-  let code=read(file);if(file.endsWith('/content-runtime.js'))code=code.replace('const NEW_EQUIPMENT_CATALOG={version:1,cards:[]};','const NEW_EQUIPMENT_CATALOG='+JSON.stringify({version:1,cards})+';');vm.runInContext(code,ctx);
+  let code=read(file);if(file.endsWith('/content-runtime.js'))code=code.replace(/const NEW_EQUIPMENT_CATALOG=[\s\S]*?;\n\/\/ Stable card IDs/, 'const NEW_EQUIPMENT_CATALOG='+JSON.stringify({version:1,cards})+';\n// Stable card IDs');vm.runInContext(code,ctx);
  }
  return code=>vm.runInContext(code,ctx);
 }
