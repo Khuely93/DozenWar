@@ -20,14 +20,6 @@ const RAW_LOCALES={
     SKILL_HERO_CAV_001_S1_NAME:'Charge Line',SKILL_HERO_CAV_001_S1_DESC:'1 dmg / 2 mục tiêu trên 3 ô',
     SKILL_HERO_CAV_001_S2_NAME:'Cavalry Rush',SKILL_HERO_CAV_001_S2_DESC:'+3 Move cho Cavalry',
     SKILL_HERO_CAV_001_S3_NAME:'Guard Break Charge',SKILL_HERO_CAV_001_S3_DESC:'2 dmg, bỏ qua Infantry Guard',
-    CARD_INF_ATK_001_NAME:'Bộ binh ATK',CARD_INF_ATK_001_TEXT:'+1 sát thương',
-    CARD_ARCH_ATK_001_NAME:'Cung thủ ATK',CARD_ARCH_ATK_001_TEXT:'+1 sát thương',
-    CARD_CAV_ATK_001_NAME:'Kỵ binh ATK',CARD_CAV_ATK_001_TEXT:'+1 sát thương',
-    CARD_INF_DEF_001_NAME:'Bộ binh DEF',CARD_INF_DEF_001_TEXT:'Giảm 1 sát thương',
-    CARD_ARCH_DEF_001_NAME:'Cung thủ DEF',CARD_ARCH_DEF_001_TEXT:'Giảm 1 sát thương',
-    CARD_CAV_DEF_001_NAME:'Kỵ binh DEF',CARD_CAV_DEF_001_TEXT:'Giảm 1 sát thương',
-    CARD_NEU_DEF_001_NAME:'Hủy đòn đánh',CARD_NEU_DEF_001_TEXT:'Hủy đòn đánh',
-    CARD_NEU_DEF_002_NAME:'Phản sát thương',CARD_NEU_DEF_002_TEXT:'Phản toàn bộ damage, vẫn nhận damage',
-    CARD_NEU_UTILITY_001_NAME:'Phá Guard',CARD_NEU_UTILITY_001_TEXT:'Bỏ qua Infantry Guard'
   }
 };
+

@@ -192,14 +192,22 @@ ShellDOM.team.confirmButton.onclick=()=>{
   S.teams[S.selecting]={heroDefinitionId:tempHeroDefinitionId,troops:{...tempTroops}};
   if(S.selecting===S.loser)beginTeam(S.winner);else dealCards();
 };
-function cardHTML(c,dim=false,sel=false){return '<div class="card '+c.type+(dim?' dim':'')+(sel?' sel':'')+'"><div><b>'+c.name+'</b><div class="star">'+('★'.repeat(c.star))+'</div></div><div class="muted">'+c.text+'</div></div>'}
+function cardHTML(c,dim=false,sel=false){
+  const esc=value=>String(value??'').replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
+  const safeSource=id=>{const source=AssetResolver.source(id);return typeof source==='string'&&/^(?:\.\/|assets\/|https:\/\/|data:image\/)/.test(source)?source:''};
+  const art=safeSource(c.assets?.art),frame=safeSource(c.assets?.frame),icon=safeSource(c.assets?.icon);
+  const group=Object.values(EQUIPMENT_GROUPS).find(g=>g.id===c.groupId||g.classId===c.classId||CLASS_RUNTIME[g.classId]===c.cls);
+  const image=(src,cls)=>src?'<img class="'+cls+'" src="'+esc(src)+'" alt="" loading="lazy" onerror="this.hidden=true">':'';
+  return '<div class="card '+esc(c.type)+(dim?' dim':'')+(sel?' sel':'')+'" data-equipment-id="'+esc(c.equipmentId||c.canonicalId||c.id)+'" data-equipment-group="'+esc(group?.id)+'">'+image(frame,'equipmentFrame')+image(art,'equipmentArt')+'<div class="equipmentLabel">'+image(icon,'equipmentIcon')+'<b>'+esc(c.name)+'</b><div class="star">'+('★'.repeat(c.star))+'</div><div class="muted">'+esc(group?.name)+' · '+(c.type==='atk'?'Tấn công':'Phòng thủ')+'</div></div><div class="muted equipmentText">'+esc(c.text)+'</div></div>';
+}
+
 function dealCards(){
   S.phase='deal';show('deal');
   const mode=DW_MODES.get(S.selectedMode);const deckId=S.matchSession?.contentSnapshot?.deck?.id||mode?.contentPolicy?.deckId||'DECK_DUEL_STANDARD_001';const startingHand=mode?.cardRules?.startingHand??5;
   for(let p of [S.loser,S.winner])S.hands[p]=DeckRuntimeBuilder.dealStartingHand(deckId,p,startingHand);
   ShellDOM.deal.p1Hand.innerHTML=S.hands[1].map(c=>cardHTML(c)).join('');
   ShellDOM.deal.p2Hand.innerHTML=S.hands[2].map(c=>cardHTML(c)).join('');
-  summary.textContent='Mỗi Player nhận ngẫu nhiên '+startingHand+' Equipment. Không rút thêm.'
+  summary.textContent=DeckRuntimeBuilder.buildEquipmentIds(deckId).length?'Mỗi Player nhận tối đa '+startingHand+' trang bị. Không rút thêm.':'Bộ trang bị mới đang được xây dựng. Hiện tại hai bên bắt đầu với tay bài trống.'
 }
 ShellDOM.deal.toDeployButton.onclick=()=>beginDeploy();
 

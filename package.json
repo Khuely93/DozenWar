@@ -1,12 +1,12 @@
 {
   "name": "dozen-war-ii",
-  "version": "1.41.0",
+  "version": "1.42.0",
   "private": true,
   "description": "DOZEN WAR II \u2014 confirmed twelve heroes",
   "scripts": {
     "dev": "node tools/static-server.cjs --root . --port 5173",
     "validate": "node tools/validate-project.cjs",
-    "build": "npm run validate && npm run test:content-readiness && npm run test:gameplay && npm run test:bootstrap-order && npm run test:result-ui && npm run test:action-visual && npm run test:rodoc && npm run test:est && npm run test:duel-rule && npm run test:hero-class && npm run test:alchemist && npm run test:attack-visual && npm run test:hero-roster && npm run test:board-layout && npm run test:camera && npm run test:heroes && node tools/build-prod.cjs && npm run test:production-assets",
+    "build": "npm run validate && npm run test:content-readiness && npm run test:gameplay && npm run test:bootstrap-order && npm run test:result-ui && npm run test:action-visual && npm run test:rodoc && npm run test:est && npm run test:duel-rule && npm run test:hero-class && npm run test:alchemist && npm run test:attack-visual && npm run test:hero-roster && npm run test:board-layout && npm run test:camera && npm run test:heroes && npm run test:equipment && node tools/build-prod.cjs && npm run test:production-assets",
     "preview": "node tools/static-server.cjs --root dist --port 4173",
     "report": "node tools/build-report.cjs",
     "test:content-readiness": "node tools/test-hero-skill-readiness.cjs",
@@ -26,7 +26,8 @@
     "test:production-assets": "node tools/test-production-assets.cjs",
     "test:browser-smoke": "node tools/test-browser-smoke.cjs",
     "test:heroes": "node tools/test-confirmed-heroes.cjs",
-    "test:browser-heroes": "node tools/test-browser-heroes.cjs"
+    "test:browser-heroes": "node tools/test-browser-heroes.cjs",
+    "test:equipment": "node tools/test-equipment-catalog.cjs"
   },
   "engines": {
     "node": ">=18"

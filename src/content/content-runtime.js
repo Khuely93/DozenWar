@@ -41,17 +41,36 @@ const RAW_UNIT_DB={
   UNIT_ARCH_001:{id:'UNIT_ARCH_001',nameKey:'UNIT_ARCH_001_NAME',class:'ARCH',stats:{hp:1,move:1,attackRange:3},attackPattern:'LINE',passives:[],assets:{token:'IMG_UNIT_ARCH_001_TOKEN'}},
   UNIT_CAV_001:{id:'UNIT_CAV_001',nameKey:'UNIT_CAV_001_NAME',class:'CAV',stats:{hp:1,move:3,attackRange:1},attackPattern:'RANGE',passives:['PIERCE_ONE_HEX'],assets:{token:'IMG_UNIT_CAV_001_TOKEN'}}
 };
-const RAW_CARD_DB={
-  CARD_INF_ATK_001:{id:'CARD_INF_ATK_001',nameKey:'CARD_INF_ATK_001_NAME',textKey:'CARD_INF_ATK_001_TEXT',class:'INF',category:'ATTACK',star:1,timing:['ATTACK'],effects:['EFFECT_DAMAGE_PLUS_1']},
-  CARD_ARCH_ATK_001:{id:'CARD_ARCH_ATK_001',nameKey:'CARD_ARCH_ATK_001_NAME',textKey:'CARD_ARCH_ATK_001_TEXT',class:'ARCH',category:'ATTACK',star:1,timing:['ATTACK'],effects:['EFFECT_DAMAGE_PLUS_1']},
-  CARD_CAV_ATK_001:{id:'CARD_CAV_ATK_001',nameKey:'CARD_CAV_ATK_001_NAME',textKey:'CARD_CAV_ATK_001_TEXT',class:'CAV',category:'ATTACK',star:1,timing:['ATTACK'],effects:['EFFECT_DAMAGE_PLUS_1']},
-  CARD_INF_DEF_001:{id:'CARD_INF_DEF_001',nameKey:'CARD_INF_DEF_001_NAME',textKey:'CARD_INF_DEF_001_TEXT',class:'INF',category:'DEFENSE',star:1,timing:['DEFENSE'],effects:['EFFECT_DAMAGE_REDUCE_1']},
-  CARD_ARCH_DEF_001:{id:'CARD_ARCH_DEF_001',nameKey:'CARD_ARCH_DEF_001_NAME',textKey:'CARD_ARCH_DEF_001_TEXT',class:'ARCH',category:'DEFENSE',star:1,timing:['DEFENSE'],effects:['EFFECT_DAMAGE_REDUCE_1']},
-  CARD_CAV_DEF_001:{id:'CARD_CAV_DEF_001',nameKey:'CARD_CAV_DEF_001_NAME',textKey:'CARD_CAV_DEF_001_TEXT',class:'CAV',category:'DEFENSE',star:1,timing:['DEFENSE'],effects:['EFFECT_DAMAGE_REDUCE_1']},
-  CARD_NEU_DEF_001:{id:'CARD_NEU_DEF_001',nameKey:'CARD_NEU_DEF_001_NAME',textKey:'CARD_NEU_DEF_001_TEXT',class:'NEU',category:'DEFENSE',star:2,timing:['DEFENSE'],effects:['EFFECT_CANCEL_ATTACK']},
-  CARD_NEU_DEF_002:{id:'CARD_NEU_DEF_002',nameKey:'CARD_NEU_DEF_002_NAME',textKey:'CARD_NEU_DEF_002_TEXT',class:'NEU',category:'DEFENSE',star:2,timing:['DEFENSE'],effects:['EFFECT_REFLECT_DAMAGE']},
-  CARD_NEU_UTILITY_001:{id:'CARD_NEU_UTILITY_001',nameKey:'CARD_NEU_UTILITY_001_NAME',textKey:'CARD_NEU_UTILITY_001_TEXT',class:'NEU',category:'UTILITY',star:1,timing:['ATTACK','DEFENSE'],effects:['EFFECT_IGNORE_INF_GUARD']}
-};
+// New Equipment catalog: no legacy cards are playable. Fill cards only after design approval.
+const EQUIPMENT_GROUPS=Object.freeze({
+  INF:{id:'EQUIPMENT_GROUP_INF',name:'Bộ binh',classId:'INF',assetId:'IMG_EQUIPMENT_GROUP_INF'},
+  ARCH:{id:'EQUIPMENT_GROUP_ARCH',name:'Cung thủ',classId:'ARCH',assetId:'IMG_EQUIPMENT_GROUP_ARCH'},
+  CAV:{id:'EQUIPMENT_GROUP_CAV',name:'Kỵ binh',classId:'CAV',assetId:'IMG_EQUIPMENT_GROUP_CAV'},
+  COMMON:{id:'EQUIPMENT_GROUP_COMMON',name:'Dùng chung',classId:'NEU',assetId:'IMG_EQUIPMENT_GROUP_COMMON'}
+});
+const EQUIPMENT_CATEGORIES=Object.freeze({ATTACK:{id:'EQUIPMENT_CATEGORY_ATTACK',name:'Tấn công',timing:'ATTACK',assetId:'ICON_EQUIPMENT_ATTACK'},DEFENSE:{id:'EQUIPMENT_CATEGORY_DEFENSE',name:'Phòng thủ',timing:'DEFENSE',assetId:'ICON_EQUIPMENT_DEFENSE'}});
+const NEW_EQUIPMENT_CATALOG={version:1,cards:[]};
+// Stable card IDs belong to designs; instance IDs distinguish copies in players' hands.
+function equipmentCatalogDefinition(card){
+  const group=EQUIPMENT_GROUPS[card.group],category=EQUIPMENT_CATEGORIES[card.category];
+  if(!group||!category)throw new Error('Invalid equipment group/category: '+card.id);
+  if(!/^EQUIP_(INF|ARCH|CAV|COMMON)_(ATK|DEF)_[A-Z0-9_]+$/.test(card.id)||!card.id.startsWith('EQUIP_'+card.group+'_'+(card.category==='ATTACK'?'ATK':'DEF')+'_'))throw new Error('Invalid equipment ID: '+card.id);
+  if(typeof card.name!=='string'||!card.name.trim()||typeof card.text!=='string'||!card.text.trim())throw new Error('Equipment needs name/text: '+card.id);
+  if(!Number.isInteger(card.star)||card.star<1||!Number.isInteger(card.count)||card.count<0||!Array.isArray(card.effects))throw new Error('Invalid equipment stars/count/effects: '+card.id);
+  const assets={};
+  for(const [slot,prefix] of Object.entries({art:'IMG_',frame:'IMG_',icon:'ICON_'})){
+    const assetId=prefix+card.id+'_'+slot.toUpperCase();assets[slot]=assetId;
+    RAW_ASSETS[assetId]={id:assetId,type:'IMAGE',usage:'CARD_'+slot.toUpperCase(),source:card.visual?.[slot]||'',fallbackGlyph:slot==='icon'?(card.category==='ATTACK'?'⚔':'🛡'):''};
+  }
+  const nameKey=card.id+'_NAME',textKey=card.id+'_TEXT';
+  RAW_LOCALES['vi-VN'][nameKey]=card.name;RAW_LOCALES['vi-VN'][textKey]=card.text;
+  return {id:card.id,version:card.version||1,nameKey,textKey,class:group.classId,groupId:group.id,category:card.category,categoryId:category.id,star:card.star,timing:[category.timing],effects:card.effects,assets};
+}
+for(const group of Object.values(EQUIPMENT_GROUPS))RAW_ASSETS[group.assetId]={id:group.assetId,type:'IMAGE',usage:'CARD_GROUP',source:'',fallbackGlyph:group.name};
+for(const category of Object.values(EQUIPMENT_CATEGORIES))RAW_ASSETS[category.assetId]={id:category.assetId,type:'IMAGE',usage:'CARD_CATEGORY',source:'',fallbackGlyph:category.name};
+const RAW_CARD_DB={};
+for(const card of NEW_EQUIPMENT_CATALOG.cards){if(RAW_CARD_DB[card.id])throw new Error('Duplicate equipment ID: '+card.id);RAW_CARD_DB[card.id]=equipmentCatalogDefinition(card)}
+
 
 // Confirmed 12-Hero roster; effects are resolved by generic Core primitives.
 Object.assign(RAW_SKILLS,{
@@ -1164,16 +1183,13 @@ const HERO_DB=normalizeContentTable(RAW_HERO_DB,CONTENT_TYPES.HERO,h=>{
 const UNIT_DB=normalizeContentTable(RAW_UNIT_DB,CONTENT_TYPES.UNIT);
 const EQUIPMENT_DB=normalizeContentTable(RAW_CARD_DB,CONTENT_TYPES.EQUIPMENT,e=>({...e,eligibility:equipmentEligibility(e)}));
 
-// Duel deck size and copy distribution are intentionally NOT fixed yet.
-// Both the total number of Equipment cards and the copies per Equipment remain Mode/Deck content decisions.
-// The stable prototype historically dealt from 3 copies of every current Equipment per player.
-// v1.3.1 keeps that behavior only as a NON-AUTHORITATIVE compatibility policy so playable behavior
-// remains unchanged until design explicitly locks the real deck composition.
+// Explicit per-card quantities; an empty catalog is a valid equipment-free transition.
 const RAW_DECK_DB=Object.freeze({
   DECK_DUEL_STANDARD_001:{
-    id:'DECK_DUEL_STANDARD_001',version:2,declaredSize:null,compositionStatus:'UNLOCKED',
-    allowedEquipmentIds:Object.keys(RAW_CARD_DB),
-    runtimeCompatibility:{model:'REPEAT_ALL_EQUIPMENT',copiesPerEquipment:3,independentPerPlayer:true,authoritative:false}
+    id:'DECK_DUEL_STANDARD_001',version:3,declaredSize:null,
+    compositionStatus:NEW_EQUIPMENT_CATALOG.cards.some(c=>c.count>0)?'LOCKED':'EMPTY',
+    allowedEquipmentIds:NEW_EQUIPMENT_CATALOG.cards.filter(c=>c.count>0).map(c=>c.id),
+    entries:NEW_EQUIPMENT_CATALOG.cards.filter(c=>c.count>0).map(c=>({equipmentId:c.id,count:c.count}))
   }
 });
 const DECK_DB=normalizeContentTable(RAW_DECK_DB,CONTENT_TYPES.DECK);
@@ -1260,9 +1276,11 @@ function validateContentSchema(){
   for(const [id,d] of Object.entries(DECK_DB)){
     keyId(id,d,id);req(d,CONTENT_SCHEMA.DECK,id);prefixAny(d,['DECK_'],id);positiveVersion(d,id);
     if(d.declaredSize!==null&&d.declaredSize!==undefined&&(!Number.isInteger(d.declaredSize)||d.declaredSize<1))errors.push(`${id}: invalid declaredSize`);
-    if(!Array.isArray(d.allowedEquipmentIds)||!d.allowedEquipmentIds.length)errors.push(`${id}: no allowed equipment`);
+    if(!Array.isArray(d.allowedEquipmentIds)||(!d.allowedEquipmentIds.length&&d.compositionStatus!=='EMPTY'))errors.push(`${id}: no allowed equipment`);
     else for(const equipmentId of d.allowedEquipmentIds)if(!EQUIPMENT_DB[equipmentId])errors.push(`${id}: missing equipment ${equipmentId}`);
-    if(d.compositionStatus==='LOCKED'){
+    if(d.compositionStatus==='EMPTY'){
+      if(d.entries?.length||d.allowedEquipmentIds?.length)errors.push(`${id}: EMPTY deck must contain no equipment`);
+    }else if(d.compositionStatus==='LOCKED'){
       if(!Array.isArray(d.entries)||!d.entries.length)errors.push(`${id}: LOCKED deck requires entries`);
       else{
         let total=0;
@@ -1323,6 +1341,7 @@ function fnv1a32(text){let h=0x811c9dc5;for(let i=0;i<text.length;i++){h^=text.c
 const DeckRuntimeBuilder=Object.freeze({
   buildEquipmentIds(deckId){
     const deck=DeckRegistry.get(deckId);if(!deck)throw new Error(`Unknown deck definition: ${deckId}`);
+    if(deck.compositionStatus==='EMPTY')return [];
     if(deck.compositionStatus==='LOCKED'&&Array.isArray(deck.entries)){
       const ids=[];for(const entry of deck.entries){for(let i=0;i<entry.count;i++)ids.push(entry.equipmentId)}return ids;
     }
@@ -1633,9 +1652,9 @@ const HERO_KEY={rodoc:'HERO_INF_RODOC',est:'HERO_INF_EST'};
 const UNIT_KEY={inf:'UNIT_INF_001',arch:'UNIT_ARCH_001',cav:'UNIT_CAV_001'};
 const HEROES=Object.fromEntries(Object.entries(HERO_KEY).map(([k,id])=>{let h=ContentViews.hero(id);return [k,{canonicalId:id,name:h.name,sym:h.sym,base:CLASS_RUNTIME[h.class],classId:h.class,hp:h.stats.hp,move:h.stats.move,range:h.stats.attackRange,attackPattern:h.attackPattern,passives:h.passives,skillIds:h.skillIds,skills:h.skillIds.map(s=>ContentViews.skill(s).description)}]}));
 const TROOPS=Object.fromEntries(Object.entries(UNIT_KEY).map(([k,id])=>{let u=ContentViews.unit(id);return [k,{canonicalId:id,name:u.name,sym:u.sym,base:CLASS_RUNTIME[u.class],classId:u.class,hp:u.stats.hp,move:u.stats.move,range:u.stats.attackRange,passives:u.passives}]}));
-const CARDS=EquipmentRegistry.list().map(c=>{const v=ContentViews.equipment(c.id);return {id:v.id,canonicalId:v.id,name:v.name,cls:CLASS_RUNTIME[v.class],classId:v.class,type:v.category==='ATTACK'?'atk':v.category==='DEFENSE'?'def':'neu',star:v.star,timing:v.timing,effects:v.effects,eligibility:v.eligibility,text:v.text}});
+const CARDS=EquipmentRegistry.list().map(c=>{const v=ContentViews.equipment(c.id);return {id:v.id,canonicalId:v.id,name:v.name,cls:CLASS_RUNTIME[v.class],classId:v.class,type:v.category==='ATTACK'?'atk':v.category==='DEFENSE'?'def':'neu',star:v.star,timing:v.timing,effects:v.effects,eligibility:v.eligibility,text:v.text,assets:v.assets,groupId:v.groupId}});
 
-window.DOZEN_DATA={CLASS,CLASS_KIND,HERO_CLASS_RULES,ASSETS,EFFECTS,STATUS_DB,SKILLS,HERO_DB,UNIT_DB,EQUIPMENT_DB,CARD_DB,RAW_LOCALES,CONTENT_SCHEMA,CONTENT_SCHEMA_VERSION,CONTENT_TYPES,ContentRegistry,HeroRegistry,UnitRegistry,SkillRegistry,EquipmentRegistry,DeckRegistry,StatusRegistry,EffectRegistry,AssetRegistry,ContentPackRegistry,LocalizationRegistry,AssetResolver,ContentViews,RuntimeInstanceSchema,DeckRuntimeBuilder,ContentManifestBuilder,ContentCompatibilityValidator,MatchContentHandshake,MatchContentSnapshotBuilder,CONTENT_MANIFEST_PROTOCOL_VERSION,CONTENT_COMPATIBILITY_CODES,PERSISTED_DATA_SCHEMA_VERSION,CONTENT_MIGRATION_PROTOCOL_VERSION,PERSISTED_DOCUMENT_KIND,BACKWARD_COMPATIBILITY_POLICY,BACKWARD_COMPATIBILITY_CODES,PersistedSchemaMigrationRegistry,ContentVersionMigrationRegistry,HistoricalContentRegistry,ContentVersionResolver,HistoricalContentAvailability,PersistenceEnvelopeBuilder,BackwardCompatibilityLoader,DECK_DB,CONTENT_PACK_DUEL_001,CONTENT_VALIDATION};
+window.DOZEN_DATA={EQUIPMENT_GROUPS,EQUIPMENT_CATEGORIES,NEW_EQUIPMENT_CATALOG,CLASS,CLASS_KIND,HERO_CLASS_RULES,ASSETS,EFFECTS,STATUS_DB,SKILLS,HERO_DB,UNIT_DB,EQUIPMENT_DB,CARD_DB,RAW_LOCALES,CONTENT_SCHEMA,CONTENT_SCHEMA_VERSION,CONTENT_TYPES,ContentRegistry,HeroRegistry,UnitRegistry,SkillRegistry,EquipmentRegistry,DeckRegistry,StatusRegistry,EffectRegistry,AssetRegistry,ContentPackRegistry,LocalizationRegistry,AssetResolver,ContentViews,RuntimeInstanceSchema,DeckRuntimeBuilder,ContentManifestBuilder,ContentCompatibilityValidator,MatchContentHandshake,MatchContentSnapshotBuilder,CONTENT_MANIFEST_PROTOCOL_VERSION,CONTENT_COMPATIBILITY_CODES,PERSISTED_DATA_SCHEMA_VERSION,CONTENT_MIGRATION_PROTOCOL_VERSION,PERSISTED_DOCUMENT_KIND,BACKWARD_COMPATIBILITY_POLICY,BACKWARD_COMPATIBILITY_CODES,PersistedSchemaMigrationRegistry,ContentVersionMigrationRegistry,HistoricalContentRegistry,ContentVersionResolver,HistoricalContentAvailability,PersistenceEnvelopeBuilder,BackwardCompatibilityLoader,DECK_DB,CONTENT_PACK_DUEL_001,CONTENT_VALIDATION};
 window.DOZEN_CONTENT=Object.freeze({
   schemaVersion:CONTENT_SCHEMA_VERSION,runtimeSchemaVersion:RUNTIME_SCHEMA_VERSION,registry:ContentRegistry,locale:()=>ACTIVE_LOCALE,setLocale:setActiveLocale,t:tContent,
   registries:Object.freeze({heroes:HeroRegistry,units:UnitRegistry,skills:SkillRegistry,equipment:EquipmentRegistry,decks:DeckRegistry,statuses:StatusRegistry,effects:EffectRegistry,assets:AssetRegistry,packs:ContentPackRegistry}),
