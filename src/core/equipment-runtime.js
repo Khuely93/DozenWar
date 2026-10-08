@@ -66,7 +66,7 @@ const EquipmentCore={
     });
   },
   owned(h,c){return !!h&&!!c&&(S.hands[h.side]||[]).some(x=>x.uid===c.uid)},
-  canUse(h,c){if(S.equipmentReaction)return false;if(this.independent(c)){if(effectOf(c,'EFFECT_EQUIPMENT_TELEPORT_4')){if(!h?.hero||h.hp<=0||h.side===S.battleSide&&h.attacked||!HeroCore.escapeCells(h,{parameters:{escapeRange:4,teleport:true}}).length)return false;if(h.side!==S.battleSide){const p=S.pending;if(!p||p.isCounterattack||(p.guard?p.guardUnitId:p.replacementTargetId||p.d)!==h.id||!defenseEquipmentWins(p,c))return false}}if(!h||h.hp<=0||S.phase!=='battle'||S.matchEnded||!this.owned(h,c)||!validCardFor(c,h,this.context(h))||effectOf(c,'EFFECT_CANCEL_EQUIPMENT')||S.heroSequence&&!S.pending)return false;if(h.side!==S.battleSide&&c.type!=='neu'||h.side===S.battleSide&&(S.pending||S.heroSequence))return false;if(effectOf(c,'EFFECT_SUMMON_CAV')||effectOf(c,'EFFECT_SUMMON_ARCH'))return h.hero&&HeroCore.troopDefs().some(d=>d.class===(effectOf(c,'EFFECT_SUMMON_CAV')?'CAV':'ARCH'))&&cells.some(cell=>distU(h,cell)===1&&HeroCore.cellAllowed({side:h.side,hero:false,id:null},cell));if(effectOf(c,'EFFECT_STEAL_EQUIPMENT'))return (S.hands[h.side===1?2:1]||[]).length>0;return true}if(effectOf(c,'EFFECT_EQUIPMENT_ROOT_2'))return this.canUseNet(h,c);if(c?.type==='def')return this.canDefend(h,c);return S.phase==='battle'&&!S.matchEnded&&!S.pending&&!S.heroSequence&&h?.side===S.battleSide&&h.hp>0&&!h.attacked&&!HeroCore.blocked(h,'active')&&this.owned(h,c)&&validCardFor(c,h,'atk')},
+  canUse(h,c){if(S.equipmentReaction||h?.side!==S.battleSide&&S.pending?.defenseSkillUsed)return false;if(this.independent(c)){if(effectOf(c,'EFFECT_EQUIPMENT_TELEPORT_4')){if(!h?.hero||h.hp<=0||h.side===S.battleSide&&h.attacked||!HeroCore.escapeCells(h,{parameters:{escapeRange:4,teleport:true}}).length)return false;if(h.side!==S.battleSide){const p=S.pending;if(!p||p.isCounterattack||(p.guard?p.guardUnitId:p.replacementTargetId||p.d)!==h.id||!defenseEquipmentWins(p,c))return false}}if(!h||h.hp<=0||S.phase!=='battle'||S.matchEnded||!this.owned(h,c)||!validCardFor(c,h,this.context(h))||effectOf(c,'EFFECT_CANCEL_EQUIPMENT')||S.heroSequence&&!S.pending)return false;if(h.side!==S.battleSide&&c.type!=='neu'||h.side===S.battleSide&&(S.pending||S.heroSequence))return false;if(effectOf(c,'EFFECT_SUMMON_CAV')||effectOf(c,'EFFECT_SUMMON_ARCH'))return h.hero&&HeroCore.troopDefs().some(d=>d.class===(effectOf(c,'EFFECT_SUMMON_CAV')?'CAV':'ARCH'))&&cells.some(cell=>distU(h,cell)===1&&HeroCore.cellAllowed({side:h.side,hero:false,id:null},cell));if(effectOf(c,'EFFECT_STEAL_EQUIPMENT'))return (S.hands[h.side===1?2:1]||[]).length>0;return true}if(effectOf(c,'EFFECT_EQUIPMENT_ROOT_2'))return this.canUseNet(h,c);if(c?.type==='def')return this.canDefend(h,c);return S.phase==='battle'&&!S.matchEnded&&!S.pending&&!S.heroSequence&&h?.side===S.battleSide&&h.hp>0&&!h.attacked&&!HeroCore.blocked(h,'active')&&this.owned(h,c)&&validCardFor(c,h,'atk')},
   cardFor(u){
     if(S.heroSequence?.h===u.id)return S.heroSequence.card;
     if(S.pending?.a===u.id)return S.pending.atkCard;
@@ -87,9 +87,9 @@ const EquipmentCore={
       parameters:move?{move:1}:{damage:1,pull:true,ignoreGuard:true,attack:true}};
     if(!HeroCore.begin(h,0,sk))return false;HeroCore.selection.cardUid=c.uid;HeroCore.draw();renderBoard();return true;
   },
-  canUseNet(h,c){return !S.equipmentReaction&&S.phase==='battle'&&!S.matchEnded&&h?.hp>0&&h.side!==S.battleSide&&this.owned(h,c)&&validCardFor(c,h,'def')&&(!S.pending||!S.pending.isCounterattack)},
+  canUseNet(h,c){return !S.pending?.defenseSkillUsed&&!S.equipmentReaction&&S.phase==='battle'&&!S.matchEnded&&h?.hp>0&&h.side!==S.battleSide&&this.owned(h,c)&&validCardFor(c,h,'def')&&(!S.pending||!S.pending.isCounterattack)},
   beginNet(h,c){if(!this.canUseNet(h,c)||HeroCore.selection)return false;const sk={id:c.id,name:c.name,description:c.text,star:c.star,timing:'DEFENSE_REACTION',heroAttack:false,equipmentAction:true,equipmentCard:c,independentDefense:true,mechanic:'ROOT',target:{side:'ENEMY',range:2,maxTargets:1},parameters:{}};if(!HeroCore.targets(h,sk).length||!HeroCore.begin(h,0,sk))return false;HeroCore.selection.cardUid=c.uid;HeroCore.draw();renderBoard();return true},
-  canDefend(h,c){if(this.independent(c))return this.canUse(h,c);const p=S.pending;return !S.equipmentReaction&&S.phase==='battle'&&!S.matchEnded&&!!p&&!p.isCounterattack&&h?.hp>0&&h.side!==S.battleSide&&(p.d===h.id||p.guard&&p.guardUnitId===h.id)&&this.owned(h,c)&&validCardFor(c,h,'def')&&defenseEquipmentWins(p,c)},
+  canDefend(h,c){if(effectOf(c,'EFFECT_REFLECT_DAMAGE'))return false;if(this.independent(c))return this.canUse(h,c);const p=S.pending;return !S.equipmentReaction&&!p?.defenseSkillUsed&&S.phase==='battle'&&!S.matchEnded&&!!p&&!p.isCounterattack&&h?.hp>0&&h.side!==S.battleSide&&(p.d===h.id||p.guard&&p.guardUnitId===h.id)&&this.owned(h,c)&&validCardFor(c,h,'def')&&defenseEquipmentWins(p,c)},
   useDefense(h,c){
     if(this.independent(c))return this.beginIndependent(h,c);
     if(effectOf(c,'EFFECT_EQUIPMENT_ROOT_2'))return this.beginNet(h,c);
@@ -107,6 +107,21 @@ const EquipmentCore={
     p.defCard=null;p.defenseSkillStar=null;delete p.wardRolled;
     // The same incoming action resumes on its new target, with a fresh legal defense choice.
     HeroCore.rollWard(p);lg('↪ Áo Choàng chuyển đòn sang '+unitSpec(target).name+'.');return true;
+  },
+  postHitChoices(p,d){return (S.hands[d.side]||[]).filter(c=>effectOf(c,'EFFECT_REFLECT_DAMAGE')&&validCardFor(c,d,'def')&&defenseEquipmentWins(p,c))},
+  offerPostHit(p,a,d,damage,finish){
+    if(p.hitResult!=='HIT'||damage<=0||effectOf(p.defCard,'EFFECT_REFLECT_DAMAGE')||!this.postHitChoices(p,d).length)return false;
+    const r={p,a,d,damage,finish,remainingMs:(HeroCore.mode()?.turnPolicy?.defenseTimerSeconds||30)*1000,lastTick:Date.now()};S.postHitReaction=r;
+    if(d.side===S.botSide){this.finishPostHit(this.postHitChoices(p,d)[0]);return true}
+    if(typeof CombatFlowUI!=='undefined'){CombatFlowUI.close();CombatFlowUI.open(d,'post',{done:c=>this.finishPostHit(c)});renderBoard();updateUI();return true}
+    S.postHitReaction=null;return false;
+  },
+  finishPostHit(c=null){
+    const r=S.postHitReaction;if(!r||S.equipmentReaction)return false;
+    const finish=accepted=>{if(S.postHitReaction!==r)return;if(accepted&&c){r.a.hp=Math.max(0,r.a.hp-r.damage);lg('↩️ Khiên Ma Thuật phản '+r.damage+' sát thương sau khi nhận đòn.')}S.postHitReaction=null;r.finish();if(typeof DuelTurnClock!=='undefined')DuelTurnClock.afterResolve();if(typeof botObserveResolvedHit==='function')botObserveResolvedHit(r.p,r.a,r.d);if(!S.matchEnded&&typeof scheduleBotTurn==='function')setTimeout(scheduleBotTurn,180);this.resumeClock();updateUI()};
+    if(!c){finish(false);return true}
+    if(!this.postHitChoices(r.p,r.d).some(x=>x.uid===c.uid))return false;
+    return this.play(r.d,c,'def',finish);
   },
   afterHit(p,a,d){
     if(!effectOf(p.defCard,'EFFECT_COUNTER_BASE_ATTACK')||!defenseEquipmentWins(p,p.defCard)||a.hp<=0)return;
@@ -127,6 +142,26 @@ const EquipmentCore={
     },!this.canDefend(g,card));defCardList.append(b)}
     defCardList.classList.add('show');defPopupHint.textContent='Trang bị áp dụng cho Bộ binh đang nhận đòn thay. Không nhận sát thương thì không phản.';positionDefensePopup(g);
   },
+  renderDockHand(){
+    if(typeof handBar==='undefined'||typeof handOwner==='undefined')return;
+    const reaction=S.equipmentReaction,p=S.pending;
+    const receiver=p&&S.units.find(u=>u.id===(p.guard?p.guardUnitId:p.replacementTargetId||p.d));
+    const side=reaction?.side||receiver?.side||S.battleSide;
+    handOwner.textContent='PLAYER '+side+' · '+(reaction?'HỦY TRANG BỊ':receiver?'TRANG BỊ PHÒNG THỦ':'TRANG BỊ');
+    handBar.replaceChildren();if(S.phase!=='battle'||side===S.botSide)return;
+    for(const c of S.hands[side]||[]){
+      const eligible=reaction?this.responders(side,reaction.c).filter(x=>x.card.uid===c.uid).map(x=>x.h):S.units.filter(u=>u.side===side&&this.canUse(u,c));
+      const h=eligible.find(u=>u.id===S.selected?.id)||(reaction?eligible[0]:null);
+      const locked=S.matchEnded||!!HeroCore.selection||!eligible.length;
+      const b=document.createElement('button'),tmp=document.createElement('div');tmp.innerHTML=cardHTML(c);
+      b.type='button';b.className=tmp.firstElementChild.className;b.append(...tmp.firstElementChild.childNodes);
+      b.dataset.equipmentId=c.equipmentId;b.dataset.cardUid=c.uid;b.disabled=locked;
+      const reason=S.matchEnded?'Trận đã kết thúc':HeroCore.selection?'Hoàn tất hoặc hủy lựa chọn hiện tại':!h?'Chọn đơn vị để sử dụng':'Dùng cho '+unitSpec(h).name;
+      b.title=c.text+' · '+reason;b.setAttribute('aria-label',c.name+' · '+reason);
+      b.onclick=()=>{if(S.matchEnded||HeroCore.selection)return;if(reaction){if(S.equipmentReaction===reaction)this.counterEquipment(h,c)}else if(typeof CombatFlowUI!=='undefined'){CombatFlowUI.startEquipment(h||null,c);updateUI()}else if(this.canUse(h,c)){if(typeof CombatFlowUI!=='undefined')CombatFlowUI.startEquipment(h,c);else if(h.side!==S.battleSide)this.useDefense(h,c);else this.begin(h,c);updateUI()}};
+      handBar.append(b);
+    }
+  },
   render(){
     const host=CoreDOM.board.wrap.closest?.('.duelMapStage')||CoreDOM.board.wrap;if(this.bar.parentElement!==host)host.append(this.bar);
     this.bar.replaceChildren();
@@ -136,13 +171,13 @@ const EquipmentCore={
       for(const h of S.units.filter(u=>u.side!==S.battleSide&&u.side!==S.botSide&&u.hp>0))for(const c of S.hands[h.side]||[]){
         if(!(effectOf(c,'EFFECT_EQUIPMENT_ROOT_2')&&this.canUseNet(h,c)||this.independent(c)&&this.canUse(h,c)))continue;
         if(this.independent(c)&&seen.has(c.uid))continue;seen.add(c.uid);
-        const b=HeroSkillUI.button('🛡 P'+h.side+' · '+c.name+' · '+unitSpec(h).name,()=>this.independent(c)?this.beginIndependent(h,c):this.beginNet(h,c));b.title=c.text;b.dataset.equipmentId=c.equipmentId;this.bar.append(b);
+        const b=HeroSkillUI.button('🛡 P'+h.side+' · '+c.name+' · '+unitSpec(h).name,()=>typeof CombatFlowUI!=='undefined'?CombatFlowUI.startEquipment(h,c):this.independent(c)?this.beginIndependent(h,c):this.beginNet(h,c));b.title=c.text;b.dataset.equipmentId=c.equipmentId;this.bar.append(b);
       }
       if(!S.pending&&!S.heroSequence&&S.battleSide!==S.botSide){
         for(const c of S.hands[S.battleSide]||[]){
           const eligible=S.units.filter(u=>u.side===S.battleSide&&this.canUse(u,c));
           const chosen=eligible.find(u=>u.id===S.selected?.id)||eligible[0];
-          for(const h of effectOf(c,'EFFECT_EQUIPMENT_TELEPORT_4')?eligible:chosen?[chosen]:[]){const b=HeroSkillUI.button('🎴 P'+h.side+' · '+c.name+' · '+unitSpec(h).name,()=>this.begin(h,c));b.title=c.text;b.dataset.equipmentId=c.equipmentId;this.bar.append(b)}
+          for(const h of eligible){const b=HeroSkillUI.button('🎴 P'+h.side+' · '+c.name+' · '+unitSpec(h).name,()=>typeof CombatFlowUI!=='undefined'?CombatFlowUI.startEquipment(h,c):this.begin(h,c));b.title=c.text;b.dataset.equipmentId=c.equipmentId;this.bar.append(b)}
         }
       }
     }
@@ -158,7 +193,7 @@ HeroCore.skillRange=function(h,sk){const range=_equipmentSkillRange.call(this,h,
 const _equipmentStart=startAttack;
 startAttack=function(a,d){if(S.equipmentReaction)return false;const c=a.queuedAttackEquipment||S.attackChoice?.card;if(c&&EquipmentCore.standalone(c)){if(!EquipmentCore.begin(a,c))return false;if(!HeroCore.select(d)){HeroCore.cancel();return false}return HeroCore.commit()}return _equipmentStart(a,d)};
 const _equipmentUpdate=updateUI;
-updateUI=function(){const r=_equipmentUpdate();EquipmentCore.render();if(S.equipmentReaction){if(typeof mainBtn!=='undefined')mainBtn.disabled=true;if(typeof undoBtn!=='undefined')undoBtn.disabled=true;if(typeof moveBtn!=='undefined')moveBtn.disabled=true;if(typeof attackBtn!=='undefined')attackBtn.disabled=true;if(typeof skillBar!=='undefined')for(const b of skillBar.querySelectorAll('button'))b.disabled=true;if(typeof gameHint!=='undefined')gameHint.textContent='Player '+S.equipmentReaction.side+' đang quyết định hủy card địch vừa dùng.';hideAttackPopup();hideDefensePopup();if(HeroSkillUI.bar)HeroSkillUI.bar.hidden=true}return r};
+updateUI=function(){const r=_equipmentUpdate();EquipmentCore.render();EquipmentCore.renderDockHand();if(S.equipmentReaction){if(typeof mainBtn!=='undefined')mainBtn.disabled=true;if(typeof undoBtn!=='undefined')undoBtn.disabled=true;if(typeof moveBtn!=='undefined')moveBtn.disabled=true;if(typeof attackBtn!=='undefined')attackBtn.disabled=true;if(typeof skillBar!=='undefined')for(const b of skillBar.querySelectorAll('button'))b.disabled=true;if(typeof gameHint!=='undefined')gameHint.textContent='Player '+S.equipmentReaction.side+' đang quyết định hủy card địch vừa dùng.';hideAttackPopup();hideDefensePopup();if(HeroSkillUI.bar)HeroSkillUI.bar.hidden=true}return r};
 const _equipmentSelect=renderEquipmentSelect;
 renderEquipmentSelect=function(){_equipmentSelect();const ok=atkCardList.querySelector('.equipSelectFooter .gold');if(!ok)return;const previous=ok.onclick;ok.onclick=()=>{const c=S.equipSelectedCard;if(c&&EquipmentCore.standalone(c))return EquipmentCore.begin(S.selected,c);const r=previous();showAttackPopup(S.selected);return r}};
 const _equipmentBotCard=botAttackCard;
@@ -189,4 +224,4 @@ resolveCombat=function(){if(S.equipmentReaction)return false;return _equipmentRe
 const _equipmentEnd=endTurn;
 endTurn=function(){if(S.equipmentReaction)return false;return _equipmentEnd()};
 const _equipmentReset=resetMatchState;
-resetMatchState=function(){S.equipmentReaction=null;return _equipmentReset()};
+resetMatchState=function(){S.equipmentReaction=null;S.postHitReaction=null;return _equipmentReset()};

@@ -33,6 +33,7 @@
     "src/core/hero-roster-runtime.js",
     "src/ui/hero-skill-ui-runtime.js",
     "src/core/equipment-runtime.js",
+    "src/ui/combat-flow-ui-runtime.js",
     "src/shell/shell-boot-runtime.js",
     "src/bootstrap.js"
   ],

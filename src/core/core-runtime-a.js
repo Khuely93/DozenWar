@@ -127,7 +127,7 @@ function defenseEquipmentWins(p,card){return !!(card&&CorePowerResolver.resolve(
 function resolveCombat(){
   if(typeof clearDefenseSkillTarget==='function')clearDefenseSkillTarget();
   hideUnitMenu();
-  if(S.equipmentReaction)return false;if(typeof HeroCore!=='undefined'&&HeroCore.selection){HeroCore.selection=null;HeroCore.draw()}
+  if(S.equipmentReaction||S.postHitReaction)return false;if(typeof HeroCore!=='undefined'&&HeroCore.selection){HeroCore.selection=null;HeroCore.draw()}
   const p=S.pending;if(!p)return;
   const a=S.units.find(x=>x.id===p.a),originalTarget=S.units.find(x=>x.id===p.d);
   if(!a||!originalTarget){
@@ -155,6 +155,7 @@ function resolveCombat(){
   const appliedDamage=Math.max(0,dmg);
   if(p.hitResult==='HIT'&&appliedDamage>0)finalTarget.hp=Math.max(0,finalTarget.hp-appliedDamage);
   if(typeof HeroCore!=='undefined'&&p.drain){a.hp=Math.min(unitSpec(a).hp,a.hp+p.drain);p.drainApplied=true}
+  const finish=()=>{
   if(p.reflect&&defenseWon&&p.hitResult==='HIT'&&appliedDamage>0){a.hp=Math.max(0,a.hp-appliedDamage);lg('↩️ Reflect trả '+appliedDamage+' damage về '+unitSpec(a).name+' — vẫn resolve kể cả Defender lethal.')}
   if(p.retaliationTargetIds)for(const id of p.retaliationTargetIds){const foe=S.units.find(u=>u.id===id&&u.hp>0);if(foe){const retaliation=1+(dc?effectValue(dc,'EFFECT_DAMAGE_PLUS_1'):0);foe.hp=Math.max(0,foe.hp-retaliation);lg('✨ Phục thù gây '+retaliation+' sát thương cho '+unitSpec(foe).name+'.')}}
   if(typeof HeroCore!=='undefined')HeroCore.afterHit(p,a,finalTarget,appliedDamage);
@@ -170,6 +171,9 @@ function resolveCombat(){
   renderBoard();updateUI();
   if(!S.matchEnded&&seq)resolveNextSkillSequenceTarget();
   return result;
+  };
+  if(typeof EquipmentCore!=='undefined'&&EquipmentCore.offerPostHit&&EquipmentCore.offerPostHit(p,a,finalTarget,appliedDamage,finish))return true;
+  return finish();
 }
 function doPierce(a,d,dmg,length=1){const [aq,ar]=axial(a),[dq,dr]=axial(d),distance=Math.max(Math.abs(dq-aq),Math.abs(dr-ar),Math.abs((dq+dr)-(aq+ar)));if(!distance)return;const vq=(dq-aq)/distance,vr=(dr-ar)/distance;for(let n=1;n<=length;n++){const cell=cells.find(c=>c.q===dq+vq*n&&c.r===dr+vr*n);if(!cell||cell.blocked||cell.impassable||cell.terrain?.blocked)break;const u=unitAt(cell.q,cell.r);if(u?.side===a.side)break;if(u&&u.side!==a.side){u.hp=Math.max(0,u.hp-dmg);lg('🐎 Pierce lan '+dmg+' damage.')}}}
 
@@ -845,7 +849,7 @@ const CoreInputRouter = Object.freeze({
   id: "CORE_INPUT_ROUTER",
 
   handleUnitClick(unit){
-    if(S.equipmentReaction)return false;if(typeof HeroCore!=='undefined'&&HeroCore.selection)return HeroCore.inputUnit(unit);
+    if(S.equipmentReaction||S.postHitReaction)return false;if(typeof HeroCore!=='undefined'&&HeroCore.selection)return HeroCore.inputUnit(unit);
     if(Date.now()-lastDragEnd<280)return;
     if(S.phase==="battle"&&(S.pending?S.units.find(u=>u.id===S.pending.d)?.side===S.botSide:S.battleSide===S.botSide))return false;
 
@@ -859,7 +863,7 @@ const CoreInputRouter = Object.freeze({
   },
 
   handleHexClick(cell){
-    if(S.equipmentReaction)return false;if(typeof HeroCore!=='undefined'&&HeroCore.selection)return HeroCore.inputHex(cell);
+    if(S.equipmentReaction||S.postHitReaction)return false;if(typeof HeroCore!=='undefined'&&HeroCore.selection)return HeroCore.inputHex(cell);
     if(S.phase==="battle"&&(S.pending?S.units.find(u=>u.id===S.pending.d)?.side===S.botSide:S.battleSide===S.botSide))return false;
     if(CoreGuardController.active())return CoreGuardController.handleHexClick(cell);
 

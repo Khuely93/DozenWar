@@ -24,15 +24,15 @@ const DuelBoardLayout = {
     this.stage=stage;this.mounted=true;
   },
   decorateSkills(){
-    if(!this.mounted||!S.selected?.hero)return;
-    const spec=unitSpec(S.selected);
+    if(!this.mounted)return;
     document.querySelectorAll('#skillBar button').forEach((button,i)=>{
-      const skill=ContentViews.skill(spec.skillIds[i]);if(!skill)return;
-      button.title=skill.description;
-      button.setAttribute('aria-label',skill.name+' · '+skill.description);
+      const actor=S.units?.find(u=>String(u.id)===button.dataset?.heroId)||S.selected;if(!actor?.hero)return;
+      const skill=ContentViews.skill(unitSpec(actor).skillIds[(Number(button.dataset?.skillNo)||i+1)-1]);if(!skill)return;
+      if(!button.title)button.title=skill.description;
+      button.setAttribute('aria-label',skill.name+' · '+button.title);
       const title=document.createElement('strong');title.textContent=skill.name;
       const stars=document.createElement('span');stars.className='dockSkillStars';stars.textContent='★'.repeat(skill.star||0);
-      const timing=document.createElement('small');timing.textContent=skill.timing==='DEFENSE_REACTION'?'PHÒNG THỦ':'CHỦ ĐỘNG';
+      const timing=document.createElement('small');timing.textContent=skill.timing==='BOTH'?'CÔNG / THỦ':skill.timing==='DEFENSE_REACTION'?'PHÒNG THỦ':'CHỦ ĐỘNG';
       const target=document.createElement('small');target.textContent=S.skillTarget?.skillNo===i+1?'ĐANG CHỌN MỤC TIÊU':'';
       button.replaceChildren(title,stars,timing,target);
     });
@@ -57,7 +57,7 @@ const DuelBoardLayout = {
     const active=S.selectedMode==='MODE_DUEL_001'&&(S.phase==='deploy'||S.phase==='battle');
     if(typeof document!=='undefined'){
       document.body.classList.toggle('duelDesktopLayout',desktop&&active);
-      if(this.portrait)this.portrait.textContent=S.selected?unitSpec(S.selected).sym:'♟';
+      if(this.portrait){const hero=typeof HeroSkillUI!=='undefined'?HeroSkillUI.actor():S.selected;this.portrait.textContent=hero?unitSpec(hero).sym:'♟';}
       if(desktop&&active)this.decorateSkills();
       document.documentElement.style.setProperty('--duel-dock-height',this.dockHeight(window.innerHeight)+'px');
     }
@@ -88,3 +88,4 @@ if(typeof ResizeObserver!=='undefined'){
 }
 // Called by the authoritative renderer after deployment/turn state changes.
 DuelBoardLayout.schedule();
+

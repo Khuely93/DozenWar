@@ -205,7 +205,7 @@ showDefensePopup=function(d){
   // There is no meaningful defense decision when the player has no response.
   const defensiveSkills=defenseSkillChoices(d);
   if(!guardCandidates(d).length&&!defenseCards(d).length&&!defensiveSkills.length){
-    hideDefensePopup();setTimeout(()=>{if(S.pending?.d===d.id)resolveCombat()},0);
+    hideDefensePopup();setTimeout(()=>{if(S.pending?.d===d.id&&!(typeof CombatFlowUI!=='undefined'&&CombatFlowUI.state)&&!S.postHitReaction)resolveCombat()},0);
   }
 };
 const _resolveCombat_v12=resolveCombat;

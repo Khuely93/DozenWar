@@ -14,7 +14,7 @@ const HeroSkillUI={
       if(m==='DICE_WARD'){const label=document.createElement('p');label.textContent='Chọn hai số khác nhau:';this.panel.append(label);for(let i=1;i<=6;i++)this.panel.append(this.button((s.dice.includes(i)?'✓ ':'')+i,()=>{if(s.dice.includes(i))s.dice=s.dice.filter(n=>n!==i);else if(s.dice.length<2)s.dice.push(i);this.render()}))}
       if(['ESCAPE','SUMMON'].includes(m)){const hint=document.createElement('p');hint.textContent='Chọn hex đích trên map hoặc trong danh sách:';this.panel.append(hint);const list=document.createElement('div');list.className='heroTargetList';const options=m==='ESCAPE'?HeroCore.escapeCells(s.h,s.sk):cells.filter(c=>distU(s.h,c)===1&&HeroCore.cellAllowed({side:s.h.side,hero:false,id:null},c));for(const c of options)list.append(this.button((s.cell?.q===c.q&&s.cell?.r===c.r?'✓ ':'')+'Hex '+c.q+','+c.r,()=>HeroCore.selectCell(c)));this.panel.append(list)}
       else if(!['MORPH','COPY','DICE_WARD','STEAL'].includes(m)){const list=document.createElement('div');list.className='heroTargetList';for(const u of HeroCore.targets(s.h,s.sk))list.append(this.button((s.selected.includes(u.id)?'✓ ':'')+unitSpec(u).name+' · HP '+u.hp+' · '+u.q+','+u.r,()=>HeroCore.select(u)));this.panel.append(list)}
-      const defense=s.h.side!==S.battleSide,cards=s.sk.equipmentAction||s.equipmentRecovery||s.continuation&&S.heroSequence?[]:(S.hands[s.h.side]||[]).filter(c=>validCardFor(c,s.h,defense?'def':'atk')&&(defense&&(!EquipmentCore.independent(c)||effectOf(c,'EFFECT_HEAL_1')&&s.sk.mechanic==='HEAL')&&!effectOf(c,'EFFECT_REDIRECT_ALLY')&&!effectOf(c,'EFFECT_EQUIPMENT_ROOT_2')||s.sk.heroAttack&&!s.sk.equipmentAction&&!EquipmentCore.standalone(c)));
+      const defense=s.h.side!==S.battleSide,cards=defense||s.sk.equipmentAction||s.equipmentRecovery||s.continuation&&S.heroSequence?[]:(S.hands[s.h.side]||[]).filter(c=>validCardFor(c,s.h,defense?'def':'atk')&&(defense&&(!EquipmentCore.independent(c)||effectOf(c,'EFFECT_HEAL_1')&&s.sk.mechanic==='HEAL')&&!effectOf(c,'EFFECT_REDIRECT_ALLY')&&!effectOf(c,'EFFECT_EQUIPMENT_ROOT_2')||s.sk.heroAttack&&!s.sk.equipmentAction&&!EquipmentCore.standalone(c)));
       if(cards.length){const select=document.createElement('select');select.setAttribute('aria-label','Trang bị kết hợp');select.add(new Option('Không dùng trang bị',''));for(const c of cards)select.add(new Option(c.name+' · '+'★'.repeat(c.star),c.uid));select.value=s.cardUid||'';select.onchange=()=>{s.cardUid=select.value||null;this.render()};this.panel.append(select)}
       this.panel.append(this.button('XÁC NHẬN',()=>HeroCore.commit(),m==='DICE_WARD'&&s.dice.length!==2),this.button(s.equipmentRecovery?'BỎ QUA':'HỦY',()=>s.equipmentRecovery?EquipmentCore.skipRecovery():HeroCore.cancel(),!s.equipmentRecovery&&!!s.continuation&&!!S.heroSequence));
     }
@@ -26,14 +26,36 @@ HeroSkillUI.panel.className='heroSkillPanel';HeroSkillUI.panel.hidden=true;HeroS
 const _heroUIUpdate=updateUI;
 updateUI=function(){const result=_heroUIUpdate();HeroSkillUI.render();if(HeroCore.selection)mainBtn.disabled=true;undoBtn.disabled=!!(HeroCore.selection||S.pending||S.heroSequence||S.matchEnded);return result};
 const _heroRenderSkills=renderSkills;
-renderSkills=function(){if(!S.selected?.hero)return _heroRenderSkills();skillBar.replaceChildren();for(let n=1;n<=3;n++){const h=S.selected,sk=heroSkill(h,n);if(!sk)continue;const b=HeroSkillUI.button(sk.name+' · '+'★'.repeat(sk.star||0)+' · '+(sk.timing==='BOTH'?'⚔️🛡️':sk.timing==='DEFENSE_REACTION'?'🛡️':'⚔️')+(sk.heroAttack?' 👊':''),()=>HeroCore.begin(h,n),!HeroCore.canUse(h,n,sk));b.title=sk.description;skillBar.append(b)}};
+HeroSkillUI.actor=function(){
+  if(S.postHitReaction?.d.hero)return S.postHitReaction.d;
+  const p=S.pending,receiver=p&&S.units.find(u=>u.id===(p.guard?p.guardUnitId:p.replacementTargetId||p.d));
+  const side=receiver?.side||S.battleSide;
+  const heroes=S.units.filter(u=>u.hero&&u.hp>0&&u.side===side);
+  return heroes.find(u=>u.id===S.selected?.id)||heroes.find(h=>[1,2,3].some(n=>HeroCore.canUse(h,n,heroSkill(h,n))))||heroes[0];
+};
+renderSkills=function(){
+  const h=HeroSkillUI.actor();if(!h)return _heroRenderSkills();
+  const heading=skillBar.closest('.box')?.querySelector('h3');if(heading)heading.textContent='HERO SKILLS · '+unitSpec(h).name;
+  skillBar.replaceChildren();
+  for(let n=1;n<=3;n++){
+    const sk=heroSkill(h,n);if(!sk)continue;
+    const locked=S.matchEnded||h.side===S.botSide||!!S.equipmentReaction||!!HeroCore.selection||!HeroCore.canUse(h,n,sk);
+    const reason=locked?(HeroCore.selection?'Hoàn tất hoặc hủy lựa chọn hiện tại':'Chưa đủ điều kiện sử dụng: kiểm tra lượt, trạng thái và giới hạn skill'):'';
+    const b=HeroSkillUI.button(sk.name+' · '+'★'.repeat(sk.star||0)+' · '+(sk.timing==='BOTH'?'⚔️🛡️':sk.timing==='DEFENSE_REACTION'?'🛡️':'⚔️')+(sk.heroAttack?' 👊':''),()=>{
+      if(S.equipmentReaction||HeroCore.selection||S.matchEnded||h.side===S.botSide||!HeroCore.canUse(h,n,sk))return;
+      S.selected=h;hideAttackPopup();hideDefensePopup();HeroCore.begin(h,n);updateUI();
+    },locked);
+    b.classList.add('skill');b.dataset.heroId=h.id;b.dataset.skillNo=n;
+    b.title=sk.description+(reason?' · '+reason:'');b.setAttribute('aria-label',sk.name+' · '+b.title);skillBar.append(b);
+  }
+};
 const _heroPopup=showDefensePopup;
 showDefensePopup=function(d){if(HeroCore.selection)return;const result=_heroPopup(d);if(HeroCore.blocked(d,'defense'))defGuardChoice.disabled=true;return result};
 defHeroSkillChoice.onclick=()=>{if(!S.pending)return;const d=S.units.find(u=>u.id===S.pending.d);defCardList.replaceChildren();for(const c of defenseSkillChoices(d))defCardList.append(HeroSkillUI.button(unitSpec(c.hero).name+' · '+c.skill.name,()=>HeroCore.begin(c.hero,c.skillNo)));defCardList.classList.add('show')};
 atkSkillBtn.onclick=()=>{if(!S.selected?.hero)return;atkSkillList.replaceChildren();for(let n=1;n<=3;n++){const h=S.selected,sk=heroSkill(h,n);atkSkillList.append(HeroSkillUI.button(sk.name+' · '+'★'.repeat(sk.star||0),()=>{hideAttackPopup();HeroCore.begin(h,n)},!HeroCore.canUse(h,n,sk)))}atkSkillList.classList.toggle('show')};
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&HeroCore.selection){if(HeroCore.selection.equipmentRecovery)EquipmentCore.skipRecovery();else HeroCore.cancel()}});
 CoreBoardRenderer.registerLayer('HERO_SKILL_STATE',45,{
-  hexClasses(c,u){const s=HeroCore.selection;if(!s)return '';if(u&&HeroCore.candidate(s.h,s.sk,u))return s.selected.includes(u.id)?' skill-selected':' skill-valid';if(!u&&['ESCAPE','SUMMON'].includes(s.sk.mechanic)){const valid=s.sk.mechanic==='ESCAPE'?HeroCore.escapeCells(s.h,s.sk).some(x=>x.q===c.q&&x.r===c.r):distU(s.h,c)===1&&HeroCore.cellAllowed({side:s.h.side,hero:false,id:null},c);if(valid)return ' hl'}return ''},
+  hexClasses(c,u){const s=HeroCore.selection;if(!s||s.uiEquipmentStep)return '';if(u&&HeroCore.candidate(s.h,s.sk,u))return s.selected.includes(u.id)?' skill-selected':' skill-valid';if(!u&&['ESCAPE','SUMMON'].includes(s.sk.mechanic)){const valid=s.sk.mechanic==='ESCAPE'?HeroCore.escapeCells(s.h,s.sk).some(x=>x.q===c.q&&x.r===c.r):distU(s.h,c)===1&&HeroCore.cellAllowed({side:s.h.side,hero:false,id:null},c);if(valid)return ' hl'}return ''},
   renderAfterUnit(g,u,c){const statuses=HeroCore.statuses(u);if(!statuses.length&&!u.morphDefinitionId)return;const text=document.createElementNS('http://www.w3.org/2000/svg','text');text.setAttribute('x',c.x);text.setAttribute('y',c.y-40);text.setAttribute('class','buffTag');text.textContent=[...statuses.map(s=>({STUN:'STUN',ROOT:'TRÓI',FREEZE:'BĂNG',SILENCE:'CÂM'})[s.kind]),u.morphDefinitionId?'BIẾN HÌNH':''].filter(Boolean).join(' · ');g.appendChild(text)}
 });
 
