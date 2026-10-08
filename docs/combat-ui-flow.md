@@ -14,3 +14,5 @@
 - Guard, Dây Chuyền, giới hạn sử dụng skill/card, quyền Attack và số sao vẫn do Core/mode hiện tại quyết định.
 
 Kiểm tra: `npm run test:browser-heroes` bao gồm 128 kịch bản Core và các thao tác chuột theo flow mới, cửa sổ desktop/mobile, đòn liên tiếp, sao chép, triệu hồi, hủy card, cancel và timeout. `npm run build` kiểm tra toàn bộ bộ test và bundle production.
+
+Ngoại lệ Đấu tập: cửa sổ cho chọn nhiều card công/thủ hợp lệ. Core kiểm tra từng card, dùng MAX số sao, cộng hiệu ứng và mở phản ứng hủy cho từng card. Card độc lập cần hành động/mục tiêu riêng vẫn theo flow Core. Chi tiết: [training.md](modes/training.md).

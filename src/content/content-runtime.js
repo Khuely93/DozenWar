@@ -16,6 +16,7 @@ const RAW_EFFECTS={
   EFFECT_RETALIATE_1:{id:'EFFECT_RETALIATE_1',type:'RETALIATE',value:1}
 };
 Object.assign(RAW_EFFECTS,{
+  EFFECT_ASSASSIN_HERO_1:{id:"EFFECT_ASSASSIN_HERO_1",type:"ASSASSIN_HERO",value:1},
   EFFECT_EQUIPMENT_TELEPORT_4:{id:"EFFECT_EQUIPMENT_TELEPORT_4",type:"EQUIPMENT_TELEPORT",range:4,heroOnly:true},
   EFFECT_SUMMON_CAV:{id:"EFFECT_SUMMON_CAV",type:"SUMMON_TROOP",classId:"CAV"},
   EFFECT_SUMMON_ARCH:{id:"EFFECT_SUMMON_ARCH",type:"SUMMON_TROOP",classId:"ARCH"},
@@ -66,7 +67,7 @@ const EQUIPMENT_GROUPS=Object.freeze({
 });
 const EQUIPMENT_CATEGORIES=Object.freeze({ATTACK:{id:'EQUIPMENT_CATEGORY_ATTACK',name:'Tấn công',timing:'ATTACK',assetId:'ICON_EQUIPMENT_ATTACK'},DEFENSE:{id:'EQUIPMENT_CATEGORY_DEFENSE',name:'Phòng thủ',timing:'DEFENSE',assetId:'ICON_EQUIPMENT_DEFENSE'},BOTH:{id:'EQUIPMENT_CATEGORY_BOTH',name:'Công và thủ',timing:['ATTACK','DEFENSE'],assetId:'ICON_EQUIPMENT_BOTH'}});
 const NEW_EQUIPMENT_CATALOG={
-  "version": 9,
+  "version": 10,
   "cards": [
     {
       "id": "EQUIP_INF_ATK_001",
@@ -110,7 +111,7 @@ const NEW_EQUIPMENT_CATALOG={
       "name": "Giày Nhanh Nhẹn",
       "category": "ATTACK",
       "star": 1,
-      "count": 3,
+      "count": 2,
       "effects": [
         "EFFECT_EQUIPMENT_MOVE_PLUS_1"
       ],
@@ -268,7 +269,7 @@ const NEW_EQUIPMENT_CATALOG={
       "group": "COMMON",
       "category": "ATTACK",
       "star": 1,
-      "count": 2,
+      "count": 1,
       "effects": [
         "EFFECT_IGNORE_INF_GUARD"
       ],
@@ -416,6 +417,18 @@ const NEW_EQUIPMENT_CATALOG={
       "text": "Chỉ Hero đồng đội còn sống; lượt công phải chưa Attack. Dịch chuyển đến hex hợp lệ khác trong tối đa 4 ô, bỏ qua quân/vật cản và không tiêu hao di chuyển thường. Lượt thủ: chỉ khi Hero đang bị đánh, đủ 3 sao để hủy sát thương và hiệu ứng đòn.",
       "effects": [
         "EFFECT_EQUIPMENT_TELEPORT_4"
+      ]
+    },
+    {
+      "id": "EQUIP_COMMON_ATK_006",
+      "group": "COMMON",
+      "name": "Thích Khách",
+      "category": "ATTACK",
+      "star": 4,
+      "count": 2,
+      "text": "Gây 1 sát thương cho 1 Hero địch trên toàn bản đồ. Bộ binh có thể đỡ đòn. Không tiêu hao quyền Attack.",
+      "effects": [
+        "EFFECT_ASSASSIN_HERO_1"
       ]
     }
   ]

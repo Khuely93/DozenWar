@@ -854,7 +854,7 @@ DW_MODES.registerMode({
   mapPolicy:{mapId:'MAP_DUEL_001',occupancyMode:'SINGLE',allyPassThrough:false},
   turnPolicy:{roundEnabled:false,endTurn:'MANUAL',reactionPausesTurnTimer:true},
   skillUsagePolicy:{scope:'ACTION',maxUsesPerSkill:null,reset:'CONTINUOUS'},
-  equipmentRules:{maxPerAction:1,attackPerTurn:null,defensePerOpponentTurn:null},
+  equipmentRules:{maxPerAction:null,allowMultiple:true,attackPerTurn:null,defensePerOpponentTurn:null},
   contentPolicy:{packId:'CONTENT_PACK_DUEL_001',deckId:'DECK_DUEL_STANDARD_001'},
   winRules:[],winRuleLogic:'ANY'
 });
@@ -968,6 +968,7 @@ const RAW_EFFECTS={
   EFFECT_RETALIATE_1:{id:'EFFECT_RETALIATE_1',type:'RETALIATE',value:1}
 };
 Object.assign(RAW_EFFECTS,{
+  EFFECT_ASSASSIN_HERO_1:{id:"EFFECT_ASSASSIN_HERO_1",type:"ASSASSIN_HERO",value:1},
   EFFECT_EQUIPMENT_TELEPORT_4:{id:"EFFECT_EQUIPMENT_TELEPORT_4",type:"EQUIPMENT_TELEPORT",range:4,heroOnly:true},
   EFFECT_SUMMON_CAV:{id:"EFFECT_SUMMON_CAV",type:"SUMMON_TROOP",classId:"CAV"},
   EFFECT_SUMMON_ARCH:{id:"EFFECT_SUMMON_ARCH",type:"SUMMON_TROOP",classId:"ARCH"},
@@ -1018,7 +1019,7 @@ const EQUIPMENT_GROUPS=Object.freeze({
 });
 const EQUIPMENT_CATEGORIES=Object.freeze({ATTACK:{id:'EQUIPMENT_CATEGORY_ATTACK',name:'Tấn công',timing:'ATTACK',assetId:'ICON_EQUIPMENT_ATTACK'},DEFENSE:{id:'EQUIPMENT_CATEGORY_DEFENSE',name:'Phòng thủ',timing:'DEFENSE',assetId:'ICON_EQUIPMENT_DEFENSE'},BOTH:{id:'EQUIPMENT_CATEGORY_BOTH',name:'Công và thủ',timing:['ATTACK','DEFENSE'],assetId:'ICON_EQUIPMENT_BOTH'}});
 const NEW_EQUIPMENT_CATALOG={
-  "version": 9,
+  "version": 10,
   "cards": [
     {
       "id": "EQUIP_INF_ATK_001",
@@ -1062,7 +1063,7 @@ const NEW_EQUIPMENT_CATALOG={
       "name": "Giày Nhanh Nhẹn",
       "category": "ATTACK",
       "star": 1,
-      "count": 3,
+      "count": 2,
       "effects": [
         "EFFECT_EQUIPMENT_MOVE_PLUS_1"
       ],
@@ -1220,7 +1221,7 @@ const NEW_EQUIPMENT_CATALOG={
       "group": "COMMON",
       "category": "ATTACK",
       "star": 1,
-      "count": 2,
+      "count": 1,
       "effects": [
         "EFFECT_IGNORE_INF_GUARD"
       ],
@@ -1368,6 +1369,18 @@ const NEW_EQUIPMENT_CATALOG={
       "text": "Chỉ Hero đồng đội còn sống; lượt công phải chưa Attack. Dịch chuyển đến hex hợp lệ khác trong tối đa 4 ô, bỏ qua quân/vật cản và không tiêu hao di chuyển thường. Lượt thủ: chỉ khi Hero đang bị đánh, đủ 3 sao để hủy sát thương và hiệu ứng đòn.",
       "effects": [
         "EFFECT_EQUIPMENT_TELEPORT_4"
+      ]
+    },
+    {
+      "id": "EQUIP_COMMON_ATK_006",
+      "group": "COMMON",
+      "name": "Thích Khách",
+      "category": "ATTACK",
+      "star": 4,
+      "count": 2,
+      "text": "Gây 1 sát thương cho 1 Hero địch trên toàn bản đồ. Bộ binh có thể đỡ đòn. Không tiêu hao quyền Attack.",
+      "effects": [
+        "EFFECT_ASSASSIN_HERO_1"
       ]
     }
   ]
@@ -4575,7 +4588,7 @@ unitAttackQuick.onclick=()=>{if(!S.selected||S.selected.attacked||S.pending||(!h
 attackBtn.onclick=()=>{if(S.skillTarget){if(ContentViews.skill(S.skillTarget.skillId)?.maneuver?.attackFlow==='SELECT_ADJACENT')applySkillTarget();return}if(!S.selected||S.selected.attacked||S.pending||(!hasAttackTarget(S.selected)&&(!S.selected.hero||allHeroSkillsUsed(S.selected))))return;showAttackPopup(S.selected)};
 
 // Consume an attack card only after a legal target is actually selected; then go straight to defender reaction.
-startAttack=function(a,d){hideUnitMenu();hideAttackPopup();S.mode=null;let choice=S.attackChoice||{type:'normal',card:null};let base=1+(a.damageBuff||0),queued=a.queuedAttackEquipment||null,card=queued||choice.card||null;if(choice.card&&queued)return false;if(choice.card&&(!validCardFor(choice.card,a,'atk')||!(S.hands[a.side]||[]).some(c=>c.uid===choice.card.uid)))return false;S.pending={a:a.id,d:d.id,base,sourceType:'ATTACK',skillId:null,skillStar:null,atkCard:card,defCard:null,guard:false,guardUnitId:null,cancel:false,cancelReason:null,hitResult:'PENDING',reflect:false,ignoreGuard:effectOf(card,'EFFECT_IGNORE_INF_GUARD'),isPropagationTarget:false};if(card&&typeof EquipmentCore!=='undefined'){S.attackChoice=null;S.equipSelectedCard=null;S.equipPendingActorId=null;return EquipmentCore.play(a,card,'atk',accepted=>{if(queued)a.queuedAttackEquipment=null;S.pending.atkCard=accepted?card:null;S.pending.ignoreGuard=!!a.ignoreInfGuard||accepted&&effectOf(card,'EFFECT_IGNORE_INF_GUARD');if(!accepted)return EquipmentCore.resumeNormal(a,d);showReaction(true);updateUI()})}if(card){if(queued)a.queuedAttackEquipment=null;else{S.hands[a.side]=S.hands[a.side].filter(x=>x.uid!==card.uid);markDuelCardUsed(a.side,'atk')}lg('🎴 Player '+a.side+' dùng '+card.name+' cho đòn tấn công.')}S.attackChoice=null;S.equipSelectedCard=null;S.equipPendingActorId=null;showReaction(true);updateUI()};
+startAttack=function(a,d){hideUnitMenu();hideAttackPopup();S.mode=null;let choice=S.attackChoice||{type:'normal',card:null};let base=1+(a.damageBuff||0),queued=a.queuedAttackEquipment||null,card=queued||choice.card||null;if(choice.card&&queued)return false;if(choice.card&&(!validCardFor(choice.card,a,'atk')||!(typeof EquipmentCore!=='undefined'?EquipmentCore.owned(a,choice.card):(S.hands[a.side]||[]).some(c=>c.uid===choice.card.uid))))return false;S.pending={a:a.id,d:d.id,base,sourceType:'ATTACK',skillId:null,skillStar:null,atkCard:card,defCard:null,guard:false,guardUnitId:null,cancel:false,cancelReason:null,hitResult:'PENDING',reflect:false,ignoreGuard:effectOf(card,'EFFECT_IGNORE_INF_GUARD'),isPropagationTarget:false};if(card&&typeof EquipmentCore!=='undefined'){S.attackChoice=null;S.equipSelectedCard=null;S.equipPendingActorId=null;return EquipmentCore.play(a,card,'atk',accepted=>{if(queued)a.queuedAttackEquipment=null;S.pending.atkCard=accepted?card:null;S.pending.ignoreGuard=!!a.ignoreInfGuard||accepted&&effectOf(card,'EFFECT_IGNORE_INF_GUARD');return EquipmentCore.resumeNormal(a,d,accepted?card:null)})}if(card){if(queued)a.queuedAttackEquipment=null;else{S.hands[a.side]=S.hands[a.side].filter(x=>x.uid!==card.uid);markDuelCardUsed(a.side,'atk')}lg('🎴 Player '+a.side+' dùng '+card.name+' cho đòn tấn công.')}S.attackChoice=null;S.equipSelectedCard=null;S.equipPendingActorId=null;showReaction(true);updateUI()};
 
 // Attack-target cancellation is now owned by CORE_INPUT_ROUTER.
 // Keep attack UI state clean on turn/reset/skill changes.
@@ -5172,14 +5185,14 @@ const HeroCore={
     const i=s.selected.indexOf(u.id);if(i>=0)s.selected.splice(i,1);else{const max=this.targetLimit(s.h,s.sk,this.selectedCard());if(s.sk.target.selection?.lineLock&&s.selected.length&&!onRay(s.h,u,rayFrom(s.h,S.units.find(x=>x.id===s.selected[0])),this.skillRange(s.h,s.sk)))return false;if(max===1)s.selected=[u.id];else if(s.selected.length<max)s.selected.push(u.id)}this.draw();renderBoard();return true;
   },
   selectCell(c){const s=this.selection;if(!s||!c)return false;const allowed=s.sk.mechanic==='ESCAPE'?this.escapeCells(s.h,s.sk):s.sk.mechanic==='SUMMON'?cells.filter(c=>distU(s.h,c)===1&&this.cellAllowed({side:s.h.side,hero:false,id:null},c)):[];if(!allowed.some(x=>x.q===c.q&&x.r===c.r))return false;s.cell=c;this.draw();renderBoard();return true},
-  selectedCard(){const s=this.selection;return s&&((S.hands[s.h.side]||[]).find(c=>c.uid===s.cardUid)||(s.continuation?S.heroSequence?.card:null))||null},
+  selectedCard(){const s=this.selection;return s&&(s.equipmentBundle||(S.hands[s.h.side]||[]).find(c=>c.uid===s.cardUid)||(s.continuation?S.heroSequence?.card:null))||null},
   equip(card,h,context){if(!card)return true;if(!validCardFor(card,h,context)||!(S.hands[h.side]||[]).some(c=>c.uid===card.uid))return false;S.hands[h.side]=S.hands[h.side].filter(c=>c.uid!==card.uid);markDuelCardUsed(h.side,context);if(context==='def'&&S.pending)S.pending.defenseEquipmentUsed=true;return true},
   buff(u,p){for(const [field,key] of [['move','moveBuff'],['damage','damageBuff'],['range','rangeBuff'],['targets','targetBuff'],['attacks','attackCountBuff']])if(p[field]){u[key]=(u[key]||0)+p[field];(u.turnModifiers??={})[key]=(u.turnModifiers[key]||0)+p[field]}if(p.move)u.extraMoveGranted=(u.extraMoveGranted||0)+p.move;if(p.ignoreGuard){u.ignoreInfGuard=true;(u.turnModifiers??={}).ignoreInfGuard=true}},
   transform(u,id,hero){const def=UnitRegistry.get(id);if(!def)return false;if(hero){u.morphDefinitionId=id;u.classId=def.class;u.kind=CLASS_KIND[def.class];for(const key of ['equipment','equipmentCards','equipmentIds']){if(Array.isArray(u[key])){const kept=[];for(const c of u[key]){const card=typeof c==='string'?createEquipmentCardInstance(c,u.side):c;if(card&&equipmentEligibleForClass(card,def.class))kept.push(c);else if(card)(S.hands[u.side]??=[]).push({...card,uid:card.uid||crypto.randomUUID(),cls:CLASS_RUNTIME[card.class],type:card.category==='ATTACK'?'atk':card.category==='DEFENSE'?'def':'neu'})}u[key]=kept}}if(u.queuedAttackEquipment&&!equipmentEligibleForClass(u.queuedAttackEquipment,def.class)){S.hands[u.side].push(u.queuedAttackEquipment);u.queuedAttackEquipment=null}}else{u.definitionId=id;u.classId=def.class;u.kind=CLASS_KIND[def.class];u.hp=def.stats.hp}return true},
   incoming(p){let v=Math.max(0,p.base||0)+effectValue(p.atkCard,'EFFECT_DAMAGE_PLUS_1');if(p.defCard&&defenseEquipmentWins(p,p.defCard)){if(effectOf(p.defCard,'EFFECT_CANCEL_ATTACK'))return 0;v=Math.max(0,v-effectValue(p.defCard,'EFFECT_DAMAGE_REDUCE_1'))}return v},
   commit(){
     const s=this.selection;if(!s)return false;const {h,n,sk}=s,defense=h.side!==S.battleSide,p=sk.parameters||{},card=this.selectedCard();
-    if(defense&&card&&!sk.equipmentAction&&!(sk.mechanic==='HEAL'&&effectOf(card,'EFFECT_HEAL_1')))return this.message('Skill thủ không được kết hợp trang bị thủ trong cùng một lần phòng thủ.');
+    if(defense&&card&&!sk.equipmentAction&&!(sk.mechanic==='HEAL'&&(card.equipmentCards?card.equipmentCards.every(c=>effectOf(c,'EFFECT_HEAL_1')):effectOf(card,'EFFECT_HEAL_1'))))return this.message('Skill thủ không được kết hợp trang bị thủ trong cùng một lần phòng thủ.');
     if(sk.equipmentAction&&card?.uid!==sk.equipmentCard?.uid)return false;
     if(!s.continuation&&!this.canUse(h,n,sk)||s.cardUid&&!card&&!S.heroSequence?.normal)return false;
     let ts=s.selected.map(id=>S.units.find(u=>u.id===id));const cellSkill=['SUMMON','ESCAPE'].includes(sk.mechanic),optionSkill=['MORPH','COPY','DICE_WARD','STEAL'].includes(sk.mechanic);
@@ -5193,18 +5206,24 @@ const HeroCore={
     if(sk.mechanic==='COPY'){const original=this.copyChoices(h).find(k=>k.id===s.copyId);if(!original)return false;const copy={...original,star:Math.min(original.star||0,3),copied:true};this.selection=null;return this.begin(h,n,copy,true)}
     if(card&&!sk.equipmentAction&&EquipmentCore.independent(card)&&!(defense&&sk.mechanic==='HEAL'&&effectOf(card,'EFFECT_HEAL_1')))return this.message('Card này phải dùng độc lập.');
     if(card&&!defense&&!sk.equipmentAction&&(!sk.heroAttack||typeof EquipmentCore!=='undefined'&&EquipmentCore.standalone(card)))return this.message('Card này phải dùng đúng hành động trang bị hoặc kết hợp skill Attack.');
+    if(sk.mechanic==='HEAL'&&sk.equipmentAction&&card?.equipmentCards&&ts[0].hp+this.cardBonus(card,'HEAL')>this.spec(ts[0]).hp)return this.message('Tổng HP sau hồi không được vượt HP tối đa.');
     if(sk.mechanic==='HEAL'&&!sk.equipmentAction&&card&&effectOf(card,'EFFECT_HEAL_1')&&ts[0].hp+1+this.cardBonus(card,'HEAL')>this.spec(ts[0]).hp)return this.message('Tổng HP sau hồi không được vượt HP tối đa.');
-    if(sk.mechanic==='HEAL'&&S.pending&&ts[0].id===(S.pending.guardUnitId||S.pending.replacementTargetId||S.pending.d)){const total=sk.equipmentAction?1:1+this.cardBonus(card,'HEAL');if(Math.min(this.spec(ts[0]).hp,ts[0].hp+total)<=this.incoming({...S.pending,defCard:card||S.pending.defCard}))return this.message('Hồi máu chưa đủ để sống sau đòn đánh.')}
-    if(card&&!(s.continuation&&S.heroSequence)&&(!validCardFor(card,h,defense?'def':'atk')||!(S.hands[h.side]||[]).some(c=>c.uid===card.uid)))return false;
+    if(sk.mechanic==='HEAL'&&S.pending&&ts[0].id===(S.pending.guardUnitId||S.pending.replacementTargetId||S.pending.d)){const total=sk.equipmentAction?(this.cardBonus(card,'HEAL')||1):1+this.cardBonus(card,'HEAL');if(Math.min(this.spec(ts[0]).hp,ts[0].hp+total)<=this.incoming({...S.pending,defCard:card||S.pending.defCard}))return this.message('Hồi máu chưa đủ để sống sau đòn đánh.')}
+    if(card&&!s.equipmentRecovery&&!(s.continuation&&S.heroSequence)&&(!validCardFor(card,h,defense?'def':'atk')||!(typeof EquipmentCore!=='undefined'?EquipmentCore.owned(h,card):(S.hands[h.side]||[]).some(c=>c.uid===card.uid))))return false;
     if(s.equipmentRecovery){this.selection=null;this.notice='';S.mode=null;return s.resume(ts)}
     save();
     const freshCard=card&&(!s.continuation||!S.heroSequence||S.heroSequence.normal&&S.heroSequence.round===0);
+    const chosenCardCount=card?.equipmentCards?.length||1;
     if(freshCard&&typeof EquipmentCore!=='undefined'){
       this.selection=null;S.mode=null;this.draw();
       return EquipmentCore.play(h,card,defense?'def':'atk',accepted=>{
-        if(!accepted&&sk.equipmentAction){if(S.heroSequence?.h===h.id){S.heroSequence=null;S.skillSequence=null}renderBoard();updateUI();if(S.pending)showDefensePopup(S.units.find(u=>u.id===S.pending.d));return}
+        const primaryEffect={ESCAPE:'EFFECT_EQUIPMENT_TELEPORT_4',HEAL:'EFFECT_HEAL_1',REDIRECT:'EFFECT_REDIRECT_ALLY',STRIKE:'EFFECT_EQUIPMENT_PULL_3',BUFF:'EFFECT_EQUIPMENT_MOVE_PLUS_1'}[sk.mechanic];
+        const primaryCanceled=sk.equipmentAction&&card?.equipmentCards&&primaryEffect&&!effectOf(card,primaryEffect);
+        if(primaryCanceled&&accepted&&defense&&S.pending){S.pending.defCard=card;this.selection=null;S.mode=null;resolveCombat();return}
+        if(card?.equipmentCards&&sk.equipmentAction)sk.star=card.star;
+        if((!accepted||primaryCanceled)&&sk.equipmentAction){if(S.heroSequence?.h===h.id){S.heroSequence=null;S.skillSequence=null}renderBoard();updateUI();if(S.pending)showDefensePopup(S.units.find(u=>u.id===S.pending.d));return}
         if(s.continuation&&S.heroSequence?.normal&&S.heroSequence.round===0){S.heroSequence.card=accepted?card:null;S.heroSequence.count=1+(h.attackCountBuff||0)+this.cardBonus(accepted?card:null,'MODIFY_ATTACK_COUNT');h.queuedAttackEquipment=null}
-        if(!accepted&&sk.heroAttack&&EquipmentCore.recoverTargets(s,ts,targets=>this.applySelection(s,targets,null)))return;
+        if((!accepted||card?.equipmentCards&&card.equipmentCards.length<chosenCardCount)&&sk.heroAttack&&EquipmentCore.recoverTargets(s,ts,targets=>this.applySelection(s,targets,accepted?card:null),accepted?card:null))return;
         this.applySelection(s,ts,accepted?card:null);
       });
     }
@@ -5212,12 +5231,12 @@ const HeroCore={
   },
   applySelection(s,ts,card){
     const {h,n,sk}=s,defense=h.side!==S.battleSide,p=sk.parameters||{};
-    if(defense&&sk.mechanic==='HEAL'&&S.pending&&ts[0]?.id===(S.pending.guardUnitId||S.pending.replacementTargetId||S.pending.d)&&Math.min(this.spec(ts[0]).hp,ts[0].hp+(sk.equipmentAction?1:1+this.cardBonus(card,'HEAL')))<=this.incoming({...S.pending,defCard:card||S.pending.defCard})){
+    if(defense&&sk.mechanic==='HEAL'&&S.pending&&ts[0]?.id===(S.pending.guardUnitId||S.pending.replacementTargetId||S.pending.d)&&Math.min(this.spec(ts[0]).hp,ts[0].hp+(sk.equipmentAction?(this.cardBonus(card,'HEAL')||1):1+this.cardBonus(card,'HEAL')))<=this.incoming({...S.pending,defCard:card||S.pending.defCard})){
       this.notice='Hồi máu chưa đủ để sống sau đòn đánh; trang bị có thể đã bị hủy.';this.selection=null;S.mode=null;this.draw();renderBoard();updateUI();showDefensePopup(S.units.find(u=>u.id===S.pending.d));return false;
     }
     if(defense&&S.pending&&!sk.equipmentAction)S.pending.defenseSkillUsed=true;
     if(!s.continuation)this.remember(h,sk,n);else if(!S.heroSequence)this.remember(h,sk,n);
-    if(defense&&S.pending&&card&&!sk.independentDefense){S.pending.defCard=card;S.pending.defenseSkillStar=sk.star}
+    if(defense&&S.pending&&card&&(!sk.independentDefense||card.equipmentCards)){S.pending.defCard=card;S.pending.defenseSkillStar=sk.star}
     this.selection=null;S.mode=null;this.draw();
     if(defense&&S.pending&&!sk.independentDefense&&CorePowerResolver.resolve(pendingAttackPower(S.pending),Math.max(sk.star||0,card?.star||0)).winner!=='RESPONSE'){renderBoard();updateUI();showDefensePopup(S.units.find(u=>u.id===S.pending.d));return true}
     switch(sk.mechanic){
@@ -5226,7 +5245,7 @@ const HeroCore={
       case 'CONVERT':this.transform(ts[0],s.kind,false);break;
       case 'SUMMON':h.hp=Math.max(0,h.hp-(p.hpCost||0));S.units.push(createRuntimeEntityInstance({definitionId:p.summonClass?this.troopDefs().find(d=>d.class===p.summonClass).id:s.kind,side:h.side,hero:false,q:s.cell.q,r:s.cell.r}));break;
       case 'ESCAPE':h.q=s.cell.q;h.r=s.cell.r;if(defense&&S.pending){S.pending.cancel=true;S.pending.cancelReason='DODGE'}break;
-      case 'HEAL':ts[0].hp=Math.min(this.spec(ts[0]).hp,ts[0].hp+(sk.equipmentAction?1:1+this.cardBonus(card,'HEAL')));break;
+      case 'HEAL':ts[0].hp=Math.min(this.spec(ts[0]).hp,ts[0].hp+(sk.equipmentAction?(this.cardBonus(card,'HEAL')||1):1+this.cardBonus(card,'HEAL')));break;
       case 'STEAL':{const enemy=h.side===1?2:1,c=S.hands[enemy].find(c=>c.uid===s.stealUid);if(c){S.hands[enemy]=S.hands[enemy].filter(x=>x.uid!==c.uid);c.ownerPlayerId=h.side;c.zone='HAND';c.state='UNSELECTED';S.hands[h.side].push(c)}break}
       case 'BASE_MOVE':this.buff(ts[0],{move:EquipmentCore.baseMove(ts[0])});break;
       case 'ROOT':this.status(ts[0],'ROOT');break;
@@ -5249,9 +5268,9 @@ const HeroCore={
   },
   next(){const seq=S.heroSequence;if(!seq||S.pending)return;if(S.matchEnded){S.heroSequence=null;S.skillSequence=null;return}const h=S.units.find(u=>u.id===seq.h);if(!this.alive(h)){S.heroSequence=null;S.skillSequence=null;return}
     while(seq.index<seq.targets.length){const targetId=seq.targets[seq.index++];const d=S.units.find(u=>u.id===targetId);if(!this.alive(d)||seq.sk.parameters?.pull&&!this.pullDestination(h,d))continue;
-      const p=seq.sk.parameters||{};let damage=seq.sk.mechanic==='SILENCE'?0:(p.damage||1)+(h.damageBuff||0);
+      const p=seq.sk.parameters||{};let damage=seq.sk.mechanic==='SILENCE'?0:(p.damage||1)+(p.fixedCardAttack?0:h.damageBuff||0);
       let drain=0;if(p.diceDrain){const die=this.roll();drain=die%2===0?2:1;damage=drain+(h.damageBuff||0);lg('🎲 '+seq.sk.name+': '+die+' → '+drain+' HP')}
-      S.pending={a:h.id,d:d.id,base:damage,sourceType:seq.normal?'ATTACK':'SKILL',skillId:seq.normal?null:seq.sk.id,skillStar:seq.normal?null:seq.sk.star,atkCard:seq.card,defCard:null,guard:false,cancel:false,reflect:false,ignoreGuard:p.ignoreGuard||h.ignoreInfGuard||effectOf(seq.card,'EFFECT_IGNORE_INF_GUARD'),heroMechanic:seq.sk,drain,hitResult:'PENDING'};showReaction(true);updateUI();return;
+      S.pending={a:h.id,d:d.id,base:damage,sourceType:seq.normal?'ATTACK':'SKILL',skillId:seq.normal?null:seq.sk.id,skillStar:seq.normal?null:seq.sk.star,atkCard:seq.card,defCard:null,guard:false,cancel:false,reflect:false,ignoreGuard:p.ignoreGuard||!p.fixedCardAttack&&h.ignoreInfGuard||effectOf(seq.card,'EFFECT_IGNORE_INF_GUARD'),heroMechanic:seq.sk,drain,hitResult:'PENDING'};showReaction(true);updateUI();return;
     }
     if(seq.round<seq.count&&this.targets(h,seq.sk).length){this.begin(h,seq.n,seq.sk,true);this.notice='Chọn mục tiêu cho lần đánh '+(seq.round+1)+'/'+seq.count;this.draw();if(h.side===S.botSide)this.autoSelect();return}
     S.heroSequence=null;S.skillSequence=null;S.selected=null;renderBoard();updateUI();
@@ -5396,8 +5415,9 @@ undoBtn.onclick=()=>undo();
 ;
 /* Equipment effects are scoped to a combat commit. Movement cards are separate pre-Attack actions. */
 const EquipmentCore={
+  parts(c){return c?.equipmentCards||(c?[c]:[])},
   standalone(c){return this.independent(c)||effectOf(c,'EFFECT_EQUIPMENT_MOVE_PLUS_1')||effectOf(c,'EFFECT_EQUIPMENT_PULL_3')},
-  independent(c){return ['EFFECT_EQUIPMENT_TELEPORT_4','EFFECT_SUMMON_CAV','EFFECT_SUMMON_ARCH','EFFECT_HEAL_1','EFFECT_EQUIPMENT_BASE_MOVE','EFFECT_CANCEL_EQUIPMENT','EFFECT_STEAL_EQUIPMENT'].some(id=>effectOf(c,id))},
+  independent(c){return ['EFFECT_ASSASSIN_HERO_1','EFFECT_EQUIPMENT_TELEPORT_4','EFFECT_SUMMON_CAV','EFFECT_SUMMON_ARCH','EFFECT_HEAL_1','EFFECT_EQUIPMENT_BASE_MOVE','EFFECT_CANCEL_EQUIPMENT','EFFECT_STEAL_EQUIPMENT'].some(id=>effectOf(c,id))},
   context(h){return h.side===S.battleSide?'atk':'def'},
   baseMove(u){const d=u.morphDefinitionId?UnitRegistry.get(u.morphDefinitionId):u.hero?HeroRegistry.get(u.definitionId):UnitRegistry.get(u.definitionId);return d?.stats.move||0},
   responders(side,c){return S.units.filter(u=>u.side===side&&u.hp>0).flatMap(h=>(S.hands[side]||[]).filter(x=>effectOf(x,'EFFECT_CANCEL_EQUIPMENT')&&x.star>=c.star&&validCardFor(x,h,this.context(h))).map(card=>({h,card}))).filter((x,i,a)=>a.findIndex(y=>y.card.uid===x.card.uid)===i)},
@@ -5432,16 +5452,19 @@ const EquipmentCore={
     else if(effectOf(c,'EFFECT_HEAL_1')){mechanic='HEAL';target={...target,healable:true,requireMissingHp:true}}
     else if(effectOf(c,'EFFECT_EQUIPMENT_BASE_MOVE'))mechanic='BASE_MOVE';
     else if(effectOf(c,'EFFECT_STEAL_EQUIPMENT'))mechanic='STEAL';
+    else if(effectOf(c,'EFFECT_ASSASSIN_HERO_1')){mechanic='STRIKE';target={side:'ENEMY',unitType:'HERO',global:true,range:99,maxTargets:1};parameters={damage:1,fixedCardAttack:true}}
     else return false;
     const sk={id:c.id,name:c.name,description:c.text,star:c.star,timing:defense?'DEFENSE_REACTION':'ACTIVE',heroAttack:false,equipmentAction:true,equipmentCard:c,independentDefense:defense,mechanic,target,parameters};
     if(!HeroCore.begin(h,0,sk))return false;HeroCore.selection.cardUid=c.uid;HeroCore.draw();renderBoard();updateUI();return true;
   },
-  recoverTargets(s,targets,resume){
+  recoverTargets(s,targets,resume,remainingCard=null){
     const {h,sk}=s;
-    if(targets.every(t=>HeroCore.candidate(h,sk,t)))return false;
+    const previous=HeroCore.selection;HeroCore.selection={...s,cardUid:null,equipmentBundle:remainingCard};
+    const legalTargets=targets.filter(t=>HeroCore.candidate(h,sk,t));HeroCore.selection=previous;
+    if(legalTargets.length===targets.length)return false;
     S.pending=null;S.attackChoice=null;S.equipSelectedCard=null;S.equipPendingActorId=null;h.queuedAttackEquipment=null;
     if(sk.heroAttack)h.attacked=true;
-    HeroCore.selection={...s,selected:targets.filter(t=>HeroCore.candidate(h,sk,t)).map(t=>t.id),cardUid:null,continuation:true,equipmentRecovery:true,resume};
+    HeroCore.selection={...s,selected:legalTargets.map(t=>t.id),cardUid:null,equipmentBundle:remainingCard,continuation:true,equipmentRecovery:true,resume};
     HeroCore.notice='Trang bị tăng tầm đã bị hủy. Chọn mục tiêu hợp lệ khác hoặc BỎ QUA đòn này.';
     S.mode='hero-skill';hideDefensePopup();HeroCore.draw();renderBoard();updateUI();
     if(h.side===S.botSide){if(HeroCore.targets(h,sk).length)HeroCore.autoSelect();else this.skipRecovery()}
@@ -5453,16 +5476,16 @@ const EquipmentCore={
     HeroCore.selection=null;HeroCore.notice='';S.pending=null;S.heroSequence=null;S.skillSequence=null;S.mode=null;S.selected=null;
     lg('⏭ Bỏ qua đòn sau khi trang bị tăng tầm bị hủy.');HeroCore.draw();renderBoard();updateUI();return true;
   },
-  resumeNormal(a,d){
+  resumeNormal(a,d,remainingCard=null){
     if(canAttack(a,d)){showReaction(true);updateUI();return}
     const original=S.pending;
     const sk={id:'NORMAL_ATTACK',name:'Đánh thường',star:0,heroAttack:true,mechanic:'STRIKE',target:{side:'ENEMY',range:'ATTACK',maxTargets:1,pattern:unitSpec(a).attackPattern},parameters:{damage:1,attack:true}};
     this.recoverTargets({h:a,n:0,sk},[d],targets=>{
-      HeroCore.selection=null;S.mode=null;S.pending={...original,d:targets[0].id,atkCard:null};showReaction(true);updateUI();return true;
-    });
+      HeroCore.selection=null;S.mode=null;S.pending={...original,d:targets[0].id,atkCard:remainingCard};showReaction(true);updateUI();return true;
+    },remainingCard);
   },
   owned(h,c){return !!h&&!!c&&(S.hands[h.side]||[]).some(x=>x.uid===c.uid)},
-  canUse(h,c){if(S.equipmentReaction||h?.side!==S.battleSide&&S.pending?.defenseSkillUsed)return false;if(this.independent(c)){if(effectOf(c,'EFFECT_EQUIPMENT_TELEPORT_4')){if(!h?.hero||h.hp<=0||h.side===S.battleSide&&h.attacked||!HeroCore.escapeCells(h,{parameters:{escapeRange:4,teleport:true}}).length)return false;if(h.side!==S.battleSide){const p=S.pending;if(!p||p.isCounterattack||(p.guard?p.guardUnitId:p.replacementTargetId||p.d)!==h.id||!defenseEquipmentWins(p,c))return false}}if(!h||h.hp<=0||S.phase!=='battle'||S.matchEnded||!this.owned(h,c)||!validCardFor(c,h,this.context(h))||effectOf(c,'EFFECT_CANCEL_EQUIPMENT')||S.heroSequence&&!S.pending)return false;if(h.side!==S.battleSide&&c.type!=='neu'||h.side===S.battleSide&&(S.pending||S.heroSequence))return false;if(effectOf(c,'EFFECT_SUMMON_CAV')||effectOf(c,'EFFECT_SUMMON_ARCH'))return h.hero&&HeroCore.troopDefs().some(d=>d.class===(effectOf(c,'EFFECT_SUMMON_CAV')?'CAV':'ARCH'))&&cells.some(cell=>distU(h,cell)===1&&HeroCore.cellAllowed({side:h.side,hero:false,id:null},cell));if(effectOf(c,'EFFECT_STEAL_EQUIPMENT'))return (S.hands[h.side===1?2:1]||[]).length>0;return true}if(effectOf(c,'EFFECT_EQUIPMENT_ROOT_2'))return this.canUseNet(h,c);if(c?.type==='def')return this.canDefend(h,c);return S.phase==='battle'&&!S.matchEnded&&!S.pending&&!S.heroSequence&&h?.side===S.battleSide&&h.hp>0&&!h.attacked&&!HeroCore.blocked(h,'active')&&this.owned(h,c)&&validCardFor(c,h,'atk')},
+  canUse(h,c){if(S.equipmentReaction||h?.side!==S.battleSide&&S.pending?.defenseSkillUsed)return false;if(this.independent(c)){if(effectOf(c,'EFFECT_ASSASSIN_HERO_1')&&(h?.attacked||HeroCore.blocked(h,'active')||!S.units.some(u=>u.hero&&u.hp>0&&u.side!==h?.side)))return false;if(effectOf(c,'EFFECT_EQUIPMENT_TELEPORT_4')){if(!h?.hero||h.hp<=0||h.side===S.battleSide&&h.attacked||!HeroCore.escapeCells(h,{parameters:{escapeRange:4,teleport:true}}).length)return false;if(h.side!==S.battleSide){const p=S.pending;if(!p||p.isCounterattack||(p.guard?p.guardUnitId:p.replacementTargetId||p.d)!==h.id||!defenseEquipmentWins(p,c))return false}}if(!h||h.hp<=0||S.phase!=='battle'||S.matchEnded||!this.owned(h,c)||!validCardFor(c,h,this.context(h))||effectOf(c,'EFFECT_CANCEL_EQUIPMENT')||S.heroSequence&&!S.pending)return false;if(h.side!==S.battleSide&&c.type!=='neu'||h.side===S.battleSide&&(S.pending||S.heroSequence))return false;if(effectOf(c,'EFFECT_SUMMON_CAV')||effectOf(c,'EFFECT_SUMMON_ARCH'))return h.hero&&HeroCore.troopDefs().some(d=>d.class===(effectOf(c,'EFFECT_SUMMON_CAV')?'CAV':'ARCH'))&&cells.some(cell=>distU(h,cell)===1&&HeroCore.cellAllowed({side:h.side,hero:false,id:null},cell));if(effectOf(c,'EFFECT_STEAL_EQUIPMENT'))return (S.hands[h.side===1?2:1]||[]).length>0;return true}if(effectOf(c,'EFFECT_EQUIPMENT_ROOT_2'))return this.canUseNet(h,c);if(c?.type==='def')return this.canDefend(h,c);return S.phase==='battle'&&!S.matchEnded&&!S.pending&&!S.heroSequence&&h?.side===S.battleSide&&h.hp>0&&!h.attacked&&!HeroCore.blocked(h,'active')&&this.owned(h,c)&&validCardFor(c,h,'atk')},
   cardFor(u){
     if(S.heroSequence?.h===u.id)return S.heroSequence.card;
     if(S.pending?.a===u.id)return S.pending.atkCard;
@@ -5514,9 +5537,9 @@ const EquipmentCore={
   },
   finishPostHit(c=null){
     const r=S.postHitReaction;if(!r||S.equipmentReaction)return false;
-    const finish=accepted=>{if(S.postHitReaction!==r)return;if(accepted&&c){r.a.hp=Math.max(0,r.a.hp-r.damage);lg('↩️ Khiên Ma Thuật phản '+r.damage+' sát thương sau khi nhận đòn.')}S.postHitReaction=null;r.finish();if(typeof DuelTurnClock!=='undefined')DuelTurnClock.afterResolve();if(typeof botObserveResolvedHit==='function')botObserveResolvedHit(r.p,r.a,r.d);if(!S.matchEnded&&typeof scheduleBotTurn==='function')setTimeout(scheduleBotTurn,180);this.resumeClock();updateUI()};
+    const finish=accepted=>{if(S.postHitReaction!==r)return;if(accepted&&c){const reflected=r.damage*this.parts(c).filter(x=>effectOf(x,'EFFECT_REFLECT_DAMAGE')).length;r.a.hp=Math.max(0,r.a.hp-reflected);lg('↩️ Khiên Ma Thuật phản '+reflected+' sát thương sau khi nhận đòn.')}S.postHitReaction=null;r.finish();if(typeof DuelTurnClock!=='undefined')DuelTurnClock.afterResolve();if(typeof botObserveResolvedHit==='function')botObserveResolvedHit(r.p,r.a,r.d);if(!S.matchEnded&&typeof scheduleBotTurn==='function')setTimeout(scheduleBotTurn,180);this.resumeClock();updateUI()};
     if(!c){finish(false);return true}
-    if(!this.postHitChoices(r.p,r.d).some(x=>x.uid===c.uid))return false;
+    if(!this.parts(c).every(part=>this.postHitChoices(r.p,r.d).some(x=>x.uid===part.uid)))return false;
     return this.play(r.d,c,'def',finish);
   },
   afterHit(p,a,d){
@@ -5623,6 +5646,59 @@ const _equipmentReset=resetMatchState;
 resetMatchState=function(){S.equipmentReaction=null;S.postHitReaction=null;return _equipmentReset()};
 
 ;
+/* Multiple equipment is a Mode policy. Each physical card keeps its Core checks and counter window. */
+EquipmentCore.multipleAllowed=function(){return DW_MODES.get(S.selectedMode)?.equipmentRules?.allowMultiple===true};
+EquipmentCore.combine=function(cards){
+  if(!cards.length)return null;if(cards.length===1)return cards[0];
+  if(!this.multipleAllowed()||new Set(cards.map(c=>c.uid)).size!==cards.length)return null;
+  const pack={uid:'equipment-set:'+cards.map(c=>c.uid).join('|'),type:'neu',cls:'neutral',equipmentCards:[...cards]};this.refreshCombination(pack);return pack;
+};
+EquipmentCore.refreshCombination=function(pack){
+  pack.name=pack.equipmentCards.map(c=>c.name).join(' + ');pack.star=Math.max(0,...pack.equipmentCards.map(c=>c.star||0));pack.effects=pack.equipmentCards.flatMap(c=>c.effects||[]);return pack;
+};
+EquipmentCore.canCombine=function(cards){
+  if(cards.length<=1)return true;if(!this.multipleAllowed()||new Set(cards.map(c=>c.uid)).size!==cards.length)return false;
+  const actions=cards.filter(c=>this.standalone(c)||effectOf(c,'EFFECT_REDIRECT_ALLY')||effectOf(c,'EFFECT_EQUIPMENT_ROOT_2'));
+  // Independent actions with different target choices remain separate Core actions.
+  if(actions.length>1)return cards.every(c=>effectOf(c,'EFFECT_HEAL_1'));
+  if(actions.length===1&&!effectOf(actions[0],'EFFECT_EQUIPMENT_PULL_3')&&cards.some(c=>c.type==='atk'))return false;
+  if(actions.some(c=>effectOf(c,'EFFECT_EQUIPMENT_ROOT_2')))return false;
+  return true;
+};
+const _multiValidCard=validCardFor;
+validCardFor=function(c,h,context){if(c?.equipmentCards)return EquipmentCore.multipleAllowed()&&EquipmentCore.canCombine(c.equipmentCards)&&c.equipmentCards.length>0&&c.equipmentCards.every(x=>_multiValidCard(x,h,context));return _multiValidCard(c,h,context)};
+const _multiEffectValue=effectValue;
+effectValue=function(c,id){return c?.equipmentCards?c.equipmentCards.reduce((n,x)=>n+_multiEffectValue(x,id),0):_multiEffectValue(c,id)};
+const _multiOwned=EquipmentCore.owned;
+EquipmentCore.owned=function(h,c){return c?.equipmentCards?this.multipleAllowed()&&c.equipmentCards.length>0&&new Set(c.equipmentCards.map(x=>x.uid)).size===c.equipmentCards.length&&c.equipmentCards.every(x=>_multiOwned.call(this,h,x)):_multiOwned.call(this,h,c)};
+const _multiCanUse=EquipmentCore.canUse,_multiCanDefend=EquipmentCore.canDefend;
+EquipmentCore.canUse=function(h,c){if(c?.equipmentCards)return this.canCombine(c.equipmentCards)&&this.owned(h,c)&&c.equipmentCards.every(x=>_multiCanUse.call(this,h,x));return _multiCanUse.call(this,h,c)};
+EquipmentCore.canDefend=function(h,c){if(c?.equipmentCards)return this.canCombine(c.equipmentCards)&&this.owned(h,c)&&c.equipmentCards.every(x=>_multiCanDefend.call(this,h,x));return _multiCanDefend.call(this,h,c)};
+const _multiSelectedCard=HeroCore.selectedCard;
+HeroCore.selectedCard=function(){const s=this.selection;if(s?.equipmentBundle)return s.equipmentBundle;if(s?.cardUid&&S.equipSelectedCard?.equipmentCards&&s.cardUid===S.equipSelectedCard.uid)return S.equipSelectedCard;return _multiSelectedCard.call(this)};
+const _multiEquip=HeroCore.equip;
+HeroCore.equip=function(c,h,context){if(!c?.equipmentCards)return _multiEquip.call(this,c,h,context);if(!validCardFor(c,h,context)||!EquipmentCore.owned(h,c))return false;for(const x of c.equipmentCards)_multiEquip.call(this,x,h,context);return true};
+const _multiPlay=EquipmentCore.play;
+EquipmentCore.play=function(h,c,context,done){
+  if(!c?.equipmentCards)return _multiPlay.call(this,h,c,context,done);
+  if(!this.multipleAllowed()||!this.canCombine(c.equipmentCards)||S.equipmentReaction||h.queuedAttackEquipment!==c&&(!this.owned(h,c)||!validCardFor(c,h,context)))return false;
+  const chosen=[...c.equipmentCards],accepted=[];let index=0;
+  const advance=()=>{if(index===chosen.length){c.equipmentCards=accepted;this.refreshCombination(c);done(accepted.length>0);return}
+    const next=chosen[index++];if(h.queuedAttackEquipment===c){accepted.push(next);advance();return}
+    _multiPlay.call(this,h,next,context,ok=>{if(ok)accepted.push(next);advance()});
+  };advance();return true;
+};
+const _multiAfterHit=EquipmentCore.afterHit;
+EquipmentCore.afterHit=function(p,a,d){if(!p.defCard?.equipmentCards)return _multiAfterHit.call(this,p,a,d);for(const c of p.defCard.equipmentCards)if(effectOf(c,'EFFECT_COUNTER_BASE_ATTACK'))_multiAfterHit.call(this,{...p,defCard:c},a,d)};
+
+const _multiRedirect=EquipmentCore.redirect;
+EquipmentCore.redirect=function(h,target){const selected=HeroCore.selection?.equipmentBundle||S.pending?.defCard;const r=_multiRedirect.call(this,h,target);if(r&&selected?.equipmentCards){const remaining=selected.equipmentCards.filter(c=>!effectOf(c,'EFFECT_REDIRECT_ALLY')&&validCardFor(c,target,'def')&&defenseEquipmentWins(S.pending,c));S.pending.defCard=this.combine(remaining)}return r};
+const _multiCandidate=HeroCore.candidate;
+HeroCore.candidate=function(h,sk,u){if(!_multiCandidate.call(this,h,sk,u))return false;const c=this.selection?.h.id===h.id?this.selectedCard():null;if(sk.mechanic==='REDIRECT'&&c?.equipmentCards)return c.equipmentCards.filter(x=>!effectOf(x,'EFFECT_REDIRECT_ALLY')).every(x=>validCardFor(x,u,'def')&&defenseEquipmentWins(S.pending,x));return true};
+const _multiBegin=HeroCore.begin;
+HeroCore.begin=function(h,n,sk=null,continuation=false){const r=_multiBegin.call(this,h,n,sk,continuation);if(r&&sk?.equipmentCard?.equipmentCards)this.selection.equipmentBundle=sk.equipmentCard;return r};
+
+;
 /* UI sequencing only: Core owns eligibility, payments, effects and combat. */
 const CombatFlowUI={
   dialog:document.createElement('dialog'),state:null,
@@ -5633,29 +5709,35 @@ const CombatFlowUI={
   },
   open(h,kind,{card=null,sk=null,done=null,back=null,pending=S.pending}={}){
     if(this.state||S.equipmentReaction||S.matchEnded)return false;
-    this.state={h,kind,cardUid:card?.uid||null,sk,done,back,pending};
+    this.state={h,kind,cardUid:card?.uid||null,cardUids:EquipmentCore.parts(card).map(c=>c.uid),multi:EquipmentCore.multipleAllowed(),sk,done,back,pending};
     hideAttackPopup();hideDefensePopup();hideUnitMenu();this.render();this.dialog.showModal();updateUI();return true;
   },
   render(){
     const s=this.state;if(!s)return;this.dialog.replaceChildren();
     const title=document.createElement('h2');title.textContent='PLAYER '+s.h.side+' · TRANG BỊ '+(s.kind==='post'?'PHẢN SÁT THƯƠNG':s.kind==='def'?'PHÒNG THỦ':s.kind.startsWith('skill')?'CHO SKILL':'TẤN CÔNG');
-    const info=document.createElement('p');info.textContent=unitSpec(s.h).name+(s.sk?' · '+s.sk.name:'')+' · Chọn một lá bài hợp lệ';this.dialog.append(title,info);
+    const info=document.createElement('p');info.textContent=unitSpec(s.h).name+(s.sk?' · '+s.sk.name:'')+(s.multi?' · Chọn nhiều trang bị hợp lệ · Đã chọn '+s.cardUids.length:' · Chọn một lá bài hợp lệ');this.dialog.append(title,info);
     const list=document.createElement('div');list.className='combatEquipmentCards';const cards=this.cards(s.h,s.kind,s.sk);
     if(!cards.some(c=>c.uid===s.cardUid))s.cardUid=null;
-    for(const c of cards){const b=HeroSkillUI.button('',()=>{s.cardUid=c.uid;this.render();[...this.dialog.querySelectorAll('[data-card-uid]')].find(b=>b.dataset.cardUid===c.uid)?.focus()});b.className='card '+c.type+(s.cardUid===c.uid?' chosen':'');b.dataset.equipmentId=c.equipmentId;b.dataset.cardUid=c.uid;b.setAttribute('aria-pressed',String(s.cardUid===c.uid));b.innerHTML=cardHTML(c);b.title=c.text;list.append(b)}
+    s.cardUids=s.cardUids.filter(uid=>cards.some(c=>c.uid===uid));
+    for(const c of cards){const selected=s.multi?s.cardUids.includes(c.uid):s.cardUid===c.uid;
+      const compatible=selected||!s.multi||EquipmentCore.canCombine([...cards.filter(x=>s.cardUids.includes(x.uid)),c]);
+      const b=HeroSkillUI.button('',()=>{if(s.multi){const i=s.cardUids.indexOf(c.uid);if(i>=0)s.cardUids.splice(i,1);else s.cardUids.push(c.uid)}else{s.cardUid=c.uid;s.cardUids=[c.uid]}this.render();[...this.dialog.querySelectorAll('[data-card-uid]')].find(b=>b.dataset.cardUid===c.uid)?.focus()},!compatible);
+      b.className='card '+c.type+(selected?' chosen':'');b.dataset.equipmentId=c.equipmentId;b.dataset.cardUid=c.uid;b.setAttribute('aria-pressed',String(selected));b.innerHTML=cardHTML(c);b.title=c.text+(compatible?'':' · Card này cần hành động hoặc lựa chọn mục tiêu riêng');list.append(b)}
     if(!cards.length){const empty=document.createElement('p');empty.textContent='Không có trang bị phù hợp.';list.append(empty)}this.dialog.append(list);
     const actions=document.createElement('div');actions.className='combatEquipmentActions';
-    actions.append(HeroSkillUI.button('XÁC NHẬN',()=>this.confirm(),!s.cardUid),HeroSkillUI.button(s.kind.startsWith('skill')?'KHÔNG DÙNG':'BỎ QUA',()=>this.confirm(true)),HeroSkillUI.button('QUAY LẠI',()=>this.cancel()));this.dialog.append(actions);
+    actions.append(HeroSkillUI.button('XÁC NHẬN',()=>this.confirm(),s.multi?!s.cardUids.length:!s.cardUid),HeroSkillUI.button(s.kind.startsWith('skill')?'KHÔNG DÙNG':'BỎ QUA',()=>this.confirm(true)),HeroSkillUI.button('QUAY LẠI',()=>this.cancel()));this.dialog.append(actions);
   },
   close(){this.state=null;if(this.dialog.open)this.dialog.close()},
   confirm(skip=false){
     const s=this.state;if(!s)return false;
     if(S.matchEnded||s.h.hp<=0&&s.kind!=='post'||s.pending!==S.pending){this.close();updateUI();return false}
-    const c=skip?null:this.cards(s.h,s.kind,s.sk).find(c=>c.uid===s.cardUid);if(!skip&&!c)return false;
+    const available=this.cards(s.h,s.kind,s.sk),chosen=s.multi?available.filter(c=>s.cardUids.includes(c.uid)):[available.find(c=>c.uid===s.cardUid)].filter(Boolean);
+    if(!skip&&(chosen.length!==(s.multi?s.cardUids.length:1)||!EquipmentCore.canCombine(chosen)))return false;
+    const c=skip?null:EquipmentCore.combine(chosen);if(!skip&&!c)return false;
     this.close();
     if(s.done)s.done(c);
-    else if(s.kind==='def'){if(c)EquipmentCore.useDefense(s.h,c);else resolveCombat()}
-    else if(c&&EquipmentCore.standalone(c))EquipmentCore.begin(s.h,c);
+    else if(s.kind==='def'){if(c){const r=EquipmentCore.useDefense(s.h,c);if(r&&c.equipmentCards&&HeroCore.selection){const selection=HeroCore.selection;selection.uiFlow=true;selection.sk={...selection.sk,uiFlow:true};this.prepare(selection)}}else resolveCombat()}
+    else if(c&&EquipmentCore.standalone(c)){const r=EquipmentCore.begin(s.h,c);if(r&&c.equipmentCards&&HeroCore.selection){const selection=HeroCore.selection;selection.uiFlow=true;selection.sk={...selection.sk,uiFlow:true};this.prepare(selection)}}
     else{S.selected=s.h;S.equipSelectedCard=c;S.equipPendingActorId=c?s.h.id:null;CoreAttackController.begin(c)}
     updateUI();return true;
   },
@@ -5665,13 +5747,13 @@ const CombatFlowUI={
     S.selected=h;if(!HeroCore.begin(h,n))return false;
     const s=HeroCore.selection;if(h.side!==S.battleSide)s.cardUid=null;s.uiFlow=true;s.sk={...s.sk,uiFlow:true};
     if(h.side===S.battleSide){s.uiEquipmentStep=true;return this.open(h,'skill',{sk:s.sk,card:HeroCore.selectedCard(),done:c=>{
-      if(HeroCore.selection!==s)return;s.cardUid=c?.uid||null;s.uiEquipmentStep=false;this.prepare(s);
+      if(HeroCore.selection!==s)return;s.cardUid=c?.uid||null;s.equipmentBundle=c?.equipmentCards?c:null;s.uiEquipmentStep=false;this.prepare(s);
     },back:()=>HeroCore.cancel()})}
     if(s.sk.mechanic==='HEAL'&&this.cards(h,'skillheal',s.sk).length)return this.healingEquipment(s,true);
     return this.prepare(s);
   },
   healingEquipment(s,cancelSkill=false){
-    s.uiEquipmentStep=true;return this.open(s.h,'skillheal',{sk:s.sk,card:HeroCore.selectedCard(),done:c=>{if(HeroCore.selection!==s)return;s.cardUid=c?.uid||null;s.selected=[];s.uiEquipmentStep=false;this.prepare(s)},back:()=>{s.uiEquipmentStep=false;if(cancelSkill)HeroCore.cancel();else this.prepare(s)}});
+    s.uiEquipmentStep=true;return this.open(s.h,'skillheal',{sk:s.sk,card:HeroCore.selectedCard(),done:c=>{if(HeroCore.selection!==s)return;s.cardUid=c?.uid||null;s.equipmentBundle=c?.equipmentCards?c:null;s.selected=[];s.uiEquipmentStep=false;this.prepare(s)},back:()=>{s.uiEquipmentStep=false;if(cancelSkill)HeroCore.cancel();else this.prepare(s)}});
   },
   prepare(s){
     const m=s.sk.mechanic;
@@ -5681,7 +5763,7 @@ const CombatFlowUI={
   },
   commit(s){
     const pending=S.pending,defense=s.h.side!==S.battleSide,result=HeroCore.commit();
-    if(result&&s.sk.mechanic==='COPY'&&HeroCore.selection&&HeroCore.selection!==s){const copy=HeroCore.selection;copy.uiFlow=true;copy.sk={...copy.sk,uiFlow:true};if(!defense){copy.uiEquipmentStep=true;return this.open(copy.h,'skill',{sk:copy.sk,done:c=>{if(HeroCore.selection!==copy)return;copy.cardUid=c?.uid||null;copy.uiEquipmentStep=false;this.prepare(copy)},back:()=>HeroCore.cancel()})}return this.prepare(copy)}
+    if(result&&s.sk.mechanic==='COPY'&&HeroCore.selection&&HeroCore.selection!==s){const copy=HeroCore.selection;copy.uiFlow=true;copy.sk={...copy.sk,uiFlow:true};if(!defense){copy.uiEquipmentStep=true;return this.open(copy.h,'skill',{sk:copy.sk,done:c=>{if(HeroCore.selection!==copy)return;copy.cardUid=c?.uid||null;copy.equipmentBundle=c?.equipmentCards?c:null;copy.uiEquipmentStep=false;this.prepare(copy)},back:()=>HeroCore.cancel()})}return this.prepare(copy)}
     if(result&&defense&&S.pending===pending&&!HeroCore.selection&&!S.equipmentReaction&&!S.postHitReaction&&!S.pending?.replacementTargetId&&s.sk.mechanic!=='REDIRECT')resolveCombat();
     return result;
   },
@@ -5768,7 +5850,7 @@ CombatFlowUI.describe=function(){
   this.status.replaceChildren();const label=document.createElement('span');label.textContent=text;this.status.append(label);this.status.hidden=!text||S.phase!=='battle';
   if(s&&!s.uiEquipmentStep&&!s.continuation&&!this.state){
     if(s.h.side!==S.battleSide&&s.sk.mechanic==='HEAL'&&this.cards(s.h,'skillheal',s.sk).length)this.status.append(HeroSkillUI.button('CHỌN BÌNH MÁU',()=>this.healingEquipment(s)));
-    if(s.h.side===S.battleSide&&!s.sk.equipmentAction)this.status.append(HeroSkillUI.button('ĐỔI TRANG BỊ',()=>{s.uiEquipmentStep=true;this.open(s.h,'skill',{sk:s.sk,card:HeroCore.selectedCard(),done:c=>{if(HeroCore.selection!==s)return;s.cardUid=c?.uid||null;s.selected=[];s.uiEquipmentStep=false;this.prepare(s)},back:()=>{s.uiEquipmentStep=false;this.prepare(s)}})}));
+    if(s.h.side===S.battleSide&&!s.sk.equipmentAction)this.status.append(HeroSkillUI.button('ĐỔI TRANG BỊ',()=>{s.uiEquipmentStep=true;this.open(s.h,'skill',{sk:s.sk,card:HeroCore.selectedCard(),done:c=>{if(HeroCore.selection!==s)return;s.cardUid=c?.uid||null;s.equipmentBundle=c?.equipmentCards?c:null;s.selected=[];s.uiEquipmentStep=false;this.prepare(s)},back:()=>{s.uiEquipmentStep=false;this.prepare(s)}})}));
     this.status.append(HeroSkillUI.button('HỦY',()=>HeroCore.cancel()));
   }else if(S.mode==='attack'&&S.selected&&!p&&!this.state){const h=S.selected;this.status.append(HeroSkillUI.button('ĐỔI TRANG BỊ',()=>this.open(h,'atk',{card:S.attackChoice?.card})),HeroSkillUI.button('HỦY',()=>{CoreAttackController.cancelTargeting();S.equipSelectedCard=null;S.equipPendingActorId=null;S.attackChoice=null;updateUI()}));}
 
@@ -5795,13 +5877,13 @@ if(new URLSearchParams(location.search).get('qa')==='1'){
 ;
 /* Training controls configure scenarios; normal Core still resolves every action. */
 const TrainingMode={
-  id:'MODE_TRAINING_001',placement:null,unlocked:{1:new Set(),2:new Set()},
+  id:'MODE_TRAINING_001',placement:null,unlocked:{1:new Set(),2:new Set()},quota:{1:{},2:{}},
   active(){return S.selectedMode===this.id&&S.phase==='battle'},
   busy(){return !!(S.pending||S.heroSequence||HeroCore.selection||S.equipmentReaction||S.postHitReaction||CombatFlowUI.state)},
   start(){
     CombatFlowUI.close();resetMatchState();ShellGameOverController.close();closeHub();
     S.selectedMode=this.id;S.roomSession=null;S.matchSession=null;S.phase='battle';S.botSide=null;S.playType='local';S.battleSide=1;S.winner=1;S.loser=2;S.turn=1;S.round=1;
-    this.placement=null;this.unlocked={1:new Set(),2:new Set()};buildCells();show('game');renderBoard();updateUI();this.configure('unit');
+    this.placement=null;this.unlocked={1:new Set(),2:new Set()};this.quota={1:{},2:{}};buildCells();show('game');renderBoard();updateUI();this.configure('unit');
   },
   configure(kind){
     if(!this.active()||this.busy())return false;
@@ -5810,13 +5892,13 @@ const TrainingMode={
     const choice=document.createElement('select');choice.setAttribute('aria-label',kind==='unit'?'Hero hoặc lính':'Trang bị');
     const defs=kind==='unit'?[...HeroRegistry.list().map(d=>({id:d.id,name:ContentViews.hero(d.id).name,hero:true})),...UnitRegistry.list().map(d=>({id:d.id,name:ContentViews.unit(d.id).name,hero:false}))]:EquipmentRegistry.list().map(d=>({id:d.id,name:ContentViews.equipment(d.id)?.name||d.id}));
     for(const d of defs)choice.add(new Option((kind==='unit'?(d.hero?'Hero · ':'Lính · '):'')+d.name,d.id));
-    this.dialog.append(side,choice,HeroSkillUI.button(kind==='unit'?'CHỌN Ô TRIỂN KHAI':'THÊM',()=>{const p=Number(side.value),def=defs.find(d=>d.id===choice.value);this.dialog.close();if(kind==='unit'){this.placement={side:p,...def};hideUnitMenu();S.selected=null;S.mode=null}else{this.unlocked[p].add(def.id);this.refill()}updateUI()}),HeroSkillUI.button('HỦY',()=>this.dialog.close()));this.dialog.showModal();return true;
+    this.dialog.append(side,choice,HeroSkillUI.button(kind==='unit'?'CHỌN Ô TRIỂN KHAI':'THÊM',()=>{const p=Number(side.value),def=defs.find(d=>d.id===choice.value);this.dialog.close();if(kind==='unit'){this.placement={side:p,...def};hideUnitMenu();S.selected=null;S.mode=null}else{this.unlocked[p].add(def.id);this.quota[p][def.id]=S.hands[p].filter(c=>c.equipmentId===def.id).length+1;this.refill()}updateUI()}),HeroSkillUI.button('HỦY',()=>this.dialog.close()));this.dialog.showModal();return true;
   },
   place(cell){
     const d=this.placement;if(!d||!this.active()||unitAt(cell.q,cell.r)||cell.blocked)return false;
     S.units.push(createRuntimeEntityInstance({definitionId:d.id,hero:d.hero,side:d.side,q:cell.q,r:cell.r}));this.placement=null;renderBoard();updateUI();return true;
   },
-  refill(){if(!this.active())return;for(const side of [1,2])for(const id of this.unlocked[side])if(!S.hands[side].some(c=>c.equipmentId===id))S.hands[side].push(createEquipmentCardInstance(id,side))},
+  refill(){if(!this.active())return;for(const side of [1,2])for(const id of this.unlocked[side]){const wanted=this.quota[side][id]||1;for(let n=S.hands[side].filter(c=>c.equipmentId===id).length;n<wanted;n++)S.hands[side].push(createEquipmentCardInstance(id,side))}},
   refresh(){if(!this.active()||this.busy())return false;this.placement=null;S.skillUsed={};S.duelUsage=null;resetTurnFlags();renderBoard();updateUI();return true},
   exit(){this.placement=null;this.dialog.close();CombatFlowUI.close();resetMatchState();S.roomSession=null;S.matchSession=null;S.selectedMode=null;ShellGameOverController.close();this.toolbar.hidden=true;ShellFlowController.openModeSelect()},
   sync(){

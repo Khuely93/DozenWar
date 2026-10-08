@@ -1,0 +1,37 @@
+{
+  "status": "CONFIRMED",
+  "quantityChanges": {
+    "EQUIP_INF_ATK_003": 2,
+    "EQUIP_COMMON_ATK_003": 1
+  },
+  "card": {
+    "id": "EQUIP_COMMON_ATK_006",
+    "group": "COMMON",
+    "name": "Thích Khách",
+    "category": "ATTACK",
+    "star": 4,
+    "count": 2,
+    "text": "-1 máu của Hero địch. Bộ binh có thể đỡ đòn tấn công từ Thích Khách.",
+    "target": {
+      "side": "ENEMY",
+      "unitType": "HERO",
+      "range": "GLOBAL"
+    },
+    "infantryGuardAllowed": true,
+    "consumesAttack": false,
+    "damageCanBeModified": "DEFENSE_ONLY",
+    "assets": {
+      "art": "IMG_EQUIP_COMMON_ATK_006_ART",
+      "frame": "IMG_EQUIP_COMMON_ATK_006_FRAME",
+      "icon": "ICON_EQUIP_COMMON_ATK_006_ICON"
+    }
+  },
+  "resultingDeck": {
+    "designs": 30,
+    "copies": 60,
+    "INF": 13,
+    "ARCH": 13,
+    "CAV": 11,
+    "COMMON": 23
+  }
+}

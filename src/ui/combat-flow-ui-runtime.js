@@ -8,29 +8,35 @@ const CombatFlowUI={
   },
   open(h,kind,{card=null,sk=null,done=null,back=null,pending=S.pending}={}){
     if(this.state||S.equipmentReaction||S.matchEnded)return false;
-    this.state={h,kind,cardUid:card?.uid||null,sk,done,back,pending};
+    this.state={h,kind,cardUid:card?.uid||null,cardUids:EquipmentCore.parts(card).map(c=>c.uid),multi:EquipmentCore.multipleAllowed(),sk,done,back,pending};
     hideAttackPopup();hideDefensePopup();hideUnitMenu();this.render();this.dialog.showModal();updateUI();return true;
   },
   render(){
     const s=this.state;if(!s)return;this.dialog.replaceChildren();
     const title=document.createElement('h2');title.textContent='PLAYER '+s.h.side+' · TRANG BỊ '+(s.kind==='post'?'PHẢN SÁT THƯƠNG':s.kind==='def'?'PHÒNG THỦ':s.kind.startsWith('skill')?'CHO SKILL':'TẤN CÔNG');
-    const info=document.createElement('p');info.textContent=unitSpec(s.h).name+(s.sk?' · '+s.sk.name:'')+' · Chọn một lá bài hợp lệ';this.dialog.append(title,info);
+    const info=document.createElement('p');info.textContent=unitSpec(s.h).name+(s.sk?' · '+s.sk.name:'')+(s.multi?' · Chọn nhiều trang bị hợp lệ · Đã chọn '+s.cardUids.length:' · Chọn một lá bài hợp lệ');this.dialog.append(title,info);
     const list=document.createElement('div');list.className='combatEquipmentCards';const cards=this.cards(s.h,s.kind,s.sk);
     if(!cards.some(c=>c.uid===s.cardUid))s.cardUid=null;
-    for(const c of cards){const b=HeroSkillUI.button('',()=>{s.cardUid=c.uid;this.render();[...this.dialog.querySelectorAll('[data-card-uid]')].find(b=>b.dataset.cardUid===c.uid)?.focus()});b.className='card '+c.type+(s.cardUid===c.uid?' chosen':'');b.dataset.equipmentId=c.equipmentId;b.dataset.cardUid=c.uid;b.setAttribute('aria-pressed',String(s.cardUid===c.uid));b.innerHTML=cardHTML(c);b.title=c.text;list.append(b)}
+    s.cardUids=s.cardUids.filter(uid=>cards.some(c=>c.uid===uid));
+    for(const c of cards){const selected=s.multi?s.cardUids.includes(c.uid):s.cardUid===c.uid;
+      const compatible=selected||!s.multi||EquipmentCore.canCombine([...cards.filter(x=>s.cardUids.includes(x.uid)),c]);
+      const b=HeroSkillUI.button('',()=>{if(s.multi){const i=s.cardUids.indexOf(c.uid);if(i>=0)s.cardUids.splice(i,1);else s.cardUids.push(c.uid)}else{s.cardUid=c.uid;s.cardUids=[c.uid]}this.render();[...this.dialog.querySelectorAll('[data-card-uid]')].find(b=>b.dataset.cardUid===c.uid)?.focus()},!compatible);
+      b.className='card '+c.type+(selected?' chosen':'');b.dataset.equipmentId=c.equipmentId;b.dataset.cardUid=c.uid;b.setAttribute('aria-pressed',String(selected));b.innerHTML=cardHTML(c);b.title=c.text+(compatible?'':' · Card này cần hành động hoặc lựa chọn mục tiêu riêng');list.append(b)}
     if(!cards.length){const empty=document.createElement('p');empty.textContent='Không có trang bị phù hợp.';list.append(empty)}this.dialog.append(list);
     const actions=document.createElement('div');actions.className='combatEquipmentActions';
-    actions.append(HeroSkillUI.button('XÁC NHẬN',()=>this.confirm(),!s.cardUid),HeroSkillUI.button(s.kind.startsWith('skill')?'KHÔNG DÙNG':'BỎ QUA',()=>this.confirm(true)),HeroSkillUI.button('QUAY LẠI',()=>this.cancel()));this.dialog.append(actions);
+    actions.append(HeroSkillUI.button('XÁC NHẬN',()=>this.confirm(),s.multi?!s.cardUids.length:!s.cardUid),HeroSkillUI.button(s.kind.startsWith('skill')?'KHÔNG DÙNG':'BỎ QUA',()=>this.confirm(true)),HeroSkillUI.button('QUAY LẠI',()=>this.cancel()));this.dialog.append(actions);
   },
   close(){this.state=null;if(this.dialog.open)this.dialog.close()},
   confirm(skip=false){
     const s=this.state;if(!s)return false;
     if(S.matchEnded||s.h.hp<=0&&s.kind!=='post'||s.pending!==S.pending){this.close();updateUI();return false}
-    const c=skip?null:this.cards(s.h,s.kind,s.sk).find(c=>c.uid===s.cardUid);if(!skip&&!c)return false;
+    const available=this.cards(s.h,s.kind,s.sk),chosen=s.multi?available.filter(c=>s.cardUids.includes(c.uid)):[available.find(c=>c.uid===s.cardUid)].filter(Boolean);
+    if(!skip&&(chosen.length!==(s.multi?s.cardUids.length:1)||!EquipmentCore.canCombine(chosen)))return false;
+    const c=skip?null:EquipmentCore.combine(chosen);if(!skip&&!c)return false;
     this.close();
     if(s.done)s.done(c);
-    else if(s.kind==='def'){if(c)EquipmentCore.useDefense(s.h,c);else resolveCombat()}
-    else if(c&&EquipmentCore.standalone(c))EquipmentCore.begin(s.h,c);
+    else if(s.kind==='def'){if(c){const r=EquipmentCore.useDefense(s.h,c);if(r&&c.equipmentCards&&HeroCore.selection){const selection=HeroCore.selection;selection.uiFlow=true;selection.sk={...selection.sk,uiFlow:true};this.prepare(selection)}}else resolveCombat()}
+    else if(c&&EquipmentCore.standalone(c)){const r=EquipmentCore.begin(s.h,c);if(r&&c.equipmentCards&&HeroCore.selection){const selection=HeroCore.selection;selection.uiFlow=true;selection.sk={...selection.sk,uiFlow:true};this.prepare(selection)}}
     else{S.selected=s.h;S.equipSelectedCard=c;S.equipPendingActorId=c?s.h.id:null;CoreAttackController.begin(c)}
     updateUI();return true;
   },
@@ -40,13 +46,13 @@ const CombatFlowUI={
     S.selected=h;if(!HeroCore.begin(h,n))return false;
     const s=HeroCore.selection;if(h.side!==S.battleSide)s.cardUid=null;s.uiFlow=true;s.sk={...s.sk,uiFlow:true};
     if(h.side===S.battleSide){s.uiEquipmentStep=true;return this.open(h,'skill',{sk:s.sk,card:HeroCore.selectedCard(),done:c=>{
-      if(HeroCore.selection!==s)return;s.cardUid=c?.uid||null;s.uiEquipmentStep=false;this.prepare(s);
+      if(HeroCore.selection!==s)return;s.cardUid=c?.uid||null;s.equipmentBundle=c?.equipmentCards?c:null;s.uiEquipmentStep=false;this.prepare(s);
     },back:()=>HeroCore.cancel()})}
     if(s.sk.mechanic==='HEAL'&&this.cards(h,'skillheal',s.sk).length)return this.healingEquipment(s,true);
     return this.prepare(s);
   },
   healingEquipment(s,cancelSkill=false){
-    s.uiEquipmentStep=true;return this.open(s.h,'skillheal',{sk:s.sk,card:HeroCore.selectedCard(),done:c=>{if(HeroCore.selection!==s)return;s.cardUid=c?.uid||null;s.selected=[];s.uiEquipmentStep=false;this.prepare(s)},back:()=>{s.uiEquipmentStep=false;if(cancelSkill)HeroCore.cancel();else this.prepare(s)}});
+    s.uiEquipmentStep=true;return this.open(s.h,'skillheal',{sk:s.sk,card:HeroCore.selectedCard(),done:c=>{if(HeroCore.selection!==s)return;s.cardUid=c?.uid||null;s.equipmentBundle=c?.equipmentCards?c:null;s.selected=[];s.uiEquipmentStep=false;this.prepare(s)},back:()=>{s.uiEquipmentStep=false;if(cancelSkill)HeroCore.cancel();else this.prepare(s)}});
   },
   prepare(s){
     const m=s.sk.mechanic;
@@ -56,7 +62,7 @@ const CombatFlowUI={
   },
   commit(s){
     const pending=S.pending,defense=s.h.side!==S.battleSide,result=HeroCore.commit();
-    if(result&&s.sk.mechanic==='COPY'&&HeroCore.selection&&HeroCore.selection!==s){const copy=HeroCore.selection;copy.uiFlow=true;copy.sk={...copy.sk,uiFlow:true};if(!defense){copy.uiEquipmentStep=true;return this.open(copy.h,'skill',{sk:copy.sk,done:c=>{if(HeroCore.selection!==copy)return;copy.cardUid=c?.uid||null;copy.uiEquipmentStep=false;this.prepare(copy)},back:()=>HeroCore.cancel()})}return this.prepare(copy)}
+    if(result&&s.sk.mechanic==='COPY'&&HeroCore.selection&&HeroCore.selection!==s){const copy=HeroCore.selection;copy.uiFlow=true;copy.sk={...copy.sk,uiFlow:true};if(!defense){copy.uiEquipmentStep=true;return this.open(copy.h,'skill',{sk:copy.sk,done:c=>{if(HeroCore.selection!==copy)return;copy.cardUid=c?.uid||null;copy.equipmentBundle=c?.equipmentCards?c:null;copy.uiEquipmentStep=false;this.prepare(copy)},back:()=>HeroCore.cancel()})}return this.prepare(copy)}
     if(result&&defense&&S.pending===pending&&!HeroCore.selection&&!S.equipmentReaction&&!S.postHitReaction&&!S.pending?.replacementTargetId&&s.sk.mechanic!=='REDIRECT')resolveCombat();
     return result;
   },
@@ -143,7 +149,7 @@ CombatFlowUI.describe=function(){
   this.status.replaceChildren();const label=document.createElement('span');label.textContent=text;this.status.append(label);this.status.hidden=!text||S.phase!=='battle';
   if(s&&!s.uiEquipmentStep&&!s.continuation&&!this.state){
     if(s.h.side!==S.battleSide&&s.sk.mechanic==='HEAL'&&this.cards(s.h,'skillheal',s.sk).length)this.status.append(HeroSkillUI.button('CHỌN BÌNH MÁU',()=>this.healingEquipment(s)));
-    if(s.h.side===S.battleSide&&!s.sk.equipmentAction)this.status.append(HeroSkillUI.button('ĐỔI TRANG BỊ',()=>{s.uiEquipmentStep=true;this.open(s.h,'skill',{sk:s.sk,card:HeroCore.selectedCard(),done:c=>{if(HeroCore.selection!==s)return;s.cardUid=c?.uid||null;s.selected=[];s.uiEquipmentStep=false;this.prepare(s)},back:()=>{s.uiEquipmentStep=false;this.prepare(s)}})}));
+    if(s.h.side===S.battleSide&&!s.sk.equipmentAction)this.status.append(HeroSkillUI.button('ĐỔI TRANG BỊ',()=>{s.uiEquipmentStep=true;this.open(s.h,'skill',{sk:s.sk,card:HeroCore.selectedCard(),done:c=>{if(HeroCore.selection!==s)return;s.cardUid=c?.uid||null;s.equipmentBundle=c?.equipmentCards?c:null;s.selected=[];s.uiEquipmentStep=false;this.prepare(s)},back:()=>{s.uiEquipmentStep=false;this.prepare(s)}})}));
     this.status.append(HeroSkillUI.button('HỦY',()=>HeroCore.cancel()));
   }else if(S.mode==='attack'&&S.selected&&!p&&!this.state){const h=S.selected;this.status.append(HeroSkillUI.button('ĐỔI TRANG BỊ',()=>this.open(h,'atk',{card:S.attackChoice?.card})),HeroSkillUI.button('HỦY',()=>{CoreAttackController.cancelTargeting();S.equipSelectedCard=null;S.equipPendingActorId=null;S.attackChoice=null;updateUI()}));}
 

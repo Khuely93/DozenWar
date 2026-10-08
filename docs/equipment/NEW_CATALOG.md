@@ -1,6 +1,6 @@
 # Bộ trang bị mới — workspace
 
-Toàn bộ 9 card cũ đã được gỡ khỏi catalog và bộ chia bài. Workspace có 29 mẫu / 60 lá: Bộ binh 7/14, Cung thủ 6/13, Kỵ binh 6/11, Dùng chung 10/22. Mỗi Player có deck độc lập, chia tối đa 5 lá đầu trận theo Duel. Các bổ sung sau v1.43.0 được phát hành trong v1.44.0.
+Toàn bộ 9 card cũ đã được gỡ khỏi catalog và bộ chia bài. Workspace có 30 mẫu / 60 lá: Bộ binh 7/13, Cung thủ 6/13, Kỵ binh 6/11, Dùng chung 11/23. Mỗi Player có deck độc lập, chia tối đa 5 lá đầu trận theo Duel. Các bổ sung sau v1.43.0 được phát hành trong v1.44.0.
 
 ## Nhóm và ID
 
@@ -46,3 +46,7 @@ Hiệu ứng mới phải được triển khai trong Core trước khi thêm ID
 ## Thông tin cần chốt cho từng card
 
 Tên — nhóm — công/thủ — số sao — hiệu ứng chi tiết — số lượng bản sao trong deck. Khi hiệu ứng có tăng tầm, mục tiêu, lần đánh hoặc di chuyển cần chốt thời hạn, điều kiện chọn mục tiêu và cách kết hợp skill.
+
+## Thích Khách — EQUIP_COMMON_ATK_006
+
+Dùng chung, Công, 4 sao, 2 lá. Chọn một Hero địch còn sống trên toàn bản đồ; gây 1 sát thương qua luồng phòng thủ, cho phép Guard bộ binh. Không tiêu hao quyền Attack; sát thương không lấy buff của người dùng. Asset art/frame/icon riêng theo ID card. Giày Nhanh Nhẹn: 2 lá; Lọ Phép Thuật: 1 lá.

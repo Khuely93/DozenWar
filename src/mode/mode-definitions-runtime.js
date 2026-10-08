@@ -65,7 +65,7 @@ DW_MODES.registerMode({
   mapPolicy:{mapId:'MAP_DUEL_001',occupancyMode:'SINGLE',allyPassThrough:false},
   turnPolicy:{roundEnabled:false,endTurn:'MANUAL',reactionPausesTurnTimer:true},
   skillUsagePolicy:{scope:'ACTION',maxUsesPerSkill:null,reset:'CONTINUOUS'},
-  equipmentRules:{maxPerAction:1,attackPerTurn:null,defensePerOpponentTurn:null},
+  equipmentRules:{maxPerAction:null,allowMultiple:true,attackPerTurn:null,defensePerOpponentTurn:null},
   contentPolicy:{packId:'CONTENT_PACK_DUEL_001',deckId:'DECK_DUEL_STANDARD_001'},
   winRules:[],winRuleLogic:'ANY'
 });

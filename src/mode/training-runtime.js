@@ -1,12 +1,12 @@
 /* Training controls configure scenarios; normal Core still resolves every action. */
 const TrainingMode={
-  id:'MODE_TRAINING_001',placement:null,unlocked:{1:new Set(),2:new Set()},
+  id:'MODE_TRAINING_001',placement:null,unlocked:{1:new Set(),2:new Set()},quota:{1:{},2:{}},
   active(){return S.selectedMode===this.id&&S.phase==='battle'},
   busy(){return !!(S.pending||S.heroSequence||HeroCore.selection||S.equipmentReaction||S.postHitReaction||CombatFlowUI.state)},
   start(){
     CombatFlowUI.close();resetMatchState();ShellGameOverController.close();closeHub();
     S.selectedMode=this.id;S.roomSession=null;S.matchSession=null;S.phase='battle';S.botSide=null;S.playType='local';S.battleSide=1;S.winner=1;S.loser=2;S.turn=1;S.round=1;
-    this.placement=null;this.unlocked={1:new Set(),2:new Set()};buildCells();show('game');renderBoard();updateUI();this.configure('unit');
+    this.placement=null;this.unlocked={1:new Set(),2:new Set()};this.quota={1:{},2:{}};buildCells();show('game');renderBoard();updateUI();this.configure('unit');
   },
   configure(kind){
     if(!this.active()||this.busy())return false;
@@ -15,13 +15,13 @@ const TrainingMode={
     const choice=document.createElement('select');choice.setAttribute('aria-label',kind==='unit'?'Hero hoặc lính':'Trang bị');
     const defs=kind==='unit'?[...HeroRegistry.list().map(d=>({id:d.id,name:ContentViews.hero(d.id).name,hero:true})),...UnitRegistry.list().map(d=>({id:d.id,name:ContentViews.unit(d.id).name,hero:false}))]:EquipmentRegistry.list().map(d=>({id:d.id,name:ContentViews.equipment(d.id)?.name||d.id}));
     for(const d of defs)choice.add(new Option((kind==='unit'?(d.hero?'Hero · ':'Lính · '):'')+d.name,d.id));
-    this.dialog.append(side,choice,HeroSkillUI.button(kind==='unit'?'CHỌN Ô TRIỂN KHAI':'THÊM',()=>{const p=Number(side.value),def=defs.find(d=>d.id===choice.value);this.dialog.close();if(kind==='unit'){this.placement={side:p,...def};hideUnitMenu();S.selected=null;S.mode=null}else{this.unlocked[p].add(def.id);this.refill()}updateUI()}),HeroSkillUI.button('HỦY',()=>this.dialog.close()));this.dialog.showModal();return true;
+    this.dialog.append(side,choice,HeroSkillUI.button(kind==='unit'?'CHỌN Ô TRIỂN KHAI':'THÊM',()=>{const p=Number(side.value),def=defs.find(d=>d.id===choice.value);this.dialog.close();if(kind==='unit'){this.placement={side:p,...def};hideUnitMenu();S.selected=null;S.mode=null}else{this.unlocked[p].add(def.id);this.quota[p][def.id]=S.hands[p].filter(c=>c.equipmentId===def.id).length+1;this.refill()}updateUI()}),HeroSkillUI.button('HỦY',()=>this.dialog.close()));this.dialog.showModal();return true;
   },
   place(cell){
     const d=this.placement;if(!d||!this.active()||unitAt(cell.q,cell.r)||cell.blocked)return false;
     S.units.push(createRuntimeEntityInstance({definitionId:d.id,hero:d.hero,side:d.side,q:cell.q,r:cell.r}));this.placement=null;renderBoard();updateUI();return true;
   },
-  refill(){if(!this.active())return;for(const side of [1,2])for(const id of this.unlocked[side])if(!S.hands[side].some(c=>c.equipmentId===id))S.hands[side].push(createEquipmentCardInstance(id,side))},
+  refill(){if(!this.active())return;for(const side of [1,2])for(const id of this.unlocked[side]){const wanted=this.quota[side][id]||1;for(let n=S.hands[side].filter(c=>c.equipmentId===id).length;n<wanted;n++)S.hands[side].push(createEquipmentCardInstance(id,side))}},
   refresh(){if(!this.active()||this.busy())return false;this.placement=null;S.skillUsed={};S.duelUsage=null;resetTurnFlags();renderBoard();updateUI();return true},
   exit(){this.placement=null;this.dialog.close();CombatFlowUI.close();resetMatchState();S.roomSession=null;S.matchSession=null;S.selectedMode=null;ShellGameOverController.close();this.toolbar.hidden=true;ShellFlowController.openModeSelect()},
   sync(){

@@ -1,8 +1,8 @@
 {
   "project": "DOZEN WAR II",
-  "version": "1.45.0",
+  "version": "1.46.0",
   "phase": "DUEL_RULE_MODE_1VS1_180_30",
-  "generatedAt": "2026-10-08T09:46:29.411Z",
+  "generatedAt": "2026-10-08T16:07:20.338Z",
   "runtimeOrder": [
     "src/architecture/module-boundaries.js",
     "src/ui/ui-dom-runtime.js",
@@ -31,13 +31,14 @@
     "src/core/hero-roster-runtime.js",
     "src/ui/hero-skill-ui-runtime.js",
     "src/core/equipment-runtime.js",
+    "src/core/multi-equipment-runtime.js",
     "src/ui/combat-flow-ui-runtime.js",
     "src/shell/shell-boot-runtime.js",
     "src/mode/training-runtime.js",
     "src/bootstrap.js"
   ],
   "bundles": {
-    "runtime": "assets/runtime.b2937820455b.js",
+    "runtime": "assets/runtime.7a3f28e42e1f.js",
     "styles": "assets/app.ee2a2a173abb.css"
   },
   "externalizedEmbeddedAssets": [],
@@ -46,16 +47,16 @@
     {
       "file": "index.html",
       "bytes": 16582,
-      "gzipBytes": 4577,
-      "brotliBytes": 3774,
-      "sha256": "426eb3696b70df52165812b601d34fb1ed318ee92457b0ff0713402a83c5cae5"
+      "gzipBytes": 4576,
+      "brotliBytes": 3775,
+      "sha256": "3209a525776e07adce3c603b45522fd1891782a0e9cce2cf091c6a289f568ce2"
     },
     {
-      "file": "assets/runtime.b2937820455b.js",
-      "bytes": 405645,
-      "gzipBytes": 116814,
-      "brotliBytes": 95236,
-      "sha256": "b2937820455b2cc6dbb57927e97fec11ca8253414b44b4bf0adc254bdf54c173"
+      "file": "assets/runtime.7a3f28e42e1f.js",
+      "bytes": 415343,
+      "gzipBytes": 119181,
+      "brotliBytes": 97121,
+      "sha256": "7a3f28e42e1f4b998de3d680350cbfb1c455f83d1fd15598c11185762597e3c4"
     },
     {
       "file": "assets/app.ee2a2a173abb.css",
