@@ -1,8 +1,8 @@
 {
   "project": "DOZEN WAR II",
-  "version": "1.44.0",
+  "version": "1.45.0",
   "phase": "DUEL_RULE_MODE_1VS1_180_30",
-  "baseline": "v1.44.0 Confirmed equipment catalog: 29 designs / 60 copies",
+  "baseline": "v1.45.0 Training mode and combat UI",
   "entry": "index.html",
   "styles": "styles/main.css",
   "runtimeOrder": [
@@ -35,6 +35,7 @@
     "src/core/equipment-runtime.js",
     "src/ui/combat-flow-ui-runtime.js",
     "src/shell/shell-boot-runtime.js",
+    "src/mode/training-runtime.js",
     "src/bootstrap.js"
   ],
   "extractedLayers": [

@@ -184,3 +184,25 @@
 .defensePopup .defSub .card{min-height:100px;text-align:left}
 
 .equipmentActionBar p{margin:0;padding:6px 10px;background:#142636f2;color:#fff;border-radius:8px;flex-basis:100%;font-size:13px}
+
+/* Bottom equipment controls share the validated equipment actions. */
+.dockCards button.card { color:var(--text);text-align:left;cursor:pointer;font:inherit; }
+.dockCards button.card:disabled { cursor:not-allowed;opacity:.45; }
+.dockCards button.card:not(:disabled):hover { outline:2px solid #e6ba61;outline-offset:-2px; }
+.dockCards button.card:focus-visible { outline:3px solid #f4d58d;outline-offset:-3px; }
+
+.combatEquipmentDialog { width:min(820px,calc(100vw - 32px));max-height:85dvh;box-sizing:border-box;overflow:auto;background:#101e2b;color:#edf3f8;border:1px solid #cba965;border-radius:16px;padding:24px;box-shadow:0 16px 60px #0009; }
+.combatEquipmentDialog::backdrop { background:#040a12b8; }
+.combatEquipmentDialog h2 { margin:0 0 12px;font-size:20px; }
+.combatEquipmentCards { display:flex;flex-wrap:wrap;gap:12px;padding:12px 0; }
+.combatEquipmentCards>.card { width:150px;min-height:190px;cursor:pointer;text-align:left;color:inherit;padding:0; }
+.combatEquipmentCards>.card>.card { border:0;width:100%;height:100%;box-sizing:border-box; }
+.combatEquipmentCards>.chosen { outline:3px solid #e9bd67;outline-offset:2px; }
+.combatEquipmentActions { display:flex;flex-wrap:wrap;gap:10px;margin-top:16px; }
+
+.combatFlowStatus { position:fixed;top:100px;left:50%;transform:translateX(-50%);z-index:65;max-width:calc(100vw - 32px);padding:8px 14px;background:#101e2bed;color:#fff;border:1px solid #cba965;border-radius:9px;pointer-events:none;text-align:center;font-size:13px; }
+.combatFlowStatus[hidden] { display:none; }
+
+.combatFlowStatus .btn { pointer-events:auto;margin-left:8px;padding:5px 8px;font-size:12px; }
+
+.trainingToolbar{position:absolute;top:8px;left:8px;right:8px;z-index:70;display:flex;gap:6px;flex-wrap:wrap;align-items:center;padding:8px;background:#102536ed;border:1px solid #7aa6c0;border-radius:10px}.trainingToolbar[hidden]{display:none}.trainingToolbar strong{font-size:13px}.trainingToolbar button{font-size:12px;padding:6px 9px}.trainingDialog{background:#102536;color:white;border:1px solid #7aa6c0;border-radius:12px;padding:20px;max-width:90vw}.trainingDialog::backdrop{background:#0009}.trainingDialog select{display:block;width:100%;margin:12px 0;padding:10px;background:#20384a;color:white}.trainingDialog button{margin:4px}

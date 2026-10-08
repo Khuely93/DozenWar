@@ -1,8 +1,8 @@
 {
   "project": "DOZEN WAR II",
-  "version": "1.44.0",
+  "version": "1.45.0",
   "phase": "DUEL_RULE_MODE_1VS1_180_30",
-  "generatedAt": "2026-10-08T09:10:27.804Z",
+  "generatedAt": "2026-10-08T09:46:29.411Z",
   "runtimeOrder": [
     "src/architecture/module-boundaries.js",
     "src/ui/ui-dom-runtime.js",
@@ -33,11 +33,12 @@
     "src/core/equipment-runtime.js",
     "src/ui/combat-flow-ui-runtime.js",
     "src/shell/shell-boot-runtime.js",
+    "src/mode/training-runtime.js",
     "src/bootstrap.js"
   ],
   "bundles": {
-    "runtime": "assets/runtime.4c1729e13c12.js",
-    "styles": "assets/app.16e26bd443d9.css"
+    "runtime": "assets/runtime.b2937820455b.js",
+    "styles": "assets/app.ee2a2a173abb.css"
   },
   "externalizedEmbeddedAssets": [],
   "note": "Build hashes are deployment artifact hashes. Gameplay compatibility remains authoritative in runtime ContentManifestBuilder/gameplayHash.",
@@ -46,22 +47,22 @@
       "file": "index.html",
       "bytes": 16582,
       "gzipBytes": 4577,
-      "brotliBytes": 3778,
-      "sha256": "4e4f03efb84612d96b51d2ade0729df82efb918331b942bbd28e3fa092bf15f8"
+      "brotliBytes": 3774,
+      "sha256": "426eb3696b70df52165812b601d34fb1ed318ee92457b0ff0713402a83c5cae5"
     },
     {
-      "file": "assets/runtime.4c1729e13c12.js",
-      "bytes": 399638,
-      "gzipBytes": 115242,
-      "brotliBytes": 94185,
-      "sha256": "4c1729e13c125efa52c5ce2aa1fa56b834b88683f08f43832ff71e7f78b87add"
+      "file": "assets/runtime.b2937820455b.js",
+      "bytes": 405645,
+      "gzipBytes": 116814,
+      "brotliBytes": 95236,
+      "sha256": "b2937820455b2cc6dbb57927e97fec11ca8253414b44b4bf0adc254bdf54c173"
     },
     {
-      "file": "assets/app.16e26bd443d9.css",
-      "bytes": 33329,
-      "gzipBytes": 8176,
-      "brotliBytes": 7136,
-      "sha256": "16e26bd443d9ebfb3b5362381fa0500405b7895f1a96db0e8987d58c79088712"
+      "file": "assets/app.ee2a2a173abb.css",
+      "bytes": 33970,
+      "gzipBytes": 8305,
+      "brotliBytes": 7256,
+      "sha256": "ee2a2a173abb80dc825b63ce6999390e11fe482071f7a1db547e46306c069c40"
     }
   ]
 }

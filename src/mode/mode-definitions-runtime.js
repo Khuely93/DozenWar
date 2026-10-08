@@ -57,3 +57,15 @@ DW_MODES.registerRule('RULE_DUEL_FIRST_PLAYER_NO_ATTACK',(event)=>{
   if(event?.type!=='CORE_EVENT_FIRST_PLAYER_INACTIVITY'||event.count<5||![1,2].includes(event.side))return null;
   return {ended:true,resultType:'WIN_LOSE',winnerSide:event.side===1?2:1,loserSide:event.side,reason:'FIRST_PLAYER_NO_ATTACK_FIVE_TURNS'};
 });
+
+
+DW_MODES.registerMode({
+  id:'MODE_TRAINING_001',version:1,name:'Đấu tập',shellEnabled:true,matchEnabled:true,
+  playerRules:{minPlayers:2,maxPlayers:2,requiredPlayersToStart:2},
+  mapPolicy:{mapId:'MAP_DUEL_001',occupancyMode:'SINGLE',allyPassThrough:false},
+  turnPolicy:{roundEnabled:false,endTurn:'MANUAL',reactionPausesTurnTimer:true},
+  skillUsagePolicy:{scope:'ACTION',maxUsesPerSkill:null,reset:'CONTINUOUS'},
+  equipmentRules:{maxPerAction:1,attackPerTurn:null,defensePerOpponentTurn:null},
+  contentPolicy:{packId:'CONTENT_PACK_DUEL_001',deckId:'DECK_DUEL_STANDARD_001'},
+  winRules:[],winRuleLogic:'ANY'
+});

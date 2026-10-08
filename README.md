@@ -195,3 +195,7 @@ Added wheel/button zoom, empty-map/middle-mouse pan, Pan toggle and reset. Map b
 ## v1.44.0 — Trang bị
 
 Bộ trang bị hoàn chỉnh: 29 mẫu / 60 lá, gồm Bộ binh 7/14, Cung thủ 6/13, Kỵ binh 6/11 và Dùng chung 10/22. Mỗi mẫu có ID/asset riêng, hỗ trợ Công, Thủ và Công–Thủ. Chi tiết luật và validation: [RELEASE_1_44_0.md](docs/equipment/RELEASE_1_44_0.md).
+
+## v1.45.0 — Đấu tập
+
+Thêm mode Đấu tập: tự triển khai hai phe trên map Duel, dùng lại skill/trang bị, không thắng thua, đổi lượt và thoát trận. Hướng dẫn: [training.md](docs/modes/training.md).

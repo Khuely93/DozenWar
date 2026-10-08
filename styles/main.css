@@ -204,3 +204,5 @@
 .combatFlowStatus[hidden] { display:none; }
 
 .combatFlowStatus .btn { pointer-events:auto;margin-left:8px;padding:5px 8px;font-size:12px; }
+
+.trainingToolbar{position:absolute;top:8px;left:8px;right:8px;z-index:70;display:flex;gap:6px;flex-wrap:wrap;align-items:center;padding:8px;background:#102536ed;border:1px solid #7aa6c0;border-radius:10px}.trainingToolbar[hidden]{display:none}.trainingToolbar strong{font-size:13px}.trainingToolbar button{font-size:12px;padding:6px 9px}.trainingDialog{background:#102536;color:white;border:1px solid #7aa6c0;border-radius:12px;padding:20px;max-width:90vw}.trainingDialog::backdrop{background:#0009}.trainingDialog select{display:block;width:100%;margin:12px 0;padding:10px;background:#20384a;color:white}.trainingDialog button{margin:4px}
