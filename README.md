@@ -189,3 +189,9 @@ Map above a responsive Hero / Skill / Card dock (23:33:44). Full HD: 64/756/260 
 
 ## v1.40.22 — Full Duel viewport and camera
 Added wheel/button zoom, empty-map/middle-mouse pan, Pan toggle and reset. Map background covers the viewport; world/hex proportions and deploy drag coordinates stay aligned. Popup anchors follow the camera without scaling UI.
+
+
+
+## v1.44.0 — Trang bị
+
+Bộ trang bị hoàn chỉnh: 29 mẫu / 60 lá, gồm Bộ binh 7/14, Cung thủ 6/13, Kỵ binh 6/11 và Dùng chung 10/22. Mỗi mẫu có ID/asset riêng, hỗ trợ Công, Thủ và Công–Thủ. Chi tiết luật và validation: [RELEASE_1_44_0.md](docs/equipment/RELEASE_1_44_0.md).

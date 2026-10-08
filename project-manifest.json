@@ -1,8 +1,8 @@
 {
   "project": "DOZEN WAR II",
-  "version": "1.43.0",
+  "version": "1.44.0",
   "phase": "DUEL_RULE_MODE_1VS1_180_30",
-  "baseline": "v1.43.0 Confirmed 12-Hero roster",
+  "baseline": "v1.44.0 Confirmed equipment catalog: 29 designs / 60 copies",
   "entry": "index.html",
   "styles": "styles/main.css",
   "runtimeOrder": [

@@ -179,3 +179,8 @@
 
 .equipmentActionBar{top:12px;bottom:auto;left:12px;right:12px;z-index:65;max-height:110px;overflow:auto;align-content:flex-start;pointer-events:none}
 .equipmentActionBar .btn{pointer-events:auto;font-size:12px;padding:6px 9px;background:#183044ee}
+
+.defensePopup .defSub{max-height:min(230px,32vh);overflow-y:auto}
+.defensePopup .defSub .card{min-height:100px;text-align:left}
+
+.equipmentActionBar p{margin:0;padding:6px 10px;background:#142636f2;color:#fff;border-radius:8px;flex-basis:100%;font-size:13px}

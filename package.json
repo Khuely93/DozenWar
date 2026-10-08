@@ -1,8 +1,8 @@
 {
   "name": "dozen-war-ii",
-  "version": "1.43.0",
+  "version": "1.44.0",
   "private": true,
-  "description": "DOZEN WAR II \u2014 confirmed twelve heroes",
+  "description": "DOZEN WAR II — confirmed twelve heroes",
   "scripts": {
     "dev": "node tools/static-server.cjs --root . --port 5173",
     "validate": "node tools/validate-project.cjs",

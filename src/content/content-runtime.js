@@ -16,6 +16,16 @@ const RAW_EFFECTS={
   EFFECT_RETALIATE_1:{id:'EFFECT_RETALIATE_1',type:'RETALIATE',value:1}
 };
 Object.assign(RAW_EFFECTS,{
+  EFFECT_EQUIPMENT_TELEPORT_4:{id:"EFFECT_EQUIPMENT_TELEPORT_4",type:"EQUIPMENT_TELEPORT",range:4,heroOnly:true},
+  EFFECT_SUMMON_CAV:{id:"EFFECT_SUMMON_CAV",type:"SUMMON_TROOP",classId:"CAV"},
+  EFFECT_SUMMON_ARCH:{id:"EFFECT_SUMMON_ARCH",type:"SUMMON_TROOP",classId:"ARCH"},
+  EFFECT_EQUIPMENT_BASE_MOVE:{id:"EFFECT_EQUIPMENT_BASE_MOVE",type:"EQUIPMENT_BASE_MOVE",duration:"CURRENT_PLAYER_TURN"},
+  EFFECT_CANCEL_EQUIPMENT:{id:"EFFECT_CANCEL_EQUIPMENT",type:"CANCEL_EQUIPMENT"},
+  EFFECT_STEAL_EQUIPMENT:{id:"EFFECT_STEAL_EQUIPMENT",type:"STEAL_EQUIPMENT"},
+  EFFECT_PIERCE_PLUS_1:{id:'EFFECT_PIERCE_PLUS_1',type:'MODIFY_PROPAGATION_LENGTH',operation:'ADD',value:1,duration:'CURRENT_ACTION'},
+  EFFECT_EQUIPMENT_ROOT_2:{id:'EFFECT_EQUIPMENT_ROOT_2',type:'EQUIPMENT_ROOT',range:2,duration:'CURRENT_PLAYER_TURN'},
+  EFFECT_REDIRECT_ALLY:{id:'EFFECT_REDIRECT_ALLY',type:'REDIRECT_DEFENDER'},
+  EFFECT_COUNTER_BASE_ATTACK:{id:'EFFECT_COUNTER_BASE_ATTACK',type:'COUNTER_ATTACK',useBaseStats:true,allowAfterDeath:true},
   EFFECT_ATTACK_COUNT_PLUS_1:{id:'EFFECT_ATTACK_COUNT_PLUS_1',type:'MODIFY_ATTACK_COUNT',operation:'ADD',value:1,duration:'CURRENT_ACTION'},
   EFFECT_ATTACK_RANGE_PLUS_1:{id:'EFFECT_ATTACK_RANGE_PLUS_1',type:'MODIFY_ATTACK_RANGE',operation:'ADD',value:1,duration:'CURRENT_ACTION'},
   EFFECT_EQUIPMENT_MOVE_PLUS_1:{id:'EFFECT_EQUIPMENT_MOVE_PLUS_1',type:'EQUIPMENT_MOVE',value:1,maxTargets:2,duration:'CURRENT_PLAYER_TURN'},
@@ -54,9 +64,9 @@ const EQUIPMENT_GROUPS=Object.freeze({
   CAV:{id:'EQUIPMENT_GROUP_CAV',name:'Kỵ binh',classId:'CAV',assetId:'IMG_EQUIPMENT_GROUP_CAV'},
   COMMON:{id:'EQUIPMENT_GROUP_COMMON',name:'Dùng chung',classId:'NEU',assetId:'IMG_EQUIPMENT_GROUP_COMMON'}
 });
-const EQUIPMENT_CATEGORIES=Object.freeze({ATTACK:{id:'EQUIPMENT_CATEGORY_ATTACK',name:'Tấn công',timing:'ATTACK',assetId:'ICON_EQUIPMENT_ATTACK'},DEFENSE:{id:'EQUIPMENT_CATEGORY_DEFENSE',name:'Phòng thủ',timing:'DEFENSE',assetId:'ICON_EQUIPMENT_DEFENSE'}});
+const EQUIPMENT_CATEGORIES=Object.freeze({ATTACK:{id:'EQUIPMENT_CATEGORY_ATTACK',name:'Tấn công',timing:'ATTACK',assetId:'ICON_EQUIPMENT_ATTACK'},DEFENSE:{id:'EQUIPMENT_CATEGORY_DEFENSE',name:'Phòng thủ',timing:'DEFENSE',assetId:'ICON_EQUIPMENT_DEFENSE'},BOTH:{id:'EQUIPMENT_CATEGORY_BOTH',name:'Công và thủ',timing:['ATTACK','DEFENSE'],assetId:'ICON_EQUIPMENT_BOTH'}});
 const NEW_EQUIPMENT_CATALOG={
-  "version": 2,
+  "version": 9,
   "cards": [
     {
       "id": "EQUIP_INF_ATK_001",
@@ -143,6 +153,270 @@ const NEW_EQUIPMENT_CATALOG={
         "EFFECT_DAMAGE_PLUS_1"
       ],
       "text": "+1 ô tầm đánh và +1 sát thương cho đòn thường và skill Attack trong một lần commit."
+    },
+    {
+      "id": "EQUIP_ARCH_ATK_001",
+      "group": "ARCH",
+      "name": "Nỏ Sắt",
+      "category": "ATTACK",
+      "star": 1,
+      "count": 2,
+      "effects": [
+        "EFFECT_ATTACK_COUNT_PLUS_1"
+      ],
+      "text": "+1 lần đánh cho đòn thường hoặc skill Attack trong một commit; mỗi lần mở phản ứng phòng thủ riêng."
+    },
+    {
+      "id": "EQUIP_ARCH_DEF_001",
+      "group": "ARCH",
+      "name": "Bom Khói",
+      "category": "DEFENSE",
+      "star": 2,
+      "count": 2,
+      "effects": [
+        "EFFECT_CANCEL_ATTACK"
+      ],
+      "text": "Hủy một đòn đánh nhắm vào Cung thủ: hủy cả sát thương và hiệu ứng lên đơn vị được bảo vệ."
+    },
+    {
+      "id": "EQUIP_ARCH_ATK_002",
+      "group": "ARCH",
+      "name": "Tên Xuyên Phá",
+      "category": "ATTACK",
+      "star": 1,
+      "count": 2,
+      "effects": [
+        "EFFECT_DAMAGE_PLUS_1"
+      ],
+      "text": "+1 sát thương cho đòn thường hoặc skill Attack trong một commit."
+    },
+    {
+      "id": "EQUIP_ARCH_ATK_003",
+      "group": "ARCH",
+      "name": "Cung Thép",
+      "category": "ATTACK",
+      "star": 1,
+      "count": 2,
+      "effects": [
+        "EFFECT_ATTACK_RANGE_PLUS_1"
+      ],
+      "text": "+1 ô tầm đánh cho đòn thường hoặc skill Attack trong một commit."
+    },
+    {
+      "id": "EQUIP_ARCH_DEF_002",
+      "group": "ARCH",
+      "name": "Áo Choàng Phép Thuật",
+      "category": "DEFENSE",
+      "star": 2,
+      "count": 2,
+      "effects": [
+        "EFFECT_REDIRECT_ALLY"
+      ],
+      "text": "Chuyển đòn sang 1 lính/Hero khác còn sống cùng phe ở bất kỳ đâu. Không đổi vị trí; đơn vị nhận thay được phản ứng phòng thủ hợp lệ."
+    },
+    {
+      "id": "EQUIP_ARCH_DEF_003",
+      "group": "ARCH",
+      "name": "Dao Găm",
+      "category": "DEFENSE",
+      "star": 2,
+      "count": 3,
+      "effects": [
+        "EFFECT_COUNTER_BASE_ATTACK"
+      ],
+      "text": "Sau khi nhận đòn, trả đòn vào chính kẻ tấn công bằng sát thương và tầm cơ bản, không buff/trang bị. Vẫn trả khi chết; đối phương không được phòng thủ."
+    },
+    {
+      "id": "EQUIP_CAV_ATK_002",
+      "name": "Đại Đao",
+      "group": "CAV",
+      "category": "ATTACK",
+      "star": 1,
+      "count": 2,
+      "effects": [
+        "EFFECT_DAMAGE_PLUS_1"
+      ],
+      "text": "+1 sát thương cho đòn thường và skill Attack trong một commit."
+    },
+    {
+      "id": "EQUIP_CAV_DEF_002",
+      "name": "Khiên Gỗ",
+      "group": "CAV",
+      "category": "DEFENSE",
+      "star": 2,
+      "count": 2,
+      "effects": [
+        "EFFECT_CANCEL_ATTACK"
+      ],
+      "text": "Hủy một đòn đánh lên Kỵ binh, gồm sát thương và hiệu ứng lên đơn vị được bảo vệ."
+    },
+    {
+      "id": "EQUIP_CAV_ATK_003",
+      "name": "Giáo Thép",
+      "group": "CAV",
+      "category": "ATTACK",
+      "star": 1,
+      "count": 1,
+      "effects": [
+        "EFFECT_IGNORE_INF_GUARD"
+      ],
+      "text": "Đòn thường và skill Attack của Kỵ binh trong một commit không được Guard Bộ binh; vẫn có phản ứng phòng thủ khác hợp lệ."
+    },
+    {
+      "id": "EQUIP_COMMON_ATK_003",
+      "name": "Lọ Phép Thuật",
+      "group": "COMMON",
+      "category": "ATTACK",
+      "star": 1,
+      "count": 2,
+      "effects": [
+        "EFFECT_IGNORE_INF_GUARD"
+      ],
+      "text": "Đòn thường và skill Attack trong một commit không được Guard Bộ binh; vẫn có phản ứng phòng thủ khác hợp lệ."
+    },
+    {
+      "id": "EQUIP_COMMON_ATK_004",
+      "name": "Thuốc Hồi Sức",
+      "group": "COMMON",
+      "category": "ATTACK",
+      "star": 1,
+      "count": 2,
+      "effects": [
+        "EFFECT_ATTACK_COUNT_PLUS_1"
+      ],
+      "text": "+1 lần tấn công cho đòn thường hoặc skill Attack trong một commit; mỗi lần mở phản ứng phòng thủ riêng."
+    },
+    {
+      "id": "EQUIP_COMMON_DEF_001",
+      "name": "Quyền Trượng Phép Thuật",
+      "group": "COMMON",
+      "category": "DEFENSE",
+      "star": 3,
+      "count": 2,
+      "effects": [
+        "EFFECT_CANCEL_ATTACK"
+      ],
+      "text": "Hủy một đòn tấn công, gồm sát thương và hiệu ứng lên đơn vị được bảo vệ; vẫn so sánh sao."
+    },
+    {
+      "id": "EQUIP_CAV_DEF_001",
+      "name": "Kiếm Một Tay",
+      "group": "CAV",
+      "category": "DEFENSE",
+      "star": 2,
+      "count": 2,
+      "effects": [
+        "EFFECT_COUNTER_BASE_ATTACK"
+      ],
+      "text": "Sau khi nhận đòn, trả chính kẻ tấn công bằng sát thương/tầm cơ bản, không buff/trang bị. Chết vẫn trả; đối phương không được phòng thủ."
+    },
+    {
+      "id": "EQUIP_CAV_DEF_003",
+      "name": "Lưới Sắt",
+      "group": "CAV",
+      "category": "DEFENSE",
+      "star": 4,
+      "count": 1,
+      "effects": [
+        "EFFECT_EQUIPMENT_ROOT_2"
+      ],
+      "text": "Dùng bất kỳ lúc nào trong lượt thủ: khóa 1 địch trong phạm vi tối đa 2 ô đến hết lượt công của địch. Cấm di chuyển, Attack và skill công; vẫn dùng được trang bị phòng thủ."
+    },
+    {
+      "id": "EQUIP_CAV_ATK_001",
+      "group": "CAV",
+      "name": "Thương Kỵ Sĩ",
+      "category": "ATTACK",
+      "star": 1,
+      "count": 3,
+      "effects": [
+        "EFFECT_PIERCE_PLUS_1"
+      ],
+      "text": "Đòn thường/skill Attack hạ mục tiêu chính sẽ lan sát thương bằng đòn chính lên tối đa 2 đơn vị ở hai hex nối tiếp thẳng phía sau; không mở phản ứng phòng thủ cho sát thương lan."
+    },
+    {
+      "id": "EQUIP_COMMON_ATK_001",
+      "name": "Triệu Gọi Ám Kỵ",
+      "group": "COMMON",
+      "category": "ATTACK",
+      "star": 1,
+      "count": 2,
+      "text": "Tạo 1 lính Kỵ binh mới ở hex hợp lệ cạnh Hero còn sống. Lính được đi và đánh ngay; không mất HP, không commit Hero.",
+      "effects": [
+        "EFFECT_SUMMON_CAV"
+      ]
+    },
+    {
+      "id": "EQUIP_COMMON_ATK_002",
+      "name": "Kèn Gọi Quân",
+      "group": "COMMON",
+      "category": "ATTACK",
+      "star": 1,
+      "count": 2,
+      "text": "Tạo 1 lính Cung thủ mới ở hex hợp lệ cạnh Hero còn sống. Lính được đi và đánh ngay; không cần lính chết.",
+      "effects": [
+        "EFFECT_SUMMON_ARCH"
+      ]
+    },
+    {
+      "id": "EQUIP_COMMON_BOTH_001",
+      "name": "Bình Máu",
+      "group": "COMMON",
+      "category": "BOTH",
+      "star": 4,
+      "count": 4,
+      "text": "Hồi 1 HP cho Bộ binh hoặc Hero đồng đội còn sống, thiếu HP ở bất kỳ đâu. Khi đang nhận đòn phải hồi đủ để sống.",
+      "effects": [
+        "EFFECT_HEAL_1"
+      ]
+    },
+    {
+      "id": "EQUIP_COMMON_ATK_005",
+      "name": "Thuốc Tăng Lực",
+      "group": "COMMON",
+      "category": "ATTACK",
+      "star": 1,
+      "count": 2,
+      "text": "Cho 1 đồng đội chưa Attack thêm số ô bằng di chuyển cơ bản, kể cả đã di chuyển. Hết lượt công thì hết buff.",
+      "effects": [
+        "EFFECT_EQUIPMENT_BASE_MOVE"
+      ]
+    },
+    {
+      "id": "EQUIP_COMMON_BOTH_002",
+      "name": "Dây Chuyền May Mắn",
+      "group": "COMMON",
+      "category": "BOTH",
+      "star": 5,
+      "count": 2,
+      "text": "Hủy toàn bộ hiệu ứng của 1 card địch vừa dùng trước khi xử lý. Card bị hủy vẫn rời tay và tiêu hao ngân sách.",
+      "effects": [
+        "EFFECT_CANCEL_EQUIPMENT"
+      ]
+    },
+    {
+      "id": "EQUIP_COMMON_BOTH_003",
+      "name": "Đánh Cắp",
+      "group": "COMMON",
+      "category": "BOTH",
+      "star": 4,
+      "count": 2,
+      "text": "Xem tay địch và chọn lấy 1 card chưa dùng. Được dùng ngay nếu còn ngân sách.",
+      "effects": [
+        "EFFECT_STEAL_EQUIPMENT"
+      ]
+    },
+    {
+      "id": "EQUIP_COMMON_BOTH_004",
+      "name": "Nhẫn Dịch Chuyển",
+      "group": "COMMON",
+      "category": "BOTH",
+      "star": 3,
+      "count": 2,
+      "text": "Chỉ Hero đồng đội còn sống; lượt công phải chưa Attack. Dịch chuyển đến hex hợp lệ khác trong tối đa 4 ô, bỏ qua quân/vật cản và không tiêu hao di chuyển thường. Lượt thủ: chỉ khi Hero đang bị đánh, đủ 3 sao để hủy sát thương và hiệu ứng đòn.",
+      "effects": [
+        "EFFECT_EQUIPMENT_TELEPORT_4"
+      ]
     }
   ]
 };
@@ -150,17 +424,17 @@ const NEW_EQUIPMENT_CATALOG={
 function equipmentCatalogDefinition(card){
   const group=EQUIPMENT_GROUPS[card.group],category=EQUIPMENT_CATEGORIES[card.category];
   if(!group||!category)throw new Error('Invalid equipment group/category: '+card.id);
-  if(!/^EQUIP_(INF|ARCH|CAV|COMMON)_(ATK|DEF)_[A-Z0-9_]+$/.test(card.id)||!card.id.startsWith('EQUIP_'+card.group+'_'+(card.category==='ATTACK'?'ATK':'DEF')+'_'))throw new Error('Invalid equipment ID: '+card.id);
+  if(!/^EQUIP_(INF|ARCH|CAV|COMMON)_(ATK|DEF|BOTH)_[A-Z0-9_]+$/.test(card.id)||!card.id.startsWith('EQUIP_'+card.group+'_'+(card.category==='ATTACK'?'ATK':card.category==='DEFENSE'?'DEF':'BOTH')+'_'))throw new Error('Invalid equipment ID: '+card.id);
   if(typeof card.name!=='string'||!card.name.trim()||typeof card.text!=='string'||!card.text.trim())throw new Error('Equipment needs name/text: '+card.id);
   if(!Number.isInteger(card.star)||card.star<1||!Number.isInteger(card.count)||card.count<0||!Array.isArray(card.effects))throw new Error('Invalid equipment stars/count/effects: '+card.id);
   const assets={};
   for(const [slot,prefix] of Object.entries({art:'IMG_',frame:'IMG_',icon:'ICON_'})){
     const assetId=prefix+card.id+'_'+slot.toUpperCase();assets[slot]=assetId;
-    RAW_ASSETS[assetId]={id:assetId,type:'IMAGE',usage:'CARD_'+slot.toUpperCase(),source:card.visual?.[slot]||'',fallbackGlyph:slot==='icon'?(card.category==='ATTACK'?'⚔':'🛡'):''};
+    RAW_ASSETS[assetId]={id:assetId,type:'IMAGE',usage:'CARD_'+slot.toUpperCase(),source:card.visual?.[slot]||'',fallbackGlyph:slot==='icon'?(card.category==='ATTACK'?'⚔':card.category==='DEFENSE'?'🛡':'⚔🛡'):''};
   }
   const nameKey=card.id+'_NAME',textKey=card.id+'_TEXT';
   RAW_LOCALES['vi-VN'][nameKey]=card.name;RAW_LOCALES['vi-VN'][textKey]=card.text;
-  return {id:card.id,version:card.version||1,nameKey,textKey,class:group.classId,groupId:group.id,category:card.category,categoryId:category.id,star:card.star,timing:[category.timing],effects:card.effects,assets};
+  return {id:card.id,version:card.version||1,nameKey,textKey,class:group.classId,groupId:group.id,category:card.category,categoryId:category.id,star:card.star,timing:Array.isArray(category.timing)?category.timing:[category.timing],effects:card.effects,assets};
 }
 for(const group of Object.values(EQUIPMENT_GROUPS))RAW_ASSETS[group.assetId]={id:group.assetId,type:'IMAGE',usage:'CARD_GROUP',source:'',fallbackGlyph:group.name};
 for(const category of Object.values(EQUIPMENT_CATEGORIES))RAW_ASSETS[category.assetId]={id:category.assetId,type:'IMAGE',usage:'CARD_CATEGORY',source:'',fallbackGlyph:category.name};

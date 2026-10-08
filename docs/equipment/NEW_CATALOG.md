@@ -1,6 +1,6 @@
-# Bộ trang bị mới — v1.42.0
+# Bộ trang bị mới — workspace
 
-Toàn bộ 9 card cũ đã được gỡ khỏi catalog và bộ chia bài. v1.43.0 đã có 7 mẫu Bộ binh, tổng 14 bản (12 công, 2 thủ), chia tối đa 5 card mỗi Player. Các nhóm khác đang chờ danh sách. Hiệu ứng Core dùng chung với skill Hero được giữ lại.
+Toàn bộ 9 card cũ đã được gỡ khỏi catalog và bộ chia bài. Workspace có 29 mẫu / 60 lá: Bộ binh 7/14, Cung thủ 6/13, Kỵ binh 6/11, Dùng chung 10/22. Mỗi Player có deck độc lập, chia tối đa 5 lá đầu trận theo Duel. Các bổ sung sau v1.43.0 được phát hành trong v1.44.0.
 
 ## Nhóm và ID
 
@@ -11,7 +11,7 @@ Toàn bộ 9 card cũ đã được gỡ khỏi catalog và bộ chia bài. v1.4
 | Kỵ binh | EQUIPMENT_GROUP_CAV | EQUIP_CAV_ATK_ | EQUIP_CAV_DEF_ |
 | Dùng chung | EQUIPMENT_GROUP_COMMON | EQUIP_COMMON_ATK_ | EQUIP_COMMON_DEF_ |
 
-Card dùng chung sử dụng class NEU và hợp lệ cho cả Hero giả kim thuật sư. Danh mục công/thủ có ID EQUIPMENT_CATEGORY_ATTACK / EQUIPMENT_CATEGORY_DEFENSE. ID mẫu card không thay đổi khi đổi tên hoặc visual. Mỗi bản sao trong tay bài có instanceId riêng.
+Card dùng chung sử dụng class NEU và hợp lệ cho cả Hero giả kim thuật sư. Danh mục công/thủ có ID EQUIPMENT_CATEGORY_ATTACK / EQUIPMENT_CATEGORY_DEFENSE / EQUIPMENT_CATEGORY_BOTH. ID mẫu card không thay đổi khi đổi tên hoặc visual. Mỗi bản sao trong tay bài có instanceId riêng.
 
 ## Cấu trúc
 
@@ -21,7 +21,7 @@ Thêm mẫu card đã được chốt vào `NEW_EQUIPMENT_CATALOG.cards` trong `
 {
   id: 'EQUIP_INF_ATK_001',
   group: 'INF',              // INF | ARCH | CAV | COMMON
-  category: 'ATTACK',        // ATTACK | DEFENSE
+  category: 'ATTACK',        // ATTACK | DEFENSE | BOTH
   name: 'Tên đã chốt',
   text: 'Mô tả hiệu ứng đã chốt',
   star: 1,                  // số nguyên >= 1
@@ -39,7 +39,7 @@ Thêm mẫu card đã được chốt vào `NEW_EQUIPMENT_CATALOG.cards` trong `
 
 Mỗi mẫu tự đăng ký ba asset riêng: `IMG_<cardId>_ART`, `IMG_<cardId>_FRAME`, `ICON_<cardId>_ICON`. Có thể bỏ đường dẫn khi chưa có hình; card vẫn hiển thị tên, hệ, công/thủ, sao và mô tả. Đổi visual không đổi hiệu ứng, ID hay số lượng. Asset nhóm và công/thủ cũng có ID riêng.
 
-`count` tạo số bản sao khác nhau trong deck; không còn lặp mặc định 3 lần. Deck mỗi Player độc lập theo Duel hiện tại. `startingHand` của rule_mode vẫn là giới hạn chia ban đầu; nếu deck ít hơn giới hạn, chia số bài có thật. Chưa tự chốt tổng kích thước deck.
+`count` tạo số bản sao khác nhau trong deck; không còn lặp mặc định 3 lần. Deck mỗi Player độc lập theo Duel hiện tại. `startingHand` của rule_mode vẫn là giới hạn chia ban đầu; nếu deck ít hơn giới hạn, chia số bài có thật. Catalog hiện tại có tổng 60 lá theo số lượng người chơi đã chốt.
 
 Hiệu ứng mới phải được triển khai trong Core trước khi thêm ID vào `effects`; chỉ ghi mô tả không đủ để tạo cơ chế. Trận lưu/replay cũ phải sử dụng snapshot/historical content tương ứng, không chuyển card cũ thành card mới.
 

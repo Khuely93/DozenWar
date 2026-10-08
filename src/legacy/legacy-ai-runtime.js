@@ -169,7 +169,7 @@ function botDefense(){
   const d=S.units.find(x=>x.id===pending.d);
   if(!d||!isBotSide(d.side))return;
   setTimeout(()=>{
-    if(S.pending!==pending||S.matchEnded)return;
+    if(S.pending!==pending||S.matchEnded||S.equipmentReaction)return;
     const guards=guardCandidates(d),cards=defenseCards(d);
     const incoming=pending.base+(pending.atkCard?effectValue(pending.atkCard,'EFFECT_DAMAGE_PLUS_1'):0);
     if(S.botDifficulty!=='easy'){
@@ -189,6 +189,7 @@ function botDefense(){
     if(usefulCards.length&&(incoming>=d.hp||S.botDifficulty==='hard'&&!guardAvailable)){
       const c=usefulCards.find(x=>effectOf(x,'EFFECT_CANCEL_ATTACK'))||
         usefulCards.find(x=>effectOf(x,'EFFECT_DAMAGE_REDUCE_1'))||usefulCards[0];
+      if(typeof EquipmentCore!=='undefined'){EquipmentCore.useDefense(d,c);return}
       pending.defCard=c;S.hands[d.side]=S.hands[d.side].filter(x=>x.uid!==c.uid);markDuelCardUsed(d.side,'def');lg('🤖 Bot dùng '+c.name+' để phòng thủ.');resolveCombat();return
     }
     if(guardAvailable){
@@ -211,3 +212,4 @@ const _resolveCombat_v12=resolveCombat;
 resolveCombat=function(){const pending=S.pending;if(!pending)return;const attacker=S.units.find(u=>u.id===pending.a),defender=S.units.find(u=>u.id===pending.d);const result=_resolveCombat_v12();if(S.pending===pending)return result;botObserveResolvedHit(pending,attacker,defender);if(!S.matchEnded)setTimeout(scheduleBotTurn,180);return result};
 const _resolveNextSkillSequenceTarget_v12=resolveNextSkillSequenceTarget;
 resolveNextSkillSequenceTarget=function(){const result=_resolveNextSkillSequenceTarget_v12();if(!S.pending&&!S.skillSequence&&!S.matchEnded)setTimeout(scheduleBotTurn,180);return result};
+

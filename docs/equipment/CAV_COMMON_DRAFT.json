@@ -1,0 +1,246 @@
+{
+  "totalDesigns": 16,
+  "totalCopies": 33,
+  "cards": [
+    {
+      "name": "Thương Kỵ Sĩ",
+      "id": "EQUIP_CAV_ATK_001",
+      "group": "CAV",
+      "category": "ATTACK",
+      "star": 1,
+      "count": 3,
+      "status": "IMPLEMENTED_LOCAL",
+      "text": "Hạ mục tiêu chính mới lan; tối đa hai đơn vị ở hai hex nối tiếp phía sau, sát thương bằng đòn chính, không phản ứng phòng thủ; áp dụng đòn thường và skill Attack.",
+      "assets": {
+        "art": "IMG_EQUIP_CAV_ATK_001_ART",
+        "frame": "IMG_EQUIP_CAV_ATK_001_FRAME",
+        "icon": "ICON_EQUIP_CAV_ATK_001_ICON"
+      }
+    },
+    {
+      "name": "Đại Đao",
+      "id": "EQUIP_CAV_ATK_002",
+      "group": "CAV",
+      "category": "ATTACK",
+      "star": 1,
+      "count": 2,
+      "status": "IMPLEMENTED_LOCAL",
+      "text": "+1 sát thương.",
+      "assets": {
+        "art": "IMG_EQUIP_CAV_ATK_002_ART",
+        "frame": "IMG_EQUIP_CAV_ATK_002_FRAME",
+        "icon": "ICON_EQUIP_CAV_ATK_002_ICON"
+      }
+    },
+    {
+      "name": "Kiếm Một Tay",
+      "id": "EQUIP_CAV_DEF_001",
+      "group": "CAV",
+      "category": "DEFENSE",
+      "star": 2,
+      "count": 2,
+      "status": "IMPLEMENTED_LOCAL",
+      "text": "Cho phép Kỵ binh đánh trả khi bị tấn công.",
+      "assets": {
+        "art": "IMG_EQUIP_CAV_DEF_001_ART",
+        "frame": "IMG_EQUIP_CAV_DEF_001_FRAME",
+        "icon": "ICON_EQUIP_CAV_DEF_001_ICON"
+      }
+    },
+    {
+      "name": "Khiên Gỗ",
+      "id": "EQUIP_CAV_DEF_002",
+      "group": "CAV",
+      "category": "DEFENSE",
+      "star": 2,
+      "count": 2,
+      "status": "IMPLEMENTED_LOCAL",
+      "text": "Hủy 1 đòn tấn công lên Kỵ binh.",
+      "assets": {
+        "art": "IMG_EQUIP_CAV_DEF_002_ART",
+        "frame": "IMG_EQUIP_CAV_DEF_002_FRAME",
+        "icon": "ICON_EQUIP_CAV_DEF_002_ICON"
+      }
+    },
+    {
+      "name": "Giáo Thép",
+      "id": "EQUIP_CAV_ATK_003",
+      "group": "CAV",
+      "category": "ATTACK",
+      "star": 1,
+      "count": 1,
+      "status": "IMPLEMENTED_LOCAL",
+      "text": "Bộ binh không thể đỡ đòn tấn công của Kỵ binh.",
+      "assets": {
+        "art": "IMG_EQUIP_CAV_ATK_003_ART",
+        "frame": "IMG_EQUIP_CAV_ATK_003_FRAME",
+        "icon": "ICON_EQUIP_CAV_ATK_003_ICON"
+      }
+    },
+    {
+      "name": "Lưới Sắt",
+      "id": "EQUIP_CAV_DEF_003",
+      "group": "CAV",
+      "category": "DEFENSE",
+      "star": 4,
+      "count": 1,
+      "status": "IMPLEMENTED_LOCAL",
+      "text": "Khóa 1 địch cách Kỵ binh 2 ô, cấm di chuyển và tấn công.",
+      "assets": {
+        "art": "IMG_EQUIP_CAV_DEF_003_ART",
+        "frame": "IMG_EQUIP_CAV_DEF_003_FRAME",
+        "icon": "ICON_EQUIP_CAV_DEF_003_ICON"
+      }
+    },
+    {
+      "name": "Triệu Gọi Ám Kỵ",
+      "id": "EQUIP_COMMON_ATK_001",
+      "group": "COMMON",
+      "category": "ATTACK",
+      "star": 1,
+      "count": 2,
+      "status": "IMPLEMENTED_LOCAL",
+      "text": "Tạo 1 lính Kỵ binh mới ở hex hợp lệ cạnh Hero còn sống. Lính được đi và đánh ngay; không mất HP, không commit Hero.",
+      "assets": {
+        "art": "IMG_EQUIP_COMMON_ATK_001_ART",
+        "frame": "IMG_EQUIP_COMMON_ATK_001_FRAME",
+        "icon": "ICON_EQUIP_COMMON_ATK_001_ICON"
+      }
+    },
+    {
+      "name": "Kèn Gọi Quân",
+      "id": "EQUIP_COMMON_ATK_002",
+      "group": "COMMON",
+      "category": "ATTACK",
+      "star": 1,
+      "count": 2,
+      "status": "IMPLEMENTED_LOCAL",
+      "text": "Tạo 1 lính Cung thủ mới ở hex hợp lệ cạnh Hero còn sống. Lính được đi và đánh ngay; không cần lính chết.",
+      "assets": {
+        "art": "IMG_EQUIP_COMMON_ATK_002_ART",
+        "frame": "IMG_EQUIP_COMMON_ATK_002_FRAME",
+        "icon": "ICON_EQUIP_COMMON_ATK_002_ICON"
+      }
+    },
+    {
+      "name": "Bình Máu",
+      "id": "EQUIP_COMMON_BOTH_001",
+      "group": "COMMON",
+      "category": "BOTH",
+      "star": 4,
+      "count": 4,
+      "status": "IMPLEMENTED_LOCAL",
+      "text": "Hồi 1 HP cho Bộ binh hoặc Hero đồng đội còn sống, thiếu HP ở bất kỳ đâu. Khi đang nhận đòn phải hồi đủ để sống.",
+      "assets": {
+        "art": "IMG_EQUIP_COMMON_BOTH_001_ART",
+        "frame": "IMG_EQUIP_COMMON_BOTH_001_FRAME",
+        "icon": "ICON_EQUIP_COMMON_BOTH_001_ICON"
+      }
+    },
+    {
+      "name": "Lọ Phép Thuật",
+      "id": "EQUIP_COMMON_ATK_003",
+      "group": "COMMON",
+      "category": "ATTACK",
+      "star": 1,
+      "count": 2,
+      "status": "IMPLEMENTED_LOCAL",
+      "text": "Bộ binh không thể đỡ đòn tấn công.",
+      "assets": {
+        "art": "IMG_EQUIP_COMMON_ATK_003_ART",
+        "frame": "IMG_EQUIP_COMMON_ATK_003_FRAME",
+        "icon": "ICON_EQUIP_COMMON_ATK_003_ICON"
+      }
+    },
+    {
+      "name": "Thuốc Hồi Sức",
+      "id": "EQUIP_COMMON_ATK_004",
+      "group": "COMMON",
+      "category": "ATTACK",
+      "star": 1,
+      "count": 2,
+      "status": "IMPLEMENTED_LOCAL",
+      "text": "+1 lần tấn công.",
+      "assets": {
+        "art": "IMG_EQUIP_COMMON_ATK_004_ART",
+        "frame": "IMG_EQUIP_COMMON_ATK_004_FRAME",
+        "icon": "ICON_EQUIP_COMMON_ATK_004_ICON"
+      }
+    },
+    {
+      "name": "Thuốc Tăng Lực",
+      "id": "EQUIP_COMMON_ATK_005",
+      "group": "COMMON",
+      "category": "ATTACK",
+      "star": 1,
+      "count": 2,
+      "status": "IMPLEMENTED_LOCAL",
+      "text": "Cho 1 đồng đội chưa Attack thêm số ô bằng di chuyển cơ bản, kể cả đã di chuyển. Hết lượt công thì hết buff.",
+      "assets": {
+        "art": "IMG_EQUIP_COMMON_ATK_005_ART",
+        "frame": "IMG_EQUIP_COMMON_ATK_005_FRAME",
+        "icon": "ICON_EQUIP_COMMON_ATK_005_ICON"
+      }
+    },
+    {
+      "name": "Dây Chuyền May Mắn",
+      "id": "EQUIP_COMMON_BOTH_002",
+      "group": "COMMON",
+      "category": "BOTH",
+      "star": 5,
+      "count": 2,
+      "status": "IMPLEMENTED_LOCAL",
+      "text": "Hủy toàn bộ hiệu ứng của 1 card địch vừa dùng trước khi xử lý. Card bị hủy vẫn rời tay và tiêu hao ngân sách.",
+      "assets": {
+        "art": "IMG_EQUIP_COMMON_BOTH_002_ART",
+        "frame": "IMG_EQUIP_COMMON_BOTH_002_FRAME",
+        "icon": "ICON_EQUIP_COMMON_BOTH_002_ICON"
+      }
+    },
+    {
+      "name": "Đánh Cắp",
+      "id": "EQUIP_COMMON_BOTH_003",
+      "group": "COMMON",
+      "category": "BOTH",
+      "star": 4,
+      "count": 2,
+      "status": "IMPLEMENTED_LOCAL",
+      "text": "Xem tay địch và chọn lấy 1 card chưa dùng. Được dùng ngay nếu còn ngân sách.",
+      "assets": {
+        "art": "IMG_EQUIP_COMMON_BOTH_003_ART",
+        "frame": "IMG_EQUIP_COMMON_BOTH_003_FRAME",
+        "icon": "ICON_EQUIP_COMMON_BOTH_003_ICON"
+      }
+    },
+    {
+      "name": "Quyền Trượng Phép Thuật",
+      "id": "EQUIP_COMMON_DEF_001",
+      "group": "COMMON",
+      "category": "DEFENSE",
+      "star": 3,
+      "count": 2,
+      "status": "IMPLEMENTED_LOCAL",
+      "text": "Hủy 1 đòn tấn công.",
+      "assets": {
+        "art": "IMG_EQUIP_COMMON_DEF_001_ART",
+        "frame": "IMG_EQUIP_COMMON_DEF_001_FRAME",
+        "icon": "ICON_EQUIP_COMMON_DEF_001_ICON"
+      }
+    },
+    {
+      "id": "EQUIP_COMMON_BOTH_004",
+      "name": "Nhẫn Dịch Chuyển",
+      "group": "COMMON",
+      "category": "BOTH",
+      "star": 3,
+      "count": 2,
+      "text": "Chỉ Hero đồng đội còn sống; lượt công phải chưa Attack. Dịch chuyển đến hex hợp lệ khác trong tối đa 4 ô, bỏ qua quân/vật cản và không tiêu hao di chuyển thường. Lượt thủ: chỉ khi Hero đang bị đánh, đủ 3 sao để hủy sát thương và hiệu ứng đòn.",
+      "status": "IMPLEMENTED_LOCAL",
+      "assets": {
+        "art": "IMG_EQUIP_COMMON_BOTH_004_ART",
+        "frame": "IMG_EQUIP_COMMON_BOTH_004_FRAME",
+        "icon": "ICON_EQUIP_COMMON_BOTH_004_ICON"
+      }
+    }
+  ]
+}

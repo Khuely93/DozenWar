@@ -38,7 +38,7 @@ const DuelTurnClock={
   autoEndTurn(){
     if(!this.enabled()||S.pending||this.timeoutHandled)return;
     this.timeoutHandled=true;
-    if(typeof HeroCore!=='undefined'&&HeroCore.selection){if(HeroCore.selection.continuation){HeroCore.selection=null;S.heroSequence=null;S.skillSequence=null;HeroCore.draw()}else HeroCore.cancel()}
+    if(typeof HeroCore!=='undefined'&&HeroCore.selection){if(HeroCore.selection.equipmentRecovery){EquipmentCore.skipRecovery()}else if(HeroCore.selection.continuation){HeroCore.selection=null;S.heroSequence=null;S.skillSequence=null;HeroCore.draw()}else HeroCore.cancel()}
     if(S.skillTarget)cancelSkillTarget();
     if(S.guardTargeting)hideGuardTargeting();
     // A timed-out multi-target selection cannot keep the turn blocked forever.
@@ -52,6 +52,7 @@ const DuelTurnClock={
     if(S.phase==='battle'&&S.units.filter(u=>u.hero).length===2&&S.units.some(u=>u.hero&&u.hp<=0))checkWin();
     if(!this.enabled())return this.stop();
     const now=Date.now();
+    if(S.equipmentReaction){const r=S.equipmentReaction;r.remainingMs=Math.max(0,r.remainingMs-(now-r.lastTick));r.lastTick=now;this.lastTickMs=now;this.defenseLastTickMs=now;duelTimerBadge.textContent='PHẢN ỨNG CARD P'+r.side+' · '+Math.ceil(r.remainingMs/1000)+'s';if(!r.remainingMs)EquipmentCore.passEquipment();return}
     if(S.pending){
       if(S.pending!==this.defensePending)this.openDefense(S.pending);
       this.defenseRemainingMs=Math.max(0,this.defenseRemainingMs-(now-this.defenseLastTickMs));

@@ -1,0 +1,15 @@
+{
+  "id": "EQUIP_COMMON_BOTH_004",
+  "name": "Nhẫn Dịch Chuyển",
+  "group": "COMMON",
+  "category": "BOTH",
+  "star": 3,
+  "count": 2,
+  "text": "Chỉ Hero đồng đội còn sống; lượt công phải chưa Attack. Dịch chuyển đến hex hợp lệ khác trong tối đa 4 ô, bỏ qua quân/vật cản và không tiêu hao di chuyển thường. Lượt thủ: chỉ khi Hero đang bị đánh, đủ 3 sao để hủy sát thương và hiệu ứng đòn.",
+  "status": "IMPLEMENTED_LOCAL",
+  "assets": {
+    "art": "IMG_EQUIP_COMMON_BOTH_004_ART",
+    "frame": "IMG_EQUIP_COMMON_BOTH_004_FRAME",
+    "icon": "ICON_EQUIP_COMMON_BOTH_004_ICON"
+  }
+}

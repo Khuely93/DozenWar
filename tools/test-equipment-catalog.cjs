@@ -28,3 +28,8 @@ for(const mutation of [{star:0},{count:-1},{count:1.5},{group:'ALCH'},{category:
 assert.throws(()=>load([cards[0],cards[0]]));
 assert.throws(()=>load([{...cards[0],effects:['MISSING_EFFECT']}]));
 console.log('Equipment catalog: empty transition, retired IDs, four groups, stars/timing/effects, unique assets and instances, unequal/zero copy counts and invalid input rejection PASS');
+const dual=load([{id:'EQUIP_COMMON_BOTH_TEST',group:'COMMON',category:'BOTH',name:'Both fixture',text:'Fixture only',star:4,count:2,effects:['EFFECT_HEAL_1']}]);
+assert.equal(dual('CONTENT_VALIDATION.ok'),true);
+assert.equal(dual('createEquipmentCardInstance("EQUIP_COMMON_BOTH_TEST",1).type'),'neu');
+assert.equal(dual('EquipmentRegistry.get("EQUIP_COMMON_BOTH_TEST").timing.join(",")'),'ATTACK,DEFENSE');
+console.log('Dual-timing equipment schema: independent ID/assets and attack/defense timing PASS');
