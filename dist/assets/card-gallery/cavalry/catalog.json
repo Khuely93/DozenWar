@@ -1,0 +1,89 @@
+{
+  "status": "DRAFT_VISUAL",
+  "size": {
+    "width": 800,
+    "height": 1200
+  },
+  "sourceRepository": "Khuely93/DozenWar",
+  "catalogCommit": "361016c57e894eff1731d45ca77e5f895073cfe4",
+  "cards": [
+    {
+      "id": "EQUIP_CAV_ATK_001",
+      "group": "CAV",
+      "name": "Thương Kỵ Sĩ",
+      "category": "ATTACK",
+      "star": 1,
+      "count": 3,
+      "effects": [
+        "EFFECT_PIERCE_PLUS_1"
+      ],
+      "text": "Đòn thường/skill Attack hạ mục tiêu chính sẽ lan sát thương bằng đòn chính lên tối đa 2 đơn vị ở hai hex nối tiếp thẳng phía sau; không mở phản ứng phòng thủ cho sát thương lan.",
+      "png": "EQUIP_CAV_ATK_001.png"
+    },
+    {
+      "id": "EQUIP_CAV_ATK_002",
+      "name": "Đại Đao",
+      "group": "CAV",
+      "category": "ATTACK",
+      "star": 1,
+      "count": 2,
+      "effects": [
+        "EFFECT_DAMAGE_PLUS_1"
+      ],
+      "text": "+1 sát thương cho đòn thường và skill Attack trong một commit.",
+      "png": "EQUIP_CAV_ATK_002.png"
+    },
+    {
+      "id": "EQUIP_CAV_DEF_001",
+      "name": "Kiếm Một Tay",
+      "group": "CAV",
+      "category": "DEFENSE",
+      "star": 2,
+      "count": 2,
+      "effects": [
+        "EFFECT_COUNTER_BASE_ATTACK"
+      ],
+      "text": "Sau khi nhận đòn, trả chính kẻ tấn công bằng sát thương/tầm cơ bản, không buff/trang bị. Chết vẫn trả; đối phương không được phòng thủ.",
+      "png": "EQUIP_CAV_DEF_001.png"
+    },
+    {
+      "id": "EQUIP_CAV_DEF_002",
+      "name": "Khiên Gỗ",
+      "group": "CAV",
+      "category": "DEFENSE",
+      "star": 2,
+      "count": 2,
+      "effects": [
+        "EFFECT_CANCEL_ATTACK"
+      ],
+      "text": "Hủy một đòn đánh lên Kỵ binh, gồm sát thương và hiệu ứng lên đơn vị được bảo vệ.",
+      "png": "EQUIP_CAV_DEF_002.png"
+    },
+    {
+      "id": "EQUIP_CAV_ATK_003",
+      "name": "Giáo Thép",
+      "group": "CAV",
+      "category": "ATTACK",
+      "star": 1,
+      "count": 1,
+      "effects": [
+        "EFFECT_IGNORE_INF_GUARD"
+      ],
+      "text": "Đòn thường và skill Attack của Kỵ binh trong một commit không được Guard Bộ binh; vẫn có phản ứng phòng thủ khác hợp lệ.",
+      "png": "EQUIP_CAV_ATK_003.png"
+    },
+    {
+      "id": "EQUIP_CAV_DEF_003",
+      "name": "Lưới Sắt",
+      "group": "CAV",
+      "category": "DEFENSE",
+      "star": 4,
+      "count": 1,
+      "effects": [
+        "EFFECT_EQUIPMENT_ROOT_2"
+      ],
+      "text": "Dùng bất kỳ lúc nào trong lượt thủ: khóa 1 địch trong phạm vi tối đa 2 ô đến hết lượt công của địch. Cấm di chuyển, Attack và skill công; vẫn dùng được trang bị phòng thủ.",
+      "png": "EQUIP_CAV_DEF_003.png"
+    }
+  ]
+}
