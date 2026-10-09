@@ -41,4 +41,5 @@ test('Lucy counter ignores buff damage',`lucy.hp=1;lucy.damageBuff=5;HeroCore.af
 test('Rodoc lethal +1 heal rejected',`reset();let rod=make('Rodoc',2),atk=make('Est',1,1,0);rod.hp=1;S.pending={a:atk.id,d:rod.id,base:2,skillStar:1};use(rod,1,[rod]);rod.hp`,1);
 test('Rodoc free defense heal works without attack window',`S.pending=null;use(rod,1,[rod]);rod.hp`,2);
 test('buff movement available after previous movement',`reset();let ranus=make('Ranus');ranus.moved=true;ranus.movementCostSpent=1;use(ranus,2,[ranus]);[canMoveFurther(ranus),remainingMove(ranus),ranus.attackCountBuff]`,[true,1,1]);
+test('Lucy Frenzy uses archer lines rather than radial range, including range buffs',`(()=>{reset();const h=make('Lucy'),straight=make('Est',2,3,0),offLine=troop('INF',2,1,1),far=troop('INF',2,4,0),sk=heroSkill(h,3);const before=[HeroCore.candidate(h,sk,straight),HeroCore.candidate(h,sk,offLine),HeroCore.candidate(h,sk,far)];h.rangeBuff=1;return [...before,HeroCore.candidate(h,sk,far),HeroCore.candidate(h,sk,offLine)]})()`,[true,false,false,true,false]);
 console.log('Confirmed Hero regression: '+count+' cases PASS');

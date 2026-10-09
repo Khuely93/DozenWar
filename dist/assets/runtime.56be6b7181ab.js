@@ -1958,7 +1958,8 @@ Object.assign(RAW_SKILLS,{
     "target": {
       "maxTargets": 1,
       "side": "ENEMY",
-      "range": "ATTACK"
+      "range": "ATTACK",
+      "pattern": "LINE"
     },
     "effects": [],
     "mechanic": "STRIKE",
@@ -1968,7 +1969,7 @@ Object.assign(RAW_SKILLS,{
       "attack": true,
       "repeats": 2
     },
-    "version": 2
+    "version": 3
   },
   "SKILL_HERO_GRIM_S1": {
     "id": "SKILL_HERO_GRIM_S1",
@@ -2425,7 +2426,7 @@ Object.assign(RAW_LOCALES["vi-VN"],{
   "SKILL_HERO_LUCY_S2_NAME": "Bắn Trả",
   "SKILL_HERO_LUCY_S2_DESC": "Bắn Trả · ★ · Sau sát thương, nếu Lucy sống, bắn tối đa 2 địch bằng tầm/sát thương cơ bản, không buff/trang bị; địch không được thủ.",
   "SKILL_HERO_LUCY_S3_NAME": "Điên Cuồng",
-  "SKILL_HERO_LUCY_S3_DESC": "Điên Cuồng · ★ · Bắn 2 lần trong cùng commit, mỗi lần 2 sát thương; chọn mục tiêu riêng, mở thủ riêng, được thêm buff/trang bị.",
+  "SKILL_HERO_LUCY_S3_DESC": "Điên Cuồng · ★ · Dùng tầm đánh cung thủ: cơ bản 3 ô theo đường thẳng, được tăng tầm bởi buff/trang bị. Bắn 2 lần trong cùng commit, mỗi lần 2 sát thương; chọn mục tiêu riêng, mở thủ riêng, được thêm buff/trang bị.",
   "HERO_ARCH_LUCY_NAME": "Lucy",
   "SKILL_HERO_GRIM_S1_NAME": "Giả Dạng",
   "SKILL_HERO_GRIM_S1_DESC": "Giả Dạng · ★ · Biến thành chủng lính hợp mode tới lần biến tiếp; giữ Hero và HP. Trang bị không hợp chủng trả về hand.",
