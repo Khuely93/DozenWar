@@ -1,3 +1,7 @@
+# Chuẩn bị trận 1vs1
+
+Roll Dice → phát 5 trang bị cho mỗi phe → chọn Hero + đúng 5 lính (phe thua Dice chọn trước) → triển khai (phe thua Dice trước) → phe thắng Dice đi lượt công đầu. Màn hình chọn đội hiển thị bài đã nhận của người đang chọn; không phát lại bài sau chọn đội. Flow áp dụng cả chơi local và AI; bài Bot vẫn ẩn.
+
 # Flow phòng thủ trực tiếp (workspace, chưa phát hành)
 
 Mỗi đòn có thanh thông tin cố định: đòn hiện tại/tổng số, người công, người nhận, sát thương và sao. Map highlight người nhận và Bộ binh Guard hợp lệ. Có Guard: hiện “Chọn Bộ binh để đỡ đòn, bỏ qua nếu không muốn Bộ binh đỡ đòn” và Bỏ qua; bỏ qua chỉ từ chối Guard, vẫn được dùng skill/card. Click Bộ binh chốt Guard và cập nhật phản ứng cho người nhận mới, không tự nhận sát thương khi không có card.

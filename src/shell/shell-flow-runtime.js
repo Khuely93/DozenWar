@@ -164,10 +164,10 @@ function finishDice(){
   }
   S.winner=a>b?1:2;S.loser=S.winner===1?2:1;
   ShellDOM.dice.result.textContent='PLAYER '+S.winner+' THẮNG ROLL DICE';
-  ShellDOM.dice.rule.textContent='P'+S.loser+' chọn Hero + Equipment và xếp quân trước. P'+S.winner+' đi lượt đầu.';
+  ShellDOM.dice.rule.textContent='Hai phe nhận trang bị trước. P'+S.loser+' chọn đội và xếp quân trước. P'+S.winner+' đi lượt đầu.';
   ShellDOM.dice.continueButton.style.display='inline-block';
 }
-ShellDOM.dice.continueButton.onclick=()=>beginTeam(S.loser);
+ShellDOM.dice.continueButton.onclick=()=>dealCards();
 
 let tempHeroDefinitionId='HERO_INF_RODOC', tempTroops={inf:0,arch:0,cav:0};
 function beginTeam(p){
@@ -176,6 +176,7 @@ function beginTeam(p){
   ShellDOM.team.subtitle.textContent=(p===S.loser?'Người đi sau chọn trước':'Người đi trước chọn sau')+' · 1 Hero + đúng 5 lính';
   if(S.teams[p]){tempHeroDefinitionId=S.teams[p].heroDefinitionId||HERO_KEY[S.teams[p].hero]||'HERO_INF_RODOC';tempTroops={...S.teams[p].troops};}
   else{tempHeroDefinitionId='HERO_INF_RODOC';tempTroops={inf:0,arch:0,cav:0};}
+  const hand=document.getElementById('teamEquipmentHand');if(hand)hand.innerHTML=(S.hands[p]||[]).map(c=>cardHTML(c)).join('');
   renderTeamPicker();
 }
 function renderTeamPicker(){
@@ -190,7 +191,7 @@ function renderTeamPicker(){
 ShellDOM.team.confirmButton.onclick=()=>{
   const total=Object.values(tempTroops).reduce((a,b)=>a+b,0);if(total!==5)return alert('Phải chọn đúng 5 lính.');
   S.teams[S.selecting]={heroDefinitionId:tempHeroDefinitionId,troops:{...tempTroops}};
-  if(S.selecting===S.loser)beginTeam(S.winner);else dealCards();
+  if(S.selecting===S.loser)beginTeam(S.winner);else beginDeploy();
 };
 function cardHTML(c,dim=false,sel=false){
   const esc=value=>String(value??'').replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
@@ -209,5 +210,5 @@ function dealCards(){
   ShellDOM.deal.p2Hand.innerHTML=S.hands[2].map(c=>cardHTML(c)).join('');
   summary.textContent=DeckRuntimeBuilder.buildEquipmentIds(deckId).length?'Mỗi Player nhận tối đa '+startingHand+' trang bị. Không rút thêm.':'Bộ trang bị mới đang được xây dựng. Hiện tại hai bên bắt đầu với tay bài trống.'
 }
-ShellDOM.deal.toDeployButton.onclick=()=>beginDeploy();
+ShellDOM.deal.toDeployButton.onclick=()=>beginTeam(S.loser);
 

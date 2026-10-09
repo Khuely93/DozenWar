@@ -1,8 +1,8 @@
 {
   "project": "DOZEN WAR II",
-  "version": "1.47.0",
+  "version": "1.48.0",
   "phase": "DUEL_RULE_MODE_1VS1_180_30",
-  "baseline": "v1.47.0 Direct map attack and defense flows",
+  "baseline": "v1.48.0 Deal equipment before team selection",
   "entry": "index.html",
   "styles": "styles/main.css",
   "runtimeOrder": [

@@ -65,7 +65,7 @@ const deployS={winner:1,loser:2,units:[],history:[]};
 const deployCtx=vm.createContext({S:deployS,hideDeployMenu:()=>{},show:()=>{},renderBoard:()=>{},updateUI:()=>{}});
 new vm.Script(fn(core,'beginDeploy')+'\nthis.start=beginDeploy;').runInContext(deployCtx);deployCtx.start();
 assert.deepEqual([...deployS.deployOrder],[2,1]);
-assert.match(flow,/continueButton\.onclick=\(\)=>beginTeam\(S\.loser\)/);
+assert.match(flow,/continueButton\.onclick=\(\)=>dealCards\(\)/);
 assert.match(core,/S\.battleSide=S\.winner;S\.turn=1/);
 console.log('PASS | second player chooses/deploys first; dice winner attacks first');
 const turnSrc=clock.slice(clock.indexOf('const _duelEndTurn=endTurn;'),clock.indexOf('const _duelShowReaction=showReaction;'));
@@ -91,3 +91,4 @@ const reactionSrc=clock.slice(clock.indexOf('const _duelShowReaction=showReactio
 new vm.Script(reactionSrc+'\nthis.react=showReaction;').runInContext(attackCtx);
 attackCtx.react(true);assert.equal(attackS.firstPlayerAttackedThisTurn,true);
 console.log('PASS | an offensive Hero Skill counts as an attack for the first player');
+

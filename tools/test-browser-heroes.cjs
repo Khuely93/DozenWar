@@ -158,5 +158,5 @@ for(const t of report.tests)console.log((t.ok?'PASS':'FAIL')+' | '+t.name+(t.err
 console.log('Browser Hero Core scenarios: '+report.tests.length+' PASS');
 assert.deepEqual(errors,[],'No browser runtime errors');
 await browser.close();browser=null;await new Promise(resolve=>server.close(resolve));
-for(const file of ['test-direct-board-flow.cjs','test-direct-defense-flow.cjs'])require('node:child_process').execFileSync(process.execPath,[path.join(__dirname,file)],{stdio:'inherit'});
+for(const file of ['test-direct-board-flow.cjs','test-direct-defense-flow.cjs','test-deal-first-flow.cjs'])require('node:child_process').execFileSync(process.execPath,[path.join(__dirname,file)],{stdio:'inherit'});
 }finally{if(browser)await browser.close();if(server.listening)await new Promise(resolve=>server.close(resolve))}})().catch(e=>{console.error(e);process.exitCode=1});
