@@ -71,6 +71,7 @@ const NEW_EQUIPMENT_CATALOG={
   "cards": [
     {
       "id": "EQUIP_INF_ATK_001",
+      "visual": { "card": "./assets/equipment/inf/001/card-800x1200.png" },
       "group": "INF",
       "name": "Búa Chiến",
       "category": "ATTACK",
@@ -83,6 +84,7 @@ const NEW_EQUIPMENT_CATALOG={
     },
     {
       "id": "EQUIP_INF_DEF_001",
+      "visual": { "card": "./assets/equipment/inf/def-001/card-800x1200.png" },
       "group": "INF",
       "name": "Khiên Ma Thuật",
       "category": "DEFENSE",
@@ -95,6 +97,7 @@ const NEW_EQUIPMENT_CATALOG={
     },
     {
       "id": "EQUIP_INF_ATK_002",
+      "visual": { "card": "./assets/equipment/inf/002/card-800x1200.png" },
       "group": "INF",
       "name": "Song Kiếm",
       "category": "ATTACK",
@@ -107,6 +110,7 @@ const NEW_EQUIPMENT_CATALOG={
     },
     {
       "id": "EQUIP_INF_ATK_003",
+      "visual": { "card": "./assets/equipment/inf/003/card-800x1200.png" },
       "group": "INF",
       "name": "Giày Nhanh Nhẹn",
       "category": "ATTACK",
@@ -119,6 +123,7 @@ const NEW_EQUIPMENT_CATALOG={
     },
     {
       "id": "EQUIP_INF_ATK_004",
+      "visual": { "card": "./assets/equipment/inf/004/card-800x1200.png" },
       "group": "INF",
       "name": "Trường Thương",
       "category": "ATTACK",
@@ -131,6 +136,7 @@ const NEW_EQUIPMENT_CATALOG={
     },
     {
       "id": "EQUIP_INF_ATK_005",
+      "visual": { "card": "./assets/equipment/inf/005/card-800x1200.png" },
       "group": "INF",
       "name": "Lao Móc",
       "category": "ATTACK",
@@ -144,6 +150,7 @@ const NEW_EQUIPMENT_CATALOG={
     },
     {
       "id": "EQUIP_INF_ATK_006",
+      "visual": { "card": "./assets/equipment/inf/006/card-800x1200.png" },
       "group": "INF",
       "name": "Chùy Xích",
       "category": "ATTACK",
@@ -443,7 +450,7 @@ function equipmentCatalogDefinition(card){
   const assets={};
   for(const [slot,prefix] of Object.entries({art:'IMG_',frame:'IMG_',icon:'ICON_'})){
     const assetId=prefix+card.id+'_'+slot.toUpperCase();assets[slot]=assetId;
-    RAW_ASSETS[assetId]={id:assetId,type:'IMAGE',usage:'CARD_'+slot.toUpperCase(),source:card.visual?.[slot]||'',fallbackGlyph:slot==='icon'?(card.category==='ATTACK'?'⚔':card.category==='DEFENSE'?'🛡':'⚔🛡'):''};
+    RAW_ASSETS[assetId]={id:assetId,type:'IMAGE',usage:slot==='art'&&card.visual?.card?'CARD_FULL':'CARD_'+slot.toUpperCase(),source:card.visual?.[slot]||(slot==='art'?card.visual?.card:'')||'',fallbackGlyph:slot==='icon'?(card.category==='ATTACK'?'⚔':card.category==='DEFENSE'?'🛡':'⚔🛡'):''};
   }
   const nameKey=card.id+'_NAME',textKey=card.id+'_TEXT';
   RAW_LOCALES['vi-VN'][nameKey]=card.name;RAW_LOCALES['vi-VN'][textKey]=card.text;

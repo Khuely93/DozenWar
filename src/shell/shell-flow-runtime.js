@@ -196,10 +196,11 @@ ShellDOM.team.confirmButton.onclick=()=>{
 function cardHTML(c,dim=false,sel=false){
   const esc=value=>String(value??'').replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
   const safeSource=id=>{const source=AssetResolver.source(id);return typeof source==='string'&&/^(?:\.\/|assets\/|https:\/\/|data:image\/)/.test(source)?source:''};
-  const art=safeSource(c.assets?.art),frame=safeSource(c.assets?.frame),icon=safeSource(c.assets?.icon);
+  const fullCard=AssetResolver.get(c.assets?.art)?.usage==='CARD_FULL'?safeSource(c.assets?.art):'';
+  const art=fullCard?'':safeSource(c.assets?.art),frame=safeSource(c.assets?.frame),icon=safeSource(c.assets?.icon);
   const group=Object.values(EQUIPMENT_GROUPS).find(g=>g.id===c.groupId||g.classId===c.classId||CLASS_RUNTIME[g.classId]===c.cls);
   const image=(src,cls)=>src?'<img class="'+cls+'" src="'+esc(src)+'" alt="" loading="lazy" onerror="this.hidden=true">':'';
-  return '<div class="card '+esc(c.type)+(dim?' dim':'')+(sel?' sel':'')+'" data-equipment-id="'+esc(c.equipmentId||c.canonicalId||c.id)+'" data-equipment-group="'+esc(group?.id)+'">'+image(frame,'equipmentFrame')+image(art,'equipmentArt')+'<div class="equipmentLabel">'+image(icon,'equipmentIcon')+'<b>'+esc(c.name)+'</b><div class="star">'+('★'.repeat(c.star))+'</div><div class="muted">'+esc(group?.name)+' · '+(c.type==='atk'?'Tấn công':c.type==='def'?'Phòng thủ':'Công và thủ')+'</div></div><div class="muted equipmentText">'+esc(c.text)+'</div></div>';
+  return '<div class="card '+esc(c.type)+(dim?' dim':'')+(sel?' sel':'')+'" data-equipment-id="'+esc(c.equipmentId||c.canonicalId||c.id)+'" data-equipment-group="'+esc(group?.id)+'">'+(fullCard?'<img class="equipmentFullCard" src="'+esc(fullCard)+'" alt="'+esc(c.name+' · '+c.star+' sao · '+c.text)+'" title="'+esc(c.name+' · '+c.text)+'" loading="lazy" onerror="this.hidden=true">':'')+image(frame,'equipmentFrame')+image(art,'equipmentArt')+'<div class="equipmentLabel">'+image(icon,'equipmentIcon')+'<b>'+esc(c.name)+'</b><div class="star">'+('★'.repeat(c.star))+'</div><div class="muted">'+esc(group?.name)+' · '+(c.type==='atk'?'Tấn công':c.type==='def'?'Phòng thủ':'Công và thủ')+'</div></div><div class="muted equipmentText">'+esc(c.text)+'</div></div>';
 }
 
 function dealCards(){
