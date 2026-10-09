@@ -242,6 +242,7 @@ const NEW_EQUIPMENT_CATALOG={
     },
     {
       "id": "EQUIP_CAV_ATK_002",
+      "visual": { "card": "./assets/equipment/cav/002/card-800x1200.png" },
       "name": "Đại Đao",
       "group": "CAV",
       "category": "ATTACK",
@@ -254,6 +255,7 @@ const NEW_EQUIPMENT_CATALOG={
     },
     {
       "id": "EQUIP_CAV_DEF_002",
+      "visual": { "card": "./assets/equipment/cav/def-002/card-800x1200.png" },
       "name": "Khiên Gỗ",
       "group": "CAV",
       "category": "DEFENSE",
@@ -266,6 +268,7 @@ const NEW_EQUIPMENT_CATALOG={
     },
     {
       "id": "EQUIP_CAV_ATK_003",
+      "visual": { "card": "./assets/equipment/cav/003/card-800x1200.png" },
       "name": "Giáo Thép",
       "group": "CAV",
       "category": "ATTACK",
@@ -314,6 +317,7 @@ const NEW_EQUIPMENT_CATALOG={
     },
     {
       "id": "EQUIP_CAV_DEF_001",
+      "visual": { "card": "./assets/equipment/cav/def-001/card-800x1200.png" },
       "name": "Kiếm Một Tay",
       "group": "CAV",
       "category": "DEFENSE",
@@ -326,6 +330,7 @@ const NEW_EQUIPMENT_CATALOG={
     },
     {
       "id": "EQUIP_CAV_DEF_003",
+      "visual": { "card": "./assets/equipment/cav/def-003/card-800x1200.png" },
       "name": "Lưới Sắt",
       "group": "CAV",
       "category": "DEFENSE",
@@ -338,6 +343,7 @@ const NEW_EQUIPMENT_CATALOG={
     },
     {
       "id": "EQUIP_CAV_ATK_001",
+      "visual": { "card": "./assets/equipment/cav/001/card-800x1200.png" },
       "group": "CAV",
       "name": "Thương Kỵ Sĩ",
       "category": "ATTACK",
