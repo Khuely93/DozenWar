@@ -4383,6 +4383,7 @@ const DuelBoardLayout = {
     // Background and hit cells are presentation-only and scoped to 1vs1.
     const cleanDuel=S.selectedMode==='MODE_DUEL_001'||typeof DW_MODES!=='undefined'&&DW_MODES.get(S.selectedMode)?.mapPolicy?.mapId==='MAP_DUEL_001';
     CoreDOM.board.svg?.classList?.toggle('duelCleanMap',cleanDuel);
+    board.classList?.toggle('darkFantasyMap',cleanDuel);
     const img=board.querySelector?.('.boardBg');
     if(img){
       if(!img.dataset.defaultSrc)img.dataset.defaultSrc=img.getAttribute('src');

@@ -1,8 +1,8 @@
 {
   "project": "DOZEN WAR II",
-  "version": "1.50.0",
+  "version": "1.51.0",
   "phase": "DUEL_RULE_MODE_1VS1_180_30",
-  "baseline": "v1.50.0 Hero defense reactions and terrain targeting fixes",
+  "baseline": "v1.51.0 Dark Fantasy arena artwork",
   "entry": "index.html",
   "styles": "styles/main.css",
   "runtimeOrder": [
