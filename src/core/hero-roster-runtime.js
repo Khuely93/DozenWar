@@ -47,7 +47,7 @@ const HeroCore={
     if(S.phase!=='battle'||S.matchEnded||!this.alive(h)||!sk||isSkillUsed(h,n))return false;
     const defense=h.side!==S.battleSide;
     if(defense){if(pending?.defenseEquipmentUsed)return false;if(!['DEFENSE_REACTION','BOTH'].includes(sk.timing)||this.blocked(h,'defense'))return false;
-      const d=pending&&S.units.find(u=>u.id===(pending.replacementTargetId||pending.d));
+      const d=pending&&S.units.find(u=>u.id===(pending.guard?pending.guardUnitId:pending.replacementTargetId||pending.d));
       if(pending&&pending.isCounterattack)return false;
       if(['SWAP','ESCAPE','DICE_WARD'].includes(sk.mechanic)&&(!d||d.id!==h.id))return false;
       if(sk.mechanic==='CANCEL'&&(!d||!this.candidate(h,sk,d)))return false;

@@ -1,0 +1,34 @@
+/* Direct offensive input; all action validation and resolution stays in Core. */
+const DirectBoardFlow={
+  actorCard:null,
+  active(){return S.phase==='battle'&&!S.matchEnded&&!S.pending&&!S.heroSequence&&!S.equipmentReaction&&!S.postHitReaction&&!HeroCore.selection&&!CombatFlowUI.state&&S.battleSide!==S.botSide},
+  clear(){this.actorCard=null;S.attackChoice=null;S.equipSelectedCard=null;S.equipPendingActorId=null},
+  warning(text){this.warningNode.textContent=text;this.warningNode.hidden=false;this.warningNode.classList.remove('flash');void this.warningNode.offsetWidth;this.warningNode.classList.add('flash');clearTimeout(this.warningTimer);this.warningTimer=setTimeout(()=>this.warningNode.hidden=true,2600)},
+  deselect(){if(!this.active())return;this.clear();S.selected=null;S.mode=null;hideUnitMenu();hideAttackPopup();renderBoard();updateUI()},
+  select(u){if(!u||u.side!==S.battleSide||u.hp<=0||u.attacked||HeroCore.blocked(u,'active'))return false;if(S.selected?.id!==u.id){const card=this.actorCard;this.clear();if(card){S.selected=u;return this.equipment(u,card)}}S.selected=u;S.mode='direct';hideUnitMenu();hideAttackPopup();renderBoard();updateUI();return true},
+  unit(u){if(!this.active())return CoreInputRouter.handleUnitClick(u);if(u.side===S.battleSide)return this.select(u);const a=S.selected;if(!a||a.side!==S.battleSide||a.attacked||a.hp<=0)return false;if(!canAttack(a,u)){this.warning('Ngoài tầm đánh');return false}const result=startAttack(a,u);if(S.heroSequence?.normal&&HeroCore.selection){const skill=HeroCore.selection;skill.uiFlow=true;skill.sk={...skill.sk,uiFlow:true};S.heroSequence.sk=skill.sk;if(HeroCore.targetLimit(a,skill.sk,HeroCore.selectedCard())===1)CombatFlowUI.commit(skill);else CombatFlowUI.prepare(skill)}return result},
+  hex(c){if(!this.active())return CoreInputRouter.handleHexClick(c);const u=unitAt(c.q,c.r);if(u)return this.unit(u);const a=S.selected;if(!a||a.side!==S.battleSide||a.attacked||a.hp<=0)return false;const cost=canMoveFurther(a)?movementCostToCell(a,c):null;if(cost==null||cost>remainingMove(a)){this.warning('Ngoài tầm di chuyển');return false}save();a.q=c.q;a.r=c.r;a.movementCostSpent=movementCostSpent(a)+cost;a.moved=a.movementCostSpent>0;S.mode='direct';renderBoard();updateUI();return true},
+  equipment(h,c){const skill=HeroCore.selection;if(skill?.uiFlow&&skill.h.side===S.battleSide&&skill.sk.heroAttack&&!EquipmentCore.standalone(c)&&validCardFor(c,skill.h,'atk')){const current=EquipmentCore.parts(HeroCore.selectedCard());const cards=EquipmentCore.multipleAllowed()?current.filter(x=>x.uid!==c.uid).concat(current.some(x=>x.uid===c.uid)?[]:[c]):current.some(x=>x.uid===c.uid)?[]:[c];if(!EquipmentCore.canCombine(cards))return false;const pack=EquipmentCore.combine(cards);skill.cardUid=pack?.uid||null;skill.equipmentBundle=pack?.equipmentCards?pack:null;skill.selected=[];return CombatFlowUI.prepare(skill)}if(!this.active())return this.oldEquipment(h,c);if(!h){this.clear();this.actorCard=c;S.selected=null;S.mode='direct';renderBoard();updateUI();return true}if(!EquipmentCore.canUse(h,c))return false;this.actorCard=null;S.selected=h;hideUnitMenu();hideAttackPopup();if(EquipmentCore.standalone(c)){this.clear();const result=EquipmentCore.begin(h,c);if(result&&HeroCore.selection){const s=HeroCore.selection;s.uiFlow=true;s.sk={...s.sk,uiFlow:true};CombatFlowUI.prepare(s)}return result}let cards=EquipmentCore.parts(S.attackChoice?.card);cards=EquipmentCore.multipleAllowed()?cards.filter(x=>x.uid!==c.uid).concat(cards.some(x=>x.uid===c.uid)?[]:[c]):cards.some(x=>x.uid===c.uid)?[]:[c];if(!EquipmentCore.canCombine(cards))return false;const pack=EquipmentCore.combine(cards);S.attackChoice={type:pack?'card':'normal',card:pack};S.equipSelectedCard=pack;S.equipPendingActorId=pack?h.id:null;S.mode='direct';renderBoard();updateUI();return true}
+};
+DirectBoardFlow.oldEquipment=CombatFlowUI.startEquipment.bind(CombatFlowUI);
+CombatFlowUI.startEquipment=(h,c)=>DirectBoardFlow.equipment(h,c);
+const _directSelect=selectUnit;
+selectUnit=function(u){return DirectBoardFlow.active()?DirectBoardFlow.select(u):_directSelect(u)};
+const _directMenu=renderUnitMenu;
+renderUnitMenu=function(){if(DirectBoardFlow.active()){hideUnitMenu();return}return _directMenu()};
+const _directMoveHL=isHighlight,_directAttackHL=isAttackHL;
+isHighlight=function(c){return DirectBoardFlow.active()&&S.mode==='direct'&&S.selected?canMoveFurther(S.selected)&&reachableCells(S.selected).has(c.q+','+c.r):_directMoveHL(c)};
+isAttackHL=function(c){if(DirectBoardFlow.active()&&S.mode==='direct'&&S.selected){const u=unitAt(c.q,c.r);return !!u&&u.side!==S.selected.side&&canAttack(S.selected,u)}return _directAttackHL(c)};
+CoreBoardRenderer.registerLayer('DIRECT_EQUIPMENT_ACTOR',80,{unitClasses(u){return DirectBoardFlow.actorCard&&EquipmentCore.canUse(u,DirectBoardFlow.actorCard)?' directEligibleActor':''}});
+const _directSkill=CombatFlowUI.startSkill.bind(CombatFlowUI);
+CombatFlowUI.startSkill=function(h,n){if(h.side!==S.battleSide)return _directSkill(h,n);if(!DirectBoardFlow.active()||!HeroCore.canUse(h,n,heroSkill(h,n)))return false;const card=S.selected?.id===h.id?S.attackChoice?.card:null;if(card&&(!heroSkill(h,n).heroAttack||EquipmentCore.parts(card).some(c=>!validCardFor(c,h,'atk')||EquipmentCore.standalone(c))))return false;DirectBoardFlow.clear();S.selected=h;if(!HeroCore.begin(h,n))return false;const s=HeroCore.selection;s.uiFlow=true;s.sk={...s.sk,uiFlow:true};s.cardUid=card?.uid||null;s.equipmentBundle=card?.equipmentCards?card:null;return this.prepare(s)};
+moveBtn.onclick=attackBtn.onclick=()=>{if(DirectBoardFlow.active()&&S.selected)DirectBoardFlow.select(S.selected)};
+DirectBoardFlow.warningNode=document.createElement('div');DirectBoardFlow.warningNode.className='directFlowWarning';DirectBoardFlow.warningNode.setAttribute('role','alert');DirectBoardFlow.warningNode.hidden=true;CoreDOM.board.wrap.append(DirectBoardFlow.warningNode);
+boardSvg.addEventListener('click',e=>{if(e.target===boardSvg)DirectBoardFlow.deselect()});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&DirectBoardFlow.active())DirectBoardFlow.deselect()});
+const _directSync=CombatFlowUI.sync.bind(CombatFlowUI);
+CombatFlowUI.sync=function(){_directSync();if(!DirectBoardFlow.active())return;if(DirectBoardFlow.actorCard)gameHint.textContent=DirectBoardFlow.actorCard.name+' · Chọn quân được highlight để dùng trang bị.';else if(S.selected&&S.mode==='direct')gameHint.textContent=unitSpec(S.selected).name+' · '+(S.attackChoice?.card?S.attackChoice.card.name+' đang chờ · ':'')+'Click ô để di chuyển hoặc địch trong tầm để đánh.'};
+
+CoreDOM.board.wrap.addEventListener('click',e=>{if(e.target===CoreDOM.board.wrap)DirectBoardFlow.deselect()});
+
+const _directReset=resetMatchState;resetMatchState=function(){DirectBoardFlow.clear();DirectBoardFlow.warningNode.hidden=true;return _directReset()};

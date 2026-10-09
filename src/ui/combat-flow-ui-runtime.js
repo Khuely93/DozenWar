@@ -62,7 +62,7 @@ const CombatFlowUI={
   },
   commit(s){
     const pending=S.pending,defense=s.h.side!==S.battleSide,result=HeroCore.commit();
-    if(result&&s.sk.mechanic==='COPY'&&HeroCore.selection&&HeroCore.selection!==s){const copy=HeroCore.selection;copy.uiFlow=true;copy.sk={...copy.sk,uiFlow:true};if(!defense){copy.uiEquipmentStep=true;return this.open(copy.h,'skill',{sk:copy.sk,done:c=>{if(HeroCore.selection!==copy)return;copy.cardUid=c?.uid||null;copy.equipmentBundle=c?.equipmentCards?c:null;copy.uiEquipmentStep=false;this.prepare(copy)},back:()=>HeroCore.cancel()})}return this.prepare(copy)}
+    if(result&&s.sk.mechanic==='COPY'&&HeroCore.selection&&HeroCore.selection!==s){const copy=HeroCore.selection;copy.uiFlow=true;copy.sk={...copy.sk,uiFlow:true};if(!defense&&typeof DirectBoardFlow==='undefined'){copy.uiEquipmentStep=true;return this.open(copy.h,'skill',{sk:copy.sk,done:c=>{if(HeroCore.selection!==copy)return;copy.cardUid=c?.uid||null;copy.equipmentBundle=c?.equipmentCards?c:null;copy.uiEquipmentStep=false;this.prepare(copy)},back:()=>HeroCore.cancel()})}return this.prepare(copy)}
     if(result&&defense&&S.pending===pending&&!HeroCore.selection&&!S.equipmentReaction&&!S.postHitReaction&&!S.pending?.replacementTargetId&&s.sk.mechanic!=='REDIRECT')resolveCombat();
     return result;
   },
@@ -145,11 +145,11 @@ CombatFlowUI.describe=function(){
   const p=S.pending,s=HeroCore.selection,seq=S.heroSequence;let text='';
   if(p){const a=S.units.find(u=>u.id===p.a),d=S.units.find(u=>u.id===(p.guard?p.guardUnitId:p.replacementTargetId||p.d));text='Đòn '+(seq?.round||1)+'/'+(seq?.count||1)+' · '+(a?unitSpec(a).name:'')+' → '+(d?unitSpec(d).name:'')+' · '+(p.heroMechanic?.name||'Đánh thường')+(p.atkCard?' · '+p.atkCard.name:'')+(S.postHitReaction?' · Đã nhận '+S.postHitReaction.damage+' sát thương — chọn Khiên Ma Thuật':'')}
   else if(s){text=unitSpec(s.h).name+' · '+s.sk.name+(HeroCore.selectedCard()?' + '+HeroCore.selectedCard().name:'')+' · Mục tiêu '+s.selected.length+'/'+HeroCore.targetLimit(s.h,s.sk,HeroCore.selectedCard());if(seq)text+=' · Đòn '+(seq.round+1)+'/'+seq.count}
-  else if(S.mode==='attack'&&S.selected){text=unitSpec(S.selected).name+' · Đánh thường'+(S.attackChoice?.card?' + '+S.attackChoice.card.name:'')+' · Mục tiêu 0/1'}
+  else if(['attack','direct'].includes(S.mode)&&S.selected){text=unitSpec(S.selected).name+' · Đánh thường'+(S.attackChoice?.card?' + '+S.attackChoice.card.name:'')+' · Mục tiêu 0/1'}
   this.status.replaceChildren();const label=document.createElement('span');label.textContent=text;this.status.append(label);this.status.hidden=!text||S.phase!=='battle';
   if(s&&!s.uiEquipmentStep&&!s.continuation&&!this.state){
     if(s.h.side!==S.battleSide&&s.sk.mechanic==='HEAL'&&this.cards(s.h,'skillheal',s.sk).length)this.status.append(HeroSkillUI.button('CHỌN BÌNH MÁU',()=>this.healingEquipment(s)));
-    if(s.h.side===S.battleSide&&!s.sk.equipmentAction)this.status.append(HeroSkillUI.button('ĐỔI TRANG BỊ',()=>{s.uiEquipmentStep=true;this.open(s.h,'skill',{sk:s.sk,card:HeroCore.selectedCard(),done:c=>{if(HeroCore.selection!==s)return;s.cardUid=c?.uid||null;s.equipmentBundle=c?.equipmentCards?c:null;s.selected=[];s.uiEquipmentStep=false;this.prepare(s)},back:()=>{s.uiEquipmentStep=false;this.prepare(s)}})}));
+    if(typeof DirectBoardFlow==='undefined'&&s.h.side===S.battleSide&&!s.sk.equipmentAction)this.status.append(HeroSkillUI.button('ĐỔI TRANG BỊ',()=>{s.uiEquipmentStep=true;this.open(s.h,'skill',{sk:s.sk,card:HeroCore.selectedCard(),done:c=>{if(HeroCore.selection!==s)return;s.cardUid=c?.uid||null;s.equipmentBundle=c?.equipmentCards?c:null;s.selected=[];s.uiEquipmentStep=false;this.prepare(s)},back:()=>{s.uiEquipmentStep=false;this.prepare(s)}})}));
     this.status.append(HeroSkillUI.button('HỦY',()=>HeroCore.cancel()));
   }else if(S.mode==='attack'&&S.selected&&!p&&!this.state){const h=S.selected;this.status.append(HeroSkillUI.button('ĐỔI TRANG BỊ',()=>this.open(h,'atk',{card:S.attackChoice?.card})),HeroSkillUI.button('HỦY',()=>{CoreAttackController.cancelTargeting();S.equipSelectedCard=null;S.equipPendingActorId=null;S.attackChoice=null;updateUI()}));}
 

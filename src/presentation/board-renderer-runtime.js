@@ -68,7 +68,7 @@ const CoreBoardRenderer = {
       polygon.setAttribute("vector-effect","non-scaling-stroke");
       polygon.setAttribute("class",this.hexClass(cell));
       polygon.dataset.q=cell.q;polygon.dataset.r=cell.r;
-      polygon.addEventListener("click",()=>CoreInputRouter.handleHexClick(cell));
+      polygon.addEventListener("click",()=>typeof DirectBoardFlow!=="undefined"?DirectBoardFlow.hex(cell):CoreInputRouter.handleHexClick(cell));
       boardSvg.appendChild(polygon);
     }
 
@@ -110,7 +110,7 @@ const CoreBoardRenderer = {
 
       group.addEventListener("click",e=>{
         e.stopPropagation();
-        CoreInputRouter.handleUnitClick(unit);
+        if(typeof DirectBoardFlow!=="undefined")DirectBoardFlow.unit(unit);else CoreInputRouter.handleUnitClick(unit);
       });
 
       if(S.phase==="deploy"&&currentDeployPlayer()!==S.botSide&&unit.side===currentDeployPlayer())bindDeployDrag(group,unit);

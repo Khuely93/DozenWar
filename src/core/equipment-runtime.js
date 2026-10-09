@@ -156,13 +156,14 @@ const EquipmentCore={
     for(const c of S.hands[side]||[]){
       const eligible=reaction?this.responders(side,reaction.c).filter(x=>x.card.uid===c.uid).map(x=>x.h):S.units.filter(u=>u.side===side&&this.canUse(u,c));
       const h=eligible.find(u=>u.id===S.selected?.id)||(reaction?eligible[0]:null);
-      const locked=S.matchEnded||!!HeroCore.selection||!eligible.length;
+      const skillGear=typeof DirectBoardFlow!=='undefined'&&HeroCore.selection?.uiFlow&&HeroCore.selection.h.side===S.battleSide&&HeroCore.selection.sk.heroAttack&&!this.standalone(c)&&validCardFor(c,HeroCore.selection.h,'atk');
+      const locked=S.matchEnded||!!HeroCore.selection&&!skillGear||!eligible.length;
       const b=document.createElement('button'),tmp=document.createElement('div');tmp.innerHTML=cardHTML(c);
       b.type='button';b.className=tmp.firstElementChild.className;b.append(...tmp.firstElementChild.childNodes);
       b.dataset.equipmentId=c.equipmentId;b.dataset.cardUid=c.uid;b.disabled=locked;
       const reason=S.matchEnded?'Trận đã kết thúc':HeroCore.selection?'Hoàn tất hoặc hủy lựa chọn hiện tại':!h?'Chọn đơn vị để sử dụng':'Dùng cho '+unitSpec(h).name;
       b.title=c.text+' · '+reason;b.setAttribute('aria-label',c.name+' · '+reason);
-      b.onclick=()=>{if(S.matchEnded||HeroCore.selection)return;if(reaction){if(S.equipmentReaction===reaction)this.counterEquipment(h,c)}else if(typeof CombatFlowUI!=='undefined'){CombatFlowUI.startEquipment(h||null,c);updateUI()}else if(this.canUse(h,c)){if(typeof CombatFlowUI!=='undefined')CombatFlowUI.startEquipment(h,c);else if(h.side!==S.battleSide)this.useDefense(h,c);else this.begin(h,c);updateUI()}};
+      b.onclick=()=>{if(S.matchEnded||HeroCore.selection&&!skillGear)return;if(reaction){if(S.equipmentReaction===reaction)this.counterEquipment(h,c)}else if(typeof CombatFlowUI!=='undefined'){CombatFlowUI.startEquipment(h||null,c);updateUI()}else if(this.canUse(h,c)){if(typeof CombatFlowUI!=='undefined')CombatFlowUI.startEquipment(h,c);else if(h.side!==S.battleSide)this.useDefense(h,c);else this.begin(h,c);updateUI()}};
       handBar.append(b);
     }
   },

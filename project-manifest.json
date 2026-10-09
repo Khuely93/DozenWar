@@ -1,8 +1,8 @@
 {
   "project": "DOZEN WAR II",
-  "version": "1.46.0",
+  "version": "1.47.0",
   "phase": "DUEL_RULE_MODE_1VS1_180_30",
-  "baseline": "v1.46.0 Multi-equipment training and Assassin equipment",
+  "baseline": "v1.47.0 Direct map attack and defense flows",
   "entry": "index.html",
   "styles": "styles/main.css",
   "runtimeOrder": [
@@ -37,6 +37,8 @@
     "src/ui/combat-flow-ui-runtime.js",
     "src/shell/shell-boot-runtime.js",
     "src/mode/training-runtime.js",
+    "src/ui/direct-board-flow-runtime.js",
+    "src/ui/direct-defense-flow-runtime.js",
     "src/bootstrap.js"
   ],
   "extractedLayers": [

@@ -43,7 +43,7 @@ const DuelBoardLayout = {
     if(!board)return;
     this.mount();
     // Background and hit cells are presentation-only and scoped to 1vs1.
-    const cleanDuel=S.selectedMode==='MODE_DUEL_001';
+    const cleanDuel=S.selectedMode==='MODE_DUEL_001'||typeof DW_MODES!=='undefined'&&DW_MODES.get(S.selectedMode)?.mapPolicy?.mapId==='MAP_DUEL_001';
     CoreDOM.board.svg?.classList?.toggle('duelCleanMap',cleanDuel);
     const img=board.querySelector?.('.boardBg');
     if(img){
@@ -54,7 +54,7 @@ const DuelBoardLayout = {
       if(backdrop&&src)backdrop.style.backgroundImage='url("'+src+'")';
     }
     const desktop=window.innerWidth>=900;
-    const active=S.selectedMode==='MODE_DUEL_001'&&(S.phase==='deploy'||S.phase==='battle');
+    const active=cleanDuel&&(S.phase==='deploy'||S.phase==='battle');
     if(typeof document!=='undefined'){
       document.body.classList.toggle('duelDesktopLayout',desktop&&active);
       if(this.portrait){const hero=typeof HeroSkillUI!=='undefined'?HeroSkillUI.actor():S.selected;this.portrait.textContent=hero?unitSpec(hero).sym:'♟';}

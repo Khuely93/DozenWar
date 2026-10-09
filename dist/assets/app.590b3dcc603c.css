@@ -206,3 +206,7 @@
 .combatFlowStatus .btn { pointer-events:auto;margin-left:8px;padding:5px 8px;font-size:12px; }
 
 .trainingToolbar{position:absolute;top:8px;left:8px;right:8px;z-index:70;display:flex;gap:6px;flex-wrap:wrap;align-items:center;padding:8px;background:#102536ed;border:1px solid #7aa6c0;border-radius:10px}.trainingToolbar[hidden]{display:none}.trainingToolbar strong{font-size:13px}.trainingToolbar button{font-size:12px;padding:6px 9px}.trainingDialog{background:#102536;color:white;border:1px solid #7aa6c0;border-radius:12px;padding:20px;max-width:90vw}.trainingDialog::backdrop{background:#0009}.trainingDialog select{display:block;width:100%;margin:12px 0;padding:10px;background:#20384a;color:white}.trainingDialog button{margin:4px}
+
+.directFlowWarning{position:absolute;top:12px;left:50%;transform:translateX(-50%);color:#ff4545;background:#171c28;padding:8px 16px;border-radius:8px;z-index:150;pointer-events:none;font-weight:700}.directFlowWarning.flash{animation:directWarningFlash .45s ease-in-out 5}@keyframes directWarningFlash{50%{opacity:.25}}.directEligibleActor circle{stroke:#ffd66b;stroke-width:5}
+
+.directDefensePanel{position:absolute;bottom:12px;left:50%;transform:translateX(-50%);width:min(560px,90%);padding:10px 14px;background:#142435f5;border:1px solid #84bce7;border-radius:10px;z-index:100}.directDefensePanel p{margin:4px 0 8px}.directDefensePanel button{margin:3px}#handBar .chosen{outline:3px solid #ffd66b}

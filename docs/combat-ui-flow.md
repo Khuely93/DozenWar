@@ -1,3 +1,23 @@
+# Flow phòng thủ trực tiếp (workspace, chưa phát hành)
+
+Mỗi đòn có thanh thông tin cố định: đòn hiện tại/tổng số, người công, người nhận, sát thương và sao. Map highlight người nhận và Bộ binh Guard hợp lệ. Có Guard: hiện “Chọn Bộ binh để đỡ đòn, bỏ qua nếu không muốn Bộ binh đỡ đòn” và Bỏ qua; bỏ qua chỉ từ chối Guard, vẫn được dùng skill/card. Click Bộ binh chốt Guard và cập nhật phản ứng cho người nhận mới, không tự nhận sát thương khi không có card.
+
+Skill/card chọn ở thanh dưới, không mở popup phòng thủ hay dialog card thông thường. Card cần mục tiêu/hex giữ lựa chọn trên map và chỉ tiêu hao sau chọn hợp lệ. Không có phản ứng vẫn chờ Nhận đòn hoặc timeout. Nhiều card: quyền lấy từ equipmentRules.allowMultiple của rule_mode, chọn/bỏ chọn từng card ở dock và nhấn Phòng thủ. Mỗi đòn liên tiếp mở một lựa chọn mới.
+
+Khiên Ma Thuật sau sát thương: card ở dock, Không phản để hoàn tất, kể cả người nhận chết. Hồi Sức + Bình Máu giữ cửa sổ chọn kết hợp để kiểm tra sống/max HP. Phân Bóng giữ chọn số. Dây Chuyền vẫn xử lý trước hiệu ứng card với lựa chọn hủy/cho qua.
+
+Kiểm tra: node tools/test-direct-defense-flow.cjs và npm run test:browser-heroes. Bố cục Duel áp dụng theo mapId của rule_mode, gồm Đấu tập.
+
+# Flow công trực tiếp (workspace, chưa phát hành)
+
+Chọn quân: hiện tầm di chuyển và địch trong tầm, không mở menu. Click hex để đi, click địch để đánh thường. Có thể đánh trước khi đi. Chọn card dưới thanh UI gắn ngay vào hành động, cập nhật tầm; không mở dialog xác nhận. Chọn nhiều card hợp lệ trong Đấu tập. Card độc lập/skill: chọn mục tiêu hoặc hex trực tiếp, một mục tiêu thực hiện ngay, nhiều mục tiêu xác nhận. Skill Attack được chọn card từ thanh dưới trước hoặc sau khi chọn skill. Đổi quân/bỏ chọn hủy card đang chờ, giữ quyền hành động và không tiêu hao. Chọn card khi chưa có người dùng: highlight quân hợp lệ để chọn trên map. Click địch/hex không hợp lệ giữ lựa chọn và cảnh báo đỏ nhấp nháy. Click nền ngoài map/Escape bỏ chọn.
+
+Flow phòng thủ, Guard, phản ứng trang bị, Khiên Ma Thuật và ngoại lệ hồi máu giữ nguyên.
+
+Kiểm tra trực tiếp: `node tools/test-direct-board-flow.cjs`.
+
+## Flow trước đây (tham khảo)
+
 # Flow UI công / thủ (workspace, chưa phát hành)
 
 - Chọn Trang bị trong popup công/thủ sẽ đóng popup và mở dialog ở giữa màn hình. Dialog chỉ hiển thị card hợp lệ cho đơn vị, lượt, số sao và ngân sách hiện tại.
