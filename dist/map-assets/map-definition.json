@@ -1,0 +1,559 @@
+{
+  "schemaVersion": "1.0",
+  "id": "MAP_FLOATING_SKY_ARENA_001",
+  "name": "Đấu Trường Thiên Không",
+  "status": "DRAFT",
+  "description": "Đấu trường fantasy nổi giữa mây, đá trắng viền vàng, tinh thể xanh và cờ hai phe đỏ–xanh.",
+  "assets": {
+    "background": {
+      "id": "IMG_MAP_FLOATING_SKY_ARENA_001_BACKGROUND",
+      "path": "./map-fantasy.png",
+      "widthPx": 1254,
+      "heightPx": 1254,
+      "containsGameplayHexGrid": false
+    },
+    "hexOverlay": {
+      "renderSeparately": true
+    }
+  },
+  "coordinateFrame": {
+    "width": 1000,
+    "height": 1000,
+    "center": {
+      "x": 500,
+      "y": 500
+    }
+  },
+  "grid": {
+    "type": "HEX",
+    "orientation": "POINTY_TOP",
+    "coordinateSystem": "AXIAL",
+    "radiusInCells": 4,
+    "cellCount": 61,
+    "rowCounts": [
+      5,
+      6,
+      7,
+      8,
+      9,
+      8,
+      7,
+      6,
+      5
+    ],
+    "hexCircumradius": 46,
+    "hexWidth": 79.674337,
+    "hexHeight": 92,
+    "horizontalCenterSpacing": 79.674337,
+    "rowCenterSpacing": 69,
+    "bounds": {
+      "xMin": 141.465483,
+      "xMax": 858.534517,
+      "yMin": 178,
+      "yMax": 822
+    },
+    "cells": [
+      {
+        "q": 0,
+        "r": -4,
+        "x": 340.651326,
+        "y": 224,
+        "deploymentSide": 2,
+        "blocked": false
+      },
+      {
+        "q": 1,
+        "r": -4,
+        "x": 420.325663,
+        "y": 224,
+        "deploymentSide": 2,
+        "blocked": false
+      },
+      {
+        "q": 2,
+        "r": -4,
+        "x": 500.0,
+        "y": 224,
+        "deploymentSide": 2,
+        "blocked": false
+      },
+      {
+        "q": 3,
+        "r": -4,
+        "x": 579.674337,
+        "y": 224,
+        "deploymentSide": 2,
+        "blocked": false
+      },
+      {
+        "q": 4,
+        "r": -4,
+        "x": 659.348674,
+        "y": 224,
+        "deploymentSide": 2,
+        "blocked": false
+      },
+      {
+        "q": -1,
+        "r": -3,
+        "x": 300.814157,
+        "y": 293,
+        "deploymentSide": 2,
+        "blocked": false
+      },
+      {
+        "q": 0,
+        "r": -3,
+        "x": 380.488494,
+        "y": 293,
+        "deploymentSide": 2,
+        "blocked": false
+      },
+      {
+        "q": 1,
+        "r": -3,
+        "x": 460.162831,
+        "y": 293,
+        "deploymentSide": 2,
+        "blocked": false
+      },
+      {
+        "q": 2,
+        "r": -3,
+        "x": 539.837169,
+        "y": 293,
+        "deploymentSide": 2,
+        "blocked": false
+      },
+      {
+        "q": 3,
+        "r": -3,
+        "x": 619.511506,
+        "y": 293,
+        "deploymentSide": 2,
+        "blocked": false
+      },
+      {
+        "q": 4,
+        "r": -3,
+        "x": 699.185843,
+        "y": 293,
+        "deploymentSide": 2,
+        "blocked": false
+      },
+      {
+        "q": -2,
+        "r": -2,
+        "x": 260.976989,
+        "y": 362,
+        "deploymentSide": 2,
+        "blocked": false
+      },
+      {
+        "q": -1,
+        "r": -2,
+        "x": 340.651326,
+        "y": 362,
+        "deploymentSide": 2,
+        "blocked": false
+      },
+      {
+        "q": 0,
+        "r": -2,
+        "x": 420.325663,
+        "y": 362,
+        "deploymentSide": 2,
+        "blocked": false
+      },
+      {
+        "q": 1,
+        "r": -2,
+        "x": 500.0,
+        "y": 362,
+        "deploymentSide": 2,
+        "blocked": false
+      },
+      {
+        "q": 2,
+        "r": -2,
+        "x": 579.674337,
+        "y": 362,
+        "deploymentSide": 2,
+        "blocked": false
+      },
+      {
+        "q": 3,
+        "r": -2,
+        "x": 659.348674,
+        "y": 362,
+        "deploymentSide": 2,
+        "blocked": false
+      },
+      {
+        "q": 4,
+        "r": -2,
+        "x": 739.023011,
+        "y": 362,
+        "deploymentSide": 2,
+        "blocked": false
+      },
+      {
+        "q": -3,
+        "r": -1,
+        "x": 221.13982,
+        "y": 431,
+        "deploymentSide": 2,
+        "blocked": false
+      },
+      {
+        "q": -2,
+        "r": -1,
+        "x": 300.814157,
+        "y": 431,
+        "deploymentSide": 2,
+        "blocked": false
+      },
+      {
+        "q": -1,
+        "r": -1,
+        "x": 380.488494,
+        "y": 431,
+        "deploymentSide": 2,
+        "blocked": false
+      },
+      {
+        "q": 0,
+        "r": -1,
+        "x": 460.162831,
+        "y": 431,
+        "deploymentSide": 2,
+        "blocked": false
+      },
+      {
+        "q": 1,
+        "r": -1,
+        "x": 539.837169,
+        "y": 431,
+        "deploymentSide": 2,
+        "blocked": false
+      },
+      {
+        "q": 2,
+        "r": -1,
+        "x": 619.511506,
+        "y": 431,
+        "deploymentSide": 2,
+        "blocked": false
+      },
+      {
+        "q": 3,
+        "r": -1,
+        "x": 699.185843,
+        "y": 431,
+        "deploymentSide": 2,
+        "blocked": false
+      },
+      {
+        "q": 4,
+        "r": -1,
+        "x": 778.86018,
+        "y": 431,
+        "deploymentSide": 2,
+        "blocked": false
+      },
+      {
+        "q": -4,
+        "r": 0,
+        "x": 181.302651,
+        "y": 500,
+        "deploymentSide": null,
+        "blocked": false
+      },
+      {
+        "q": -3,
+        "r": 0,
+        "x": 260.976989,
+        "y": 500,
+        "deploymentSide": null,
+        "blocked": false
+      },
+      {
+        "q": -2,
+        "r": 0,
+        "x": 340.651326,
+        "y": 500,
+        "deploymentSide": null,
+        "blocked": false
+      },
+      {
+        "q": -1,
+        "r": 0,
+        "x": 420.325663,
+        "y": 500,
+        "deploymentSide": null,
+        "blocked": false
+      },
+      {
+        "q": 0,
+        "r": 0,
+        "x": 500.0,
+        "y": 500,
+        "deploymentSide": null,
+        "blocked": false
+      },
+      {
+        "q": 1,
+        "r": 0,
+        "x": 579.674337,
+        "y": 500,
+        "deploymentSide": null,
+        "blocked": false
+      },
+      {
+        "q": 2,
+        "r": 0,
+        "x": 659.348674,
+        "y": 500,
+        "deploymentSide": null,
+        "blocked": false
+      },
+      {
+        "q": 3,
+        "r": 0,
+        "x": 739.023011,
+        "y": 500,
+        "deploymentSide": null,
+        "blocked": false
+      },
+      {
+        "q": 4,
+        "r": 0,
+        "x": 818.697349,
+        "y": 500,
+        "deploymentSide": null,
+        "blocked": false
+      },
+      {
+        "q": -4,
+        "r": 1,
+        "x": 221.13982,
+        "y": 569,
+        "deploymentSide": 1,
+        "blocked": false
+      },
+      {
+        "q": -3,
+        "r": 1,
+        "x": 300.814157,
+        "y": 569,
+        "deploymentSide": 1,
+        "blocked": false
+      },
+      {
+        "q": -2,
+        "r": 1,
+        "x": 380.488494,
+        "y": 569,
+        "deploymentSide": 1,
+        "blocked": false
+      },
+      {
+        "q": -1,
+        "r": 1,
+        "x": 460.162831,
+        "y": 569,
+        "deploymentSide": 1,
+        "blocked": false
+      },
+      {
+        "q": 0,
+        "r": 1,
+        "x": 539.837169,
+        "y": 569,
+        "deploymentSide": 1,
+        "blocked": false
+      },
+      {
+        "q": 1,
+        "r": 1,
+        "x": 619.511506,
+        "y": 569,
+        "deploymentSide": 1,
+        "blocked": false
+      },
+      {
+        "q": 2,
+        "r": 1,
+        "x": 699.185843,
+        "y": 569,
+        "deploymentSide": 1,
+        "blocked": false
+      },
+      {
+        "q": 3,
+        "r": 1,
+        "x": 778.86018,
+        "y": 569,
+        "deploymentSide": 1,
+        "blocked": false
+      },
+      {
+        "q": -4,
+        "r": 2,
+        "x": 260.976989,
+        "y": 638,
+        "deploymentSide": 1,
+        "blocked": false
+      },
+      {
+        "q": -3,
+        "r": 2,
+        "x": 340.651326,
+        "y": 638,
+        "deploymentSide": 1,
+        "blocked": false
+      },
+      {
+        "q": -2,
+        "r": 2,
+        "x": 420.325663,
+        "y": 638,
+        "deploymentSide": 1,
+        "blocked": false
+      },
+      {
+        "q": -1,
+        "r": 2,
+        "x": 500.0,
+        "y": 638,
+        "deploymentSide": 1,
+        "blocked": false
+      },
+      {
+        "q": 0,
+        "r": 2,
+        "x": 579.674337,
+        "y": 638,
+        "deploymentSide": 1,
+        "blocked": false
+      },
+      {
+        "q": 1,
+        "r": 2,
+        "x": 659.348674,
+        "y": 638,
+        "deploymentSide": 1,
+        "blocked": false
+      },
+      {
+        "q": 2,
+        "r": 2,
+        "x": 739.023011,
+        "y": 638,
+        "deploymentSide": 1,
+        "blocked": false
+      },
+      {
+        "q": -4,
+        "r": 3,
+        "x": 300.814157,
+        "y": 707,
+        "deploymentSide": 1,
+        "blocked": false
+      },
+      {
+        "q": -3,
+        "r": 3,
+        "x": 380.488494,
+        "y": 707,
+        "deploymentSide": 1,
+        "blocked": false
+      },
+      {
+        "q": -2,
+        "r": 3,
+        "x": 460.162831,
+        "y": 707,
+        "deploymentSide": 1,
+        "blocked": false
+      },
+      {
+        "q": -1,
+        "r": 3,
+        "x": 539.837169,
+        "y": 707,
+        "deploymentSide": 1,
+        "blocked": false
+      },
+      {
+        "q": 0,
+        "r": 3,
+        "x": 619.511506,
+        "y": 707,
+        "deploymentSide": 1,
+        "blocked": false
+      },
+      {
+        "q": 1,
+        "r": 3,
+        "x": 699.185843,
+        "y": 707,
+        "deploymentSide": 1,
+        "blocked": false
+      },
+      {
+        "q": -4,
+        "r": 4,
+        "x": 340.651326,
+        "y": 776,
+        "deploymentSide": 1,
+        "blocked": false
+      },
+      {
+        "q": -3,
+        "r": 4,
+        "x": 420.325663,
+        "y": 776,
+        "deploymentSide": 1,
+        "blocked": false
+      },
+      {
+        "q": -2,
+        "r": 4,
+        "x": 500.0,
+        "y": 776,
+        "deploymentSide": 1,
+        "blocked": false
+      },
+      {
+        "q": -1,
+        "r": 4,
+        "x": 579.674337,
+        "y": 776,
+        "deploymentSide": 1,
+        "blocked": false
+      },
+      {
+        "q": 0,
+        "r": 4,
+        "x": 659.348674,
+        "y": 776,
+        "deploymentSide": 1,
+        "blocked": false
+      }
+    ]
+  },
+  "occupancy": {
+    "mode": "SINGLE",
+    "maxUnitsPerHex": 1
+  },
+  "terrain": {
+    "default": "OPEN",
+    "blockedCells": []
+  },
+  "notes": [
+    "Định nghĩa map độc lập, chưa đăng ký vào game hoặc rule_mode.",
+    "Tọa độ sử dụng khung chuẩn 1000×1000; ảnh nền được scale theo khung này.",
+    "Công trình trang trí trên ảnh không tự động tạo vật cản gameplay."
+  ]
+}
