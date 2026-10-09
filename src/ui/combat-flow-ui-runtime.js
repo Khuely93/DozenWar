@@ -63,7 +63,7 @@ const CombatFlowUI={
   commit(s){
     const pending=S.pending,defense=s.h.side!==S.battleSide,result=HeroCore.commit();
     if(result&&s.sk.mechanic==='COPY'&&HeroCore.selection&&HeroCore.selection!==s){const copy=HeroCore.selection;copy.uiFlow=true;copy.sk={...copy.sk,uiFlow:true};if(!defense&&typeof DirectBoardFlow==='undefined'){copy.uiEquipmentStep=true;return this.open(copy.h,'skill',{sk:copy.sk,done:c=>{if(HeroCore.selection!==copy)return;copy.cardUid=c?.uid||null;copy.equipmentBundle=c?.equipmentCards?c:null;copy.uiEquipmentStep=false;this.prepare(copy)},back:()=>HeroCore.cancel()})}return this.prepare(copy)}
-    if(result&&defense&&S.pending===pending&&!HeroCore.selection&&!S.equipmentReaction&&!S.postHitReaction&&!S.pending?.replacementTargetId&&s.sk.mechanic!=='REDIRECT')resolveCombat();
+    if(result&&defense&&S.pending===pending&&!HeroCore.selection&&!S.equipmentReaction&&!S.postHitReaction&&!S.pending?.replacementTargetId&&!['REDIRECT','MORPH','CONVERT','DICE_WARD'].includes(s.sk.mechanic))resolveCombat();
     return result;
   },
   sync(){
@@ -128,7 +128,7 @@ const _flowNext=HeroCore.next;
 HeroCore.next=function(){const seq=S.heroSequence,r=_flowNext.call(this);if(seq?.sk.uiFlow&&this.selection?.continuation){this.selection.uiFlow=true;CombatFlowUI.prepare(this.selection)}return r};
 // A card reaction may defer skill execution; resolve UI defense after Core applies it.
 const _flowApplySelection=HeroCore.applySelection;
-HeroCore.applySelection=function(s,targets,card){const pending=S.pending,r=_flowApplySelection.call(this,s,targets,card);if(r&&s.uiFlow&&s.h.side!==S.battleSide&&pending&&S.pending===pending&&!this.selection&&!S.equipmentReaction&&!S.postHitReaction&&!S.pending.replacementTargetId&&s.sk.mechanic!=='REDIRECT')resolveCombat();return r};
+HeroCore.applySelection=function(s,targets,card){const pending=S.pending,r=_flowApplySelection.call(this,s,targets,card);if(r&&s.uiFlow&&s.h.side!==S.battleSide&&pending&&S.pending===pending&&!this.selection&&!S.equipmentReaction&&!S.postHitReaction&&!S.pending.replacementTargetId&&!['REDIRECT','MORPH','CONVERT','DICE_WARD'].includes(s.sk.mechanic))resolveCombat();return r};
 // The bottom information panel is always a Hero panel; soldiers use the map menu.
 CombatFlowUI.heroPanel=function(){
   const h=HeroSkillUI.actor()||S.units.find(u=>u.hero&&u.side===S.battleSide);if(!h)return;

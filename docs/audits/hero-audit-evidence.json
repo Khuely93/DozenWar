@@ -1,0 +1,40 @@
+[
+  {
+    "name": "Est replacement defense",
+    "replacement": true,
+    "defenseSkillUsed": true,
+    "cardAllowed": false
+  },
+  {
+    "name": "Soul replacement defense",
+    "replacement": true,
+    "defenseSkillUsed": true,
+    "cardAllowed": false
+  },
+  {
+    "name": "Grim conversion UI defense",
+    "result": true,
+    "kind": "arch",
+    "hp": 0,
+    "pending": false
+  },
+  {
+    "name": "Lucy off-line counter",
+    "candidate": true,
+    "aligned": false,
+    "targetHp": 2
+  },
+  {
+    "name": "Raen off-line net",
+    "candidate": true,
+    "result": true,
+    "q": 1,
+    "r": 1,
+    "root": [
+      {
+        "kind": "ROOT",
+        "endTurn": 1
+      }
+    ]
+  }
+]

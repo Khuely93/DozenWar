@@ -1,8 +1,8 @@
 {
   "project": "DOZEN WAR II",
-  "version": "1.49.0",
+  "version": "1.50.0",
   "phase": "DUEL_RULE_MODE_1VS1_180_30",
-  "baseline": "v1.49.0 Lucy Frenzy archer line targeting",
+  "baseline": "v1.50.0 Hero defense reactions and terrain targeting fixes",
   "entry": "index.html",
   "styles": "styles/main.css",
   "runtimeOrder": [

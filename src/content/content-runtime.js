@@ -640,6 +640,7 @@ Object.assign(RAW_SKILLS,{
     "mechanic": "STRIKE",
     "heroAttack": true,
     "parameters": {
+      "blockedByTerrain": true,
       "damage": 1,
       "attack": true
     },
@@ -665,6 +666,7 @@ Object.assign(RAW_SKILLS,{
     "mechanic": "STRIKE",
     "heroAttack": true,
     "parameters": {
+      "blockedByTerrain": true,
       "damage": 1,
       "attack": true
     },
@@ -865,6 +867,7 @@ Object.assign(RAW_SKILLS,{
     "star": 2,
     "timing": "DEFENSE_REACTION",
     "target": {
+        "pattern": "LINE",
       "maxTargets": 1,
       "side": "ENEMY",
       "range": "ATTACK"
@@ -986,6 +989,7 @@ Object.assign(RAW_SKILLS,{
     "star": 1,
     "timing": "DEFENSE_REACTION",
     "target": {
+        "pattern": "LINE",
       "maxTargets": 2,
       "side": "ENEMY",
       "range": "BASE_ATTACK"
@@ -1432,10 +1436,10 @@ Object.assign(RAW_LOCALES["vi-VN"],{
   "SKILL_HERO_RODOC_S2_NAME": "Tiếng Thét Xung Trận",
   "SKILL_HERO_RODOC_S2_DESC": "Tiếng Thét Xung Trận · ★ · +2 Move cho tối đa 2 bộ binh chưa Attack, được đi thêm ngay. Hết lượt công.",
   "SKILL_HERO_RODOC_S3_NAME": "Chiến Thần",
-  "SKILL_HERO_RODOC_S3_DESC": "Chiến Thần · ★ · Gây 1 sát thương mỗi mục tiêu, tối đa 4 địch cùng đường thẳng; chọn qua quân, không có xuyên mặc định.",
+  "SKILL_HERO_RODOC_S3_DESC": "Chiến Thần · ★ · Gây 1 sát thương mỗi mục tiêu, tối đa 4 địch cùng đường thẳng; chọn qua lính/Hero nhưng không qua vật cản địa hình, không có xuyên mặc định.",
   "HERO_INF_RODOC_NAME": "Rodoc",
   "SKILL_HERO_MASK_S1_NAME": "Ma Kích",
-  "SKILL_HERO_MASK_S1_DESC": "Ma Kích · ★ · Gây 1 sát thương lên tối đa 2 địch cùng đường thẳng cách 3 ô; chọn qua quân, không lan.",
+  "SKILL_HERO_MASK_S1_DESC": "Ma Kích · ★ · Gây 1 sát thương lên tối đa 2 địch cùng đường thẳng cách 3 ô; chọn qua lính/Hero nhưng không qua vật cản địa hình, không lan.",
   "SKILL_HERO_MASK_S2_NAME": "Phán Quyết",
   "SKILL_HERO_MASK_S2_DESC": "Phán Quyết · ★ · +1 lần đánh cho kỵ binh chưa Attack; mỗi lần có phòng thủ riêng. Hết lượt công.",
   "SKILL_HERO_MASK_S3_NAME": "Cán Cân Công Lý",
