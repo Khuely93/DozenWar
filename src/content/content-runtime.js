@@ -140,7 +140,7 @@ const NEW_EQUIPMENT_CATALOG={
         "EFFECT_EQUIPMENT_PULL_3",
         "EFFECT_IGNORE_INF_GUARD"
       ],
-      "text": "Đánh 1 địch trên đường thẳng tối đa 3 ô: gây 1 sát thương rồi kéo mục tiêu sống về hex trống liền kề trước mặt. Đường giữa phải trống quân/vật cản; không Guard Bộ binh."
+      "text": "Đánh 1 địch trên đường thẳng tối đa 3 ô: gây 1 sát thương rồi kéo mục tiêu sống về hex trống liền kề trước mặt. Mục tiêu đứng sát vẫn nhận sát thương nhưng không bị kéo. Đường giữa phải trống quân/vật cản; không Guard Bộ binh."
     },
     {
       "id": "EQUIP_INF_ATK_006",

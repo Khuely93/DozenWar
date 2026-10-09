@@ -1092,7 +1092,7 @@ const NEW_EQUIPMENT_CATALOG={
         "EFFECT_EQUIPMENT_PULL_3",
         "EFFECT_IGNORE_INF_GUARD"
       ],
-      "text": "Đánh 1 địch trên đường thẳng tối đa 3 ô: gây 1 sát thương rồi kéo mục tiêu sống về hex trống liền kề trước mặt. Đường giữa phải trống quân/vật cản; không Guard Bộ binh."
+      "text": "Đánh 1 địch trên đường thẳng tối đa 3 ô: gây 1 sát thương rồi kéo mục tiêu sống về hex trống liền kề trước mặt. Mục tiêu đứng sát vẫn nhận sát thương nhưng không bị kéo. Đường giữa phải trống quân/vật cản; không Guard Bộ binh."
     },
     {
       "id": "EQUIP_INF_ATK_006",
@@ -5139,11 +5139,12 @@ const HeroCore={
     if(t.healable&&!u.hero&&this.spec(u).classId!=='INF')return false;
     if(t.requireMissingHp&&u.hp>=this.spec(u).hp)return false;
     if(['BUFF','BASE_MOVE'].includes(sk.mechanic)&&u.attacked)return false;
-    if(sk.parameters?.pull&&!this.pullDestination(h,u))return false;
+    if(sk.parameters?.pull&&!this.pullAttackAllowed(h,u,sk))return false;
     if(sk.mechanic==='CANCEL'&&sk.target.side!=='SELF'&&u.hero&&u.id!==h.id)return false;
     if(sk.mechanic==='REVENGE')return (S.attackHistory||[]).some(e=>e.turn===S.turn&&e.attacker===u.id&&e.targetSide===h.side&&distU(h,e.targetPosition)<=3);
     return true;
   },
+  pullAttackAllowed(h,u,sk){return !!(sk.parameters?.allowAdjacentPullHit&&distU(h,u)===1&&aligned(h,u,1)||this.pullDestination(h,u))},
   pullDestination(h,u){const ray=rayFrom(h,u);if(!ray)return null;const dest=findCellAxialStep(h,ray,1);if(!dest||unitAt(dest.q,dest.r))return null;
     for(let n=1;n<distU(h,u);n++){const c=findCellAxialStep(h,ray,n);if(!c||this.terrainBlocked(c)||unitAt(c.q,c.r))return null}return dest;
   },
@@ -5276,7 +5277,7 @@ const HeroCore={
     this.captureDeaths();checkWin();renderBoard();updateUI();if(S.pending&&!S.matchEnded)showDefensePopup(S.units.find(u=>u.id===S.pending.d));return true;
   },
   next(){const seq=S.heroSequence;if(!seq||S.pending)return;if(S.matchEnded){S.heroSequence=null;S.skillSequence=null;return}const h=S.units.find(u=>u.id===seq.h);if(!this.alive(h)){S.heroSequence=null;S.skillSequence=null;return}
-    while(seq.index<seq.targets.length){const targetId=seq.targets[seq.index++];const d=S.units.find(u=>u.id===targetId);if(!this.alive(d)||seq.sk.parameters?.blockedByTerrain&&!this.terrainLineClear(h,d)||seq.sk.parameters?.pull&&!this.pullDestination(h,d))continue;
+    while(seq.index<seq.targets.length){const targetId=seq.targets[seq.index++];const d=S.units.find(u=>u.id===targetId);if(!this.alive(d)||seq.sk.parameters?.blockedByTerrain&&!this.terrainLineClear(h,d)||seq.sk.parameters?.pull&&!this.pullAttackAllowed(h,d,seq.sk))continue;
       const p=seq.sk.parameters||{};let damage=seq.sk.mechanic==='SILENCE'?0:(p.damage||1)+(p.fixedCardAttack?0:h.damageBuff||0);
       let drain=0;if(p.diceDrain){const die=this.roll();drain=die%2===0?2:1;damage=drain+(h.damageBuff||0);lg('🎲 '+seq.sk.name+': '+die+' → '+drain+' HP')}
       S.pending={a:h.id,d:d.id,base:damage,sourceType:seq.normal?'ATTACK':'SKILL',skillId:seq.normal?null:seq.sk.id,skillStar:seq.normal?null:seq.sk.star,atkCard:seq.card,defCard:null,guard:false,cancel:false,reflect:false,ignoreGuard:p.ignoreGuard||!p.fixedCardAttack&&h.ignoreInfGuard||effectOf(seq.card,'EFFECT_IGNORE_INF_GUARD'),heroMechanic:seq.sk,drain,hitResult:'PENDING'};showReaction(true);updateUI();return;
@@ -5512,7 +5513,7 @@ const EquipmentCore={
     const move=effectOf(c,'EFFECT_EQUIPMENT_MOVE_PLUS_1');
     const sk={id:c.id,name:c.name,description:c.text,star:c.star,timing:'ACTIVE',heroAttack:!move,equipmentAction:true,equipmentCard:c,
       mechanic:move?'BUFF':'STRIKE',target:move?{side:'ALLY',class:'INF',range:99,maxTargets:2}:{side:'ENEMY',range:3,pattern:'LINE',maxTargets:1},
-      parameters:move?{move:1}:{damage:1,pull:true,ignoreGuard:true,attack:true}};
+      parameters:move?{move:1}:{damage:1,pull:true,allowAdjacentPullHit:true,ignoreGuard:true,attack:true}};
     if(!HeroCore.begin(h,0,sk))return false;HeroCore.selection.cardUid=c.uid;HeroCore.draw();renderBoard();return true;
   },
   canUseNet(h,c){return !S.pending?.defenseSkillUsed&&!S.equipmentReaction&&S.phase==='battle'&&!S.matchEnded&&h?.hp>0&&h.side!==S.battleSide&&this.owned(h,c)&&validCardFor(c,h,'def')&&(!S.pending||!S.pending.isCounterattack)},

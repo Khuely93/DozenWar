@@ -88,7 +88,7 @@ const EquipmentCore={
     const move=effectOf(c,'EFFECT_EQUIPMENT_MOVE_PLUS_1');
     const sk={id:c.id,name:c.name,description:c.text,star:c.star,timing:'ACTIVE',heroAttack:!move,equipmentAction:true,equipmentCard:c,
       mechanic:move?'BUFF':'STRIKE',target:move?{side:'ALLY',class:'INF',range:99,maxTargets:2}:{side:'ENEMY',range:3,pattern:'LINE',maxTargets:1},
-      parameters:move?{move:1}:{damage:1,pull:true,ignoreGuard:true,attack:true}};
+      parameters:move?{move:1}:{damage:1,pull:true,allowAdjacentPullHit:true,ignoreGuard:true,attack:true}};
     if(!HeroCore.begin(h,0,sk))return false;HeroCore.selection.cardUid=c.uid;HeroCore.draw();renderBoard();return true;
   },
   canUseNet(h,c){return !S.pending?.defenseSkillUsed&&!S.equipmentReaction&&S.phase==='battle'&&!S.matchEnded&&h?.hp>0&&h.side!==S.battleSide&&this.owned(h,c)&&validCardFor(c,h,'def')&&(!S.pending||!S.pending.isCounterattack)},

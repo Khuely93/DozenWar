@@ -1,8 +1,8 @@
 {
   "project": "DOZEN WAR II",
-  "version": "1.51.0",
+  "version": "1.52.0",
   "phase": "DUEL_RULE_MODE_1VS1_180_30",
-  "baseline": "v1.51.0 Dark Fantasy arena artwork",
+  "baseline": "v1.52.0 Hook adjacent-target damage fix",
   "entry": "index.html",
   "styles": "styles/main.css",
   "runtimeOrder": [
