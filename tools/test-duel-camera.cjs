@@ -15,7 +15,7 @@ c.panX=70;c.panY=-45;c.apply();assert.match(c.scene.style.transform,/scale\(1.8\
 const core=fs.readFileSync('src/core/core-runtime-a.js','utf8');const pointer=core.split('\n').find(x=>x.startsWith('function svgPointFromPointer('));
 const size=c.base*c.zoom,origin=c.point(0,0);const input=vm.createContext({boardSvg:{getBoundingClientRect:()=>({left:origin.x,top:origin.y,width:size,height:size})}});new vm.Script(pointer).runInContext(input);
 for(const [x,y] of [[500,500],[144,224],[810,700]]){const pixel=c.point(x,y);const actual=input.svgPointFromPointer({clientX:pixel.x,clientY:pixel.y});assert.ok(Math.abs(actual.x-x)<1e-8);assert.ok(Math.abs(actual.y-y)<1e-8)}
-c.zoomAt(99);assert.equal(c.zoom,2.6);c.zoomAt(.01);assert.equal(c.zoom,.65);
+c.zoomAt(99);assert.equal(c.zoom,2.6);c.zoomAt(.01);assert.equal(c.zoom,1.4);assert.equal(c.panX,0);assert.equal(c.panY,0);
 c.panX=99999;c.clampPan();assert.ok(c.panX<=c.base*c.zoom*.55);
 c.reset();assert.equal(c.zoom,1.4);assert.equal(c.panX,0);assert.equal(c.panY,0);
 const set=new Set(),popup={style:{},offsetWidth:250,offsetHeight:160,classList:{remove(...a){a.forEach(x=>set.delete(x))},add(...a){a.forEach(x=>set.add(x))},contains:x=>set.has(x)}};
@@ -29,3 +29,4 @@ c.disable();assert.equal(c.enabled,false);assert.equal(c.scene.style.transform,'
 console.log('Duel camera: viewport, cursor zoom, limits/reset, transformed deploy coordinates, popup clamping, reaction focus and rematch reset: PASS');
 
 assert.match(fs.readFileSync('styles/main.css','utf8'),/duelMapStage\{overflow:clip;/,'camera viewport must not become a native scroll container');
+

@@ -52,7 +52,8 @@ const DuelBoardLayout = {
       const src=cleanDuel?img.dataset.duelSrc:img.dataset.defaultSrc;
       if(src&&img.getAttribute('src')!==src)img.setAttribute('src',src);
       const backdrop=board.querySelector('.duelMapBackdrop');
-      if(backdrop&&src)backdrop.style.backgroundImage='url("'+src+'")';
+      const backdropSrc=cleanDuel?(img.dataset.backdropSrc||src):src;
+      if(backdrop&&backdropSrc)backdrop.style.backgroundImage='url("'+backdropSrc+'")';
     }
     const desktop=window.innerWidth>=900;
     const active=cleanDuel&&(S.phase==='deploy'||S.phase==='battle');
@@ -62,7 +63,8 @@ const DuelBoardLayout = {
       if(desktop&&active)this.decorateSkills();
       document.documentElement.style.setProperty('--duel-dock-height',this.dockHeight(window.innerHeight)+'px');
     }
-    if(!desktop||!active){board.style.removeProperty('width');if(typeof DuelCamera!=='undefined')DuelCamera.disable();return}
+    if(!active){board.style.removeProperty('width');if(typeof DuelCamera!=='undefined')DuelCamera.disable();return}
+    if(!desktop){board.style.removeProperty('width');if(this.stage&&typeof DuelCamera!=='undefined'){const bounds=this.stage.getBoundingClientRect();DuelCamera.mount(this.stage,board);DuelCamera.resize(bounds.width,bounds.height)}return}
     if(this.stage){
       const bounds=this.stage.getBoundingClientRect();
       if(typeof DuelCamera!=='undefined'){board.style.width='100%';DuelCamera.mount(this.stage,board);DuelCamera.resize(bounds.width,bounds.height)}

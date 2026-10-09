@@ -215,3 +215,10 @@
 .darkFantasyMap{aspect-ratio:1}
 .darkFantasyMap .boardBg{position:absolute;width:231.111111%;height:130%;max-width:none;left:-65.555556%;top:-15%;object-fit:fill;pointer-events:none}
 .darkFantasyMap:not(.cameraEnabled){overflow:hidden}
+
+/* Direct camera gestures must never drag/select the HTML image. */
+.cameraEnabled,.cameraEnabled .duelWorld{user-select:none;-webkit-user-select:none;touch-action:none}
+.cameraEnabled .boardBg{-webkit-user-drag:none;user-select:none;pointer-events:none}
+.duelMapStage.cameraEnabled{overflow:clip}
+.cameraEnabled .duelWorld{cursor:grab}
+.cameraDragging .duelWorld{cursor:grabbing}

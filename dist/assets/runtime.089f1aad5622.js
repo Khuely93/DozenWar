@@ -4390,7 +4390,8 @@ const DuelBoardLayout = {
       const src=cleanDuel?img.dataset.duelSrc:img.dataset.defaultSrc;
       if(src&&img.getAttribute('src')!==src)img.setAttribute('src',src);
       const backdrop=board.querySelector('.duelMapBackdrop');
-      if(backdrop&&src)backdrop.style.backgroundImage='url("'+src+'")';
+      const backdropSrc=cleanDuel?(img.dataset.backdropSrc||src):src;
+      if(backdrop&&backdropSrc)backdrop.style.backgroundImage='url("'+backdropSrc+'")';
     }
     const desktop=window.innerWidth>=900;
     const active=cleanDuel&&(S.phase==='deploy'||S.phase==='battle');
@@ -4400,7 +4401,8 @@ const DuelBoardLayout = {
       if(desktop&&active)this.decorateSkills();
       document.documentElement.style.setProperty('--duel-dock-height',this.dockHeight(window.innerHeight)+'px');
     }
-    if(!desktop||!active){board.style.removeProperty('width');if(typeof DuelCamera!=='undefined')DuelCamera.disable();return}
+    if(!active){board.style.removeProperty('width');if(typeof DuelCamera!=='undefined')DuelCamera.disable();return}
+    if(!desktop){board.style.removeProperty('width');if(this.stage&&typeof DuelCamera!=='undefined'){const bounds=this.stage.getBoundingClientRect();DuelCamera.mount(this.stage,board);DuelCamera.resize(bounds.width,bounds.height)}return}
     if(this.stage){
       const bounds=this.stage.getBoundingClientRect();
       if(typeof DuelCamera!=='undefined'){board.style.width='100%';DuelCamera.mount(this.stage,board);DuelCamera.resize(bounds.width,bounds.height)}
@@ -4433,23 +4435,25 @@ DuelBoardLayout.schedule();
 /* Camera transforms presentation only. Logical cells and gameplay state stay unchanged. */
 const DuelCamera={
   enabled:false,stage:null,board:null,scene:null,base:1000,width:0,height:0,
-  zoom:1.4,panX:0,panY:0,minZoom:.65,maxZoom:2.6,panMode:false,
+  zoom:1.4,panX:0,panY:0,minZoom:1.4,maxZoom:2.6,panMode:false,
   drag:null,suppressUntil:0,popups:new Map(),matchId:null,reactionKey:null,
   mount(stage,board){
     if(this.scene)return;
     this.stage=stage;this.board=board;
     const scene=document.createElement('div');scene.className='duelWorld';
     const img=board.querySelector('.boardBg');
+    img.draggable=false;
+    stage.addEventListener('dragstart',e=>{if(!this.isUI(e.target))e.preventDefault()});
     const backdrop=document.createElement('div');backdrop.className='duelMapBackdrop';
-    backdrop.style.backgroundImage='url("'+img.getAttribute('src')+'")';
+    backdrop.style.backgroundImage='url("'+(img.dataset.backdropSrc||img.getAttribute('src'))+'")';
     board.prepend(backdrop,scene);scene.append(img,CoreDOM.board.svg);this.scene=scene;
     const controls=document.createElement('div');controls.className='duelCameraControls';controls.setAttribute('aria-label','Điều khiển camera');
-    for(const [name,label,action] of [['zoom-out','−',()=>this.zoomAt(this.zoom/1.18)],['zoom-in','+',()=>this.zoomAt(this.zoom*1.18)],['pan','Pan',()=>{this.panMode=!this.panMode;this.updateControls()}],['reset','Về giữa',()=>this.reset()]]){
+    for(const [name,label,action] of [['zoom-out','−',()=>this.zoomAt(this.zoom/1.18)],['zoom-in','+',()=>this.zoomAt(this.zoom*1.18)],['reset','Về giữa',()=>this.reset()]]){
       const b=document.createElement('button');b.type='button';b.className='btn';b.dataset.cameraAction=name;
       b.setAttribute('aria-label',{'zoom-out':'Thu nhỏ map','zoom-in':'Phóng to map',pan:'Bật chế độ kéo map',reset:'Về góc nhìn mặc định'}[name]);
       b.textContent=label;b.onclick=action;controls.appendChild(b);
     }
-    const hint=document.createElement('small');hint.textContent='Con lăn: zoom · Kéo vùng trống / chuột giữa: pan';controls.appendChild(hint);stage.appendChild(controls);this.controls=controls;
+    const hint=document.createElement('small');hint.textContent='Con lăn: zoom · Kéo / vuốt map: pan';controls.appendChild(hint);stage.appendChild(controls);this.controls=controls;
     stage.addEventListener('wheel',e=>{
       if(!this.enabled||this.isUI(e.target))return;
       e.preventDefault();const r=stage.getBoundingClientRect();
@@ -4458,7 +4462,7 @@ const DuelCamera={
     stage.addEventListener('pointerdown',e=>{
       if(!this.enabled||this.isUI(e.target)||!(e.button===0||e.button===1))return;
       const force=this.panMode||e.button===1;
-      if(!force&&e.target.closest('.unit'))return;
+      if(!force&&S.phase==='deploy'&&e.target.closest('.unit'))return;
       this.drag={id:e.pointerId,x:e.clientX,y:e.clientY,px:this.panX,py:this.panY,active:force};
       if(force){e.preventDefault();e.stopImmediatePropagation();stage.setPointerCapture(e.pointerId);stage.classList.add('cameraDragging')}
     },true);
@@ -4504,7 +4508,7 @@ const DuelCamera={
     const z=Math.max(this.minZoom,Math.min(this.maxZoom,next)),ratio=z/this.zoom;
     this.panX=x-this.width/2-(x-this.width/2-this.panX)*ratio;
     this.panY=y-this.height/2-(y-this.height/2-this.panY)*ratio;
-    this.zoom=z;this.clampPan();this.apply();
+    this.zoom=z;if(z===this.minZoom){this.panX=this.panY=0}this.clampPan();this.apply();
   },
   clampPan(){const limit=this.base*this.zoom*.55;this.panX=Math.max(-limit,Math.min(limit,this.panX));this.panY=Math.max(-limit,Math.min(limit,this.panY))},
   reset(){this.zoom=1.4;this.panX=this.panY=0;this.panMode=false;this.apply()},
@@ -4523,7 +4527,7 @@ const DuelCamera={
   updateControls(){
     if(!this.controls)return;
     this.stage.classList.toggle('cameraPanMode',this.panMode);
-    const pan=this.controls.querySelector('[data-camera-action="pan"]');pan.setAttribute('aria-pressed',String(this.panMode));
+    const pan=this.controls.querySelector('[data-camera-action="pan"]');pan?.setAttribute('aria-pressed',String(this.panMode));
     this.controls.querySelector('[data-camera-action="zoom-in"]').disabled=this.zoom>=this.maxZoom;
     this.controls.querySelector('[data-camera-action="zoom-out"]').disabled=this.zoom<=this.minZoom;
     this.controls.dataset.zoom=Math.round(this.zoom*100)+'%';
