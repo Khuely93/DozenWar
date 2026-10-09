@@ -1107,6 +1107,7 @@ const NEW_EQUIPMENT_CATALOG={
     },
     {
       "id": "EQUIP_ARCH_ATK_001",
+      "visual": { "card": "./assets/equipment/arch/001/card-800x1200.png" },
       "group": "ARCH",
       "name": "Nỏ Sắt",
       "category": "ATTACK",
@@ -1119,6 +1120,7 @@ const NEW_EQUIPMENT_CATALOG={
     },
     {
       "id": "EQUIP_ARCH_DEF_001",
+      "visual": { "card": "./assets/equipment/arch/def-001/card-800x1200.png" },
       "group": "ARCH",
       "name": "Bom Khói",
       "category": "DEFENSE",
@@ -1131,6 +1133,7 @@ const NEW_EQUIPMENT_CATALOG={
     },
     {
       "id": "EQUIP_ARCH_ATK_002",
+      "visual": { "card": "./assets/equipment/arch/002/card-800x1200.png" },
       "group": "ARCH",
       "name": "Tên Xuyên Phá",
       "category": "ATTACK",
@@ -1143,6 +1146,7 @@ const NEW_EQUIPMENT_CATALOG={
     },
     {
       "id": "EQUIP_ARCH_ATK_003",
+      "visual": { "card": "./assets/equipment/arch/003/card-800x1200.png" },
       "group": "ARCH",
       "name": "Cung Thép",
       "category": "ATTACK",
@@ -1155,6 +1159,7 @@ const NEW_EQUIPMENT_CATALOG={
     },
     {
       "id": "EQUIP_ARCH_DEF_002",
+      "visual": { "card": "./assets/equipment/arch/def-002/card-800x1200.png" },
       "group": "ARCH",
       "name": "Áo Choàng Phép Thuật",
       "category": "DEFENSE",
@@ -1167,6 +1172,7 @@ const NEW_EQUIPMENT_CATALOG={
     },
     {
       "id": "EQUIP_ARCH_DEF_003",
+      "visual": { "card": "./assets/equipment/arch/def-003/card-800x1200.png" },
       "group": "ARCH",
       "name": "Dao Găm",
       "category": "DEFENSE",
