@@ -5616,21 +5616,6 @@ const EquipmentCore={
     const host=CoreDOM.board.wrap.closest?.('.duelMapStage')||CoreDOM.board.wrap;if(this.bar.parentElement!==host)host.append(this.bar);
     this.bar.replaceChildren();
     const reaction=S.equipmentReaction;if(reaction){this.bar.hidden=false;const title=document.createElement('p');title.textContent='PLAYER '+reaction.side+' · Địch vừa dùng '+reaction.c.name+' · Hủy card?';this.bar.append(title);for(const {h,card} of this.responders(reaction.side,reaction.c))this.bar.append(HeroSkillUI.button(card.name+' · '+'★'.repeat(card.star),()=>this.counterEquipment(h,card)));this.bar.append(HeroSkillUI.button('BỎ QUA',()=>this.passEquipment()));return}
-    if(S.phase==='battle'&&!S.matchEnded&&!HeroCore.selection){
-      const seen=new Set();
-      for(const h of S.units.filter(u=>u.side!==S.battleSide&&u.side!==S.botSide&&u.hp>0))for(const c of S.hands[h.side]||[]){
-        if(!(effectOf(c,'EFFECT_EQUIPMENT_ROOT_2')&&this.canUseNet(h,c)||this.independent(c)&&this.canUse(h,c)))continue;
-        if(this.independent(c)&&seen.has(c.uid))continue;seen.add(c.uid);
-        const b=HeroSkillUI.button('🛡 P'+h.side+' · '+c.name+' · '+unitSpec(h).name,()=>typeof CombatFlowUI!=='undefined'?CombatFlowUI.startEquipment(h,c):this.independent(c)?this.beginIndependent(h,c):this.beginNet(h,c));b.title=c.text;b.dataset.equipmentId=c.equipmentId;this.bar.append(b);
-      }
-      if(!S.pending&&!S.heroSequence&&S.battleSide!==S.botSide){
-        for(const c of S.hands[S.battleSide]||[]){
-          const eligible=S.units.filter(u=>u.side===S.battleSide&&this.canUse(u,c));
-          const chosen=eligible.find(u=>u.id===S.selected?.id)||eligible[0];
-          for(const h of eligible){const b=HeroSkillUI.button('🎴 P'+h.side+' · '+c.name+' · '+unitSpec(h).name,()=>typeof CombatFlowUI!=='undefined'?CombatFlowUI.startEquipment(h,c):this.begin(h,c));b.title=c.text;b.dataset.equipmentId=c.equipmentId;this.bar.append(b)}
-        }
-      }
-    }
     this.bar.hidden=!this.bar.childElementCount;
   },
   bar:document.createElement('div')

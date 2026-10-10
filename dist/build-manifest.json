@@ -1,8 +1,8 @@
 {
   "project": "DOZEN WAR II",
-  "version": "1.57.0",
+  "version": "1.58.0",
   "phase": "DUEL_RULE_MODE_1VS1_180_30",
-  "generatedAt": "2026-10-10T05:16:58.787Z",
+  "generatedAt": "2026-10-10T05:19:22.605Z",
   "runtimeOrder": [
     "src/architecture/module-boundaries.js",
     "src/ui/ui-dom-runtime.js",
@@ -41,7 +41,7 @@
     "src/bootstrap.js"
   ],
   "bundles": {
-    "runtime": "assets/runtime.e6b0746051c2.js",
+    "runtime": "assets/runtime.fb3457d4df68.js",
     "styles": "assets/app.83f62b8a49b7.css"
   },
   "externalizedEmbeddedAssets": [],
@@ -50,16 +50,16 @@
     {
       "file": "index.html",
       "bytes": 16769,
-      "gzipBytes": 4653,
-      "brotliBytes": 3847,
-      "sha256": "a2d47c0ba61d1bfa62360d69dc6bcec8c79e106bdde0920a53e4e7fd196b7d90"
+      "gzipBytes": 4654,
+      "brotliBytes": 3838,
+      "sha256": "b49b48c874d60f73e0a36794593d92bf5bb81b212d3743e0caca2e77db5dd185"
     },
     {
-      "file": "assets/runtime.e6b0746051c2.js",
-      "bytes": 440131,
-      "gzipBytes": 124745,
-      "brotliBytes": 101267,
-      "sha256": "e6b0746051c2f0d4a12d41cc44a10087f1e7ff8c1b32c72d262685c930175233"
+      "file": "assets/runtime.fb3457d4df68.js",
+      "bytes": 438833,
+      "gzipBytes": 124520,
+      "brotliBytes": 101084,
+      "sha256": "fb3457d4df68ed8b2b8630656316bab60fb801f1454c8e88ac4a0b0d04da8f31"
     },
     {
       "file": "assets/app.83f62b8a49b7.css",
