@@ -232,3 +232,22 @@
 .dockCards .card:has(.equipmentFullCard:not([hidden])){flex:0 0 auto;height:100%;aspect-ratio:2/3;max-width:140px;align-self:center}
 .dockCards .equipmentFullCard{height:100%;width:100%}
 .combatEquipmentCards>.card:has(.equipmentFullCard:not([hidden])){min-height:0;aspect-ratio:2/3}
+
+/* Defensive action receipts block click-through, never mutate combat or card budgets. */
+.defenseFeedback{position:fixed;inset:0;z-index:20000;display:grid;place-items:center;background:rgba(3,10,19,.82);padding:16px;touch-action:none}
+.defenseFeedback[hidden]{display:none}
+.defenseFeedbackPanel{text-align:center;width:min(420px,100%);max-height:calc(100svh - 32px);overflow:auto;background:#102338;border:1px solid #d6b567;border-radius:18px;padding:22px;color:#f4e5c3;box-shadow:0 0 60px #1d5d824d}
+.defenseFeedbackOwner,.defenseFeedbackHint{color:#a9c6d9;font-size:13px;margin:6px 0}
+.defenseFeedbackName{font-size:22px;margin:8px 0}.defenseFeedbackResult{color:#f5cf72;margin:8px 0}
+.defenseFeedbackVisual{position:relative;display:grid;place-items:center;height:270px;margin:10px auto;pointer-events:none;overflow:hidden}
+.defenseFeedbackFace{width:160px;height:240px;position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;color:#f7d378;transform-origin:center}
+.defenseFeedbackFace>.card{width:100%;height:100%;margin:0}.defenseFeedbackFace .equipmentFullCard{width:100%;height:100%;object-fit:contain}
+.isSkill .defenseFeedbackFace{background:linear-gradient(135deg,#193e58,#0a192a);border:2px solid #75cfff;border-radius:16px;padding:12px;font-size:18px;box-shadow:0 0 20px #3caaff55}.defenseFeedbackSkillIcon{font-size:64px}
+.defenseFeedbackParticle{position:absolute;left:50%;top:50%;width:5px;height:5px;background:#ffe6a3;border-radius:50%;opacity:0;box-shadow:0 0 8px #ffdc70}
+.playing .defenseFeedbackFace{animation:defenseCardConsume 900ms ease-in forwards}.playing .defenseFeedbackParticle{animation:defenseParticle 720ms ease-out var(--delay) forwards}
+.isSkill .playing .defenseFeedbackFace{animation:defenseSkillConsume 900ms ease-in-out forwards}.isSkill .defenseFeedbackParticle{background:#a4e5ff;box-shadow:0 0 10px #5dc5ff}
+@keyframes defenseCardConsume{0%,20%{opacity:1;filter:brightness(1);transform:scale(1)}45%{opacity:1;filter:brightness(1.65);transform:scale(1.04)}100%{opacity:0;filter:brightness(2);transform:translateY(-12px) scale(1.08)}}
+@keyframes defenseSkillConsume{0%{opacity:1;filter:brightness(1)}35%{opacity:1;filter:brightness(1.8);transform:scale(1.04)}100%{opacity:0;filter:brightness(1);transform:scale(.95)}}
+@keyframes defenseParticle{0%{opacity:0;transform:translate(-50%,-50%) scale(.5)}15%{opacity:1}100%{opacity:0;transform:translate(calc(-50% + var(--dx)),calc(-50% + var(--dy))) scale(.2)}}
+@media(max-width:600px){.defenseFeedbackPanel{padding:16px}.defenseFeedbackName{font-size:19px}.defenseFeedbackVisual{height:230px}.defenseFeedbackFace{width:136px;height:204px}}
+@media(prefers-reduced-motion:reduce){.playing .defenseFeedbackFace{animation:none;opacity:1}.playing .defenseFeedbackParticle{display:none}}

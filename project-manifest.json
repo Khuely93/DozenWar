@@ -1,8 +1,8 @@
 {
   "project": "DOZEN WAR II",
-  "version": "1.55.0",
+  "version": "1.56.0",
   "phase": "DUEL_RULE_MODE_1VS1_180_30",
-  "baseline": "v1.55.0 Common equipment card visuals",
+  "baseline": "v1.56.0 Defensive action feedback and consume animation",
   "entry": "index.html",
   "styles": "styles/main.css",
   "runtimeOrder": [
@@ -39,6 +39,7 @@
     "src/mode/training-runtime.js",
     "src/ui/direct-board-flow-runtime.js",
     "src/ui/direct-defense-flow-runtime.js",
+    "src/ui/defense-feedback-runtime.js",
     "src/bootstrap.js"
   ],
   "extractedLayers": [
