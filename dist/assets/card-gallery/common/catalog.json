@@ -1,0 +1,158 @@
+{
+  "status": "VISUAL_ASSET_READY",
+  "size": {
+    "width": 800,
+    "height": 1200
+  },
+  "transparentBackground": true,
+  "palette": "BLUE",
+  "sourceRepository": "Khuely93/DozenWar",
+  "catalogCommit": "645cfbe1a3014aaf73a036c3282b6b94baf167ac",
+  "designCount": 11,
+  "deckCount": 23,
+  "cards": [
+    {
+      "id": "EQUIP_COMMON_ATK_003",
+      "name": "Lọ Phép Thuật",
+      "group": "COMMON",
+      "category": "ATTACK",
+      "star": 1,
+      "count": 1,
+      "effects": [
+        "EFFECT_IGNORE_INF_GUARD"
+      ],
+      "text": "Đòn thường và skill Attack trong một commit không được Guard Bộ binh; vẫn có phản ứng phòng thủ khác hợp lệ.",
+      "png": "EQUIP_COMMON_ATK_003.png"
+    },
+    {
+      "id": "EQUIP_COMMON_ATK_004",
+      "name": "Thuốc Hồi Sức",
+      "group": "COMMON",
+      "category": "ATTACK",
+      "star": 1,
+      "count": 2,
+      "effects": [
+        "EFFECT_ATTACK_COUNT_PLUS_1"
+      ],
+      "text": "+1 lần tấn công cho đòn thường hoặc skill Attack trong một commit; mỗi lần mở phản ứng phòng thủ riêng.",
+      "png": "EQUIP_COMMON_ATK_004.png"
+    },
+    {
+      "id": "EQUIP_COMMON_DEF_001",
+      "name": "Quyền Trượng Phép Thuật",
+      "group": "COMMON",
+      "category": "DEFENSE",
+      "star": 3,
+      "count": 2,
+      "effects": [
+        "EFFECT_CANCEL_ATTACK"
+      ],
+      "text": "Hủy một đòn tấn công, gồm sát thương và hiệu ứng lên đơn vị được bảo vệ; vẫn so sánh sao.",
+      "png": "EQUIP_COMMON_DEF_001.png"
+    },
+    {
+      "id": "EQUIP_COMMON_ATK_001",
+      "name": "Triệu Gọi Ám Kỵ",
+      "group": "COMMON",
+      "category": "ATTACK",
+      "star": 1,
+      "count": 2,
+      "text": "Tạo 1 lính Kỵ binh mới ở hex hợp lệ cạnh Hero còn sống. Lính được đi và đánh ngay; không mất HP, không commit Hero.",
+      "effects": [
+        "EFFECT_SUMMON_CAV"
+      ],
+      "png": "EQUIP_COMMON_ATK_001.png"
+    },
+    {
+      "id": "EQUIP_COMMON_ATK_002",
+      "name": "Kèn Gọi Quân",
+      "group": "COMMON",
+      "category": "ATTACK",
+      "star": 1,
+      "count": 2,
+      "text": "Tạo 1 lính Cung thủ mới ở hex hợp lệ cạnh Hero còn sống. Lính được đi và đánh ngay; không cần lính chết.",
+      "effects": [
+        "EFFECT_SUMMON_ARCH"
+      ],
+      "png": "EQUIP_COMMON_ATK_002.png"
+    },
+    {
+      "id": "EQUIP_COMMON_BOTH_001",
+      "name": "Bình Máu",
+      "group": "COMMON",
+      "category": "BOTH",
+      "star": 4,
+      "count": 4,
+      "text": "Hồi 1 HP cho Bộ binh hoặc Hero đồng đội còn sống, thiếu HP ở bất kỳ đâu. Khi đang nhận đòn phải hồi đủ để sống.",
+      "effects": [
+        "EFFECT_HEAL_1"
+      ],
+      "png": "EQUIP_COMMON_BOTH_001.png"
+    },
+    {
+      "id": "EQUIP_COMMON_ATK_005",
+      "name": "Thuốc Tăng Lực",
+      "group": "COMMON",
+      "category": "ATTACK",
+      "star": 1,
+      "count": 2,
+      "text": "Cho 1 đồng đội chưa Attack thêm số ô bằng di chuyển cơ bản, kể cả đã di chuyển. Hết lượt công thì hết buff.",
+      "effects": [
+        "EFFECT_EQUIPMENT_BASE_MOVE"
+      ],
+      "png": "EQUIP_COMMON_ATK_005.png"
+    },
+    {
+      "id": "EQUIP_COMMON_BOTH_002",
+      "name": "Dây Chuyền May Mắn",
+      "group": "COMMON",
+      "category": "BOTH",
+      "star": 5,
+      "count": 2,
+      "text": "Hủy toàn bộ hiệu ứng của 1 card địch vừa dùng trước khi xử lý. Card bị hủy vẫn rời tay và tiêu hao ngân sách.",
+      "effects": [
+        "EFFECT_CANCEL_EQUIPMENT"
+      ],
+      "png": "EQUIP_COMMON_BOTH_002.png"
+    },
+    {
+      "id": "EQUIP_COMMON_BOTH_003",
+      "name": "Đánh Cắp",
+      "group": "COMMON",
+      "category": "BOTH",
+      "star": 4,
+      "count": 2,
+      "text": "Xem tay địch và chọn lấy 1 card chưa dùng. Được dùng ngay nếu còn ngân sách.",
+      "effects": [
+        "EFFECT_STEAL_EQUIPMENT"
+      ],
+      "png": "EQUIP_COMMON_BOTH_003.png"
+    },
+    {
+      "id": "EQUIP_COMMON_BOTH_004",
+      "name": "Nhẫn Dịch Chuyển",
+      "group": "COMMON",
+      "category": "BOTH",
+      "star": 3,
+      "count": 2,
+      "text": "Chỉ Hero đồng đội còn sống; lượt công phải chưa Attack. Dịch chuyển đến hex hợp lệ khác trong tối đa 4 ô, bỏ qua quân/vật cản và không tiêu hao di chuyển thường. Lượt thủ: chỉ khi Hero đang bị đánh, đủ 3 sao để hủy sát thương và hiệu ứng đòn.",
+      "effects": [
+        "EFFECT_EQUIPMENT_TELEPORT_4"
+      ],
+      "png": "EQUIP_COMMON_BOTH_004.png"
+    },
+    {
+      "id": "EQUIP_COMMON_ATK_006",
+      "group": "COMMON",
+      "name": "Thích Khách",
+      "category": "ATTACK",
+      "star": 4,
+      "count": 2,
+      "text": "Gây 1 sát thương cho 1 Hero địch trên toàn bản đồ. Bộ binh có thể đỡ đòn. Không tiêu hao quyền Attack.",
+      "effects": [
+        "EFFECT_ASSASSIN_HERO_1"
+      ],
+      "png": "EQUIP_COMMON_ATK_006.png"
+    }
+  ]
+}
