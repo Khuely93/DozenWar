@@ -1,8 +1,8 @@
 {
   "project": "DOZEN WAR II",
-  "version": "1.54.0",
+  "version": "1.55.0",
   "phase": "DUEL_RULE_MODE_1VS1_180_30",
-  "baseline": "v1.54.0 Transparent cavalry equipment card visuals",
+  "baseline": "v1.55.0 Common equipment card visuals",
   "entry": "index.html",
   "styles": "styles/main.css",
   "runtimeOrder": [

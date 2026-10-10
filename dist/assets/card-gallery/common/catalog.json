@@ -1,5 +1,5 @@
 {
-  "status": "VISUAL_ASSET_READY",
+  "status": "IN_GAME",
   "size": {
     "width": 800,
     "height": 1200
@@ -22,7 +22,8 @@
         "EFFECT_IGNORE_INF_GUARD"
       ],
       "text": "Đòn thường và skill Attack trong một commit không được Guard Bộ binh; vẫn có phản ứng phòng thủ khác hợp lệ.",
-      "png": "EQUIP_COMMON_ATK_003.png"
+      "png": "EQUIP_COMMON_ATK_003.png",
+      "gameAsset": "./assets/card-gallery/common/EQUIP_COMMON_ATK_003.png"
     },
     {
       "id": "EQUIP_COMMON_ATK_004",
@@ -35,7 +36,8 @@
         "EFFECT_ATTACK_COUNT_PLUS_1"
       ],
       "text": "+1 lần tấn công cho đòn thường hoặc skill Attack trong một commit; mỗi lần mở phản ứng phòng thủ riêng.",
-      "png": "EQUIP_COMMON_ATK_004.png"
+      "png": "EQUIP_COMMON_ATK_004.png",
+      "gameAsset": "./assets/card-gallery/common/EQUIP_COMMON_ATK_004.png"
     },
     {
       "id": "EQUIP_COMMON_DEF_001",
@@ -48,7 +50,8 @@
         "EFFECT_CANCEL_ATTACK"
       ],
       "text": "Hủy một đòn tấn công, gồm sát thương và hiệu ứng lên đơn vị được bảo vệ; vẫn so sánh sao.",
-      "png": "EQUIP_COMMON_DEF_001.png"
+      "png": "EQUIP_COMMON_DEF_001.png",
+      "gameAsset": "./assets/card-gallery/common/EQUIP_COMMON_DEF_001.png"
     },
     {
       "id": "EQUIP_COMMON_ATK_001",
@@ -61,7 +64,8 @@
       "effects": [
         "EFFECT_SUMMON_CAV"
       ],
-      "png": "EQUIP_COMMON_ATK_001.png"
+      "png": "EQUIP_COMMON_ATK_001.png",
+      "gameAsset": "./assets/card-gallery/common/EQUIP_COMMON_ATK_001.png"
     },
     {
       "id": "EQUIP_COMMON_ATK_002",
@@ -74,7 +78,8 @@
       "effects": [
         "EFFECT_SUMMON_ARCH"
       ],
-      "png": "EQUIP_COMMON_ATK_002.png"
+      "png": "EQUIP_COMMON_ATK_002.png",
+      "gameAsset": "./assets/card-gallery/common/EQUIP_COMMON_ATK_002.png"
     },
     {
       "id": "EQUIP_COMMON_BOTH_001",
@@ -87,7 +92,8 @@
       "effects": [
         "EFFECT_HEAL_1"
       ],
-      "png": "EQUIP_COMMON_BOTH_001.png"
+      "png": "EQUIP_COMMON_BOTH_001.png",
+      "gameAsset": "./assets/card-gallery/common/EQUIP_COMMON_BOTH_001.png"
     },
     {
       "id": "EQUIP_COMMON_ATK_005",
@@ -100,7 +106,8 @@
       "effects": [
         "EFFECT_EQUIPMENT_BASE_MOVE"
       ],
-      "png": "EQUIP_COMMON_ATK_005.png"
+      "png": "EQUIP_COMMON_ATK_005.png",
+      "gameAsset": "./assets/card-gallery/common/EQUIP_COMMON_ATK_005.png"
     },
     {
       "id": "EQUIP_COMMON_BOTH_002",
@@ -113,7 +120,8 @@
       "effects": [
         "EFFECT_CANCEL_EQUIPMENT"
       ],
-      "png": "EQUIP_COMMON_BOTH_002.png"
+      "png": "EQUIP_COMMON_BOTH_002.png",
+      "gameAsset": "./assets/card-gallery/common/EQUIP_COMMON_BOTH_002.png"
     },
     {
       "id": "EQUIP_COMMON_BOTH_003",
@@ -126,7 +134,8 @@
       "effects": [
         "EFFECT_STEAL_EQUIPMENT"
       ],
-      "png": "EQUIP_COMMON_BOTH_003.png"
+      "png": "EQUIP_COMMON_BOTH_003.png",
+      "gameAsset": "./assets/card-gallery/common/EQUIP_COMMON_BOTH_003.png"
     },
     {
       "id": "EQUIP_COMMON_BOTH_004",
@@ -139,7 +148,8 @@
       "effects": [
         "EFFECT_EQUIPMENT_TELEPORT_4"
       ],
-      "png": "EQUIP_COMMON_BOTH_004.png"
+      "png": "EQUIP_COMMON_BOTH_004.png",
+      "gameAsset": "./assets/card-gallery/common/EQUIP_COMMON_BOTH_004.png"
     },
     {
       "id": "EQUIP_COMMON_ATK_006",
@@ -152,7 +162,8 @@
       "effects": [
         "EFFECT_ASSASSIN_HERO_1"
       ],
-      "png": "EQUIP_COMMON_ATK_006.png"
+      "png": "EQUIP_COMMON_ATK_006.png",
+      "gameAsset": "./assets/card-gallery/common/EQUIP_COMMON_ATK_006.png"
     }
   ]
 }
