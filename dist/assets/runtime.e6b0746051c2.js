@@ -4478,13 +4478,6 @@ const DuelCamera={
     const backdrop=document.createElement('div');backdrop.className='duelMapBackdrop';
     backdrop.style.backgroundImage='url("'+(img.dataset.backdropSrc||img.getAttribute('src'))+'")';
     board.prepend(backdrop,scene);scene.append(img,CoreDOM.board.svg);this.scene=scene;
-    const controls=document.createElement('div');controls.className='duelCameraControls';controls.setAttribute('aria-label','Điều khiển camera');
-    for(const [name,label,action] of [['zoom-out','−',()=>this.zoomAt(this.zoom/1.18)],['zoom-in','+',()=>this.zoomAt(this.zoom*1.18)],['reset','Về giữa',()=>this.reset()]]){
-      const b=document.createElement('button');b.type='button';b.className='btn';b.dataset.cameraAction=name;
-      b.setAttribute('aria-label',{'zoom-out':'Thu nhỏ map','zoom-in':'Phóng to map',pan:'Bật chế độ kéo map',reset:'Về góc nhìn mặc định'}[name]);
-      b.textContent=label;b.onclick=action;controls.appendChild(b);
-    }
-    const hint=document.createElement('small');hint.textContent='Con lăn: zoom · Kéo / vuốt map: pan';controls.appendChild(hint);stage.appendChild(controls);this.controls=controls;
     stage.addEventListener('wheel',e=>{
       if(!this.enabled||this.isUI(e.target))return;
       e.preventDefault();const r=stage.getBoundingClientRect();
@@ -4514,7 +4507,7 @@ const DuelCamera={
       if(!this.isUI(e.target)&&Date.now()<this.suppressUntil){e.preventDefault();e.stopImmediatePropagation()}
     },true);
   },
-  isUI(target){return !!target.closest('button,select,input,details,.unitMenu,.deployMenu,.attackPopup,.defensePopup,.skillTargetPanel,.guardTargetHint,.reaction,.duelCameraControls')},
+  isUI(target){return !!target.closest('button,select,input,details,.unitMenu,.deployMenu,.attackPopup,.defensePopup,.skillTargetPanel,.guardTargetHint,.reaction')},
   resize(width,height){
     const id=S.matchSession?.matchId||null;
     if(id!==this.matchId){this.matchId=id;this.zoom=1.4;this.panX=this.panY=0;this.reactionKey=null;this.panMode=false}
@@ -4553,15 +4546,7 @@ const DuelCamera={
     if(!this.enabled||!this.scene)return;
     this.scene.style.width=this.scene.style.height=this.base+'px';
     this.scene.style.transform='translate('+(this.width/2-this.base*this.zoom/2+this.panX)+'px,'+(this.height/2-this.base*this.zoom/2+this.panY)+'px) scale('+this.zoom+')';
-    this.updateControls();for(const [popup,cell] of this.popups)if(popup.classList.contains('show'))this.placePopup(popup,cell);
-  },
-  updateControls(){
-    if(!this.controls)return;
-    this.stage.classList.toggle('cameraPanMode',this.panMode);
-    const pan=this.controls.querySelector('[data-camera-action="pan"]');pan?.setAttribute('aria-pressed',String(this.panMode));
-    this.controls.querySelector('[data-camera-action="zoom-in"]').disabled=this.zoom>=this.maxZoom;
-    this.controls.querySelector('[data-camera-action="zoom-out"]').disabled=this.zoom<=this.minZoom;
-    this.controls.dataset.zoom=Math.round(this.zoom*100)+'%';
+    for(const [popup,cell] of this.popups)if(popup.classList.contains('show'))this.placePopup(popup,cell);
   },
   placePopup(popup,cell){
     if(!this.enabled)return;

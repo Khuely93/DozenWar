@@ -1,8 +1,8 @@
 {
   "project": "DOZEN WAR II",
-  "version": "1.56.0",
+  "version": "1.57.0",
   "phase": "DUEL_RULE_MODE_1VS1_180_30",
-  "baseline": "v1.56.0 Defensive action feedback and consume animation",
+  "baseline": "v1.57.0 Remove camera button panel; retain direct mouse and touch gestures",
   "entry": "index.html",
   "styles": "styles/main.css",
   "runtimeOrder": [
