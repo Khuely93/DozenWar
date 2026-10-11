@@ -1,8 +1,8 @@
 {
   "project": "DOZEN WAR II",
-  "version": "1.59.0",
+  "version": "1.60.0",
   "phase": "DUEL_RULE_MODE_1VS1_180_30",
-  "baseline": "v1.59.0 Archer hero portrait assets: Lucy, Raen and Xacnas",
+  "baseline": "v1.60.0 Complete twelve Hero portrait visuals",
   "entry": "index.html",
   "styles": "styles/main.css",
   "runtimeOrder": [
