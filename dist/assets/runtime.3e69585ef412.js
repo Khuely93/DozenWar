@@ -2492,6 +2492,13 @@ for(const h of Object.values(RAW_HERO_DB)){
   h.assets={...h.assets,token};
 }
 
+// Portrait artwork is separate from board tokens and gameplay identity.
+for(const name of ['LUCY','RAEN','XACNAS']){
+  const hero=RAW_HERO_DB['HERO_ARCH_'+name],id='IMG_HERO_'+name+'_PORTRAIT';
+  RAW_ASSETS[id]={type:'IMAGE',usage:'PORTRAIT',source:'./assets/heroes/arch/'+name.toLowerCase()+'-portrait.png',fallbackGlyph:name.slice(0,2)};
+  hero.assets={...hero.assets,portrait:id};
+}
+
 // ===== CONTENT SCHEMA v1.5 / PART 12.5 CONTENT MIGRATION + BACKWARD COMPATIBILITY =====
 // Canonical, data-driven content boundary shared by offline engine and future online server.
 // v1.5 keeps the manifest/handshake architecture and adds explicit schema migration, historical content resolution, persistence envelopes, and backward-compatibility policies.
@@ -3245,7 +3252,7 @@ function beginTeam(p){
 function renderTeamPicker(){
   if(!HeroRegistry.list().some(h=>h.id===tempHeroDefinitionId))tempHeroDefinitionId=HeroRegistry.list()[0]?.id||null;
   ShellDOM.team.heroChoices.innerHTML='';
-  HeroRegistry.list().forEach(def=>{let h=ContentViews.hero(def.id);let d=document.createElement('button');d.className='choice'+(tempHeroDefinitionId===def.id?' on':'');d.dataset.heroClass=h.class;d.innerHTML='<div class="sym">'+h.sym+'</div><b>'+h.name+'</b><div class="muted">HP '+h.stats.hp+' · '+({INF:'Bộ binh',CAV:'Kỵ binh',ARCH:'Cung thủ',ALCH:'Giả kim thuật sư'}[h.class]||h.class)+'</div>';d.onclick=()=>{tempHeroDefinitionId=def.id;renderTeamPicker()};ShellDOM.team.heroChoices.appendChild(d)});
+  HeroRegistry.list().forEach(def=>{let h=ContentViews.hero(def.id);let d=document.createElement('button');d.className='choice'+(tempHeroDefinitionId===def.id?' on':'');d.dataset.heroClass=h.class;d.innerHTML='<div class="sym">'+h.sym+'</div><b>'+h.name+'</b><div class="muted">HP '+h.stats.hp+' · '+({INF:'Bộ binh',CAV:'Kỵ binh',ARCH:'Cung thủ',ALCH:'Giả kim thuật sư'}[h.class]||h.class)+'</div>';d.onclick=()=>{tempHeroDefinitionId=def.id;renderTeamPicker()};const source=h.assets?.portrait?AssetResolver.source(h.assets.portrait):null;if(source){const image=document.createElement('img');image.src=source;image.alt=h.name;image.className='heroChoicePortrait';image.draggable=false;const symbol=d.querySelector('.sym');image.onerror=()=>symbol.textContent=h.sym;symbol.replaceChildren(image)}ShellDOM.team.heroChoices.appendChild(d)});
   ShellDOM.team.troopChoices.innerHTML='';
   Object.entries(TROOPS).forEach(([k,u])=>{let d=document.createElement('div');d.className='choice';d.innerHTML='<div class="sym">'+u.sym+'</div><b>'+u.name+'</b><div class="muted">HP '+u.hp+' · Move '+u.move+'</div><div class="countCtl"><button class="btn" data-k="'+k+'" data-d="-1">−</button><b>'+tempTroops[k]+'</b><button class="btn" data-k="'+k+'" data-d="1">+</button></div>';ShellDOM.team.troopChoices.appendChild(d)});
   ShellDOM.team.troopChoices.querySelectorAll('button').forEach(b=>b.onclick=()=>{let k=b.dataset.k,d=+b.dataset.d,total=Object.values(tempTroops).reduce((a,b)=>a+b,0);if(d>0&&total>=5)return;tempTroops[k]=Math.max(0,tempTroops[k]+d);renderTeamPicker()});
@@ -4383,7 +4390,7 @@ const DuelBoardLayout = {
       const node=document.getElementById(id),box=id==='unitPanel'?node:node.closest('.box');
       box.classList.add(cls);box.querySelector('h3').textContent=title;dock.appendChild(box);
     }
-    const portrait=document.createElement('div');portrait.className='dockPortrait';portrait.setAttribute('aria-hidden','true');
+    const portrait=document.createElement('div');portrait.className='dockPortrait';portrait.setAttribute('role','img');
     document.getElementById('unitInfo').before(portrait);this.portrait=portrait;
     const info=document.createElement('details');info.className='duelMatchDetails';
     const label=document.createElement('summary');label.textContent='Thông tin trận / Combat log';info.appendChild(label);
@@ -4391,6 +4398,17 @@ const DuelBoardLayout = {
     info.appendChild(document.getElementById('log').closest('.box'));stage.appendChild(info);
     stage.appendChild(document.getElementById('reactionBox'));
     this.stage=stage;this.mounted=true;
+  },
+  renderPortrait(hero){
+    if(!this.portrait)return;
+    const definition=hero?.hero?ContentViews.hero(hero.definitionId):null;
+    const source=definition?.assets?.portrait?AssetResolver.source(definition.assets.portrait):null;
+    const glyph=hero?unitSpec(hero).sym:'♟';
+    this.portrait.setAttribute('aria-label',definition?.name||'Hero');
+    if(this.portrait.dataset.portraitKey===(source||glyph))return;
+    this.portrait.dataset.portraitKey=source||glyph;this.portrait.replaceChildren();
+    if(source){const image=document.createElement('img');image.src=source;image.alt=definition.name;image.draggable=false;image.onerror=()=>this.portrait.replaceChildren(document.createTextNode(glyph));this.portrait.append(image)}
+    else this.portrait.textContent=glyph;
   },
   decorateSkills(){
     if(!this.mounted)return;
@@ -4428,7 +4446,7 @@ const DuelBoardLayout = {
     const active=cleanDuel&&(S.phase==='deploy'||S.phase==='battle');
     if(typeof document!=='undefined'){
       document.body.classList.toggle('duelDesktopLayout',desktop&&active);
-      if(this.portrait){const hero=typeof HeroSkillUI!=='undefined'?HeroSkillUI.actor():S.selected;this.portrait.textContent=hero?unitSpec(hero).sym:'♟';}
+      this.renderPortrait(typeof HeroSkillUI!=='undefined'?HeroSkillUI.actor():S.selected);
       if(desktop&&active)this.decorateSkills();
       document.documentElement.style.setProperty('--duel-dock-height',this.dockHeight(window.innerHeight)+'px');
     }

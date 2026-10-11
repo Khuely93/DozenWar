@@ -14,7 +14,7 @@ const DuelBoardLayout = {
       const node=document.getElementById(id),box=id==='unitPanel'?node:node.closest('.box');
       box.classList.add(cls);box.querySelector('h3').textContent=title;dock.appendChild(box);
     }
-    const portrait=document.createElement('div');portrait.className='dockPortrait';portrait.setAttribute('aria-hidden','true');
+    const portrait=document.createElement('div');portrait.className='dockPortrait';portrait.setAttribute('role','img');
     document.getElementById('unitInfo').before(portrait);this.portrait=portrait;
     const info=document.createElement('details');info.className='duelMatchDetails';
     const label=document.createElement('summary');label.textContent='Thông tin trận / Combat log';info.appendChild(label);
@@ -22,6 +22,17 @@ const DuelBoardLayout = {
     info.appendChild(document.getElementById('log').closest('.box'));stage.appendChild(info);
     stage.appendChild(document.getElementById('reactionBox'));
     this.stage=stage;this.mounted=true;
+  },
+  renderPortrait(hero){
+    if(!this.portrait)return;
+    const definition=hero?.hero?ContentViews.hero(hero.definitionId):null;
+    const source=definition?.assets?.portrait?AssetResolver.source(definition.assets.portrait):null;
+    const glyph=hero?unitSpec(hero).sym:'♟';
+    this.portrait.setAttribute('aria-label',definition?.name||'Hero');
+    if(this.portrait.dataset.portraitKey===(source||glyph))return;
+    this.portrait.dataset.portraitKey=source||glyph;this.portrait.replaceChildren();
+    if(source){const image=document.createElement('img');image.src=source;image.alt=definition.name;image.draggable=false;image.onerror=()=>this.portrait.replaceChildren(document.createTextNode(glyph));this.portrait.append(image)}
+    else this.portrait.textContent=glyph;
   },
   decorateSkills(){
     if(!this.mounted)return;
@@ -59,7 +70,7 @@ const DuelBoardLayout = {
     const active=cleanDuel&&(S.phase==='deploy'||S.phase==='battle');
     if(typeof document!=='undefined'){
       document.body.classList.toggle('duelDesktopLayout',desktop&&active);
-      if(this.portrait){const hero=typeof HeroSkillUI!=='undefined'?HeroSkillUI.actor():S.selected;this.portrait.textContent=hero?unitSpec(hero).sym:'♟';}
+      this.renderPortrait(typeof HeroSkillUI!=='undefined'?HeroSkillUI.actor():S.selected);
       if(desktop&&active)this.decorateSkills();
       document.documentElement.style.setProperty('--duel-dock-height',this.dockHeight(window.innerHeight)+'px');
     }

@@ -1540,6 +1540,13 @@ for(const h of Object.values(RAW_HERO_DB)){
   h.assets={...h.assets,token};
 }
 
+// Portrait artwork is separate from board tokens and gameplay identity.
+for(const name of ['LUCY','RAEN','XACNAS']){
+  const hero=RAW_HERO_DB['HERO_ARCH_'+name],id='IMG_HERO_'+name+'_PORTRAIT';
+  RAW_ASSETS[id]={type:'IMAGE',usage:'PORTRAIT',source:'./assets/heroes/arch/'+name.toLowerCase()+'-portrait.png',fallbackGlyph:name.slice(0,2)};
+  hero.assets={...hero.assets,portrait:id};
+}
+
 // ===== CONTENT SCHEMA v1.5 / PART 12.5 CONTENT MIGRATION + BACKWARD COMPATIBILITY =====
 // Canonical, data-driven content boundary shared by offline engine and future online server.
 // v1.5 keeps the manifest/handshake architecture and adds explicit schema migration, historical content resolution, persistence envelopes, and backward-compatibility policies.
