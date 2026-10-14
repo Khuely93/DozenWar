@@ -1549,6 +1549,10 @@ for(const [group,names] of Object.entries({ARCH:['LUCY','RAEN','XACNAS'],INF:['K
   }
 }
 
+// Lucy board artwork has independent assets from the UI portrait.
+RAW_ASSETS.IMG_HERO_LUCY_BOARD_TOKEN={type:'IMAGE',usage:'TOKEN',source:'./assets/heroes/arch/lucy-token/lucy-01.png',directionSources:Array.from({length:8},(_,i)=>'./assets/heroes/arch/lucy-token/lucy-'+String(i+1).padStart(2,'0')+'.png'),fallbackGlyph:'LU'};
+RAW_HERO_DB.HERO_ARCH_LUCY.assets.token='IMG_HERO_LUCY_BOARD_TOKEN';
+
 // ===== CONTENT SCHEMA v1.5 / PART 12.5 CONTENT MIGRATION + BACKWARD COMPATIBILITY =====
 // Canonical, data-driven content boundary shared by offline engine and future online server.
 // v1.5 keeps the manifest/handshake architecture and adds explicit schema migration, historical content resolution, persistence envelopes, and backward-compatibility policies.

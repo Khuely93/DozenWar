@@ -2,7 +2,14 @@
 // Static sprite facing is presentation-only; no combat or movement flags change.
 const TroopVisual={
   source(unit){
-    if(unit.hero||!['inf','arch','cav'].includes(unit.kind))return null;
+    if(unit.hero){
+      if(typeof HeroRegistry==='undefined'||typeof AssetRegistry==='undefined')return null;
+      const hero=HeroRegistry.get(unit.definitionId),asset=hero&&AssetRegistry.get(hero.assets?.token);
+      if(!asset?.directionSources)return null;
+      const view=Number.isInteger(unit.visualView)&&unit.visualView>=1&&unit.visualView<=8?unit.visualView:(unit.side===1?5:1);
+      return asset.directionSources[view-1];
+    }
+    if(!['inf','arch','cav'].includes(unit.kind))return null;
     const sides={1:'blue',2:'red',3:'gold',4:'silver'};
     const faction=['red','blue','gold','silver'].includes(unit.visualFaction)?unit.visualFaction:(sides[unit.side]||'red');
     const view=Number.isInteger(unit.visualView)&&unit.visualView>=1&&unit.visualView<=8?unit.visualView:(unit.side===1?5:1);
@@ -14,6 +21,7 @@ const TroopVisual={
     const image=document.createElementNS(ns,'image');
     image.setAttribute('href',src);image.setAttribute('x',cell.x-size/2);image.setAttribute('y',cell.y+10+yOffset-size*248/256);
     image.setAttribute('width',size);image.setAttribute('height',size);image.setAttribute('class','troopSprite');
+    if(unit.hero){image.setAttribute('x',cell.x-34);image.setAttribute('y',cell.y-67);image.setAttribute('width',68);image.setAttribute('height',91);image.setAttribute('class','heroBoardSprite');}
     image.setAttribute('pointer-events','none');symbol.setAttribute('visibility','hidden');
     image.addEventListener('error',()=>{image.setAttribute('visibility','hidden');symbol.setAttribute('visibility','visible')});
     group.appendChild(image);
