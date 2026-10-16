@@ -14,13 +14,13 @@ const TroopVisual={
     const sides={1:'blue',2:'red',3:'gold',4:'silver'};
     const requested=unit.visualFaction==='gray'?'silver':unit.visualFaction;
     const faction=['red','blue','gold','silver'].includes(requested)?requested:(sides[unit.side]||'red');
-    return './assets/troops-dw-style-01/'+unit.kind+'-'+faction+'.webp';
+    return './assets/troops-compact-dw-style-01/'+unit.kind+'-'+faction+'.webp';
   },
   render(group,unit,cell,symbol){
     const src=this.source(unit);if(!src)return;
     const ns='http://www.w3.org/2000/svg',height=unit.kind==='cav'?98:86;
     const image=document.createElementNS(ns,'image');
-    let frame={width:height*2/3,height,anchorX:.5,anchorY:.98};
+    let frame={width:height,height,anchorX:.5,anchorY:.96};
     image.setAttribute('href',src);image.setAttribute('class','troopSprite');
     if(unit.hero){
       const hero=HeroRegistry.get(unit.definitionId),asset=AssetRegistry.get(hero.assets.token);

@@ -11,17 +11,17 @@ let checked = 0;
 for (const kind of ['inf', 'arch', 'cav']) {
   for (const faction of ['red', 'blue', 'gold', 'silver']) for (let view=1;view<=8;view++) {
     const relative=ctx.visual.source({kind,side:1,hero:false,visualFaction:faction,visualView:view});
-    assert.equal(relative,'./assets/troops-dw-style-01/'+kind+'-'+faction+'.webp');
+    assert.equal(relative,'./assets/troops-compact-dw-style-01/'+kind+'-'+faction+'.webp');
     assert.deepEqual(fs.readFileSync(path.join(root,'dist',relative)),fs.readFileSync(path.join(root,relative)),'Sprite '+relative);
     checked++;
   }
 }
 for (const [side,faction,view] of [[1,'blue',5],[2,'red',1],[3,'gold',1],[4,'silver',1]]) {
-  assert.equal(ctx.visual.source({kind:'inf',side,hero:false}),'./assets/troops-dw-style-01/inf-'+faction+'.webp');
+  assert.equal(ctx.visual.source({kind:'inf',side,hero:false}),'./assets/troops-compact-dw-style-01/inf-'+faction+'.webp');
 }
-assert.equal(ctx.visual.source({kind:'inf',side:1,visualFaction:'invalid',visualView:99}),'./assets/troops-dw-style-01/inf-blue.webp');
-assert.equal(ctx.visual.source({kind:'arch',side:1,visualFaction:'gray'}),'./assets/troops-dw-style-01/arch-silver.webp');
-const troops=JSON.parse(read('assets/troops-dw-style-01/manifest.json'));
+assert.equal(ctx.visual.source({kind:'inf',side:1,visualFaction:'invalid',visualView:99}),'./assets/troops-compact-dw-style-01/inf-blue.webp');
+assert.equal(ctx.visual.source({kind:'arch',side:1,visualFaction:'gray'}),'./assets/troops-compact-dw-style-01/arch-silver.webp');
+const troops=JSON.parse(read('assets/troops-compact-dw-style-01/manifest.json'));
 assert.equal(troops.assets.length,12,'Three classes in four faction colors');
 for(const entry of troops.assets){
   const bytes=fs.readFileSync(path.join(root,entry.asset));
@@ -51,4 +51,4 @@ const built = JSON.parse(read('dist/build-manifest.json'));
 assert.equal(built.version, manifest.version, 'Production metadata version');
 assert.equal(read('dist/index.html').match(/LATEST PLAYTEST v(\d+\.\d+\.\d+)/)?.[1], manifest.version, 'Production banner version');
 for (const relative of Object.values(built.bundles)) assert.ok(fs.existsSync(path.join(root, 'dist', relative)), 'Missing bundle: ' + relative);
-console.log('PASS | 12 DW-STYLE-01 troop colors (' + checked + ' legacy facing routes), 12 Hero board visuals, production bytes, version and bundles');
+console.log('PASS | 12 compact DW-STYLE-01 troop colors (' + checked + ' legacy facing routes), 12 Hero board visuals, production bytes, version and bundles');

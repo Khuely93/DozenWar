@@ -1,5 +1,13 @@
 # DOZEN WAR II v1.40.22 - Duel desktop map fit
 
+## v1.65.0 — Compact troops designed for the board
+
+All three soldier classes now use the approved compact board designs: larger
+heads and weapons, clean armor planes and broad faction colors. Infantry keeps
+its sword and shield, cavalry its diagonal spear, and hooded archers their
+crossbows. Red, blue, yellow and gray skins share a square transparent frame.
+Hero artwork and gameplay rules are unchanged.
+
 ## v1.64.0 — DW-STYLE-01 soldiers in four faction colors
 
 Infantry, cavalry and crossbow troops now use the approved full-body artwork on

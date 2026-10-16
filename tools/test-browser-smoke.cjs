@@ -37,7 +37,7 @@ async function run(){
       for(const kind of ['inf','arch','cav'])for(const faction of ['red','blue','gold','silver'])for(let view=1;view<=8;view++){
         const response=await fetch(TroopVisual.source({kind,side:1,visualFaction:faction,visualView:view}));
         if(!response.ok)throw Error('Missing sprite');const bitmap=await createImageBitmap(await response.blob());
-        if(bitmap.width!==512||bitmap.height!==768)throw Error('Invalid sprite dimensions');bitmap.close();loaded++;
+        if(bitmap.width!==512||bitmap.height!==512)throw Error('Invalid sprite dimensions');bitmap.close();loaded++;
       }
       const ally=S.units.find(unit=>!unit.hero&&unit.side===1),enemy=S.units.find(unit=>!unit.hero&&unit.side===2);
       // The runtime wrapper does not return the inner function's boolean.
@@ -67,14 +67,15 @@ async function run(){
       for(const u of S.units){
         const im=new Image();im.src=TroopVisual.source(u);await im.decode();const canvas=document.createElement('canvas');canvas.width=im.width;canvas.height=im.height;const c=canvas.getContext('2d');c.drawImage(im,0,0);const d=c.getImageData(0,0,im.width,im.height).data;let clear=0;for(let j=3;j<d.length;j+=4)if(!d[j])clear++;
         const g=boardSvg.querySelector('[data-unit-id="'+u.id+'"]'),image=g.querySelector('image.troopSprite'),cell=cells.find(c=>c.q===u.q&&c.r===u.r);
-        checks.push({id:u.id,kind:u.kind,faction:u.visualFaction,source:im.src,width:im.width,height:im.height,clear,corners:[d[3],d[(im.width-1)*4+3],d[((im.height-1)*im.width)*4+3],d[d.length-1]],footY:Number(image.getAttribute('y'))+Number(image.getAttribute('height'))*.98,expectedFootY:cell.y+18,ring:!!g.querySelector('.troopTeamRing'),hp:!!g.querySelector('.troopHP')});
+        checks.push({id:u.id,kind:u.kind,faction:u.visualFaction,source:im.src,width:im.width,height:im.height,clear,corners:[d[3],d[(im.width-1)*4+3],d[((im.height-1)*im.width)*4+3],d[d.length-1]],footY:Number(image.getAttribute('y'))+Number(image.getAttribute('height'))*.96,expectedFootY:cell.y+18,ring:!!g.querySelector('.troopTeamRing'),hp:!!g.querySelector('.troopHP')});
       }return checks;
     });
     assert.equal(variants.length,12);
-    for(const v of variants){assert.equal(v.width,512);assert.equal(v.height,768);assert(v.clear>512*768*.15,v.source);assert.deepEqual(v.corners,[0,0,0,0]);assert(Math.abs(v.footY-v.expectedFootY)<.01);assert(v.ring&&v.hp);const hit=page.locator('[data-unit-id="'+v.id+'"] .troopHit'),b=await hit.boundingBox();await hit.click({position:{x:b.width/2,y:b.height*.8}});assert.equal(await page.evaluate(()=>S.selected?.id),v.id);}
+    for(const v of variants){assert.equal(v.width,512);assert.equal(v.height,512);assert(v.clear>512*512*.15,v.source);assert.deepEqual(v.corners,[0,0,0,0]);assert(Math.abs(v.footY-v.expectedFootY)<.01);assert(v.ring&&v.hp);const hit=page.locator('[data-unit-id="'+v.id+'"] .troopHit'),b=await hit.boundingBox();await hit.click({position:{x:b.width/2,y:b.height*.8}});assert.equal(await page.evaluate(()=>S.selected?.id),v.id);}
     await page.screenshot({path:path.join(output,'all-12-colors-1366.png')});
     await page.setViewportSize({width:1920,height:1080});await page.evaluate(()=>DuelBoardLayout.fit());await page.screenshot({path:path.join(output,'all-12-colors-1920.png')});
     const fallback=page.locator('[data-unit-id="'+variants[0].id+'"] image.troopSprite');await fallback.evaluate(n=>n.dispatchEvent(new Event('error')));assert.equal(await fallback.getAttribute('visibility'),'hidden');assert.equal(await page.locator('[data-unit-id="'+variants[0].id+'"] text').first().getAttribute('visibility'),'visible');
+    await page.evaluate(()=>renderBoard());
     await page.setViewportSize({width:390,height:844});await page.evaluate(()=>DuelBoardLayout.fit());await page.screenshot({path:path.join(output,'all-12-colors-mobile.png'),fullPage:true});
     Object.assign(report,{variants,errors,missing});
     fs.writeFileSync(path.join(output,'browser-qa.json'),JSON.stringify(report,null,2)+'\n');
