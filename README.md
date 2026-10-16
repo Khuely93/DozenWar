@@ -1,5 +1,14 @@
 # DOZEN WAR II v1.40.22 - Duel desktop map fit
 
+## v1.68.0 — Equipment cards matching the compact art direction
+
+All 30 equipment card designs now use the approved artwork matching the compact
+Heroes and soldiers. Full 2:3 card faces retain their Vietnamese titles, rules,
+category symbols and star counts. Infantry uses red frames, archers green,
+cavalry gray and common equipment blue. WebP exports preserve the 1024 × 1536
+composition. Card effects, quantities and gameplay rules are unchanged.
+See [equipment artwork and checks](docs/EQUIPMENT_COMPACT_STYLE_01.md).
+
 ## v1.67.0 — Arena matching the compact Hero and soldier art
 
 The approved fortress arena now uses clean angular architecture, grouped cel

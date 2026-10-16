@@ -1,8 +1,8 @@
 {
   "project": "DOZEN WAR II",
-  "version": "1.67.0",
+  "version": "1.68.0",
   "phase": "DUEL_RULE_MODE_1VS1_180_30",
-  "baseline": "v1.67.0 compact fortress arena matching Hero and soldier art",
+  "baseline": "v1.68.0 approved compact equipment card visuals",
   "entry": "index.html",
   "styles": "styles/main.css",
   "runtimeOrder": [

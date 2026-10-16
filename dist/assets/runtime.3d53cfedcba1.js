@@ -1028,7 +1028,7 @@ const NEW_EQUIPMENT_CATALOG={
   "cards": [
     {
       "id": "EQUIP_INF_ATK_001",
-      "visual": { "card": "./assets/equipment/inf/001/card-800x1200.png" },
+      "visual": { "card": "./assets/equipment-compact-dw-style-01/inf/EQUIP_INF_ATK_001.webp" },
       "group": "INF",
       "name": "Búa Chiến",
       "category": "ATTACK",
@@ -1041,7 +1041,7 @@ const NEW_EQUIPMENT_CATALOG={
     },
     {
       "id": "EQUIP_INF_DEF_001",
-      "visual": { "card": "./assets/equipment/inf/def-001/card-800x1200.png" },
+      "visual": { "card": "./assets/equipment-compact-dw-style-01/inf/EQUIP_INF_DEF_001.webp" },
       "group": "INF",
       "name": "Khiên Ma Thuật",
       "category": "DEFENSE",
@@ -1054,7 +1054,7 @@ const NEW_EQUIPMENT_CATALOG={
     },
     {
       "id": "EQUIP_INF_ATK_002",
-      "visual": { "card": "./assets/equipment/inf/002/card-800x1200.png" },
+      "visual": { "card": "./assets/equipment-compact-dw-style-01/inf/EQUIP_INF_ATK_002.webp" },
       "group": "INF",
       "name": "Song Kiếm",
       "category": "ATTACK",
@@ -1067,7 +1067,7 @@ const NEW_EQUIPMENT_CATALOG={
     },
     {
       "id": "EQUIP_INF_ATK_003",
-      "visual": { "card": "./assets/equipment/inf/003/card-800x1200.png" },
+      "visual": { "card": "./assets/equipment-compact-dw-style-01/inf/EQUIP_INF_ATK_003.webp" },
       "group": "INF",
       "name": "Giày Nhanh Nhẹn",
       "category": "ATTACK",
@@ -1080,7 +1080,7 @@ const NEW_EQUIPMENT_CATALOG={
     },
     {
       "id": "EQUIP_INF_ATK_004",
-      "visual": { "card": "./assets/equipment/inf/004/card-800x1200.png" },
+      "visual": { "card": "./assets/equipment-compact-dw-style-01/inf/EQUIP_INF_ATK_004.webp" },
       "group": "INF",
       "name": "Trường Thương",
       "category": "ATTACK",
@@ -1093,7 +1093,7 @@ const NEW_EQUIPMENT_CATALOG={
     },
     {
       "id": "EQUIP_INF_ATK_005",
-      "visual": { "card": "./assets/equipment/inf/005/card-800x1200.png" },
+      "visual": { "card": "./assets/equipment-compact-dw-style-01/inf/EQUIP_INF_ATK_005.webp" },
       "group": "INF",
       "name": "Lao Móc",
       "category": "ATTACK",
@@ -1107,7 +1107,7 @@ const NEW_EQUIPMENT_CATALOG={
     },
     {
       "id": "EQUIP_INF_ATK_006",
-      "visual": { "card": "./assets/equipment/inf/006/card-800x1200.png" },
+      "visual": { "card": "./assets/equipment-compact-dw-style-01/inf/EQUIP_INF_ATK_006.webp" },
       "group": "INF",
       "name": "Chùy Xích",
       "category": "ATTACK",
@@ -1121,7 +1121,7 @@ const NEW_EQUIPMENT_CATALOG={
     },
     {
       "id": "EQUIP_ARCH_ATK_001",
-      "visual": { "card": "./assets/equipment/arch/001/card-800x1200.png" },
+      "visual": { "card": "./assets/equipment-compact-dw-style-01/arch/EQUIP_ARCH_ATK_001.webp" },
       "group": "ARCH",
       "name": "Nỏ Sắt",
       "category": "ATTACK",
@@ -1134,7 +1134,7 @@ const NEW_EQUIPMENT_CATALOG={
     },
     {
       "id": "EQUIP_ARCH_DEF_001",
-      "visual": { "card": "./assets/equipment/arch/def-001/card-800x1200.png" },
+      "visual": { "card": "./assets/equipment-compact-dw-style-01/arch/EQUIP_ARCH_DEF_001.webp" },
       "group": "ARCH",
       "name": "Bom Khói",
       "category": "DEFENSE",
@@ -1147,7 +1147,7 @@ const NEW_EQUIPMENT_CATALOG={
     },
     {
       "id": "EQUIP_ARCH_ATK_002",
-      "visual": { "card": "./assets/equipment/arch/002/card-800x1200.png" },
+      "visual": { "card": "./assets/equipment-compact-dw-style-01/arch/EQUIP_ARCH_ATK_002.webp" },
       "group": "ARCH",
       "name": "Tên Xuyên Phá",
       "category": "ATTACK",
@@ -1160,7 +1160,7 @@ const NEW_EQUIPMENT_CATALOG={
     },
     {
       "id": "EQUIP_ARCH_ATK_003",
-      "visual": { "card": "./assets/equipment/arch/003/card-800x1200.png" },
+      "visual": { "card": "./assets/equipment-compact-dw-style-01/arch/EQUIP_ARCH_ATK_003.webp" },
       "group": "ARCH",
       "name": "Cung Thép",
       "category": "ATTACK",
@@ -1173,7 +1173,7 @@ const NEW_EQUIPMENT_CATALOG={
     },
     {
       "id": "EQUIP_ARCH_DEF_002",
-      "visual": { "card": "./assets/equipment/arch/def-002/card-800x1200.png" },
+      "visual": { "card": "./assets/equipment-compact-dw-style-01/arch/EQUIP_ARCH_DEF_002.webp" },
       "group": "ARCH",
       "name": "Áo Choàng Phép Thuật",
       "category": "DEFENSE",
@@ -1186,7 +1186,7 @@ const NEW_EQUIPMENT_CATALOG={
     },
     {
       "id": "EQUIP_ARCH_DEF_003",
-      "visual": { "card": "./assets/equipment/arch/def-003/card-800x1200.png" },
+      "visual": { "card": "./assets/equipment-compact-dw-style-01/arch/EQUIP_ARCH_DEF_003.webp" },
       "group": "ARCH",
       "name": "Dao Găm",
       "category": "DEFENSE",
@@ -1199,7 +1199,7 @@ const NEW_EQUIPMENT_CATALOG={
     },
     {
       "id": "EQUIP_CAV_ATK_002",
-      "visual": { "card": "./assets/equipment/cav/002/card-800x1200.png" },
+      "visual": { "card": "./assets/equipment-compact-dw-style-01/cav/EQUIP_CAV_ATK_002.webp" },
       "name": "Đại Đao",
       "group": "CAV",
       "category": "ATTACK",
@@ -1212,7 +1212,7 @@ const NEW_EQUIPMENT_CATALOG={
     },
     {
       "id": "EQUIP_CAV_DEF_002",
-      "visual": { "card": "./assets/equipment/cav/def-002/card-800x1200.png" },
+      "visual": { "card": "./assets/equipment-compact-dw-style-01/cav/EQUIP_CAV_DEF_002.webp" },
       "name": "Khiên Gỗ",
       "group": "CAV",
       "category": "DEFENSE",
@@ -1225,7 +1225,7 @@ const NEW_EQUIPMENT_CATALOG={
     },
     {
       "id": "EQUIP_CAV_ATK_003",
-      "visual": { "card": "./assets/equipment/cav/003/card-800x1200.png" },
+      "visual": { "card": "./assets/equipment-compact-dw-style-01/cav/EQUIP_CAV_ATK_003.webp" },
       "name": "Giáo Thép",
       "group": "CAV",
       "category": "ATTACK",
@@ -1238,7 +1238,7 @@ const NEW_EQUIPMENT_CATALOG={
     },
     {
       "id": "EQUIP_COMMON_ATK_003",
-      "visual": { "card": "./assets/card-gallery/common/EQUIP_COMMON_ATK_003.png" },
+      "visual": { "card": "./assets/equipment-compact-dw-style-01/common/EQUIP_COMMON_ATK_003.webp" },
       "name": "Lọ Phép Thuật",
       "group": "COMMON",
       "category": "ATTACK",
@@ -1251,7 +1251,7 @@ const NEW_EQUIPMENT_CATALOG={
     },
     {
       "id": "EQUIP_COMMON_ATK_004",
-      "visual": { "card": "./assets/card-gallery/common/EQUIP_COMMON_ATK_004.png" },
+      "visual": { "card": "./assets/equipment-compact-dw-style-01/common/EQUIP_COMMON_ATK_004.webp" },
       "name": "Thuốc Hồi Sức",
       "group": "COMMON",
       "category": "ATTACK",
@@ -1264,7 +1264,7 @@ const NEW_EQUIPMENT_CATALOG={
     },
     {
       "id": "EQUIP_COMMON_DEF_001",
-      "visual": { "card": "./assets/card-gallery/common/EQUIP_COMMON_DEF_001.png" },
+      "visual": { "card": "./assets/equipment-compact-dw-style-01/common/EQUIP_COMMON_DEF_001.webp" },
       "name": "Quyền Trượng Phép Thuật",
       "group": "COMMON",
       "category": "DEFENSE",
@@ -1277,7 +1277,7 @@ const NEW_EQUIPMENT_CATALOG={
     },
     {
       "id": "EQUIP_CAV_DEF_001",
-      "visual": { "card": "./assets/equipment/cav/def-001/card-800x1200.png" },
+      "visual": { "card": "./assets/equipment-compact-dw-style-01/cav/EQUIP_CAV_DEF_001.webp" },
       "name": "Kiếm Một Tay",
       "group": "CAV",
       "category": "DEFENSE",
@@ -1290,7 +1290,7 @@ const NEW_EQUIPMENT_CATALOG={
     },
     {
       "id": "EQUIP_CAV_DEF_003",
-      "visual": { "card": "./assets/equipment/cav/def-003/card-800x1200.png" },
+      "visual": { "card": "./assets/equipment-compact-dw-style-01/cav/EQUIP_CAV_DEF_003.webp" },
       "name": "Lưới Sắt",
       "group": "CAV",
       "category": "DEFENSE",
@@ -1303,7 +1303,7 @@ const NEW_EQUIPMENT_CATALOG={
     },
     {
       "id": "EQUIP_CAV_ATK_001",
-      "visual": { "card": "./assets/equipment/cav/001/card-800x1200.png" },
+      "visual": { "card": "./assets/equipment-compact-dw-style-01/cav/EQUIP_CAV_ATK_001.webp" },
       "group": "CAV",
       "name": "Thương Kỵ Sĩ",
       "category": "ATTACK",
@@ -1316,7 +1316,7 @@ const NEW_EQUIPMENT_CATALOG={
     },
     {
       "id": "EQUIP_COMMON_ATK_001",
-      "visual": { "card": "./assets/card-gallery/common/EQUIP_COMMON_ATK_001.png" },
+      "visual": { "card": "./assets/equipment-compact-dw-style-01/common/EQUIP_COMMON_ATK_001.webp" },
       "name": "Triệu Gọi Ám Kỵ",
       "group": "COMMON",
       "category": "ATTACK",
@@ -1329,7 +1329,7 @@ const NEW_EQUIPMENT_CATALOG={
     },
     {
       "id": "EQUIP_COMMON_ATK_002",
-      "visual": { "card": "./assets/card-gallery/common/EQUIP_COMMON_ATK_002.png" },
+      "visual": { "card": "./assets/equipment-compact-dw-style-01/common/EQUIP_COMMON_ATK_002.webp" },
       "name": "Kèn Gọi Quân",
       "group": "COMMON",
       "category": "ATTACK",
@@ -1342,7 +1342,7 @@ const NEW_EQUIPMENT_CATALOG={
     },
     {
       "id": "EQUIP_COMMON_BOTH_001",
-      "visual": { "card": "./assets/card-gallery/common/EQUIP_COMMON_BOTH_001.png" },
+      "visual": { "card": "./assets/equipment-compact-dw-style-01/common/EQUIP_COMMON_BOTH_001.webp" },
       "name": "Bình Máu",
       "group": "COMMON",
       "category": "BOTH",
@@ -1355,7 +1355,7 @@ const NEW_EQUIPMENT_CATALOG={
     },
     {
       "id": "EQUIP_COMMON_ATK_005",
-      "visual": { "card": "./assets/card-gallery/common/EQUIP_COMMON_ATK_005.png" },
+      "visual": { "card": "./assets/equipment-compact-dw-style-01/common/EQUIP_COMMON_ATK_005.webp" },
       "name": "Thuốc Tăng Lực",
       "group": "COMMON",
       "category": "ATTACK",
@@ -1368,7 +1368,7 @@ const NEW_EQUIPMENT_CATALOG={
     },
     {
       "id": "EQUIP_COMMON_BOTH_002",
-      "visual": { "card": "./assets/card-gallery/common/EQUIP_COMMON_BOTH_002.png" },
+      "visual": { "card": "./assets/equipment-compact-dw-style-01/common/EQUIP_COMMON_BOTH_002.webp" },
       "name": "Dây Chuyền May Mắn",
       "group": "COMMON",
       "category": "BOTH",
@@ -1381,7 +1381,7 @@ const NEW_EQUIPMENT_CATALOG={
     },
     {
       "id": "EQUIP_COMMON_BOTH_003",
-      "visual": { "card": "./assets/card-gallery/common/EQUIP_COMMON_BOTH_003.png" },
+      "visual": { "card": "./assets/equipment-compact-dw-style-01/common/EQUIP_COMMON_BOTH_003.webp" },
       "name": "Đánh Cắp",
       "group": "COMMON",
       "category": "BOTH",
@@ -1394,7 +1394,7 @@ const NEW_EQUIPMENT_CATALOG={
     },
     {
       "id": "EQUIP_COMMON_BOTH_004",
-      "visual": { "card": "./assets/card-gallery/common/EQUIP_COMMON_BOTH_004.png" },
+      "visual": { "card": "./assets/equipment-compact-dw-style-01/common/EQUIP_COMMON_BOTH_004.webp" },
       "name": "Nhẫn Dịch Chuyển",
       "group": "COMMON",
       "category": "BOTH",
@@ -1407,7 +1407,7 @@ const NEW_EQUIPMENT_CATALOG={
     },
     {
       "id": "EQUIP_COMMON_ATK_006",
-      "visual": { "card": "./assets/card-gallery/common/EQUIP_COMMON_ATK_006.png" },
+      "visual": { "card": "./assets/equipment-compact-dw-style-01/common/EQUIP_COMMON_ATK_006.webp" },
       "group": "COMMON",
       "name": "Thích Khách",
       "category": "ATTACK",
