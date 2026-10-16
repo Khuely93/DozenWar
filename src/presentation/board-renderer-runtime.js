@@ -5,7 +5,8 @@ const TroopVisual={
     if(unit.hero){
       if(typeof HeroRegistry==='undefined'||typeof AssetRegistry==='undefined')return null;
       const hero=HeroRegistry.get(unit.definitionId),asset=hero&&AssetRegistry.get(hero.assets?.token);
-      if(!asset?.directionSources)return null;
+      if(!asset)return null;
+      if(!asset.directionSources)return asset.boardSprite===true?asset.source:null;
       const view=Number.isInteger(unit.visualView)&&unit.visualView>=1&&unit.visualView<=8?unit.visualView:(unit.side===1?5:1);
       return asset.directionSources[view-1];
     }
@@ -21,12 +22,20 @@ const TroopVisual={
     const image=document.createElementNS(ns,'image');
     image.setAttribute('href',src);image.setAttribute('x',cell.x-size/2);image.setAttribute('y',cell.y+10+yOffset-size*248/256);
     image.setAttribute('width',size);image.setAttribute('height',size);image.setAttribute('class','troopSprite');
-    if(unit.hero){image.setAttribute('x',cell.x-34);image.setAttribute('y',cell.y-67);image.setAttribute('width',68);image.setAttribute('height',91);image.setAttribute('class','heroBoardSprite');}
+    if(unit.hero){
+      const hero=HeroRegistry.get(unit.definitionId),asset=AssetRegistry.get(hero.assets.token);
+      const frame=asset.boardFrame||{width:68,height:91,anchorX:.5,anchorY:1};
+      image.setAttribute('x',cell.x-frame.width*frame.anchorX);
+      image.setAttribute('y',cell.y+18-frame.height*frame.anchorY);
+      image.setAttribute('width',frame.width);image.setAttribute('height',frame.height);
+      image.setAttribute('class','heroBoardSprite');
+      image.setAttribute('aria-label',unitSpec(unit).name);
+    }
     image.setAttribute('pointer-events','none');symbol.setAttribute('visibility','hidden');
     image.addEventListener('error',()=>{image.setAttribute('visibility','hidden');symbol.setAttribute('visibility','visible')});
     group.appendChild(image);
     const hit=document.createElementNS(ns,'rect');
-    hit.setAttribute('x',cell.x-27);hit.setAttribute('y',cell.y-52);hit.setAttribute('width',54);hit.setAttribute('height',66);
+    hit.setAttribute('x',cell.x-27);hit.setAttribute('y',cell.y-(unit.hero?72:52));hit.setAttribute('width',54);hit.setAttribute('height',unit.hero?86:66);
     hit.setAttribute('fill','transparent');hit.setAttribute('pointer-events','all');hit.setAttribute('class','troopHit');group.appendChild(hit);
   }
 };
@@ -81,7 +90,10 @@ const CoreBoardRenderer = {
     }
 
     // UNIT LAYER + REGISTERED VISUAL LAYERS
-    for(const unit of S.units.filter(x=>x.hp>0)){
+    // Back rows first so nearby foreground figures overlap in a stable order.
+    const living=S.units.filter(x=>x.hp>0).slice().sort((a,b)=>
+      (cells.find(c=>c.q===a.q&&c.r===a.r)?.y||0)-(cells.find(c=>c.q===b.q&&c.r===b.r)?.y||0));
+    for(const unit of living){
       let cell=cells.find(c=>c.q===unit.q&&c.r===unit.r);
       if(!cell)continue;
 

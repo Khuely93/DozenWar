@@ -2,7 +2,7 @@
   "style": "DW-STYLE-01",
   "status": "APPROVED",
   "approvedDate": "2026-10-16",
-  "usage": "Hero picker and Hero information dock. Board tokens are separate assets.",
+  "usage": "Hero portraits in picker/dock and transparent static Hero sprites on the board.",
   "format": "WebP quality 90, full 1024x1536 artwork, no crop or redraw. Original final PNGs remain on Google Drive.",
   "heroes": [
     {
@@ -21,6 +21,15 @@
         "y": 15,
         "width": 300,
         "height": 400
+      },
+      "board": {
+        "sourceFile": "exec-75909de8-a9ba-4dbb-b2d1-f545ba550590.png",
+        "asset": "assets/heroes/inf/kazu-dw-style-01-board.webp",
+        "width": 512,
+        "height": 768,
+        "poses": 1,
+        "assetSha256": "f1cca21ea0e7986c03216639198a3c312ac453c51d9950a6922feeac5f94c8db",
+        "bytes": 110940
       }
     },
     {
@@ -39,6 +48,15 @@
         "y": 5,
         "width": 360,
         "height": 480
+      },
+      "board": {
+        "sourceFile": "exec-eabfa7bf-76a6-40e2-aeba-6e102b0b60cc.png",
+        "asset": "assets/heroes/inf/rodoc-dw-style-01-board.webp",
+        "width": 512,
+        "height": 768,
+        "poses": 1,
+        "assetSha256": "8079859bb7c75b1e86ae8479d4b9fd9aaf64e2fdaf41011dd4dfaaef4ab2c776",
+        "bytes": 111588
       }
     },
     {
@@ -57,6 +75,15 @@
         "y": 10,
         "width": 300,
         "height": 400
+      },
+      "board": {
+        "sourceFile": "exec-29429909-8cfd-4d77-afb2-c9d397f3a4ab.png",
+        "asset": "assets/heroes/inf/est-dw-style-01-board.webp",
+        "width": 512,
+        "height": 768,
+        "poses": 1,
+        "assetSha256": "bf6872d6ba26b993c8f28e2758933f0c92af8602856093d16bad2d29e5155df8",
+        "bytes": 82700
       }
     },
     {
@@ -75,6 +102,15 @@
         "y": 40,
         "width": 330,
         "height": 440
+      },
+      "board": {
+        "sourceFile": "exec-7666eb24-5386-48e4-be7c-36f38c6f24b8.png",
+        "asset": "assets/heroes/cav/mask-dw-style-01-board.webp",
+        "width": 512,
+        "height": 768,
+        "poses": 1,
+        "assetSha256": "da75a8fc01b48481ba39dca05215103243ec623d851572cf5b9ce7dc5df16480",
+        "bytes": 131784
       }
     },
     {
@@ -93,6 +129,15 @@
         "y": 85,
         "width": 330,
         "height": 440
+      },
+      "board": {
+        "sourceFile": "exec-dc1782e9-2377-4878-98a1-de1f8caee912.png",
+        "asset": "assets/heroes/cav/soul-dw-style-01-board.webp",
+        "width": 512,
+        "height": 768,
+        "poses": 1,
+        "assetSha256": "9eddef84e4f255e0f7e164248a76e4439bb0a13aa4ed5fb3f14c2c4d28d9d271",
+        "bytes": 125578
       }
     },
     {
@@ -111,6 +156,15 @@
         "y": 20,
         "width": 330,
         "height": 440
+      },
+      "board": {
+        "sourceFile": "exec-6a79d206-dd9f-47a8-af3a-e5471fb95cca.png",
+        "asset": "assets/heroes/cav/siri-dw-style-01-board.webp",
+        "width": 512,
+        "height": 768,
+        "poses": 1,
+        "assetSha256": "d12a687f7f83be422bc1d07d96aac74e9224e782761285267aa82db774a51aa6",
+        "bytes": 127074
       }
     },
     {
@@ -129,6 +183,15 @@
         "y": 5,
         "width": 360,
         "height": 480
+      },
+      "board": {
+        "sourceFile": "exec-8531e7b1-ceff-4c2f-ba39-f22ae7825939.png",
+        "asset": "assets/heroes/arch/xacnas-dw-style-01-board.webp",
+        "width": 512,
+        "height": 768,
+        "poses": 1,
+        "assetSha256": "8c8f71e68348f8016f5f7289b1bbff1b330f6dbed53d6cc1241e014bbe30bf77",
+        "bytes": 96056
       }
     },
     {
@@ -147,6 +210,15 @@
         "y": 40,
         "width": 330,
         "height": 440
+      },
+      "board": {
+        "sourceFile": "exec-57a4fcfa-2eb9-4734-a011-caa30e7f2b66.png",
+        "asset": "assets/heroes/arch/lucy-dw-style-01-board.webp",
+        "width": 512,
+        "height": 768,
+        "poses": 1,
+        "assetSha256": "9ba94ae822f64a640696dfcd465fec7172fa074dc40256ddd295492db1adb43d",
+        "bytes": 105568
       }
     },
     {
@@ -165,6 +237,15 @@
         "y": 30,
         "width": 480,
         "height": 640
+      },
+      "board": {
+        "sourceFile": "exec-b94abad5-46c4-41a6-8a4a-aed2c945002d.png",
+        "asset": "assets/heroes/arch/raen-dw-style-01-board.webp",
+        "width": 512,
+        "height": 768,
+        "poses": 1,
+        "assetSha256": "1c7af94732a94a828a7948ff5e0ff8b6bd49705bb993448a7292dfda95e33202",
+        "bytes": 96796
       }
     },
     {
@@ -183,6 +264,15 @@
         "y": 15,
         "width": 330,
         "height": 440
+      },
+      "board": {
+        "sourceFile": "exec-9b3e20d1-0abc-49f0-a279-8119ece4bd8f.png",
+        "asset": "assets/heroes/alch/neuro-dw-style-01-board.webp",
+        "width": 512,
+        "height": 768,
+        "poses": 1,
+        "assetSha256": "d4c67344d8400ba7a5185d01343fea423f004fca6393e7421118ea159517d03c",
+        "bytes": 90266
       }
     },
     {
@@ -201,6 +291,15 @@
         "y": 15,
         "width": 330,
         "height": 440
+      },
+      "board": {
+        "sourceFile": "exec-4a6c9b23-8210-4b0d-ade5-8018a447dd67.png",
+        "asset": "assets/heroes/alch/grim-dw-style-01-board.webp",
+        "width": 512,
+        "height": 768,
+        "poses": 1,
+        "assetSha256": "a2f47b68d81be71381c76b518b73bc0f6b68fafa6356cb6a6251f92443163042",
+        "bytes": 94374
       }
     },
     {
@@ -219,6 +318,15 @@
         "y": 10,
         "width": 360,
         "height": 480
+      },
+      "board": {
+        "sourceFile": "exec-0c9b410a-ec04-4aae-abff-24509c9a379b.png",
+        "asset": "assets/heroes/alch/ranus-dw-style-01-board.webp",
+        "width": 512,
+        "height": 768,
+        "poses": 1,
+        "assetSha256": "b2f1f1f8447d31c383104947b969af3e5b0fcdd99b896b69b66a0bd1f9a797a3",
+        "bytes": 109292
       }
     }
   ],
@@ -226,5 +334,11 @@
     "framing": "HEAD_AND_SHOULDERS",
     "aspectRatio": "3:4",
     "method": "CSS crop window in the approved full-body artwork; original asset bytes unchanged."
+  },
+  "boardDisplay": {
+    "poses": 1,
+    "format": "512x768 WebP with alpha",
+    "backgroundRemoval": "Image editing tool, then size/format export",
+    "totalBytes": 1282016
   }
 }

@@ -1,5 +1,12 @@
 # DOZEN WAR II v1.40.22 - Duel desktop map fit
 
+## v1.63.0 — Hero visuals on the board
+
+All twelve Heroes now use transparent DW-STYLE-01 figures on the board, including
+the complete horse for mounted Heroes and both heads for Raen. Each Hero has one
+static pose. Team rings, HP, action badges, targeting and deployment remain active.
+See [Hero board visuals and checks](docs/HERO_BOARD_VISUALS.md).
+
 ## v1.62.1 — Hero portrait framing
 
 Team selection and the Hero dock show head-and-shoulders portraits cropped from

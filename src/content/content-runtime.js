@@ -1565,9 +1565,18 @@ for(const [group,names] of Object.entries({ARCH:['LUCY','RAEN','XACNAS'],INF:['K
   }
 }
 
-// Lucy board artwork has independent assets from the UI portrait.
-RAW_ASSETS.IMG_HERO_LUCY_BOARD_TOKEN={type:'IMAGE',usage:'TOKEN',source:'./assets/heroes/arch/lucy-token/lucy-01.png',directionSources:Array.from({length:8},(_,i)=>'./assets/heroes/arch/lucy-token/lucy-'+String(i+1).padStart(2,'0')+'.png'),fallbackGlyph:'LU'};
-RAW_HERO_DB.HERO_ARCH_LUCY.assets.token='IMG_HERO_LUCY_BOARD_TOKEN';
+// One static transparent pose per approved Hero, independent from portrait crops.
+// Facing/view state remains presentation-only; mounted Heroes keep their horse.
+for(const hero of Object.values(RAW_HERO_DB)){
+  const name=RAW_LOCALES['vi-VN'][hero.nameKey],slug=name.toLowerCase();
+  const id='IMG_HERO_'+slug.toUpperCase()+'_DW_STYLE_01_BOARD';
+  const height=hero.class==='CAV'?114:100;
+  RAW_ASSETS[id]={type:'IMAGE',usage:'TOKEN',boardSprite:true,
+    source:'./assets/heroes/'+hero.class.toLowerCase()+'/'+slug+'-dw-style-01-board.webp',
+    boardFrame:{width:height*2/3,height,anchorX:.5,anchorY:.98},
+    fallbackGlyph:name.slice(0,2).toUpperCase()};
+  hero.assets={...hero.assets,token:id};
+}
 
 // ===== CONTENT SCHEMA v1.5 / PART 12.5 CONTENT MIGRATION + BACKWARD COMPATIBILITY =====
 // Canonical, data-driven content boundary shared by offline engine and future online server.

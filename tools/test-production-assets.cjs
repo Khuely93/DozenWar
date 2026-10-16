@@ -21,9 +21,26 @@ for (const [side,faction,view] of [[1,'blue',5],[2,'red',1],[3,'gold',1],[4,'sil
 }
 assert.equal(ctx.visual.source({kind:'inf',side:1,visualFaction:'invalid',visualView:99}),'./assets/troops-v3/inf-blue-5.webp');
 assert.equal(ctx.visual.source({kind:'inf', side:1, hero:true}), null, 'Hero retains its own visual');
+// Exercise actual content registration: every approved Hero must resolve to its
+// transparent static board asset, for both sides and any legacy facing value.
+const content=vm.createContext({window:{},console,crypto:require('node:crypto').webcrypto});
+for(const file of ['src/content/content-prelude-runtime.js','src/presentation/asset-definitions-runtime.js','locales/vi-VN-runtime.js','src/content/content-runtime.js'])vm.runInContext(read(file),content);
+vm.runInContext('this.heroRegistry=HeroRegistry;this.assetRegistry=AssetRegistry;',content);
+ctx.HeroRegistry=content.heroRegistry;ctx.AssetRegistry=content.assetRegistry;
+const artwork=JSON.parse(read('assets/heroes/dw-style-01-manifest.json'));
+assert.equal(artwork.heroes.length,12);
+for(const hero of artwork.heroes){
+  const def=content.heroRegistry.get(hero.heroId),token=content.assetRegistry.get(def.assets.token);
+  assert.equal(token.boardSprite,true,hero.name+' registered as a board sprite');
+  assert.equal(token.source,'./'+hero.board.asset);
+  assert.equal(token.boardFrame.anchorY,.98);
+  assert.equal(token.boardFrame.height,def.class==='CAV'?114:100);
+  for(const side of [1,2])for(const visualView of [1,5,8])assert.equal(ctx.visual.source({hero:true,definitionId:hero.heroId,side,visualView}),token.source);
+  assert.deepEqual(fs.readFileSync(path.join(root,'dist',hero.board.asset)),fs.readFileSync(path.join(root,hero.board.asset)),hero.name+' production board bytes');
+}
 const manifest = JSON.parse(read('project-manifest.json'));
 const built = JSON.parse(read('dist/build-manifest.json'));
 assert.equal(built.version, manifest.version, 'Production metadata version');
 assert.equal(read('dist/index.html').match(/LATEST PLAYTEST v(\d+\.\d+\.\d+)/)?.[1], manifest.version, 'Production banner version');
 for (const relative of Object.values(built.bundles)) assert.ok(fs.existsSync(path.join(root, 'dist', relative)), 'Missing bundle: ' + relative);
-console.log('PASS | Production sprites (' + checked + '), unchanged sprite bytes, Hero visual, version and bundles');
+console.log('PASS | Production sprites (' + checked + '), 12 Hero board visuals, unchanged sprite bytes, version and bundles');
