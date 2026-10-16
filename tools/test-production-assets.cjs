@@ -49,6 +49,12 @@ for(const hero of artwork.heroes){
   for(const side of [1,2])for(const visualView of [1,5,8])assert.equal(ctx.visual.source({hero:true,definitionId:hero.heroId,side,visualView}),token.source);
   assert.deepEqual(fs.readFileSync(path.join(root,'dist',hero.board.asset)),fs.readFileSync(path.join(root,hero.board.asset)),hero.name+' production board bytes');
 }
+const map=JSON.parse(read('assets/map-gallery/map-compact-manifest.json'));
+const mapBytes=fs.readFileSync(path.join(root,map.asset));
+assert.equal(require('node:crypto').createHash('sha256').update(mapBytes).digest('hex'),map.assetSha256);
+assert.deepEqual(fs.readFileSync(path.join(root,'dist',map.asset)),mapBytes,'Approved map production bytes');
+assert(read('dist/index.html').includes('data-duel-src="./'+map.asset+'"'));
+assert(read('dist/index.html').includes('data-backdrop-src="./'+map.asset+'"'));
 const manifest = JSON.parse(read('project-manifest.json'));
 const built = JSON.parse(read('dist/build-manifest.json'));
 assert.equal(built.version, manifest.version, 'Production metadata version');

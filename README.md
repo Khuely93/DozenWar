@@ -1,5 +1,13 @@
 # DOZEN WAR II v1.40.22 - Duel desktop map fit
 
+## v1.67.0 — Arena matching the compact Hero and soldier art
+
+The approved fortress arena now uses clean angular architecture, grouped cel
+shadows and a quiet stone courtyard matching the compact figures. Board art and
+the dimmed camera backdrop share the new map. All 61 hexes, unit positions,
+camera gestures and gameplay rules stay the same.
+See [map asset and checks](docs/MAP_COMPACT_STYLE_01.md).
+
 ## v1.66.0 — Compact Hero visuals on the board
 
 All twelve Heroes now use the approved compact designs matching the soldier

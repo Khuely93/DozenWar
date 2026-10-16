@@ -1,8 +1,8 @@
 {
   "project": "DOZEN WAR II",
-  "version": "1.66.0",
+  "version": "1.67.0",
   "phase": "DUEL_RULE_MODE_1VS1_180_30",
-  "generatedAt": "2026-10-16T09:52:13.901Z",
+  "generatedAt": "2026-10-16T11:26:43.909Z",
   "runtimeOrder": [
     "src/architecture/module-boundaries.js",
     "src/ui/ui-dom-runtime.js",
@@ -49,10 +49,10 @@
   "files": [
     {
       "file": "index.html",
-      "bytes": 16769,
-      "gzipBytes": 4654,
-      "brotliBytes": 3836,
-      "sha256": "7cdac899a2a111f758baca65fccb198a9ed1ead639c00e37edbd41c0fe6439d7"
+      "bytes": 16776,
+      "gzipBytes": 4640,
+      "brotliBytes": 3826,
+      "sha256": "a48a7c79c9b24b70ba1c9ab2e6dd7ad041abb12e8d8585ebda780a74045d9338"
     },
     {
       "file": "assets/runtime.919804da327f.js",

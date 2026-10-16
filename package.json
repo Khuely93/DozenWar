@@ -1,6 +1,6 @@
 {
   "name": "dozen-war-ii",
-  "version": "1.66.0",
+  "version": "1.67.0",
   "private": true,
   "description": "DOZEN WAR II — confirmed twelve heroes",
   "scripts": {
@@ -30,7 +30,8 @@
     "test:equipment": "node tools/test-equipment-catalog.cjs",
     "test:infantry-equipment": "node tools/test-infantry-equipment.cjs",
     "test:defense-feedback": "node tools/test-defense-feedback.cjs",
-    "test:hero-board-browser": "node tools/test-hero-board-browser.cjs"
+    "test:hero-board-browser": "node tools/test-hero-board-browser.cjs",
+    "test:map-browser": "node tools/test-dark-fantasy-map.cjs"
   },
   "engines": {
     "node": ">=18"

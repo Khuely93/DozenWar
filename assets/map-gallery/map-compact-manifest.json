@@ -1,0 +1,15 @@
+{
+  "style": "DW-STYLE-01 compact Hero/soldier art direction",
+  "status": "APPROVED_FOR_GAME",
+  "sourceFile": "exec-c836ce8d-fdeb-4062-a118-4178fc5e696a.png",
+  "sourceSha256": "9f3fe523f98daf84f6c35234bd49290c78397075636c41095d438e07f63469f6",
+  "asset": "assets/map-gallery/map-compact-dw-style-01.webp",
+  "assetSha256": "a66c598ef8d07b481c542638c15f1a4905d7be3e997fdaca512bd2cae7083196",
+  "width": 1672,
+  "height": 941,
+  "bytes": 250056,
+  "containsGameplayHexGrid": false,
+  "hexCount": 61,
+  "presentation": "Approved map used as both board art and dimmed camera backdrop, matching the reviewed preview",
+  "gameplayChanges": false
+}
