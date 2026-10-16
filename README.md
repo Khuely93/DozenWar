@@ -1,5 +1,11 @@
 # DOZEN WAR II v1.40.22 - Duel desktop map fit
 
+## v1.62.1 — Hero portrait framing
+
+Team selection and the Hero dock show head-and-shoulders portraits cropped from
+the approved artwork. Each Hero has its own frame; Raen keeps both heads visible.
+Original full-body artwork and board tokens remain available separately.
+
 ## v1.62.0 — Approved Hero visuals (DW-STYLE-01)
 
 All twelve Hero portraits in team selection and the Hero dock now use the

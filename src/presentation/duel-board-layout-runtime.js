@@ -31,7 +31,7 @@ const DuelBoardLayout = {
     this.portrait.setAttribute('aria-label',definition?.name||'Hero');
     if(this.portrait.dataset.portraitKey===(source||glyph))return;
     this.portrait.dataset.portraitKey=source||glyph;this.portrait.replaceChildren();
-    if(source){const image=document.createElement('img');image.src=source;image.alt=definition.name;image.draggable=false;image.onerror=()=>this.portrait.replaceChildren(document.createTextNode(glyph));this.portrait.append(image)}
+    if(source){const image=document.createElement('img');image.src=source;image.alt=definition.name;image.draggable=false;HeroPortrait.frame(this.portrait,image,AssetResolver.get(definition.assets.portrait));image.onerror=()=>this.portrait.replaceChildren(document.createTextNode(glyph));this.portrait.append(image)}
     else this.portrait.textContent=glyph;
   },
   decorateSkills(){

@@ -913,6 +913,20 @@ const RAW_ASSETS={
   ANIM_HERO_INF_001_ATTACK:{type:'ANIMATION'},ANIM_HERO_RODOC_ATTACK:{type:'ANIMATION'},ANIM_HERO_EST_ATTACK:{type:'ANIMATION'},ANIM_HERO_ARCH_001_ATTACK:{type:'ANIMATION'},ANIM_HERO_CAV_001_ATTACK:{type:'ANIMATION'}
 };
 
+// Display a head-and-shoulders window without redrawing the approved artwork.
+const HeroPortrait={
+  frame(frame,image,asset){
+    const crop=asset?.portraitCrop;
+    if(!crop)return;
+    frame.classList.add('heroPortraitFrame');
+    image.classList.add('heroPortraitArt');
+    for(const [name,value] of Object.entries({
+      width:1024/crop.width*100,height:1536/crop.height*100,
+      left:-crop.x/crop.width*100,top:-crop.y/crop.height*100
+    }))frame.style.setProperty('--hero-art-'+name,value+'%');
+  }
+};
+
 ;
 
 
@@ -2483,11 +2497,27 @@ for(const h of Object.values(RAW_HERO_DB)){
   h.assets={...h.assets,token};
 }
 
-// Approved DW-STYLE-01 full-body artwork; board tokens and gameplay identity stay separate.
+// Head-and-shoulders windows into the approved artwork, in 1024x1536 source pixels.
+// Wider framing keeps Raen's two heads and elaborate headgear fully visible.
+const HERO_PORTRAIT_CROPS={
+  KAZU:{x:340,y:15,width:300,height:400},
+  RODOC:{x:330,y:5,width:360,height:480},
+  EST:{x:350,y:10,width:300,height:400},
+  MASK:{x:355,y:40,width:330,height:440},
+  SOUL:{x:380,y:85,width:330,height:440},
+  SIRI:{x:360,y:20,width:330,height:440},
+  XACNAS:{x:330,y:5,width:360,height:480},
+  LUCY:{x:330,y:40,width:330,height:440},
+  RAEN:{x:260,y:30,width:480,height:640},
+  NEURO:{x:330,y:15,width:330,height:440},
+  GRIM:{x:340,y:15,width:330,height:440},
+  RANUS:{x:330,y:10,width:360,height:480}
+};
+// Portrait framing stays separate from board tokens and gameplay identity.
 for(const [group,names] of Object.entries({ARCH:['LUCY','RAEN','XACNAS'],INF:['KAZU','RODOC','EST'],CAV:['MASK','SOUL','SIRI'],ALCH:['NEURO','GRIM','RANUS']})){
   for(const name of names){
     const hero=RAW_HERO_DB['HERO_'+group+'_'+name],id='IMG_HERO_'+name+'_PORTRAIT';
-    RAW_ASSETS[id]={type:'IMAGE',usage:'PORTRAIT',source:'./assets/heroes/'+group.toLowerCase()+'/'+name.toLowerCase()+'-dw-style-01.webp',fallbackGlyph:name.slice(0,2)};
+    RAW_ASSETS[id]={type:'IMAGE',usage:'PORTRAIT',source:'./assets/heroes/'+group.toLowerCase()+'/'+name.toLowerCase()+'-dw-style-01.webp',portraitCrop:HERO_PORTRAIT_CROPS[name],fallbackGlyph:name.slice(0,2)};
     hero.assets={...hero.assets,portrait:id};
   }
 }
@@ -3248,7 +3278,7 @@ function beginTeam(p){
 function renderTeamPicker(){
   if(!HeroRegistry.list().some(h=>h.id===tempHeroDefinitionId))tempHeroDefinitionId=HeroRegistry.list()[0]?.id||null;
   ShellDOM.team.heroChoices.innerHTML='';
-  HeroRegistry.list().forEach(def=>{let h=ContentViews.hero(def.id);let d=document.createElement('button');d.className='choice'+(tempHeroDefinitionId===def.id?' on':'');d.dataset.heroClass=h.class;d.innerHTML='<div class="sym">'+h.sym+'</div><b>'+h.name+'</b><div class="muted">HP '+h.stats.hp+' · '+({INF:'Bộ binh',CAV:'Kỵ binh',ARCH:'Cung thủ',ALCH:'Giả kim thuật sư'}[h.class]||h.class)+'</div>';d.onclick=()=>{tempHeroDefinitionId=def.id;renderTeamPicker()};const source=h.assets?.portrait?AssetResolver.source(h.assets.portrait):null;if(source){const image=document.createElement('img');image.src=source;image.alt=h.name;image.className='heroChoicePortrait';image.draggable=false;const symbol=d.querySelector('.sym');image.onerror=()=>symbol.textContent=h.sym;symbol.replaceChildren(image)}ShellDOM.team.heroChoices.appendChild(d)});
+  HeroRegistry.list().forEach(def=>{let h=ContentViews.hero(def.id);let d=document.createElement('button');d.className='choice'+(tempHeroDefinitionId===def.id?' on':'');d.dataset.heroClass=h.class;d.innerHTML='<div class="sym">'+h.sym+'</div><b>'+h.name+'</b><div class="muted">HP '+h.stats.hp+' · '+({INF:'Bộ binh',CAV:'Kỵ binh',ARCH:'Cung thủ',ALCH:'Giả kim thuật sư'}[h.class]||h.class)+'</div>';d.onclick=()=>{tempHeroDefinitionId=def.id;renderTeamPicker()};const source=h.assets?.portrait?AssetResolver.source(h.assets.portrait):null;if(source){const image=document.createElement('img');image.src=source;image.alt=h.name;image.className='heroChoicePortrait';image.draggable=false;const symbol=d.querySelector('.sym');HeroPortrait.frame(symbol,image,AssetResolver.get(h.assets.portrait));image.onerror=()=>symbol.textContent=h.sym;symbol.replaceChildren(image)}ShellDOM.team.heroChoices.appendChild(d)});
   ShellDOM.team.troopChoices.innerHTML='';
   Object.entries(TROOPS).forEach(([k,u])=>{let d=document.createElement('div');d.className='choice';d.innerHTML='<div class="sym">'+u.sym+'</div><b>'+u.name+'</b><div class="muted">HP '+u.hp+' · Move '+u.move+'</div><div class="countCtl"><button class="btn" data-k="'+k+'" data-d="-1">−</button><b>'+tempTroops[k]+'</b><button class="btn" data-k="'+k+'" data-d="1">+</button></div>';ShellDOM.team.troopChoices.appendChild(d)});
   ShellDOM.team.troopChoices.querySelectorAll('button').forEach(b=>b.onclick=()=>{let k=b.dataset.k,d=+b.dataset.d,total=Object.values(tempTroops).reduce((a,b)=>a+b,0);if(d>0&&total>=5)return;tempTroops[k]=Math.max(0,tempTroops[k]+d);renderTeamPicker()});
@@ -4411,7 +4441,7 @@ const DuelBoardLayout = {
     this.portrait.setAttribute('aria-label',definition?.name||'Hero');
     if(this.portrait.dataset.portraitKey===(source||glyph))return;
     this.portrait.dataset.portraitKey=source||glyph;this.portrait.replaceChildren();
-    if(source){const image=document.createElement('img');image.src=source;image.alt=definition.name;image.draggable=false;image.onerror=()=>this.portrait.replaceChildren(document.createTextNode(glyph));this.portrait.append(image)}
+    if(source){const image=document.createElement('img');image.src=source;image.alt=definition.name;image.draggable=false;HeroPortrait.frame(this.portrait,image,AssetResolver.get(definition.assets.portrait));image.onerror=()=>this.portrait.replaceChildren(document.createTextNode(glyph));this.portrait.append(image)}
     else this.portrait.textContent=glyph;
   },
   decorateSkills(){

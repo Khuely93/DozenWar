@@ -15,7 +15,13 @@
       "width": 1024,
       "height": 1536,
       "bytes": 266188,
-      "notes": "Tóc ngắn, khăn đỏ, Khiên Rồng và Xích Quỷ."
+      "notes": "Tóc ngắn, khăn đỏ, Khiên Rồng và Xích Quỷ.",
+      "portraitCrop": {
+        "x": 340,
+        "y": 15,
+        "width": 300,
+        "height": 400
+      }
     },
     {
       "heroId": "HERO_INF_RODOC",
@@ -27,7 +33,13 @@
       "width": 1024,
       "height": 1536,
       "bytes": 272042,
-      "notes": "Tóc dài, râu tết, giáp vai mãnh thú, kiếm lớn."
+      "notes": "Tóc dài, râu tết, giáp vai mãnh thú, kiếm lớn.",
+      "portraitCrop": {
+        "x": 330,
+        "y": 5,
+        "width": 360,
+        "height": 480
+      }
     },
     {
       "heroId": "HERO_INF_EST",
@@ -39,7 +51,13 @@
       "width": 1024,
       "height": 1536,
       "bytes": 200926,
-      "notes": "Tóc ngắn lệch, giáp bất đối xứng, đao."
+      "notes": "Tóc ngắn lệch, giáp bất đối xứng, đao.",
+      "portraitCrop": {
+        "x": 350,
+        "y": 10,
+        "width": 300,
+        "height": 400
+      }
     },
     {
       "heroId": "HERO_CAV_MASK",
@@ -51,7 +69,13 @@
       "width": 1024,
       "height": 1536,
       "bytes": 315158,
-      "notes": "Cưỡi ngựa, cầm kích."
+      "notes": "Cưỡi ngựa, cầm kích.",
+      "portraitCrop": {
+        "x": 355,
+        "y": 40,
+        "width": 330,
+        "height": 440
+      }
     },
     {
       "heroId": "HERO_CAV_SOUL",
@@ -63,7 +87,13 @@
       "width": 1024,
       "height": 1536,
       "bytes": 258398,
-      "notes": "Cưỡi ngựa, cầm đại đao."
+      "notes": "Cưỡi ngựa, cầm đại đao.",
+      "portraitCrop": {
+        "x": 380,
+        "y": 85,
+        "width": 330,
+        "height": 440
+      }
     },
     {
       "heroId": "HERO_CAV_SIRI",
@@ -75,7 +105,13 @@
       "width": 1024,
       "height": 1536,
       "bytes": 293444,
-      "notes": "Cưỡi ngựa, cầm song đao."
+      "notes": "Cưỡi ngựa, cầm song đao.",
+      "portraitCrop": {
+        "x": 360,
+        "y": 20,
+        "width": 330,
+        "height": 440
+      }
     },
     {
       "heroId": "HERO_ARCH_XACNAS",
@@ -87,7 +123,13 @@
       "width": 1024,
       "height": 1536,
       "bytes": 245438,
-      "notes": "Cung ngắn và phi đao ở thắt lưng."
+      "notes": "Cung ngắn và phi đao ở thắt lưng.",
+      "portraitCrop": {
+        "x": 330,
+        "y": 5,
+        "width": 360,
+        "height": 480
+      }
     },
     {
       "heroId": "HERO_ARCH_LUCY",
@@ -99,7 +141,13 @@
       "width": 1024,
       "height": 1536,
       "bytes": 220904,
-      "notes": "Cung dài, bao cung sau lưng, bản đã sửa tay cầm tên."
+      "notes": "Cung dài, bao cung sau lưng, bản đã sửa tay cầm tên.",
+      "portraitCrop": {
+        "x": 330,
+        "y": 40,
+        "width": 330,
+        "height": 440
+      }
     },
     {
       "heroId": "HERO_ARCH_RAEN",
@@ -111,7 +159,13 @@
       "width": 1024,
       "height": 1536,
       "bytes": 216020,
-      "notes": "Hai đầu một thân, nỏ, bao hông đã bổ sung tên nỏ."
+      "notes": "Hai đầu một thân, nỏ, bao hông đã bổ sung tên nỏ.",
+      "portraitCrop": {
+        "x": 260,
+        "y": 30,
+        "width": 480,
+        "height": 640
+      }
     },
     {
       "heroId": "HERO_ALCH_NEURO",
@@ -123,7 +177,13 @@
       "width": 1024,
       "height": 1536,
       "bytes": 196482,
-      "notes": "Sách sau lưng, bản đã sửa tay cầm bình thuốc."
+      "notes": "Sách sau lưng, bản đã sửa tay cầm bình thuốc.",
+      "portraitCrop": {
+        "x": 330,
+        "y": 15,
+        "width": 330,
+        "height": 440
+      }
     },
     {
       "heroId": "HERO_ALCH_GRIM",
@@ -135,7 +195,13 @@
       "width": 1024,
       "height": 1536,
       "bytes": 259100,
-      "notes": "Gậy ngắn, áo choàng trùm đầu, bình thuốc quanh thắt lưng."
+      "notes": "Gậy ngắn, áo choàng trùm đầu, bình thuốc quanh thắt lưng.",
+      "portraitCrop": {
+        "x": 340,
+        "y": 15,
+        "width": 330,
+        "height": 440
+      }
     },
     {
       "heroId": "HERO_ALCH_RANUS",
@@ -147,7 +213,18 @@
       "width": 1024,
       "height": 1536,
       "bytes": 268748,
-      "notes": "Quyền trượng phép thuật dài."
+      "notes": "Quyền trượng phép thuật dài.",
+      "portraitCrop": {
+        "x": 330,
+        "y": 10,
+        "width": 360,
+        "height": 480
+      }
     }
-  ]
+  ],
+  "portraitDisplay": {
+    "framing": "HEAD_AND_SHOULDERS",
+    "aspectRatio": "3:4",
+    "method": "CSS crop window in the approved full-body artwork; original asset bytes unchanged."
+  }
 }

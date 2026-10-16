@@ -31,9 +31,12 @@ WebP SHA-256 are recorded in `assets/heroes/dw-style-01-manifest.json`.
 ## Integration
 
 The existing Hero portrait asset IDs now resolve to the approved artwork in
-the team picker and Hero dock, including Training mode. Both views use
-`object-fit: contain` so full-body art, weapons and horses stay within the image.
-The taller team-picker image keeps the 2:3 aspect ratio.
+the team picker and Hero dock, including Training mode. From v1.62.1 these
+views display a 3:4 head-and-shoulders window into each final illustration.
+Each Hero has a separate crop recorded in the artwork manifest and portrait
+asset metadata, including a wider frame for Raen's two heads. CSS positions
+the original artwork inside an overflow-hidden frame; source image bytes
+remain unchanged. Both views share the same presentation helper and crop.
 
 Board tokens are independent assets. Existing initials, troop sprites and Lucy's
 eight directional board sprites remain separate from portrait art. Gameplay
@@ -47,6 +50,7 @@ the runtime selects only the new `*-dw-style-01.webp` portrait files.
 - `npm run build`: validation, content readiness, gameplay and production-asset gates pass.
 - Production Chromium check under a `/DozenWar/` URL prefix: all 12 picker images and
   all 12 Hero dock images decode at 1024 × 1536, with no JavaScript or HTTP errors.
+  Portrait windows use the same 3:4 crop in both views on desktop and mobile.
 - Desktop 1920 × 1080, laptop 1366 × 768 and mobile 390 × 844 layouts inspected.
 - Source and production copies match the SHA-256 values in the artwork manifest.
 - Total approved WebP payload: 3,012,848 bytes.
