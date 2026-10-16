@@ -19,7 +19,7 @@ window.DOZEN_QA=Object.freeze({
     t('Enemy hex sharing forbidden in Core architecture',CORE_ARCHITECTURE_V18.map.enemySideSharing===false);
     t('Damage minimum = 0',CORE_ARCHITECTURE_V18.combat.damageMinimum===0);
     t('Propagation targets cannot defend',CORE_ARCHITECTURE_V18.combat.propagationTargetsCanDefend===false);
-    const fakeInf={hero:false,kind:'inf',moveBuff:2,movementCostSpent:1,attacked:false,hp:2};
+    const fakeInf=Object.assign(createRuntimeEntityInstance({definitionId:'UNIT_INF_001',hero:false,side:1,q:0,r:0}),{moveBuff:2,movementCostSpent:1,attacked:false,hp:2});
     t('Move buff increases total budget without resetting spent',movementBudgetTotal(fakeInf)===3&&remainingMove(fakeInf)===2,JSON.stringify({total:movementBudgetTotal(fakeInf),spent:movementCostSpent(fakeInf),remaining:remainingMove(fakeInf)}));
     const pendingNormal={sourceType:'ATTACK',skillStar:null,atkCard:{star:2}};
     t('Defense lower Star loses effect',CorePowerResolver.resolve(pendingAttackPower(pendingNormal),1).winner==='SOURCE');

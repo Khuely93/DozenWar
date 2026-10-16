@@ -1,5 +1,13 @@
 # DOZEN WAR II v1.40.22 - Duel desktop map fit
 
+## v1.64.0 — DW-STYLE-01 soldiers in four faction colors
+
+Infantry, cavalry and crossbow troops now use the approved full-body artwork on
+the board, with red, blue, yellow and gray cloth to identify their faction.
+Cavalry retains the approved diagonal spear pose. Figures have transparent
+backgrounds and one static pose. Hero artwork and gameplay rules are unchanged.
+See [soldier artwork and verification](docs/TROOP_DW_STYLE_01.md).
+
 ## v1.63.0 — Hero visuals on the board
 
 All twelve Heroes now use transparent DW-STYLE-01 figures on the board, including

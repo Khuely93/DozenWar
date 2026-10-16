@@ -152,7 +152,7 @@
 .duelCleanMap .hex:not(.hl):not(.attack):not(.skill-valid):not(.skill-hostile):not(.skill-selected):not(.drag-valid):not(.drag-over):not(.attack-ready):not(.incomingAttackHex){fill:transparent;stroke:#000;stroke-opacity:.8;stroke-width:1.6;filter:none}
 
 /* Troop images retain a team ring and independent action/attack badges. */
-.troopSprite{pointer-events:none}.troopTeamRing{stroke-width:2.4!important}
+.troopSprite{pointer-events:none;filter:drop-shadow(0 1px 1px #071019)}.troopTeamRing{stroke-width:2.4!important}
 .heroBoardSprite{pointer-events:none;filter:drop-shadow(0 1px 1px #071019)}
 .troopHit{cursor:pointer}.unit.deployDraggable .troopHit{cursor:grab}
 
