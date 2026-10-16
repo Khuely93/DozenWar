@@ -250,7 +250,8 @@
 @media(max-width:600px){.defenseFeedbackPanel{padding:16px}.defenseFeedbackName{font-size:19px}.defenseFeedbackVisual{height:230px}.defenseFeedbackFace{width:136px;height:204px}}
 @media(prefers-reduced-motion:reduce){.playing .defenseFeedbackFace{animation:none;opacity:1}.playing .defenseFeedbackParticle{display:none}}
 
-/* Hero portraits retain their own asset IDs; tokens stay independent. */
+/* Approved 2:3 Hero artwork fits the existing picker and dock without cropping. */
+.heroList button.choice{color:var(--text)}
 .dockPortrait{position:relative;overflow:hidden}
-.dockPortrait img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;pointer-events:none;user-select:none}
-.heroChoicePortrait{display:block;width:72px;height:92px;object-fit:cover;margin:auto;border-radius:8px}
+.dockPortrait img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;object-position:center;pointer-events:none;user-select:none}
+.heroChoicePortrait{display:block;width:72px;height:108px;object-fit:contain;margin:auto;border-radius:8px}

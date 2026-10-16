@@ -1,0 +1,153 @@
+{
+  "style": "DW-STYLE-01",
+  "status": "APPROVED",
+  "approvedDate": "2026-10-16",
+  "usage": "Hero picker and Hero information dock. Board tokens are separate assets.",
+  "format": "WebP quality 90, full 1024x1536 artwork, no crop or redraw. Original final PNGs remain on Google Drive.",
+  "heroes": [
+    {
+      "heroId": "HERO_INF_KAZU",
+      "name": "Kazu",
+      "sourceFile": "exec-98dfc7e7-a9b5-4757-82ad-ad0f73f8f7d8.png",
+      "sourceSha256": "990862ba6c68951e37d4eefe6db92373b9d12c7a2a81e594cb4843f69b5dac8d",
+      "asset": "assets/heroes/inf/kazu-dw-style-01.webp",
+      "assetSha256": "3a7cb2c244c4cf3952d057f4266235fa1a8327527a50ec9ec69eb0c17269093e",
+      "width": 1024,
+      "height": 1536,
+      "bytes": 266188,
+      "notes": "Tóc ngắn, khăn đỏ, Khiên Rồng và Xích Quỷ."
+    },
+    {
+      "heroId": "HERO_INF_RODOC",
+      "name": "Rodoc",
+      "sourceFile": "exec-02ac040d-cdf0-49b9-893c-572a7a6baaf2.png",
+      "sourceSha256": "aca3afd6d1c790dda51711e5196792b30414b698785e567f5edba3c0087e1be7",
+      "asset": "assets/heroes/inf/rodoc-dw-style-01.webp",
+      "assetSha256": "9f193b64b01a0498f8812d3301a5bc1dd23c4567e9a946b3209acbf0084b470f",
+      "width": 1024,
+      "height": 1536,
+      "bytes": 272042,
+      "notes": "Tóc dài, râu tết, giáp vai mãnh thú, kiếm lớn."
+    },
+    {
+      "heroId": "HERO_INF_EST",
+      "name": "Est",
+      "sourceFile": "exec-5c100d39-5814-4cee-b56a-072c6f23769c.png",
+      "sourceSha256": "8e4466f945fbc7bccc3eff412e5adc8373a215fb21fc963b158ec6b711d3d8ac",
+      "asset": "assets/heroes/inf/est-dw-style-01.webp",
+      "assetSha256": "717d6497c2d1d9e08cf46f6450c31fa288aa542fafd1187e30f6eaaf0138b1e2",
+      "width": 1024,
+      "height": 1536,
+      "bytes": 200926,
+      "notes": "Tóc ngắn lệch, giáp bất đối xứng, đao."
+    },
+    {
+      "heroId": "HERO_CAV_MASK",
+      "name": "Mask",
+      "sourceFile": "exec-3d9b3467-db00-4481-a3bd-9b77aa4d324f.png",
+      "sourceSha256": "fa9142de4c00d4deceb2b171634148a9c187db1881e4270cab06b18ff26d02c5",
+      "asset": "assets/heroes/cav/mask-dw-style-01.webp",
+      "assetSha256": "9133c512ab79be5fea0a2ae09e6c10c1587df79447985571bf8b1d88613da37b",
+      "width": 1024,
+      "height": 1536,
+      "bytes": 315158,
+      "notes": "Cưỡi ngựa, cầm kích."
+    },
+    {
+      "heroId": "HERO_CAV_SOUL",
+      "name": "Soul",
+      "sourceFile": "exec-879fa7e8-88c9-4314-bb31-5377f6c9eeca.png",
+      "sourceSha256": "92823d3e94f0dfd2822ab70a971e168a15bd120ec6017dc96562826a8091ce0d",
+      "asset": "assets/heroes/cav/soul-dw-style-01.webp",
+      "assetSha256": "655f60a2313cc3f352a7ef42f18745e658fc5cb1131d7825b9c090f479065e4f",
+      "width": 1024,
+      "height": 1536,
+      "bytes": 258398,
+      "notes": "Cưỡi ngựa, cầm đại đao."
+    },
+    {
+      "heroId": "HERO_CAV_SIRI",
+      "name": "Siri",
+      "sourceFile": "exec-e4fe5387-679e-4ace-aa98-472b60974bf7.png",
+      "sourceSha256": "f7a783b6e8a5ba98fd481d9f512f1797e6546a20f64ba2fb81ad042572953182",
+      "asset": "assets/heroes/cav/siri-dw-style-01.webp",
+      "assetSha256": "6a32fcc4fd52511ead786eff60e455faf5df41323d27f5e04671f1e1b7be3fde",
+      "width": 1024,
+      "height": 1536,
+      "bytes": 293444,
+      "notes": "Cưỡi ngựa, cầm song đao."
+    },
+    {
+      "heroId": "HERO_ARCH_XACNAS",
+      "name": "Xacnas",
+      "sourceFile": "exec-51ab752f-c324-41a7-8c44-a4b047c1188a.png",
+      "sourceSha256": "89ac3f0c1f3d7ed922991b2be03ddbe88735fca3204b30d6ad0da0913de5cc0e",
+      "asset": "assets/heroes/arch/xacnas-dw-style-01.webp",
+      "assetSha256": "a992f78448c44452fe60b8eef48ca9c0bfce4b95173609e8f3953ed7a85cb8ce",
+      "width": 1024,
+      "height": 1536,
+      "bytes": 245438,
+      "notes": "Cung ngắn và phi đao ở thắt lưng."
+    },
+    {
+      "heroId": "HERO_ARCH_LUCY",
+      "name": "Lucy",
+      "sourceFile": "exec-7e8b276e-b137-493d-b615-802103976546.png",
+      "sourceSha256": "4c53fa97c787aa93fce0f017c35d676b20c1b8b80c5b143a099fa1f5754caf68",
+      "asset": "assets/heroes/arch/lucy-dw-style-01.webp",
+      "assetSha256": "15dc0b5000d1a03ef60b374de4f0e0b45a1c25bfd513644eb3863c3d0f210dd1",
+      "width": 1024,
+      "height": 1536,
+      "bytes": 220904,
+      "notes": "Cung dài, bao cung sau lưng, bản đã sửa tay cầm tên."
+    },
+    {
+      "heroId": "HERO_ARCH_RAEN",
+      "name": "Raen",
+      "sourceFile": "exec-dd6dde11-9a1b-486c-9409-2b96693c8920.png",
+      "sourceSha256": "00c4427eb8906e2e7089b893cca03065665ac367a0b549559d1e79e9bdfff006",
+      "asset": "assets/heroes/arch/raen-dw-style-01.webp",
+      "assetSha256": "246544d2a109d68bf187df649283b70a344d7d2b82422cf5334200fab4e4b7f8",
+      "width": 1024,
+      "height": 1536,
+      "bytes": 216020,
+      "notes": "Hai đầu một thân, nỏ, bao hông đã bổ sung tên nỏ."
+    },
+    {
+      "heroId": "HERO_ALCH_NEURO",
+      "name": "Neuro",
+      "sourceFile": "exec-2adcc7cf-df91-4ab1-8699-4fe2f479016b.png",
+      "sourceSha256": "430e247374c88f13ace0af5efc0027a10a7fb87ef329a97ab10b47e8ad399d73",
+      "asset": "assets/heroes/alch/neuro-dw-style-01.webp",
+      "assetSha256": "0621b02e193cf72f6df329506fce66f1b64ca99b66621f68d718b373820ab9d8",
+      "width": 1024,
+      "height": 1536,
+      "bytes": 196482,
+      "notes": "Sách sau lưng, bản đã sửa tay cầm bình thuốc."
+    },
+    {
+      "heroId": "HERO_ALCH_GRIM",
+      "name": "Grim",
+      "sourceFile": "exec-e9fff2d5-026e-4ffe-b7a7-bc5ed073b653.png",
+      "sourceSha256": "7875159ba10f632788f6985142c76bff856f6e3cee5a8ccb5051b0ea4e8becf2",
+      "asset": "assets/heroes/alch/grim-dw-style-01.webp",
+      "assetSha256": "f121b07236c5f4726891b00abaddd47fe2c859f4fc69ec4aa4342fab29ebb35c",
+      "width": 1024,
+      "height": 1536,
+      "bytes": 259100,
+      "notes": "Gậy ngắn, áo choàng trùm đầu, bình thuốc quanh thắt lưng."
+    },
+    {
+      "heroId": "HERO_ALCH_RANUS",
+      "name": "Ranus",
+      "sourceFile": "exec-036c2656-b931-479b-a9f7-cc3e22650058.png",
+      "sourceSha256": "7ea5e699e588ad0fecd2033717d9c9f1b664cf701498a5ed0daafa87257a8212",
+      "asset": "assets/heroes/alch/ranus-dw-style-01.webp",
+      "assetSha256": "4280dad129a432c03af159e38165e0220de026a3cefa84101dbda7fd515bf17c",
+      "width": 1024,
+      "height": 1536,
+      "bytes": 268748,
+      "notes": "Quyền trượng phép thuật dài."
+    }
+  ]
+}

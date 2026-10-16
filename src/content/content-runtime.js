@@ -1540,11 +1540,11 @@ for(const h of Object.values(RAW_HERO_DB)){
   h.assets={...h.assets,token};
 }
 
-// Portrait artwork is separate from board tokens and gameplay identity.
+// Approved DW-STYLE-01 full-body artwork; board tokens and gameplay identity stay separate.
 for(const [group,names] of Object.entries({ARCH:['LUCY','RAEN','XACNAS'],INF:['KAZU','RODOC','EST'],CAV:['MASK','SOUL','SIRI'],ALCH:['NEURO','GRIM','RANUS']})){
   for(const name of names){
     const hero=RAW_HERO_DB['HERO_'+group+'_'+name],id='IMG_HERO_'+name+'_PORTRAIT';
-    RAW_ASSETS[id]={type:'IMAGE',usage:'PORTRAIT',source:'./assets/heroes/'+group.toLowerCase()+'/'+name.toLowerCase()+'-portrait.png',fallbackGlyph:name.slice(0,2)};
+    RAW_ASSETS[id]={type:'IMAGE',usage:'PORTRAIT',source:'./assets/heroes/'+group.toLowerCase()+'/'+name.toLowerCase()+'-dw-style-01.webp',fallbackGlyph:name.slice(0,2)};
     hero.assets={...hero.assets,portrait:id};
   }
 }

@@ -1,8 +1,8 @@
 {
   "project": "DOZEN WAR II",
-  "version": "1.61.0",
+  "version": "1.62.0",
   "phase": "DUEL_RULE_MODE_1VS1_180_30",
-  "baseline": "v1.61.0 Lucy eight-direction board visual without pedestal",
+  "baseline": "v1.62.0 approved DW-STYLE-01 artwork for all twelve Heroes",
   "entry": "index.html",
   "styles": "styles/main.css",
   "runtimeOrder": [

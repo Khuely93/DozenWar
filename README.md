@@ -1,5 +1,12 @@
 # DOZEN WAR II v1.40.22 - Duel desktop map fit
 
+## v1.62.0 — Approved Hero visuals (DW-STYLE-01)
+
+All twelve Hero portraits in team selection and the Hero dock now use the
+approved DW-STYLE-01 full-body artwork, including the latest weapon, arrow,
+bolt and hand corrections. WebP assets retain the complete 2:3 composition.
+See [approved artwork and integration](docs/DW_STYLE_01_FINAL_HERO_VISUALS.md).
+
 This step continues the regression-gated Part 13.8 cleanup without redesigning locked Core gameplay.
 
 ## Changes
