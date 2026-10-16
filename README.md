@@ -1,5 +1,14 @@
 # DOZEN WAR II v1.40.22 - Duel desktop map fit
 
+## v1.66.0 — Compact Hero visuals on the board
+
+All twelve Heroes now use the approved compact designs matching the soldier
+art direction: broad shapes, clear contours and readable signature equipment.
+Mounted Heroes keep their horses; Raen keeps two heads on one body. The square
+transparent tokens preserve each Hero's own colors and identity. Portraits in
+team selection and the Hero dock, skills and gameplay rules remain unchanged.
+See [Hero board visuals and checks](docs/HERO_BOARD_VISUALS.md).
+
 ## v1.65.0 — Compact troops designed for the board
 
 All three soldier classes now use the approved compact board designs: larger

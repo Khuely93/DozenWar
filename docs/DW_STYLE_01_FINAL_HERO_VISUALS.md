@@ -39,7 +39,9 @@ the original artwork inside an overflow-hidden frame; source image bytes
 remain unchanged. Both views share the same presentation helper and crop.
 
 Board tokens are independent assets. From v1.63.0 every Hero uses a transparent
-static cutout derived from the approved full-body image; see `HERO_BOARD_VISUALS.md`.
+static cutout derived from the approved full-body image. From v1.66.0 the board
+uses the separately approved compact Hero designs matching the soldier tokens;
+see `HERO_BOARD_VISUALS.md`. Picker/dock portraits retain their original artwork.
 The older Lucy directional files remain available as references but are no longer
 the active board visual. Soldier sprites, Hero portraits, stats, skills and the
 strict gameplay compatibility hash are unchanged.

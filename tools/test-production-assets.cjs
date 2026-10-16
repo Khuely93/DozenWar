@@ -41,8 +41,11 @@ for(const hero of artwork.heroes){
   const def=content.heroRegistry.get(hero.heroId),token=content.assetRegistry.get(def.assets.token);
   assert.equal(token.boardSprite,true,hero.name+' registered as a board sprite');
   assert.equal(token.source,'./'+hero.board.asset);
-  assert.equal(token.boardFrame.anchorY,.98);
+  assert.equal(token.boardFrame.anchorY,.96);
   assert.equal(token.boardFrame.height,def.class==='CAV'?114:100);
+  assert.equal(token.boardFrame.width,token.boardFrame.height,'Compact square frame');
+  assert.equal(require('node:crypto').createHash('sha256').update(fs.readFileSync(path.join(root,hero.board.asset))).digest('hex'),hero.board.assetSha256);
+  assert.equal(require('node:crypto').createHash('sha256').update(fs.readFileSync(path.join(root,hero.asset))).digest('hex'),hero.assetSha256,'Original portrait preserved');
   for(const side of [1,2])for(const visualView of [1,5,8])assert.equal(ctx.visual.source({hero:true,definitionId:hero.heroId,side,visualView}),token.source);
   assert.deepEqual(fs.readFileSync(path.join(root,'dist',hero.board.asset)),fs.readFileSync(path.join(root,hero.board.asset)),hero.name+' production board bytes');
 }

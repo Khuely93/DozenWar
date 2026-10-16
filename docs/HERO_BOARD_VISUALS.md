@@ -1,26 +1,31 @@
-# DW-STYLE-01 Hero board visuals — v1.63.0
+# DW-STYLE-01 compact Hero board visuals — v1.66.0
 
-The user approved applying the final Hero artwork to the board. All twelve Heroes
-now resolve their token by Hero definition ID to a separate transparent cutout.
+The user approved all twelve compact Hero designs and requested replacement
+in game. All twelve Heroes resolve their token by Hero definition ID to a
+separate transparent figure matching the approved compact soldier art direction.
 Portrait crops in team selection and the Hero dock keep their existing source art.
 
 ## Assets
 
-- Each `*-dw-style-01-board.webp` is 512 × 768 with an alpha channel.
-- Background removal was performed with the image editing tool on the latest
-  approved final image, followed by a WebP size/format export for game delivery.
+- Each `*-compact-dw-style-01-board.webp` is 512 × 512 with an alpha channel.
+- The approved compact PNGs are exported at WebP quality 90, without redrawing.
+  Broader silhouettes, simple armor planes and large signature equipment
+  improve readability at game scale. Hero identities and palettes are retained.
+- Previous 2:3 board files remain as inactive references; new paths avoid
+  reusing browser cache entries for the old images.
 - The board uses one static pose per Hero. No movement or attack animation and
   no automatic directional rotation is implied by these illustrations.
 - Mask has a halberd, Soul a great dao, Siri twin dao; all three retain their horse.
-- Raen retains two heads on one body. Lucy, Raen and Neuro use the corrected
-  arrow, bolt-quiver and potion-hand revisions as their cutout source.
-- The artwork manifest records the cutout source, board path and output checksums.
+- Raen retains two heads on one body. Lucy keeps her palm-held arrow and back
+  bow case, Raen the filled bolt quiver, and Neuro the back book and potion grip.
+- The artwork manifest records approved PNG names/hashes, board paths/output
+  checksums and previous board assets. Original portrait hashes are preserved.
 
 ## Presentation and interaction
 
 Hero token metadata controls size and anchor. Standing Heroes occupy 100 world
-units in height; mounted Heroes use 114. All canvases keep 2:3 proportions, with
-the foot/hoof anchor at 98% of the image height, placed at the same cell offset.
+units in height; mounted Heroes use 114. All canvases are square, with
+the foot/hoof anchor at 96% of the image height, matching the approved preview.
 Figures are rendered from back rows to front rows without mutating unit state.
 
 The existing colored team ring, HP, moved/completed action badges and incoming

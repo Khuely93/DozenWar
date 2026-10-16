@@ -2529,8 +2529,8 @@ for(const hero of Object.values(RAW_HERO_DB)){
   const id='IMG_HERO_'+slug.toUpperCase()+'_DW_STYLE_01_BOARD';
   const height=hero.class==='CAV'?114:100;
   RAW_ASSETS[id]={type:'IMAGE',usage:'TOKEN',boardSprite:true,
-    source:'./assets/heroes/'+hero.class.toLowerCase()+'/'+slug+'-dw-style-01-board.webp',
-    boardFrame:{width:height*2/3,height,anchorX:.5,anchorY:.98},
+    source:'./assets/heroes/'+hero.class.toLowerCase()+'/'+slug+'-compact-dw-style-01-board.webp',
+    boardFrame:{width:height,height,anchorX:.5,anchorY:.96},
     fallbackGlyph:name.slice(0,2).toUpperCase()};
   hero.assets={...hero.assets,token:id};
 }
