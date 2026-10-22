@@ -1,0 +1,52 @@
+# Test-only stack. Different project/volumes from deploy/compose.yml; no public ports.
+services:
+  db:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_DB: dozenwar_bench
+      POSTGRES_USER: dozenwar_bench
+      POSTGRES_PASSWORD: benchmark-local-only
+    healthcheck:
+      test: [CMD-SHELL, "pg_isready -U dozenwar_bench -d dozenwar_bench"]
+      interval: 1s
+      timeout: 5s
+      retries: 30
+    cpus: 0.5
+    mem_limit: 512m
+    volumes:
+      - benchmark_db:/var/lib/postgresql/data
+  app:
+    image: dozenwar-online:benchmark
+    build:
+      context: ..
+      secrets: [proxy_ca]
+    init: true
+    depends_on:
+      db: { condition: service_healthy }
+    environment:
+      PGHOST: db
+      PGDATABASE: dozenwar_bench
+      PGUSER: dozenwar_bench
+      PGPASSWORD: benchmark-local-only
+      MAX_ROOMS: "100"
+      TRUST_PROXY: "1"
+      NO_PROXY: db,localhost,127.0.0.1,::1
+    command: [node, --require, /bench/load-observer.cjs, server/main.cjs]
+    volumes:
+      - ../tools/helpers/load-observer.cjs:/bench/load-observer.cjs:ro
+    ports: ["127.0.0.1::3030"]
+    cpus: 1.0
+    mem_limit: 768m
+    read_only: true
+    tmpfs: ["/tmp:size=32m,mode=1777"]
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    healthcheck:
+      interval: 1s
+      start_period: 1s
+      retries: 30
+volumes:
+  benchmark_db:
+secrets:
+  proxy_ca:
+    file: ${CODEX_PROXY_CERT:-/dev/null}

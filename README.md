@@ -1,5 +1,11 @@
 # DOZEN WAR II
 
+## v1.70.1 — Network recovery, load measurement and CI
+
+The online client automatically retries lost acknowledgements with the same command ID and waits for seat authentication before enabling actions. Browser tests now inject latency, bandwidth limits, missing responses and disconnects. A Docker benchmark measures real PostgreSQL workloads with explicit CPU/RAM limits, and GitHub Actions runs the build, server tests, browser flows and a small load regression on pushes/PRs.
+
+The initial room limit is 20. See [network and CI checks](docs/ONLINE_STABILITY.md) and [local load results](docs/ONLINE_LOAD_RESULTS.md); these are local measurements, not Oracle capacity guarantees.
+
 ## v1.70.0 — Private online Duel MVP
 
 Real two-player rooms now run through an authoritative Node/Socket.IO server with private hands, server clocks, durable command receipts and reconnect/replay. Open `/online/` on the backend server. The offline game and approved visual assets remain available.

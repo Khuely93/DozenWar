@@ -98,3 +98,28 @@ test("two WebSocket clients share public state, keep hands private and resume th
   assert.equal((await fetch(base + "/server/main.cjs")).status, 404);
   assert.equal((await fetch(base + "/online/client.js")).status, 200);
 });
+test("a lost resume response may be retried on the same connection without switching seats", async (t) => {
+  const dir = await fs.mkdtemp(path.join(os.tmpdir(), "dw-resume-")),
+    app = await createApp({ store: new FileStore(dir) });
+  await app.listen(0);
+  const base = "http://127.0.0.1:" + app.server.address().port,
+    sockets = [];
+  t.after(async () => {
+    sockets.forEach((s) => s.disconnect());
+    await app.close();
+    await fs.rm(dir, { recursive: true, force: true });
+  });
+  const seat = await app.rooms.create("Resume");
+  const opponent = await app.rooms.join(seat.code, "Opponent");
+  const s = io(base, { transports: ["websocket"], forceNew: true });
+  sockets.push(s);
+  await new Promise((r) => s.once("connect", r));
+  const first = await request(s, "room:resume", seat),
+    retry = await request(s, "room:resume", seat);
+  assert.deepEqual(retry, first);
+  assert.equal(
+    (await request(s, "room:resume", opponent)).error,
+    "ALREADY_IN_ROOM",
+  );
+  assert.equal((await request(s, "room:sync")).state.side, 1);
+});

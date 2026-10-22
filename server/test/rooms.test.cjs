@@ -327,3 +327,33 @@ test("clients cannot supply HP, arbitrary state or deeply nested command payload
   );
   assert.deepEqual(await e.rooms.view(e.p1.code, e.p1.resumeToken), before);
 });
+test("retry of the randomizing ready command does not reroll dice or redeal hands", async (t) => {
+  const e = await environment(t);
+  await e.send(1, { type: "READY" });
+  const before = await e.rooms.view(e.p2.code, e.p2.resumeToken),
+    envelope = {
+      commandId: "random-ready-once",
+      expectedRevision: before.revision,
+      command: { type: "READY" },
+    };
+  const replies = await Promise.all([
+    e.rooms.submit(e.p2.code, e.p2.resumeToken, envelope),
+    e.rooms.submit(e.p2.code, e.p2.resumeToken, envelope),
+  ]);
+  assert.equal(replies[1].duplicate, true);
+  const room = e.rooms.room(e.p1.code),
+    g = room.engine.view(1, e.now());
+  assert.equal(g.phase, "team");
+  assert.equal(
+    room.doc.journal.filter((e) => e.command.type === "READY").length,
+    2,
+  );
+  assert.deepEqual(
+    room.engine.view(1, e.now()),
+    e.rooms.rebuild(room.doc).view(1, e.now()),
+  );
+  assert.equal(
+    room.engine.invoke("Math.random()", e.now()),
+    e.rooms.rebuild(room.doc).invoke("Math.random()", e.now()),
+  );
+});

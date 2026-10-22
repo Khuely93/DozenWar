@@ -1,3 +1,12 @@
+# Online stability — kiểm chứng v1.70.1
+
+- Regression server: 25/25 PASS với PostgreSQL 17, không bỏ qua test; có kiểm tra retry lệnh chia bài/xúc xắc không làm thay đổi RNG.
+- Trình duyệt: flow hai người chơi và restart server; bộ network qua 7 tình huống với trễ, giới hạn băng thông, phản hồi bị mất, reconnect và reload.
+- Đo tải riêng với PostgreSQL: 5/10/20/50 phòng, 60 giây mỗi mức; không lệnh lỗi hay thiếu cập nhật. [Kết quả và giới hạn](ONLINE_LOAD_RESULTS.md).
+- CI mới: Node 22, PostgreSQL, Chromium, build production và bài tải nhỏ. [Hướng dẫn và phạm vi](ONLINE_STABILITY.md).
+
+Đây là kiểm tra cục bộ. Chưa triển khai hay đo trên Oracle. Phần dưới giữ lại biên bản v1.70.0.
+
 # Online Duel MVP — kiểm chứng v1.70.0
 
 Kiểm tra thực hiện trong workspace ngày 2026-10-22. Chưa triển khai trên Oracle.

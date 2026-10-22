@@ -13,8 +13,22 @@
     session,
     outbox,
     ticket,
+    authenticated = false,
+    joining = false,
+    epoch = 0,
+    retryTimer = null,
+    retryAttempt = 0,
+    needsSync = false,
+    transientNotice = false,
     sending = false,
     ackRevision = -1;
+  const transient = new Set([
+    "NOT_CONNECTED",
+    "ACK_TIMEOUT",
+    "SERVER_ERROR",
+    "REQUEST_IN_PROGRESS",
+    "STORE_CONFLICT",
+  ]);
   let actorId = null,
     draft = null,
     deploy = null,
@@ -67,6 +81,9 @@
     INVALID_COPY_TARGETS: "Mục tiêu của kỹ năng sao chép chưa hợp lệ.",
     NOT_CONNECTED:
       "Mất kết nối. Lệnh đã gửi sẽ được kiểm tra lại khi kết nối trở lại.",
+    ACK_TIMEOUT:
+      "Chưa nhận được xác nhận. Đang thử lại cùng lệnh để tránh thực hiện hai lần.",
+    REQUEST_IN_PROGRESS: "Đang khôi phục phiên chơi. Vui lòng chờ một chút.",
     ROOM_COMMAND_LIMIT:
       "Phòng đã đạt giới hạn lệnh. Hãy tạo phòng mới sau trận này.",
   };
@@ -74,44 +91,77 @@
     $("notice").textContent = text || "";
   }
   function showError(error) {
+    transientNotice = transient.has(error.message);
     notice(
       messages[error.message] || "Hành động chưa hợp lệ: " + error.message,
     );
   }
   function request(event, payload = {}) {
+    const generation = epoch;
     return new Promise((resolve, reject) => {
       if (!socket?.connected) return reject(Error("NOT_CONNECTED"));
       socket.timeout(7000).emit(event, payload, (error, response) => {
-        if (error) return reject(Error("NOT_CONNECTED"));
+        if (generation !== epoch || !socket.connected)
+          return reject(Error("NOT_CONNECTED"));
+        if (error) return reject(Error("ACK_TIMEOUT"));
         if (!response?.ok)
           return reject(Error(response?.error || "SERVER_ERROR"));
         resolve(response);
       });
     });
   }
+  function retry() {
+    if (retryTimer || !socket?.connected) return;
+    const delay = Math.min(500 * 2 ** Math.min(retryAttempt++, 4), 5000);
+    retryTimer = setTimeout(async () => {
+      retryTimer = null;
+      if (!socket?.connected) return;
+      try {
+        if (session && !authenticated) await resume();
+        else if (ticket) await enter(ticket.event);
+        else if (outbox) await flush();
+        else if (session && needsSync) await sync();
+      } catch (error) {
+        showError(error);
+        if (transient.has(error.message)) retry();
+      }
+    }, delay);
+  }
   async function sync() {
-    if (!session) return;
-    const result = await request("room:sync");
-    receive(result.state);
+    if (!session || !authenticated) return;
+    needsSync = true;
+    try {
+      const result = await request("room:sync");
+      receive(result.state);
+      needsSync = false;
+      retryAttempt = 0;
+    } catch (error) {
+      if (transient.has(error.message)) retry();
+      throw error;
+    }
   }
   async function flush() {
-    if (!outbox || sending || !socket?.connected || !session) return;
+    if (!outbox || sending || !socket?.connected || !session || !authenticated)
+      return;
+    const envelope = outbox;
     sending = true;
     render();
     try {
-      const result = await request("command", outbox);
-      ackRevision = result.revision;
+      const result = await request("command", envelope);
+      if (outbox !== envelope) return;
+      ackRevision = Math.max(ackRevision, result.revision);
       outbox = null;
       save();
       notice("");
       await sync();
     } catch (error) {
-      if (!["NOT_CONNECTED", "SERVER_ERROR"].includes(error.message)) {
+      if (outbox !== envelope && outbox !== null) return;
+      if (!transient.has(error.message)) {
         outbox = null;
         save();
       }
       showError(error);
-      if (socket?.connected) {
+      if (socket?.connected && authenticated) {
         try {
           await sync();
         } catch {
@@ -121,10 +171,18 @@
     } finally {
       sending = false;
       render();
+      if (outbox || needsSync) retry();
     }
   }
   async function command(value) {
-    if (!state || outbox || sending || state.revision < ackRevision) return;
+    if (
+      !state ||
+      !authenticated ||
+      outbox ||
+      sending ||
+      state.revision < ackRevision
+    )
+      return;
     outbox = {
       commandId: crypto.randomUUID(),
       expectedRevision: state.revision,
@@ -145,58 +203,84 @@
     render();
   }
   async function enter(event) {
-    if (!ticket) {
-      const token = Array.from(
-        crypto.getRandomValues(new Uint8Array(32)),
-        (n) => n.toString(16).padStart(2, "0"),
-      ).join("");
-      ticket = {
-        event,
-        name: $("playerName").value.trim(),
-        code: $("roomCode").value.trim().toUpperCase(),
-        resumeToken: token,
-      };
-      save();
-    }
-    let result;
+    if (joining || !socket?.connected) return;
+    joining = true;
+    render();
     try {
-      result = await request(ticket.event, ticket);
-    } catch (error) {
-      if (!["NOT_CONNECTED", "SERVER_ERROR"].includes(error.message)) {
-        ticket = null;
+      if (!ticket) {
+        const token = Array.from(
+          crypto.getRandomValues(new Uint8Array(32)),
+          (n) => n.toString(16).padStart(2, "0"),
+        ).join("");
+        ticket = {
+          event,
+          name: $("playerName").value.trim(),
+          code: $("roomCode").value.trim().toUpperCase(),
+          resumeToken: token,
+        };
         save();
       }
-      throw error;
+      let result;
+      try {
+        result = await request(ticket.event, ticket);
+      } catch (error) {
+        if (!transient.has(error.message)) {
+          ticket = null;
+          save();
+        }
+        if (transient.has(error.message)) retry();
+        throw error;
+      }
+      session = {
+        code: result.code,
+        side: result.side,
+        resumeToken: result.resumeToken,
+      };
+      outbox = null;
+      ticket = null;
+      authenticated = true;
+      save();
+      await sync();
+      $("connection").textContent = "Đã kết nối";
+      if (transientNotice && !outbox) {
+        notice("");
+        transientNotice = false;
+      }
+    } finally {
+      joining = false;
+      render();
     }
-    session = {
-      code: result.code,
-      side: result.side,
-      resumeToken: result.resumeToken,
-    };
-    outbox = null;
-    ticket = null;
-    save();
-    await sync();
   }
   async function resume() {
-    $("connection").textContent = "Đã kết nối";
+    $("connection").textContent =
+      session || ticket ? "Đang khôi phục trận…" : "Đã kết nối";
     if (!session) {
       if (ticket) await enter(ticket.event);
       return;
     }
     try {
       await request("room:resume", session);
+      authenticated = true;
       await sync();
       await flush();
+      $("connection").textContent = "Đã kết nối";
+      if (transientNotice && !outbox) {
+        notice("");
+        transientNotice = false;
+      }
+      retryAttempt = 0;
+      render();
     } catch (error) {
       showError(error);
-      if (!["NOT_CONNECTED", "SERVER_ERROR"].includes(error.message))
+      if (transient.has(error.message)) retry();
+      else
         $("lobby").append(
           btn("Bỏ phiên cũ và về phòng chờ", () => {
             session = null;
             outbox = null;
             ticket = null;
             state = null;
+            authenticated = false;
             save();
             socket.disconnect().connect();
             render();
@@ -822,10 +906,14 @@
   }
   function render() {
     if (!catalog) return;
+    $("createRoom").disabled = $("joinRoom").disabled =
+      joining || !socket?.connected || !!session;
     $("lobby").hidden = !!state;
     $("room").hidden = !state;
     if (!state) return;
     const g = state.game;
+    $("room").dataset.revision = String(state.revision);
+    $("room").dataset.phase = g.phase;
     $("roomLabel").textContent = "PHÒNG " + state.code;
     $("players").textContent = state.players
       .map(
@@ -864,6 +952,7 @@
         outbox ||
         sending ||
         !socket?.connected ||
+        !authenticated ||
         state.revision < ackRevision
       )
         b.disabled = true;
@@ -911,6 +1000,7 @@
     }
     session = null;
     state = null;
+    authenticated = false;
     ackRevision = -1;
     save();
     socket.disconnect().connect();
@@ -936,9 +1026,21 @@
       transports: ["websocket", "polling"],
       autoConnect: false,
     });
-    socket.on("connect", () => resume().catch(showError));
+    socket.on("connect", () => {
+      epoch++;
+      authenticated = false;
+      resume().catch((error) => {
+        showError(error);
+        if (transient.has(error.message)) retry();
+      });
+      render();
+    });
     socket.on("state", receive);
     socket.on("disconnect", () => {
+      epoch++;
+      authenticated = false;
+      clearTimeout(retryTimer);
+      retryTimer = null;
       $("connection").textContent = "Mất kết nối · đang thử lại";
       render();
     });
@@ -946,19 +1048,30 @@
       $("connection").textContent = "Chưa kết nối được server";
     });
     socket.on("notice", (data) => showError(Error(data.code)));
+    notice("");
     socket.connect();
     setInterval(updateClock, 250);
     render();
   }
-  boot().catch((error) => {
-    $("connection").textContent = "Server chưa khả dụng";
-    notice(
-      "Chưa kết nối được server online tại " +
-        BASE +
-        ". " +
-        error.message +
-        ". Trang này cần backend DozenWar đang chạy.",
-    );
-    $("createRoom").disabled = $("joinRoom").disabled = true;
-  });
+  async function start() {
+    try {
+      await boot();
+    } catch (error) {
+      $("connection").textContent = "Server chưa khả dụng";
+      notice(
+        "Chưa kết nối được server online tại " +
+          BASE +
+          ". " +
+          error.message +
+          ". Trang này cần backend DozenWar đang chạy.",
+      );
+      $("createRoom").disabled = $("joinRoom").disabled = true;
+      if (
+        !socket &&
+        !["PROTOCOL_MISMATCH", "Server HTTP 404"].includes(error.message)
+      )
+        setTimeout(start, 3000);
+    }
+  }
+  start();
 })();

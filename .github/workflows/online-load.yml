@@ -1,0 +1,43 @@
+name: Online Duel load measurement
+on:
+  workflow_dispatch:
+    inputs:
+      rooms:
+        description: Concurrent rooms per case (comma separated, maximum 50)
+        default: "5,10,20"
+        required: true
+      seconds:
+        description: Measurement duration per case (5 to 600 seconds)
+        default: "60"
+        required: true
+permissions:
+  contents: read
+concurrency:
+  group: online-load-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  measure:
+    runs-on: ubuntu-latest
+    timeout-minutes: 55
+    env:
+      BENCH_ROOMS: ${{ inputs.rooms }}
+      BENCH_SECONDS: ${{ inputs.seconds }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+      - run: npm ci --no-audit --no-fund
+      - name: Measure isolated server and PostgreSQL
+        run: npm run benchmark:online -- --rooms "$BENCH_ROOMS" --seconds "$BENCH_SECONDS" --output work/online-load/manual.json
+      - name: Retain measurement
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: online-load-${{ github.run_id }}
+          retention-days: 14
+          if-no-files-found: ignore
+          path: |
+            work/online-load/manual.json
+            work/online-load/docker.log

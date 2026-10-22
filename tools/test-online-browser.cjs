@@ -14,11 +14,9 @@ const { chromium } = require("playwright"),
   await app.listen(0);
   const port = app.server.address().port,
     base = "http://127.0.0.1:" + port;
-  const browser = await chromium.launch({
-      executablePath: process.env.CHROMIUM_PATH || "/usr/bin/chromium",
-      headless: true,
-      args: ["--no-sandbox"],
-    }),
+  const browser = await chromium.launch(
+      require("./helpers/browser.cjs").launchOptions(),
+    ),
     contexts = [],
     errors = [];
   try {

@@ -40,7 +40,7 @@ services:
       PUBLIC_URL: ${PUBLIC_URL:?Set PUBLIC_URL to your HTTPS origin}
       ALLOWED_ORIGINS: ${ALLOWED_ORIGINS:-}
       TRUST_PROXY: "1"
-      MAX_ROOMS: ${MAX_ROOMS:-50}
+      MAX_ROOMS: ${MAX_ROOMS:-20}
     read_only: true
     tmpfs: ["/tmp:size=32m,mode=1777"]
     cap_drop: [ALL]

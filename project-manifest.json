@@ -1,8 +1,8 @@
 {
   "project": "DOZEN WAR II",
-  "version": "1.70.0",
+  "version": "1.70.1",
   "phase": "DUEL_RULE_MODE_1VS1_180_30",
-  "baseline": "v1.70.0 private online Duel MVP with authoritative server",
+  "baseline": "v1.70.1 network recovery, load measurements and online CI",
   "entry": "index.html",
   "styles": "styles/main.css",
   "runtimeOrder": [

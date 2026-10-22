@@ -21,9 +21,10 @@ Kiểm tra:
 ```sh
 npm run test:server
 npm run test:online-browser
+npm run test:online-network
 ```
 
-Bài kiểm tra trình duyệt cần Playwright và Chromium; đặt `CHROMIUM_PATH` nếu Chromium không ở `/usr/bin/chromium`. Nó dùng hai phiên riêng, đánh bằng kỹ năng, tắt/bật server giữa lúc chờ phòng thủ, tải lại trang, kiểm tra HP và di chuyển. Ảnh kiểm tra nằm ở `work/online-browser/`.
+Bài kiểm tra trình duyệt cần Chromium (`npx playwright install --with-deps chromium` nếu chưa có); đặt `CHROMIUM_PATH` để chọn Chromium khác; khi không có Chromium hệ thống, bộ test dùng trình duyệt do Playwright cài. Nó dùng hai phiên riêng, đánh bằng kỹ năng, tắt/bật server giữa lúc chờ phòng thủ, tải lại trang, kiểm tra HP và di chuyển. Ảnh kiểm tra nằm ở `work/online-browser/`.
 
 Bài kiểm tra PostgreSQL chạy khi có `POSTGRES_TEST_URL` trỏ vào **database dùng để kiểm tra**; không có biến này thì bài đó được ghi rõ là bỏ qua. Không dùng database production để chạy test.
 
@@ -59,7 +60,7 @@ Chỉ chạy **một app server**. Queue, room engine và socket nằm trong m�
 - Thời gian lượt 180 giây; phòng thủ/hủy trang bị/phản sát thương 30 giây. Phản ứng tạm dừng thời gian lượt, không làm mới lượt. Chuẩn bị mỗi bước có hạn 5 phút. Mất mạng không dừng thời gian server.
 - Server lưu lệnh, timestamp, seed và xác nhận trong một lần ghi PostgreSQL trước khi báo thành công. Retry cùng command ID không thực hiện lại. Khi phản hồi ghi database bị mất, server đọc lại bản đã lưu trước khi xử lý tiếp.
 - Khôi phục bằng replay xác định, kể cả chuỗi phản ứng đang dở; không serialize callback JavaScript. Việc tắt app và PostgreSQL cùng lúc vẫn cần volume/backup còn nguyên.
-- Mặc định tối đa 50 phòng lưu trong bộ nhớ với Compose; trận kết thúc được giữ tối đa 24 giờ cho reconnect/đấu lại. Mỗi phòng giới hạn 2.000 lệnh (đầu hàng vẫn được chấp nhận); có giới hạn tốc độ và kích thước thông điệp. Đây là giới hạn bảo vệ bản thử, không phải số người đồng thời đã được chứng minh bằng kiểm tra tải.
+- Mặc định tối đa 20 phòng lưu trong bộ nhớ với Compose; trận kết thúc được giữ tối đa 24 giờ cho reconnect/đấu lại. Mỗi phòng giới hạn 2.000 lệnh (đầu hàng vẫn được chấp nhận); có giới hạn tốc độ và kích thước thông điệp. Đây là giới hạn bảo vệ bản thử, không phải số người đồng thời đã được chứng minh bằng kiểm tra tải.
 - Có health check PostgreSQL và container, log được xoay vòng. Chưa có hệ thống cảnh báo gửi tới quản trị viên, xếp hạng online, matchmaking tự động hoặc chống DDoS chuyên dụng.
 
 ## Cập nhật và tương thích trận đang chơi
@@ -89,3 +90,19 @@ Sao chép backup ra **ngoài VM** và thử khôi phục ở môi trường ki�
 ## Phạm vi kiểm chứng
 
 Xem `server/README.md` về kiến trúc adapter và các kiểm tra. Docker Compose cần được kiểm tra lại với DNS, HTTPS, firewall và hai mạng Internet thật trên VM Oracle sau khi có tài khoản. Chưa có Home Region không cản trở phát triển/kiểm tra cục bộ; những bước hạ tầng này vẫn là phần phải làm sau.
+
+## Kiểm tra mạng yếu và đo tải
+
+Bản v1.70.1 tự thử lại khi mất xác nhận lệnh, giữ nguyên command ID và khóa thao tác trong lúc khôi phục ghế. `npm run test:online-network` điều khiển hai trình duyệt qua relay cục bộ để thử độ trễ, giới hạn băng thông, phản hồi bị mất và ngắt kết nối. Xem `docs/ONLINE_STABILITY.md`.
+
+Để đo lại tải trên **máy đang dùng**, cần Docker Engine + Compose và Node 22:
+
+```sh
+npm run benchmark:online -- --rooms 5,10,20 --seconds 60
+```
+
+Lệnh tạo stack kiểm tra riêng, app giới hạn 1 CPU/768 MiB, PostgreSQL 0,5 CPU/512 MiB, cổng chỉ ở localhost, rồi dọn container/volume kiểm tra. Nó không dùng database hay volume production. Kết quả ở `work/online-load/report.json`. Mỗi phòng tạo một hành động/giây; trình phát lệnh nằm ngoài container app.
+
+Cấu hình ban đầu `MAX_ROOMS=20` là giới hạn **phòng giữ trong bộ nhớ**, gồm cả phòng đã kết thúc còn thời gian reconnect. Đây không phải chứng nhận 20 trận trên mọi Oracle VM. Bắt đầu với nhóm nhỏ, đo lại trên ARM/ổ đĩa/mạng thật trước khi tăng giới hạn. Số đo cục bộ và phạm vi bài thử nằm trong `docs/ONLINE_LOAD_RESULTS.md`.
+
+GitHub tự chạy build, server test với PostgreSQL, hai bộ kiểm tra trình duyệt và bài tải nhỏ khi push vào `main`/`codex/**` hoặc mở PR. Workflow đo tải dài có nút chạy thủ công sau khi file workflow được đưa vào default branch; không chạy theo lịch và không triển khai lên Oracle.

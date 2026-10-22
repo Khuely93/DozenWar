@@ -1,0 +1,261 @@
+{
+  "createdAt": "2026-10-22T12:46:39.470Z",
+  "scope": "Local backend benchmark, real PostgreSQL, paced clients; no Internet RTT or asset downloads",
+  "limits": {
+    "appCPUs": 1,
+    "appMemoryMiB": 768,
+    "postgresCPUs": 0.5,
+    "postgresMemoryMiB": 512
+  },
+  "passed": true,
+  "runs": [
+    {
+      "rooms": 5,
+      "players": 10,
+      "intervalMs": 1000,
+      "requestedSeconds": 60,
+      "durationSeconds": 60.334,
+      "commands": 300,
+      "commandsPerSecond": 4.97232074783704,
+      "commandAck": {
+        "count": 300,
+        "meanMs": 4.173959476666738,
+        "p50Ms": 3.688979999998992,
+        "p95Ms": 6.972069000003103,
+        "p99Ms": 12.771781000003102,
+        "maxMs": 20.21670499999891
+      },
+      "sync": {
+        "count": 300,
+        "meanMs": 6.067201163333351,
+        "p50Ms": 4.887930999990203,
+        "p95Ms": 12.44733499999711,
+        "p99Ms": 30.6060079999952,
+        "maxMs": 43.785555000002205
+      },
+      "bothPlayersState": {
+        "count": 300,
+        "meanMs": 8.098064290000353,
+        "p50Ms": 7.179758000005677,
+        "p95Ms": 14.008950000003097,
+        "p99Ms": 27.010381000000052,
+        "maxMs": 40.9530139999988
+      },
+      "missingBroadcasts": 0,
+      "unexpectedDisconnects": 0,
+      "failures": [],
+      "actions": {
+        "MOVE": 106,
+        "ATTACK": 50,
+        "DEFEND": 52,
+        "END_TURN": 15,
+        "PASS_COUNTER": 5,
+        "REMATCH": 18,
+        "POST_HIT": 2,
+        "READY": 17,
+        "TEAM": 16,
+        "DEPLOY": 16,
+        "CONTINUE": 3
+      },
+      "resources": {
+        "samples": 120,
+        "cpuMeanPercent": 6.657605922668899,
+        "cpuPeakPercent": 44.95467021954623,
+        "rssPeakMiB": 93.640625,
+        "heapPeakMiB": 24.208724975585938,
+        "loopWindowP95MaxMs": 31.391743,
+        "loopMaxMs": 42.729471,
+        "node": "v22.23.4",
+        "arch": "x64",
+        "cpuModel": "INTEL(R) XEON(R) PLATINUM 8573C"
+      },
+      "pass": true
+    },
+    {
+      "rooms": 10,
+      "players": 20,
+      "intervalMs": 1000,
+      "requestedSeconds": 60,
+      "durationSeconds": 60.815,
+      "commands": 600,
+      "commandsPerSecond": 9.86598700978377,
+      "commandAck": {
+        "count": 600,
+        "meanMs": 10.963233328333638,
+        "p50Ms": 3.852755999978399,
+        "p95Ms": 20.250975000002654,
+        "p99Ms": 134.1847509999934,
+        "maxMs": 954.5614629999909
+      },
+      "sync": {
+        "count": 600,
+        "meanMs": 11.186706426666738,
+        "p50Ms": 6.030661999990116,
+        "p95Ms": 23.77548999999999,
+        "p99Ms": 94.02443600000697,
+        "maxMs": 507.21763500000816
+      },
+      "bothPlayersState": {
+        "count": 600,
+        "meanMs": 18.513178251666638,
+        "p50Ms": 8.42374800000107,
+        "p95Ms": 37.57068200001959,
+        "p99Ms": 272.36435899999924,
+        "maxMs": 969.073321999982
+      },
+      "missingBroadcasts": 0,
+      "unexpectedDisconnects": 0,
+      "failures": [],
+      "actions": {
+        "MOVE": 210,
+        "ATTACK": 112,
+        "DEFEND": 115,
+        "PASS_COUNTER": 7,
+        "CONTINUE": 4,
+        "END_TURN": 37,
+        "REMATCH": 32,
+        "READY": 28,
+        "TEAM": 28,
+        "DEPLOY": 26,
+        "POST_HIT": 1
+      },
+      "resources": {
+        "samples": 121,
+        "cpuMeanPercent": 18.17936359538498,
+        "cpuPeakPercent": 78.61445156955074,
+        "rssPeakMiB": 103.90625,
+        "heapPeakMiB": 30.276199340820312,
+        "loopWindowP95MaxMs": 257.556479,
+        "loopMaxMs": 428.081151,
+        "node": "v22.23.4",
+        "arch": "x64",
+        "cpuModel": "INTEL(R) XEON(R) PLATINUM 8573C"
+      },
+      "pass": true
+    },
+    {
+      "rooms": 20,
+      "players": 40,
+      "intervalMs": 1000,
+      "requestedSeconds": 60,
+      "durationSeconds": 60.749,
+      "commands": 1200,
+      "commandsPerSecond": 19.753411578791418,
+      "commandAck": {
+        "count": 1200,
+        "meanMs": 17.221381549999425,
+        "p50Ms": 8.370043000002624,
+        "p95Ms": 59.367307999986224,
+        "p99Ms": 206.80258800002048,
+        "maxMs": 577.0949559999863
+      },
+      "sync": {
+        "count": 1200,
+        "meanMs": 12.296171352500314,
+        "p50Ms": 7.0936579999979585,
+        "p95Ms": 42.31294699999853,
+        "p99Ms": 95.97939200000837,
+        "maxMs": 208.8500579999818
+      },
+      "bothPlayersState": {
+        "count": 1200,
+        "meanMs": 24.590112823333257,
+        "p50Ms": 13.440789999993285,
+        "p95Ms": 76.08578699998907,
+        "p99Ms": 278.8108120000106,
+        "maxMs": 627.5890739999886
+      },
+      "missingBroadcasts": 0,
+      "unexpectedDisconnects": 0,
+      "failures": [],
+      "actions": {
+        "MOVE": 429,
+        "ATTACK": 218,
+        "DEFEND": 229,
+        "PASS_COUNTER": 18,
+        "CONTINUE": 13,
+        "POST_HIT": 7,
+        "END_TURN": 71,
+        "REMATCH": 59,
+        "READY": 53,
+        "TEAM": 52,
+        "DEPLOY": 51
+      },
+      "resources": {
+        "samples": 120,
+        "cpuMeanPercent": 33.92287757533555,
+        "cpuPeakPercent": 69.26417169980927,
+        "rssPeakMiB": 112.50390625,
+        "heapPeakMiB": 39.986907958984375,
+        "loopWindowP95MaxMs": 252.968959,
+        "loopMaxMs": 252.968959,
+        "node": "v22.23.4",
+        "arch": "x64",
+        "cpuModel": "INTEL(R) XEON(R) PLATINUM 8573C"
+      },
+      "pass": true
+    },
+    {
+      "rooms": 50,
+      "players": 100,
+      "intervalMs": 1000,
+      "requestedSeconds": 60,
+      "durationSeconds": 60.93,
+      "commands": 2955,
+      "commandsPerSecond": 48.498276710979816,
+      "commandAck": {
+        "count": 2955,
+        "meanMs": 180.7218147996613,
+        "p50Ms": 68.66949200001545,
+        "p95Ms": 687.9514250000357,
+        "p99Ms": 964.962659999961,
+        "maxMs": 1271.8202089999686
+      },
+      "sync": {
+        "count": 2955,
+        "meanMs": 52.99046247275786,
+        "p50Ms": 40.42146899999352,
+        "p95Ms": 146.67482000001473,
+        "p99Ms": 304.74953700002516,
+        "maxMs": 520.9847430000082
+      },
+      "bothPlayersState": {
+        "count": 2955,
+        "meanMs": 214.05201298578677,
+        "p50Ms": 95.18475600000238,
+        "p95Ms": 750.9310410000035,
+        "p99Ms": 1082.4386029999587,
+        "maxMs": 1335.1707220000098
+      },
+      "missingBroadcasts": 0,
+      "unexpectedDisconnects": 0,
+      "failures": [],
+      "actions": {
+        "ATTACK": 522,
+        "MOVE": 1039,
+        "DEFEND": 539,
+        "PASS_COUNTER": 24,
+        "CONTINUE": 25,
+        "END_TURN": 171,
+        "POST_HIT": 19,
+        "REMATCH": 164,
+        "READY": 159,
+        "TEAM": 154,
+        "DEPLOY": 139
+      },
+      "resources": {
+        "samples": 116,
+        "cpuMeanPercent": 71.24407442970366,
+        "cpuPeakPercent": 96.90321493538131,
+        "rssPeakMiB": 163.265625,
+        "heapPeakMiB": 77.62916564941406,
+        "loopWindowP95MaxMs": 504.365055,
+        "loopMaxMs": 504.365055,
+        "node": "v22.23.4",
+        "arch": "x64",
+        "cpuModel": "INTEL(R) XEON(R) PLATINUM 8573C"
+      },
+      "pass": true
+    }
+  ]
+}

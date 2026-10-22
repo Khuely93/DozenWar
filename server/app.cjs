@@ -199,6 +199,9 @@ async function createApp({
           }
           const s = sessions.get(socket.id);
           if (s) await notify(s.code);
+        } finally {
+          // Persistence can finish after the browser has already disconnected.
+          if (!socket.connected) sessions.delete(socket.id);
         }
       });
     const attach = async (result) => {
@@ -244,7 +247,12 @@ async function createApp({
       return result;
     });
     handle("room:resume", async (data) => {
-      if (sessions.has(socket.id)) throw Error("ALREADY_IN_ROOM");
+      const previous = sessions.get(socket.id);
+      if (
+        previous &&
+        (previous.code !== data.code || previous.token !== data.resumeToken)
+      )
+        throw Error("ALREADY_IN_ROOM");
       const result = await rooms.resume(data.code, data.resumeToken);
       sessions.set(socket.id, { code: result.code, token: data.resumeToken });
       setImmediate(() => notify(result.code));

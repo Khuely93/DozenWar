@@ -13,7 +13,7 @@ const { FileStore, PostgresStore } = require("./store.cjs");
           );
   if (!store)
     throw Error("Production requires DATABASE_URL or PGHOST configuration");
-  const maxRooms = Number(process.env.MAX_ROOMS || 100),
+  const maxRooms = Number(process.env.MAX_ROOMS || 20),
     port = Number(process.env.PORT || 3030);
   if (
     !Number.isInteger(maxRooms) ||
