@@ -1,5 +1,13 @@
 # DOZEN WAR II v1.40.22 - Duel desktop map fit
 
+## v1.69.0 — Hero avatars with individual backgrounds
+
+All twelve Heroes now use dedicated square head-and-shoulders avatars with
+backgrounds inspired by their identity and skills. Team selection and the Hero
+dock show each complete image without cropping; Raen retains both heads and
+elaborate headwear stays visible. Board sprites, equipment and gameplay remain
+unchanged. See [avatar assets and checks](docs/HERO_AVATAR_BACKGROUNDS.md).
+
 ## v1.68.0 — Equipment cards matching the compact art direction
 
 All 30 equipment card designs now use the approved artwork matching the compact

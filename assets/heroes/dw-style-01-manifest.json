@@ -2,8 +2,8 @@
   "style": "DW-STYLE-01",
   "status": "APPROVED",
   "approvedDate": "2026-10-16",
-  "usage": "Hero portraits in picker/dock and transparent static Hero sprites on the board.",
-  "format": "Portraits: full 1024x1536 WebP quality 90. Board: approved compact 512x512 WebP quality 90 with alpha.",
+  "usage": "Dedicated square Hero avatars with individual backgrounds in picker/dock; independent transparent compact Hero sprites on the board. Original full-body art remains as reference.",
+  "format": "Avatars: complete 1024x1024 WebP quality 90. Board: approved compact 512x512 WebP quality 90 with alpha. Legacy full-body portraits retained.",
   "heroes": [
     {
       "heroId": "HERO_INF_KAZU",
@@ -16,12 +16,6 @@
       "height": 1536,
       "bytes": 266188,
       "notes": "Tóc ngắn, khăn đỏ, Khiên Rồng và Xích Quỷ.",
-      "portraitCrop": {
-        "x": 340,
-        "y": 15,
-        "width": 300,
-        "height": 400
-      },
       "board": {
         "sourceFile": "exec-9874c95d-b314-46b1-8453-330d976fb22f.png",
         "sourceSha256": "e68859bf524654db49ccab6571087961f14984b2f8b8dc43e2d87f289f23bb44",
@@ -41,6 +35,23 @@
         "poses": 1,
         "assetSha256": "f1cca21ea0e7986c03216639198a3c312ac453c51d9950a6922feeac5f94c8db",
         "bytes": 110940
+      },
+      "avatar": {
+        "status": "APPROVED_FOR_GAME",
+        "sourceFile": "exec-acb2c484-aff0-4bb6-a6fb-11109a17207d.png",
+        "sourceSha256": "4fb544f2d85b91956b92a030dd5c9f1ae34bbee7b4c13ed88fe9bd70d0c28ad6",
+        "asset": "assets/heroes/inf/kazu-avatar-background-dw-style-01.webp",
+        "assetSha256": "566832828fca291a4cb85dd7fe08ccb0a55b03af9aad57c0df8ab0e114d4a141",
+        "width": 1024,
+        "height": 1024,
+        "bytes": 194698,
+        "background": "Thành lũy đá, xích sắt và phù điêu rồng"
+      },
+      "previousPortraitCrop": {
+        "x": 340,
+        "y": 15,
+        "width": 300,
+        "height": 400
       }
     },
     {
@@ -54,12 +65,6 @@
       "height": 1536,
       "bytes": 272042,
       "notes": "Tóc dài, râu tết, giáp vai mãnh thú, kiếm lớn.",
-      "portraitCrop": {
-        "x": 330,
-        "y": 5,
-        "width": 360,
-        "height": 480
-      },
       "board": {
         "sourceFile": "exec-44d93f00-8cf1-48e4-8d1b-4b5e9c528a66.png",
         "sourceSha256": "fb837e15f3452dd01688496ce20af0e9648e6d40ddd85f46406f395b4b143769",
@@ -79,6 +84,23 @@
         "poses": 1,
         "assetSha256": "8079859bb7c75b1e86ae8479d4b9fd9aaf64e2fdaf41011dd4dfaaef4ab2c776",
         "bytes": 111588
+      },
+      "avatar": {
+        "status": "APPROVED_FOR_GAME",
+        "sourceFile": "exec-528f32af-90cb-4aba-8294-cd0267adedce.png",
+        "sourceSha256": "a81bf90e206083c8bdc6a6c727a511096afe6f799a5eb9970afaa1dcad7d8834",
+        "asset": "assets/heroes/inf/rodoc-avatar-background-dw-style-01.webp",
+        "assetSha256": "cfa7e39a8e51563911c1d34b80d2620999da07ac0cea60dadb34d11f27b72a37",
+        "width": 1024,
+        "height": 1024,
+        "bytes": 293000,
+        "background": "Chiến địa và doanh trại bộ binh"
+      },
+      "previousPortraitCrop": {
+        "x": 330,
+        "y": 5,
+        "width": 360,
+        "height": 480
       }
     },
     {
@@ -92,12 +114,6 @@
       "height": 1536,
       "bytes": 200926,
       "notes": "Tóc ngắn lệch, giáp bất đối xứng, đao.",
-      "portraitCrop": {
-        "x": 350,
-        "y": 10,
-        "width": 300,
-        "height": 400
-      },
       "board": {
         "sourceFile": "exec-daba479c-1888-4235-be5e-9fc71c45499f.png",
         "sourceSha256": "1aa16544c682dcdf9656c7952cdcb956efdfe076f37a3fd9ab4c094d3350d8f8",
@@ -117,6 +133,23 @@
         "poses": 1,
         "assetSha256": "bf6872d6ba26b993c8f28e2758933f0c92af8602856093d16bad2d29e5155df8",
         "bytes": 82700
+      },
+      "avatar": {
+        "status": "APPROVED_FOR_GAME",
+        "sourceFile": "exec-2245350b-cec3-4328-b54f-87bcd22d74ef.png",
+        "sourceSha256": "2ffb0d9e773a7c01231f421aa6bff45bb933e7cc189d1167987ef41f4d5a8f4a",
+        "asset": "assets/heroes/inf/est-avatar-background-dw-style-01.webp",
+        "assetSha256": "53119f27a5a6480a79f4c8e9663af3b1388bd9cd7a5b8f3a40c58697c7843ef2",
+        "width": 1024,
+        "height": 1024,
+        "bytes": 206126,
+        "background": "Pháo lũy phía Đông trong gió đêm"
+      },
+      "previousPortraitCrop": {
+        "x": 350,
+        "y": 10,
+        "width": 300,
+        "height": 400
       }
     },
     {
@@ -130,12 +163,6 @@
       "height": 1536,
       "bytes": 315158,
       "notes": "Cưỡi ngựa, cầm kích.",
-      "portraitCrop": {
-        "x": 355,
-        "y": 40,
-        "width": 330,
-        "height": 440
-      },
       "board": {
         "sourceFile": "exec-82135866-7a64-4572-864a-27757e50ed44.png",
         "sourceSha256": "ad2d566ea8a07f1d9979d31f92902c9efb9f9f37c31f55b1f6f245dc3db0e5e3",
@@ -155,6 +182,23 @@
         "poses": 1,
         "assetSha256": "da75a8fc01b48481ba39dca05215103243ec623d851572cf5b9ce7dc5df16480",
         "bytes": 131784
+      },
+      "avatar": {
+        "status": "APPROVED_FOR_GAME",
+        "sourceFile": "exec-5478b9d9-338f-4090-9113-57c269db4fa0.png",
+        "sourceSha256": "858360a2c20d0213463b2af7a1f9122f9a8bab85c6440e41e5bcb1366d3daac3",
+        "asset": "assets/heroes/cav/mask-avatar-background-dw-style-01.webp",
+        "assetSha256": "70995cfd7ca7782f0e55594d663f6325e0eecba9962dc7b5c79d77c39a7a24e0",
+        "width": 1024,
+        "height": 1024,
+        "bytes": 304750,
+        "background": "Sân điện công lý và tượng cán cân"
+      },
+      "previousPortraitCrop": {
+        "x": 355,
+        "y": 40,
+        "width": 330,
+        "height": 440
       }
     },
     {
@@ -168,12 +212,6 @@
       "height": 1536,
       "bytes": 258398,
       "notes": "Cưỡi ngựa, cầm đại đao.",
-      "portraitCrop": {
-        "x": 380,
-        "y": 85,
-        "width": 330,
-        "height": 440
-      },
       "board": {
         "sourceFile": "exec-8624c7cd-596e-44ba-81aa-8bd82c6e8f44.png",
         "sourceSha256": "bca4aaae60dcbd8d04939bbecdc7955d69d4f40e74c565c5e12b322b92fdfeb0",
@@ -193,6 +231,23 @@
         "poses": 1,
         "assetSha256": "9eddef84e4f255e0f7e164248a76e4439bb0a13aa4ed5fb3f14c2c4d28d9d271",
         "bytes": 125578
+      },
+      "avatar": {
+        "status": "APPROVED_FOR_GAME",
+        "sourceFile": "exec-fc79535a-2507-4905-b5a8-6c2c584f9a04.png",
+        "sourceSha256": "e66c0119b185d5a1873ad966f6e7b962df4be1258ba67354563eabb06b788f3e",
+        "asset": "assets/heroes/cav/soul-avatar-background-dw-style-01.webp",
+        "assetSha256": "16c5a16b1d4ad129e0b35740fc4da76c5db95e0185e72b6c960d7204457009a2",
+        "width": 1024,
+        "height": 1024,
+        "bytes": 263840,
+        "background": "Phế tích trong sương ám hồn"
+      },
+      "previousPortraitCrop": {
+        "x": 380,
+        "y": 85,
+        "width": 330,
+        "height": 440
       }
     },
     {
@@ -206,12 +261,6 @@
       "height": 1536,
       "bytes": 293444,
       "notes": "Cưỡi ngựa, cầm song đao.",
-      "portraitCrop": {
-        "x": 360,
-        "y": 20,
-        "width": 330,
-        "height": 440
-      },
       "board": {
         "sourceFile": "exec-d9e57f86-d051-4076-94a4-3b232e401edb.png",
         "sourceSha256": "647381b8603eb3fe0a5abd202551581853e2ee1c52ee1f6e5326d21a765501d1",
@@ -231,6 +280,23 @@
         "poses": 1,
         "assetSha256": "d12a687f7f83be422bc1d07d96aac74e9224e782761285267aa82db774a51aa6",
         "bytes": 127074
+      },
+      "avatar": {
+        "status": "APPROVED_FOR_GAME",
+        "sourceFile": "exec-19867970-fd89-4e28-8730-8bee88c82038.png",
+        "sourceSha256": "daa5eb13ae5701579197c46da67dbff65a74c8c4a3ee3ee939126312cec4eeb6",
+        "asset": "assets/heroes/cav/siri-avatar-background-dw-style-01.webp",
+        "assetSha256": "bed3ee53d3e6a6e2af896c47a0c8eec062dbe15f084aeec12ebb6223ddd73bdd",
+        "width": 1024,
+        "height": 1024,
+        "bytes": 295048,
+        "background": "Đèo núi và gió cuốn"
+      },
+      "previousPortraitCrop": {
+        "x": 360,
+        "y": 20,
+        "width": 330,
+        "height": 440
       }
     },
     {
@@ -244,12 +310,6 @@
       "height": 1536,
       "bytes": 245438,
       "notes": "Cung ngắn và phi đao ở thắt lưng.",
-      "portraitCrop": {
-        "x": 330,
-        "y": 5,
-        "width": 360,
-        "height": 480
-      },
       "board": {
         "sourceFile": "exec-7c0bdfee-a0ad-484a-b588-547aef064656.png",
         "sourceSha256": "1406e6e7084fc53c2918d6df959aa5ac13adc471ee3200bab62e5fca4aa2b1f9",
@@ -269,6 +329,23 @@
         "poses": 1,
         "assetSha256": "8c8f71e68348f8016f5f7289b1bbff1b330f6dbed53d6cc1241e014bbe30bf77",
         "bytes": 96056
+      },
+      "avatar": {
+        "status": "APPROVED_FOR_GAME",
+        "sourceFile": "exec-edfa5c53-cc13-4512-801d-fbe952b7ebd8.png",
+        "sourceSha256": "d58e4d3dd7bad34048e671a50c6be857530c044e8d4c7f315c9975337222da12",
+        "asset": "assets/heroes/arch/xacnas-avatar-background-dw-style-01.webp",
+        "assetSha256": "135463c2e3c87b4f310b53d5d9411b980bd5cb45de9b955c01e65bf62a7a183a",
+        "width": 1024,
+        "height": 1024,
+        "bytes": 263088,
+        "background": "Hẻm đá và tháp canh trong bóng chiều"
+      },
+      "previousPortraitCrop": {
+        "x": 330,
+        "y": 5,
+        "width": 360,
+        "height": 480
       }
     },
     {
@@ -282,12 +359,6 @@
       "height": 1536,
       "bytes": 220904,
       "notes": "Cung dài, bao cung sau lưng, bản đã sửa tay cầm tên.",
-      "portraitCrop": {
-        "x": 330,
-        "y": 40,
-        "width": 330,
-        "height": 440
-      },
       "board": {
         "sourceFile": "exec-e4f3d606-951b-4128-a78c-2f71a1799ab4.png",
         "sourceSha256": "b96dd832a76e4128cc4b4251a77df65e56132cee21d79935e86e73e18cc3c378",
@@ -307,6 +378,23 @@
         "poses": 1,
         "assetSha256": "9ba94ae822f64a640696dfcd465fec7172fa074dc40256ddd295492db1adb43d",
         "bytes": 105568
+      },
+      "avatar": {
+        "status": "APPROVED_FOR_GAME",
+        "sourceFile": "exec-0ceb5d70-706c-4014-81bf-b6a098a1f0a7.png",
+        "sourceSha256": "b7d71c34b509cfd0e1b102e5f6b0dbf56b614667cb40cb79f5abd7d3fceb1292",
+        "asset": "assets/heroes/arch/lucy-avatar-background-dw-style-01.webp",
+        "assetSha256": "5e527b22520d58598f41c3487a863d31bf11080fa062669508a51304427beee8",
+        "width": 1024,
+        "height": 1024,
+        "bytes": 255896,
+        "background": "Rừng già và màn sương ngụy trang"
+      },
+      "previousPortraitCrop": {
+        "x": 330,
+        "y": 40,
+        "width": 330,
+        "height": 440
       }
     },
     {
@@ -320,12 +408,6 @@
       "height": 1536,
       "bytes": 216020,
       "notes": "Hai đầu một thân, nỏ, bao hông đã bổ sung tên nỏ.",
-      "portraitCrop": {
-        "x": 260,
-        "y": 30,
-        "width": 480,
-        "height": 640
-      },
       "board": {
         "sourceFile": "exec-2edc679e-ae8b-4541-9044-233130346abb.png",
         "sourceSha256": "8833d2ed085c98caef65c8a00cfb745bcb9773ec222f80f92d616a63a86746f6",
@@ -345,6 +427,23 @@
         "poses": 1,
         "assetSha256": "1c7af94732a94a828a7948ff5e0ff8b6bd49705bb993448a7292dfda95e33202",
         "bytes": 96796
+      },
+      "avatar": {
+        "status": "APPROVED_FOR_GAME",
+        "sourceFile": "exec-380f6283-5acd-442d-b565-34449854e116.png",
+        "sourceSha256": "0805f17ebd49326658eeed70f6bf0fb6ba9a65174d87d17d8f06e134b12dc8ba",
+        "asset": "assets/heroes/arch/raen-avatar-background-dw-style-01.webp",
+        "assetSha256": "6ea6267f37a9ad32823a4c9c8012405d51c7197fb89653d6044fd7061725e41f",
+        "width": 1024,
+        "height": 1024,
+        "bytes": 301380,
+        "background": "Rừng băng gợi Hàn Tiễn"
+      },
+      "previousPortraitCrop": {
+        "x": 260,
+        "y": 30,
+        "width": 480,
+        "height": 640
       }
     },
     {
@@ -358,12 +457,6 @@
       "height": 1536,
       "bytes": 196482,
       "notes": "Sách sau lưng, bản đã sửa tay cầm bình thuốc.",
-      "portraitCrop": {
-        "x": 330,
-        "y": 15,
-        "width": 330,
-        "height": 440
-      },
       "board": {
         "sourceFile": "exec-35d2fe90-253c-4e0e-933d-341dfaf71b6a.png",
         "sourceSha256": "3df4774848e4319eb19bb1b8d28caadce8f74f1b379d64b034f1de22c001c9e4",
@@ -383,6 +476,23 @@
         "poses": 1,
         "assetSha256": "d4c67344d8400ba7a5185d01343fea423f004fca6393e7421118ea159517d03c",
         "bytes": 90266
+      },
+      "avatar": {
+        "status": "APPROVED_FOR_GAME",
+        "sourceFile": "exec-7f991fd5-e43a-46c5-9cef-d5885cc98184.png",
+        "sourceSha256": "76c400d73a7e6929d1be80f74fd7a69395a0f38b61273563a68afeb6b2f07d98",
+        "asset": "assets/heroes/alch/neuro-avatar-background-dw-style-01.webp",
+        "assetSha256": "dbf9628a5009accf58d0dbca0cdc5652595d1079e5af9a32bbb9ab60717a145a",
+        "width": 1024,
+        "height": 1024,
+        "bytes": 230730,
+        "background": "Phòng giả kim, sách và dược bình"
+      },
+      "previousPortraitCrop": {
+        "x": 330,
+        "y": 15,
+        "width": 330,
+        "height": 440
       }
     },
     {
@@ -396,12 +506,6 @@
       "height": 1536,
       "bytes": 259100,
       "notes": "Gậy ngắn, áo choàng trùm đầu, bình thuốc quanh thắt lưng.",
-      "portraitCrop": {
-        "x": 340,
-        "y": 15,
-        "width": 330,
-        "height": 440
-      },
       "board": {
         "sourceFile": "exec-a9370b72-3c95-4da4-b4ff-02b4ae4ebb1e.png",
         "sourceSha256": "586559693aa7ebe601ea4b03ce1946e999fe264e45389bffb9b2ad7875b19388",
@@ -421,6 +525,23 @@
         "poses": 1,
         "assetSha256": "a2f47b68d81be71381c76b518b73bc0f6b68fafa6356cb6a6251f92443163042",
         "bytes": 94374
+      },
+      "avatar": {
+        "status": "APPROVED_FOR_GAME",
+        "sourceFile": "exec-b334d297-4dd3-4c0b-b121-e66c1fd23b13.png",
+        "sourceSha256": "e87feec2c0aebc5c45dd92009abc8b1afe159d0902f4656b3585f184d33a298e",
+        "asset": "assets/heroes/alch/grim-avatar-background-dw-style-01.webp",
+        "assetSha256": "59b019179b5e2a563705c62f208815d645e145d685778ee8abc086e52c060c6a",
+        "width": 1024,
+        "height": 1024,
+        "bytes": 240116,
+        "background": "Thư phòng biến hóa và gương giả kim"
+      },
+      "previousPortraitCrop": {
+        "x": 340,
+        "y": 15,
+        "width": 330,
+        "height": 440
       }
     },
     {
@@ -434,12 +555,6 @@
       "height": 1536,
       "bytes": 268748,
       "notes": "Quyền trượng phép thuật dài.",
-      "portraitCrop": {
-        "x": 330,
-        "y": 10,
-        "width": 360,
-        "height": 480
-      },
       "board": {
         "sourceFile": "exec-3129f91a-0389-4200-9203-5fbcd27f724a.png",
         "sourceSha256": "3967ca3620fd8569d68bfdd001006a8e8e654554c5ae63a4259ee0e0beb9c102",
@@ -459,13 +574,32 @@
         "poses": 1,
         "assetSha256": "b2f1f1f8447d31c383104947b969af3e5b0fcdd99b896b69b66a0bd1f9a797a3",
         "bytes": 109292
+      },
+      "avatar": {
+        "status": "APPROVED_FOR_GAME",
+        "sourceFile": "exec-098f4bfa-bca5-4bb5-8872-7b602461c951.png",
+        "sourceSha256": "e4e582d69b130c62be612ed980bfabe2d9cc6bb9e4a27ba72f8edc4802bf57e4",
+        "asset": "assets/heroes/alch/ranus-avatar-background-dw-style-01.webp",
+        "assetSha256": "d9a1cf548b809007560bcf45db98a9431849a673a5ae731bf550c6c415e81201",
+        "width": 1024,
+        "height": 1024,
+        "bytes": 286072,
+        "background": "Điện đá hắc diện, cổng dịch chuyển và lửa"
+      },
+      "previousPortraitCrop": {
+        "x": 330,
+        "y": 10,
+        "width": 360,
+        "height": 480
       }
     }
   ],
   "portraitDisplay": {
-    "framing": "HEAD_AND_SHOULDERS",
-    "aspectRatio": "3:4",
-    "method": "CSS crop window in the approved full-body artwork; original asset bytes unchanged."
+    "version": "1.69.0",
+    "framing": "DEDICATED_HEAD_AND_SHOULDERS_AVATAR",
+    "aspectRatio": "1:1",
+    "method": "Complete square avatar displayed without crop or stretch in both picker and Hero dock",
+    "totalBytes": 3134744
   },
   "boardDisplay": {
     "design": "COMPACT_BOARD_01",

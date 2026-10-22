@@ -1540,32 +1540,16 @@ for(const h of Object.values(RAW_HERO_DB)){
   h.assets={...h.assets,token};
 }
 
-// Head-and-shoulders windows into the approved artwork, in 1024x1536 source pixels.
-// Wider framing keeps Raen's two heads and elaborate headgear fully visible.
-const HERO_PORTRAIT_CROPS={
-  KAZU:{x:340,y:15,width:300,height:400},
-  RODOC:{x:330,y:5,width:360,height:480},
-  EST:{x:350,y:10,width:300,height:400},
-  MASK:{x:355,y:40,width:330,height:440},
-  SOUL:{x:380,y:85,width:330,height:440},
-  SIRI:{x:360,y:20,width:330,height:440},
-  XACNAS:{x:330,y:5,width:360,height:480},
-  LUCY:{x:330,y:40,width:330,height:440},
-  RAEN:{x:260,y:30,width:480,height:640},
-  NEURO:{x:330,y:15,width:330,height:440},
-  GRIM:{x:340,y:15,width:330,height:440},
-  RANUS:{x:330,y:10,width:360,height:480}
-};
-// Portrait framing stays separate from board tokens and gameplay identity.
+// Dedicated square avatars with individual backgrounds, separate from board tokens and gameplay identity.
 for(const [group,names] of Object.entries({ARCH:['LUCY','RAEN','XACNAS'],INF:['KAZU','RODOC','EST'],CAV:['MASK','SOUL','SIRI'],ALCH:['NEURO','GRIM','RANUS']})){
   for(const name of names){
     const hero=RAW_HERO_DB['HERO_'+group+'_'+name],id='IMG_HERO_'+name+'_PORTRAIT';
-    RAW_ASSETS[id]={type:'IMAGE',usage:'PORTRAIT',source:'./assets/heroes/'+group.toLowerCase()+'/'+name.toLowerCase()+'-dw-style-01.webp',portraitCrop:HERO_PORTRAIT_CROPS[name],fallbackGlyph:name.slice(0,2)};
+    RAW_ASSETS[id]={type:'IMAGE',usage:'PORTRAIT',source:'./assets/heroes/'+group.toLowerCase()+'/'+name.toLowerCase()+'-avatar-background-dw-style-01.webp',fallbackGlyph:name.slice(0,2)};
     hero.assets={...hero.assets,portrait:id};
   }
 }
 
-// One static transparent pose per approved Hero, independent from portrait crops.
+// One static transparent pose per approved Hero, independent from avatar portraits.
 // Facing/view state remains presentation-only; mounted Heroes keep their horse.
 for(const hero of Object.values(RAW_HERO_DB)){
   const name=RAW_LOCALES['vi-VN'][hero.nameKey],slug=name.toLowerCase();

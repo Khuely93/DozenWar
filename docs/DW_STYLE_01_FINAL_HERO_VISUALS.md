@@ -28,6 +28,12 @@ WebP SHA-256 are recorded in `assets/heroes/dw-style-01-manifest.json`.
 | Grim | Short magic wand, raised hood and belt-mounted potion bottles. |
 | Ranus | Long magic staff. |
 
+## Current avatar display — v1.69.0
+
+Dedicated square avatars with individual backgrounds now replace the full-body
+crop display described below in the picker and Hero dock. The original files
+remain as references. See [current avatar integration](HERO_AVATAR_BACKGROUNDS.md).
+
 ## Integration
 
 The existing Hero portrait asset IDs now resolve to the approved artwork in

@@ -12,16 +12,10 @@ const RAW_ASSETS={
   ANIM_HERO_INF_001_ATTACK:{type:'ANIMATION'},ANIM_HERO_RODOC_ATTACK:{type:'ANIMATION'},ANIM_HERO_EST_ATTACK:{type:'ANIMATION'},ANIM_HERO_ARCH_001_ATTACK:{type:'ANIMATION'},ANIM_HERO_CAV_001_ATTACK:{type:'ANIMATION'}
 };
 
-// Display a head-and-shoulders window without redrawing the approved artwork.
+// Display the complete dedicated square avatar in every portrait view.
 const HeroPortrait={
-  frame(frame,image,asset){
-    const crop=asset?.portraitCrop;
-    if(!crop)return;
+  frame(frame,image){
     frame.classList.add('heroPortraitFrame');
     image.classList.add('heroPortraitArt');
-    for(const [name,value] of Object.entries({
-      width:1024/crop.width*100,height:1536/crop.height*100,
-      left:-crop.x/crop.width*100,top:-crop.y/crop.height*100
-    }))frame.style.setProperty('--hero-art-'+name,value+'%');
   }
 };

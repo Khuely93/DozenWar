@@ -251,11 +251,11 @@
 @media(max-width:600px){.defenseFeedbackPanel{padding:16px}.defenseFeedbackName{font-size:19px}.defenseFeedbackVisual{height:230px}.defenseFeedbackFace{width:136px;height:204px}}
 @media(prefers-reduced-motion:reduce){.playing .defenseFeedbackFace{animation:none;opacity:1}.playing .defenseFeedbackParticle{display:none}}
 
-/* Display approved artwork as portraits; keep the original full-body files intact. */
+/* Display approved square avatars with their complete background and headwear. */
 .heroList button.choice{color:var(--text)}
-.dockPortrait{position:relative;overflow:hidden;min-height:0;aspect-ratio:3/4;align-self:start}
+.dockPortrait{position:relative;overflow:hidden;min-height:0;aspect-ratio:1;align-self:start}
 .dockPortrait img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;object-position:center;pointer-events:none;user-select:none}
-.heroChoicePortrait{display:block;width:72px;height:96px;object-fit:cover;margin:auto;border-radius:8px}
-.heroPortraitFrame{position:relative;overflow:hidden;aspect-ratio:3/4;border-radius:8px}
-.heroList .heroPortraitFrame{width:72px;height:96px;margin:auto}
-.heroPortraitFrame .heroPortraitArt{position:absolute;inset:auto;left:var(--hero-art-left);top:var(--hero-art-top);width:var(--hero-art-width);height:var(--hero-art-height);max-width:none;object-fit:fill;border-radius:0;pointer-events:none;user-select:none}
+.heroChoicePortrait{display:block;width:72px;height:72px;object-fit:contain;margin:auto;border-radius:8px}
+.heroPortraitFrame{position:relative;overflow:hidden;aspect-ratio:1;border-radius:8px}
+.heroList .heroPortraitFrame{width:72px;height:72px;margin:auto}
+.heroPortraitFrame .heroPortraitArt{position:absolute;inset:0;width:100%;height:100%;max-width:none;object-fit:contain;border-radius:0;pointer-events:none;user-select:none}
