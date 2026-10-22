@@ -1,0 +1,288 @@
+:root {
+  color-scheme: dark;
+  font: 15px system-ui;
+  background: #08131d;
+  color: #e0eaf3;
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+}
+header {
+  display: flex;
+  gap: 18px;
+  align-items: center;
+  padding: 16px 24px;
+  background: #122734;
+  border-bottom: 1px solid #806941;
+  flex-wrap: wrap;
+}
+header a {
+  font-size: 24px;
+  color: #eef3f8;
+  text-decoration: none;
+  font-weight: 800;
+}
+header b {
+  color: #d9b566;
+}
+header output {
+  margin-left: auto;
+}
+main {
+  max-width: 1440px;
+  margin: auto;
+  padding: 16px;
+}
+section {
+  background: #10222e;
+  border: 1px solid #365363;
+  border-radius: 12px;
+  padding: 14px;
+  margin-bottom: 14px;
+}
+h1,
+h2 {
+  margin: 0 0 12px;
+}
+h2 {
+  font-size: 17px;
+  color: #e6c77d;
+}
+p {
+  color: #b6c7d2;
+}
+label {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 6px;
+  margin: 6px 12px 6px 0;
+}
+input,
+select {
+  font: inherit;
+  background: #081923;
+  color: #e0eaf3;
+  border: 1px solid #7e744f;
+  border-radius: 7px;
+  padding: 9px;
+  max-width: 100%;
+}
+button {
+  font: inherit;
+  color: #eef3f8;
+  background: #244354;
+  border: 1px solid #9a814a;
+  border-radius: 8px;
+  padding: 9px 12px;
+  margin: 4px;
+  cursor: pointer;
+}
+button:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+button.selected {
+  background: #7e5b24;
+  outline: 2px solid #ebc461;
+}
+#notice:empty {
+  display: none;
+}
+#notice {
+  padding: 10px;
+  border-left: 3px solid #d9b566;
+  background: #172d39;
+}
+.roomHeader {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.roomHeader strong {
+  color: #e6c77d;
+}
+#clock {
+  margin-left: auto;
+  font-weight: bold;
+}
+.heroes {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 8px;
+}
+.heroes button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+.heroes img {
+  width: 90px;
+  max-width: 100%;
+  aspect-ratio: 1;
+  border-radius: 8px;
+}
+.arena {
+  background: #514c40 url("../assets/map-gallery/map-compact-dw-style-01.webp")
+    center/cover;
+  border: 1px solid #a58a52;
+  border-radius: 12px;
+  overflow: hidden;
+}
+svg {
+  display: block;
+  width: 100%;
+  max-height: 72vh;
+  touch-action: manipulation;
+}
+.hex {
+  fill: #0b1e2722;
+  stroke: #1b211f;
+  stroke-width: 2;
+  cursor: pointer;
+}
+.hex.valid {
+  fill: #6fd3c744;
+  stroke: #69ebce;
+  stroke-width: 3;
+}
+.hex.chosen {
+  fill: #e5b04466;
+  stroke: #ffe2a0;
+  stroke-width: 4;
+}
+.unit {
+  cursor: pointer;
+}
+.unit image {
+  pointer-events: none;
+}
+.unit text {
+  font-size: 17px;
+  text-anchor: middle;
+  fill: white;
+  paint-order: stroke;
+  stroke: #15202a;
+  stroke-width: 4px;
+  pointer-events: none;
+}
+.unit .ring {
+  fill: #17384d66;
+  stroke-width: 4;
+}
+.unit.selected .ring {
+  stroke: #ffdb68 !important;
+  stroke-width: 6;
+}
+.unit.target .ring {
+  stroke: #72f5d3 !important;
+}
+.unit.used {
+  opacity: 0.58;
+}
+.row {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.hand {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+}
+.hand img {
+  display: block;
+  width: 115px;
+  max-height: 174px;
+  object-fit: contain;
+}
+.hand figure {
+  margin: 0;
+  min-width: 115px;
+}
+.hand figcaption {
+  font-size: 12px;
+  max-width: 125px;
+}
+.hint {
+  color: #e5cc8c;
+}
+.options {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.ghost {
+  opacity: 0.65;
+}
+.danger {
+  border-color: #c26564;
+}
+#lobby {
+  max-width: 620px;
+  margin: 8vh auto;
+}
+#lobby label {
+  display: flex;
+}
+#lobby input {
+  max-width: 350px;
+}
+details {
+  padding: 10px;
+}
+#events {
+  max-height: 220px;
+  overflow: auto;
+  font-size: 13px;
+}
+#events li {
+  margin: 6px;
+}
+#setup:empty {
+  display: none;
+}
+#controls:empty {
+  display: none;
+}
+[hidden] {
+  display: none !important;
+}
+@media (max-width: 700px) {
+  main {
+    padding: 8px;
+  }
+  header {
+    padding: 12px;
+  }
+  .heroes {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .heroes img {
+    width: 76px;
+  }
+  button {
+    padding: 10px;
+  }
+  .roomHeader {
+    gap: 7px;
+    font-size: 13px;
+  }
+  .arena svg {
+    min-height: 360px;
+  }
+  .hand img {
+    width: 92px;
+  }
+  .hand figure {
+    min-width: 92px;
+  }
+  #clock {
+    margin-left: 0;
+  }
+}

@@ -1,0 +1,6 @@
+node_modules/
+work/
+.env
+deploy/.env
+backups/
+*.log

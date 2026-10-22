@@ -56,6 +56,7 @@ html = html.replace(/LATEST PLAYTEST v\d+\.\d+\.\d+[^<]*/, 'LATEST PLAYTEST v' +
 fs.writeFileSync(path.join(DIST, 'index.html'), html);
 
 copyDir(path.join(ROOT, 'assets'), path.join(DIST, 'assets'));
+copyDir(path.join(ROOT, 'online'), path.join(DIST, 'online'));
 
 const files = [
   ['index.html', fs.readFileSync(path.join(DIST,'index.html'))],

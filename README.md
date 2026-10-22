@@ -1,4 +1,12 @@
-# DOZEN WAR II v1.40.22 - Duel desktop map fit
+# DOZEN WAR II
+
+## v1.70.0 — Private online Duel MVP
+
+Real two-player rooms now run through an authoritative Node/Socket.IO server with private hands, server clocks, durable command receipts and reconnect/replay. Open `/online/` on the backend server. The offline game and approved visual assets remain available.
+
+Run `npm ci`, `npm run build`, then `npm run server`; use two browser profiles at `http://localhost:3030/online/`. Deployment uses one app + PostgreSQL + Caddy on an ARM64-capable Docker host. Oracle account, VM, DNS and HTTPS deployment are still pending.
+
+See [deployment instructions](deploy/README.md) and [server architecture / verification](server/README.md). `npm run test:server` and `npm run test:online-browser` cover the online MVP; this is not yet online ranked matchmaking or a load-tested public service.
 
 ## v1.69.0 — Hero avatars with individual backgrounds
 

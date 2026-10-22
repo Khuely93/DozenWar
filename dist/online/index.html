@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>DozenWar · Online 1v1</title>
+    <link rel="stylesheet" href="./style.css" />
+    <script defer src="./config.js"></script>
+    <script defer src="./client.js"></script>
+  </head>
+  <body>
+    <header>
+      <a href="../">DOZEN WAR <b>II</b></a
+      ><span>ONLINE · ĐỐI ĐẦU 1V1</span
+      ><output id="connection" aria-live="polite">Đang kết nối…</output>
+    </header>
+    <main>
+      <p id="notice" role="status" aria-live="polite"></p>
+      <section id="lobby">
+        <h1>Chơi cùng bạn bè</h1>
+        <label
+          >Tên người chơi<input
+            id="playerName"
+            maxlength="32"
+            autocomplete="nickname"
+            value="Player" /></label
+        ><button id="createRoom">Tạo phòng</button
+        ><label
+          >Mã phòng<input
+            id="roomCode"
+            maxlength="8"
+            autocomplete="off"
+            spellcheck="false" /></label
+        ><button id="joinRoom">Vào phòng</button>
+        <p>
+          Gửi mã phòng cho người chơi còn lại. Hai người dùng hai trình duyệt
+          hoặc thiết bị riêng.
+        </p>
+      </section>
+      <section id="room" hidden>
+        <div class="roomHeader">
+          <strong id="roomLabel"></strong><span id="players"></span
+          ><output id="clock"></output
+          ><button id="sync">Kết nối lại / Đồng bộ</button
+          ><button id="leave">Rời phòng</button>
+        </div>
+        <div id="setup"></div>
+        <div class="arena">
+          <svg
+            id="board"
+            viewBox="0 0 1000 900"
+            aria-label="Bàn cờ DozenWar"
+            role="img"
+          ></svg>
+        </div>
+        <section id="controls" aria-label="Hành động"></section>
+        <section>
+          <h2>Trang bị của bạn</h2>
+          <div id="hand" class="hand"></div>
+          <p id="opponentHand"></p>
+        </section>
+        <details>
+          <summary>Diễn biến trận</summary>
+          <ol id="events"></ol>
+        </details>
+      </section>
+    </main>
+  </body>
+</html>

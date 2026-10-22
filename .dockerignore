@@ -1,0 +1,11 @@
+.git
+node_modules
+work
+.env
+.env.*
+deploy/.env
+deploy/backups
+backups
+*.log
+dist
+output

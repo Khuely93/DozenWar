@@ -1,8 +1,8 @@
 {
   "name": "dozen-war-ii",
-  "version": "1.69.0",
+  "version": "1.70.0",
   "private": true,
-  "description": "DOZEN WAR II — confirmed twelve heroes",
+  "description": "DOZEN WAR II \u2014 confirmed twelve heroes",
   "scripts": {
     "dev": "node tools/static-server.cjs --root . --port 5173",
     "validate": "node tools/validate-project.cjs",
@@ -31,9 +31,20 @@
     "test:infantry-equipment": "node tools/test-infantry-equipment.cjs",
     "test:defense-feedback": "node tools/test-defense-feedback.cjs",
     "test:hero-board-browser": "node tools/test-hero-board-browser.cjs",
-    "test:map-browser": "node tools/test-dark-fantasy-map.cjs"
+    "test:map-browser": "node tools/test-dark-fantasy-map.cjs",
+    "server": "node server/main.cjs",
+    "test:server": "node --test server/test/*.test.cjs",
+    "test:online-browser": "node tools/test-online-browser.cjs"
   },
   "engines": {
-    "node": ">=18"
+    "node": ">=22"
+  },
+  "dependencies": {
+    "acorn": "^8.19.0",
+    "pg": "^8.23.1",
+    "socket.io": "^4.8.4"
+  },
+  "devDependencies": {
+    "socket.io-client": "^4.8.4"
   }
 }

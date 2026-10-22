@@ -1,0 +1,77 @@
+name: dozenwar
+services:
+  db:
+    image: postgres:17-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: dozenwar
+      POSTGRES_USER: dozenwar
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD in deploy/.env}
+    volumes:
+      - database:/var/lib/postgresql/data
+    healthcheck:
+      test: [CMD-SHELL, "pg_isready -U dozenwar -d dozenwar"]
+      interval: 5s
+      timeout: 5s
+      retries: 15
+    mem_limit: 768m
+    logging:
+      driver: json-file
+      options: { max-size: 10m, max-file: "3" }
+  app:
+    image: dozenwar-online:${APP_TAG:-local}
+    build:
+      context: ..
+      secrets:
+        - proxy_ca
+    restart: unless-stopped
+    init: true
+    depends_on:
+      db: { condition: service_healthy }
+    environment:
+      NODE_ENV: production
+      HOST: 0.0.0.0
+      PORT: "3030"
+      PGHOST: db
+      PGPORT: "5432"
+      PGDATABASE: dozenwar
+      PGUSER: dozenwar
+      PGPASSWORD: ${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD}
+      PUBLIC_URL: ${PUBLIC_URL:?Set PUBLIC_URL to your HTTPS origin}
+      ALLOWED_ORIGINS: ${ALLOWED_ORIGINS:-}
+      TRUST_PROXY: "1"
+      MAX_ROOMS: ${MAX_ROOMS:-50}
+    read_only: true
+    tmpfs: ["/tmp:size=32m,mode=1777"]
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    mem_limit: 1024m
+    stop_grace_period: 20s
+    logging:
+      driver: json-file
+      options: { max-size: 10m, max-file: "3" }
+  caddy:
+    image: caddy:2-alpine
+    restart: unless-stopped
+    depends_on:
+      app: { condition: service_healthy }
+    environment:
+      PUBLIC_HOST: ${PUBLIC_HOST:?Set PUBLIC_HOST to your DNS hostname}
+      NO_PROXY: app,db,localhost,127.0.0.1,::1
+    ports: ["80:80", "443:443", "443:443/udp"]
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+    mem_limit: 256m
+    logging:
+      driver: json-file
+      options: { max-size: 10m, max-file: "3" }
+volumes:
+  database:
+  caddy_data:
+  caddy_config:
+# Outside a managed proxy environment /dev/null is sufficient; no CA is baked into the image.
+secrets:
+  proxy_ca:
+    file: ${CODEX_PROXY_CERT:-/dev/null}
