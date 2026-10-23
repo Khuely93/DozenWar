@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1110" height="892" viewBox="0 0 1110 892">
+<title>Tung xúc xắc — 390×844, 1:1 CSS px</title>
+<rect width="100%" height="100%" fill="#14202a"/>
+<defs><clipPath id="screen"><rect width="390" height="888"/></clipPath></defs>
+<g clip-path="url(#screen)">
+<image width="390" height="888" href="screen.png"/>
+<g><title>top | div:nth-child(1) &gt; div:nth-child(1) | X 6 Y 6 W 378 H 195.94</title><rect x="6" y="6" width="378" height="195.94" fill="none" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="6" y="6" width="119.7" height="15" fill="#07131f" fill-opacity=".93"/><text x="9" y="17" font-family="Arial,sans-serif" font-size="10" fill="#ffffff">001 · 378 × 195.94 px</text>
+</g>
+<g><title>brand | div:nth-child(1) &gt; div:nth-child(1) &gt; div:nth-child(1) | X 6 Y 6 W 331.78 H 195.94</title><rect x="6" y="6" width="331.78" height="195.94" fill="none" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="6" y="6" width="136.8" height="15" fill="#07131f" fill-opacity=".93"/><text x="9" y="17" font-family="Arial,sans-serif" font-size="10" fill="#ffffff">002 · 331.78 × 195.94 px</text>
+</g>
+<g><title>runtimeBadge | div:nth-child(1) &gt; div:nth-child(1) &gt; div:nth-child(1) &gt; span:nth-child(2) | X 14 Y 60.19 W 156.73 H 22</title><rect x="14" y="60.19" width="156.73" height="22" fill="none" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="14" y="60.19" width="114" height="15" fill="#07131f" fill-opacity=".93"/><text x="17" y="71.19" font-family="Arial,sans-serif" font-size="10" fill="#ffffff">003 · 156.73 × 22 px</text>
+</g>
+<g><title>SHELL_UI_PHASE_LABEL | #phaseLabel | X 347.78 Y 84.38 W 36.22 H 39.19</title><rect x="347.78" y="84.38" width="36.22" height="39.19" fill="none" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+</g>
+<g><title>main | div:nth-child(1) &gt; div:nth-child(2) &gt; section:nth-child(1) | X 6 Y 211.94 W 378 H 636</title><rect x="6" y="211.94" width="378" height="636" fill="none" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="6" y="211.94" width="102.60000000000001" height="15" fill="#07131f" fill-opacity=".93"/><text x="9" y="222.94" font-family="Arial,sans-serif" font-size="10" fill="#ffffff">005 · 378 × 636 px</text>
+</g>
+<g><title>SHELL_UI_DICE | #diceScreen | X 19 Y 224.94 W 352 H 610</title><rect x="19" y="224.94" width="352" height="610" fill="none" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="19" y="224.94" width="102.60000000000001" height="15" fill="#07131f" fill-opacity=".93"/><text x="22" y="235.94" font-family="Arial,sans-serif" font-size="10" fill="#ffffff">006 · 352 × 610 px</text>
+</g>
+<g><title>diceWrap | #diceScreen &gt; div:nth-child(1) | X 19 Y 224.94 W 352 H 610</title><rect x="19" y="224.94" width="352" height="610" fill="none" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="19" y="224.94" width="102.60000000000001" height="15" fill="#07131f" fill-opacity=".93"/><text x="22" y="235.94" font-family="Arial,sans-serif" font-size="10" fill="#ffffff">007 · 352 × 610 px</text>
+</g>
+<g><title>bigNotice | #diceScreen &gt; div:nth-child(1) &gt; div:nth-child(1) &gt; div:nth-child(1) | X 89.2 Y 265.44 W 211.59 H 28</title><rect x="89.2" y="265.44" width="211.59" height="28" fill="none" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="89.2" y="265.44" width="114" height="15" fill="#07131f" fill-opacity=".93"/><text x="92.2" y="276.44" font-family="Arial,sans-serif" font-size="10" fill="#ffffff">008 · 211.59 × 28 px</text>
+</g>
+<g><title>diceArea | #diceScreen &gt; div:nth-child(1) &gt; div:nth-child(2) | X 39 Y 331.03 W 312 H 445.41</title><rect x="39" y="331.03" width="312" height="445.41" fill="none" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="39" y="331.03" width="119.7" height="15" fill="#07131f" fill-opacity=".93"/><text x="42" y="342.03" font-family="Arial,sans-serif" font-size="10" fill="#ffffff">009 · 312 × 445.41 px</text>
+</g>
+<g><title>dieBox | #diceScreen &gt; div:nth-child(1) &gt; div:nth-child(2) &gt; div:nth-child(1) | X 39 Y 331.03 W 312 H 213.7</title><rect x="39" y="331.03" width="312" height="213.7" fill="none" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="39" y="331.03" width="114" height="15" fill="#07131f" fill-opacity=".93"/><text x="42" y="342.03" font-family="Arial,sans-serif" font-size="10" fill="#ffffff">010 · 312 × 213.7 px</text>
+</g>
+<g><title>h3 | #diceScreen &gt; div:nth-child(1) &gt; div:nth-child(2) &gt; div:nth-child(1) &gt; h3:nth-child(1) | X 58 Y 350.03 W 274 H 22.92</title><rect x="58" y="350.03" width="274" height="22.92" fill="none" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="58" y="350.03" width="114" height="15" fill="#07131f" fill-opacity=".93"/><text x="61" y="361.03" font-family="Arial,sans-serif" font-size="10" fill="#ffffff">011 · 274 × 22.92 px</text>
+</g>
+<g><title>SHELL_UI_DICE_P1 | #die1 | X 58 Y 372.95 W 274 H 88</title><rect x="58" y="372.95" width="274" height="88" fill="none" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="58" y="372.95" width="96.9" height="15" fill="#07131f" fill-opacity=".93"/><text x="61" y="383.95" font-family="Arial,sans-serif" font-size="10" fill="#ffffff">012 · 274 × 88 px</text>
+</g>
+<g><title>SHELL_UI_DICE_P1_TEXT | #d1txt | X 58 Y 460.95 W 274 H 25.19</title><rect x="58" y="460.95" width="274" height="25.19" fill="none" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="58" y="460.95" width="114" height="15" fill="#07131f" fill-opacity=".93"/><text x="61" y="471.95" font-family="Arial,sans-serif" font-size="10" fill="#ffffff">013 · 274 × 25.19 px</text>
+</g>
+<g><title>SHELL_UI_DICE_P1_ROLL | #roll1 | X 130.02 Y 486.14 W 129.97 H 39.59</title><rect x="130.02" y="486.14" width="129.97" height="39.59" fill="none" fill-opacity=".15" stroke="#b45309" stroke-width="1"/>
+<rect x="130.02" y="486.14" width="129.97" height="15" fill="#07131f" fill-opacity=".93"/><text x="133.02" y="497.14" font-family="Arial,sans-serif" font-size="10" fill="#ffffff">014</text>
+</g>
+<g><title>dieBox | #diceScreen &gt; div:nth-child(1) &gt; div:nth-child(2) &gt; div:nth-child(3) | X 39 Y 562.73 W 312 H 213.7</title><rect x="39" y="562.73" width="312" height="213.7" fill="none" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="39" y="562.73" width="114" height="15" fill="#07131f" fill-opacity=".93"/><text x="42" y="573.73" font-family="Arial,sans-serif" font-size="10" fill="#ffffff">015 · 312 × 213.7 px</text>
+</g>
+<g><title>h3 | #diceScreen &gt; div:nth-child(1) &gt; div:nth-child(2) &gt; div:nth-child(3) &gt; h3:nth-child(1) | X 58 Y 581.73 W 274 H 22.92</title><rect x="58" y="581.73" width="274" height="22.92" fill="none" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="58" y="581.73" width="114" height="15" fill="#07131f" fill-opacity=".93"/><text x="61" y="592.73" font-family="Arial,sans-serif" font-size="10" fill="#ffffff">016 · 274 × 22.92 px</text>
+</g>
+<g><title>SHELL_UI_DICE_P2 | #die2 | X 58 Y 604.66 W 274 H 88</title><rect x="58" y="604.66" width="274" height="88" fill="none" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="58" y="604.66" width="96.9" height="15" fill="#07131f" fill-opacity=".93"/><text x="61" y="615.66" font-family="Arial,sans-serif" font-size="10" fill="#ffffff">017 · 274 × 88 px</text>
+</g>
+<g><title>SHELL_UI_DICE_P2_TEXT | #d2txt | X 58 Y 692.66 W 274 H 25.19</title><rect x="58" y="692.66" width="274" height="25.19" fill="none" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="58" y="692.66" width="114" height="15" fill="#07131f" fill-opacity=".93"/><text x="61" y="703.66" font-family="Arial,sans-serif" font-size="10" fill="#ffffff">018 · 274 × 25.19 px</text>
+</g>
+<g><title>SHELL_UI_DICE_P2_ROLL | #roll2 | X 130.02 Y 717.84 W 129.97 H 39.59</title><rect x="130.02" y="717.84" width="129.97" height="39.59" fill="none" fill-opacity=".15" stroke="#b45309" stroke-width="1"/>
+<rect x="130.02" y="717.84" width="129.97" height="15" fill="#07131f" fill-opacity=".93"/><text x="133.02" y="728.84" font-family="Arial,sans-serif" font-size="10" fill="#ffffff">019</text>
+</g>
+<g><title>side | div:nth-child(1) &gt; div:nth-child(2) &gt; aside:nth-child(2) | X 6 Y 855.94 W 378 H 26</title><rect x="6" y="855.94" width="378" height="26" fill="none" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="6" y="855.94" width="96.9" height="15" fill="#07131f" fill-opacity=".93"/><text x="9" y="866.94" font-family="Arial,sans-serif" font-size="10" fill="#ffffff">020 · 378 × 26 px</text>
+</g>
+<line x1="0" y1="844" x2="390" y2="844" stroke="#e11d48" stroke-width="2" stroke-dasharray="8 5"/><rect x="4" y="824" width="290" height="19" fill="#fff1f2"/><text x="8" y="838" fill="#be123c" font-family="Arial,sans-serif" font-size="11">Viewport ends at 844px — scroll below</text>
+</g>
+<rect x="390" width="720" height="892" fill="#0d1d2a"/><text x="410" y="30" fill="#ffffff" font-family="Arial,sans-serif" font-size="18">11-dice · Tung xúc xắc</text><text x="410" y="56" fill="#bcd1e2" font-family="Arial,sans-serif" font-size="13">Viewport 390 × 844 CSS px · DPR 1 · scale 1:1</text><text x="410" y="78" fill="#bcd1e2" font-family="Arial,sans-serif" font-size="12">Image 390 × 888 px at left. This 720 px legend is outside the game canvas.</text><text x="410" y="98" fill="#bcd1e2" font-family="Arial,sans-serif" font-size="12">Measured border boxes. Decimal CSS pixels are retained; X/Y origin is top-left.</text>
+<text x="410" y="130" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">001  top</text><text x="438" y="145" fill="#e1edf5" font-family="monospace" font-size="11">X 6 · Y 6 · W 378 × H 195.94 px</text>
+<text x="410" y="168" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">002  brand</text><text x="438" y="183" fill="#e1edf5" font-family="monospace" font-size="11">X 6 · Y 6 · W 331.78 × H 195.94 px</text>
+<text x="410" y="206" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">003  runtimeBadge</text><text x="438" y="221" fill="#e1edf5" font-family="monospace" font-size="11">X 14 · Y 60.19 · W 156.73 × H 22 px</text>
+<text x="410" y="244" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">004  SHELL_UI_PHASE_LABEL</text><text x="438" y="259" fill="#e1edf5" font-family="monospace" font-size="11">X 347.78 · Y 84.38 · W 36.22 × H 39.19 px</text>
+<text x="410" y="282" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">005  main</text><text x="438" y="297" fill="#e1edf5" font-family="monospace" font-size="11">X 6 · Y 211.94 · W 378 × H 636 px</text>
+<text x="410" y="320" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">006  SHELL_UI_DICE</text><text x="438" y="335" fill="#e1edf5" font-family="monospace" font-size="11">X 19 · Y 224.94 · W 352 × H 610 px</text>
+<text x="410" y="358" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">007  diceWrap</text><text x="438" y="373" fill="#e1edf5" font-family="monospace" font-size="11">X 19 · Y 224.94 · W 352 × H 610 px</text>
+<text x="410" y="396" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">008  bigNotice</text><text x="438" y="411" fill="#e1edf5" font-family="monospace" font-size="11">X 89.2 · Y 265.44 · W 211.59 × H 28 px</text>
+<text x="410" y="434" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">009  diceArea</text><text x="438" y="449" fill="#e1edf5" font-family="monospace" font-size="11">X 39 · Y 331.03 · W 312 × H 445.41 px</text>
+<text x="410" y="472" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">010  dieBox</text><text x="438" y="487" fill="#e1edf5" font-family="monospace" font-size="11">X 39 · Y 331.03 · W 312 × H 213.7 px</text>
+<text x="410" y="510" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">011  h3</text><text x="438" y="525" fill="#e1edf5" font-family="monospace" font-size="11">X 58 · Y 350.03 · W 274 × H 22.92 px</text>
+<text x="410" y="548" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">012  SHELL_UI_DICE_P1</text><text x="438" y="563" fill="#e1edf5" font-family="monospace" font-size="11">X 58 · Y 372.95 · W 274 × H 88 px</text>
+<text x="410" y="586" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">013  SHELL_UI_DICE_P1_TEXT</text><text x="438" y="601" fill="#e1edf5" font-family="monospace" font-size="11">X 58 · Y 460.95 · W 274 × H 25.19 px</text>
+<text x="410" y="624" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">014  SHELL_UI_DICE_P1_ROLL</text><text x="438" y="639" fill="#e1edf5" font-family="monospace" font-size="11">X 130.02 · Y 486.14 · W 129.97 × H 39.59 px</text>
+<text x="410" y="662" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">015  dieBox</text><text x="438" y="677" fill="#e1edf5" font-family="monospace" font-size="11">X 39 · Y 562.73 · W 312 × H 213.7 px</text>
+<text x="410" y="700" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">016  h3</text><text x="438" y="715" fill="#e1edf5" font-family="monospace" font-size="11">X 58 · Y 581.73 · W 274 × H 22.92 px</text>
+<text x="410" y="738" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">017  SHELL_UI_DICE_P2</text><text x="438" y="753" fill="#e1edf5" font-family="monospace" font-size="11">X 58 · Y 604.66 · W 274 × H 88 px</text>
+<text x="410" y="776" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">018  SHELL_UI_DICE_P2_TEXT</text><text x="438" y="791" fill="#e1edf5" font-family="monospace" font-size="11">X 58 · Y 692.66 · W 274 × H 25.19 px</text>
+<text x="410" y="814" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">019  SHELL_UI_DICE_P2_ROLL</text><text x="438" y="829" fill="#e1edf5" font-family="monospace" font-size="11">X 130.02 · Y 717.84 · W 129.97 × H 39.59 px</text>
+<text x="410" y="852" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">020  side</text><text x="438" y="867" fill="#e1edf5" font-family="monospace" font-size="11">X 6 · Y 855.94 · W 378 × H 26 px</text>
+</svg>

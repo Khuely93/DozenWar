@@ -1,0 +1,142 @@
+[
+  {
+    "title": "Thẻ chế độ chơi",
+    "screen": "01-mode",
+    "1920x1080": {
+      "width": 403,
+      "height": 238.33,
+      "selector": "#modeScreen > div:nth-child(1) > div:nth-child(2) > div:nth-child(1)"
+    },
+    "390x844": {
+      "width": 312,
+      "height": 238.33,
+      "selector": "#modeScreen > div:nth-child(1) > div:nth-child(2) > div:nth-child(1)"
+    }
+  },
+  {
+    "title": "Popup xác nhận chế độ",
+    "screen": "02-mode-confirm",
+    "1920x1080": {
+      "width": 460,
+      "height": 300.94,
+      "selector": "#modeConfirmOverlay > div:nth-child(1)"
+    },
+    "390x844": {
+      "width": 312,
+      "height": 354.94,
+      "selector": "#modeConfirmOverlay > div:nth-child(1)"
+    }
+  },
+  {
+    "title": "Thẻ chọn Hero",
+    "screen": "14-team-empty",
+    "1920x1080": {
+      "width": 155,
+      "height": 133.19,
+      "selector": "#heroChoices > button:nth-child(1)"
+    },
+    "390x844": {
+      "width": 141,
+      "height": 133.19,
+      "selector": "#heroChoices > button:nth-child(1)"
+    }
+  },
+  {
+    "title": "Avatar Hero ingame",
+    "screen": "20-battle",
+    "1920x1080": {
+      "width": 100,
+      "height": 100,
+      "selector": "#unitPanel > div:nth-child(2)"
+    },
+    "390x844": {
+      "width": 64,
+      "height": 64,
+      "selector": "#unitPanel > div:nth-child(2)"
+    }
+  },
+  {
+    "title": "Panel Hero ingame",
+    "screen": "20-battle",
+    "1920x1080": {
+      "width": 426.88,
+      "height": 226,
+      "selector": "#unitPanel"
+    },
+    "390x844": {
+      "width": 332,
+      "height": 129.58,
+      "selector": "#unitPanel"
+    }
+  },
+  {
+    "title": "Ô kỹ năng ingame",
+    "screen": "20-battle",
+    "1920x1080": {
+      "width": 191.48,
+      "height": 176,
+      "selector": "#skillBar > button:nth-child(1)"
+    },
+    "390x844": {
+      "width": 98,
+      "height": 98.38,
+      "selector": "#skillBar > button:nth-child(1)"
+    }
+  },
+  {
+    "title": "Bài trên tay ingame",
+    "screen": "20-battle",
+    "1920x1080": {
+      "width": 93.73,
+      "height": 140.61,
+      "selector": "#handBar > button:nth-child(1)"
+    },
+    "390x844": {
+      "width": 140,
+      "height": 210,
+      "selector": "#handBar > button:nth-child(1)"
+    }
+  },
+  {
+    "title": "Cửa sổ chọn trang bị",
+    "screen": "28-equipment-dialog",
+    "1920x1080": {
+      "width": 820,
+      "height": 430.19,
+      "selector": "dialog:nth-child(4)"
+    },
+    "390x844": {
+      "width": 356,
+      "height": 717.39,
+      "selector": "dialog:nth-child(4)"
+    }
+  },
+  {
+    "title": "Cửa sổ thắng/thua",
+    "screen": "36-win",
+    "1920x1080": {
+      "width": 460,
+      "height": 530.33,
+      "selector": "#gameOverOverlay > div:nth-child(1)"
+    },
+    "390x844": {
+      "width": 350,
+      "height": 684.11,
+      "selector": "#gameOverOverlay > div:nth-child(1)"
+    }
+  },
+  {
+    "title": "Thông báo dùng phòng thủ",
+    "screen": "45-defense-feedback-card",
+    "1920x1080": {
+      "width": 420,
+      "height": 521.16,
+      "selector": "div:nth-child(6) > section:nth-child(1)"
+    },
+    "390x844": {
+      "width": 358,
+      "height": 460.75,
+      "selector": "div:nth-child(6) > section:nth-child(1)"
+    }
+  }
+]

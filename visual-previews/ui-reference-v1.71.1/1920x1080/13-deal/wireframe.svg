@@ -1,0 +1,156 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="2640" height="1538" viewBox="0 0 2640 1538">
+<title>Nhận bài trang bị — 1920×1080, 1:1 CSS px</title>
+<rect width="100%" height="100%" fill="#f5f8fc"/>
+<defs><clipPath id="screen"><rect width="1920" height="1080"/></clipPath></defs>
+<g clip-path="url(#screen)">
+<g><title>top | div:nth-child(1) &gt; div:nth-child(1) | X 222 Y 12 W 1476 H 39.19</title><rect x="222" y="12" width="1476" height="39.19" fill="#ffffff" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="222" y="12" width="119.7" height="15" fill="#ffffff" fill-opacity=".93"/><text x="225" y="23" font-family="Arial,sans-serif" font-size="10" fill="#087e8b">001 · 1476 × 39.19 px</text>
+</g>
+<g><title>brand | div:nth-child(1) &gt; div:nth-child(1) &gt; div:nth-child(1) | X 222 Y 12 W 1324.77 H 39.19</title><rect x="222" y="12" width="1324.77" height="39.19" fill="#ffffff" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="222" y="12" width="136.8" height="15" fill="#ffffff" fill-opacity=".93"/><text x="225" y="23" font-family="Arial,sans-serif" font-size="10" fill="#087e8b">002 · 1324.77 × 39.19 px</text>
+</g>
+<g><title>SHELL_UI_PHASE_LABEL | #phaseLabel | X 1574.25 Y 21.8 W 123.75 H 19.59</title><rect x="1574.25" y="21.8" width="123.75" height="19.59" fill="#ffffff" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="1574.25" y="21.8" width="123.75" height="15" fill="#ffffff" fill-opacity=".93"/><text x="1577.25" y="32.8" font-family="Arial,sans-serif" font-size="10" fill="#087e8b">003</text>
+</g>
+<g><title>runtimeBadge | div:nth-child(1) &gt; div:nth-child(1) &gt; div:nth-child(1) &gt; span:nth-child(2) | X 449.34 Y 27 W 156.73 H 22</title><rect x="449.34" y="27" width="156.73" height="22" fill="#ffffff" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="449.34" y="27" width="114" height="15" fill="#ffffff" fill-opacity=".93"/><text x="452.34" y="38" font-family="Arial,sans-serif" font-size="10" fill="#087e8b">004 · 156.73 × 22 px</text>
+</g>
+<g><title>main | div:nth-child(1) &gt; div:nth-child(2) &gt; section:nth-child(1) | X 222 Y 61.19 W 1084 H 636</title><rect x="222" y="61.19" width="1084" height="636" fill="#ffffff" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="222" y="61.19" width="108.3" height="15" fill="#ffffff" fill-opacity=".93"/><text x="225" y="72.19" font-family="Arial,sans-serif" font-size="10" fill="#087e8b">005 · 1084 × 636 px</text>
+</g>
+<g><title>side | div:nth-child(1) &gt; div:nth-child(2) &gt; aside:nth-child(2) | X 1318 Y 61.19 W 380 H 26</title><rect x="1318" y="61.19" width="380" height="26" fill="#ffffff" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="1318" y="61.19" width="96.9" height="15" fill="#ffffff" fill-opacity=".93"/><text x="1321" y="72.19" font-family="Arial,sans-serif" font-size="10" fill="#087e8b">006 · 380 × 26 px</text>
+</g>
+<g><title>SHELL_UI_EQUIPMENT_DEAL | #dealScreen | X 235 Y 74.19 W 1058 H 610</title><rect x="235" y="74.19" width="1058" height="610" fill="#ffffff" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="235" y="74.19" width="108.3" height="15" fill="#ffffff" fill-opacity=".93"/><text x="238" y="85.19" font-family="Arial,sans-serif" font-size="10" fill="#087e8b">007 · 1058 × 610 px</text>
+</g>
+<g><title>dealWrap | #dealScreen &gt; div:nth-child(1) | X 235 Y 74.19 W 1058 H 610</title><rect x="235" y="74.19" width="1058" height="610" fill="#ffffff" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="235" y="74.19" width="108.3" height="15" fill="#ffffff" fill-opacity=".93"/><text x="238" y="85.19" font-family="Arial,sans-serif" font-size="10" fill="#087e8b">008 · 1058 × 610 px</text>
+</g>
+<g><title>bigNotice | #dealScreen &gt; div:nth-child(1) &gt; div:nth-child(1) &gt; div:nth-child(1) | X 488.33 Y 227.92 W 551.33 H 28</title><rect x="488.33" y="227.92" width="551.33" height="28" fill="#ffffff" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="488.33" y="227.92" width="114" height="15" fill="#ffffff" fill-opacity=".93"/><text x="491.33" y="238.92" font-family="Arial,sans-serif" font-size="10" fill="#087e8b">009 · 551.33 × 28 px</text>
+</g>
+<g><title>dealHands | #dealScreen &gt; div:nth-child(1) &gt; div:nth-child(2) | X 255 Y 293.52 W 1018 H 179.33</title><rect x="255" y="293.52" width="1018" height="179.33" fill="#ffffff" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="255" y="293.52" width="125.4" height="15" fill="#ffffff" fill-opacity=".93"/><text x="258" y="304.52" font-family="Arial,sans-serif" font-size="10" fill="#087e8b">010 · 1018 × 179.33 px</text>
+</g>
+<g><title>box | #dealScreen &gt; div:nth-child(1) &gt; div:nth-child(2) &gt; div:nth-child(1) | X 255 Y 293.52 W 502 H 179.33</title><rect x="255" y="293.52" width="502" height="179.33" fill="#ffffff" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="255" y="293.52" width="119.7" height="15" fill="#ffffff" fill-opacity=".93"/><text x="258" y="304.52" font-family="Arial,sans-serif" font-size="10" fill="#087e8b">011 · 502 × 179.33 px</text>
+</g>
+<g><title>box | #dealScreen &gt; div:nth-child(1) &gt; div:nth-child(2) &gt; div:nth-child(2) | X 771 Y 293.52 W 502 H 179.33</title><rect x="771" y="293.52" width="502" height="179.33" fill="#ffffff" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="771" y="293.52" width="119.7" height="15" fill="#ffffff" fill-opacity=".93"/><text x="774" y="304.52" font-family="Arial,sans-serif" font-size="10" fill="#087e8b">012 · 502 × 179.33 px</text>
+</g>
+<g><title>h3 | #dealScreen &gt; div:nth-child(1) &gt; div:nth-child(2) &gt; div:nth-child(1) &gt; h3:nth-child(1) | X 266 Y 304.52 W 480 H 22.92</title><rect x="266" y="304.52" width="480" height="22.92" fill="#ffffff" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="266" y="304.52" width="114" height="15" fill="#ffffff" fill-opacity=".93"/><text x="269" y="315.52" font-family="Arial,sans-serif" font-size="10" fill="#087e8b">013 · 480 × 22.92 px</text>
+</g>
+<g><title>h3 | #dealScreen &gt; div:nth-child(1) &gt; div:nth-child(2) &gt; div:nth-child(2) &gt; h3:nth-child(1) | X 782 Y 304.52 W 480 H 22.92</title><rect x="782" y="304.52" width="480" height="22.92" fill="#ffffff" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="782" y="304.52" width="114" height="15" fill="#ffffff" fill-opacity=".93"/><text x="785" y="315.52" font-family="Arial,sans-serif" font-size="10" fill="#087e8b">014 · 480 × 22.92 px</text>
+</g>
+<g><title>SHELL_UI_DEAL_P1_HAND | #dealHand1 | X 266 Y 327.44 W 480 H 134.41</title><rect x="266" y="327.44" width="480" height="134.41" fill="#ffffff" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="266" y="327.44" width="119.7" height="15" fill="#ffffff" fill-opacity=".93"/><text x="269" y="338.44" font-family="Arial,sans-serif" font-size="10" fill="#087e8b">015 · 480 × 134.41 px</text>
+</g>
+<g><title>neu | #dealHand1 &gt; div:nth-child(1) | X 266 Y 327.44 W 89.59 H 134.41</title><rect x="266" y="327.44" width="89.59" height="134.41" fill="#ffffff" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="266" y="327.44" width="89.59" height="15" fill="#ffffff" fill-opacity=".93"/><text x="269" y="338.44" font-family="Arial,sans-serif" font-size="10" fill="#087e8b">016</text>
+</g>
+<g><title>equipmentFullCard | #dealHand1 &gt; div:nth-child(1) &gt; img:nth-child(1) | X 266 Y 327.44 W 89.59 H 134.39</title><rect x="266" y="327.44" width="89.59" height="134.39" fill="#ffffff" fill-opacity=".15" stroke="#7c3aed" stroke-width="1"/>
+<rect x="266" y="327.44" width="89.59" height="15" fill="#ffffff" fill-opacity=".93"/><text x="269" y="338.44" font-family="Arial,sans-serif" font-size="10" fill="#7c3aed">017</text>
+</g>
+<g><title>atk | #dealHand1 &gt; div:nth-child(2) | X 363.59 Y 327.44 W 89.59 H 134.41</title><rect x="363.59" y="327.44" width="89.59" height="134.41" fill="#ffffff" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="363.59" y="327.44" width="89.59" height="15" fill="#ffffff" fill-opacity=".93"/><text x="366.59" y="338.44" font-family="Arial,sans-serif" font-size="10" fill="#087e8b">018</text>
+</g>
+<g><title>equipmentFullCard | #dealHand1 &gt; div:nth-child(2) &gt; img:nth-child(1) | X 363.59 Y 327.44 W 89.59 H 134.39</title><rect x="363.59" y="327.44" width="89.59" height="134.39" fill="#ffffff" fill-opacity=".15" stroke="#7c3aed" stroke-width="1"/>
+<rect x="363.59" y="327.44" width="89.59" height="15" fill="#ffffff" fill-opacity=".93"/><text x="366.59" y="338.44" font-family="Arial,sans-serif" font-size="10" fill="#7c3aed">019</text>
+</g>
+<g><title>neu | #dealHand1 &gt; div:nth-child(3) | X 461.19 Y 327.44 W 89.61 H 134.41</title><rect x="461.19" y="327.44" width="89.61" height="134.41" fill="#ffffff" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="461.19" y="327.44" width="89.61" height="15" fill="#ffffff" fill-opacity=".93"/><text x="464.19" y="338.44" font-family="Arial,sans-serif" font-size="10" fill="#087e8b">020</text>
+</g>
+<g><title>equipmentFullCard | #dealHand1 &gt; div:nth-child(3) &gt; img:nth-child(1) | X 461.19 Y 327.44 W 89.61 H 134.41</title><rect x="461.19" y="327.44" width="89.61" height="134.41" fill="#ffffff" fill-opacity=".15" stroke="#7c3aed" stroke-width="1"/>
+<rect x="461.19" y="327.44" width="89.61" height="15" fill="#ffffff" fill-opacity=".93"/><text x="464.19" y="338.44" font-family="Arial,sans-serif" font-size="10" fill="#7c3aed">021</text>
+</g>
+<g><title>atk | #dealHand1 &gt; div:nth-child(4) | X 558.8 Y 327.44 W 89.59 H 134.41</title><rect x="558.8" y="327.44" width="89.59" height="134.41" fill="#ffffff" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="558.8" y="327.44" width="89.59" height="15" fill="#ffffff" fill-opacity=".93"/><text x="561.8" y="338.44" font-family="Arial,sans-serif" font-size="10" fill="#087e8b">022</text>
+</g>
+<g><title>equipmentFullCard | #dealHand1 &gt; div:nth-child(4) &gt; img:nth-child(1) | X 558.8 Y 327.44 W 89.59 H 134.39</title><rect x="558.8" y="327.44" width="89.59" height="134.39" fill="#ffffff" fill-opacity=".15" stroke="#7c3aed" stroke-width="1"/>
+<rect x="558.8" y="327.44" width="89.59" height="15" fill="#ffffff" fill-opacity=".93"/><text x="561.8" y="338.44" font-family="Arial,sans-serif" font-size="10" fill="#7c3aed">023</text>
+</g>
+<g><title>atk | #dealHand1 &gt; div:nth-child(5) | X 656.39 Y 327.44 W 89.59 H 134.41</title><rect x="656.39" y="327.44" width="89.59" height="134.41" fill="#ffffff" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="656.39" y="327.44" width="89.59" height="15" fill="#ffffff" fill-opacity=".93"/><text x="659.39" y="338.44" font-family="Arial,sans-serif" font-size="10" fill="#087e8b">024</text>
+</g>
+<g><title>equipmentFullCard | #dealHand1 &gt; div:nth-child(5) &gt; img:nth-child(1) | X 656.39 Y 327.44 W 89.59 H 134.39</title><rect x="656.39" y="327.44" width="89.59" height="134.39" fill="#ffffff" fill-opacity=".15" stroke="#7c3aed" stroke-width="1"/>
+<rect x="656.39" y="327.44" width="89.59" height="15" fill="#ffffff" fill-opacity=".93"/><text x="659.39" y="338.44" font-family="Arial,sans-serif" font-size="10" fill="#7c3aed">025</text>
+</g>
+<g><title>SHELL_UI_DEAL_P2_HAND | #dealHand2 | X 782 Y 327.44 W 480 H 134.41</title><rect x="782" y="327.44" width="480" height="134.41" fill="#ffffff" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="782" y="327.44" width="119.7" height="15" fill="#ffffff" fill-opacity=".93"/><text x="785" y="338.44" font-family="Arial,sans-serif" font-size="10" fill="#087e8b">026 · 480 × 134.41 px</text>
+</g>
+<g><title>def | #dealHand2 &gt; div:nth-child(1) | X 782 Y 327.44 W 89.59 H 134.41</title><rect x="782" y="327.44" width="89.59" height="134.41" fill="#ffffff" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="782" y="327.44" width="89.59" height="15" fill="#ffffff" fill-opacity=".93"/><text x="785" y="338.44" font-family="Arial,sans-serif" font-size="10" fill="#087e8b">027</text>
+</g>
+<g><title>equipmentFullCard | #dealHand2 &gt; div:nth-child(1) &gt; img:nth-child(1) | X 782 Y 327.44 W 89.59 H 134.39</title><rect x="782" y="327.44" width="89.59" height="134.39" fill="#ffffff" fill-opacity=".15" stroke="#7c3aed" stroke-width="1"/>
+<rect x="782" y="327.44" width="89.59" height="15" fill="#ffffff" fill-opacity=".93"/><text x="785" y="338.44" font-family="Arial,sans-serif" font-size="10" fill="#7c3aed">028</text>
+</g>
+<g><title>atk | #dealHand2 &gt; div:nth-child(2) | X 879.59 Y 327.44 W 89.59 H 134.41</title><rect x="879.59" y="327.44" width="89.59" height="134.41" fill="#ffffff" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="879.59" y="327.44" width="89.59" height="15" fill="#ffffff" fill-opacity=".93"/><text x="882.59" y="338.44" font-family="Arial,sans-serif" font-size="10" fill="#087e8b">029</text>
+</g>
+<g><title>equipmentFullCard | #dealHand2 &gt; div:nth-child(2) &gt; img:nth-child(1) | X 879.59 Y 327.44 W 89.59 H 134.39</title><rect x="879.59" y="327.44" width="89.59" height="134.39" fill="#ffffff" fill-opacity=".15" stroke="#7c3aed" stroke-width="1"/>
+<rect x="879.59" y="327.44" width="89.59" height="15" fill="#ffffff" fill-opacity=".93"/><text x="882.59" y="338.44" font-family="Arial,sans-serif" font-size="10" fill="#7c3aed">030</text>
+</g>
+<g><title>def | #dealHand2 &gt; div:nth-child(3) | X 977.19 Y 327.44 W 89.61 H 134.41</title><rect x="977.19" y="327.44" width="89.61" height="134.41" fill="#ffffff" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="977.19" y="327.44" width="89.61" height="15" fill="#ffffff" fill-opacity=".93"/><text x="980.19" y="338.44" font-family="Arial,sans-serif" font-size="10" fill="#087e8b">031</text>
+</g>
+<g><title>equipmentFullCard | #dealHand2 &gt; div:nth-child(3) &gt; img:nth-child(1) | X 977.19 Y 327.44 W 89.61 H 134.41</title><rect x="977.19" y="327.44" width="89.61" height="134.41" fill="#ffffff" fill-opacity=".15" stroke="#7c3aed" stroke-width="1"/>
+<rect x="977.19" y="327.44" width="89.61" height="15" fill="#ffffff" fill-opacity=".93"/><text x="980.19" y="338.44" font-family="Arial,sans-serif" font-size="10" fill="#7c3aed">032</text>
+</g>
+<g><title>atk | #dealHand2 &gt; div:nth-child(4) | X 1074.8 Y 327.44 W 89.59 H 134.41</title><rect x="1074.8" y="327.44" width="89.59" height="134.41" fill="#ffffff" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="1074.8" y="327.44" width="89.59" height="15" fill="#ffffff" fill-opacity=".93"/><text x="1077.8" y="338.44" font-family="Arial,sans-serif" font-size="10" fill="#087e8b">033</text>
+</g>
+<g><title>equipmentFullCard | #dealHand2 &gt; div:nth-child(4) &gt; img:nth-child(1) | X 1074.8 Y 327.44 W 89.59 H 134.39</title><rect x="1074.8" y="327.44" width="89.59" height="134.39" fill="#ffffff" fill-opacity=".15" stroke="#7c3aed" stroke-width="1"/>
+<rect x="1074.8" y="327.44" width="89.59" height="15" fill="#ffffff" fill-opacity=".93"/><text x="1077.8" y="338.44" font-family="Arial,sans-serif" font-size="10" fill="#7c3aed">034</text>
+</g>
+<g><title>atk | #dealHand2 &gt; div:nth-child(5) | X 1172.39 Y 327.44 W 89.59 H 134.41</title><rect x="1172.39" y="327.44" width="89.59" height="134.41" fill="#ffffff" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="1172.39" y="327.44" width="89.59" height="15" fill="#ffffff" fill-opacity=".93"/><text x="1175.39" y="338.44" font-family="Arial,sans-serif" font-size="10" fill="#087e8b">035</text>
+</g>
+<g><title>equipmentFullCard | #dealHand2 &gt; div:nth-child(5) &gt; img:nth-child(1) | X 1172.39 Y 327.44 W 89.59 H 134.39</title><rect x="1172.39" y="327.44" width="89.59" height="134.39" fill="#ffffff" fill-opacity=".15" stroke="#7c3aed" stroke-width="1"/>
+<rect x="1172.39" y="327.44" width="89.59" height="15" fill="#ffffff" fill-opacity=".93"/><text x="1175.39" y="338.44" font-family="Arial,sans-serif" font-size="10" fill="#7c3aed">036</text>
+</g>
+<g><title>SHELL_UI_DEAL_TO_DEPLOY | #toDeploy | X 678.17 Y 490.84 W 171.66 H 39.59</title><rect x="678.17" y="490.84" width="171.66" height="39.59" fill="#ffffff" fill-opacity=".15" stroke="#b45309" stroke-width="1"/>
+<rect x="678.17" y="490.84" width="131.1" height="15" fill="#ffffff" fill-opacity=".93"/><text x="681.17" y="501.84" font-family="Arial,sans-serif" font-size="10" fill="#b45309">037 · 171.66 × 39.59 px</text>
+</g>
+</g>
+<rect x="1920" width="720" height="1538" fill="#0d1d2a"/><text x="1940" y="30" fill="#ffffff" font-family="Arial,sans-serif" font-size="18">13-deal · Nhận bài trang bị</text><text x="1940" y="56" fill="#bcd1e2" font-family="Arial,sans-serif" font-size="13">Viewport 1920 × 1080 CSS px · DPR 1 · scale 1:1</text><text x="1940" y="78" fill="#bcd1e2" font-family="Arial,sans-serif" font-size="12">Image 1920 × 1080 px at left. This 720 px legend is outside the game canvas.</text><text x="1940" y="98" fill="#bcd1e2" font-family="Arial,sans-serif" font-size="12">Measured border boxes. Decimal CSS pixels are retained; X/Y origin is top-left.</text>
+<text x="1940" y="130" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">001  top</text><text x="1968" y="145" fill="#e1edf5" font-family="monospace" font-size="11">X 222 · Y 12 · W 1476 × H 39.19 px</text>
+<text x="1940" y="168" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">002  brand</text><text x="1968" y="183" fill="#e1edf5" font-family="monospace" font-size="11">X 222 · Y 12 · W 1324.77 × H 39.19 px</text>
+<text x="1940" y="206" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">003  SHELL_UI_PHASE_LABEL</text><text x="1968" y="221" fill="#e1edf5" font-family="monospace" font-size="11">X 1574.25 · Y 21.8 · W 123.75 × H 19.59 px</text>
+<text x="1940" y="244" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">004  runtimeBadge</text><text x="1968" y="259" fill="#e1edf5" font-family="monospace" font-size="11">X 449.34 · Y 27 · W 156.73 × H 22 px</text>
+<text x="1940" y="282" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">005  main</text><text x="1968" y="297" fill="#e1edf5" font-family="monospace" font-size="11">X 222 · Y 61.19 · W 1084 × H 636 px</text>
+<text x="1940" y="320" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">006  side</text><text x="1968" y="335" fill="#e1edf5" font-family="monospace" font-size="11">X 1318 · Y 61.19 · W 380 × H 26 px</text>
+<text x="1940" y="358" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">007  SHELL_UI_EQUIPMENT_DEAL</text><text x="1968" y="373" fill="#e1edf5" font-family="monospace" font-size="11">X 235 · Y 74.19 · W 1058 × H 610 px</text>
+<text x="1940" y="396" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">008  dealWrap</text><text x="1968" y="411" fill="#e1edf5" font-family="monospace" font-size="11">X 235 · Y 74.19 · W 1058 × H 610 px</text>
+<text x="1940" y="434" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">009  bigNotice</text><text x="1968" y="449" fill="#e1edf5" font-family="monospace" font-size="11">X 488.33 · Y 227.92 · W 551.33 × H 28 px</text>
+<text x="1940" y="472" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">010  dealHands</text><text x="1968" y="487" fill="#e1edf5" font-family="monospace" font-size="11">X 255 · Y 293.52 · W 1018 × H 179.33 px</text>
+<text x="1940" y="510" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">011  box</text><text x="1968" y="525" fill="#e1edf5" font-family="monospace" font-size="11">X 255 · Y 293.52 · W 502 × H 179.33 px</text>
+<text x="1940" y="548" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">012  box</text><text x="1968" y="563" fill="#e1edf5" font-family="monospace" font-size="11">X 771 · Y 293.52 · W 502 × H 179.33 px</text>
+<text x="1940" y="586" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">013  h3</text><text x="1968" y="601" fill="#e1edf5" font-family="monospace" font-size="11">X 266 · Y 304.52 · W 480 × H 22.92 px</text>
+<text x="1940" y="624" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">014  h3</text><text x="1968" y="639" fill="#e1edf5" font-family="monospace" font-size="11">X 782 · Y 304.52 · W 480 × H 22.92 px</text>
+<text x="1940" y="662" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">015  SHELL_UI_DEAL_P1_HAND</text><text x="1968" y="677" fill="#e1edf5" font-family="monospace" font-size="11">X 266 · Y 327.44 · W 480 × H 134.41 px</text>
+<text x="1940" y="700" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">016  neu</text><text x="1968" y="715" fill="#e1edf5" font-family="monospace" font-size="11">X 266 · Y 327.44 · W 89.59 × H 134.41 px</text>
+<text x="1940" y="738" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">017  equipmentFullCard</text><text x="1968" y="753" fill="#e1edf5" font-family="monospace" font-size="11">X 266 · Y 327.44 · W 89.59 × H 134.39 px</text>
+<text x="1940" y="776" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">018  atk</text><text x="1968" y="791" fill="#e1edf5" font-family="monospace" font-size="11">X 363.59 · Y 327.44 · W 89.59 × H 134.41 px</text>
+<text x="1940" y="814" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">019  equipmentFullCard</text><text x="1968" y="829" fill="#e1edf5" font-family="monospace" font-size="11">X 363.59 · Y 327.44 · W 89.59 × H 134.39 px</text>
+<text x="1940" y="852" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">020  neu</text><text x="1968" y="867" fill="#e1edf5" font-family="monospace" font-size="11">X 461.19 · Y 327.44 · W 89.61 × H 134.41 px</text>
+<text x="1940" y="890" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">021  equipmentFullCard</text><text x="1968" y="905" fill="#e1edf5" font-family="monospace" font-size="11">X 461.19 · Y 327.44 · W 89.61 × H 134.41 px</text>
+<text x="1940" y="928" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">022  atk</text><text x="1968" y="943" fill="#e1edf5" font-family="monospace" font-size="11">X 558.8 · Y 327.44 · W 89.59 × H 134.41 px</text>
+<text x="1940" y="966" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">023  equipmentFullCard</text><text x="1968" y="981" fill="#e1edf5" font-family="monospace" font-size="11">X 558.8 · Y 327.44 · W 89.59 × H 134.39 px</text>
+<text x="1940" y="1004" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">024  atk</text><text x="1968" y="1019" fill="#e1edf5" font-family="monospace" font-size="11">X 656.39 · Y 327.44 · W 89.59 × H 134.41 px</text>
+<text x="1940" y="1042" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">025  equipmentFullCard</text><text x="1968" y="1057" fill="#e1edf5" font-family="monospace" font-size="11">X 656.39 · Y 327.44 · W 89.59 × H 134.39 px</text>
+<text x="1940" y="1080" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">026  SHELL_UI_DEAL_P2_HAND</text><text x="1968" y="1095" fill="#e1edf5" font-family="monospace" font-size="11">X 782 · Y 327.44 · W 480 × H 134.41 px</text>
+<text x="1940" y="1118" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">027  def</text><text x="1968" y="1133" fill="#e1edf5" font-family="monospace" font-size="11">X 782 · Y 327.44 · W 89.59 × H 134.41 px</text>
+<text x="1940" y="1156" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">028  equipmentFullCard</text><text x="1968" y="1171" fill="#e1edf5" font-family="monospace" font-size="11">X 782 · Y 327.44 · W 89.59 × H 134.39 px</text>
+<text x="1940" y="1194" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">029  atk</text><text x="1968" y="1209" fill="#e1edf5" font-family="monospace" font-size="11">X 879.59 · Y 327.44 · W 89.59 × H 134.41 px</text>
+<text x="1940" y="1232" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">030  equipmentFullCard</text><text x="1968" y="1247" fill="#e1edf5" font-family="monospace" font-size="11">X 879.59 · Y 327.44 · W 89.59 × H 134.39 px</text>
+<text x="1940" y="1270" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">031  def</text><text x="1968" y="1285" fill="#e1edf5" font-family="monospace" font-size="11">X 977.19 · Y 327.44 · W 89.61 × H 134.41 px</text>
+<text x="1940" y="1308" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">032  equipmentFullCard</text><text x="1968" y="1323" fill="#e1edf5" font-family="monospace" font-size="11">X 977.19 · Y 327.44 · W 89.61 × H 134.41 px</text>
+<text x="1940" y="1346" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">033  atk</text><text x="1968" y="1361" fill="#e1edf5" font-family="monospace" font-size="11">X 1074.8 · Y 327.44 · W 89.59 × H 134.41 px</text>
+<text x="1940" y="1384" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">034  equipmentFullCard</text><text x="1968" y="1399" fill="#e1edf5" font-family="monospace" font-size="11">X 1074.8 · Y 327.44 · W 89.59 × H 134.39 px</text>
+<text x="1940" y="1422" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">035  atk</text><text x="1968" y="1437" fill="#e1edf5" font-family="monospace" font-size="11">X 1172.39 · Y 327.44 · W 89.59 × H 134.41 px</text>
+<text x="1940" y="1460" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">036  equipmentFullCard</text><text x="1968" y="1475" fill="#e1edf5" font-family="monospace" font-size="11">X 1172.39 · Y 327.44 · W 89.59 × H 134.39 px</text>
+<text x="1940" y="1498" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">037  SHELL_UI_DEAL_TO_DEPLOY</text><text x="1968" y="1513" fill="#e1edf5" font-family="monospace" font-size="11">X 678.17 · Y 490.84 · W 171.66 × H 39.59 px</text>
+</svg>

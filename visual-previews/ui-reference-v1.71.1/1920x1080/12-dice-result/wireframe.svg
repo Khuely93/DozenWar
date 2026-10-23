@@ -1,0 +1,100 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="2640" height="1080" viewBox="0 0 2640 1080">
+<title>Kết quả tung xúc xắc — 1920×1080, 1:1 CSS px</title>
+<rect width="100%" height="100%" fill="#f5f8fc"/>
+<defs><clipPath id="screen"><rect width="1920" height="1080"/></clipPath></defs>
+<g clip-path="url(#screen)">
+<g><title>top | div:nth-child(1) &gt; div:nth-child(1) | X 222 Y 12 W 1476 H 39.19</title><rect x="222" y="12" width="1476" height="39.19" fill="#ffffff" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="222" y="12" width="119.7" height="15" fill="#ffffff" fill-opacity=".93"/><text x="225" y="23" font-family="Arial,sans-serif" font-size="10" fill="#087e8b">001 · 1476 × 39.19 px</text>
+</g>
+<g><title>brand | div:nth-child(1) &gt; div:nth-child(1) &gt; div:nth-child(1) | X 222 Y 12 W 1324.77 H 39.19</title><rect x="222" y="12" width="1324.77" height="39.19" fill="#ffffff" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="222" y="12" width="136.8" height="15" fill="#ffffff" fill-opacity=".93"/><text x="225" y="23" font-family="Arial,sans-serif" font-size="10" fill="#087e8b">002 · 1324.77 × 39.19 px</text>
+</g>
+<g><title>SHELL_UI_PHASE_LABEL | #phaseLabel | X 1625.58 Y 21.8 W 72.42 H 19.59</title><rect x="1625.58" y="21.8" width="72.42" height="19.59" fill="#ffffff" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="1625.58" y="21.8" width="72.42" height="15" fill="#ffffff" fill-opacity=".93"/><text x="1628.58" y="32.8" font-family="Arial,sans-serif" font-size="10" fill="#087e8b">003</text>
+</g>
+<g><title>runtimeBadge | div:nth-child(1) &gt; div:nth-child(1) &gt; div:nth-child(1) &gt; span:nth-child(2) | X 449.34 Y 27 W 156.73 H 22</title><rect x="449.34" y="27" width="156.73" height="22" fill="#ffffff" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="449.34" y="27" width="114" height="15" fill="#ffffff" fill-opacity=".93"/><text x="452.34" y="38" font-family="Arial,sans-serif" font-size="10" fill="#087e8b">004 · 156.73 × 22 px</text>
+</g>
+<g><title>main | div:nth-child(1) &gt; div:nth-child(2) &gt; section:nth-child(1) | X 222 Y 61.19 W 1084 H 636</title><rect x="222" y="61.19" width="1084" height="636" fill="#ffffff" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="222" y="61.19" width="108.3" height="15" fill="#ffffff" fill-opacity=".93"/><text x="225" y="72.19" font-family="Arial,sans-serif" font-size="10" fill="#087e8b">005 · 1084 × 636 px</text>
+</g>
+<g><title>side | div:nth-child(1) &gt; div:nth-child(2) &gt; aside:nth-child(2) | X 1318 Y 61.19 W 380 H 26</title><rect x="1318" y="61.19" width="380" height="26" fill="#ffffff" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="1318" y="61.19" width="96.9" height="15" fill="#ffffff" fill-opacity=".93"/><text x="1321" y="72.19" font-family="Arial,sans-serif" font-size="10" fill="#087e8b">006 · 380 × 26 px</text>
+</g>
+<g><title>SHELL_UI_DICE | #diceScreen | X 235 Y 74.19 W 1058 H 610</title><rect x="235" y="74.19" width="1058" height="610" fill="#ffffff" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="235" y="74.19" width="108.3" height="15" fill="#ffffff" fill-opacity=".93"/><text x="238" y="85.19" font-family="Arial,sans-serif" font-size="10" fill="#087e8b">007 · 1058 × 610 px</text>
+</g>
+<g><title>diceWrap | #diceScreen &gt; div:nth-child(1) | X 235 Y 74.19 W 1058 H 610</title><rect x="235" y="74.19" width="1058" height="610" fill="#ffffff" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="235" y="74.19" width="108.3" height="15" fill="#ffffff" fill-opacity=".93"/><text x="238" y="85.19" font-family="Arial,sans-serif" font-size="10" fill="#087e8b">008 · 1058 × 610 px</text>
+</g>
+<g><title>bigNotice | #diceScreen &gt; div:nth-child(1) &gt; div:nth-child(1) &gt; div:nth-child(1) | X 658.2 Y 186.94 W 211.59 H 28</title><rect x="658.2" y="186.94" width="211.59" height="28" fill="#ffffff" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="658.2" y="186.94" width="114" height="15" fill="#ffffff" fill-opacity=".93"/><text x="661.2" y="197.94" font-family="Arial,sans-serif" font-size="10" fill="#087e8b">009 · 211.59 × 28 px</text>
+</g>
+<g><title>diceArea | #diceScreen &gt; div:nth-child(1) &gt; div:nth-child(2) | X 374 Y 252.53 W 780 H 213.7</title><rect x="374" y="252.53" width="780" height="213.7" fill="#ffffff" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="374" y="252.53" width="114" height="15" fill="#ffffff" fill-opacity=".93"/><text x="377" y="263.53" font-family="Arial,sans-serif" font-size="10" fill="#087e8b">010 · 780 × 213.7 px</text>
+</g>
+<g><title>dieBox | #diceScreen &gt; div:nth-child(1) &gt; div:nth-child(2) &gt; div:nth-child(1) | X 374 Y 252.53 W 352.78 H 213.7</title><rect x="374" y="252.53" width="352.78" height="213.7" fill="#ffffff" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="374" y="252.53" width="131.1" height="15" fill="#ffffff" fill-opacity=".93"/><text x="377" y="263.53" font-family="Arial,sans-serif" font-size="10" fill="#087e8b">011 · 352.78 × 213.7 px</text>
+</g>
+<g><title>dieBox | #diceScreen &gt; div:nth-child(1) &gt; div:nth-child(2) &gt; div:nth-child(3) | X 801.22 Y 252.53 W 352.78 H 213.7</title><rect x="801.22" y="252.53" width="352.78" height="213.7" fill="#ffffff" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="801.22" y="252.53" width="131.1" height="15" fill="#ffffff" fill-opacity=".93"/><text x="804.22" y="263.53" font-family="Arial,sans-serif" font-size="10" fill="#087e8b">012 · 352.78 × 213.7 px</text>
+</g>
+<g><title>h3 | #diceScreen &gt; div:nth-child(1) &gt; div:nth-child(2) &gt; div:nth-child(1) &gt; h3:nth-child(1) | X 393 Y 271.53 W 314.78 H 22.92</title><rect x="393" y="271.53" width="314.78" height="22.92" fill="#ffffff" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="393" y="271.53" width="131.1" height="15" fill="#ffffff" fill-opacity=".93"/><text x="396" y="282.53" font-family="Arial,sans-serif" font-size="10" fill="#087e8b">013 · 314.78 × 22.92 px</text>
+</g>
+<g><title>h3 | #diceScreen &gt; div:nth-child(1) &gt; div:nth-child(2) &gt; div:nth-child(3) &gt; h3:nth-child(1) | X 820.22 Y 271.53 W 314.78 H 22.92</title><rect x="820.22" y="271.53" width="314.78" height="22.92" fill="#ffffff" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="820.22" y="271.53" width="131.1" height="15" fill="#ffffff" fill-opacity=".93"/><text x="823.22" y="282.53" font-family="Arial,sans-serif" font-size="10" fill="#087e8b">014 · 314.78 × 22.92 px</text>
+</g>
+<g><title>SHELL_UI_DICE_P1 | #die1 | X 393 Y 294.45 W 314.78 H 88</title><rect x="393" y="294.45" width="314.78" height="88" fill="#ffffff" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="393" y="294.45" width="114" height="15" fill="#ffffff" fill-opacity=".93"/><text x="396" y="305.45" font-family="Arial,sans-serif" font-size="10" fill="#087e8b">015 · 314.78 × 88 px</text>
+</g>
+<g><title>SHELL_UI_DICE_P2 | #die2 | X 820.22 Y 294.45 W 314.78 H 88</title><rect x="820.22" y="294.45" width="314.78" height="88" fill="#ffffff" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="820.22" y="294.45" width="114" height="15" fill="#ffffff" fill-opacity=".93"/><text x="823.22" y="305.45" font-family="Arial,sans-serif" font-size="10" fill="#087e8b">016 · 314.78 × 88 px</text>
+</g>
+<g><title>SHELL_UI_DICE_P1_TEXT | #d1txt | X 393 Y 382.45 W 314.78 H 25.19</title><rect x="393" y="382.45" width="314.78" height="25.19" fill="#ffffff" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="393" y="382.45" width="131.1" height="15" fill="#ffffff" fill-opacity=".93"/><text x="396" y="393.45" font-family="Arial,sans-serif" font-size="10" fill="#087e8b">017 · 314.78 × 25.19 px</text>
+</g>
+<g><title>SHELL_UI_DICE_P2_TEXT | #d2txt | X 820.22 Y 382.45 W 314.78 H 25.19</title><rect x="820.22" y="382.45" width="314.78" height="25.19" fill="#ffffff" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="820.22" y="382.45" width="131.1" height="15" fill="#ffffff" fill-opacity=".93"/><text x="823.22" y="393.45" font-family="Arial,sans-serif" font-size="10" fill="#087e8b">018 · 314.78 × 25.19 px</text>
+</g>
+<g><title>SHELL_UI_DICE_P1_ROLL | #roll1 | X 485.41 Y 407.64 W 129.97 H 39.59</title><rect x="485.41" y="407.64" width="129.97" height="39.59" fill="#ffffff" fill-opacity=".15" stroke="#b45309" stroke-width="1"/>
+<rect x="485.41" y="407.64" width="129.97" height="15" fill="#ffffff" fill-opacity=".93"/><text x="488.41" y="418.64" font-family="Arial,sans-serif" font-size="10" fill="#b45309">019</text>
+</g>
+<g><title>SHELL_UI_DICE_P2_ROLL | #roll2 | X 912.63 Y 407.64 W 129.97 H 39.59</title><rect x="912.63" y="407.64" width="129.97" height="39.59" fill="#ffffff" fill-opacity=".15" stroke="#b45309" stroke-width="1"/>
+<rect x="912.63" y="407.64" width="129.97" height="15" fill="#ffffff" fill-opacity=".93"/><text x="915.63" y="418.64" font-family="Arial,sans-serif" font-size="10" fill="#b45309">020</text>
+</g>
+<g><title>SHELL_UI_DICE_RESULT | #diceResult | X 517.67 Y 484.23 W 492.66 H 28</title><rect x="517.67" y="484.23" width="492.66" height="28" fill="#ffffff" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="517.67" y="484.23" width="114" height="15" fill="#ffffff" fill-opacity=".93"/><text x="520.67" y="495.23" font-family="Arial,sans-serif" font-size="10" fill="#087e8b">021 · 492.66 × 28 px</text>
+</g>
+<g><title>SHELL_UI_DICE_RULE | #diceRule | X 517.67 Y 512.23 W 492.66 H 19.59</title><rect x="517.67" y="512.23" width="492.66" height="19.59" fill="#ffffff" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="517.67" y="512.23" width="131.1" height="15" fill="#ffffff" fill-opacity=".93"/><text x="520.67" y="523.23" font-family="Arial,sans-serif" font-size="10" fill="#087e8b">022 · 492.66 × 19.59 px</text>
+</g>
+<g><title>SHELL_UI_DICE_CONTINUE | #toTeam | X 720.28 Y 531.83 W 87.44 H 39.59</title><rect x="720.28" y="531.83" width="87.44" height="39.59" fill="#ffffff" fill-opacity=".15" stroke="#b45309" stroke-width="1"/>
+<rect x="720.28" y="531.83" width="87.44" height="15" fill="#ffffff" fill-opacity=".93"/><text x="723.28" y="542.83" font-family="Arial,sans-serif" font-size="10" fill="#b45309">023</text>
+</g>
+</g>
+<rect x="1920" width="720" height="1080" fill="#0d1d2a"/><text x="1940" y="30" fill="#ffffff" font-family="Arial,sans-serif" font-size="18">12-dice-result · Kết quả tung xúc xắc</text><text x="1940" y="56" fill="#bcd1e2" font-family="Arial,sans-serif" font-size="13">Viewport 1920 × 1080 CSS px · DPR 1 · scale 1:1</text><text x="1940" y="78" fill="#bcd1e2" font-family="Arial,sans-serif" font-size="12">Image 1920 × 1080 px at left. This 720 px legend is outside the game canvas.</text><text x="1940" y="98" fill="#bcd1e2" font-family="Arial,sans-serif" font-size="12">Measured border boxes. Decimal CSS pixels are retained; X/Y origin is top-left.</text>
+<text x="1940" y="130" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">001  top</text><text x="1968" y="145" fill="#e1edf5" font-family="monospace" font-size="11">X 222 · Y 12 · W 1476 × H 39.19 px</text>
+<text x="1940" y="168" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">002  brand</text><text x="1968" y="183" fill="#e1edf5" font-family="monospace" font-size="11">X 222 · Y 12 · W 1324.77 × H 39.19 px</text>
+<text x="1940" y="206" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">003  SHELL_UI_PHASE_LABEL</text><text x="1968" y="221" fill="#e1edf5" font-family="monospace" font-size="11">X 1625.58 · Y 21.8 · W 72.42 × H 19.59 px</text>
+<text x="1940" y="244" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">004  runtimeBadge</text><text x="1968" y="259" fill="#e1edf5" font-family="monospace" font-size="11">X 449.34 · Y 27 · W 156.73 × H 22 px</text>
+<text x="1940" y="282" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">005  main</text><text x="1968" y="297" fill="#e1edf5" font-family="monospace" font-size="11">X 222 · Y 61.19 · W 1084 × H 636 px</text>
+<text x="1940" y="320" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">006  side</text><text x="1968" y="335" fill="#e1edf5" font-family="monospace" font-size="11">X 1318 · Y 61.19 · W 380 × H 26 px</text>
+<text x="1940" y="358" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">007  SHELL_UI_DICE</text><text x="1968" y="373" fill="#e1edf5" font-family="monospace" font-size="11">X 235 · Y 74.19 · W 1058 × H 610 px</text>
+<text x="1940" y="396" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">008  diceWrap</text><text x="1968" y="411" fill="#e1edf5" font-family="monospace" font-size="11">X 235 · Y 74.19 · W 1058 × H 610 px</text>
+<text x="1940" y="434" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">009  bigNotice</text><text x="1968" y="449" fill="#e1edf5" font-family="monospace" font-size="11">X 658.2 · Y 186.94 · W 211.59 × H 28 px</text>
+<text x="1940" y="472" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">010  diceArea</text><text x="1968" y="487" fill="#e1edf5" font-family="monospace" font-size="11">X 374 · Y 252.53 · W 780 × H 213.7 px</text>
+<text x="1940" y="510" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">011  dieBox</text><text x="1968" y="525" fill="#e1edf5" font-family="monospace" font-size="11">X 374 · Y 252.53 · W 352.78 × H 213.7 px</text>
+<text x="1940" y="548" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">012  dieBox</text><text x="1968" y="563" fill="#e1edf5" font-family="monospace" font-size="11">X 801.22 · Y 252.53 · W 352.78 × H 213.7 px</text>
+<text x="1940" y="586" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">013  h3</text><text x="1968" y="601" fill="#e1edf5" font-family="monospace" font-size="11">X 393 · Y 271.53 · W 314.78 × H 22.92 px</text>
+<text x="1940" y="624" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">014  h3</text><text x="1968" y="639" fill="#e1edf5" font-family="monospace" font-size="11">X 820.22 · Y 271.53 · W 314.78 × H 22.92 px</text>
+<text x="1940" y="662" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">015  SHELL_UI_DICE_P1</text><text x="1968" y="677" fill="#e1edf5" font-family="monospace" font-size="11">X 393 · Y 294.45 · W 314.78 × H 88 px</text>
+<text x="1940" y="700" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">016  SHELL_UI_DICE_P2</text><text x="1968" y="715" fill="#e1edf5" font-family="monospace" font-size="11">X 820.22 · Y 294.45 · W 314.78 × H 88 px</text>
+<text x="1940" y="738" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">017  SHELL_UI_DICE_P1_TEXT</text><text x="1968" y="753" fill="#e1edf5" font-family="monospace" font-size="11">X 393 · Y 382.45 · W 314.78 × H 25.19 px</text>
+<text x="1940" y="776" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">018  SHELL_UI_DICE_P2_TEXT</text><text x="1968" y="791" fill="#e1edf5" font-family="monospace" font-size="11">X 820.22 · Y 382.45 · W 314.78 × H 25.19 px</text>
+<text x="1940" y="814" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">019  SHELL_UI_DICE_P1_ROLL</text><text x="1968" y="829" fill="#e1edf5" font-family="monospace" font-size="11">X 485.41 · Y 407.64 · W 129.97 × H 39.59 px</text>
+<text x="1940" y="852" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">020  SHELL_UI_DICE_P2_ROLL</text><text x="1968" y="867" fill="#e1edf5" font-family="monospace" font-size="11">X 912.63 · Y 407.64 · W 129.97 × H 39.59 px</text>
+<text x="1940" y="890" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">021  SHELL_UI_DICE_RESULT</text><text x="1968" y="905" fill="#e1edf5" font-family="monospace" font-size="11">X 517.67 · Y 484.23 · W 492.66 × H 28 px</text>
+<text x="1940" y="928" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">022  SHELL_UI_DICE_RULE</text><text x="1968" y="943" fill="#e1edf5" font-family="monospace" font-size="11">X 517.67 · Y 512.23 · W 492.66 × H 19.59 px</text>
+<text x="1940" y="966" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">023  SHELL_UI_DICE_CONTINUE</text><text x="1968" y="981" fill="#e1edf5" font-family="monospace" font-size="11">X 720.28 · Y 531.83 · W 87.44 × H 39.59 px</text>
+</svg>

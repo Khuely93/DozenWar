@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1110" height="844" viewBox="0 0 1110 844">
+<title>Online — tên người chơi, tạo / vào phòng — 390×844, 1:1 CSS px</title>
+<rect width="100%" height="100%" fill="#f5f8fc"/>
+<defs><clipPath id="screen"><rect width="390" height="844"/></clipPath></defs>
+<g clip-path="url(#screen)">
+<g><title>header | header:nth-child(1) | X 0 Y 0 W 390 H 96</title><rect x="0" y="0" width="390" height="96" fill="#ffffff" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="0" y="0" width="96.9" height="15" fill="#ffffff" fill-opacity=".93"/><text x="3" y="11" font-family="Arial,sans-serif" font-size="10" fill="#087e8b">001 · 390 × 96 px</text>
+</g>
+<g><title>connection | #connection | X 306.73 Y 63 W 71.27 H 20</title><rect x="306.73" y="63" width="71.27" height="20" fill="#ffffff" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="306.73" y="63" width="71.27" height="15" fill="#ffffff" fill-opacity=".93"/><text x="309.73" y="74" font-family="Arial,sans-serif" font-size="10" fill="#087e8b">002</text>
+</g>
+<g><title>main | main:nth-child(2) | X 0 Y 96 W 390 H 554.03</title><rect x="0" y="96" width="390" height="554.03" fill="#ffffff" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="0" y="96" width="119.7" height="15" fill="#ffffff" fill-opacity=".93"/><text x="3" y="107" font-family="Arial,sans-serif" font-size="10" fill="#087e8b">003 · 390 × 554.03 px</text>
+</g>
+<g><title>lobby | #lobby | X 8 Y 171.52 W 374 H 403</title><rect x="8" y="171.52" width="374" height="403" fill="#ffffff" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="8" y="171.52" width="102.60000000000001" height="15" fill="#ffffff" fill-opacity=".93"/><text x="11" y="182.52" font-family="Arial,sans-serif" font-size="10" fill="#087e8b">004 · 374 × 403 px</text>
+</g>
+<g><title>h1 | #lobby &gt; h1:nth-child(1) | X 23 Y 186.52 W 344 H 41</title><rect x="23" y="186.52" width="344" height="41" fill="#ffffff" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="23" y="186.52" width="96.9" height="15" fill="#ffffff" fill-opacity=".93"/><text x="26" y="197.52" font-family="Arial,sans-serif" font-size="10" fill="#087e8b">005 · 344 × 41 px</text>
+</g>
+<g><title>label | #lobby &gt; label:nth-child(2) | X 23 Y 239.52 W 332 H 66</title><rect x="23" y="239.52" width="332" height="66" fill="#ffffff" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="23" y="239.52" width="96.9" height="15" fill="#ffffff" fill-opacity=".93"/><text x="26" y="250.52" font-family="Arial,sans-serif" font-size="10" fill="#087e8b">006 · 332 × 66 px</text>
+</g>
+<g><title>playerName | #playerName | X 23 Y 265.52 W 332 H 40</title><rect x="23" y="265.52" width="332" height="40" fill="#ffffff" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="23" y="265.52" width="96.9" height="15" fill="#ffffff" fill-opacity=".93"/><text x="26" y="276.52" font-family="Arial,sans-serif" font-size="10" fill="#087e8b">007 · 332 × 40 px</text>
+</g>
+<g><title>createRoom | #createRoom | X 27 Y 315.52 W 96.61 H 42</title><rect x="27" y="315.52" width="96.61" height="42" fill="#ffffff" fill-opacity=".15" stroke="#b45309" stroke-width="1"/>
+<rect x="27" y="315.52" width="96.61" height="15" fill="#ffffff" fill-opacity=".93"/><text x="30" y="326.52" font-family="Arial,sans-serif" font-size="10" fill="#b45309">008</text>
+</g>
+<g><title>label | #lobby &gt; label:nth-child(4) | X 23 Y 367.52 W 332 H 66</title><rect x="23" y="367.52" width="332" height="66" fill="#ffffff" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="23" y="367.52" width="96.9" height="15" fill="#ffffff" fill-opacity=".93"/><text x="26" y="378.52" font-family="Arial,sans-serif" font-size="10" fill="#087e8b">009 · 332 × 66 px</text>
+</g>
+<g><title>roomCode | #roomCode | X 23 Y 393.52 W 332 H 40</title><rect x="23" y="393.52" width="332" height="40" fill="#ffffff" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="23" y="393.52" width="96.9" height="15" fill="#ffffff" fill-opacity=".93"/><text x="26" y="404.52" font-family="Arial,sans-serif" font-size="10" fill="#087e8b">010 · 332 × 40 px</text>
+</g>
+<g><title>joinRoom | #joinRoom | X 27 Y 443.52 W 98.16 H 42</title><rect x="27" y="443.52" width="98.16" height="42" fill="#ffffff" fill-opacity=".15" stroke="#b45309" stroke-width="1"/>
+<rect x="27" y="443.52" width="98.16" height="15" fill="#ffffff" fill-opacity=".93"/><text x="30" y="454.52" font-family="Arial,sans-serif" font-size="10" fill="#b45309">011</text>
+</g>
+</g>
+<rect x="390" width="720" height="844" fill="#0d1d2a"/><text x="410" y="30" fill="#ffffff" font-family="Arial,sans-serif" font-size="18">50-online-lobby · Online — tên người chơi, tạo / vào phòng</text><text x="410" y="56" fill="#bcd1e2" font-family="Arial,sans-serif" font-size="13">Viewport 390 × 844 CSS px · DPR 1 · scale 1:1</text><text x="410" y="78" fill="#bcd1e2" font-family="Arial,sans-serif" font-size="12">Image 390 × 844 px at left. This 720 px legend is outside the game canvas.</text><text x="410" y="98" fill="#bcd1e2" font-family="Arial,sans-serif" font-size="12">Measured border boxes. Decimal CSS pixels are retained; X/Y origin is top-left.</text>
+<text x="410" y="130" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">001  header</text><text x="438" y="145" fill="#e1edf5" font-family="monospace" font-size="11">X 0 · Y 0 · W 390 × H 96 px</text>
+<text x="410" y="168" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">002  connection</text><text x="438" y="183" fill="#e1edf5" font-family="monospace" font-size="11">X 306.73 · Y 63 · W 71.27 × H 20 px</text>
+<text x="410" y="206" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">003  main</text><text x="438" y="221" fill="#e1edf5" font-family="monospace" font-size="11">X 0 · Y 96 · W 390 × H 554.03 px</text>
+<text x="410" y="244" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">004  lobby</text><text x="438" y="259" fill="#e1edf5" font-family="monospace" font-size="11">X 8 · Y 171.52 · W 374 × H 403 px</text>
+<text x="410" y="282" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">005  h1</text><text x="438" y="297" fill="#e1edf5" font-family="monospace" font-size="11">X 23 · Y 186.52 · W 344 × H 41 px</text>
+<text x="410" y="320" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">006  label</text><text x="438" y="335" fill="#e1edf5" font-family="monospace" font-size="11">X 23 · Y 239.52 · W 332 × H 66 px</text>
+<text x="410" y="358" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">007  playerName</text><text x="438" y="373" fill="#e1edf5" font-family="monospace" font-size="11">X 23 · Y 265.52 · W 332 × H 40 px</text>
+<text x="410" y="396" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">008  createRoom</text><text x="438" y="411" fill="#e1edf5" font-family="monospace" font-size="11">X 27 · Y 315.52 · W 96.61 × H 42 px</text>
+<text x="410" y="434" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">009  label</text><text x="438" y="449" fill="#e1edf5" font-family="monospace" font-size="11">X 23 · Y 367.52 · W 332 × H 66 px</text>
+<text x="410" y="472" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">010  roomCode</text><text x="438" y="487" fill="#e1edf5" font-family="monospace" font-size="11">X 23 · Y 393.52 · W 332 × H 40 px</text>
+<text x="410" y="510" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">011  joinRoom</text><text x="438" y="525" fill="#e1edf5" font-family="monospace" font-size="11">X 27 · Y 443.52 · W 98.16 × H 42 px</text>
+</svg>

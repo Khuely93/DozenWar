@@ -1,0 +1,117 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1110" height="1259" viewBox="0 0 1110 1259">
+<title>Online — phòng thủ, đỡ đòn, bài và kỹ năng — 390×844, 1:1 CSS px</title>
+<rect width="100%" height="100%" fill="#14202a"/>
+<defs><clipPath id="screen"><rect width="390" height="1259"/></clipPath></defs>
+<g clip-path="url(#screen)">
+<image width="390" height="1259" href="screen.png"/>
+<g><title>header | header:nth-child(1) | X 0 Y 0 W 390 H 96</title><rect x="0" y="0" width="390" height="96" fill="none" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="0" y="0" width="96.9" height="15" fill="#07131f" fill-opacity=".93"/><text x="3" y="11" font-family="Arial,sans-serif" font-size="10" fill="#ffffff">001 · 390 × 96 px</text>
+</g>
+<g><title>connection | #connection | X 306.73 Y 63 W 71.27 H 20</title><rect x="306.73" y="63" width="71.27" height="20" fill="none" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="306.73" y="63" width="71.27" height="15" fill="#07131f" fill-opacity=".93"/><text x="309.73" y="74" font-family="Arial,sans-serif" font-size="10" fill="#ffffff">002</text>
+</g>
+<g><title>main | main:nth-child(2) | X 0 Y 96 W 390 H 1163</title><rect x="0" y="96" width="390" height="1163" fill="none" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="0" y="96" width="108.3" height="15" fill="#07131f" fill-opacity=".93"/><text x="3" y="107" font-family="Arial,sans-serif" font-size="10" fill="#ffffff">003 · 390 × 1163 px</text>
+</g>
+<g><title>room | #room | X 8 Y 104 W 374 H 1133</title><rect x="8" y="104" width="374" height="1133" fill="none" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="8" y="104" width="108.3" height="15" fill="#07131f" fill-opacity=".93"/><text x="11" y="115" font-family="Arial,sans-serif" font-size="10" fill="#ffffff">004 · 374 × 1133 px</text>
+</g>
+<g><title>roomHeader | #room &gt; div:nth-child(1) | X 23 Y 119 W 344 H 153</title><rect x="23" y="119" width="344" height="153" fill="none" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="23" y="119" width="102.60000000000001" height="15" fill="#07131f" fill-opacity=".93"/><text x="26" y="130" font-family="Arial,sans-serif" font-size="10" fill="#ffffff">005 · 344 × 153 px</text>
+</g>
+<g><title>roomLabel | #roomLabel | X 23 Y 119 W 119.39 H 18</title><rect x="23" y="119" width="119.39" height="18" fill="none" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="23" y="119" width="114" height="15" fill="#07131f" fill-opacity=".93"/><text x="26" y="130" font-family="Arial,sans-serif" font-size="10" fill="#ffffff">006</text>
+</g>
+<g><title>players | #players | X 23 Y 144 W 218.28 H 18</title><rect x="23" y="144" width="218.28" height="18" fill="none" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="23" y="144" width="114" height="15" fill="#07131f" fill-opacity=".93"/><text x="26" y="155" font-family="Arial,sans-serif" font-size="10" fill="#ffffff">007 · 218.28 × 18 px</text>
+</g>
+<g><title>sync | #sync | X 156.11 Y 173 W 146.31 H 40</title><rect x="156.11" y="173" width="146.31" height="40" fill="none" fill-opacity=".15" stroke="#b45309" stroke-width="1"/>
+<rect x="156.11" y="173" width="114" height="15" fill="#07131f" fill-opacity=".93"/><text x="159.11" y="184" font-family="Arial,sans-serif" font-size="10" fill="#ffffff">008 · 146.31 × 40 px</text>
+</g>
+<g><title>clock | #clock | X 23 Y 184 W 122.11 H 18</title><rect x="23" y="184" width="122.11" height="18" fill="none" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="23" y="184" width="114" height="15" fill="#07131f" fill-opacity=".93"/><text x="26" y="195" font-family="Arial,sans-serif" font-size="10" fill="#ffffff">009</text>
+</g>
+<g><title>leave | #leave | X 27 Y 228 W 84.77 H 40</title><rect x="27" y="228" width="84.77" height="40" fill="none" fill-opacity=".15" stroke="#b45309" stroke-width="1"/>
+<rect x="27" y="228" width="84.77" height="15" fill="#07131f" fill-opacity=".93"/><text x="30" y="239" font-family="Arial,sans-serif" font-size="10" fill="#ffffff">010</text>
+</g>
+<g><title>arena | #room &gt; div:nth-child(3) | X 23 Y 272 W 344 H 362</title><rect x="23" y="272" width="344" height="362" fill="none" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="23" y="272" width="102.60000000000001" height="15" fill="#07131f" fill-opacity=".93"/><text x="26" y="283" font-family="Arial,sans-serif" font-size="10" fill="#ffffff">011 · 344 × 362 px</text>
+</g>
+<g><title>board | #board | X 24 Y 273 W 342 H 360</title><rect x="24" y="273" width="342" height="360" fill="none" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="24" y="273" width="102.60000000000001" height="15" fill="#07131f" fill-opacity=".93"/><text x="27" y="284" font-family="Arial,sans-serif" font-size="10" fill="#ffffff">012 · 342 × 360 px</text>
+</g>
+<g><title>controls | #controls | X 23 Y 634 W 344 H 233</title><rect x="23" y="634" width="344" height="233" fill="none" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="23" y="634" width="102.60000000000001" height="15" fill="#07131f" fill-opacity=".93"/><text x="26" y="645" font-family="Arial,sans-serif" font-size="10" fill="#ffffff">013 · 344 × 233 px</text>
+</g>
+<g><title>h2 | #controls &gt; h2:nth-child(1) | X 38 Y 649 W 314 H 23</title><rect x="38" y="649" width="314" height="23" fill="none" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="38" y="649" width="96.9" height="15" fill="#07131f" fill-opacity=".93"/><text x="41" y="660" font-family="Arial,sans-serif" font-size="10" fill="#ffffff">014 · 314 × 23 px</text>
+</g>
+<g><title>button | #controls &gt; button:nth-child(3) | X 42 Y 726 W 232.7 H 42</title><rect x="42" y="726" width="232.7" height="42" fill="none" fill-opacity=".15" stroke="#b45309" stroke-width="1"/>
+<rect x="42" y="726" width="108.3" height="15" fill="#07131f" fill-opacity=".93"/><text x="45" y="737" font-family="Arial,sans-serif" font-size="10" fill="#ffffff">015 · 232.7 × 42 px</text>
+</g>
+<g><title>label | #controls &gt; label:nth-child(4) | X 38 Y 778 W 116.22 H 68</title><rect x="38" y="778" width="116.22" height="68" fill="none" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="38" y="778" width="114" height="15" fill="#07131f" fill-opacity=".93"/><text x="41" y="789" font-family="Arial,sans-serif" font-size="10" fill="#ffffff">016</text>
+</g>
+<g><title>select | #controls &gt; label:nth-child(4) &gt; select:nth-child(1) | X 38 Y 804 W 116.22 H 42</title><rect x="38" y="804" width="116.22" height="42" fill="none" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="38" y="804" width="114" height="15" fill="#07131f" fill-opacity=".93"/><text x="41" y="815" font-family="Arial,sans-serif" font-size="10" fill="#ffffff">017</text>
+</g>
+<g><title>section | #room &gt; section:nth-child(5) | X 23 Y 881 W 344 H 287</title><rect x="23" y="881" width="344" height="287" fill="none" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="23" y="881" width="102.60000000000001" height="15" fill="#07131f" fill-opacity=".93"/><text x="26" y="892" font-family="Arial,sans-serif" font-size="10" fill="#ffffff">018 · 344 × 287 px</text>
+</g>
+<g><title>h2 | #room &gt; section:nth-child(5) &gt; h2:nth-child(1) | X 38 Y 896 W 314 H 23</title><rect x="38" y="896" width="314" height="23" fill="none" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="38" y="896" width="96.9" height="15" fill="#07131f" fill-opacity=".93"/><text x="41" y="907" font-family="Arial,sans-serif" font-size="10" fill="#ffffff">019 · 314 × 23 px</text>
+</g>
+<g><title>hand | #hand | X 38 Y 931 W 314 H 172</title><rect x="38" y="931" width="314" height="172" fill="none" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="38" y="931" width="102.60000000000001" height="15" fill="#07131f" fill-opacity=".93"/><text x="41" y="942" font-family="Arial,sans-serif" font-size="10" fill="#ffffff">020 · 314 × 172 px</text>
+</g>
+<g><title>img | #hand &gt; figure:nth-child(1) &gt; img:nth-child(1) | X 38 Y 931 W 92 H 138</title><rect x="38" y="931" width="92" height="138" fill="none" fill-opacity=".15" stroke="#7c3aed" stroke-width="1"/>
+<rect x="38" y="931" width="92" height="15" fill="#07131f" fill-opacity=".93"/><text x="41" y="942" font-family="Arial,sans-serif" font-size="10" fill="#ffffff">021</text>
+</g>
+<g><title>img | #hand &gt; figure:nth-child(2) &gt; img:nth-child(1) | X 142 Y 931 W 92 H 138</title><rect x="142" y="931" width="92" height="138" fill="none" fill-opacity=".15" stroke="#7c3aed" stroke-width="1"/>
+<rect x="142" y="931" width="92" height="15" fill="#07131f" fill-opacity=".93"/><text x="145" y="942" font-family="Arial,sans-serif" font-size="10" fill="#ffffff">022</text>
+</g>
+<g><title>img | #hand &gt; figure:nth-child(3) &gt; img:nth-child(1) | X 246 Y 931 W 92 H 138</title><rect x="246" y="931" width="92" height="138" fill="none" fill-opacity=".15" stroke="#7c3aed" stroke-width="1"/>
+<rect x="246" y="931" width="92" height="15" fill="#07131f" fill-opacity=".93"/><text x="249" y="942" font-family="Arial,sans-serif" font-size="10" fill="#ffffff">023</text>
+</g>
+<g><title>img | #hand &gt; figure:nth-child(4) &gt; img:nth-child(1) | X 350 Y 931 W 92 H 138</title><rect x="350" y="931" width="2" height="138" fill="none" fill-opacity=".15" stroke="#7c3aed" stroke-width="1"/>
+</g>
+<g><title>opponentHand | #opponentHand | X 38 Y 1118 W 314 H 20</title><rect x="38" y="1118" width="314" height="20" fill="none" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="38" y="1118" width="96.9" height="15" fill="#07131f" fill-opacity=".93"/><text x="41" y="1129" font-family="Arial,sans-serif" font-size="10" fill="#ffffff">025 · 314 × 20 px</text>
+</g>
+<g><title>details | #room &gt; details:nth-child(6) | X 23 Y 1182 W 344 H 40</title><rect x="23" y="1182" width="344" height="40" fill="none" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="23" y="1182" width="96.9" height="15" fill="#07131f" fill-opacity=".93"/><text x="26" y="1193" font-family="Arial,sans-serif" font-size="10" fill="#ffffff">026 · 344 × 40 px</text>
+</g>
+<g><title>summary | #room &gt; details:nth-child(6) &gt; summary:nth-child(1) | X 33 Y 1192 W 324 H 20</title><rect x="33" y="1192" width="324" height="20" fill="none" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="33" y="1192" width="96.9" height="15" fill="#07131f" fill-opacity=".93"/><text x="36" y="1203" font-family="Arial,sans-serif" font-size="10" fill="#ffffff">027 · 324 × 20 px</text>
+</g>
+<line x1="0" y1="844" x2="390" y2="844" stroke="#e11d48" stroke-width="2" stroke-dasharray="8 5"/><rect x="4" y="824" width="290" height="19" fill="#fff1f2"/><text x="8" y="838" fill="#be123c" font-family="Arial,sans-serif" font-size="11">Viewport ends at 844px — scroll below</text>
+</g>
+<rect x="390" width="720" height="1259" fill="#0d1d2a"/><text x="410" y="30" fill="#ffffff" font-family="Arial,sans-serif" font-size="18">61-online-defense · Online — phòng thủ, đỡ đòn, bài và kỹ năng</text><text x="410" y="56" fill="#bcd1e2" font-family="Arial,sans-serif" font-size="13">Viewport 390 × 844 CSS px · DPR 1 · scale 1:1</text><text x="410" y="78" fill="#bcd1e2" font-family="Arial,sans-serif" font-size="12">Image 390 × 1259 px at left. This 720 px legend is outside the game canvas.</text><text x="410" y="98" fill="#bcd1e2" font-family="Arial,sans-serif" font-size="12">Measured border boxes. Decimal CSS pixels are retained; X/Y origin is top-left.</text>
+<text x="410" y="130" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">001  header</text><text x="438" y="145" fill="#e1edf5" font-family="monospace" font-size="11">X 0 · Y 0 · W 390 × H 96 px</text>
+<text x="410" y="168" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">002  connection</text><text x="438" y="183" fill="#e1edf5" font-family="monospace" font-size="11">X 306.73 · Y 63 · W 71.27 × H 20 px</text>
+<text x="410" y="206" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">003  main</text><text x="438" y="221" fill="#e1edf5" font-family="monospace" font-size="11">X 0 · Y 96 · W 390 × H 1163 px</text>
+<text x="410" y="244" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">004  room</text><text x="438" y="259" fill="#e1edf5" font-family="monospace" font-size="11">X 8 · Y 104 · W 374 × H 1133 px</text>
+<text x="410" y="282" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">005  roomHeader</text><text x="438" y="297" fill="#e1edf5" font-family="monospace" font-size="11">X 23 · Y 119 · W 344 × H 153 px</text>
+<text x="410" y="320" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">006  roomLabel</text><text x="438" y="335" fill="#e1edf5" font-family="monospace" font-size="11">X 23 · Y 119 · W 119.39 × H 18 px</text>
+<text x="410" y="358" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">007  players</text><text x="438" y="373" fill="#e1edf5" font-family="monospace" font-size="11">X 23 · Y 144 · W 218.28 × H 18 px</text>
+<text x="410" y="396" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">008  sync</text><text x="438" y="411" fill="#e1edf5" font-family="monospace" font-size="11">X 156.11 · Y 173 · W 146.31 × H 40 px</text>
+<text x="410" y="434" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">009  clock</text><text x="438" y="449" fill="#e1edf5" font-family="monospace" font-size="11">X 23 · Y 184 · W 122.11 × H 18 px</text>
+<text x="410" y="472" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">010  leave</text><text x="438" y="487" fill="#e1edf5" font-family="monospace" font-size="11">X 27 · Y 228 · W 84.77 × H 40 px</text>
+<text x="410" y="510" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">011  arena</text><text x="438" y="525" fill="#e1edf5" font-family="monospace" font-size="11">X 23 · Y 272 · W 344 × H 362 px</text>
+<text x="410" y="548" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">012  board</text><text x="438" y="563" fill="#e1edf5" font-family="monospace" font-size="11">X 24 · Y 273 · W 342 × H 360 px</text>
+<text x="410" y="586" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">013  controls</text><text x="438" y="601" fill="#e1edf5" font-family="monospace" font-size="11">X 23 · Y 634 · W 344 × H 233 px</text>
+<text x="410" y="624" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">014  h2</text><text x="438" y="639" fill="#e1edf5" font-family="monospace" font-size="11">X 38 · Y 649 · W 314 × H 23 px</text>
+<text x="410" y="662" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">015  button</text><text x="438" y="677" fill="#e1edf5" font-family="monospace" font-size="11">X 42 · Y 726 · W 232.7 × H 42 px</text>
+<text x="410" y="700" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">016  label</text><text x="438" y="715" fill="#e1edf5" font-family="monospace" font-size="11">X 38 · Y 778 · W 116.22 × H 68 px</text>
+<text x="410" y="738" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">017  select</text><text x="438" y="753" fill="#e1edf5" font-family="monospace" font-size="11">X 38 · Y 804 · W 116.22 × H 42 px</text>
+<text x="410" y="776" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">018  section</text><text x="438" y="791" fill="#e1edf5" font-family="monospace" font-size="11">X 23 · Y 881 · W 344 × H 287 px</text>
+<text x="410" y="814" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">019  h2</text><text x="438" y="829" fill="#e1edf5" font-family="monospace" font-size="11">X 38 · Y 896 · W 314 × H 23 px</text>
+<text x="410" y="852" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">020  hand</text><text x="438" y="867" fill="#e1edf5" font-family="monospace" font-size="11">X 38 · Y 931 · W 314 × H 172 px</text>
+<text x="410" y="890" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">021  img</text><text x="438" y="905" fill="#e1edf5" font-family="monospace" font-size="11">X 38 · Y 931 · W 92 × H 138 px</text>
+<text x="410" y="928" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">022  img</text><text x="438" y="943" fill="#e1edf5" font-family="monospace" font-size="11">X 142 · Y 931 · W 92 × H 138 px</text>
+<text x="410" y="966" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">023  img</text><text x="438" y="981" fill="#e1edf5" font-family="monospace" font-size="11">X 246 · Y 931 · W 92 × H 138 px</text>
+<text x="410" y="1004" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">024  img</text><text x="438" y="1019" fill="#e1edf5" font-family="monospace" font-size="11">X 350 · Y 931 · W 92 × H 138 px</text>
+<text x="410" y="1042" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">025  opponentHand</text><text x="438" y="1057" fill="#e1edf5" font-family="monospace" font-size="11">X 38 · Y 1118 · W 314 × H 20 px</text>
+<text x="410" y="1080" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">026  details</text><text x="438" y="1095" fill="#e1edf5" font-family="monospace" font-size="11">X 23 · Y 1182 · W 344 × H 40 px</text>
+<text x="410" y="1118" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">027  summary</text><text x="438" y="1133" fill="#e1edf5" font-family="monospace" font-size="11">X 33 · Y 1192 · W 324 × H 20 px</text>
+</svg>

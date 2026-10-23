@@ -1,0 +1,187 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1110" height="1918" viewBox="0 0 1110 1918">
+<title>Chỉ báo Bot đang tính toán — 390×844, 1:1 CSS px</title>
+<rect width="100%" height="100%" fill="#f5f8fc"/>
+<defs><clipPath id="screen"><rect width="390" height="1358"/></clipPath></defs>
+<g clip-path="url(#screen)">
+<g><title>top | div:nth-child(1) &gt; div:nth-child(1) | X 6 Y 6 W 378 H 195.94</title><rect x="6" y="6" width="378" height="195.94" fill="#ffffff" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="6" y="6" width="119.7" height="15" fill="#ffffff" fill-opacity=".93"/><text x="9" y="17" font-family="Arial,sans-serif" font-size="10" fill="#087e8b">001 · 378 × 195.94 px</text>
+</g>
+<g><title>brand | div:nth-child(1) &gt; div:nth-child(1) &gt; div:nth-child(1) | X 6 Y 6 W 317.66 H 195.94</title><rect x="6" y="6" width="317.66" height="195.94" fill="#ffffff" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="6" y="6" width="136.8" height="15" fill="#ffffff" fill-opacity=".93"/><text x="9" y="17" font-family="Arial,sans-serif" font-size="10" fill="#087e8b">002 · 317.66 × 195.94 px</text>
+</g>
+<g><title>runtimeBadge | div:nth-child(1) &gt; div:nth-child(1) &gt; div:nth-child(1) &gt; span:nth-child(2) | X 14 Y 60.19 W 156.73 H 22</title><rect x="14" y="60.19" width="156.73" height="22" fill="#ffffff" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="14" y="60.19" width="114" height="15" fill="#ffffff" fill-opacity=".93"/><text x="17" y="71.19" font-family="Arial,sans-serif" font-size="10" fill="#087e8b">003 · 156.73 × 22 px</text>
+</g>
+<g><title>SHELL_UI_PHASE_LABEL | #phaseLabel | X 333.66 Y 94.17 W 50.34 H 19.59</title><rect x="333.66" y="94.17" width="50.34" height="19.59" fill="#ffffff" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+</g>
+<g><title>boardBg | #gameScreen &gt; div:nth-child(2) &gt; div:nth-child(1) &gt; div:nth-child(2) &gt; img:nth-child(1) | X -374.45 Y 202 W 1138.9 H 640.63</title><rect x="19" y="341.31" width="352" height="352" fill="#ffffff" fill-opacity=".15" stroke="#7c3aed" stroke-width="1"/>
+<rect x="19" y="341.31" width="136.8" height="15" fill="#ffffff" fill-opacity=".93"/><text x="22" y="352.31" font-family="Arial,sans-serif" font-size="10" fill="#7c3aed">005 · 1138.9 × 640.63 px</text>
+</g>
+<g><title>main | div:nth-child(1) &gt; div:nth-child(2) &gt; section:nth-child(1) | X 6 Y 211.94 W 378 H 1106.52</title><rect x="6" y="211.94" width="378" height="1106.52" fill="#ffffff" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="6" y="211.94" width="125.4" height="15" fill="#ffffff" fill-opacity=".93"/><text x="9" y="222.94" font-family="Arial,sans-serif" font-size="10" fill="#087e8b">006 · 378 × 1106.52 px</text>
+</g>
+<g><title>SHELL_UI_MATCH_SCREEN | #gameScreen | X 19 Y 224.94 W 352 H 1080.52</title><rect x="19" y="224.94" width="352" height="1080.52" fill="#ffffff" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="19" y="224.94" width="125.4" height="15" fill="#ffffff" fill-opacity=".93"/><text x="22" y="235.94" font-family="Arial,sans-serif" font-size="10" fill="#087e8b">007 · 352 × 1080.52 px</text>
+</g>
+<g><title>statusLine | #gameScreen &gt; div:nth-child(1) | X 19 Y 224.94 W 352 H 106.38</title><rect x="19" y="224.94" width="352" height="106.38" fill="#ffffff" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="19" y="224.94" width="119.7" height="15" fill="#ffffff" fill-opacity=".93"/><text x="22" y="235.94" font-family="Arial,sans-serif" font-size="10" fill="#087e8b">008 · 352 × 106.38 px</text>
+</g>
+<g><title>CORE_UI_MATCH_TITLE | #gameTitle | X 19 Y 224.94 W 135.23 H 19</title><rect x="19" y="224.94" width="135.23" height="19" fill="#ffffff" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="19" y="224.94" width="114" height="15" fill="#ffffff" fill-opacity=".93"/><text x="22" y="235.94" font-family="Arial,sans-serif" font-size="10" fill="#087e8b">009 · 135.23 × 19 px</text>
+</g>
+<g><title>CORE_UI_MATCH_HINT | #gameHint | X 19 Y 244.53 W 352 H 39.19</title><rect x="19" y="244.53" width="352" height="39.19" fill="#ffffff" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="19" y="244.53" width="114" height="15" fill="#ffffff" fill-opacity=".93"/><text x="22" y="255.53" font-family="Arial,sans-serif" font-size="10" fill="#087e8b">010 · 352 × 39.19 px</text>
+</g>
+<g><title>CORE_UI_BOARD | #board | X -51.4 Y 275.91 W 492.8 H 492.8</title><rect x="19" y="341.31" width="352" height="352" fill="#ffffff" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="19" y="341.31" width="125.4" height="15" fill="#ffffff" fill-opacity=".93"/><text x="22" y="352.31" font-family="Arial,sans-serif" font-size="10" fill="#087e8b">011 · 492.8 × 492.8 px</text>
+</g>
+<g><title>CORE_UI_UNDO | #undoBtn | X 19 Y 291.72 W 88.41 H 39.59</title><rect x="19" y="291.72" width="88.41" height="39.59" fill="#ffffff" fill-opacity=".15" stroke="#b45309" stroke-width="1"/>
+<rect x="19" y="291.72" width="88.41" height="15" fill="#ffffff" fill-opacity=".93"/><text x="22" y="302.72" font-family="Arial,sans-serif" font-size="10" fill="#b45309">012</text>
+</g>
+<g><title>CORE_UI_MAIN_ACTION | #mainBtn | X 115.41 Y 291.72 W 137.36 H 39.59</title><rect x="115.41" y="291.72" width="137.36" height="39.59" fill="#ffffff" fill-opacity=".15" stroke="#b45309" stroke-width="1"/>
+<rect x="115.41" y="291.72" width="131.1" height="15" fill="#ffffff" fill-opacity=".93"/><text x="118.41" y="302.72" font-family="Arial,sans-serif" font-size="10" fill="#b45309">013 · 137.36 × 39.59 px</text>
+</g>
+<g><title>CORE_UI_RESET | #resetBtn | X 260.77 Y 291.72 W 78.53 H 39.59</title><rect x="260.77" y="291.72" width="78.53" height="39.59" fill="#ffffff" fill-opacity=".15" stroke="#b45309" stroke-width="1"/>
+<rect x="260.77" y="291.72" width="78.53" height="15" fill="#ffffff" fill-opacity=".93"/><text x="263.77" y="302.72" font-family="Arial,sans-serif" font-size="10" fill="#b45309">014</text>
+</g>
+<g><title>duelMapStage | #gameScreen &gt; div:nth-child(2) | X 19 Y 331.31 W 352 H 362</title><rect x="19" y="331.31" width="352" height="362" fill="#ffffff" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="19" y="331.31" width="102.60000000000001" height="15" fill="#ffffff" fill-opacity=".93"/><text x="22" y="342.31" font-family="Arial,sans-serif" font-size="10" fill="#087e8b">015 · 352 × 362 px</text>
+</g>
+<g><title>CORE_UI_BOARD_WRAP | [data-dw-id=&quot;CORE_UI_BOARD_WRAP&quot;] | X 19 Y 341.31 W 352 H 352</title><rect x="19" y="341.31" width="352" height="352" fill="#ffffff" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="19" y="341.31" width="102.60000000000001" height="15" fill="#ffffff" fill-opacity=".93"/><text x="22" y="352.31" font-family="Arial,sans-serif" font-size="10" fill="#087e8b">016 · 352 × 352 px</text>
+</g>
+<g><title>duelTimers | #gameScreen &gt; div:nth-child(2) &gt; div:nth-child(1) &gt; div:nth-child(10) | X 129.39 Y 349.31 W 131.22 H 37.59</title><rect x="129.39" y="349.31" width="131.22" height="37.59" fill="#ffffff" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="129.39" y="349.31" width="131.1" height="15" fill="#ffffff" fill-opacity=".93"/><text x="132.39" y="360.31" font-family="Arial,sans-serif" font-size="10" fill="#087e8b">017 · 131.22 × 37.59 px</text>
+</g>
+<g><title>aiThinking | #gameScreen &gt; div:nth-child(2) &gt; div:nth-child(1) &gt; div:nth-child(9) | X 111.09 Y 351.31 W 167.81 H 32.8</title><rect x="111.09" y="351.31" width="167.81" height="32.8" fill="#ffffff" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="111.09" y="351.31" width="125.4" height="15" fill="#ffffff" fill-opacity=".93"/><text x="114.09" y="362.31" font-family="Arial,sans-serif" font-size="10" fill="#087e8b">018 · 167.81 × 32.8 px</text>
+</g>
+<g><title>heroDefenseBar | #gameScreen &gt; div:nth-child(2) &gt; div:nth-child(1) &gt; div:nth-child(12) | X 31 Y 641.72 W 328 H 39.59</title><rect x="31" y="641.72" width="328" height="39.59" fill="#ffffff" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="31" y="641.72" width="114" height="15" fill="#ffffff" fill-opacity=".93"/><text x="34" y="652.72" font-family="Arial,sans-serif" font-size="10" fill="#087e8b">019 · 328 × 39.59 px</text>
+</g>
+<g><title>btn | #gameScreen &gt; div:nth-child(2) &gt; div:nth-child(1) &gt; div:nth-child(12) &gt; button:nth-child(1) | X 31 Y 641.72 W 153.84 H 39.59</title><rect x="31" y="641.72" width="153.84" height="39.59" fill="#ffffff" fill-opacity=".15" stroke="#b45309" stroke-width="1"/>
+<rect x="31" y="641.72" width="131.1" height="15" fill="#ffffff" fill-opacity=".93"/><text x="34" y="652.72" font-family="Arial,sans-serif" font-size="10" fill="#b45309">020 · 153.84 × 39.59 px</text>
+</g>
+<g><title>duelMatchDetails | #gameScreen &gt; div:nth-child(2) &gt; details:nth-child(2) | X 25 Y 652.52 W 187.2 H 34.8</title><rect x="25" y="652.52" width="187.2" height="34.8" fill="#ffffff" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="25" y="652.52" width="119.7" height="15" fill="#ffffff" fill-opacity=".93"/><text x="28" y="663.52" font-family="Arial,sans-serif" font-size="10" fill="#087e8b">021 · 187.2 × 34.8 px</text>
+</g>
+<g><title>summary | #gameScreen &gt; div:nth-child(2) &gt; details:nth-child(2) &gt; summary:nth-child(1) | X 34 Y 661.52 W 169.2 H 16.8</title><rect x="34" y="661.52" width="169.2" height="16.8" fill="#ffffff" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+</g>
+<g><title>duelControlDock | #gameScreen &gt; div:nth-child(5) | X 19 Y 693.31 W 352 H 612.14</title><rect x="19" y="693.31" width="352" height="612.14" fill="#ffffff" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="19" y="693.31" width="119.7" height="15" fill="#ffffff" fill-opacity=".93"/><text x="22" y="704.31" font-family="Arial,sans-serif" font-size="10" fill="#087e8b">023 · 352 × 612.14 px</text>
+</g>
+<g><title>CORE_UI_UNIT_PANEL | #unitPanel | X 29 Y 705.31 W 332 H 129.58</title><rect x="29" y="705.31" width="332" height="129.58" fill="#ffffff" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="29" y="705.31" width="119.7" height="15" fill="#ffffff" fill-opacity=".93"/><text x="32" y="716.31" font-family="Arial,sans-serif" font-size="10" fill="#087e8b">024 · 332 × 129.58 px</text>
+</g>
+<g><title>h3 | #unitPanel &gt; h3:nth-child(1) | X 40 Y 716.31 W 310 H 16.8</title><rect x="40" y="716.31" width="310" height="16.8" fill="#ffffff" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+</g>
+<g><title>dockPortrait | #unitPanel &gt; div:nth-child(2) | X 40 Y 741.11 W 64 H 64</title><rect x="40" y="741.11" width="64" height="64" fill="#ffffff" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+</g>
+<g><title>CORE_UI_UNIT_INFO | #unitInfo | X 116 Y 741.11 W 234 H 39.19</title><rect x="116" y="741.11" width="234" height="39.19" fill="#ffffff" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="116" y="741.11" width="114" height="15" fill="#ffffff" fill-opacity=".93"/><text x="119" y="752.11" font-family="Arial,sans-serif" font-size="10" fill="#087e8b">027 · 234 × 39.19 px</text>
+</g>
+<g><title>heroPortraitArt | #unitPanel &gt; div:nth-child(2) &gt; img:nth-child(1) | X 41 Y 742.11 W 62 H 62</title><rect x="41" y="742.11" width="62" height="62" fill="#ffffff" fill-opacity=".15" stroke="#7c3aed" stroke-width="1"/>
+</g>
+<g><title>CORE_UI_MOVE | #moveBtn | X 116 Y 788.3 W 63.16 H 35.59</title><rect x="116" y="788.3" width="63.16" height="35.59" fill="#ffffff" fill-opacity=".15" stroke="#b45309" stroke-width="1"/>
+</g>
+<g><title>CORE_UI_ATTACK | #attackBtn | X 187.16 Y 788.3 W 73.8 H 35.59</title><rect x="187.16" y="788.3" width="73.8" height="35.59" fill="#ffffff" fill-opacity=".15" stroke="#b45309" stroke-width="1"/>
+<rect x="187.16" y="788.3" width="73.8" height="15" fill="#ffffff" fill-opacity=".93"/><text x="190.16" y="799.3" font-family="Arial,sans-serif" font-size="10" fill="#b45309">030</text>
+</g>
+<g><title>dockSkills | #gameScreen &gt; div:nth-child(5) &gt; div:nth-child(2) | X 29 Y 844.89 W 332 H 145.17</title><rect x="29" y="844.89" width="332" height="145.17" fill="#ffffff" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="29" y="844.89" width="119.7" height="15" fill="#ffffff" fill-opacity=".93"/><text x="32" y="855.89" font-family="Arial,sans-serif" font-size="10" fill="#087e8b">031 · 332 × 145.17 px</text>
+</g>
+<g><title>h3 | #gameScreen &gt; div:nth-child(5) &gt; div:nth-child(2) &gt; h3:nth-child(1) | X 40 Y 855.89 W 310 H 16.8</title><rect x="40" y="855.89" width="310" height="16.8" fill="#ffffff" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+</g>
+<g><title>CORE_UI_SKILL_BAR | #skillBar | X 40 Y 880.69 W 310 H 98.38</title><rect x="40" y="880.69" width="310" height="98.38" fill="#ffffff" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="40" y="880.69" width="114" height="15" fill="#ffffff" fill-opacity=".93"/><text x="43" y="891.69" font-family="Arial,sans-serif" font-size="10" fill="#087e8b">033 · 310 × 98.38 px</text>
+</g>
+<g><title>skill | #skillBar &gt; button:nth-child(1) | X 40 Y 880.69 W 98 H 98.38</title><rect x="40" y="880.69" width="98" height="98.38" fill="#ffffff" fill-opacity=".15" stroke="#b45309" stroke-width="1"/>
+<rect x="40" y="880.69" width="98" height="15" fill="#ffffff" fill-opacity=".93"/><text x="43" y="891.69" font-family="Arial,sans-serif" font-size="10" fill="#b45309">034</text>
+</g>
+<g><title>skill | #skillBar &gt; button:nth-child(2) | X 146 Y 880.69 W 98 H 98.38</title><rect x="146" y="880.69" width="98" height="98.38" fill="#ffffff" fill-opacity=".15" stroke="#b45309" stroke-width="1"/>
+<rect x="146" y="880.69" width="98" height="15" fill="#ffffff" fill-opacity=".93"/><text x="149" y="891.69" font-family="Arial,sans-serif" font-size="10" fill="#b45309">035</text>
+</g>
+<g><title>skill | #skillBar &gt; button:nth-child(3) | X 252 Y 880.69 W 98 H 98.38</title><rect x="252" y="880.69" width="98" height="98.38" fill="#ffffff" fill-opacity=".15" stroke="#b45309" stroke-width="1"/>
+<rect x="252" y="880.69" width="98" height="15" fill="#ffffff" fill-opacity=".93"/><text x="255" y="891.69" font-family="Arial,sans-serif" font-size="10" fill="#b45309">036</text>
+</g>
+<g><title>wide | #gameScreen &gt; div:nth-child(5) &gt; div:nth-child(3) | X 29 Y 1000.06 W 332 H 295.39</title><rect x="29" y="1000.06" width="332" height="295.39" fill="#ffffff" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="29" y="1000.06" width="119.7" height="15" fill="#ffffff" fill-opacity=".93"/><text x="32" y="1011.06" font-family="Arial,sans-serif" font-size="10" fill="#087e8b">037 · 332 × 295.39 px</text>
+</g>
+<g><title>h3 | #gameScreen &gt; div:nth-child(5) &gt; div:nth-child(3) &gt; h3:nth-child(1) | X 40 Y 1011.06 W 310 H 16.8</title><rect x="40" y="1011.06" width="310" height="16.8" fill="#ffffff" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+</g>
+<g><title>CORE_UI_HAND_OWNER | #handOwner | X 40 Y 1035.86 W 310 H 19.59</title><rect x="40" y="1035.86" width="310" height="19.59" fill="#ffffff" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="40" y="1035.86" width="114" height="15" fill="#ffffff" fill-opacity=".93"/><text x="43" y="1046.86" font-family="Arial,sans-serif" font-size="10" fill="#087e8b">039 · 310 × 19.59 px</text>
+</g>
+<g><title>CORE_UI_HAND_BAR | #handBar | X 40 Y 1063.45 W 310 H 221</title><rect x="40" y="1063.45" width="310" height="221" fill="#ffffff" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="40" y="1063.45" width="102.60000000000001" height="15" fill="#ffffff" fill-opacity=".93"/><text x="43" y="1074.45" font-family="Arial,sans-serif" font-size="10" fill="#087e8b">040 · 310 × 221 px</text>
+</g>
+<g><title>atk | #handBar &gt; button:nth-child(1) | X 43 Y 1066.45 W 140 H 210</title><rect x="43" y="1066.45" width="140" height="210" fill="#ffffff" fill-opacity=".15" stroke="#b45309" stroke-width="1"/>
+<rect x="43" y="1066.45" width="102.60000000000001" height="15" fill="#ffffff" fill-opacity=".93"/><text x="46" y="1077.45" font-family="Arial,sans-serif" font-size="10" fill="#b45309">041 · 140 × 210 px</text>
+</g>
+<g><title>equipmentFullCard | #handBar &gt; button:nth-child(1) &gt; img:nth-child(1) | X 43 Y 1066.45 W 140 H 210</title><rect x="43" y="1066.45" width="140" height="210" fill="#ffffff" fill-opacity=".15" stroke="#7c3aed" stroke-width="1"/>
+<rect x="43" y="1066.45" width="102.60000000000001" height="15" fill="#ffffff" fill-opacity=".93"/><text x="46" y="1077.45" font-family="Arial,sans-serif" font-size="10" fill="#7c3aed">042 · 140 × 210 px</text>
+</g>
+<g><title>atk | #handBar &gt; button:nth-child(2) | X 195 Y 1066.45 W 140 H 210</title><rect x="195" y="1066.45" width="140" height="210" fill="#ffffff" fill-opacity=".15" stroke="#b45309" stroke-width="1"/>
+<rect x="195" y="1066.45" width="102.60000000000001" height="15" fill="#ffffff" fill-opacity=".93"/><text x="198" y="1077.45" font-family="Arial,sans-serif" font-size="10" fill="#b45309">043 · 140 × 210 px</text>
+</g>
+<g><title>equipmentFullCard | #handBar &gt; button:nth-child(2) &gt; img:nth-child(1) | X 195 Y 1066.45 W 140 H 210</title><rect x="195" y="1066.45" width="140" height="210" fill="#ffffff" fill-opacity=".15" stroke="#7c3aed" stroke-width="1"/>
+<rect x="195" y="1066.45" width="102.60000000000001" height="15" fill="#ffffff" fill-opacity=".93"/><text x="198" y="1077.45" font-family="Arial,sans-serif" font-size="10" fill="#7c3aed">044 · 140 × 210 px</text>
+</g>
+<g><title>atk | #handBar &gt; button:nth-child(3) | X 347 Y 1066.45 W 140 H 210</title><rect x="347" y="1066.45" width="3" height="210" fill="#ffffff" fill-opacity=".15" stroke="#b45309" stroke-width="1"/>
+</g>
+<g><title>equipmentFullCard | #handBar &gt; button:nth-child(3) &gt; img:nth-child(1) | X 347 Y 1066.45 W 140 H 210</title><rect x="347" y="1066.45" width="3" height="210" fill="#ffffff" fill-opacity=".15" stroke="#7c3aed" stroke-width="1"/>
+</g>
+<g><title>side | div:nth-child(1) &gt; div:nth-child(2) &gt; aside:nth-child(2) | X 6 Y 1326.45 W 378 H 26</title><rect x="6" y="1326.45" width="378" height="26" fill="#ffffff" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="6" y="1326.45" width="96.9" height="15" fill="#ffffff" fill-opacity=".93"/><text x="9" y="1337.45" font-family="Arial,sans-serif" font-size="10" fill="#087e8b">047 · 378 × 26 px</text>
+</g>
+<line x1="0" y1="844" x2="390" y2="844" stroke="#e11d48" stroke-width="2" stroke-dasharray="8 5"/><rect x="4" y="824" width="290" height="19" fill="#fff1f2"/><text x="8" y="838" fill="#be123c" font-family="Arial,sans-serif" font-size="11">Viewport ends at 844px — scroll below</text>
+</g>
+<rect x="390" width="720" height="1918" fill="#0d1d2a"/><text x="410" y="30" fill="#ffffff" font-family="Arial,sans-serif" font-size="18">49-ai-thinking · Chỉ báo Bot đang tính toán</text><text x="410" y="56" fill="#bcd1e2" font-family="Arial,sans-serif" font-size="13">Viewport 390 × 844 CSS px · DPR 1 · scale 1:1</text><text x="410" y="78" fill="#bcd1e2" font-family="Arial,sans-serif" font-size="12">Image 390 × 1358 px at left. This 720 px legend is outside the game canvas.</text><text x="410" y="98" fill="#bcd1e2" font-family="Arial,sans-serif" font-size="12">Measured border boxes. Decimal CSS pixels are retained; X/Y origin is top-left.</text>
+<text x="410" y="130" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">001  top</text><text x="438" y="145" fill="#e1edf5" font-family="monospace" font-size="11">X 6 · Y 6 · W 378 × H 195.94 px</text>
+<text x="410" y="168" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">002  brand</text><text x="438" y="183" fill="#e1edf5" font-family="monospace" font-size="11">X 6 · Y 6 · W 317.66 × H 195.94 px</text>
+<text x="410" y="206" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">003  runtimeBadge</text><text x="438" y="221" fill="#e1edf5" font-family="monospace" font-size="11">X 14 · Y 60.19 · W 156.73 × H 22 px</text>
+<text x="410" y="244" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">004  SHELL_UI_PHASE_LABEL</text><text x="438" y="259" fill="#e1edf5" font-family="monospace" font-size="11">X 333.66 · Y 94.17 · W 50.34 × H 19.59 px</text>
+<text x="410" y="282" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">005  boardBg</text><text x="438" y="297" fill="#e1edf5" font-family="monospace" font-size="11">X -374.45 · Y 202 · W 1138.9 × H 640.63 px</text>
+<text x="410" y="320" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">006  main</text><text x="438" y="335" fill="#e1edf5" font-family="monospace" font-size="11">X 6 · Y 211.94 · W 378 × H 1106.52 px</text>
+<text x="410" y="358" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">007  SHELL_UI_MATCH_SCREEN</text><text x="438" y="373" fill="#e1edf5" font-family="monospace" font-size="11">X 19 · Y 224.94 · W 352 × H 1080.52 px</text>
+<text x="410" y="396" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">008  statusLine</text><text x="438" y="411" fill="#e1edf5" font-family="monospace" font-size="11">X 19 · Y 224.94 · W 352 × H 106.38 px</text>
+<text x="410" y="434" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">009  CORE_UI_MATCH_TITLE</text><text x="438" y="449" fill="#e1edf5" font-family="monospace" font-size="11">X 19 · Y 224.94 · W 135.23 × H 19 px</text>
+<text x="410" y="472" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">010  CORE_UI_MATCH_HINT</text><text x="438" y="487" fill="#e1edf5" font-family="monospace" font-size="11">X 19 · Y 244.53 · W 352 × H 39.19 px</text>
+<text x="410" y="510" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">011  CORE_UI_BOARD</text><text x="438" y="525" fill="#e1edf5" font-family="monospace" font-size="11">X -51.4 · Y 275.91 · W 492.8 × H 492.8 px</text>
+<text x="410" y="548" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">012  CORE_UI_UNDO</text><text x="438" y="563" fill="#e1edf5" font-family="monospace" font-size="11">X 19 · Y 291.72 · W 88.41 × H 39.59 px</text>
+<text x="410" y="586" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">013  CORE_UI_MAIN_ACTION</text><text x="438" y="601" fill="#e1edf5" font-family="monospace" font-size="11">X 115.41 · Y 291.72 · W 137.36 × H 39.59 px</text>
+<text x="410" y="624" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">014  CORE_UI_RESET</text><text x="438" y="639" fill="#e1edf5" font-family="monospace" font-size="11">X 260.77 · Y 291.72 · W 78.53 × H 39.59 px</text>
+<text x="410" y="662" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">015  duelMapStage</text><text x="438" y="677" fill="#e1edf5" font-family="monospace" font-size="11">X 19 · Y 331.31 · W 352 × H 362 px</text>
+<text x="410" y="700" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">016  CORE_UI_BOARD_WRAP</text><text x="438" y="715" fill="#e1edf5" font-family="monospace" font-size="11">X 19 · Y 341.31 · W 352 × H 352 px</text>
+<text x="410" y="738" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">017  duelTimers</text><text x="438" y="753" fill="#e1edf5" font-family="monospace" font-size="11">X 129.39 · Y 349.31 · W 131.22 × H 37.59 px</text>
+<text x="410" y="776" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">018  aiThinking</text><text x="438" y="791" fill="#e1edf5" font-family="monospace" font-size="11">X 111.09 · Y 351.31 · W 167.81 × H 32.8 px</text>
+<text x="410" y="814" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">019  heroDefenseBar</text><text x="438" y="829" fill="#e1edf5" font-family="monospace" font-size="11">X 31 · Y 641.72 · W 328 × H 39.59 px</text>
+<text x="410" y="852" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">020  btn</text><text x="438" y="867" fill="#e1edf5" font-family="monospace" font-size="11">X 31 · Y 641.72 · W 153.84 × H 39.59 px</text>
+<text x="410" y="890" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">021  duelMatchDetails</text><text x="438" y="905" fill="#e1edf5" font-family="monospace" font-size="11">X 25 · Y 652.52 · W 187.2 × H 34.8 px</text>
+<text x="410" y="928" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">022  summary</text><text x="438" y="943" fill="#e1edf5" font-family="monospace" font-size="11">X 34 · Y 661.52 · W 169.2 × H 16.8 px</text>
+<text x="410" y="966" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">023  duelControlDock</text><text x="438" y="981" fill="#e1edf5" font-family="monospace" font-size="11">X 19 · Y 693.31 · W 352 × H 612.14 px</text>
+<text x="410" y="1004" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">024  CORE_UI_UNIT_PANEL</text><text x="438" y="1019" fill="#e1edf5" font-family="monospace" font-size="11">X 29 · Y 705.31 · W 332 × H 129.58 px</text>
+<text x="410" y="1042" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">025  h3</text><text x="438" y="1057" fill="#e1edf5" font-family="monospace" font-size="11">X 40 · Y 716.31 · W 310 × H 16.8 px</text>
+<text x="410" y="1080" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">026  dockPortrait</text><text x="438" y="1095" fill="#e1edf5" font-family="monospace" font-size="11">X 40 · Y 741.11 · W 64 × H 64 px</text>
+<text x="410" y="1118" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">027  CORE_UI_UNIT_INFO</text><text x="438" y="1133" fill="#e1edf5" font-family="monospace" font-size="11">X 116 · Y 741.11 · W 234 × H 39.19 px</text>
+<text x="410" y="1156" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">028  heroPortraitArt</text><text x="438" y="1171" fill="#e1edf5" font-family="monospace" font-size="11">X 41 · Y 742.11 · W 62 × H 62 px</text>
+<text x="410" y="1194" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">029  CORE_UI_MOVE</text><text x="438" y="1209" fill="#e1edf5" font-family="monospace" font-size="11">X 116 · Y 788.3 · W 63.16 × H 35.59 px</text>
+<text x="410" y="1232" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">030  CORE_UI_ATTACK</text><text x="438" y="1247" fill="#e1edf5" font-family="monospace" font-size="11">X 187.16 · Y 788.3 · W 73.8 × H 35.59 px</text>
+<text x="410" y="1270" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">031  dockSkills</text><text x="438" y="1285" fill="#e1edf5" font-family="monospace" font-size="11">X 29 · Y 844.89 · W 332 × H 145.17 px</text>
+<text x="410" y="1308" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">032  h3</text><text x="438" y="1323" fill="#e1edf5" font-family="monospace" font-size="11">X 40 · Y 855.89 · W 310 × H 16.8 px</text>
+<text x="410" y="1346" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">033  CORE_UI_SKILL_BAR</text><text x="438" y="1361" fill="#e1edf5" font-family="monospace" font-size="11">X 40 · Y 880.69 · W 310 × H 98.38 px</text>
+<text x="410" y="1384" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">034  skill</text><text x="438" y="1399" fill="#e1edf5" font-family="monospace" font-size="11">X 40 · Y 880.69 · W 98 × H 98.38 px</text>
+<text x="410" y="1422" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">035  skill</text><text x="438" y="1437" fill="#e1edf5" font-family="monospace" font-size="11">X 146 · Y 880.69 · W 98 × H 98.38 px</text>
+<text x="410" y="1460" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">036  skill</text><text x="438" y="1475" fill="#e1edf5" font-family="monospace" font-size="11">X 252 · Y 880.69 · W 98 × H 98.38 px</text>
+<text x="410" y="1498" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">037  wide</text><text x="438" y="1513" fill="#e1edf5" font-family="monospace" font-size="11">X 29 · Y 1000.06 · W 332 × H 295.39 px</text>
+<text x="410" y="1536" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">038  h3</text><text x="438" y="1551" fill="#e1edf5" font-family="monospace" font-size="11">X 40 · Y 1011.06 · W 310 × H 16.8 px</text>
+<text x="410" y="1574" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">039  CORE_UI_HAND_OWNER</text><text x="438" y="1589" fill="#e1edf5" font-family="monospace" font-size="11">X 40 · Y 1035.86 · W 310 × H 19.59 px</text>
+<text x="410" y="1612" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">040  CORE_UI_HAND_BAR</text><text x="438" y="1627" fill="#e1edf5" font-family="monospace" font-size="11">X 40 · Y 1063.45 · W 310 × H 221 px</text>
+<text x="410" y="1650" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">041  atk</text><text x="438" y="1665" fill="#e1edf5" font-family="monospace" font-size="11">X 43 · Y 1066.45 · W 140 × H 210 px</text>
+<text x="410" y="1688" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">042  equipmentFullCard</text><text x="438" y="1703" fill="#e1edf5" font-family="monospace" font-size="11">X 43 · Y 1066.45 · W 140 × H 210 px</text>
+<text x="410" y="1726" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">043  atk</text><text x="438" y="1741" fill="#e1edf5" font-family="monospace" font-size="11">X 195 · Y 1066.45 · W 140 × H 210 px</text>
+<text x="410" y="1764" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">044  equipmentFullCard</text><text x="438" y="1779" fill="#e1edf5" font-family="monospace" font-size="11">X 195 · Y 1066.45 · W 140 × H 210 px</text>
+<text x="410" y="1802" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">045  atk</text><text x="438" y="1817" fill="#e1edf5" font-family="monospace" font-size="11">X 347 · Y 1066.45 · W 140 × H 210 px</text>
+<text x="410" y="1840" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">046  equipmentFullCard</text><text x="438" y="1855" fill="#e1edf5" font-family="monospace" font-size="11">X 347 · Y 1066.45 · W 140 × H 210 px</text>
+<text x="410" y="1878" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">047  side</text><text x="438" y="1893" fill="#e1edf5" font-family="monospace" font-size="11">X 6 · Y 1326.45 · W 378 × H 26 px</text>
+</svg>

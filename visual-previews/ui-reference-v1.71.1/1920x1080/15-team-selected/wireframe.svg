@@ -1,0 +1,334 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="2640" height="3286" viewBox="0 0 2640 3286">
+<title>Chọn Hero và lính — đủ 5 quân — 1920×1080, 1:1 CSS px</title>
+<rect width="100%" height="100%" fill="#f5f8fc"/>
+<defs><clipPath id="screen"><rect width="1920" height="1236"/></clipPath></defs>
+<g clip-path="url(#screen)">
+<g><title>top | div:nth-child(1) &gt; div:nth-child(1) | X 222 Y 12 W 1476 H 39.19</title><rect x="222" y="12" width="1476" height="39.19" fill="#ffffff" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="222" y="12" width="119.7" height="15" fill="#ffffff" fill-opacity=".93"/><text x="225" y="23" font-family="Arial,sans-serif" font-size="10" fill="#087e8b">001 · 1476 × 39.19 px</text>
+</g>
+<g><title>brand | div:nth-child(1) &gt; div:nth-child(1) &gt; div:nth-child(1) | X 222 Y 12 W 1324.77 H 39.19</title><rect x="222" y="12" width="1324.77" height="39.19" fill="#ffffff" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="222" y="12" width="136.8" height="15" fill="#ffffff" fill-opacity=".93"/><text x="225" y="23" font-family="Arial,sans-serif" font-size="10" fill="#087e8b">002 · 1324.77 × 39.19 px</text>
+</g>
+<g><title>SHELL_UI_PHASE_LABEL | #phaseLabel | X 1607.22 Y 21.8 W 90.78 H 19.59</title><rect x="1607.22" y="21.8" width="90.78" height="19.59" fill="#ffffff" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="1607.22" y="21.8" width="90.78" height="15" fill="#ffffff" fill-opacity=".93"/><text x="1610.22" y="32.8" font-family="Arial,sans-serif" font-size="10" fill="#087e8b">003</text>
+</g>
+<g><title>runtimeBadge | div:nth-child(1) &gt; div:nth-child(1) &gt; div:nth-child(1) &gt; span:nth-child(2) | X 449.34 Y 27 W 156.73 H 22</title><rect x="449.34" y="27" width="156.73" height="22" fill="#ffffff" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="449.34" y="27" width="114" height="15" fill="#ffffff" fill-opacity=".93"/><text x="452.34" y="38" font-family="Arial,sans-serif" font-size="10" fill="#087e8b">004 · 156.73 × 22 px</text>
+</g>
+<g><title>main | div:nth-child(1) &gt; div:nth-child(2) &gt; section:nth-child(1) | X 222 Y 61.19 W 1084 H 1162.59</title><rect x="222" y="61.19" width="1084" height="1162.59" fill="#ffffff" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="222" y="61.19" width="131.1" height="15" fill="#ffffff" fill-opacity=".93"/><text x="225" y="72.19" font-family="Arial,sans-serif" font-size="10" fill="#087e8b">005 · 1084 × 1162.59 px</text>
+</g>
+<g><title>side | div:nth-child(1) &gt; div:nth-child(2) &gt; aside:nth-child(2) | X 1318 Y 61.19 W 380 H 26</title><rect x="1318" y="61.19" width="380" height="26" fill="#ffffff" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="1318" y="61.19" width="96.9" height="15" fill="#ffffff" fill-opacity=".93"/><text x="1321" y="72.19" font-family="Arial,sans-serif" font-size="10" fill="#087e8b">006 · 380 × 26 px</text>
+</g>
+<g><title>SHELL_UI_TEAM_SELECT | #teamScreen | X 235 Y 74.19 W 1058 H 1136.59</title><rect x="235" y="74.19" width="1058" height="1136.59" fill="#ffffff" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="235" y="74.19" width="131.1" height="15" fill="#ffffff" fill-opacity=".93"/><text x="238" y="85.19" font-family="Arial,sans-serif" font-size="10" fill="#087e8b">007 · 1058 × 1136.59 px</text>
+</g>
+<g><title>selectWrap | #teamScreen &gt; div:nth-child(1) | X 235 Y 74.19 W 1058 H 1136.59</title><rect x="235" y="74.19" width="1058" height="1136.59" fill="#ffffff" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="235" y="74.19" width="131.1" height="15" fill="#ffffff" fill-opacity=".93"/><text x="238" y="85.19" font-family="Arial,sans-serif" font-size="10" fill="#087e8b">008 · 1058 × 1136.59 px</text>
+</g>
+<g><title>SHELL_UI_TEAM_TITLE | #teamTitle | X 612.17 Y 94.19 W 303.64 H 28</title><rect x="612.17" y="94.19" width="303.64" height="28" fill="#ffffff" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="612.17" y="94.19" width="114" height="15" fill="#ffffff" fill-opacity=".93"/><text x="615.17" y="105.19" font-family="Arial,sans-serif" font-size="10" fill="#087e8b">009 · 303.64 × 28 px</text>
+</g>
+<g><title>SHELL_UI_TEAM_SUBTITLE | #teamSub | X 612.17 Y 122.19 W 303.64 H 19.59</title><rect x="612.17" y="122.19" width="303.64" height="19.59" fill="#ffffff" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="612.17" y="122.19" width="131.1" height="15" fill="#ffffff" fill-opacity=".93"/><text x="615.17" y="133.19" font-family="Arial,sans-serif" font-size="10" fill="#087e8b">010 · 303.64 × 19.59 px</text>
+</g>
+<g><title>box | #teamScreen &gt; div:nth-child(1) &gt; div:nth-child(2) | X 255 Y 159.78 W 1018 H 334.14</title><rect x="255" y="159.78" width="1018" height="334.14" fill="#ffffff" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="255" y="159.78" width="125.4" height="15" fill="#ffffff" fill-opacity=".93"/><text x="258" y="170.78" font-family="Arial,sans-serif" font-size="10" fill="#087e8b">011 · 1018 × 334.14 px</text>
+</g>
+<g><title>h3 | #teamScreen &gt; div:nth-child(1) &gt; div:nth-child(2) &gt; h3:nth-child(1) | X 266 Y 170.78 W 996 H 22.92</title><rect x="266" y="170.78" width="996" height="22.92" fill="#ffffff" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="266" y="170.78" width="114" height="15" fill="#ffffff" fill-opacity=".93"/><text x="269" y="181.78" font-family="Arial,sans-serif" font-size="10" fill="#087e8b">012 · 996 × 22.92 px</text>
+</g>
+<g><title>teamEquipmentHand | #teamEquipmentHand | X 266 Y 193.7 W 996 H 289.22</title><rect x="266" y="193.7" width="996" height="289.22" fill="#ffffff" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="266" y="193.7" width="119.7" height="15" fill="#ffffff" fill-opacity=".93"/><text x="269" y="204.7" font-family="Arial,sans-serif" font-size="10" fill="#087e8b">013 · 996 × 289.22 px</text>
+</g>
+<g><title>atk | #teamEquipmentHand &gt; div:nth-child(1) | X 266 Y 193.7 W 192.8 H 289.22</title><rect x="266" y="193.7" width="192.8" height="289.22" fill="#ffffff" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="266" y="193.7" width="131.1" height="15" fill="#ffffff" fill-opacity=".93"/><text x="269" y="204.7" font-family="Arial,sans-serif" font-size="10" fill="#087e8b">014 · 192.8 × 289.22 px</text>
+</g>
+<g><title>equipmentFullCard | #teamEquipmentHand &gt; div:nth-child(1) &gt; img:nth-child(1) | X 266 Y 193.7 W 192.8 H 289.19</title><rect x="266" y="193.7" width="192.8" height="289.19" fill="#ffffff" fill-opacity=".15" stroke="#7c3aed" stroke-width="1"/>
+<rect x="266" y="193.7" width="131.1" height="15" fill="#ffffff" fill-opacity=".93"/><text x="269" y="204.7" font-family="Arial,sans-serif" font-size="10" fill="#7c3aed">015 · 192.8 × 289.19 px</text>
+</g>
+<g><title>atk | #teamEquipmentHand &gt; div:nth-child(2) | X 466.8 Y 193.7 W 192.8 H 289.22</title><rect x="466.8" y="193.7" width="192.8" height="289.22" fill="#ffffff" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="466.8" y="193.7" width="131.1" height="15" fill="#ffffff" fill-opacity=".93"/><text x="469.8" y="204.7" font-family="Arial,sans-serif" font-size="10" fill="#087e8b">016 · 192.8 × 289.22 px</text>
+</g>
+<g><title>equipmentFullCard | #teamEquipmentHand &gt; div:nth-child(2) &gt; img:nth-child(1) | X 466.8 Y 193.7 W 192.8 H 289.19</title><rect x="466.8" y="193.7" width="192.8" height="289.19" fill="#ffffff" fill-opacity=".15" stroke="#7c3aed" stroke-width="1"/>
+<rect x="466.8" y="193.7" width="131.1" height="15" fill="#ffffff" fill-opacity=".93"/><text x="469.8" y="204.7" font-family="Arial,sans-serif" font-size="10" fill="#7c3aed">017 · 192.8 × 289.19 px</text>
+</g>
+<g><title>atk | #teamEquipmentHand &gt; div:nth-child(3) | X 667.59 Y 193.7 W 192.8 H 289.22</title><rect x="667.59" y="193.7" width="192.8" height="289.22" fill="#ffffff" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="667.59" y="193.7" width="131.1" height="15" fill="#ffffff" fill-opacity=".93"/><text x="670.59" y="204.7" font-family="Arial,sans-serif" font-size="10" fill="#087e8b">018 · 192.8 × 289.22 px</text>
+</g>
+<g><title>equipmentFullCard | #teamEquipmentHand &gt; div:nth-child(3) &gt; img:nth-child(1) | X 667.59 Y 193.7 W 192.8 H 289.19</title><rect x="667.59" y="193.7" width="192.8" height="289.19" fill="#ffffff" fill-opacity=".15" stroke="#7c3aed" stroke-width="1"/>
+<rect x="667.59" y="193.7" width="131.1" height="15" fill="#ffffff" fill-opacity=".93"/><text x="670.59" y="204.7" font-family="Arial,sans-serif" font-size="10" fill="#7c3aed">019 · 192.8 × 289.19 px</text>
+</g>
+<g><title>atk | #teamEquipmentHand &gt; div:nth-child(4) | X 868.39 Y 193.7 W 192.8 H 289.22</title><rect x="868.39" y="193.7" width="192.8" height="289.22" fill="#ffffff" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="868.39" y="193.7" width="131.1" height="15" fill="#ffffff" fill-opacity=".93"/><text x="871.39" y="204.7" font-family="Arial,sans-serif" font-size="10" fill="#087e8b">020 · 192.8 × 289.22 px</text>
+</g>
+<g><title>equipmentFullCard | #teamEquipmentHand &gt; div:nth-child(4) &gt; img:nth-child(1) | X 868.39 Y 193.7 W 192.8 H 289.19</title><rect x="868.39" y="193.7" width="192.8" height="289.19" fill="#ffffff" fill-opacity=".15" stroke="#7c3aed" stroke-width="1"/>
+<rect x="868.39" y="193.7" width="131.1" height="15" fill="#ffffff" fill-opacity=".93"/><text x="871.39" y="204.7" font-family="Arial,sans-serif" font-size="10" fill="#7c3aed">021 · 192.8 × 289.19 px</text>
+</g>
+<g><title>atk | #teamEquipmentHand &gt; div:nth-child(5) | X 1069.19 Y 193.7 W 192.81 H 289.22</title><rect x="1069.19" y="193.7" width="192.81" height="289.22" fill="#ffffff" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="1069.19" y="193.7" width="136.8" height="15" fill="#ffffff" fill-opacity=".93"/><text x="1072.19" y="204.7" font-family="Arial,sans-serif" font-size="10" fill="#087e8b">022 · 192.81 × 289.22 px</text>
+</g>
+<g><title>equipmentFullCard | #teamEquipmentHand &gt; div:nth-child(5) &gt; img:nth-child(1) | X 1069.19 Y 193.7 W 192.81 H 289.22</title><rect x="1069.19" y="193.7" width="192.81" height="289.22" fill="#ffffff" fill-opacity=".15" stroke="#7c3aed" stroke-width="1"/>
+<rect x="1069.19" y="193.7" width="136.8" height="15" fill="#ffffff" fill-opacity=".93"/><text x="1072.19" y="204.7" font-family="Arial,sans-serif" font-size="10" fill="#7c3aed">023 · 192.81 × 289.22 px</text>
+</g>
+<g><title>teamCols | #teamScreen &gt; div:nth-child(1) &gt; div:nth-child(3) | X 255 Y 511.92 W 1018 H 621.27</title><rect x="255" y="511.92" width="1018" height="621.27" fill="#ffffff" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="255" y="511.92" width="125.4" height="15" fill="#ffffff" fill-opacity=".93"/><text x="258" y="522.9200000000001" font-family="Arial,sans-serif" font-size="10" fill="#087e8b">024 · 1018 × 621.27 px</text>
+</g>
+<g><title>box | #teamScreen &gt; div:nth-child(1) &gt; div:nth-child(3) &gt; div:nth-child(1) | X 255 Y 511.92 W 503 H 621.27</title><rect x="255" y="511.92" width="503" height="621.27" fill="#ffffff" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="255" y="511.92" width="119.7" height="15" fill="#ffffff" fill-opacity=".93"/><text x="258" y="522.9200000000001" font-family="Arial,sans-serif" font-size="10" fill="#087e8b">025 · 503 × 621.27 px</text>
+</g>
+<g><title>box | #teamScreen &gt; div:nth-child(1) &gt; div:nth-child(3) &gt; div:nth-child(2) | X 770 Y 511.92 W 503 H 621.27</title><rect x="770" y="511.92" width="503" height="621.27" fill="#ffffff" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="770" y="511.92" width="119.7" height="15" fill="#ffffff" fill-opacity=".93"/><text x="773" y="522.9200000000001" font-family="Arial,sans-serif" font-size="10" fill="#087e8b">026 · 503 × 621.27 px</text>
+</g>
+<g><title>h3 | #teamScreen &gt; div:nth-child(1) &gt; div:nth-child(3) &gt; div:nth-child(1) &gt; h3:nth-child(1) | X 266 Y 522.92 W 481 H 22.92</title><rect x="266" y="522.92" width="481" height="22.92" fill="#ffffff" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="266" y="522.92" width="114" height="15" fill="#ffffff" fill-opacity=".93"/><text x="269" y="533.92" font-family="Arial,sans-serif" font-size="10" fill="#087e8b">027 · 481 × 22.92 px</text>
+</g>
+<g><title>h3 | #teamScreen &gt; div:nth-child(1) &gt; div:nth-child(3) &gt; div:nth-child(2) &gt; h3:nth-child(1) | X 781 Y 522.92 W 481 H 22.92</title><rect x="781" y="522.92" width="481" height="22.92" fill="#ffffff" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="781" y="522.92" width="114" height="15" fill="#ffffff" fill-opacity=".93"/><text x="784" y="533.92" font-family="Arial,sans-serif" font-size="10" fill="#087e8b">028 · 481 × 22.92 px</text>
+</g>
+<g><title>SHELL_UI_TEAM_HERO_CHOICES | #heroChoices | X 266 Y 545.84 W 481 H 576.34</title><rect x="266" y="545.84" width="481" height="576.34" fill="#ffffff" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="266" y="545.84" width="119.7" height="15" fill="#ffffff" fill-opacity=".93"/><text x="269" y="556.84" font-family="Arial,sans-serif" font-size="10" fill="#087e8b">029 · 481 × 576.34 px</text>
+</g>
+<g><title>choice | #heroChoices &gt; button:nth-child(1) | X 266 Y 545.84 W 155 H 133.19</title><rect x="266" y="545.84" width="155" height="133.19" fill="#ffffff" fill-opacity=".15" stroke="#b45309" stroke-width="1"/>
+<rect x="266" y="545.84" width="119.7" height="15" fill="#ffffff" fill-opacity=".93"/><text x="269" y="556.84" font-family="Arial,sans-serif" font-size="10" fill="#b45309">030 · 155 × 133.19 px</text>
+</g>
+<g><title>choice | #heroChoices &gt; button:nth-child(2) | X 429 Y 545.84 W 155 H 133.19</title><rect x="429" y="545.84" width="155" height="133.19" fill="#ffffff" fill-opacity=".15" stroke="#b45309" stroke-width="1"/>
+<rect x="429" y="545.84" width="119.7" height="15" fill="#ffffff" fill-opacity=".93"/><text x="432" y="556.84" font-family="Arial,sans-serif" font-size="10" fill="#b45309">031 · 155 × 133.19 px</text>
+</g>
+<g><title>choice | #heroChoices &gt; button:nth-child(3) | X 592 Y 545.84 W 155 H 133.19</title><rect x="592" y="545.84" width="155" height="133.19" fill="#ffffff" fill-opacity=".15" stroke="#b45309" stroke-width="1"/>
+<rect x="592" y="545.84" width="119.7" height="15" fill="#ffffff" fill-opacity=".93"/><text x="595" y="556.84" font-family="Arial,sans-serif" font-size="10" fill="#b45309">032 · 155 × 133.19 px</text>
+</g>
+<g><title>SHELL_UI_TEAM_TROOP_CHOICES | #troopChoices | X 781 Y 545.84 W 481 H 143.19</title><rect x="781" y="545.84" width="481" height="143.19" fill="#ffffff" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="781" y="545.84" width="119.7" height="15" fill="#ffffff" fill-opacity=".93"/><text x="784" y="556.84" font-family="Arial,sans-serif" font-size="10" fill="#087e8b">033 · 481 × 143.19 px</text>
+</g>
+<g><title>choice | #troopChoices &gt; div:nth-child(1) | X 781 Y 545.84 W 155 H 143.19</title><rect x="781" y="545.84" width="155" height="143.19" fill="#ffffff" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="781" y="545.84" width="119.7" height="15" fill="#ffffff" fill-opacity=".93"/><text x="784" y="556.84" font-family="Arial,sans-serif" font-size="10" fill="#087e8b">034 · 155 × 143.19 px</text>
+</g>
+<g><title>choice | #troopChoices &gt; div:nth-child(2) | X 944 Y 545.84 W 155 H 143.19</title><rect x="944" y="545.84" width="155" height="143.19" fill="#ffffff" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="944" y="545.84" width="119.7" height="15" fill="#ffffff" fill-opacity=".93"/><text x="947" y="556.84" font-family="Arial,sans-serif" font-size="10" fill="#087e8b">035 · 155 × 143.19 px</text>
+</g>
+<g><title>choice | #troopChoices &gt; div:nth-child(3) | X 1107 Y 545.84 W 155 H 143.19</title><rect x="1107" y="545.84" width="155" height="143.19" fill="#ffffff" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="1107" y="545.84" width="119.7" height="15" fill="#ffffff" fill-opacity=".93"/><text x="1110" y="556.84" font-family="Arial,sans-serif" font-size="10" fill="#087e8b">036 · 155 × 143.19 px</text>
+</g>
+<g><title>sym | #heroChoices &gt; button:nth-child(1) &gt; div:nth-child(1) | X 307.5 Y 556.84 W 72 H 72</title><rect x="307.5" y="556.84" width="72" height="72" fill="#ffffff" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="307.5" y="556.84" width="72" height="15" fill="#ffffff" fill-opacity=".93"/><text x="310.5" y="567.84" font-family="Arial,sans-serif" font-size="10" fill="#087e8b">037</text>
+</g>
+<g><title>heroChoicePortrait | #heroChoices &gt; button:nth-child(1) &gt; div:nth-child(1) &gt; img:nth-child(1) | X 307.5 Y 556.84 W 72 H 72</title><rect x="307.5" y="556.84" width="72" height="72" fill="#ffffff" fill-opacity=".15" stroke="#7c3aed" stroke-width="1"/>
+<rect x="307.5" y="556.84" width="72" height="15" fill="#ffffff" fill-opacity=".93"/><text x="310.5" y="567.84" font-family="Arial,sans-serif" font-size="10" fill="#7c3aed">038</text>
+</g>
+<g><title>sym | #heroChoices &gt; button:nth-child(2) &gt; div:nth-child(1) | X 470.5 Y 556.84 W 72 H 72</title><rect x="470.5" y="556.84" width="72" height="72" fill="#ffffff" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="470.5" y="556.84" width="72" height="15" fill="#ffffff" fill-opacity=".93"/><text x="473.5" y="567.84" font-family="Arial,sans-serif" font-size="10" fill="#087e8b">039</text>
+</g>
+<g><title>heroChoicePortrait | #heroChoices &gt; button:nth-child(2) &gt; div:nth-child(1) &gt; img:nth-child(1) | X 470.5 Y 556.84 W 72 H 72</title><rect x="470.5" y="556.84" width="72" height="72" fill="#ffffff" fill-opacity=".15" stroke="#7c3aed" stroke-width="1"/>
+<rect x="470.5" y="556.84" width="72" height="15" fill="#ffffff" fill-opacity=".93"/><text x="473.5" y="567.84" font-family="Arial,sans-serif" font-size="10" fill="#7c3aed">040</text>
+</g>
+<g><title>sym | #heroChoices &gt; button:nth-child(3) &gt; div:nth-child(1) | X 633.5 Y 556.84 W 72 H 72</title><rect x="633.5" y="556.84" width="72" height="72" fill="#ffffff" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="633.5" y="556.84" width="72" height="15" fill="#ffffff" fill-opacity=".93"/><text x="636.5" y="567.84" font-family="Arial,sans-serif" font-size="10" fill="#087e8b">041</text>
+</g>
+<g><title>heroChoicePortrait | #heroChoices &gt; button:nth-child(3) &gt; div:nth-child(1) &gt; img:nth-child(1) | X 633.5 Y 556.84 W 72 H 72</title><rect x="633.5" y="556.84" width="72" height="72" fill="#ffffff" fill-opacity=".15" stroke="#7c3aed" stroke-width="1"/>
+<rect x="633.5" y="556.84" width="72" height="15" fill="#ffffff" fill-opacity=".93"/><text x="636.5" y="567.84" font-family="Arial,sans-serif" font-size="10" fill="#7c3aed">042</text>
+</g>
+<g><title>sym | #troopChoices &gt; div:nth-child(1) &gt; div:nth-child(1) | X 792 Y 556.84 W 133 H 42</title><rect x="792" y="556.84" width="133" height="42" fill="#ffffff" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="792" y="556.84" width="96.9" height="15" fill="#ffffff" fill-opacity=".93"/><text x="795" y="567.84" font-family="Arial,sans-serif" font-size="10" fill="#087e8b">043 · 133 × 42 px</text>
+</g>
+<g><title>sym | #troopChoices &gt; div:nth-child(2) &gt; div:nth-child(1) | X 955 Y 556.84 W 133 H 42</title><rect x="955" y="556.84" width="133" height="42" fill="#ffffff" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="955" y="556.84" width="96.9" height="15" fill="#ffffff" fill-opacity=".93"/><text x="958" y="567.84" font-family="Arial,sans-serif" font-size="10" fill="#087e8b">044 · 133 × 42 px</text>
+</g>
+<g><title>sym | #troopChoices &gt; div:nth-child(3) &gt; div:nth-child(1) | X 1118 Y 556.84 W 133 H 42</title><rect x="1118" y="556.84" width="133" height="42" fill="#ffffff" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="1118" y="556.84" width="96.9" height="15" fill="#ffffff" fill-opacity=".93"/><text x="1121" y="567.84" font-family="Arial,sans-serif" font-size="10" fill="#087e8b">045 · 133 × 42 px</text>
+</g>
+<g><title>countCtl | #troopChoices &gt; div:nth-child(1) &gt; div:nth-child(4) | X 792 Y 646.03 W 133 H 32</title><rect x="792" y="646.03" width="133" height="32" fill="#ffffff" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="792" y="646.03" width="96.9" height="15" fill="#ffffff" fill-opacity=".93"/><text x="795" y="657.03" font-family="Arial,sans-serif" font-size="10" fill="#087e8b">046 · 133 × 32 px</text>
+</g>
+<g><title>btn | #troopChoices &gt; div:nth-child(1) &gt; div:nth-child(4) &gt; button:nth-child(1) | X 816.48 Y 646.03 W 32 H 32</title><rect x="816.48" y="646.03" width="32" height="32" fill="#ffffff" fill-opacity=".15" stroke="#b45309" stroke-width="1"/>
+</g>
+<g><title>btn | #troopChoices &gt; div:nth-child(1) &gt; div:nth-child(4) &gt; button:nth-child(3) | X 868.5 Y 646.03 W 32 H 32</title><rect x="868.5" y="646.03" width="32" height="32" fill="#ffffff" fill-opacity=".15" stroke="#b45309" stroke-width="1"/>
+</g>
+<g><title>countCtl | #troopChoices &gt; div:nth-child(2) &gt; div:nth-child(4) | X 955 Y 646.03 W 133 H 32</title><rect x="955" y="646.03" width="133" height="32" fill="#ffffff" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="955" y="646.03" width="96.9" height="15" fill="#ffffff" fill-opacity=".93"/><text x="958" y="657.03" font-family="Arial,sans-serif" font-size="10" fill="#087e8b">049 · 133 × 32 px</text>
+</g>
+<g><title>btn | #troopChoices &gt; div:nth-child(2) &gt; div:nth-child(4) &gt; button:nth-child(1) | X 979.48 Y 646.03 W 32 H 32</title><rect x="979.48" y="646.03" width="32" height="32" fill="#ffffff" fill-opacity=".15" stroke="#b45309" stroke-width="1"/>
+</g>
+<g><title>btn | #troopChoices &gt; div:nth-child(2) &gt; div:nth-child(4) &gt; button:nth-child(3) | X 1031.5 Y 646.03 W 32 H 32</title><rect x="1031.5" y="646.03" width="32" height="32" fill="#ffffff" fill-opacity=".15" stroke="#b45309" stroke-width="1"/>
+</g>
+<g><title>countCtl | #troopChoices &gt; div:nth-child(3) &gt; div:nth-child(4) | X 1118 Y 646.03 W 133 H 32</title><rect x="1118" y="646.03" width="133" height="32" fill="#ffffff" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="1118" y="646.03" width="96.9" height="15" fill="#ffffff" fill-opacity=".93"/><text x="1121" y="657.03" font-family="Arial,sans-serif" font-size="10" fill="#087e8b">052 · 133 × 32 px</text>
+</g>
+<g><title>btn | #troopChoices &gt; div:nth-child(3) &gt; div:nth-child(4) &gt; button:nth-child(1) | X 1142.48 Y 646.03 W 32 H 32</title><rect x="1142.48" y="646.03" width="32" height="32" fill="#ffffff" fill-opacity=".15" stroke="#b45309" stroke-width="1"/>
+</g>
+<g><title>btn | #troopChoices &gt; div:nth-child(3) &gt; div:nth-child(4) &gt; button:nth-child(3) | X 1194.5 Y 646.03 W 32 H 32</title><rect x="1194.5" y="646.03" width="32" height="32" fill="#ffffff" fill-opacity=".15" stroke="#b45309" stroke-width="1"/>
+</g>
+<g><title>choice | #heroChoices &gt; button:nth-child(4) | X 266 Y 687.03 W 155 H 133.19</title><rect x="266" y="687.03" width="155" height="133.19" fill="#ffffff" fill-opacity=".15" stroke="#b45309" stroke-width="1"/>
+<rect x="266" y="687.03" width="119.7" height="15" fill="#ffffff" fill-opacity=".93"/><text x="269" y="698.03" font-family="Arial,sans-serif" font-size="10" fill="#b45309">055 · 155 × 133.19 px</text>
+</g>
+<g><title>choice | #heroChoices &gt; button:nth-child(5) | X 429 Y 687.03 W 155 H 133.19</title><rect x="429" y="687.03" width="155" height="133.19" fill="#ffffff" fill-opacity=".15" stroke="#b45309" stroke-width="1"/>
+<rect x="429" y="687.03" width="119.7" height="15" fill="#ffffff" fill-opacity=".93"/><text x="432" y="698.03" font-family="Arial,sans-serif" font-size="10" fill="#b45309">056 · 155 × 133.19 px</text>
+</g>
+<g><title>choice | #heroChoices &gt; button:nth-child(6) | X 592 Y 687.03 W 155 H 133.19</title><rect x="592" y="687.03" width="155" height="133.19" fill="#ffffff" fill-opacity=".15" stroke="#b45309" stroke-width="1"/>
+<rect x="592" y="687.03" width="119.7" height="15" fill="#ffffff" fill-opacity=".93"/><text x="595" y="698.03" font-family="Arial,sans-serif" font-size="10" fill="#b45309">057 · 155 × 133.19 px</text>
+</g>
+<g><title>SHELL_UI_TEAM_TROOP_TOTAL | #troopTotal | X 849.11 Y 697.03 W 8.02 H 19</title><rect x="849.11" y="697.03" width="8.02" height="19" fill="#ffffff" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+</g>
+<g><title>sym | #heroChoices &gt; button:nth-child(4) &gt; div:nth-child(1) | X 307.5 Y 698.03 W 72 H 72</title><rect x="307.5" y="698.03" width="72" height="72" fill="#ffffff" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="307.5" y="698.03" width="72" height="15" fill="#ffffff" fill-opacity=".93"/><text x="310.5" y="709.03" font-family="Arial,sans-serif" font-size="10" fill="#087e8b">059</text>
+</g>
+<g><title>heroChoicePortrait | #heroChoices &gt; button:nth-child(4) &gt; div:nth-child(1) &gt; img:nth-child(1) | X 307.5 Y 698.03 W 72 H 72</title><rect x="307.5" y="698.03" width="72" height="72" fill="#ffffff" fill-opacity=".15" stroke="#7c3aed" stroke-width="1"/>
+<rect x="307.5" y="698.03" width="72" height="15" fill="#ffffff" fill-opacity=".93"/><text x="310.5" y="709.03" font-family="Arial,sans-serif" font-size="10" fill="#7c3aed">060</text>
+</g>
+<g><title>sym | #heroChoices &gt; button:nth-child(5) &gt; div:nth-child(1) | X 470.5 Y 698.03 W 72 H 72</title><rect x="470.5" y="698.03" width="72" height="72" fill="#ffffff" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="470.5" y="698.03" width="72" height="15" fill="#ffffff" fill-opacity=".93"/><text x="473.5" y="709.03" font-family="Arial,sans-serif" font-size="10" fill="#087e8b">061</text>
+</g>
+<g><title>heroChoicePortrait | #heroChoices &gt; button:nth-child(5) &gt; div:nth-child(1) &gt; img:nth-child(1) | X 470.5 Y 698.03 W 72 H 72</title><rect x="470.5" y="698.03" width="72" height="72" fill="#ffffff" fill-opacity=".15" stroke="#7c3aed" stroke-width="1"/>
+<rect x="470.5" y="698.03" width="72" height="15" fill="#ffffff" fill-opacity=".93"/><text x="473.5" y="709.03" font-family="Arial,sans-serif" font-size="10" fill="#7c3aed">062</text>
+</g>
+<g><title>sym | #heroChoices &gt; button:nth-child(6) &gt; div:nth-child(1) | X 633.5 Y 698.03 W 72 H 72</title><rect x="633.5" y="698.03" width="72" height="72" fill="#ffffff" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="633.5" y="698.03" width="72" height="15" fill="#ffffff" fill-opacity=".93"/><text x="636.5" y="709.03" font-family="Arial,sans-serif" font-size="10" fill="#087e8b">063</text>
+</g>
+<g><title>heroChoicePortrait | #heroChoices &gt; button:nth-child(6) &gt; div:nth-child(1) &gt; img:nth-child(1) | X 633.5 Y 698.03 W 72 H 72</title><rect x="633.5" y="698.03" width="72" height="72" fill="#ffffff" fill-opacity=".15" stroke="#7c3aed" stroke-width="1"/>
+<rect x="633.5" y="698.03" width="72" height="15" fill="#ffffff" fill-opacity=".93"/><text x="636.5" y="709.03" font-family="Arial,sans-serif" font-size="10" fill="#7c3aed">064</text>
+</g>
+<g><title>choice | #heroChoices &gt; button:nth-child(7) | X 266 Y 828.22 W 155 H 133.19</title><rect x="266" y="828.22" width="155" height="133.19" fill="#ffffff" fill-opacity=".15" stroke="#b45309" stroke-width="1"/>
+<rect x="266" y="828.22" width="119.7" height="15" fill="#ffffff" fill-opacity=".93"/><text x="269" y="839.22" font-family="Arial,sans-serif" font-size="10" fill="#b45309">065 · 155 × 133.19 px</text>
+</g>
+<g><title>choice | #heroChoices &gt; button:nth-child(8) | X 429 Y 828.22 W 155 H 133.19</title><rect x="429" y="828.22" width="155" height="133.19" fill="#ffffff" fill-opacity=".15" stroke="#b45309" stroke-width="1"/>
+<rect x="429" y="828.22" width="119.7" height="15" fill="#ffffff" fill-opacity=".93"/><text x="432" y="839.22" font-family="Arial,sans-serif" font-size="10" fill="#b45309">066 · 155 × 133.19 px</text>
+</g>
+<g><title>choice | #heroChoices &gt; button:nth-child(9) | X 592 Y 828.22 W 155 H 133.19</title><rect x="592" y="828.22" width="155" height="133.19" fill="#ffffff" fill-opacity=".15" stroke="#b45309" stroke-width="1"/>
+<rect x="592" y="828.22" width="119.7" height="15" fill="#ffffff" fill-opacity=".93"/><text x="595" y="839.22" font-family="Arial,sans-serif" font-size="10" fill="#b45309">067 · 155 × 133.19 px</text>
+</g>
+<g><title>sym | #heroChoices &gt; button:nth-child(7) &gt; div:nth-child(1) | X 307.5 Y 839.22 W 72 H 72</title><rect x="307.5" y="839.22" width="72" height="72" fill="#ffffff" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="307.5" y="839.22" width="72" height="15" fill="#ffffff" fill-opacity=".93"/><text x="310.5" y="850.22" font-family="Arial,sans-serif" font-size="10" fill="#087e8b">068</text>
+</g>
+<g><title>heroChoicePortrait | #heroChoices &gt; button:nth-child(7) &gt; div:nth-child(1) &gt; img:nth-child(1) | X 307.5 Y 839.22 W 72 H 72</title><rect x="307.5" y="839.22" width="72" height="72" fill="#ffffff" fill-opacity=".15" stroke="#7c3aed" stroke-width="1"/>
+<rect x="307.5" y="839.22" width="72" height="15" fill="#ffffff" fill-opacity=".93"/><text x="310.5" y="850.22" font-family="Arial,sans-serif" font-size="10" fill="#7c3aed">069</text>
+</g>
+<g><title>sym | #heroChoices &gt; button:nth-child(8) &gt; div:nth-child(1) | X 470.5 Y 839.22 W 72 H 72</title><rect x="470.5" y="839.22" width="72" height="72" fill="#ffffff" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="470.5" y="839.22" width="72" height="15" fill="#ffffff" fill-opacity=".93"/><text x="473.5" y="850.22" font-family="Arial,sans-serif" font-size="10" fill="#087e8b">070</text>
+</g>
+<g><title>heroChoicePortrait | #heroChoices &gt; button:nth-child(8) &gt; div:nth-child(1) &gt; img:nth-child(1) | X 470.5 Y 839.22 W 72 H 72</title><rect x="470.5" y="839.22" width="72" height="72" fill="#ffffff" fill-opacity=".15" stroke="#7c3aed" stroke-width="1"/>
+<rect x="470.5" y="839.22" width="72" height="15" fill="#ffffff" fill-opacity=".93"/><text x="473.5" y="850.22" font-family="Arial,sans-serif" font-size="10" fill="#7c3aed">071</text>
+</g>
+<g><title>sym | #heroChoices &gt; button:nth-child(9) &gt; div:nth-child(1) | X 633.5 Y 839.22 W 72 H 72</title><rect x="633.5" y="839.22" width="72" height="72" fill="#ffffff" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="633.5" y="839.22" width="72" height="15" fill="#ffffff" fill-opacity=".93"/><text x="636.5" y="850.22" font-family="Arial,sans-serif" font-size="10" fill="#087e8b">072</text>
+</g>
+<g><title>heroChoicePortrait | #heroChoices &gt; button:nth-child(9) &gt; div:nth-child(1) &gt; img:nth-child(1) | X 633.5 Y 839.22 W 72 H 72</title><rect x="633.5" y="839.22" width="72" height="72" fill="#ffffff" fill-opacity=".15" stroke="#7c3aed" stroke-width="1"/>
+<rect x="633.5" y="839.22" width="72" height="15" fill="#ffffff" fill-opacity=".93"/><text x="636.5" y="850.22" font-family="Arial,sans-serif" font-size="10" fill="#7c3aed">073</text>
+</g>
+<g><title>choice | #heroChoices &gt; button:nth-child(10) | X 266 Y 969.41 W 155 H 152.78</title><rect x="266" y="969.41" width="155" height="152.78" fill="#ffffff" fill-opacity=".15" stroke="#b45309" stroke-width="1"/>
+<rect x="266" y="969.41" width="119.7" height="15" fill="#ffffff" fill-opacity=".93"/><text x="269" y="980.41" font-family="Arial,sans-serif" font-size="10" fill="#b45309">074 · 155 × 152.78 px</text>
+</g>
+<g><title>choice | #heroChoices &gt; button:nth-child(11) | X 429 Y 969.41 W 155 H 152.78</title><rect x="429" y="969.41" width="155" height="152.78" fill="#ffffff" fill-opacity=".15" stroke="#b45309" stroke-width="1"/>
+<rect x="429" y="969.41" width="119.7" height="15" fill="#ffffff" fill-opacity=".93"/><text x="432" y="980.41" font-family="Arial,sans-serif" font-size="10" fill="#b45309">075 · 155 × 152.78 px</text>
+</g>
+<g><title>choice | #heroChoices &gt; button:nth-child(12) | X 592 Y 969.41 W 155 H 152.78</title><rect x="592" y="969.41" width="155" height="152.78" fill="#ffffff" fill-opacity=".15" stroke="#b45309" stroke-width="1"/>
+<rect x="592" y="969.41" width="119.7" height="15" fill="#ffffff" fill-opacity=".93"/><text x="595" y="980.41" font-family="Arial,sans-serif" font-size="10" fill="#b45309">076 · 155 × 152.78 px</text>
+</g>
+<g><title>sym | #heroChoices &gt; button:nth-child(10) &gt; div:nth-child(1) | X 307.5 Y 980.41 W 72 H 72</title><rect x="307.5" y="980.41" width="72" height="72" fill="#ffffff" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="307.5" y="980.41" width="72" height="15" fill="#ffffff" fill-opacity=".93"/><text x="310.5" y="991.41" font-family="Arial,sans-serif" font-size="10" fill="#087e8b">077</text>
+</g>
+<g><title>heroChoicePortrait | #heroChoices &gt; button:nth-child(10) &gt; div:nth-child(1) &gt; img:nth-child(1) | X 307.5 Y 980.41 W 72 H 72</title><rect x="307.5" y="980.41" width="72" height="72" fill="#ffffff" fill-opacity=".15" stroke="#7c3aed" stroke-width="1"/>
+<rect x="307.5" y="980.41" width="72" height="15" fill="#ffffff" fill-opacity=".93"/><text x="310.5" y="991.41" font-family="Arial,sans-serif" font-size="10" fill="#7c3aed">078</text>
+</g>
+<g><title>sym | #heroChoices &gt; button:nth-child(11) &gt; div:nth-child(1) | X 470.5 Y 980.41 W 72 H 72</title><rect x="470.5" y="980.41" width="72" height="72" fill="#ffffff" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="470.5" y="980.41" width="72" height="15" fill="#ffffff" fill-opacity=".93"/><text x="473.5" y="991.41" font-family="Arial,sans-serif" font-size="10" fill="#087e8b">079</text>
+</g>
+<g><title>heroChoicePortrait | #heroChoices &gt; button:nth-child(11) &gt; div:nth-child(1) &gt; img:nth-child(1) | X 470.5 Y 980.41 W 72 H 72</title><rect x="470.5" y="980.41" width="72" height="72" fill="#ffffff" fill-opacity=".15" stroke="#7c3aed" stroke-width="1"/>
+<rect x="470.5" y="980.41" width="72" height="15" fill="#ffffff" fill-opacity=".93"/><text x="473.5" y="991.41" font-family="Arial,sans-serif" font-size="10" fill="#7c3aed">080</text>
+</g>
+<g><title>sym | #heroChoices &gt; button:nth-child(12) &gt; div:nth-child(1) | X 633.5 Y 980.41 W 72 H 72</title><rect x="633.5" y="980.41" width="72" height="72" fill="#ffffff" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="633.5" y="980.41" width="72" height="15" fill="#ffffff" fill-opacity=".93"/><text x="636.5" y="991.41" font-family="Arial,sans-serif" font-size="10" fill="#087e8b">081</text>
+</g>
+<g><title>heroChoicePortrait | #heroChoices &gt; button:nth-child(12) &gt; div:nth-child(1) &gt; img:nth-child(1) | X 633.5 Y 980.41 W 72 H 72</title><rect x="633.5" y="980.41" width="72" height="72" fill="#ffffff" fill-opacity=".15" stroke="#7c3aed" stroke-width="1"/>
+<rect x="633.5" y="980.41" width="72" height="15" fill="#ffffff" fill-opacity=".93"/><text x="636.5" y="991.41" font-family="Arial,sans-serif" font-size="10" fill="#7c3aed">082</text>
+</g>
+<g><title>SHELL_UI_TEAM_CONFIRM | #confirmTeam | X 677.55 Y 1151.19 W 172.89 H 39.59</title><rect x="677.55" y="1151.19" width="172.89" height="39.59" fill="#ffffff" fill-opacity=".15" stroke="#b45309" stroke-width="1"/>
+<rect x="677.55" y="1151.19" width="131.1" height="15" fill="#ffffff" fill-opacity=".93"/><text x="680.55" y="1162.19" font-family="Arial,sans-serif" font-size="10" fill="#b45309">083 · 172.89 × 39.59 px</text>
+</g>
+<line x1="0" y1="1080" x2="1920" y2="1080" stroke="#e11d48" stroke-width="2" stroke-dasharray="8 5"/><rect x="4" y="1060" width="290" height="19" fill="#fff1f2"/><text x="8" y="1074" fill="#be123c" font-family="Arial,sans-serif" font-size="11">Viewport ends at 1080px — scroll below</text>
+</g>
+<rect x="1920" width="720" height="3286" fill="#0d1d2a"/><text x="1940" y="30" fill="#ffffff" font-family="Arial,sans-serif" font-size="18">15-team-selected · Chọn Hero và lính — đủ 5 quân</text><text x="1940" y="56" fill="#bcd1e2" font-family="Arial,sans-serif" font-size="13">Viewport 1920 × 1080 CSS px · DPR 1 · scale 1:1</text><text x="1940" y="78" fill="#bcd1e2" font-family="Arial,sans-serif" font-size="12">Image 1920 × 1236 px at left. This 720 px legend is outside the game canvas.</text><text x="1940" y="98" fill="#bcd1e2" font-family="Arial,sans-serif" font-size="12">Measured border boxes. Decimal CSS pixels are retained; X/Y origin is top-left.</text>
+<text x="1940" y="130" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">001  top</text><text x="1968" y="145" fill="#e1edf5" font-family="monospace" font-size="11">X 222 · Y 12 · W 1476 × H 39.19 px</text>
+<text x="1940" y="168" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">002  brand</text><text x="1968" y="183" fill="#e1edf5" font-family="monospace" font-size="11">X 222 · Y 12 · W 1324.77 × H 39.19 px</text>
+<text x="1940" y="206" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">003  SHELL_UI_PHASE_LABEL</text><text x="1968" y="221" fill="#e1edf5" font-family="monospace" font-size="11">X 1607.22 · Y 21.8 · W 90.78 × H 19.59 px</text>
+<text x="1940" y="244" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">004  runtimeBadge</text><text x="1968" y="259" fill="#e1edf5" font-family="monospace" font-size="11">X 449.34 · Y 27 · W 156.73 × H 22 px</text>
+<text x="1940" y="282" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">005  main</text><text x="1968" y="297" fill="#e1edf5" font-family="monospace" font-size="11">X 222 · Y 61.19 · W 1084 × H 1162.59 px</text>
+<text x="1940" y="320" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">006  side</text><text x="1968" y="335" fill="#e1edf5" font-family="monospace" font-size="11">X 1318 · Y 61.19 · W 380 × H 26 px</text>
+<text x="1940" y="358" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">007  SHELL_UI_TEAM_SELECT</text><text x="1968" y="373" fill="#e1edf5" font-family="monospace" font-size="11">X 235 · Y 74.19 · W 1058 × H 1136.59 px</text>
+<text x="1940" y="396" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">008  selectWrap</text><text x="1968" y="411" fill="#e1edf5" font-family="monospace" font-size="11">X 235 · Y 74.19 · W 1058 × H 1136.59 px</text>
+<text x="1940" y="434" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">009  SHELL_UI_TEAM_TITLE</text><text x="1968" y="449" fill="#e1edf5" font-family="monospace" font-size="11">X 612.17 · Y 94.19 · W 303.64 × H 28 px</text>
+<text x="1940" y="472" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">010  SHELL_UI_TEAM_SUBTITLE</text><text x="1968" y="487" fill="#e1edf5" font-family="monospace" font-size="11">X 612.17 · Y 122.19 · W 303.64 × H 19.59 px</text>
+<text x="1940" y="510" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">011  box</text><text x="1968" y="525" fill="#e1edf5" font-family="monospace" font-size="11">X 255 · Y 159.78 · W 1018 × H 334.14 px</text>
+<text x="1940" y="548" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">012  h3</text><text x="1968" y="563" fill="#e1edf5" font-family="monospace" font-size="11">X 266 · Y 170.78 · W 996 × H 22.92 px</text>
+<text x="1940" y="586" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">013  teamEquipmentHand</text><text x="1968" y="601" fill="#e1edf5" font-family="monospace" font-size="11">X 266 · Y 193.7 · W 996 × H 289.22 px</text>
+<text x="1940" y="624" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">014  atk</text><text x="1968" y="639" fill="#e1edf5" font-family="monospace" font-size="11">X 266 · Y 193.7 · W 192.8 × H 289.22 px</text>
+<text x="1940" y="662" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">015  equipmentFullCard</text><text x="1968" y="677" fill="#e1edf5" font-family="monospace" font-size="11">X 266 · Y 193.7 · W 192.8 × H 289.19 px</text>
+<text x="1940" y="700" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">016  atk</text><text x="1968" y="715" fill="#e1edf5" font-family="monospace" font-size="11">X 466.8 · Y 193.7 · W 192.8 × H 289.22 px</text>
+<text x="1940" y="738" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">017  equipmentFullCard</text><text x="1968" y="753" fill="#e1edf5" font-family="monospace" font-size="11">X 466.8 · Y 193.7 · W 192.8 × H 289.19 px</text>
+<text x="1940" y="776" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">018  atk</text><text x="1968" y="791" fill="#e1edf5" font-family="monospace" font-size="11">X 667.59 · Y 193.7 · W 192.8 × H 289.22 px</text>
+<text x="1940" y="814" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">019  equipmentFullCard</text><text x="1968" y="829" fill="#e1edf5" font-family="monospace" font-size="11">X 667.59 · Y 193.7 · W 192.8 × H 289.19 px</text>
+<text x="1940" y="852" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">020  atk</text><text x="1968" y="867" fill="#e1edf5" font-family="monospace" font-size="11">X 868.39 · Y 193.7 · W 192.8 × H 289.22 px</text>
+<text x="1940" y="890" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">021  equipmentFullCard</text><text x="1968" y="905" fill="#e1edf5" font-family="monospace" font-size="11">X 868.39 · Y 193.7 · W 192.8 × H 289.19 px</text>
+<text x="1940" y="928" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">022  atk</text><text x="1968" y="943" fill="#e1edf5" font-family="monospace" font-size="11">X 1069.19 · Y 193.7 · W 192.81 × H 289.22 px</text>
+<text x="1940" y="966" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">023  equipmentFullCard</text><text x="1968" y="981" fill="#e1edf5" font-family="monospace" font-size="11">X 1069.19 · Y 193.7 · W 192.81 × H 289.22 px</text>
+<text x="1940" y="1004" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">024  teamCols</text><text x="1968" y="1019" fill="#e1edf5" font-family="monospace" font-size="11">X 255 · Y 511.92 · W 1018 × H 621.27 px</text>
+<text x="1940" y="1042" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">025  box</text><text x="1968" y="1057" fill="#e1edf5" font-family="monospace" font-size="11">X 255 · Y 511.92 · W 503 × H 621.27 px</text>
+<text x="1940" y="1080" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">026  box</text><text x="1968" y="1095" fill="#e1edf5" font-family="monospace" font-size="11">X 770 · Y 511.92 · W 503 × H 621.27 px</text>
+<text x="1940" y="1118" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">027  h3</text><text x="1968" y="1133" fill="#e1edf5" font-family="monospace" font-size="11">X 266 · Y 522.92 · W 481 × H 22.92 px</text>
+<text x="1940" y="1156" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">028  h3</text><text x="1968" y="1171" fill="#e1edf5" font-family="monospace" font-size="11">X 781 · Y 522.92 · W 481 × H 22.92 px</text>
+<text x="1940" y="1194" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">029  SHELL_UI_TEAM_HERO_CHOICES</text><text x="1968" y="1209" fill="#e1edf5" font-family="monospace" font-size="11">X 266 · Y 545.84 · W 481 × H 576.34 px</text>
+<text x="1940" y="1232" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">030  choice</text><text x="1968" y="1247" fill="#e1edf5" font-family="monospace" font-size="11">X 266 · Y 545.84 · W 155 × H 133.19 px</text>
+<text x="1940" y="1270" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">031  choice</text><text x="1968" y="1285" fill="#e1edf5" font-family="monospace" font-size="11">X 429 · Y 545.84 · W 155 × H 133.19 px</text>
+<text x="1940" y="1308" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">032  choice</text><text x="1968" y="1323" fill="#e1edf5" font-family="monospace" font-size="11">X 592 · Y 545.84 · W 155 × H 133.19 px</text>
+<text x="1940" y="1346" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">033  SHELL_UI_TEAM_TROOP_CHOICES</text><text x="1968" y="1361" fill="#e1edf5" font-family="monospace" font-size="11">X 781 · Y 545.84 · W 481 × H 143.19 px</text>
+<text x="1940" y="1384" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">034  choice</text><text x="1968" y="1399" fill="#e1edf5" font-family="monospace" font-size="11">X 781 · Y 545.84 · W 155 × H 143.19 px</text>
+<text x="1940" y="1422" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">035  choice</text><text x="1968" y="1437" fill="#e1edf5" font-family="monospace" font-size="11">X 944 · Y 545.84 · W 155 × H 143.19 px</text>
+<text x="1940" y="1460" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">036  choice</text><text x="1968" y="1475" fill="#e1edf5" font-family="monospace" font-size="11">X 1107 · Y 545.84 · W 155 × H 143.19 px</text>
+<text x="1940" y="1498" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">037  sym</text><text x="1968" y="1513" fill="#e1edf5" font-family="monospace" font-size="11">X 307.5 · Y 556.84 · W 72 × H 72 px</text>
+<text x="1940" y="1536" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">038  heroChoicePortrait</text><text x="1968" y="1551" fill="#e1edf5" font-family="monospace" font-size="11">X 307.5 · Y 556.84 · W 72 × H 72 px</text>
+<text x="1940" y="1574" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">039  sym</text><text x="1968" y="1589" fill="#e1edf5" font-family="monospace" font-size="11">X 470.5 · Y 556.84 · W 72 × H 72 px</text>
+<text x="1940" y="1612" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">040  heroChoicePortrait</text><text x="1968" y="1627" fill="#e1edf5" font-family="monospace" font-size="11">X 470.5 · Y 556.84 · W 72 × H 72 px</text>
+<text x="1940" y="1650" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">041  sym</text><text x="1968" y="1665" fill="#e1edf5" font-family="monospace" font-size="11">X 633.5 · Y 556.84 · W 72 × H 72 px</text>
+<text x="1940" y="1688" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">042  heroChoicePortrait</text><text x="1968" y="1703" fill="#e1edf5" font-family="monospace" font-size="11">X 633.5 · Y 556.84 · W 72 × H 72 px</text>
+<text x="1940" y="1726" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">043  sym</text><text x="1968" y="1741" fill="#e1edf5" font-family="monospace" font-size="11">X 792 · Y 556.84 · W 133 × H 42 px</text>
+<text x="1940" y="1764" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">044  sym</text><text x="1968" y="1779" fill="#e1edf5" font-family="monospace" font-size="11">X 955 · Y 556.84 · W 133 × H 42 px</text>
+<text x="1940" y="1802" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">045  sym</text><text x="1968" y="1817" fill="#e1edf5" font-family="monospace" font-size="11">X 1118 · Y 556.84 · W 133 × H 42 px</text>
+<text x="1940" y="1840" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">046  countCtl</text><text x="1968" y="1855" fill="#e1edf5" font-family="monospace" font-size="11">X 792 · Y 646.03 · W 133 × H 32 px</text>
+<text x="1940" y="1878" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">047  btn</text><text x="1968" y="1893" fill="#e1edf5" font-family="monospace" font-size="11">X 816.48 · Y 646.03 · W 32 × H 32 px</text>
+<text x="1940" y="1916" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">048  btn</text><text x="1968" y="1931" fill="#e1edf5" font-family="monospace" font-size="11">X 868.5 · Y 646.03 · W 32 × H 32 px</text>
+<text x="1940" y="1954" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">049  countCtl</text><text x="1968" y="1969" fill="#e1edf5" font-family="monospace" font-size="11">X 955 · Y 646.03 · W 133 × H 32 px</text>
+<text x="1940" y="1992" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">050  btn</text><text x="1968" y="2007" fill="#e1edf5" font-family="monospace" font-size="11">X 979.48 · Y 646.03 · W 32 × H 32 px</text>
+<text x="1940" y="2030" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">051  btn</text><text x="1968" y="2045" fill="#e1edf5" font-family="monospace" font-size="11">X 1031.5 · Y 646.03 · W 32 × H 32 px</text>
+<text x="1940" y="2068" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">052  countCtl</text><text x="1968" y="2083" fill="#e1edf5" font-family="monospace" font-size="11">X 1118 · Y 646.03 · W 133 × H 32 px</text>
+<text x="1940" y="2106" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">053  btn</text><text x="1968" y="2121" fill="#e1edf5" font-family="monospace" font-size="11">X 1142.48 · Y 646.03 · W 32 × H 32 px</text>
+<text x="1940" y="2144" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">054  btn</text><text x="1968" y="2159" fill="#e1edf5" font-family="monospace" font-size="11">X 1194.5 · Y 646.03 · W 32 × H 32 px</text>
+<text x="1940" y="2182" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">055  choice</text><text x="1968" y="2197" fill="#e1edf5" font-family="monospace" font-size="11">X 266 · Y 687.03 · W 155 × H 133.19 px</text>
+<text x="1940" y="2220" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">056  choice</text><text x="1968" y="2235" fill="#e1edf5" font-family="monospace" font-size="11">X 429 · Y 687.03 · W 155 × H 133.19 px</text>
+<text x="1940" y="2258" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">057  choice</text><text x="1968" y="2273" fill="#e1edf5" font-family="monospace" font-size="11">X 592 · Y 687.03 · W 155 × H 133.19 px</text>
+<text x="1940" y="2296" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">058  SHELL_UI_TEAM_TROOP_TOTAL</text><text x="1968" y="2311" fill="#e1edf5" font-family="monospace" font-size="11">X 849.11 · Y 697.03 · W 8.02 × H 19 px</text>
+<text x="1940" y="2334" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">059  sym</text><text x="1968" y="2349" fill="#e1edf5" font-family="monospace" font-size="11">X 307.5 · Y 698.03 · W 72 × H 72 px</text>
+<text x="1940" y="2372" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">060  heroChoicePortrait</text><text x="1968" y="2387" fill="#e1edf5" font-family="monospace" font-size="11">X 307.5 · Y 698.03 · W 72 × H 72 px</text>
+<text x="1940" y="2410" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">061  sym</text><text x="1968" y="2425" fill="#e1edf5" font-family="monospace" font-size="11">X 470.5 · Y 698.03 · W 72 × H 72 px</text>
+<text x="1940" y="2448" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">062  heroChoicePortrait</text><text x="1968" y="2463" fill="#e1edf5" font-family="monospace" font-size="11">X 470.5 · Y 698.03 · W 72 × H 72 px</text>
+<text x="1940" y="2486" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">063  sym</text><text x="1968" y="2501" fill="#e1edf5" font-family="monospace" font-size="11">X 633.5 · Y 698.03 · W 72 × H 72 px</text>
+<text x="1940" y="2524" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">064  heroChoicePortrait</text><text x="1968" y="2539" fill="#e1edf5" font-family="monospace" font-size="11">X 633.5 · Y 698.03 · W 72 × H 72 px</text>
+<text x="1940" y="2562" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">065  choice</text><text x="1968" y="2577" fill="#e1edf5" font-family="monospace" font-size="11">X 266 · Y 828.22 · W 155 × H 133.19 px</text>
+<text x="1940" y="2600" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">066  choice</text><text x="1968" y="2615" fill="#e1edf5" font-family="monospace" font-size="11">X 429 · Y 828.22 · W 155 × H 133.19 px</text>
+<text x="1940" y="2638" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">067  choice</text><text x="1968" y="2653" fill="#e1edf5" font-family="monospace" font-size="11">X 592 · Y 828.22 · W 155 × H 133.19 px</text>
+<text x="1940" y="2676" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">068  sym</text><text x="1968" y="2691" fill="#e1edf5" font-family="monospace" font-size="11">X 307.5 · Y 839.22 · W 72 × H 72 px</text>
+<text x="1940" y="2714" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">069  heroChoicePortrait</text><text x="1968" y="2729" fill="#e1edf5" font-family="monospace" font-size="11">X 307.5 · Y 839.22 · W 72 × H 72 px</text>
+<text x="1940" y="2752" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">070  sym</text><text x="1968" y="2767" fill="#e1edf5" font-family="monospace" font-size="11">X 470.5 · Y 839.22 · W 72 × H 72 px</text>
+<text x="1940" y="2790" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">071  heroChoicePortrait</text><text x="1968" y="2805" fill="#e1edf5" font-family="monospace" font-size="11">X 470.5 · Y 839.22 · W 72 × H 72 px</text>
+<text x="1940" y="2828" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">072  sym</text><text x="1968" y="2843" fill="#e1edf5" font-family="monospace" font-size="11">X 633.5 · Y 839.22 · W 72 × H 72 px</text>
+<text x="1940" y="2866" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">073  heroChoicePortrait</text><text x="1968" y="2881" fill="#e1edf5" font-family="monospace" font-size="11">X 633.5 · Y 839.22 · W 72 × H 72 px</text>
+<text x="1940" y="2904" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">074  choice</text><text x="1968" y="2919" fill="#e1edf5" font-family="monospace" font-size="11">X 266 · Y 969.41 · W 155 × H 152.78 px</text>
+<text x="1940" y="2942" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">075  choice</text><text x="1968" y="2957" fill="#e1edf5" font-family="monospace" font-size="11">X 429 · Y 969.41 · W 155 × H 152.78 px</text>
+<text x="1940" y="2980" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">076  choice</text><text x="1968" y="2995" fill="#e1edf5" font-family="monospace" font-size="11">X 592 · Y 969.41 · W 155 × H 152.78 px</text>
+<text x="1940" y="3018" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">077  sym</text><text x="1968" y="3033" fill="#e1edf5" font-family="monospace" font-size="11">X 307.5 · Y 980.41 · W 72 × H 72 px</text>
+<text x="1940" y="3056" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">078  heroChoicePortrait</text><text x="1968" y="3071" fill="#e1edf5" font-family="monospace" font-size="11">X 307.5 · Y 980.41 · W 72 × H 72 px</text>
+<text x="1940" y="3094" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">079  sym</text><text x="1968" y="3109" fill="#e1edf5" font-family="monospace" font-size="11">X 470.5 · Y 980.41 · W 72 × H 72 px</text>
+<text x="1940" y="3132" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">080  heroChoicePortrait</text><text x="1968" y="3147" fill="#e1edf5" font-family="monospace" font-size="11">X 470.5 · Y 980.41 · W 72 × H 72 px</text>
+<text x="1940" y="3170" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">081  sym</text><text x="1968" y="3185" fill="#e1edf5" font-family="monospace" font-size="11">X 633.5 · Y 980.41 · W 72 × H 72 px</text>
+<text x="1940" y="3208" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">082  heroChoicePortrait</text><text x="1968" y="3223" fill="#e1edf5" font-family="monospace" font-size="11">X 633.5 · Y 980.41 · W 72 × H 72 px</text>
+<text x="1940" y="3246" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">083  SHELL_UI_TEAM_CONFIRM</text><text x="1968" y="3261" fill="#e1edf5" font-family="monospace" font-size="11">X 677.55 · Y 1151.19 · W 172.89 × H 39.59 px</text>
+</svg>

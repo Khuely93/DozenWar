@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="2640" height="1080" viewBox="0 0 2640 1080">
+<title>Sẵn sàng trước trận — 1920×1080, 1:1 CSS px</title>
+<rect width="100%" height="100%" fill="#14202a"/>
+<defs><clipPath id="screen"><rect width="1920" height="1080"/></clipPath></defs>
+<g clip-path="url(#screen)">
+<image width="1920" height="1080" href="screen.png"/>
+<g><title>top | div:nth-child(1) &gt; div:nth-child(1) | X 222 Y 12 W 1476 H 39.19</title><rect x="222" y="12" width="1476" height="39.19" fill="none" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="222" y="12" width="119.7" height="15" fill="#07131f" fill-opacity=".93"/><text x="225" y="23" font-family="Arial,sans-serif" font-size="10" fill="#ffffff">001 · 1476 × 39.19 px</text>
+</g>
+<g><title>brand | div:nth-child(1) &gt; div:nth-child(1) &gt; div:nth-child(1) | X 222 Y 12 W 1324.77 H 39.19</title><rect x="222" y="12" width="1324.77" height="39.19" fill="none" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="222" y="12" width="136.8" height="15" fill="#07131f" fill-opacity=".93"/><text x="225" y="23" font-family="Arial,sans-serif" font-size="10" fill="#ffffff">002 · 1324.77 × 39.19 px</text>
+</g>
+<g><title>SHELL_UI_PHASE_LABEL | #phaseLabel | X 1602.97 Y 21.8 W 95.03 H 19.59</title><rect x="1602.97" y="21.8" width="95.03" height="19.59" fill="none" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="1602.97" y="21.8" width="95.03" height="15" fill="#07131f" fill-opacity=".93"/><text x="1605.97" y="32.8" font-family="Arial,sans-serif" font-size="10" fill="#ffffff">003</text>
+</g>
+<g><title>runtimeBadge | div:nth-child(1) &gt; div:nth-child(1) &gt; div:nth-child(1) &gt; span:nth-child(2) | X 449.34 Y 27 W 156.73 H 22</title><rect x="449.34" y="27" width="156.73" height="22" fill="none" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="449.34" y="27" width="114" height="15" fill="#07131f" fill-opacity=".93"/><text x="452.34" y="38" font-family="Arial,sans-serif" font-size="10" fill="#ffffff">004 · 156.73 × 22 px</text>
+</g>
+<g><title>main | div:nth-child(1) &gt; div:nth-child(2) &gt; section:nth-child(1) | X 222 Y 61.19 W 1084 H 636</title><rect x="222" y="61.19" width="1084" height="636" fill="none" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="222" y="61.19" width="108.3" height="15" fill="#07131f" fill-opacity=".93"/><text x="225" y="72.19" font-family="Arial,sans-serif" font-size="10" fill="#ffffff">005 · 1084 × 636 px</text>
+</g>
+<g><title>side | div:nth-child(1) &gt; div:nth-child(2) &gt; aside:nth-child(2) | X 1318 Y 61.19 W 380 H 26</title><rect x="1318" y="61.19" width="380" height="26" fill="none" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="1318" y="61.19" width="96.9" height="15" fill="#07131f" fill-opacity=".93"/><text x="1321" y="72.19" font-family="Arial,sans-serif" font-size="10" fill="#ffffff">006 · 380 × 26 px</text>
+</g>
+<g><title>SHELL_UI_READY | #readyScreen | X 235 Y 74.19 W 1058 H 610</title><rect x="235" y="74.19" width="1058" height="610" fill="none" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="235" y="74.19" width="108.3" height="15" fill="#07131f" fill-opacity=".93"/><text x="238" y="85.19" font-family="Arial,sans-serif" font-size="10" fill="#ffffff">007 · 1058 × 610 px</text>
+</g>
+<g><title>readyWrap | #readyScreen &gt; div:nth-child(1) | X 235 Y 74.19 W 1058 H 610</title><rect x="235" y="74.19" width="1058" height="610" fill="none" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="235" y="74.19" width="108.3" height="15" fill="#07131f" fill-opacity=".93"/><text x="238" y="85.19" font-family="Arial,sans-serif" font-size="10" fill="#ffffff">008 · 1058 × 610 px</text>
+</g>
+<g><title>bigNotice | #readyScreen &gt; div:nth-child(1) &gt; div:nth-child(1) &gt; div:nth-child(1) | X 581.53 Y 216.94 W 364.92 H 28</title><rect x="581.53" y="216.94" width="364.92" height="28" fill="none" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="581.53" y="216.94" width="114" height="15" fill="#07131f" fill-opacity=".93"/><text x="584.53" y="227.94" font-family="Arial,sans-serif" font-size="10" fill="#ffffff">009 · 364.92 × 28 px</text>
+</g>
+<g><title>SHELL_UI_READY_TIMER | #readyTimer | X 722.81 Y 282.53 W 82.38 H 100.8</title><rect x="722.81" y="282.53" width="82.38" height="100.8" fill="none" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="722.81" y="282.53" width="82.38" height="15" fill="#07131f" fill-opacity=".93"/><text x="725.81" y="293.53" font-family="Arial,sans-serif" font-size="10" fill="#ffffff">010</text>
+</g>
+<g><title>readyCards | #readyScreen &gt; div:nth-child(1) &gt; div:nth-child(3) | X 384 Y 401.33 W 760 H 140.11</title><rect x="384" y="401.33" width="760" height="140.11" fill="none" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="384" y="401.33" width="119.7" height="15" fill="#07131f" fill-opacity=".93"/><text x="387" y="412.33" font-family="Arial,sans-serif" font-size="10" fill="#ffffff">011 · 760 × 140.11 px</text>
+</g>
+<g><title>readyCard | #readyScreen &gt; div:nth-child(1) &gt; div:nth-child(3) &gt; div:nth-child(1) | X 384 Y 401.33 W 373 H 140.11</title><rect x="384" y="401.33" width="373" height="140.11" fill="none" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="384" y="401.33" width="119.7" height="15" fill="#07131f" fill-opacity=".93"/><text x="387" y="412.33" font-family="Arial,sans-serif" font-size="10" fill="#ffffff">012 · 373 × 140.11 px</text>
+</g>
+<g><title>readyCard | #readyScreen &gt; div:nth-child(1) &gt; div:nth-child(3) &gt; div:nth-child(2) | X 771 Y 401.33 W 373 H 140.11</title><rect x="771" y="401.33" width="373" height="140.11" fill="none" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="771" y="401.33" width="119.7" height="15" fill="#07131f" fill-opacity=".93"/><text x="774" y="412.33" font-family="Arial,sans-serif" font-size="10" fill="#ffffff">013 · 373 × 140.11 px</text>
+</g>
+<g><title>h3 | #readyScreen &gt; div:nth-child(1) &gt; div:nth-child(3) &gt; div:nth-child(1) &gt; h3:nth-child(1) | X 403 Y 420.33 W 335 H 22.92</title><rect x="403" y="420.33" width="335" height="22.92" fill="none" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="403" y="420.33" width="114" height="15" fill="#07131f" fill-opacity=".93"/><text x="406" y="431.33" font-family="Arial,sans-serif" font-size="10" fill="#ffffff">014 · 335 × 22.92 px</text>
+</g>
+<g><title>h3 | #readyScreen &gt; div:nth-child(1) &gt; div:nth-child(3) &gt; div:nth-child(2) &gt; h3:nth-child(1) | X 790 Y 420.33 W 335 H 22.92</title><rect x="790" y="420.33" width="335" height="22.92" fill="none" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="790" y="420.33" width="114" height="15" fill="#07131f" fill-opacity=".93"/><text x="793" y="431.33" font-family="Arial,sans-serif" font-size="10" fill="#ffffff">015 · 335 × 22.92 px</text>
+</g>
+<g><title>SHELL_UI_READY_P1_STATE | #r1state | X 403 Y 451.25 W 335 H 19.59</title><rect x="403" y="451.25" width="335" height="19.59" fill="none" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="403" y="451.25" width="114" height="15" fill="#07131f" fill-opacity=".93"/><text x="406" y="462.25" font-family="Arial,sans-serif" font-size="10" fill="#ffffff">016 · 335 × 19.59 px</text>
+</g>
+<g><title>SHELL_UI_READY_P2_STATE | #r2state | X 790 Y 451.25 W 335 H 19.59</title><rect x="790" y="451.25" width="335" height="19.59" fill="none" fill-opacity=".15" stroke="#087e8b" stroke-width="1"/>
+<rect x="790" y="451.25" width="114" height="15" fill="#07131f" fill-opacity=".93"/><text x="793" y="462.25" font-family="Arial,sans-serif" font-size="10" fill="#ffffff">017 · 335 × 19.59 px</text>
+</g>
+<g><title>SHELL_UI_READY_P1_BUTTON | #r1btn | X 521.84 Y 482.84 W 97.3 H 39.59</title><rect x="521.84" y="482.84" width="97.3" height="39.59" fill="none" fill-opacity=".15" stroke="#b45309" stroke-width="1"/>
+<rect x="521.84" y="482.84" width="97.3" height="15" fill="#07131f" fill-opacity=".93"/><text x="524.84" y="493.84" font-family="Arial,sans-serif" font-size="10" fill="#ffffff">018</text>
+</g>
+<g><title>SHELL_UI_READY_P2_BUTTON | #r2btn | X 908.84 Y 482.84 W 97.3 H 39.59</title><rect x="908.84" y="482.84" width="97.3" height="39.59" fill="none" fill-opacity=".15" stroke="#b45309" stroke-width="1"/>
+<rect x="908.84" y="482.84" width="97.3" height="15" fill="#07131f" fill-opacity=".93"/><text x="911.84" y="493.84" font-family="Arial,sans-serif" font-size="10" fill="#ffffff">019</text>
+</g>
+</g>
+<rect x="1920" width="720" height="1080" fill="#0d1d2a"/><text x="1940" y="30" fill="#ffffff" font-family="Arial,sans-serif" font-size="18">10-ready · Sẵn sàng trước trận</text><text x="1940" y="56" fill="#bcd1e2" font-family="Arial,sans-serif" font-size="13">Viewport 1920 × 1080 CSS px · DPR 1 · scale 1:1</text><text x="1940" y="78" fill="#bcd1e2" font-family="Arial,sans-serif" font-size="12">Image 1920 × 1080 px at left. This 720 px legend is outside the game canvas.</text><text x="1940" y="98" fill="#bcd1e2" font-family="Arial,sans-serif" font-size="12">Measured border boxes. Decimal CSS pixels are retained; X/Y origin is top-left.</text>
+<text x="1940" y="130" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">001  top</text><text x="1968" y="145" fill="#e1edf5" font-family="monospace" font-size="11">X 222 · Y 12 · W 1476 × H 39.19 px</text>
+<text x="1940" y="168" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">002  brand</text><text x="1968" y="183" fill="#e1edf5" font-family="monospace" font-size="11">X 222 · Y 12 · W 1324.77 × H 39.19 px</text>
+<text x="1940" y="206" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">003  SHELL_UI_PHASE_LABEL</text><text x="1968" y="221" fill="#e1edf5" font-family="monospace" font-size="11">X 1602.97 · Y 21.8 · W 95.03 × H 19.59 px</text>
+<text x="1940" y="244" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">004  runtimeBadge</text><text x="1968" y="259" fill="#e1edf5" font-family="monospace" font-size="11">X 449.34 · Y 27 · W 156.73 × H 22 px</text>
+<text x="1940" y="282" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">005  main</text><text x="1968" y="297" fill="#e1edf5" font-family="monospace" font-size="11">X 222 · Y 61.19 · W 1084 × H 636 px</text>
+<text x="1940" y="320" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">006  side</text><text x="1968" y="335" fill="#e1edf5" font-family="monospace" font-size="11">X 1318 · Y 61.19 · W 380 × H 26 px</text>
+<text x="1940" y="358" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">007  SHELL_UI_READY</text><text x="1968" y="373" fill="#e1edf5" font-family="monospace" font-size="11">X 235 · Y 74.19 · W 1058 × H 610 px</text>
+<text x="1940" y="396" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">008  readyWrap</text><text x="1968" y="411" fill="#e1edf5" font-family="monospace" font-size="11">X 235 · Y 74.19 · W 1058 × H 610 px</text>
+<text x="1940" y="434" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">009  bigNotice</text><text x="1968" y="449" fill="#e1edf5" font-family="monospace" font-size="11">X 581.53 · Y 216.94 · W 364.92 × H 28 px</text>
+<text x="1940" y="472" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">010  SHELL_UI_READY_TIMER</text><text x="1968" y="487" fill="#e1edf5" font-family="monospace" font-size="11">X 722.81 · Y 282.53 · W 82.38 × H 100.8 px</text>
+<text x="1940" y="510" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">011  readyCards</text><text x="1968" y="525" fill="#e1edf5" font-family="monospace" font-size="11">X 384 · Y 401.33 · W 760 × H 140.11 px</text>
+<text x="1940" y="548" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">012  readyCard</text><text x="1968" y="563" fill="#e1edf5" font-family="monospace" font-size="11">X 384 · Y 401.33 · W 373 × H 140.11 px</text>
+<text x="1940" y="586" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">013  readyCard</text><text x="1968" y="601" fill="#e1edf5" font-family="monospace" font-size="11">X 771 · Y 401.33 · W 373 × H 140.11 px</text>
+<text x="1940" y="624" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">014  h3</text><text x="1968" y="639" fill="#e1edf5" font-family="monospace" font-size="11">X 403 · Y 420.33 · W 335 × H 22.92 px</text>
+<text x="1940" y="662" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">015  h3</text><text x="1968" y="677" fill="#e1edf5" font-family="monospace" font-size="11">X 790 · Y 420.33 · W 335 × H 22.92 px</text>
+<text x="1940" y="700" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">016  SHELL_UI_READY_P1_STATE</text><text x="1968" y="715" fill="#e1edf5" font-family="monospace" font-size="11">X 403 · Y 451.25 · W 335 × H 19.59 px</text>
+<text x="1940" y="738" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">017  SHELL_UI_READY_P2_STATE</text><text x="1968" y="753" fill="#e1edf5" font-family="monospace" font-size="11">X 790 · Y 451.25 · W 335 × H 19.59 px</text>
+<text x="1940" y="776" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">018  SHELL_UI_READY_P1_BUTTON</text><text x="1968" y="791" fill="#e1edf5" font-family="monospace" font-size="11">X 521.84 · Y 482.84 · W 97.3 × H 39.59 px</text>
+<text x="1940" y="814" fill="#f5c671" font-family="Arial,sans-serif" font-size="12">019  SHELL_UI_READY_P2_BUTTON</text><text x="1968" y="829" fill="#e1edf5" font-family="monospace" font-size="11">X 908.84 · Y 482.84 · W 97.3 × H 39.59 px</text>
+</svg>

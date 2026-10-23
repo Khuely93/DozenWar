@@ -1,0 +1,34 @@
+{
+  "ok": true,
+  "reports": [
+    {
+      "viewport": {
+        "width": 1920,
+        "height": 1080,
+        "devicePixelRatio": 1
+      },
+      "screens": 72,
+      "frames": 3032,
+      "components": 91,
+      "staticAnchors": 105,
+      "unrenderedLegacyAnchors": [
+        "CORE_UI_GUARD"
+      ]
+    },
+    {
+      "viewport": {
+        "width": 390,
+        "height": 844,
+        "devicePixelRatio": 1
+      },
+      "screens": 72,
+      "frames": 3041,
+      "components": 105,
+      "staticAnchors": 105,
+      "unrenderedLegacyAnchors": [
+        "CORE_UI_UNIT_ACTION_HINT",
+        "CORE_UI_GUARD"
+      ]
+    }
+  ]
+}
