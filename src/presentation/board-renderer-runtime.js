@@ -1,8 +1,13 @@
 
-// Approved DW-STYLE-01 figures are static; facing never changes Core rules.
+// Hero facing is derived from visible positions; it never changes Core rules.
+const HeroBoardFacing=typeof HeroBoardVisuals==='undefined'?null:HeroBoardVisuals.createFacingController();
 const TroopVisual={
   source(unit){
     if(unit.hero){
+      if(typeof HeroBoardVisuals!=='undefined'){
+        const camera=HeroBoardVisuals.get(unit.definitionId);
+        if(camera)return camera.source;
+      }
       if(typeof HeroRegistry==='undefined'||typeof AssetRegistry==='undefined')return null;
       const hero=HeroRegistry.get(unit.definitionId),asset=hero&&AssetRegistry.get(hero.assets?.token);
       if(!asset)return null;
@@ -32,8 +37,19 @@ const TroopVisual={
     image.setAttribute('width',frame.width);image.setAttribute('height',frame.height);
     image.setAttribute('aria-label',unitSpec(unit).name);
     image.setAttribute('pointer-events','none');symbol.setAttribute('visibility','hidden');
+    const camera=unit.hero&&HeroBoardFacing?HeroBoardVisuals.create(unit.definitionId,HeroBoardFacing.pose(unit),{x:cell.x,y:cell.y+18},{className:'heroBoardSprite heroFacingSprite',label:unitSpec(unit).name}):null;
+    if(camera){
+      group.appendChild(camera.root);
+      camera.image.addEventListener('error',()=>{
+        camera.root.setAttribute('visibility','hidden');
+        symbol.setAttribute('visibility','visible');
+        const hero=HeroRegistry.get(unit.definitionId),asset=AssetRegistry.get(hero.assets.token);
+        image.setAttribute('href',asset.source);image.setAttribute('class','heroBoardFallback');
+        image.addEventListener('load',()=>symbol.setAttribute('visibility','hidden'),{once:true});
+        group.insertBefore(image,camera.root.nextSibling);
+      },{once:true});
+    }else group.appendChild(image);
     image.addEventListener('error',()=>{image.setAttribute('visibility','hidden');symbol.setAttribute('visibility','visible')});
-    group.appendChild(image);
     const hit=document.createElementNS(ns,'rect');
     hit.setAttribute('x',cell.x-27);hit.setAttribute('y',cell.y-(unit.hero?72:52));hit.setAttribute('width',54);hit.setAttribute('height',unit.hero?86:66);
     hit.setAttribute('fill','transparent');hit.setAttribute('pointer-events','all');hit.setAttribute('class','troopHit');group.appendChild(hit);
@@ -75,6 +91,7 @@ const CoreBoardRenderer = {
 
   render(){
     boardSvg.innerHTML="";
+    if(HeroBoardFacing)HeroBoardFacing.update(S.units,{key:S.matchSession?.matchId||S.selectedMode,pending:S.pending});
 
     // BASE HEX LAYER
     for(const cell of cells){

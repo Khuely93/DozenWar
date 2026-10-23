@@ -49,6 +49,18 @@ for(const hero of artwork.heroes){
   for(const side of [1,2])for(const visualView of [1,5,8])assert.equal(ctx.visual.source({hero:true,definitionId:hero.heroId,side,visualView}),token.source);
   assert.deepEqual(fs.readFileSync(path.join(root,'dist',hero.board.asset)),fs.readFileSync(path.join(root,hero.board.asset)),hero.name+' production board bytes');
 }
+// Shared atlases are the primary route; registered static tokens remain fallbacks.
+const directionalContext=vm.createContext({HeroRegistry:content.heroRegistry,AssetRegistry:content.assetRegistry});
+vm.runInContext(read('assets/heroes-camera-06/catalog.js')+'\n'+read('assets/heroes-camera-06/renderer.js')+'\n'+source.slice(0,source.indexOf('const CoreBoardRenderer'))+';this.visual=TroopVisual;',directionalContext);
+const directional=JSON.parse(read('assets/heroes-camera-06/manifest.json'));
+assert.equal(directional.status,'APPROVED_FOR_GAME');assert.equal(directional.entries.length,12);
+for(const entry of directional.entries){
+ assert.equal(directionalContext.visual.source({hero:true,definitionId:entry.definitionId,side:1}),entry.source);
+ assert.deepEqual(fs.readFileSync(path.join(root,'dist',entry.source)),fs.readFileSync(path.join(root,entry.source)));
+ assert.equal(Object.keys(entry.poses).length,6);
+}
+for(const file of ['catalog.js','renderer.js'])assert.deepEqual(fs.readFileSync(path.join(root,'dist/assets/heroes-camera-06',file)),fs.readFileSync(path.join(root,'assets/heroes-camera-06',file)));
+assert(read('dist/online/index.html').includes('../assets/heroes-camera-06/catalog.js'));
 const map=JSON.parse(read('assets/map-gallery/map-compact-manifest.json'));
 const mapBytes=fs.readFileSync(path.join(root,map.asset));
 assert.equal(require('node:crypto').createHash('sha256').update(mapBytes).digest('hex'),map.assetSha256);

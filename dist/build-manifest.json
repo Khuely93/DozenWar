@@ -1,8 +1,8 @@
 {
   "project": "DOZEN WAR II",
-  "version": "1.70.1",
+  "version": "1.71.0",
   "phase": "DUEL_RULE_MODE_1VS1_180_30",
-  "generatedAt": "2026-10-22T12:59:14.533Z",
+  "generatedAt": "2026-10-23T01:33:41.394Z",
   "runtimeOrder": [
     "src/architecture/module-boundaries.js",
     "src/ui/ui-dom-runtime.js",
@@ -19,6 +19,8 @@
     "src/core/core-foundation-runtime.js",
     "src/shell/shell-flow-runtime.js",
     "src/core/core-runtime-a.js",
+    "assets/heroes-camera-06/catalog.js",
+    "assets/heroes-camera-06/renderer.js",
     "src/presentation/board-renderer-runtime.js",
     "src/presentation/duel-board-layout-runtime.js",
     "src/presentation/duel-camera-runtime.js",
@@ -41,7 +43,7 @@
     "src/bootstrap.js"
   ],
   "bundles": {
-    "runtime": "assets/runtime.f55da43bb968.js",
+    "runtime": "assets/runtime.acfa943362fd.js",
     "styles": "assets/app.67385980da13.css"
   },
   "externalizedEmbeddedAssets": [],
@@ -50,16 +52,16 @@
     {
       "file": "index.html",
       "bytes": 16868,
-      "gzipBytes": 4684,
-      "brotliBytes": 3873,
-      "sha256": "a28b113c5df3fe5eb87c9ce9866777ae5dcd37386905c1bb76ff9a0248c482f2"
+      "gzipBytes": 4683,
+      "brotliBytes": 3869,
+      "sha256": "2512ec507935bda19972ee7a9afb054a59a417b2e6c469bae0004c3a370b7e80"
     },
     {
-      "file": "assets/runtime.f55da43bb968.js",
-      "bytes": 443267,
-      "gzipBytes": 125837,
-      "brotliBytes": 102033,
-      "sha256": "f55da43bb96895847d077cdff527c96feef6b229037c234100a75aea649130cc"
+      "file": "assets/runtime.acfa943362fd.js",
+      "bytes": 463197,
+      "gzipBytes": 130009,
+      "brotliBytes": 104944,
+      "sha256": "acfa943362fdbdd9ff82447ce874b78cacf036f7c47b6d6af761bedb76ef00d1"
     },
     {
       "file": "assets/app.67385980da13.css",

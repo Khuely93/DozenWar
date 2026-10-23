@@ -1,8 +1,8 @@
 {
   "project": "DOZEN WAR II",
-  "version": "1.70.1",
+  "version": "1.71.0",
   "phase": "DUEL_RULE_MODE_1VS1_180_30",
-  "baseline": "v1.70.1 network recovery, load measurements and online CI",
+  "baseline": "v1.71.0 six-direction Hero board visuals",
   "entry": "index.html",
   "styles": "styles/main.css",
   "runtimeOrder": [
@@ -21,6 +21,8 @@
     "src/core/core-foundation-runtime.js",
     "src/shell/shell-flow-runtime.js",
     "src/core/core-runtime-a.js",
+    "assets/heroes-camera-06/catalog.js",
+    "assets/heroes-camera-06/renderer.js",
     "src/presentation/board-renderer-runtime.js",
     "src/presentation/duel-board-layout-runtime.js",
     "src/presentation/duel-camera-runtime.js",

@@ -1,12 +1,12 @@
 {
   "name": "dozen-war-ii",
-  "version": "1.70.1",
+  "version": "1.71.0",
   "private": true,
-  "description": "DOZEN WAR II — confirmed twelve heroes",
+  "description": "DOZEN WAR II \u2014 confirmed twelve heroes",
   "scripts": {
     "dev": "node tools/static-server.cjs --root . --port 5173",
     "validate": "node tools/validate-project.cjs",
-    "build": "npm run validate && npm run test:content-readiness && npm run test:gameplay && npm run test:bootstrap-order && npm run test:result-ui && npm run test:action-visual && npm run test:rodoc && npm run test:est && npm run test:duel-rule && npm run test:hero-class && npm run test:alchemist && npm run test:attack-visual && npm run test:hero-roster && npm run test:board-layout && npm run test:camera && npm run test:heroes && npm run test:equipment && npm run test:infantry-equipment && node tools/build-prod.cjs && npm run test:production-assets",
+    "build": "npm run validate && npm run test:content-readiness && npm run test:gameplay && npm run test:bootstrap-order && npm run test:result-ui && npm run test:action-visual && npm run test:rodoc && npm run test:est && npm run test:duel-rule && npm run test:hero-class && npm run test:alchemist && npm run test:attack-visual && npm run test:hero-roster && npm run test:board-layout && npm run test:camera && npm run test:heroes && npm run test:equipment && npm run test:infantry-equipment && npm run test:hero-facing && node tools/build-prod.cjs && npm run test:production-assets",
     "preview": "node tools/static-server.cjs --root dist --port 4173",
     "report": "node tools/build-report.cjs",
     "test:content-readiness": "node tools/test-hero-skill-readiness.cjs",
@@ -36,7 +36,8 @@
     "test:server": "node --test server/test/*.test.cjs",
     "test:online-browser": "node tools/test-online-browser.cjs",
     "test:online-network": "node tools/test-online-network.cjs",
-    "benchmark:online": "node tools/benchmark-online.cjs"
+    "benchmark:online": "node tools/benchmark-online.cjs",
+    "test:hero-facing": "node tools/test-hero-facing.cjs"
   },
   "engines": {
     "node": ">=22"

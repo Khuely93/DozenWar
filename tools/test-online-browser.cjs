@@ -89,6 +89,14 @@ const { chromium } = require("playwright"),
       await until(() => game().phase !== "deploy" || game().selecting !== side);
     }
     await until(() => game().phase === "battle");
+    // Both seats load the same new transparent Hero atlases in real multiplayer.
+    for(const p of pages){
+      await p.waitForFunction(()=>document.querySelectorAll('[data-unit] svg.heroBoardSprite').length===2);
+      const visuals=await p.locator('[data-unit] svg.heroBoardSprite').evaluateAll(nodes=>nodes.map(n=>({id:n.getAttribute('data-hero'),pose:n.getAttribute('data-facing'),source:n.querySelector('image').getAttribute('href')})));
+      assert.equal(visuals.length,2);assert(visuals.every(v=>v.source.includes('/assets/heroes-camera-06/')));
+      assert.deepEqual(visuals.map(v=>v.pose).sort(),['back','front']);
+      await p.evaluate(async()=>{await Promise.all(Array.from(document.querySelectorAll('image.heroAtlasImage'),n=>{const im=new Image();im.src=n.getAttribute('href');return im.decode()}))});
+    }
     const side = game().battleSide,
       attacker = pages[side - 1],
       defender = pages[2 - side];
@@ -97,7 +105,7 @@ const { chromium } = require("playwright"),
     await attacker
       .getByRole("button", { name: "Khóa Xích", exact: true })
       .click();
-    await attacker.locator('[data-unit="' + defenderHero.id + '"]').click();
+    await attacker.locator('[data-unit="' + defenderHero.id + '"] .unitHit').click();
     await attacker
       .getByRole("button", { name: "Xác nhận hành động", exact: true })
       .click();
@@ -113,6 +121,10 @@ const { chromium } = require("playwright"),
       path: path.join(screens, "defender-pending.png"),
       fullPage: true,
     });
+    for(const p of pages){
+      const facing=await p.locator('[data-unit] svg.heroBoardSprite').evaluateAll(nodes=>nodes.map(n=>n.getAttribute('data-facing')));
+      assert.equal(facing.length,2);assert(facing.every(f=>['front','back','front+45','back+45','front-45','back-45'].includes(f)));
+    }
     const snapshot = game();
     await app.close();
     app = await createApp({ store: new FileStore(dir) });

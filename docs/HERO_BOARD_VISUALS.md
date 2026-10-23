@@ -1,54 +1,50 @@
-# DW-STYLE-01 compact Hero board visuals — v1.66.0
+# DW-STYLE-01 Hero board visuals — v1.71.0
 
-The user approved all twelve compact Hero designs and requested replacement
-in game. All twelve Heroes resolve their token by Hero definition ID to a
-separate transparent figure matching the approved compact soldier art direction.
-Portrait crops in team selection and the Hero dock keep their existing source art.
+All twelve approved Heroes now use six directional board drawings. The shared
+catalog and SVG atlas renderer in `assets/heroes-camera-06/` are used by both
+the offline and online clients. Portraits in team selection and Hero information
+keep their existing artwork. Soldier visuals are unchanged by this release.
 
-## Assets
+## Approved assets
 
-- Each `*-compact-dw-style-01-board.webp` is 512 × 512 with an alpha channel.
-- The approved compact PNGs are exported at WebP quality 90, without redrawing.
-  Broader silhouettes, simple armor planes and large signature equipment
-  improve readability at game scale. Hero identities and palettes are retained.
-- Previous 2:3 board files remain as inactive references; new paths avoid
-  reusing browser cache entries for the old images.
-- The board uses one static pose per Hero. No movement or attack animation and
-  no automatic directional rotation is implied by these illustrations.
-- Mask has a halberd, Soul a great dao, Siri twin dao; all three retain their horse.
-- Raen retains two heads on one body. Lucy keeps her palm-held arrow and back
-  bow case, Raen the filled bolt quiver, and Neuro the back book and potion grip.
-- The artwork manifest records approved PNG names/hashes, board paths/output
-  checksums and previous board assets. Original portrait hashes are preserved.
+The source reviews are `visual-previews/heroes-camera-06/sheets/`. Production
+sheets have transparent backgrounds and are encoded as WebP at quality 90,
+alpha quality 100, at their original 1024 × 1536 resolution. Each sheet contains
+two columns and three rows: front/back, front+45/back+45, front−45/back−45.
+The production manifest records source checksums, output checksums, per-pose
+crop bounds and foot anchors. Hashes in filenames prevent stale image caches.
 
-## Presentation and interaction
+The SVG renderer clips individual poses from the atlas without additional
+downloads or horizontal mirroring. All poses of one Hero share a scale. Standing
+Heroes use a 100-unit frame; mounted Heroes use 114. Each pose places its foot
+anchor at the unit's board center plus 18 world units vertically. Weapons may
+extend outside the frame; the source crop retains their tips.
 
-Hero token metadata controls size and anchor. Standing Heroes occupy 100 world
-units in height; mounted Heroes use 114. All canvases are square, with
-the foot/hoof anchor at 96% of the image height, matching the approved preview.
-Figures are rendered from back rows to front rows without mutating unit state.
+## Direction and interaction
 
-The existing colored team ring, HP, moved/completed action badges and incoming
-attack/Guard highlights remain separate layers. Images do not intercept pointers;
-the Hero hit region and the existing Core input routing handle clicks and drag.
-An image load failure reveals the existing Hero initials as a selectable fallback.
-Troop sprites and all Core/Mode mechanics remain unchanged.
+Side 1 initially faces upward (back); side 2 faces downward (front). Movement
+and pending attacks turn the figure toward the move or target, including Guard
+redirection. Hex coordinate deltas are projected into board coordinates first.
+There are no exact east/west images in the approved six-view set: horizontal
+ties select the nearest diagonal in the previous front/back hemisphere.
+
+Facing is cosmetic, tracked separately from authoritative units. A fresh online
+connection starts from default directions, or the pending attack if present;
+facing is not persisted on the server. These are discrete poses, not animations.
+The rules, network protocol, gameplay hashes and server engine code hash remain
+unchanged. HP, team rings, action indicators and existing click/drag regions
+remain separate layers. A failed atlas load falls back to the previous static
+Hero art; if that also fails, selectable Hero initials remain.
 
 ## Verification
 
-- `npm run build`: validation, gameplay and production-asset checks pass.
-- `npm run test:hero-board-browser`: Chromium integration checks served from the
-  production build under a `/DozenWar/` URL prefix.
-- All twelve board sprites decode at 512 × 768, contain transparent background,
-  have transparent corners and use the correct Hero asset, ring and HP.
-- Real mouse selection of all twelve Heroes, movement and its badge, an attack,
-  Guard redirection, damage resolution, completed-action badge and end turn pass.
-- Deployment drag preserves the Core hex coordinates. Image-error fallback is
-  selectable. Desktop, laptop and mobile screenshots are inspected.
-- No unexpected JavaScript or HTTP errors occur in the integration run.
-- Gameplay hashes match the previous release: Duel `fnv1a32:5873bec7`,
-  Training `fnv1a32:3566a068`.
+- `npm run build`: gameplay gates, directional metadata and production bytes.
+- `npm run test:hero-facing`: all 72 crops, movement, Guard, reset and immutable inputs.
+- `npm run test:hero-board-browser`: all twelve Heroes, all six poses, transparent
+  image decoding, selection, foot anchors, movement, attack/Guard resolution,
+  end turn, image failure and deployment drag under the `/DozenWar/` URL prefix.
+- `npm run test:online-browser`: two independent browser seats, new atlas loads,
+  combat, server restart during defense, reconnect and movement.
 
-Browser checks require Playwright and Chromium, like the other browser tests in
-this repository. `DOZEN_BROWSER_EXECUTABLE` can select the browser binary. Screenshots
-and the QA report are written to the untracked `work/hero-board/` directory.
+Browser screenshots and reports are written under ignored `work/` directories.
+Gameplay hashes: Duel `fnv1a32:5873bec7`, Training `fnv1a32:3566a068`.
