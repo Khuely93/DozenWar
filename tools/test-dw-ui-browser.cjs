@@ -45,12 +45,21 @@ async function run() {
             themed: document.body.classList.contains('dwUI'),
             overflowX: document.documentElement.scrollWidth > innerWidth + 1,
             frame: getComputedStyle(document.querySelector('.modeWrap > .dwAtlasSkin > .dwAtlasPiece')).backgroundImage,
+            detachedSkins: [...document.querySelectorAll('.dwConceptArt')].flatMap(host => {
+              const skin = [...host.querySelectorAll(':scope > .dwAtlasSkin')].find(node => node.getBoundingClientRect().width), parent = host.getBoundingClientRect();
+              if (!skin || !parent.width || !parent.height) return [];
+              const child = skin.getBoundingClientRect(), style = getComputedStyle(host);
+              const width = parent.width - parseFloat(style.borderLeftWidth) - parseFloat(style.borderRightWidth);
+              const height = parent.height - parseFloat(style.borderTopWidth) - parseFloat(style.borderBottomWidth);
+              return Math.abs(width - child.width) > 2 || Math.abs(height - child.height) > 2 ? [{id:host.id,className:host.className,parent:{width,height},skin:{width:child.width,height:child.height}}] : [];
+            }),
             dialogs: dialogs.map(dialog => { const r = dialog.getBoundingClientRect(); return { left: r.left, top: r.top, right: r.right, bottom: r.bottom }; }),
             viewport: { width: innerWidth, height: innerHeight }
           };
         });
         assert(state.themed && state.frame.includes('concept-atlas.png'), id + ' loads approved concept artwork');
         assert(!state.overflowX, id + ' horizontal overflow at ' + viewport.width);
+        assert.deepEqual(state.detachedSkins, [], id + ' artwork stays anchored to its own control');
         for (const bounds of state.dialogs) {
           assert(bounds.left >= -1 && bounds.top >= -1 && bounds.right <= viewport.width + 1 && bounds.bottom <= viewport.height + 1, id + ' dialog stays inside viewport: ' + JSON.stringify(bounds));
         }

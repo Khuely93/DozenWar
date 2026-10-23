@@ -135,6 +135,7 @@
 .dwUI.dwOnline #room[data-phase='ready'] #setup { display: grid; grid-template-columns: minmax(0,1fr) 280px; gap: 12px 24px; }
 .dwUI.dwOnline #room[data-phase='ready'] #setup > :not(.dwRoomPreview):not(.dwAtlasSkin) { grid-column: 1; }
 .dwUI.dwOnline .onlinePlayerSlots { grid-template-columns: 1fr; margin: 6px 0; }
+.dwUI.dwOnline #room[data-phase='ready'] :is(.arena,.onlineDock),.dwUI.dwOnline #room[data-phase='team'] > .arena { display: none; }
 .dwRoomPreview { grid-column: 2; grid-row: 1/5; align-self: center; width: 100%; border: 3px double #ac8c51; }
 @media (min-width:900px) {
   .dwUI.dwMatchLayout #gameScreen.active { grid-template-rows: 64px minmax(0,1fr) 215px; }
@@ -201,7 +202,7 @@
   .dwUI .troopList .choice b { font-size: 13px; }
   .dwUI .countCtl { margin: 0; gap: 6px; }
   .dwUI .countCtl button { min-width: 32px; min-height: 36px; padding: 4px 8px; }
-  .dwUI #confirmTeam { position: static; }
+  .dwUI #confirmTeam { position: relative; }
   .dwUI .dwDeploymentTray { width: auto; padding: 12px; }
   .dwUI .dwDeployUnits { display: flex; gap: 7px; }
   .dwUI .dwDeployUnit { flex: 0 0 49px; }
