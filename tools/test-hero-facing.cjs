@@ -5,13 +5,23 @@ const visual=vm.runInContext('HeroBoardVisuals',ctx),manifest=require('../assets
 assert.equal(manifest.entries.length,12);let poses=0;
 for(const e of manifest.entries){const entry=visual.get(e.definitionId);assert(Object.isFrozen(entry));assert.equal(entry.frame.width,e.mounted?114:100);const bytes=fs.readFileSync(path.join(root,entry.source));assert.equal(crypto.createHash('sha256').update(bytes).digest('hex'),e.sha256);assert(e.transparentPixels>entry.width*entry.height*.25);for(const pose of visual.directions){const c=entry.poses[pose];assert(c.width>0&&c.height>0);assert(c.x>=0&&c.y>=0&&c.x+c.width<=entry.width&&c.y+c.height<=entry.height);assert(c.footX>=c.x&&c.footX<c.x+c.width);assert(c.footY>=c.y&&c.footY<c.y+c.height);poses++;}}
 assert.equal(poses,72);
-const frozen=u=>Object.freeze(u),a=frozen({id:'a',hero:true,definitionId:'HERO_INF_KAZU',side:1,q:0,r:0}),b=frozen({id:'b',side:2,q:0,r:-2}),g=frozen({id:'g',side:2,q:-1,r:1}),c=visual.createFacingController();
-const before=JSON.stringify([a,b,g]);c.update([a,b,g],{key:'one'});assert.equal(c.pose(a),'back');assert.equal(c.pose(b),'front');
-// Actual axial neighbors, with horizontal ties retaining their hemisphere.
-for(const [q,r,expected] of [[0,-1,'back+45'],[1,-1,'back-45'],[-1,0,'back+45'],[1,0,'back-45'],[-1,1,'front-45'],[0,1,'front+45']]){c.clear();c.update([a]);const moved=frozen({...a,q,r});c.update([moved]);assert.equal(c.pose(moved),expected);c.update([moved]);assert.equal(c.pose(moved),expected);}
-c.update([a,b,g],{key:'one',pending:{a:'a',d:'b',guard:true,guardUnitId:'g'}});assert.equal(c.pose(a),'front-45');assert.equal(c.pose(g),'back-45');assert.equal(JSON.stringify([a,b,g]),before,'Never mutate authoritative units');
-c.update([a,b],{key:'rematch'});assert.equal(c.pose(a),'back');assert.equal(c.pose(b),'front');
-assert.equal(c.pose({...a,visualFacing:'front+45'}),'front+45');assert.equal(c.pose({...a,visualFacing:'bad'}),'back');
-assert.equal(visual.direction(0,1),'front');assert.equal(visual.direction(0,-1),'back');assert.equal(visual.direction(0,0,'front'),'front');assert.equal(visual.direction(NaN,0,'back'),'back');
-c.update([],{key:'rematch'});assert.equal(c.pose(b),'front');
-console.log('PASS | 12 approved atlases, 72 crops, axial movement, guard facing, rematch, pruning, immutable game state');
+// Team facing must survive arbitrary moves, target changes and legacy facing hints.
+for(const side of [1,2])for(const hero of manifest.entries){
+ for(const [q,r] of [[0,0],[-2,1],[2,-1],[0,3],[0,-3]]){
+  const unit=Object.freeze({id:hero.id,hero:true,definitionId:hero.definitionId,side,q,r,visualFacing:side===1?'front':'back'}),before=JSON.stringify(unit);
+  assert.equal(visual.pose(unit),side===1?'back':'front');assert.equal(JSON.stringify(unit),before);
+ }
+}
+vm.runInContext(fs.readFileSync(path.join(root,'assets/troops-camera-team/catalog.js'),'utf8'),ctx);
+const troops=require('../assets/troops-camera-team/manifest.json');assert.equal(troops.entries.length,6);
+for(const e of troops.entries){
+ const unit=Object.freeze({kind:e.kind,side:e.faction==='blue'?1:2}),pose=visual.pose(unit),entry=visual.get(visual.troopId(unit));
+ assert(entry);assert(Object.isFrozen(entry));assert.equal(pose,e.faction==='blue'?'back':'front');assert(entry.poses[pose]);
+ const bytes=fs.readFileSync(path.join(root,entry.source));assert.equal(crypto.createHash('sha256').update(bytes).digest('hex'),troops.sha256);
+ const c=entry.poses[pose];assert(c.x>=0&&c.y>=0&&c.x+c.width<=entry.width&&c.y+c.height<=entry.height);
+ assert(c.footX>=c.x&&c.footX<c.x+c.width&&c.footY>=c.y&&c.footY<c.y+c.height);
+}
+assert(troops.transparentPixels>1024*1536*.3);
+assert.equal(visual.pose({side:2,visualFaction:'blue'}),'back');assert.equal(visual.pose({side:1,visualFaction:'red'}),'front');
+assert.equal(visual.faction({side:1,visualFaction:'invalid'}),'blue');assert.equal(visual.faction({side:1,visualFaction:'gray'}),'silver');
+console.log('PASS | 12 Hero atlases, 72 crops, 6 team troop crops; blue back / red front, stable after moves and immutable state');

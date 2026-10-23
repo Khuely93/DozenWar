@@ -1,52 +1,16 @@
-// Shared presentation for offline and online clients. Never writes game state.
+// Shared fixed-camera presentation for offline and online. Never writes game state.
 const HeroBoardVisuals = (() => {
   const directions = Object.freeze(['front','back','front+45','back+45','front-45','back-45']);
   const valid = name => directions.includes(name);
-  const defaultPose = unit => unit.side === 1 ? 'back' : 'front';
-  const get = id => globalThis.DW_HERO_CAMERA_CATALOG?.[id] || null;
-
-  function direction(dx,dy,previous='back') {
-    if (!Number.isFinite(dx) || !Number.isFinite(dy) || Math.hypot(dx,dy)<1e-9) return previous;
-    // No horizontal sprites were approved. Resolve the horizontal tie using
-    // the previous front/back hemisphere instead of mirroring a drawing.
-    const front = Math.abs(dy)<1e-9 ? previous.startsWith('front') : dy>0;
-    if (Math.abs(dx)<=Math.abs(dy)*Math.tan(Math.PI/8)) return front?'front':'back';
-    return front ? (dx>0?'front+45':'front-45') : (dx>0?'back-45':'back+45');
+  const get = id => globalThis.DW_HERO_CAMERA_CATALOG?.[id] || globalThis.DW_TROOP_CAMERA_CATALOG?.[id] || null;
+  function faction(unit) {
+    const requested=unit.visualFaction==='gray'?'silver':unit.visualFaction;
+    return ['blue','red','gold','silver'].includes(requested)?requested:({1:'blue',2:'red',3:'gold',4:'silver'}[unit.side] || 'red');
   }
-  function towards(a,b,previous) {
-    const dq=b.q-a.q,dr=b.r-a.r;
-    return direction(Math.sqrt(3)*(dq+dr/2),1.5*dr,previous);
-  }
-  function createFacingController() {
-    let key;
-    const positions=new Map();
-    return {
-      update(units,options={}) {
-        if (options.key!==key) {positions.clear();key=options.key;}
-        const present=new Set(units.map(u=>u.id));
-        for (const id of positions.keys()) if(!present.has(id))positions.delete(id);
-        for (const unit of units) {
-          const old=positions.get(unit.id);
-          let pose=old?.pose || defaultPose(unit);
-          if (old && (old.side!==unit.side || old.definitionId!==unit.definitionId)) pose=defaultPose(unit);
-          else if(old && (old.q!==unit.q || old.r!==unit.r)) pose=towards(old,unit,pose);
-          positions.set(unit.id,{q:unit.q,r:unit.r,side:unit.side,definitionId:unit.definitionId,pose});
-        }
-        const p=options.pending;
-        if(p) {
-          const a=units.find(u=>u.id===p.a);
-          const targetId=p.replacementTargetId || (p.guard && p.guardUnitId) || p.d;
-          const d=units.find(u=>u.id===targetId);
-          if(a && d && a.id!==d.id) {
-            positions.get(a.id).pose=towards(a,d,positions.get(a.id).pose);
-            positions.get(d.id).pose=towards(d,a,positions.get(d.id).pose);
-          }
-        }
-      },
-      pose(unit) {return valid(unit.visualFacing)?unit.visualFacing:(positions.get(unit.id)?.pose || defaultPose(unit));},
-      clear() {positions.clear();key=undefined;}
-    };
-  }
+  // The camera is fixed above the board: blue shows its back, red its front.
+  // Crossing the board, attacking or reconnecting must not rotate the drawing.
+  const pose = unit => faction(unit)==='blue'?'back':'front';
+  const troopId = unit => 'TROOP_'+String(unit.kind).toUpperCase()+'_'+faction(unit).toUpperCase();
   function create(id,pose,point,options={}) {
     const entry=get(id);
     if(!entry)return null;
@@ -79,5 +43,5 @@ const HeroBoardVisuals = (() => {
     tile.appendChild(image);root.appendChild(tile);
     return {root,image,entry,pose:name};
   }
-  return Object.freeze({directions,get,direction,createFacingController,create});
+  return Object.freeze({directions,get,faction,pose,troopId,create});
 })();

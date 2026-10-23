@@ -97,6 +97,15 @@ const { chromium } = require("playwright"),
       assert.deepEqual(visuals.map(v=>v.pose).sort(),['back','front']);
       await p.evaluate(async()=>{await Promise.all(Array.from(document.querySelectorAll('image.heroAtlasImage'),n=>{const im=new Image();im.src=n.getAttribute('href');return im.decode()}))});
     }
+    const checkTeamCamera=async()=>{
+      const units=game().units.filter(u=>u.hp>0);
+      for(const p of pages){
+        const drawn=await p.locator('[data-unit] [data-facing]').evaluateAll(nodes=>nodes.map(n=>({id:n.closest('[data-unit]').getAttribute('data-unit'),pose:n.getAttribute('data-facing'),source:n.querySelector('image').getAttribute('href')})));
+        assert.equal(drawn.length,units.length);
+        for(const v of drawn){const u=units.find(u=>u.id===v.id);assert(u);assert.equal(v.pose,u.side===1?'back':'front');if(!u.hero)assert(v.source.includes('/assets/troops-camera-team/'));}
+      }
+    };
+    await checkTeamCamera();
     const side = game().battleSide,
       attacker = pages[side - 1],
       defender = pages[2 - side];
@@ -123,8 +132,9 @@ const { chromium } = require("playwright"),
     });
     for(const p of pages){
       const facing=await p.locator('[data-unit] svg.heroBoardSprite').evaluateAll(nodes=>nodes.map(n=>n.getAttribute('data-facing')));
-      assert.equal(facing.length,2);assert(facing.every(f=>['front','back','front+45','back+45','front-45','back-45'].includes(f)));
+      assert.equal(facing.length,2);assert.deepEqual(facing.sort(),['back','front']);
     }
+    await checkTeamCamera();
     const snapshot = game();
     await app.close();
     app = await createApp({ store: new FileStore(dir) });
@@ -185,6 +195,7 @@ const { chromium } = require("playwright"),
       path: path.join(screens, "turn-two.png"),
       fullPage: true,
     });
+    await checkTeamCamera();
     assert.deepEqual(errors, []);
     console.log(
       "Online browser: two independent seats, setup, skill attack, restart during defense, HP resolution, turn switch, reload/resume and move: PASS",

@@ -36,8 +36,6 @@
     teamHero = "HERO_INF_KAZU";
   let clockReceived = 0;
   const counts = { inf: 3, arch: 1, cav: 1 };
-  const heroBoardFacing = typeof HeroBoardVisuals === 'undefined'
-    ? null : HeroBoardVisuals.createFacingController();
   try {
     ({ session, outbox, ticket } = JSON.parse(
       localStorage.getItem(storageKey) || "{}",
@@ -825,9 +823,6 @@
           }))
         : []),
     ];
-    if (heroBoardFacing) heroBoardFacing.update(units, {
-      key: state.code + ':' + g.matchNo, pending: g.pending,
-    });
     units.sort((a,b) => point(a).y - point(b).y);
     for (const u of units) {
       const { x, y } = point(u),
@@ -866,27 +861,28 @@
           rx: 32,
           ry: 20,
           class: "ring",
-          stroke: u.side === 1 ? "#e06559" : "#61b9fb",
+          stroke: u.side === 1 ? "#61b9fb" : "#e06559",
         }),
       );
-      const camera = h && heroBoardFacing
-        ? HeroBoardVisuals.create(u.definitionId, heroBoardFacing.pose(u),
-            {x, y: y + 18}, {resolve: asset, label: h.name})
+      const visualUnit = {...u, kind: t?.kind || u.kind};
+      const camera = (h || t) && typeof HeroBoardVisuals !== 'undefined'
+        ? HeroBoardVisuals.create(h ? u.definitionId : HeroBoardVisuals.troopId(visualUnit), HeroBoardVisuals.pose(visualUnit),
+            {x, y: y + 18}, {resolve: asset, label: h?.name || t.name, className: h ? 'heroBoardSprite' : 'troopSprite troopFacingSprite'})
         : null;
       if (camera) {
         n.append(camera.root);
         camera.image.addEventListener('error', () => {
           camera.root.setAttribute('visibility','hidden');
           const fallback = svg('image', {
-            href: asset(h.board), x: x - camera.entry.frame.width / 2,
+            href: asset(h?.board || './assets/troops-compact-dw-style-01/' + t.kind + (u.side === 1 ? '-blue.webp' : '-red.webp')), x: x - camera.entry.frame.width / 2,
             y: y + 18 - camera.entry.frame.height * .96,
             width: camera.entry.frame.width, height: camera.entry.frame.height,
-            class: 'heroBoardFallback', 'pointer-events': 'none',
+            class: h ? 'heroBoardFallback' : 'troopBoardFallback', 'pointer-events': 'none',
           });
           fallback.addEventListener('error', () => {
             fallback.setAttribute('visibility','hidden');
             const glyph = svg('text', {x, y: y - 8});
-            glyph.textContent = h.name.slice(0,2); n.append(glyph);
+            glyph.textContent = (h?.name || t.name).slice(0,2); n.append(glyph);
           }, {once:true});
           n.insertBefore(fallback, camera.root.nextSibling);
         }, {once:true});
@@ -897,7 +893,7 @@
               h?.board ||
                 "./assets/troops-compact-dw-style-01/" +
                   t.kind +
-                  (u.side === 1 ? "-red.webp" : "-blue.webp"),
+                  (u.side === 1 ? "-blue.webp" : "-red.webp"),
             ),
             x: x - 49,
             y: y - 72,

@@ -1,6 +1,5 @@
 
-// Hero facing is derived from visible positions; it never changes Core rules.
-const HeroBoardFacing=typeof HeroBoardVisuals==='undefined'?null:HeroBoardVisuals.createFacingController();
+// Team facing uses the fixed overhead camera; it never changes Core rules.
 const TroopVisual={
   source(unit){
     if(unit.hero){
@@ -19,6 +18,10 @@ const TroopVisual={
     const sides={1:'blue',2:'red',3:'gold',4:'silver'};
     const requested=unit.visualFaction==='gray'?'silver':unit.visualFaction;
     const faction=['red','blue','gold','silver'].includes(requested)?requested:(sides[unit.side]||'red');
+    if(typeof HeroBoardVisuals!=='undefined'){
+      const camera=HeroBoardVisuals.get(HeroBoardVisuals.troopId(unit));
+      if(camera)return camera.source;
+    }
     return './assets/troops-compact-dw-style-01/'+unit.kind+'-'+faction+'.webp';
   },
   render(group,unit,cell,symbol){
@@ -37,14 +40,15 @@ const TroopVisual={
     image.setAttribute('width',frame.width);image.setAttribute('height',frame.height);
     image.setAttribute('aria-label',unitSpec(unit).name);
     image.setAttribute('pointer-events','none');symbol.setAttribute('visibility','hidden');
-    const camera=unit.hero&&HeroBoardFacing?HeroBoardVisuals.create(unit.definitionId,HeroBoardFacing.pose(unit),{x:cell.x,y:cell.y+18},{className:'heroBoardSprite heroFacingSprite',label:unitSpec(unit).name}):null;
+    const camera=typeof HeroBoardVisuals!=='undefined'?HeroBoardVisuals.create(unit.hero?unit.definitionId:HeroBoardVisuals.troopId(unit),HeroBoardVisuals.pose(unit),{x:cell.x,y:cell.y+18},{className:unit.hero?'heroBoardSprite heroFacingSprite':'troopSprite troopFacingSprite',label:unitSpec(unit).name}):null;
     if(camera){
       group.appendChild(camera.root);
       camera.image.addEventListener('error',()=>{
         camera.root.setAttribute('visibility','hidden');
         symbol.setAttribute('visibility','visible');
-        const hero=HeroRegistry.get(unit.definitionId),asset=AssetRegistry.get(hero.assets.token);
-        image.setAttribute('href',asset.source);image.setAttribute('class','heroBoardFallback');
+        const hero=unit.hero?HeroRegistry.get(unit.definitionId):null,asset=hero?AssetRegistry.get(hero.assets.token):null;
+        const fallback=asset?asset.source:'./assets/troops-compact-dw-style-01/'+unit.kind+'-'+HeroBoardVisuals.faction(unit)+'.webp';
+        image.setAttribute('href',fallback);image.setAttribute('class',unit.hero?'heroBoardFallback':'troopBoardFallback');
         image.addEventListener('load',()=>symbol.setAttribute('visibility','hidden'),{once:true});
         group.insertBefore(image,camera.root.nextSibling);
       },{once:true});
@@ -91,7 +95,6 @@ const CoreBoardRenderer = {
 
   render(){
     boardSvg.innerHTML="";
-    if(HeroBoardFacing)HeroBoardFacing.update(S.units,{key:S.matchSession?.matchId||S.selectedMode,pending:S.pending});
 
     // BASE HEX LAYER
     for(const cell of cells){

@@ -51,7 +51,7 @@ for(const hero of artwork.heroes){
 }
 // Shared atlases are the primary route; registered static tokens remain fallbacks.
 const directionalContext=vm.createContext({HeroRegistry:content.heroRegistry,AssetRegistry:content.assetRegistry});
-vm.runInContext(read('assets/heroes-camera-06/catalog.js')+'\n'+read('assets/heroes-camera-06/renderer.js')+'\n'+source.slice(0,source.indexOf('const CoreBoardRenderer'))+';this.visual=TroopVisual;',directionalContext);
+vm.runInContext(read('assets/heroes-camera-06/catalog.js')+'\n'+read('assets/troops-camera-team/catalog.js')+'\n'+read('assets/heroes-camera-06/renderer.js')+'\n'+source.slice(0,source.indexOf('const CoreBoardRenderer'))+';this.visual=TroopVisual;',directionalContext);
 const directional=JSON.parse(read('assets/heroes-camera-06/manifest.json'));
 assert.equal(directional.status,'APPROVED_FOR_GAME');assert.equal(directional.entries.length,12);
 for(const entry of directional.entries){
@@ -61,6 +61,14 @@ for(const entry of directional.entries){
 }
 for(const file of ['catalog.js','renderer.js'])assert.deepEqual(fs.readFileSync(path.join(root,'dist/assets/heroes-camera-06',file)),fs.readFileSync(path.join(root,'assets/heroes-camera-06',file)));
 assert(read('dist/online/index.html').includes('../assets/heroes-camera-06/catalog.js'));
+const teamTroops=JSON.parse(read('assets/troops-camera-team/manifest.json'));
+for(const e of teamTroops.entries){
+ const unit={kind:e.kind,side:e.faction==='blue'?1:2,hero:false};
+ assert.equal(directionalContext.visual.source(unit),e.source);
+ assert.deepEqual(fs.readFileSync(path.join(root,'dist',e.source)),fs.readFileSync(path.join(root,e.source)));
+}
+assert.deepEqual(fs.readFileSync(path.join(root,'dist/assets/troops-camera-team/catalog.js')),fs.readFileSync(path.join(root,'assets/troops-camera-team/catalog.js')));
+assert(read('dist/online/index.html').includes('../assets/troops-camera-team/catalog.js'));
 const map=JSON.parse(read('assets/map-gallery/map-compact-manifest.json'));
 const mapBytes=fs.readFileSync(path.join(root,map.asset));
 assert.equal(require('node:crypto').createHash('sha256').update(mapBytes).digest('hex'),map.assetSha256);

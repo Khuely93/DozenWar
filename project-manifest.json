@@ -1,8 +1,8 @@
 {
   "project": "DOZEN WAR II",
-  "version": "1.71.0",
+  "version": "1.71.1",
   "phase": "DUEL_RULE_MODE_1VS1_180_30",
-  "baseline": "v1.71.0 six-direction Hero board visuals",
+  "baseline": "v1.71.1 fixed overhead camera: blue back / red front",
   "entry": "index.html",
   "styles": "styles/main.css",
   "runtimeOrder": [
@@ -22,6 +22,7 @@
     "src/shell/shell-flow-runtime.js",
     "src/core/core-runtime-a.js",
     "assets/heroes-camera-06/catalog.js",
+    "assets/troops-camera-team/catalog.js",
     "assets/heroes-camera-06/renderer.js",
     "src/presentation/board-renderer-runtime.js",
     "src/presentation/duel-board-layout-runtime.js",

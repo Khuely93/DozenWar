@@ -1,5 +1,14 @@
 # DOZEN WAR II
 
+## v1.71.1 — Fixed overhead team camera
+
+Blue Hero and soldier figures now show their back; red figures show their front,
+from the elevated board camera. Three new soldier pairs replace the front-only
+blue/red sprites. Moving, attacking, Guard and reconnecting preserve team facing.
+Offline and online both use P1 blue / P2 red. Hero portraits and rules are unchanged.
+See [in-game comparison](visual-previews/team-camera/ingame-blue-back-red-front.png)
+and [camera notes](docs/HERO_BOARD_VISUALS.md).
+
 ## v1.70.1 — Network recovery, load measurement and CI
 
 The online client automatically retries lost acknowledgements with the same command ID and waits for seat authentication before enabling actions. Browser tests now inject latency, bandwidth limits, missing responses and disconnects. A Docker benchmark measures real PostgreSQL workloads with explicit CPU/RAM limits, and GitHub Actions runs the build, server tests, browser flows and a small load regression on pushes/PRs.

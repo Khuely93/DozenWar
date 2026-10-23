@@ -24,7 +24,7 @@ const mime={'.html':'text/html','.js':'text/javascript','.css':'text/css','.webp
  await page.setViewportSize({width:1366,height:768});await page.evaluate(()=>DuelBoardLayout.fit());await page.screenshot({path:path.join(output,'all-12-heroes-1366.png')});
  // Every approved crop renders with the shared foot anchor.
  for(const pose of ['front','back','front+45','back+45','front-45','back-45']){
-  await page.evaluate(pose=>{for(const u of S.units)u.visualFacing=pose;renderBoard()},pose);
+  await page.evaluate(pose=>{renderBoard();for(const u of S.units){const cell=cells.find(c=>c.q===u.q&&c.r===u.r),old=boardSvg.querySelector('[data-unit-id=\"'+u.id+'\"] .heroFacingSprite'),next=HeroBoardVisuals.create(u.definitionId,pose,{x:cell.x,y:cell.y+18},{className:'heroBoardSprite heroFacingSprite'});old.replaceWith(next.root)}},pose);
   assert.equal(await page.locator('svg.heroFacingSprite[data-facing="'+pose+'"]').count(),12);
   await page.screenshot({path:path.join(output,'pose-'+pose.replace('+','plus')+'-1366.png')});
  }
@@ -37,7 +37,7 @@ const mime={'.html':'text/html','.js':'text/javascript','.css':'text/css','.webp
  const clickUnit=async id=>{const hit=page.locator('[data-unit-id="'+id+'"] .troopHit'),box=await hit.boundingBox();await hit.click({position:{x:box.width/2,y:box.height*.8}})};
  await clickUnit(duel.a);assert.equal(await page.evaluate(()=>S.selected?.id),duel.a);
  await page.locator('.hex[data-q="0"][data-r="0"]').click();
- const moved=await page.evaluate(id=>{const u=S.units.find(u=>u.id===id);return{q:u.q,r:u.r,moved:u.moved}},duel.a);assert.deepEqual(moved,{q:0,r:0,moved:true});assert.equal(await page.locator('[data-unit-id="'+duel.a+'"] .heroFacingSprite').getAttribute('data-facing'),'back+45');assert.equal(await page.locator('[data-unit-id="'+duel.a+'"] .unitActionStatus.moved').count(),1);
+ const moved=await page.evaluate(id=>{const u=S.units.find(u=>u.id===id);return{q:u.q,r:u.r,moved:u.moved}},duel.a);assert.deepEqual(moved,{q:0,r:0,moved:true});assert.equal(await page.locator('[data-unit-id="'+duel.a+'"] .heroFacingSprite').getAttribute('data-facing'),'back');assert.equal(await page.locator('[data-unit-id="'+duel.a+'"] .unitActionStatus.moved').count(),1);
  await clickUnit(duel.d);assert.equal(await page.evaluate(()=>S.pending?.d),duel.d);assert.equal(await page.locator('[data-unit-id="'+duel.d+'"].incomingAttackTarget').count(),1);
  await clickUnit(duel.g);assert.equal(await page.evaluate(()=>S.pending?.guardUnitId),duel.g);assert.equal(await page.locator('[data-unit-id="'+duel.g+'"].incomingAttackTarget').count(),1);
  await page.screenshot({path:path.join(output,'defense-1366.png')});

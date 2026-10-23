@@ -4957,55 +4957,176 @@ globalThis.DW_HERO_CAMERA_CATALOG = (() => {
 })();
 
 ;
-// Shared presentation for offline and online clients. Never writes game state.
+// Fixed overhead team camera: blue back / red front.
+globalThis.DW_TROOP_CAMERA_CATALOG = (() => {
+const data={
+  "TROOP_INF_BLUE": {
+    "name": "Bộ binh",
+    "kind": "inf",
+    "faction": "blue",
+    "source": "./assets/troops-camera-team/blue-back-red-front-92e32037.webp",
+    "width": 1024,
+    "height": 1536,
+    "extent": 398,
+    "frame": {
+      "width": 86,
+      "height": 86,
+      "anchorX": 0.5,
+      "anchorY": 0.96
+    },
+    "poses": {
+      "back": {
+        "x": 127,
+        "y": 64,
+        "width": 335,
+        "height": 358,
+        "footX": 269,
+        "footY": 415
+      }
+    }
+  },
+  "TROOP_INF_RED": {
+    "name": "Bộ binh",
+    "kind": "inf",
+    "faction": "red",
+    "source": "./assets/troops-camera-team/blue-back-red-front-92e32037.webp",
+    "width": 1024,
+    "height": 1536,
+    "extent": 398,
+    "frame": {
+      "width": 86,
+      "height": 86,
+      "anchorX": 0.5,
+      "anchorY": 0.96
+    },
+    "poses": {
+      "front": {
+        "x": 555,
+        "y": 72,
+        "width": 344,
+        "height": 347,
+        "footX": 764,
+        "footY": 413
+      }
+    }
+  },
+  "TROOP_CAV_BLUE": {
+    "name": "Kỵ binh",
+    "kind": "cav",
+    "faction": "blue",
+    "source": "./assets/troops-camera-team/blue-back-red-front-92e32037.webp",
+    "width": 1024,
+    "height": 1536,
+    "extent": 615,
+    "frame": {
+      "width": 98,
+      "height": 98,
+      "anchorX": 0.5,
+      "anchorY": 0.96
+    },
+    "poses": {
+      "back": {
+        "x": 158,
+        "y": 458,
+        "width": 280,
+        "height": 553,
+        "footX": 279,
+        "footY": 991
+      }
+    }
+  },
+  "TROOP_CAV_RED": {
+    "name": "Kỵ binh",
+    "kind": "cav",
+    "faction": "red",
+    "source": "./assets/troops-camera-team/blue-back-red-front-92e32037.webp",
+    "width": 1024,
+    "height": 1536,
+    "extent": 615,
+    "frame": {
+      "width": 98,
+      "height": 98,
+      "anchorX": 0.5,
+      "anchorY": 0.96
+    },
+    "poses": {
+      "front": {
+        "x": 619,
+        "y": 512,
+        "width": 271,
+        "height": 494,
+        "footX": 762,
+        "footY": 999
+      }
+    }
+  },
+  "TROOP_ARCH_BLUE": {
+    "name": "Cung thủ",
+    "kind": "arch",
+    "faction": "blue",
+    "source": "./assets/troops-camera-team/blue-back-red-front-92e32037.webp",
+    "width": 1024,
+    "height": 1536,
+    "extent": 480,
+    "frame": {
+      "width": 86,
+      "height": 86,
+      "anchorX": 0.5,
+      "anchorY": 0.96
+    },
+    "poses": {
+      "back": {
+        "x": 162,
+        "y": 1054,
+        "width": 252,
+        "height": 399,
+        "footX": 274,
+        "footY": 1446
+      }
+    }
+  },
+  "TROOP_ARCH_RED": {
+    "name": "Cung thủ",
+    "kind": "arch",
+    "faction": "red",
+    "source": "./assets/troops-camera-team/blue-back-red-front-92e32037.webp",
+    "width": 1024,
+    "height": 1536,
+    "extent": 480,
+    "frame": {
+      "width": 86,
+      "height": 86,
+      "anchorX": 0.5,
+      "anchorY": 0.96
+    },
+    "poses": {
+      "front": {
+        "x": 594,
+        "y": 1046,
+        "width": 345,
+        "height": 432,
+        "footX": 767,
+        "footY": 1472
+      }
+    }
+  }
+};
+const freeze=v=>{if(v&&typeof v==='object'){Object.values(v).forEach(freeze);Object.freeze(v);}return v;};return freeze(data);})();
+
+;
+// Shared fixed-camera presentation for offline and online. Never writes game state.
 const HeroBoardVisuals = (() => {
   const directions = Object.freeze(['front','back','front+45','back+45','front-45','back-45']);
   const valid = name => directions.includes(name);
-  const defaultPose = unit => unit.side === 1 ? 'back' : 'front';
-  const get = id => globalThis.DW_HERO_CAMERA_CATALOG?.[id] || null;
-
-  function direction(dx,dy,previous='back') {
-    if (!Number.isFinite(dx) || !Number.isFinite(dy) || Math.hypot(dx,dy)<1e-9) return previous;
-    // No horizontal sprites were approved. Resolve the horizontal tie using
-    // the previous front/back hemisphere instead of mirroring a drawing.
-    const front = Math.abs(dy)<1e-9 ? previous.startsWith('front') : dy>0;
-    if (Math.abs(dx)<=Math.abs(dy)*Math.tan(Math.PI/8)) return front?'front':'back';
-    return front ? (dx>0?'front+45':'front-45') : (dx>0?'back-45':'back+45');
+  const get = id => globalThis.DW_HERO_CAMERA_CATALOG?.[id] || globalThis.DW_TROOP_CAMERA_CATALOG?.[id] || null;
+  function faction(unit) {
+    const requested=unit.visualFaction==='gray'?'silver':unit.visualFaction;
+    return ['blue','red','gold','silver'].includes(requested)?requested:({1:'blue',2:'red',3:'gold',4:'silver'}[unit.side] || 'red');
   }
-  function towards(a,b,previous) {
-    const dq=b.q-a.q,dr=b.r-a.r;
-    return direction(Math.sqrt(3)*(dq+dr/2),1.5*dr,previous);
-  }
-  function createFacingController() {
-    let key;
-    const positions=new Map();
-    return {
-      update(units,options={}) {
-        if (options.key!==key) {positions.clear();key=options.key;}
-        const present=new Set(units.map(u=>u.id));
-        for (const id of positions.keys()) if(!present.has(id))positions.delete(id);
-        for (const unit of units) {
-          const old=positions.get(unit.id);
-          let pose=old?.pose || defaultPose(unit);
-          if (old && (old.side!==unit.side || old.definitionId!==unit.definitionId)) pose=defaultPose(unit);
-          else if(old && (old.q!==unit.q || old.r!==unit.r)) pose=towards(old,unit,pose);
-          positions.set(unit.id,{q:unit.q,r:unit.r,side:unit.side,definitionId:unit.definitionId,pose});
-        }
-        const p=options.pending;
-        if(p) {
-          const a=units.find(u=>u.id===p.a);
-          const targetId=p.replacementTargetId || (p.guard && p.guardUnitId) || p.d;
-          const d=units.find(u=>u.id===targetId);
-          if(a && d && a.id!==d.id) {
-            positions.get(a.id).pose=towards(a,d,positions.get(a.id).pose);
-            positions.get(d.id).pose=towards(d,a,positions.get(d.id).pose);
-          }
-        }
-      },
-      pose(unit) {return valid(unit.visualFacing)?unit.visualFacing:(positions.get(unit.id)?.pose || defaultPose(unit));},
-      clear() {positions.clear();key=undefined;}
-    };
-  }
+  // The camera is fixed above the board: blue shows its back, red its front.
+  // Crossing the board, attacking or reconnecting must not rotate the drawing.
+  const pose = unit => faction(unit)==='blue'?'back':'front';
+  const troopId = unit => 'TROOP_'+String(unit.kind).toUpperCase()+'_'+faction(unit).toUpperCase();
   function create(id,pose,point,options={}) {
     const entry=get(id);
     if(!entry)return null;
@@ -5038,13 +5159,12 @@ const HeroBoardVisuals = (() => {
     tile.appendChild(image);root.appendChild(tile);
     return {root,image,entry,pose:name};
   }
-  return Object.freeze({directions,get,direction,createFacingController,create});
+  return Object.freeze({directions,get,faction,pose,troopId,create});
 })();
 
 ;
 
-// Hero facing is derived from visible positions; it never changes Core rules.
-const HeroBoardFacing=typeof HeroBoardVisuals==='undefined'?null:HeroBoardVisuals.createFacingController();
+// Team facing uses the fixed overhead camera; it never changes Core rules.
 const TroopVisual={
   source(unit){
     if(unit.hero){
@@ -5063,6 +5183,10 @@ const TroopVisual={
     const sides={1:'blue',2:'red',3:'gold',4:'silver'};
     const requested=unit.visualFaction==='gray'?'silver':unit.visualFaction;
     const faction=['red','blue','gold','silver'].includes(requested)?requested:(sides[unit.side]||'red');
+    if(typeof HeroBoardVisuals!=='undefined'){
+      const camera=HeroBoardVisuals.get(HeroBoardVisuals.troopId(unit));
+      if(camera)return camera.source;
+    }
     return './assets/troops-compact-dw-style-01/'+unit.kind+'-'+faction+'.webp';
   },
   render(group,unit,cell,symbol){
@@ -5081,14 +5205,15 @@ const TroopVisual={
     image.setAttribute('width',frame.width);image.setAttribute('height',frame.height);
     image.setAttribute('aria-label',unitSpec(unit).name);
     image.setAttribute('pointer-events','none');symbol.setAttribute('visibility','hidden');
-    const camera=unit.hero&&HeroBoardFacing?HeroBoardVisuals.create(unit.definitionId,HeroBoardFacing.pose(unit),{x:cell.x,y:cell.y+18},{className:'heroBoardSprite heroFacingSprite',label:unitSpec(unit).name}):null;
+    const camera=typeof HeroBoardVisuals!=='undefined'?HeroBoardVisuals.create(unit.hero?unit.definitionId:HeroBoardVisuals.troopId(unit),HeroBoardVisuals.pose(unit),{x:cell.x,y:cell.y+18},{className:unit.hero?'heroBoardSprite heroFacingSprite':'troopSprite troopFacingSprite',label:unitSpec(unit).name}):null;
     if(camera){
       group.appendChild(camera.root);
       camera.image.addEventListener('error',()=>{
         camera.root.setAttribute('visibility','hidden');
         symbol.setAttribute('visibility','visible');
-        const hero=HeroRegistry.get(unit.definitionId),asset=AssetRegistry.get(hero.assets.token);
-        image.setAttribute('href',asset.source);image.setAttribute('class','heroBoardFallback');
+        const hero=unit.hero?HeroRegistry.get(unit.definitionId):null,asset=hero?AssetRegistry.get(hero.assets.token):null;
+        const fallback=asset?asset.source:'./assets/troops-compact-dw-style-01/'+unit.kind+'-'+HeroBoardVisuals.faction(unit)+'.webp';
+        image.setAttribute('href',fallback);image.setAttribute('class',unit.hero?'heroBoardFallback':'troopBoardFallback');
         image.addEventListener('load',()=>symbol.setAttribute('visibility','hidden'),{once:true});
         group.insertBefore(image,camera.root.nextSibling);
       },{once:true});
@@ -5135,7 +5260,6 @@ const CoreBoardRenderer = {
 
   render(){
     boardSvg.innerHTML="";
-    if(HeroBoardFacing)HeroBoardFacing.update(S.units,{key:S.matchSession?.matchId||S.selectedMode,pending:S.pending});
 
     // BASE HEX LAYER
     for(const cell of cells){

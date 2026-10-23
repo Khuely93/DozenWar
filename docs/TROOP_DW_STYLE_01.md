@@ -1,5 +1,27 @@
 # DW-STYLE-01 soldier board visuals
 
+## v1.71.1 — Fixed overhead blue/red pairs
+
+The user requested an elevated camera: blue shows its back, red its front.
+`assets/troops-camera-team/` now supplies one transparent 1024 × 1536 WebP atlas
+with six figures: infantry, cavalry and hooded crossbowman in blue/back and
+red/front pairs. Target camera elevation is 60 degrees above ground; these
+illustrations are not calibrated 3D renders. Helmet/hood tops, shoulder planes
+and the horse back are visible, with foreshortened bodies.
+
+The shared renderer clips each figure using manifest bounds and a foot anchor,
+keeping the 86-unit standing / 98-unit cavalry frame. A single ~236 KB atlas
+serves all six figures. Both clients use side 1 blue/back and side 2 red/front.
+Facing stays fixed through moves, attacks and reconnects. Existing gold/silver
+variants remain available as static art, and old blue/red assets are retained
+as image-error fallbacks.
+
+See [in-game comparison](../visual-previews/team-camera/ingame-blue-back-red-front.png)
+and [source sheet](../visual-previews/team-camera/troops-blue-back-red-front.png).
+
+## Previous compact set (retained for gold/silver and fallback)
+
+
 From v1.65.0 the user approved new compact designs specifically for the board,
 replacing the detailed full-body illustrations. Infantry keeps its sword and
 shield, cavalry the mounted diagonal spear, and the hooded crossbowman its nỏ.
