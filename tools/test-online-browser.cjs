@@ -39,6 +39,7 @@ const { chromium } = require("playwright"),
       await p.goto(base + "/online/");
       await p.getByText("Đã kết nối", { exact: true }).waitFor();
     }
+    await pages[0].screenshot({ path: path.join(screens, "lobby.png"), fullPage: true });
     await pages[0]
       .getByRole("button", { name: "Tạo phòng", exact: true })
       .click();
@@ -51,6 +52,8 @@ const { chromium } = require("playwright"),
       .getByRole("button", { name: "Vào phòng", exact: true })
       .click();
     await pages[1].locator("#roomLabel").waitFor();
+    await pages[0].locator(".dwRoomPreview").waitFor();
+    await pages[0].screenshot({ path: path.join(screens, "room-ready.png"), fullPage: true });
     async function until(predicate) {
       const end = Date.now() + 15000;
       while (!predicate()) {

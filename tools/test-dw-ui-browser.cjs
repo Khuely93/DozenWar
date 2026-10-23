@@ -9,7 +9,7 @@ const served = path.join(root, 'dist');
 const output = path.join(root, 'work/dw-ui');
 const mime = { '.html': 'text/html', '.js': 'text/javascript', '.css': 'text/css', '.webp': 'image/webp', '.png': 'image/png', '.json': 'application/json' };
 const cases = fixtures.offline.filter(([id]) => !['41', '42', '43', '67', '68', '69'].includes(id.slice(0, 2)));
-const capture = new Set(['01-mode', '15-team-selected', '19-deploy-complete', '21-hero-selected', '28-equipment-dialog', '33-dice-ward', '36-win', '71-training-unit']);
+const capture = new Set(['01-mode', '04-play-hub', '10-ready', '12-dice-result', '13-deal', '15-team-selected', '19-deploy-complete', '21-hero-selected', '28-equipment-dialog', '33-dice-ward', '36-win', '37-lose', '38-draw', '39-ranked-result', '44-equipment-counter', '47-equipment-steal', '48-post-hit', '71-training-unit', '72-training-equipment']);
 async function run() {
   fs.mkdirSync(output, { recursive: true });
   const server = http.createServer((req, res) => {
@@ -65,6 +65,16 @@ async function run() {
           assert.equal(await page.locator('#confirmTeam').isEnabled(), false, 'Incomplete formation cannot confirm');
           await page.getByRole('button', { name: 'Thêm Bộ binh', exact: true }).click();
           assert.equal(await page.locator('#confirmTeam').isEnabled(), true);
+          const teamBefore = await page.evaluate(() => JSON.stringify(S.teams));
+          await page.getByRole('button', { name: 'XEM KỸ NĂNG HERO', exact: true }).click();
+          await page.locator('.dwConfirmDialog[open]').waitFor();
+          assert.match(await page.locator('#dwConfirmTitle').textContent(), /Kazu/);
+          await page.locator('.dwConfirmDialog').getByRole('button', { name: 'ĐÓNG', exact: true }).click();
+          assert.equal(await page.evaluate(() => JSON.stringify(S.teams)), teamBefore, 'Reading Hero skills preserves the formation');
+        }
+        if (id === '71-training-unit') {
+          await page.getByLabel('Hero hoặc lính', { exact: true }).selectOption('HERO_INF_KAZU');
+          await page.locator('.dwTrainingPreview img[alt="Kazu"]').waitFor();
         }
         if (id === '21-hero-selected') {
           if (viewport.width < 900) {

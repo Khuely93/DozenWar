@@ -1,0 +1,120 @@
+{
+  "version": "1.73.0",
+  "kind": "Actual production browser captures; fixture match states",
+  "entries": [
+    {
+      "id": "01-mode",
+      "title": "Chọn chế độ chơi",
+      "desktop": "01-mode-1920.webp",
+      "mobile": "01-mode-390.webp"
+    },
+    {
+      "id": "04-play-hub",
+      "title": "Chọn loại trận AI / Thường / Xếp hạng",
+      "desktop": "04-play-hub-1920.webp",
+      "mobile": "04-play-hub-390.webp"
+    },
+    {
+      "id": "10-ready",
+      "title": "Sẵn sàng trước trận",
+      "desktop": "10-ready-1920.webp",
+      "mobile": "10-ready-390.webp"
+    },
+    {
+      "id": "12-dice-result",
+      "title": "Kết quả tung xúc xắc",
+      "desktop": "12-dice-result-1920.webp",
+      "mobile": "12-dice-result-390.webp"
+    },
+    {
+      "id": "13-deal",
+      "title": "Nhận bài trang bị",
+      "desktop": "13-deal-1920.webp",
+      "mobile": "13-deal-390.webp"
+    },
+    {
+      "id": "15-team-selected",
+      "title": "Chọn Hero và lính — đủ 5 quân",
+      "desktop": "15-team-selected-1920.webp",
+      "mobile": "15-team-selected-390.webp"
+    },
+    {
+      "id": "19-deploy-complete",
+      "title": "Đã xếp đủ quân — chờ xác nhận",
+      "desktop": "19-deploy-complete-1920.webp",
+      "mobile": "19-deploy-complete-390.webp"
+    },
+    {
+      "id": "21-hero-selected",
+      "title": "Ingame — chọn Hero và vùng di chuyển",
+      "desktop": "21-hero-selected-1920.webp",
+      "mobile": "21-hero-selected-390.webp"
+    },
+    {
+      "id": "28-equipment-dialog",
+      "title": "Hộp thoại chọn trang bị tấn công",
+      "desktop": "28-equipment-dialog-1920.webp",
+      "mobile": "28-equipment-dialog-390.webp"
+    },
+    {
+      "id": "33-dice-ward",
+      "title": "Phòng thủ — chọn hai số xúc xắc",
+      "desktop": "33-dice-ward-1920.webp",
+      "mobile": "33-dice-ward-390.webp"
+    },
+    {
+      "id": "36-win",
+      "title": "Cửa sổ chiến thắng",
+      "desktop": "36-win-1920.webp",
+      "mobile": "36-win-390.webp"
+    },
+    {
+      "id": "37-lose",
+      "title": "Cửa sổ thất bại",
+      "desktop": "37-lose-1920.webp",
+      "mobile": "37-lose-390.webp"
+    },
+    {
+      "id": "38-draw",
+      "title": "Cửa sổ hòa trận",
+      "desktop": "38-draw-1920.webp",
+      "mobile": "38-draw-390.webp"
+    },
+    {
+      "id": "39-ranked-result",
+      "title": "Kết quả xếp hạng và thay đổi Elo",
+      "desktop": "39-ranked-result-1920.webp",
+      "mobile": "39-ranked-result-390.webp"
+    },
+    {
+      "id": "44-equipment-counter",
+      "title": "Phản ứng hủy trang bị đối thủ",
+      "desktop": "44-equipment-counter-1920.webp",
+      "mobile": "44-equipment-counter-390.webp"
+    },
+    {
+      "id": "47-equipment-steal",
+      "title": "Cướp trang bị — chọn bài đối thủ",
+      "desktop": "47-equipment-steal-1920.webp",
+      "mobile": "47-equipment-steal-390.webp"
+    },
+    {
+      "id": "48-post-hit",
+      "title": "Phản sát thương sau khi nhận đòn",
+      "desktop": "48-post-hit-1920.webp",
+      "mobile": "48-post-hit-390.webp"
+    },
+    {
+      "id": "71-training-unit",
+      "title": "Đấu tập — thêm Hero hoặc lính",
+      "desktop": "71-training-unit-1920.webp",
+      "mobile": "71-training-unit-390.webp"
+    },
+    {
+      "id": "72-training-equipment",
+      "title": "Đấu tập — thêm trang bị",
+      "desktop": "72-training-equipment-1920.webp",
+      "mobile": "72-training-equipment-390.webp"
+    }
+  ]
+}

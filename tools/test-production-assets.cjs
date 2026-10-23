@@ -92,5 +92,17 @@ for (const [file, digest] of [
 ]) assert.equal(require('node:crypto').createHash('sha256').update(fs.readFileSync(path.join(root, 'assets/ui/dw-style-01', file))).digest('hex'), digest, 'Unmodified approved UI artwork: ' + file);
 assert(read('dist/index.html').includes('concept-fidelity.css'));
 assert(read('dist/online/index.html').includes('concept-skins.js'));
+const importedUI = JSON.parse(read('assets/ui/dw-style-01/import-manifest.json'));
+assert.equal(importedUI.sheets.length, 14, 'All three uploaded UI packs are installed');
+for (const entry of importedUI.sheets) {
+  const bytes = fs.readFileSync(path.join(root, 'assets/ui/dw-style-01', entry.file));
+  assert.equal(require('node:crypto').createHash('sha256').update(bytes).digest('hex'), entry.sha256, 'Imported UI integrity: ' + entry.key);
+  assert.deepEqual(fs.readFileSync(path.join(root, 'dist/assets/ui/dw-style-01', entry.file)), bytes);
+  assert.equal(entry.decodedPixelsIdentical, true);
+}
+for (const file of ['pack.js','pack-runtime.js','pack.css','import-manifest.json']) assert.deepEqual(fs.readFileSync(path.join(root, 'dist/assets/ui/dw-style-01', file)),fs.readFileSync(path.join(root, 'assets/ui/dw-style-01', file)));
+assert(read('dist/index.html').includes('pack.css'));
+assert(read('dist/online/index.html').includes('pack.css'));
+assert(read('dist/online/index.html').includes('pack-runtime.js'));
 for (const relative of Object.values(built.bundles)) assert.ok(fs.existsSync(path.join(root, 'dist', relative)), 'Missing bundle: ' + relative);
 console.log('PASS | 12 compact DW-STYLE-01 troop colors (' + checked + ' legacy facing routes), 12 Hero board visuals, production bytes, version and bundles');

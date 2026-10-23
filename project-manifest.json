@@ -1,8 +1,8 @@
 {
   "project": "DOZEN WAR II",
-  "version": "1.72.1",
+  "version": "1.73.0",
   "phase": "DUEL_RULE_MODE_1VS1_180_30",
-  "baseline": "v1.72.1 DW-STYLE-01 UI across menus, setup, battle and online",
+  "baseline": "v1.73.0 integrates all three uploaded DW-STYLE-01 UI packs",
   "entry": "index.html",
   "styles": "styles/main.css",
   "runtimeOrder": [
@@ -43,8 +43,10 @@
     "src/ui/direct-board-flow-runtime.js",
     "src/ui/direct-defense-flow-runtime.js",
     "src/ui/defense-feedback-runtime.js",
+    "assets/ui/dw-style-01/pack.js",
     "assets/ui/dw-style-01/concept-skins.js",
     "src/presentation/dw-ui-runtime.js",
+    "assets/ui/dw-style-01/pack-runtime.js",
     "src/bootstrap.js"
   ],
   "extractedLayers": [

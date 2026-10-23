@@ -97,6 +97,7 @@ const DWStyleUI = {
     const actions = this.element('div', 'dwModeActions');
     duel.before(actions);
     actions.append(duel, document.getElementById('trainingModeButton'));
+    document.querySelector('.dwTroopPicker').append(document.getElementById('confirmTeam'));
     window.addEventListener('resize', () => this.sync());
     this.sync();
   },
@@ -125,6 +126,7 @@ const DWStyleUI = {
     if (!panel) return;
     const hero = ContentViews.hero(tempHeroDefinitionId);
     if (!hero) return;
+    ShellDOM.team.title.textContent = 'CHỌN ĐỘI HÌNH · P' + S.selecting;
     panel.replaceChildren(this.element('h3', '', 'THÔNG TIN HERO'));
     const source = hero.assets?.portrait && AssetResolver.source(hero.assets.portrait);
     if (source) {
@@ -143,6 +145,16 @@ const DWStyleUI = {
       skillList.append(row);
     }
     panel.append(skillList);
+    panel.append(this.button('XEM KỸ NĂNG HERO', () => {
+      const dialog = this.confirmDialog;
+      dialog.replaceChildren();
+      const title = this.element('h2', '', hero.name + ' · KỸ NĂNG'); title.id = 'dwConfirmTitle'; dialog.append(title);
+      for (const id of hero.skillIds || []) {
+        const skill = ContentViews.skill(id); if (!skill) continue;
+        dialog.append(this.element('h3', '', skill.name + ' · ' + '★'.repeat(skill.star || 0)),this.element('p', '', skill.description));
+      }
+      dialog.append(this.button('ĐÓNG', () => dialog.close())); dialog.showModal();
+    }));
     const total = Object.values(tempTroops).reduce((a, b) => a + b, 0);
     ShellDOM.team.confirmButton.disabled = total !== 5;
     for (const button of ShellDOM.team.troopChoices.querySelectorAll('button')) {
@@ -166,19 +178,21 @@ const DWStyleUI = {
     for (const [kind, count] of Object.entries(team.troops)) for (let i = 0; i < count; i++) {
       entries.push({ name: TROOPS[kind].name, source: './assets/troops-compact-dw-style-01/' + kind + '-' + (side === 1 ? 'blue' : 'red') + '.webp', placed: own.filter(unit => !unit.hero && unit.kind === kind).length > i });
     }
-    for (const entry of entries) {
+    for (const entry of entries.sort((a,b) => Number(a.placed) - Number(b.placed))) {
       const tile = this.element('div', 'dwDeployUnit' + (entry.placed ? ' placed' : ''));
       if (entry.source) { const image = this.element('img'); image.src = entry.source; image.alt = ''; tile.append(image); }
       tile.append(this.element('span', '', (entry.placed ? '✓ ' : '') + entry.name));
       list.append(tile);
     }
-    this.tray.append(list, this.element('p', '', 'Chạm ô trống để đặt quân. Kéo quân đã đặt để đổi vị trí.'));
+    this.tray.append(list, this.element('p', '', 'Chọn ô trống để đặt quân. Quân có dấu ✓ đã được xếp.'));
     mainBtn.disabled = own.length < 6 || side === S.botSide;
     if (window.innerWidth < 900) {
       if (this.tray.parentElement !== this.dock.parentElement) this.dock.before(this.tray);
     } else if (this.tray.parentElement !== DuelBoardLayout.stage) DuelBoardLayout.stage.append(this.tray);
   },
   resultPortraits() {
+    const popup = document.querySelector('.gameOverPopup');
+    if (popup) popup.dataset.ranked = String(!!S.isRanked);
     for (const side of [1, 2]) {
       const card = document.getElementById('playerResult' + side);
       const hero = S.units?.find(unit => unit.hero && unit.side === side);
@@ -199,6 +213,7 @@ const DWStyleUI = {
     document.body.classList.toggle('dwTrainingLayout', match && TrainingMode.active());
     document.body.dataset.uiPhase = S.phase;
     document.body.dataset.uiSide = String(S.phase === 'deploy' ? S.deployOrder?.[S.deployIndex] || 1 : S.battleSide || 1);
+    CombatFlowUI.dialog.dataset.uiKind = CombatFlowUI.state?.kind || '';
     const names = { mode: 'CHỌN CHẾ ĐỘ', playmenu: 'CHỌN LOẠI TRẬN', ready: 'SẴN SÀNG', dice: 'TUNG XÚC XẮC', deal: 'NHẬN TRANG BỊ', team: 'CHỌN ĐỘI HÌNH', deploy: 'TRIỂN KHAI', battle: 'TRẬN ĐẤU' };
     phaseLabel.textContent = names[S.phase] || '';
     const order = ['ready', 'dice', 'deal', 'team', 'deploy'];

@@ -1,7 +1,7 @@
 {
   "style": "DW-STYLE-01",
   "status": "APPROVED_FOR_GAME",
-  "usage": "Approved concept atlas rendered directly in browser slices. HTML labels and gameplay remain live. Legacy generated surfaces retained as fallbacks.",
+  "usage": "All three user-uploaded DW-STYLE-01 UI packs. Per-screen frames, illustrations and live HTML controls. See import-manifest.json for originals and pixel verification.",
   "assets": [
     {
       "name": "panel",
@@ -57,12 +57,7 @@
     }
   ],
   "fidelity": {
-    "status": "IN_PROGRESS",
-    "matched": "Original artwork windows replace regenerated frame/button skins. Mode selection proportions adjusted to reference.",
-    "remaining": [
-      "Reference fonts and text-free backgrounds are not available as separate approved files.",
-      "Live desktop/mobile layouts are responsive and do not reproduce every concept board pixel.",
-      "The remaining screen layouts still need individual visual matching."
-    ]
+    "status": "INTEGRATED",
+    "note": "Artwork regions come from all 14 approved boards. Dynamic text and responsive layout remain HTML; no claim of identical pixels across viewport sizes."
   }
 }

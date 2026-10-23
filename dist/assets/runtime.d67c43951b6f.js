@@ -7116,6 +7116,90 @@ const _feedbackReset=resetMatchState;
 resetMatchState=function(){DefenseFeedback.clear();DefenseFeedback.seenWard=new WeakSet();return _feedbackReset()};
 
 ;
+/* Regions of the original uploaded concept boards. All labels/data stay live. */
+window.DWUIPack = (() => {
+  const keys = ['00-mode','01-desktop-hud','02-hero-skills-equipment','03-defense-results-dialogs','04-mobile-ingame','05-play-hub','06-online-lobby-room','07-ready-dice-deal','08-hero-team-selection','09-deployment','10-special-skills','11-equipment-reactions-ranked','12-training-system-kit','13-mobile-pregame'];
+  const base = new URL((document.body.classList.contains('dwOnline') ? '../' : './') + 'assets/ui/dw-style-01/sheets/', document.baseURI);
+  const sources = keys.map((key, index) => ({ url: new URL(key + '.webp', base).href, width: [4,13].includes(index) ? 1536 : index === 10 ? 1673 : 1672, height: [4,13].includes(index) ? 1024 : index === 10 ? 940 : 941 }));
+  const frame = (sheet, rect, cuts = [24,12,24,20], cap = [28,20]) => ({ sheet, rect, cuts, cap });
+  const frames = {
+    hub: frame(5,[254,68,1240,515],[54,14,54,26],[48,24]),
+    hubCard: frame(5,[313,170,344,375]),
+    lobby: frame(6,[101,157,708,580],[40,14,40,24],[38,22]),
+    room: frame(6,[820,158,785,578],[40,14,40,24],[38,22]),
+    ready: frame(7,[58,117,503,606]),
+    readyPlayer: frame(7,[85,308,450,126],[18,8,18,12],[22,12]),
+    dice: frame(7,[581,117,515,606]),
+    die: frame(7,[604,223,208,229],[18,8,18,18],[22,16]),
+    deal: frame(7,[1118,118,514,604]),
+    team: frame(8,[151,77,1370,657],[54,14,54,26],[48,24]),
+    deploy: frame(9,[1260,104,384,545]),
+    hero: frame(2,[25,83,826,345]),
+    equipment: frame(2,[24,449,890,464]),
+    defense: frame(3,[108,142,665,358]),
+    confirm: frame(3,[911,176,321,197]),
+    result: frame(3,[82,612,712,295]),
+    special: frame(10,[34,94,522,391]),
+    reaction: frame(11,[76,82,767,401]),
+    ranked: frame(11,[908,505,727,396]),
+    training: frame(12,[755,83,447,404]),
+    mobileBattle: frame(4,[105,81,420,817],[15,12,15,18],[20,18]),
+    mobileTeam: frame(13,[559,70,406,746],[18,12,18,18],[24,18]),
+    mobileRoom: frame(13,[104,69,437,747],[18,12,18,18],[24,18])
+  };
+  const parts = {
+    logo: [0,[151,7,342,59]],
+    sceneLeft: [0,[0,82,202,551]], sceneRight: [0,[1465,82,207,551]],
+    ai: [5,[382,181,224,140]], casual: [5,[768,181,236,140]], ranked: [5,[1158,180,226,142]],
+    win: [3,[303,557,260,73]], lose: [3,[1043,555,198,73]], draw: [3,[1434,626,170,61]],
+    shield: [2,[909,165,121,113]], chain: [2,[1068,163,128,115]], dragon: [2,[1225,163,127,115]],
+    cardBack: [7,[943,762,72,104]],
+    tabHero: [4,[224,939,31,26]], tabSkills: [4,[306,835,29,30]], tabCards: [4,[896,837,22,30]]
+  };
+  function piece(source, rect, className = '') {
+    const node = document.createElement('span');
+    node.className = 'dwPackPiece ' + className;
+    node.setAttribute('aria-hidden','true');
+    const [x,y,w,h] = rect;
+    node.style.backgroundImage = `url("${source.url}")`;
+    node.style.backgroundSize = `${source.width / w * 100}% ${source.height / h * 100}%`;
+    node.style.backgroundPosition = `${x / (source.width - w) * 100}% ${y / (source.height - h) * 100}%`;
+    node.style.aspectRatio = w + '/' + h;
+    return node;
+  }
+  function sprite(key, className) { const [sheet,rect] = parts[key]; return piece(sources[sheet],rect,className); }
+  function frameFor(host) {
+    const mobile = innerWidth < 900;
+    if (host.matches('.dwConfirmDialog,.modeConfirmPopup')) return 'confirm';
+    if (host.matches('.trainingDialog')) return 'training';
+    if (host.matches('.heroSkillPanel')) return 'special';
+    if (host.matches('.combatEquipmentDialog')) return host.dataset.uiKind === 'post' || host.dataset.uiKind === 'reaction' ? 'reaction' : 'equipment';
+    if (host.matches('.directDefensePanel,.defensePopup')) return 'defense';
+    if (host.matches('.gameOverPopup')) return host.dataset.ranked === 'true' ? 'ranked' : 'result';
+    if (host.matches('.dwDeploymentTray,.deployMenu')) return 'deploy';
+    if (host.matches('.playHubWrap')) return 'hub';
+    if (host.matches('.playHubCard')) return 'hubCard';
+    if (host.matches('.readyWrap')) return 'ready';
+    if (host.matches('.readyCard,.onlinePlayerSlot')) return 'readyPlayer';
+    if (host.matches('.diceWrap')) return 'dice';
+    if (host.matches('.dieBox')) return 'die';
+    if (host.matches('.dealWrap')) return 'deal';
+    if (host.matches('.selectWrap')) return mobile ? 'mobileTeam' : 'team';
+    if (host.matches('.dwTeamHero')) return 'hero';
+    if (host.matches('.dwOnline #lobby')) return mobile ? 'mobileRoom' : 'lobby';
+    if (host.matches('.dwOnline .onlineResult')) return 'result';
+    if (host.matches('.dwOnline #room[data-phase="team"] #setup')) return mobile ? 'mobileTeam' : 'team';
+    if (host.matches('.dwOnline #room[data-phase="deploy"] #setup')) return 'deploy';
+    if (host.matches('.dwOnline #setup')) return 'room';
+    if (host.matches('.dwOnline #controls')) return mobile ? 'mobileBattle' : 'special';
+    if (host.matches('.dwOnline #room')) return mobile ? 'mobileRoom' : 'room';
+    if (mobile && host.matches('.duelControlDock > .box,.onlineActorPanel,.onlineHandPanel')) return 'mobileBattle';
+    return null;
+  }
+  return { sources,frames,parts,piece,sprite,frameFor };
+})();
+
+;
 /* Render windows of the approved board directly. No repainting or hue filters.
  * Nine slices preserve corner geometry while HTML labels remain live/selectable.
  * Source coordinates are in the original 1672 x 941 concept, not a resized copy.
@@ -7131,8 +7215,9 @@ resetMatchState=function(){DefenseFeedback.clear();DefenseFeedback.seenWard=new 
     node.className = 'dwAtlasPiece';
     const [x, y, width, height] = rect;
     node.style.backgroundImage = `url("${source}")`;
-    node.style.backgroundSize = `${1672 / width * 100}% ${941 / height * 100}%`;
-    node.style.backgroundPosition = `${x / (1672 - width) * 100}% ${y / (941 - height) * 100}%`;
+    const dimensions = window.DWUIPack?.sources.find(item => item.url === source) || {width:1672,height:941};
+    node.style.backgroundSize = `${dimensions.width / width * 100}% ${dimensions.height / height * 100}%`;
+    node.style.backgroundPosition = `${x / (dimensions.width - width) * 100}% ${y / (dimensions.height - height) * 100}%`;
     return node;
   }
   function skin(rect, cuts, cap, state = 'normal', blank, source = atlas) {
@@ -7162,7 +7247,8 @@ resetMatchState=function(){DefenseFeedback.clear();DefenseFeedback.seenWard=new 
   function decorate(host) {
     const button = host.matches(buttonsSelector);
     const unitAction = host.id === 'moveBtn' ? 'move' : host.id === 'attackBtn' ? 'attack' : host.dataset.uiAction === 'unit' ? (host.textContent.startsWith('Di chuyển') ? 'move' : 'attack') : null;
-    const kind = button ? (host.disabled ? 'disabled' : unitAction || (host.matches('.gold,[aria-selected="true"]') ? 'gold' : host.matches('.primary,.good') ? 'blue' : 'iron')) : host.matches('.dockHero,.dockSkills,.dockCards,.onlineActorPanel,.onlineHandPanel') ? 'hud' : host.matches(outer) ? 'panel' : host.matches('.locked') ? 'locked' : 'card';
+    const packFrame = !button && window.DWUIPack?.frameFor(host);
+    const kind = button ? (host.disabled ? 'disabled' : unitAction || (host.matches('.gold,[aria-selected="true"]') ? 'gold' : host.matches('.primary,.good') ? 'blue' : 'iron')) : packFrame ? 'pack:' + packFrame : host.matches('.dockHero,.dockSkills,.dockCards,.onlineActorPanel,.onlineHandPanel') ? 'hud' : host.matches(outer) ? 'panel' : host.matches('.locked') ? 'locked' : 'card';
     if (host.dataset.dwArtwork === kind && host.querySelector(':scope > .dwAtlasSkin')) return;
     for (const child of host.querySelectorAll(':scope > .dwAtlasSkin,:scope > .dwAtlasCrest')) child.remove();
     host.dataset.dwArtwork = kind;
@@ -7175,6 +7261,15 @@ resetMatchState=function(){DefenseFeedback.clear();DefenseFeedback.seenWard=new 
         const [x, y, w] = rect;
         host.append(skin(rect, [10, 6, 10, 6], [11, 6], ['normal', 'hover', 'pressed'][i], [x + 24, y + 7, w - 48, 2], unitAction && !host.disabled ? hudAtlas : atlas));
       });
+    } else if (packFrame) {
+      const config = DWUIPack.frames[packFrame];
+      const frame = skin(config.rect, config.cuts, config.cap, 'normal', undefined, DWUIPack.sources[config.sheet].url);
+      // Long edges use text-free strips. Some source boards print labels or
+      // banners near the edge; those must never be stretched into live UI.
+      frame.children[1].replaceWith(piece([400,76,200,12]));
+      frame.children[4].replaceWith(piece([80,736,230,92]));
+      frame.children[7].replaceWith(piece([90,858,216,16]));
+      host.append(frame);
     } else if (kind === 'hud') {
       host.append(skin([1007, 829, 626, 74], [25, 10, 25, 10], [23, 12], 'normal', [1033, 849, 155, 30], hudAtlas));
     } else {
@@ -7205,7 +7300,8 @@ resetMatchState=function(){DefenseFeedback.clear();DefenseFeedback.seenWard=new 
     if (scheduled || !records.some(record => record.type === 'attributes' || [...record.addedNodes, ...record.removedNodes].some(node => !(node.nodeType === 1 && node.classList.contains('dwAtlasSkin')) && !(node.nodeType === 1 && node.classList.contains('dwAtlasCrest'))))) return;
     scheduled = true;
     requestAnimationFrame(update);
-  }).observe(document.body, { childList: true, subtree: true, attributes: true, attributeFilter: ['disabled', 'class', 'aria-selected'] });
+  }).observe(document.body, { childList: true, subtree: true, attributes: true, attributeFilter: ['disabled', 'class', 'aria-selected', 'data-ui-kind', 'data-ranked'] });
+  window.addEventListener('resize', () => { if (!scheduled) { scheduled = true; requestAnimationFrame(update); } });
   update();
 })();
 
@@ -7309,6 +7405,7 @@ const DWStyleUI = {
     const actions = this.element('div', 'dwModeActions');
     duel.before(actions);
     actions.append(duel, document.getElementById('trainingModeButton'));
+    document.querySelector('.dwTroopPicker').append(document.getElementById('confirmTeam'));
     window.addEventListener('resize', () => this.sync());
     this.sync();
   },
@@ -7337,6 +7434,7 @@ const DWStyleUI = {
     if (!panel) return;
     const hero = ContentViews.hero(tempHeroDefinitionId);
     if (!hero) return;
+    ShellDOM.team.title.textContent = 'CHỌN ĐỘI HÌNH · P' + S.selecting;
     panel.replaceChildren(this.element('h3', '', 'THÔNG TIN HERO'));
     const source = hero.assets?.portrait && AssetResolver.source(hero.assets.portrait);
     if (source) {
@@ -7355,6 +7453,16 @@ const DWStyleUI = {
       skillList.append(row);
     }
     panel.append(skillList);
+    panel.append(this.button('XEM KỸ NĂNG HERO', () => {
+      const dialog = this.confirmDialog;
+      dialog.replaceChildren();
+      const title = this.element('h2', '', hero.name + ' · KỸ NĂNG'); title.id = 'dwConfirmTitle'; dialog.append(title);
+      for (const id of hero.skillIds || []) {
+        const skill = ContentViews.skill(id); if (!skill) continue;
+        dialog.append(this.element('h3', '', skill.name + ' · ' + '★'.repeat(skill.star || 0)),this.element('p', '', skill.description));
+      }
+      dialog.append(this.button('ĐÓNG', () => dialog.close())); dialog.showModal();
+    }));
     const total = Object.values(tempTroops).reduce((a, b) => a + b, 0);
     ShellDOM.team.confirmButton.disabled = total !== 5;
     for (const button of ShellDOM.team.troopChoices.querySelectorAll('button')) {
@@ -7378,19 +7486,21 @@ const DWStyleUI = {
     for (const [kind, count] of Object.entries(team.troops)) for (let i = 0; i < count; i++) {
       entries.push({ name: TROOPS[kind].name, source: './assets/troops-compact-dw-style-01/' + kind + '-' + (side === 1 ? 'blue' : 'red') + '.webp', placed: own.filter(unit => !unit.hero && unit.kind === kind).length > i });
     }
-    for (const entry of entries) {
+    for (const entry of entries.sort((a,b) => Number(a.placed) - Number(b.placed))) {
       const tile = this.element('div', 'dwDeployUnit' + (entry.placed ? ' placed' : ''));
       if (entry.source) { const image = this.element('img'); image.src = entry.source; image.alt = ''; tile.append(image); }
       tile.append(this.element('span', '', (entry.placed ? '✓ ' : '') + entry.name));
       list.append(tile);
     }
-    this.tray.append(list, this.element('p', '', 'Chạm ô trống để đặt quân. Kéo quân đã đặt để đổi vị trí.'));
+    this.tray.append(list, this.element('p', '', 'Chọn ô trống để đặt quân. Quân có dấu ✓ đã được xếp.'));
     mainBtn.disabled = own.length < 6 || side === S.botSide;
     if (window.innerWidth < 900) {
       if (this.tray.parentElement !== this.dock.parentElement) this.dock.before(this.tray);
     } else if (this.tray.parentElement !== DuelBoardLayout.stage) DuelBoardLayout.stage.append(this.tray);
   },
   resultPortraits() {
+    const popup = document.querySelector('.gameOverPopup');
+    if (popup) popup.dataset.ranked = String(!!S.isRanked);
     for (const side of [1, 2]) {
       const card = document.getElementById('playerResult' + side);
       const hero = S.units?.find(unit => unit.hero && unit.side === side);
@@ -7411,6 +7521,7 @@ const DWStyleUI = {
     document.body.classList.toggle('dwTrainingLayout', match && TrainingMode.active());
     document.body.dataset.uiPhase = S.phase;
     document.body.dataset.uiSide = String(S.phase === 'deploy' ? S.deployOrder?.[S.deployIndex] || 1 : S.battleSide || 1);
+    CombatFlowUI.dialog.dataset.uiKind = CombatFlowUI.state?.kind || '';
     const names = { mode: 'CHỌN CHẾ ĐỘ', playmenu: 'CHỌN LOẠI TRẬN', ready: 'SẴN SÀNG', dice: 'TUNG XÚC XẮC', deal: 'NHẬN TRANG BỊ', team: 'CHỌN ĐỘI HÌNH', deploy: 'TRIỂN KHAI', battle: 'TRẬN ĐẤU' };
     phaseLabel.textContent = names[S.phase] || '';
     const order = ['ready', 'dice', 'deal', 'team', 'deploy'];
@@ -7445,6 +7556,90 @@ renderTeamPicker = function (...args) { const result = _dwStyleTeam(...args); DW
 const _dwStyleResult = showGameOver;
 showGameOver = function (...args) { const result = _dwStyleResult(...args); DWStyleUI.resultPortraits(); return result; };
 DWStyleUI.mount();
+
+;
+/* Presentation only. Native controls retain their original handlers. */
+window.DWPackUI = (() => {
+  const pack = window.DWUIPack;
+  const prefix = document.body.classList.contains('dwOnline') ? '../' : './';
+  const add = (host, key, className, prepend = true) => {
+    if (!host || host.querySelector(':scope > .' + className)) return;
+    const node = pack.sprite(key,className);
+    if (prepend) host.prepend(node); else host.append(node);
+  };
+  function trainingPreview(dialog) {
+    const choice = dialog.querySelector('select[aria-label="Hero hoặc lính"],select[aria-label="Trang bị"]');
+    if (!choice || typeof ContentViews === 'undefined') return;
+    let preview = dialog.querySelector('.dwTrainingPreview');
+    if (!preview) { preview = document.createElement('figure'); preview.className = 'dwTrainingPreview'; dialog.append(preview); }
+    const id = choice.value;
+    if (preview.dataset.id === id) return;
+    preview.dataset.id = id;
+    const definition = ContentViews.hero(id) || ContentViews.unit(id) || ContentViews.equipment(id);
+    const asset = definition?.assets?.portrait || definition?.assets?.art;
+    const source = asset && AssetResolver.source(asset);
+    preview.replaceChildren();
+    if (source) { const image = document.createElement('img'); image.src = source; image.alt = definition.name; preview.append(image); }
+    const caption = document.createElement('figcaption'); caption.textContent = definition?.name || choice.selectedOptions[0]?.textContent || '';
+    preview.append(caption); dialog.classList.add('dwTrainingPreviewLayout');
+  }
+  function update() {
+    for (const brand of document.querySelectorAll('.brand')) add(brand,'logo','dwPackLogo');
+    if (!document.querySelector('.dwSceneLeft')) {
+      document.body.prepend(pack.sprite('sceneLeft','dwSceneLeft'),pack.sprite('sceneRight','dwSceneRight'));
+    }
+    const cards = document.querySelectorAll('.playHubCard');
+    ['ai','casual','ranked'].forEach((key,i) => add(cards[i],key,'dwHubIllustration'));
+    for (const tab of document.querySelectorAll('.dwDockTab')) {
+      const key = tab.dataset.tab || tab.dataset.onlineTab;
+      if (key) add(tab,{hero:'tabHero',skills:'tabSkills',cards:'tabCards'}[key],'dwTabIcon');
+    }
+    for (const node of document.querySelectorAll('.dwTeamSkill,.dockSkills .skill')) {
+      if (node.querySelector('.dwSkillIcon')) continue;
+      const title = node.textContent;
+      const key = /Khiên Rồng/.test(title) ? 'shield' : /Khóa Xích/.test(title) ? 'chain' : /Xích Quỷ/.test(title) ? 'dragon' : null;
+      if (key) add(node,key,'dwSkillIcon');
+    }
+    for (const title of document.querySelectorAll('.gameOverTitle,.onlineResult > h2')) {
+      const text = title.textContent;
+      const key = /HÒA|Hòa/.test(text) ? 'draw' : /THẤT|Thất|Thua|THUA/.test(text) ? 'lose' : 'win';
+      const existing = title.querySelector('.dwResultCrown');
+      if (existing?.dataset.outcome === key) continue;
+      existing?.remove();
+      const crown = pack.sprite(key,'dwResultCrown'); crown.dataset.outcome = key; title.prepend(crown);
+    }
+    for (const dialog of document.querySelectorAll('.trainingDialog[open]:not(.dwConfirmDialog)')) trainingPreview(dialog);
+    const room = document.querySelector('.dwOnline #room[data-phase="ready"] #setup');
+    if (room && !room.querySelector('.dwRoomPreview')) {
+      const image = document.createElement('img'); image.className = 'dwRoomPreview'; image.src = prefix + 'assets/map-gallery/map-compact-dw-style-01.webp'; image.alt = 'Chiến trường Đối Đầu'; room.append(image);
+    }
+    for (const button of document.querySelectorAll('.heroSkillPanel > .btn')) {
+      const text = button.textContent.trim();
+      const numeric = /^(✓\s*)?[1-6]$/.test(text);
+      if (numeric) {
+        const selected = text.startsWith('✓'); button.setAttribute('aria-pressed',String(selected)); button.classList.toggle('gold',selected);
+      } else if (text === 'XÁC NHẬN') button.classList.add('gold');
+    }
+    for (const list of document.querySelectorAll('.troopList')) {
+      for (const row of list.querySelectorAll(':scope > .choice')) {
+        const kind = row.querySelector('[data-k]')?.dataset.k;
+        const symbol = row.querySelector('.sym');
+        if (!kind || !symbol || symbol.querySelector('img')) continue;
+        const image = document.createElement('img'); image.src = prefix + 'assets/troops-compact-dw-style-01/' + kind + '-blue.webp'; image.alt = ''; symbol.replaceChildren(image);
+      }
+    }
+  }
+  let scheduled = false;
+  const decorative = node => node.nodeType === 1 && (node.matches('.dwPackPiece,.dwAtlasSkin,.dwAtlasCrest,.dwTrainingPreview') || node.closest('.dwTrainingPreview'));
+  new MutationObserver(records => {
+    if (scheduled || !records.some(record => record.type === 'attributes' || [...record.addedNodes,...record.removedNodes].some(node => !decorative(node)))) return;
+    scheduled = true;
+    requestAnimationFrame(() => { scheduled = false; update(); });
+  }).observe(document.body,{subtree:true,childList:true,attributes:true,attributeFilter:['open']});
+  document.addEventListener('change', event => { if (event.target.closest('.trainingDialog')) update(); });
+  update();
+  return { update };
+})();
 
 ;
 /* DOZEN WAR II v1.37 - Hero / Skill Content Readiness bootstrap boundary */

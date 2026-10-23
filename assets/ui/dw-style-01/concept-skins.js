@@ -13,8 +13,9 @@
     node.className = 'dwAtlasPiece';
     const [x, y, width, height] = rect;
     node.style.backgroundImage = `url("${source}")`;
-    node.style.backgroundSize = `${1672 / width * 100}% ${941 / height * 100}%`;
-    node.style.backgroundPosition = `${x / (1672 - width) * 100}% ${y / (941 - height) * 100}%`;
+    const dimensions = window.DWUIPack?.sources.find(item => item.url === source) || {width:1672,height:941};
+    node.style.backgroundSize = `${dimensions.width / width * 100}% ${dimensions.height / height * 100}%`;
+    node.style.backgroundPosition = `${x / (dimensions.width - width) * 100}% ${y / (dimensions.height - height) * 100}%`;
     return node;
   }
   function skin(rect, cuts, cap, state = 'normal', blank, source = atlas) {
@@ -44,7 +45,8 @@
   function decorate(host) {
     const button = host.matches(buttonsSelector);
     const unitAction = host.id === 'moveBtn' ? 'move' : host.id === 'attackBtn' ? 'attack' : host.dataset.uiAction === 'unit' ? (host.textContent.startsWith('Di chuyển') ? 'move' : 'attack') : null;
-    const kind = button ? (host.disabled ? 'disabled' : unitAction || (host.matches('.gold,[aria-selected="true"]') ? 'gold' : host.matches('.primary,.good') ? 'blue' : 'iron')) : host.matches('.dockHero,.dockSkills,.dockCards,.onlineActorPanel,.onlineHandPanel') ? 'hud' : host.matches(outer) ? 'panel' : host.matches('.locked') ? 'locked' : 'card';
+    const packFrame = !button && window.DWUIPack?.frameFor(host);
+    const kind = button ? (host.disabled ? 'disabled' : unitAction || (host.matches('.gold,[aria-selected="true"]') ? 'gold' : host.matches('.primary,.good') ? 'blue' : 'iron')) : packFrame ? 'pack:' + packFrame : host.matches('.dockHero,.dockSkills,.dockCards,.onlineActorPanel,.onlineHandPanel') ? 'hud' : host.matches(outer) ? 'panel' : host.matches('.locked') ? 'locked' : 'card';
     if (host.dataset.dwArtwork === kind && host.querySelector(':scope > .dwAtlasSkin')) return;
     for (const child of host.querySelectorAll(':scope > .dwAtlasSkin,:scope > .dwAtlasCrest')) child.remove();
     host.dataset.dwArtwork = kind;
@@ -57,6 +59,15 @@
         const [x, y, w] = rect;
         host.append(skin(rect, [10, 6, 10, 6], [11, 6], ['normal', 'hover', 'pressed'][i], [x + 24, y + 7, w - 48, 2], unitAction && !host.disabled ? hudAtlas : atlas));
       });
+    } else if (packFrame) {
+      const config = DWUIPack.frames[packFrame];
+      const frame = skin(config.rect, config.cuts, config.cap, 'normal', undefined, DWUIPack.sources[config.sheet].url);
+      // Long edges use text-free strips. Some source boards print labels or
+      // banners near the edge; those must never be stretched into live UI.
+      frame.children[1].replaceWith(piece([400,76,200,12]));
+      frame.children[4].replaceWith(piece([80,736,230,92]));
+      frame.children[7].replaceWith(piece([90,858,216,16]));
+      host.append(frame);
     } else if (kind === 'hud') {
       host.append(skin([1007, 829, 626, 74], [25, 10, 25, 10], [23, 12], 'normal', [1033, 849, 155, 30], hudAtlas));
     } else {
@@ -87,6 +98,7 @@
     if (scheduled || !records.some(record => record.type === 'attributes' || [...record.addedNodes, ...record.removedNodes].some(node => !(node.nodeType === 1 && node.classList.contains('dwAtlasSkin')) && !(node.nodeType === 1 && node.classList.contains('dwAtlasCrest'))))) return;
     scheduled = true;
     requestAnimationFrame(update);
-  }).observe(document.body, { childList: true, subtree: true, attributes: true, attributeFilter: ['disabled', 'class', 'aria-selected'] });
+  }).observe(document.body, { childList: true, subtree: true, attributes: true, attributeFilter: ['disabled', 'class', 'aria-selected', 'data-ui-kind', 'data-ranked'] });
+  window.addEventListener('resize', () => { if (!scheduled) { scheduled = true; requestAnimationFrame(update); } });
   update();
 })();
