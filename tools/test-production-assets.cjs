@@ -79,10 +79,14 @@ const manifest = JSON.parse(read('project-manifest.json'));
 const built = JSON.parse(read('dist/build-manifest.json'));
 assert.equal(built.version, manifest.version, 'Production metadata version');
 assert.equal(read('dist/index.html').match(/data-build-version="(\d+\.\d+\.\d+)"/)?.[1], manifest.version, 'Production document version');
-for (const file of ['panel.webp', 'button.webp', 'fortress.webp', 'theme.css']) {
+for (const file of ['panel.webp', 'button.webp', 'fortress.webp', 'theme.css', 'concept-atlas.png', 'hud-concept-atlas.png', 'concept-skins.js', 'concept-fidelity.css']) {
   assert.deepEqual(fs.readFileSync(path.join(root, 'dist/assets/ui/dw-style-01', file)), fs.readFileSync(path.join(root, 'assets/ui/dw-style-01', file)), 'Production UI surface ' + file);
 }
 assert(read('dist/index.html').includes('./assets/ui/dw-style-01/theme.css'));
 assert(read('dist/online/index.html').includes('../assets/ui/dw-style-01/theme.css'));
+assert.deepEqual(fs.readFileSync(path.join(root, 'assets/ui/dw-style-01/concept-atlas.png')), fs.readFileSync(path.join(root, 'visual-previews/ui-mode-dw-style-01/dozenwar-ui-mode-dw-style-01.png')), 'Concept atlas uses the unmodified approved source');
+assert.deepEqual(fs.readFileSync(path.join(root, 'assets/ui/dw-style-01/hud-concept-atlas.png')), fs.readFileSync(path.join(root, 'visual-previews/ui-ingame-dw-style-01/01-desktop-hud.png')), 'HUD atlas uses the unmodified approved source');
+assert(read('dist/index.html').includes('concept-fidelity.css'));
+assert(read('dist/online/index.html').includes('concept-skins.js'));
 for (const relative of Object.values(built.bundles)) assert.ok(fs.existsSync(path.join(root, 'dist', relative)), 'Missing bundle: ' + relative);
 console.log('PASS | 12 compact DW-STYLE-01 troop colors (' + checked + ' legacy facing routes), 12 Hero board visuals, production bytes, version and bundles');

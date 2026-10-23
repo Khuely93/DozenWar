@@ -1,7 +1,7 @@
 {
   "style": "DW-STYLE-01",
   "status": "APPROVED_FOR_GAME",
-  "usage": "Resizable presentation surfaces. Labels and controls remain HTML; gameplay data is unchanged.",
+  "usage": "Approved concept atlas rendered directly in browser slices. HTML labels and gameplay remain live. Legacy generated surfaces retained as fallbacks.",
   "assets": [
     {
       "name": "panel",
@@ -32,6 +32,37 @@
       "bytes": 96160,
       "sha256": "622cf1069a1d470546d2f5d9b31c2e4b56ba5503cc49b88407dd216d217831a8",
       "generatedSource": "exec-a80959b7-f6fc-4a01-b38f-f27a5001b5ff.png"
+    },
+    {
+      "name": "approved-concept-atlas",
+      "file": "concept-atlas.png",
+      "width": 1672,
+      "height": 941,
+      "alpha": false,
+      "bytes": 2167581,
+      "sha256": "1088013ff4ebb63c8465772b8a97229e7feac8eb7114bd49baeb3f845d88269a",
+      "source": "visual-previews/ui-mode-dw-style-01/dozenwar-ui-mode-dw-style-01.png",
+      "processing": "Byte-identical original. Source windows selected only during browser rendering."
+    },
+    {
+      "name": "approved-hud-concept-atlas",
+      "file": "hud-concept-atlas.png",
+      "width": 1672,
+      "height": 941,
+      "alpha": false,
+      "bytes": 2401278,
+      "sha256": "6cfebe33f5092ad893bf7a365914ea21bae0d3f671621a06f06e90393b631392",
+      "source": "visual-previews/ui-ingame-dw-style-01/01-desktop-hud.png",
+      "processing": "Byte-identical original. Browser slices only."
     }
-  ]
+  ],
+  "fidelity": {
+    "status": "IN_PROGRESS",
+    "matched": "Original artwork windows replace regenerated frame/button skins. Mode selection proportions adjusted to reference.",
+    "remaining": [
+      "Reference fonts and text-free backgrounds are not available as separate approved files.",
+      "Live desktop/mobile layouts are responsive and do not reproduce every concept board pixel.",
+      "The remaining screen layouts still need individual visual matching."
+    ]
+  }
 }

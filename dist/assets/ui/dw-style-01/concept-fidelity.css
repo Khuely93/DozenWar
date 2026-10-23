@@ -1,0 +1,87 @@
+/* Approved artwork replaces the regenerated v1.72 panel/button treatment.
+ * Only browser presentation windows are used; the source atlas stays intact.
+ */
+.dwArtAnchor { position: relative; }
+.dwUI .dwConceptArt {
+  isolation: isolate;
+  border-image: none !important;
+  border-color: transparent !important;
+  background: transparent !important;
+}
+.dwUI .dwConceptArt.btn::before, .dwUI .dwConceptArt.dwDockTab::before { display: none; }
+.dwAtlasSkin {
+  position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  display: grid; grid-template-columns: var(--dw-cap-x) minmax(0, 1fr) var(--dw-cap-x);
+  grid-template-rows: var(--dw-cap-y) minmax(0, 1fr) var(--dw-cap-y);
+}
+.dwAtlasPiece { display: block; min-width: 0; min-height: 0; background-repeat: no-repeat; }
+.dwAtlasCrest { position: absolute; z-index: -1; top: -25px; left: calc(50% - 46px); width: 92px; height: 61px; pointer-events: none; clip-path: polygon(0 42%, 25% 34%, 50% 0, 75% 34%, 100% 42%, 75% 58%, 50% 100%, 25% 58%); }
+.dwAtlasSkin--hover, .dwAtlasSkin--pressed { display: none; }
+.dwConceptArt.btn:not(:disabled):hover > .dwAtlasSkin--normal,
+.dwConceptArt.dwDockTab:hover > .dwAtlasSkin--normal,
+.dwConceptArt.btn:not(:disabled):active > .dwAtlasSkin--hover,
+.dwConceptArt.dwDockTab:active > .dwAtlasSkin--hover { display: none; }
+.dwConceptArt.btn:not(:disabled):hover > .dwAtlasSkin--hover,
+.dwConceptArt.dwDockTab:hover > .dwAtlasSkin--hover,
+.dwConceptArt.btn:not(:disabled):active > .dwAtlasSkin--pressed,
+.dwConceptArt.dwDockTab:active > .dwAtlasSkin--pressed { display: grid; }
+/* HUD actions have one approved state, so keep it visible on hover/press. */
+.dwConceptArt[data-dw-artwork='move']:hover > .dwAtlasSkin--normal,
+.dwConceptArt[data-dw-artwork='attack']:hover > .dwAtlasSkin--normal { display: grid; }
+.dwUI .dwConceptArt.btn:not(:disabled):hover, .dwUI .dwConceptArt.dwDockTab:hover,
+.dwUI .dwConceptArt.btn:not(:disabled):active, .dwUI .dwConceptArt.dwDockTab:active { filter: none; transform: none; }
+.dwUI .dwConceptArt.btn:disabled { opacity: 1; }
+.dwUI .modeCard.locked { opacity: 1; filter: none; }
+.dwUI .modeCard.locked h2 { color: #989b9c; }
+.dwUI .modeCard.locked h2::before { content: none; }
+.dwUI .modeCard.locked .modeMeta { color: #78828c; }
+.dwUI .modeBadge { border-radius: 999px; }
+.dwUI .modeBadge.live { color: #a1f1d7; box-shadow: inset 0 0 0 2px #051319; }
+.dwUI .modeBadge.live::before { content: ''; display: inline-block; width: 8px; height: 8px; margin-right: 6px; border-radius: 50%; background: #3ee1af; box-shadow: 0 0 7px #4df6c3; }
+.dwUI .modeWrap { justify-content: flex-start; gap: 0; padding: 40px 7.5% 50px; min-height: 0; }
+.dwUI .modeWrap > .center { width: 100%; }
+.dwUI .modeWrap .bigNotice { margin: 0 0 14px; font-size: clamp(26px, 2.4vw, 39px); }
+.dwUI .modeWrap .bigNotice::after { content: '──────────── ◇ ────────────'; display: block; color: #bc995e; font: 12px/1.5 Georgia, serif; margin-top: 1px; letter-spacing: 1px; }
+.dwUI .modeWrap .center > .muted { max-width: none; font-size: 15px; }
+.dwUI .modeGrid { width: 100%; gap: 24px; margin-top: 20px; }
+.dwUI .modeCard { padding: 24px 34px 27px; gap: 0; }
+.dwUI .modeCard h2 { font-size: 34px; line-height: 1.2; margin: 6px 0 12px; }
+.dwUI .modeCard .modeMeta { font-size: 16px; gap: 3px; line-height: 1.5; margin: 8px 0 19px; }
+.dwUI .modeCard > .btn { min-height: 49px; font: 700 18px/1.2 Georgia, 'Times New Roman', serif; }
+.dwUI .modeCard.activeMode > a { margin-top: auto; width: 100%; }
+.dwUI .dwModeActions { display: grid; grid-template-columns: 1.38fr 1fr; gap: 14px; margin-top: 11px; }
+.dwUI .dwModeActions .btn { min-height: 49px; padding-inline: 12px; font: 700 18px/1.2 Georgia, 'Times New Roman', serif; }
+.dwUI .modeCard.locked > .btn { align-self: flex-start; width: 52%; margin: 42px 0 10px 18px; color: #a4a7aa; }
+@media (min-width: 900px) {
+  .dwUI[data-ui-phase='mode'] { --dw-menu-unit: calc(100vw / 1672); }
+  .dwUI[data-ui-phase='mode'] .wrap { max-width: calc(1306 * var(--dw-menu-unit)); padding: calc(12 * var(--dw-menu-unit)) calc(28 * var(--dw-menu-unit)) 32px; }
+  .dwUI[data-ui-phase='mode'] .top { min-height: calc(52 * var(--dw-menu-unit)); margin-bottom: calc(12 * var(--dw-menu-unit)); }
+  .dwUI[data-ui-phase='mode'] .brand { font-size: calc(50 * var(--dw-menu-unit)); }
+  .dwUI[data-ui-phase='mode'] .phase { border: 3px double #9a7b4f; padding: 6px 20px; color: #f4ecdd; background: #0c171edb; font: 700 14px Georgia, serif; }
+  .dwUI .modeWrap { padding: calc(40 * var(--dw-menu-unit)) calc(96 * var(--dw-menu-unit)) calc(50 * var(--dw-menu-unit)); }
+  .dwUI .modeWrap .bigNotice { font-size: calc(36 * var(--dw-menu-unit)); }
+  .dwUI .modeWrap .center > .muted { font-size: calc(15 * var(--dw-menu-unit)); }
+  .dwUI .modeGrid { gap: calc(22 * var(--dw-menu-unit)); margin-top: calc(20 * var(--dw-menu-unit)); }
+  .dwUI .modeCard { min-height: calc(343 * var(--dw-menu-unit)); padding: calc(24 * var(--dw-menu-unit)) calc(34 * var(--dw-menu-unit)) calc(27 * var(--dw-menu-unit)); }
+  .dwUI .modeCard h2 { font-size: calc(32 * var(--dw-menu-unit)); }
+  .dwUI .modeCard .modeMeta { font-size: calc(16 * var(--dw-menu-unit)); }
+  .dwUI .modeCard > .btn, .dwUI .dwModeActions .btn { font-size: calc(18 * var(--dw-menu-unit)); }
+}
+@media (max-width: 1150px) and (min-width: 900px) {
+  .dwUI .modeCard { padding: 22px; }
+  .dwUI .modeCard h2 { font-size: 27px; }
+  .dwUI .modeCard .modeMeta { font-size: 14px; }
+  .dwUI .modeCard > .btn, .dwUI .dwModeActions .btn { font-size: 14px; }
+}
+@media (max-width: 899px) {
+  .dwUI .modeWrap { padding: 30px 18px; }
+  .dwUI .modeWrap .center > .muted { font-size: 12px; }
+  .dwUI .modeWrap .bigNotice { font-size: 24px; }
+  .dwUI .modeGrid { gap: 18px; }
+  .dwUI .modeCard { padding: 23px 20px; }
+  .dwUI .modeCard h2 { font-size: 25px; }
+  .dwUI .modeCard .modeMeta { font-size: 13px; gap: 4px; margin: 10px 0 18px; }
+  .dwUI .modeCard > .btn, .dwUI .dwModeActions .btn { font-size: 13px; min-height: 46px; }
+  .dwUI .modeCard .modeBadge { padding: 5px 7px; font-size: 9px; }
+  .dwUI .modeCard.locked > .btn { margin: 16px 0 0; width: 70%; }
+}

@@ -44,12 +44,12 @@ async function run() {
           return {
             themed: document.body.classList.contains('dwUI'),
             overflowX: document.documentElement.scrollWidth > innerWidth + 1,
-            frame: getComputedStyle(document.querySelector('.modeWrap')).borderImageSource,
+            frame: getComputedStyle(document.querySelector('.modeWrap > .dwAtlasSkin > .dwAtlasPiece')).backgroundImage,
             dialogs: dialogs.map(dialog => { const r = dialog.getBoundingClientRect(); return { left: r.left, top: r.top, right: r.right, bottom: r.bottom }; }),
             viewport: { width: innerWidth, height: innerHeight }
           };
         });
-        assert(state.themed && state.frame.includes('panel.webp'), id + ' loads production artwork');
+        assert(state.themed && state.frame.includes('concept-atlas.png'), id + ' loads approved concept artwork');
         assert(!state.overflowX, id + ' horizontal overflow at ' + viewport.width);
         for (const bounds of state.dialogs) {
           assert(bounds.left >= -1 && bounds.top >= -1 && bounds.right <= viewport.width + 1 && bounds.bottom <= viewport.height + 1, id + ' dialog stays inside viewport: ' + JSON.stringify(bounds));
