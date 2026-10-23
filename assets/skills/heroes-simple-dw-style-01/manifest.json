@@ -1,0 +1,538 @@
+{
+  "style": "DW-STYLE-01",
+  "status": "APPROVED_FOR_GAME",
+  "version": "1.74.0",
+  "heroCount": 12,
+  "skillCount": 36,
+  "note": "Approved simple avatar/equipment style. Shared WebP sheets are unchanged copies of the reviewed previews. Original PNG masters stay in the design gallery. No gameplay changes.",
+  "heroes": [
+    {
+      "heroId": "HERO_INF_KAZU",
+      "name": "Kazu",
+      "slug": "kazu",
+      "source": "assets/skills/heroes-simple-dw-style-01/kazu.webp",
+      "width": 2172,
+      "height": 724,
+      "bytes": 216672,
+      "sha256": "dc79b3cc849183d79d5eb4585f87d635c275302c0ae56b116997a4f5d6ec8cfc",
+      "originalPng": "visual-previews/hero-skills-simple-dw-style-01/kazu.png",
+      "originalPngSha256": "32fcde4b8a7132568d3a26cc27cee23434b8160182e94e04e5df84a7dfa560c8",
+      "skills": [
+        {
+          "skillId": "SKILL_HERO_KAZU_S1",
+          "name": "Khiên Rồng",
+          "frame": [
+            33,
+            32,
+            681,
+            652
+          ]
+        },
+        {
+          "skillId": "SKILL_HERO_KAZU_S2",
+          "name": "Khóa Xích",
+          "frame": [
+            742,
+            33,
+            685,
+            650
+          ]
+        },
+        {
+          "skillId": "SKILL_HERO_KAZU_S3",
+          "name": "Xích Quỷ Kazu",
+          "frame": [
+            1462,
+            33,
+            679,
+            651
+          ]
+        }
+      ]
+    },
+    {
+      "heroId": "HERO_INF_RODOC",
+      "name": "Rodoc",
+      "slug": "rodoc",
+      "source": "assets/skills/heroes-simple-dw-style-01/rodoc.webp",
+      "width": 2172,
+      "height": 724,
+      "bytes": 252288,
+      "sha256": "f194a772aab2fabbf438ec2963d9f2e154aba9247a6f9a42ef7f1dbdcb9ad33b",
+      "originalPng": "visual-previews/hero-skills-simple-dw-style-01/rodoc.png",
+      "originalPngSha256": "f591aa537afa167cb0a34692b3e40196b19e8ee16bfaa71c152078a705d51de4",
+      "skills": [
+        {
+          "skillId": "SKILL_HERO_RODOC_S1",
+          "name": "Hồi Sức",
+          "frame": [
+            22,
+            24,
+            704,
+            657
+          ]
+        },
+        {
+          "skillId": "SKILL_HERO_RODOC_S2",
+          "name": "Tiếng Thét Xung Trận",
+          "frame": [
+            742,
+            24,
+            692,
+            657
+          ]
+        },
+        {
+          "skillId": "SKILL_HERO_RODOC_S3",
+          "name": "Chiến Thần",
+          "frame": [
+            1448,
+            24,
+            702,
+            657
+          ]
+        }
+      ]
+    },
+    {
+      "heroId": "HERO_INF_EST",
+      "name": "Est",
+      "slug": "est",
+      "source": "assets/skills/heroes-simple-dw-style-01/est.webp",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 265722,
+      "sha256": "d540db43707948c730927982d4f82397c2613e62dc52d557705d9d95c07acb5f",
+      "originalPng": "visual-previews/hero-skills-simple-dw-style-01/est.png",
+      "originalPngSha256": "34783c0eb28d26bd2e42f811bafe103139ad7d936f553f4790cb33fec78c5adf",
+      "skills": [
+        {
+          "skillId": "SKILL_HERO_EST_S1",
+          "name": "Phi Thân",
+          "frame": [
+            21,
+            204,
+            495,
+            502
+          ]
+        },
+        {
+          "skillId": "SKILL_HERO_EST_S2",
+          "name": "Phục Thù",
+          "frame": [
+            526,
+            204,
+            484,
+            502
+          ]
+        },
+        {
+          "skillId": "SKILL_HERO_EST_S3",
+          "name": "Ác Mộng Phía Đông",
+          "frame": [
+            1021,
+            204,
+            494,
+            502
+          ]
+        }
+      ]
+    },
+    {
+      "heroId": "HERO_CAV_MASK",
+      "name": "Mask",
+      "slug": "mask",
+      "source": "assets/skills/heroes-simple-dw-style-01/mask.webp",
+      "width": 2172,
+      "height": 724,
+      "bytes": 270970,
+      "sha256": "d1cac6fb3244de99fad0881a9171a707f2e2d633cb6360e0ffc21b7a93519cbb",
+      "originalPng": "visual-previews/hero-skills-simple-dw-style-01/mask.png",
+      "originalPngSha256": "f710d8552013a1b27340285fa3811dff11a2d4ce56d4870e8545fc5540102c6c",
+      "skills": [
+        {
+          "skillId": "SKILL_HERO_MASK_S1",
+          "name": "Ma Kích",
+          "frame": [
+            15,
+            16,
+            704,
+            674
+          ]
+        },
+        {
+          "skillId": "SKILL_HERO_MASK_S2",
+          "name": "Phán Quyết",
+          "frame": [
+            737,
+            16,
+            698,
+            674
+          ]
+        },
+        {
+          "skillId": "SKILL_HERO_MASK_S3",
+          "name": "Cán Cân Công Lý",
+          "frame": [
+            1453,
+            16,
+            704,
+            674
+          ]
+        }
+      ]
+    },
+    {
+      "heroId": "HERO_CAV_SOUL",
+      "name": "Soul",
+      "slug": "soul",
+      "source": "assets/skills/heroes-simple-dw-style-01/soul.webp",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 219916,
+      "sha256": "b4fec53f134765020f5fa63bdbca8954c0b95713e4ea669ab315645691762c15",
+      "originalPng": "visual-previews/hero-skills-simple-dw-style-01/soul.png",
+      "originalPngSha256": "a38dd66685a976ef790d03a7021c4de4022ee0e446726ea58a7bade54f0fd8d4",
+      "skills": [
+        {
+          "skillId": "SKILL_HERO_SOUL_S1",
+          "name": "Ám Kỵ",
+          "frame": [
+            17,
+            221,
+            501,
+            548
+          ]
+        },
+        {
+          "skillId": "SKILL_HERO_SOUL_S2",
+          "name": "Triệu Gọi Ám Hồn",
+          "frame": [
+            527,
+            221,
+            482,
+            548
+          ]
+        },
+        {
+          "skillId": "SKILL_HERO_SOUL_S3",
+          "name": "Thây Độc",
+          "frame": [
+            1019,
+            220,
+            501,
+            549
+          ]
+        }
+      ]
+    },
+    {
+      "heroId": "HERO_CAV_SIRI",
+      "name": "Siri",
+      "slug": "siri",
+      "source": "assets/skills/heroes-simple-dw-style-01/siri.webp",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 197182,
+      "sha256": "3b1bcfd83e96683845917866f5e6919b06adec6407d6c9a541b9f6fed14cdf81",
+      "originalPng": "visual-previews/hero-skills-simple-dw-style-01/siri.png",
+      "originalPngSha256": "6ad35118f8409a003938989534831db16a5e118ea8a9a6693b39d2ba4dfce525",
+      "skills": [
+        {
+          "skillId": "SKILL_HERO_SIRI_S1",
+          "name": "Săn Người",
+          "frame": [
+            17,
+            218,
+            494,
+            523
+          ]
+        },
+        {
+          "skillId": "SKILL_HERO_SIRI_S2",
+          "name": "Phong Bộ",
+          "frame": [
+            522,
+            218,
+            491,
+            523
+          ]
+        },
+        {
+          "skillId": "SKILL_HERO_SIRI_S3",
+          "name": "Ám Phong",
+          "frame": [
+            1024,
+            218,
+            493,
+            523
+          ]
+        }
+      ]
+    },
+    {
+      "heroId": "HERO_ARCH_RAEN",
+      "name": "Raen",
+      "slug": "raen",
+      "source": "assets/skills/heroes-simple-dw-style-01/raen.webp",
+      "width": 2172,
+      "height": 724,
+      "bytes": 254468,
+      "sha256": "9b27229aa3886cf2079ec5a19371e0ee464bc0202f65dbb809ff052ae4480cfc",
+      "originalPng": "visual-previews/hero-skills-simple-dw-style-01/raen.png",
+      "originalPngSha256": "f3926b808ad8dc6b5c38d61c8afd10633eae378dd9c70d2ddca16860d6a14414",
+      "skills": [
+        {
+          "skillId": "SKILL_HERO_RAEN_S1",
+          "name": "Viễn Tiễn",
+          "frame": [
+            23,
+            30,
+            694,
+            655
+          ]
+        },
+        {
+          "skillId": "SKILL_HERO_RAEN_S2",
+          "name": "Tên Lưới",
+          "frame": [
+            740,
+            30,
+            693,
+            655
+          ]
+        },
+        {
+          "skillId": "SKILL_HERO_RAEN_S3",
+          "name": "Hàn Tiễn",
+          "frame": [
+            1456,
+            30,
+            693,
+            655
+          ]
+        }
+      ]
+    },
+    {
+      "heroId": "HERO_ARCH_XACNAS",
+      "name": "Xacnas",
+      "slug": "xacnas",
+      "source": "assets/skills/heroes-simple-dw-style-01/xacnas.webp",
+      "width": 2172,
+      "height": 724,
+      "bytes": 206844,
+      "sha256": "3a5fc48721be46b6e9956a9e544ca3a0b8d91b8bf8c96d7fa3c63519aa9b2200",
+      "originalPng": "visual-previews/hero-skills-simple-dw-style-01/xacnas.png",
+      "originalPngSha256": "caa69cd9d6f417fd5de2d95c5e12c44908dab1a61b6c3fb48b1987609ab8767f",
+      "skills": [
+        {
+          "skillId": "SKILL_HERO_XACNAS_S1",
+          "name": "Lời Chào Của Quỷ",
+          "frame": [
+            28,
+            24,
+            685,
+            650
+          ]
+        },
+        {
+          "skillId": "SKILL_HERO_XACNAS_S2",
+          "name": "Bão Phi Đao",
+          "frame": [
+            743,
+            24,
+            685,
+            650
+          ]
+        },
+        {
+          "skillId": "SKILL_HERO_XACNAS_S3",
+          "name": "Phân Bóng",
+          "frame": [
+            1458,
+            24,
+            686,
+            649
+          ]
+        }
+      ]
+    },
+    {
+      "heroId": "HERO_ARCH_LUCY",
+      "name": "Lucy",
+      "slug": "lucy",
+      "source": "assets/skills/heroes-simple-dw-style-01/lucy.webp",
+      "width": 2172,
+      "height": 724,
+      "bytes": 251540,
+      "sha256": "0e97d40be9fe7c0b274b908c55ab9134a0ffb7db1e3fb183b3741b4ca30e4ff6",
+      "originalPng": "visual-previews/hero-skills-simple-dw-style-01/lucy.png",
+      "originalPngSha256": "34ceddf1fc7a7fc2ba2d932abbb4a49aa70c8221683bf9c12b9fbab20fb36f74",
+      "skills": [
+        {
+          "skillId": "SKILL_HERO_LUCY_S1",
+          "name": "Phân Ảnh",
+          "frame": [
+            41,
+            34,
+            689,
+            618
+          ]
+        },
+        {
+          "skillId": "SKILL_HERO_LUCY_S2",
+          "name": "Bắn Trả",
+          "frame": [
+            758,
+            34,
+            655,
+            618
+          ]
+        },
+        {
+          "skillId": "SKILL_HERO_LUCY_S3",
+          "name": "Điên Cuồng",
+          "frame": [
+            1442,
+            34,
+            691,
+            618
+          ]
+        }
+      ]
+    },
+    {
+      "heroId": "HERO_ALCH_GRIM",
+      "name": "Grim",
+      "slug": "grim",
+      "source": "assets/skills/heroes-simple-dw-style-01/grim.webp",
+      "width": 2172,
+      "height": 724,
+      "bytes": 242800,
+      "sha256": "dafdb1ecf5fcaa12eb4b9bd4290ad14f8ae9b39e591b19da6929ff134b4b9164",
+      "originalPng": "visual-previews/hero-skills-simple-dw-style-01/grim.png",
+      "originalPngSha256": "1359adfb73495865910b0910384b6b941d403ba1a1739f9ed51386e268e89b35",
+      "skills": [
+        {
+          "skillId": "SKILL_HERO_GRIM_S1",
+          "name": "Giả Dạng",
+          "frame": [
+            24,
+            25,
+            688,
+            640
+          ]
+        },
+        {
+          "skillId": "SKILL_HERO_GRIM_S2",
+          "name": "Cải Tạo Nhanh",
+          "frame": [
+            742,
+            24,
+            687,
+            642
+          ]
+        },
+        {
+          "skillId": "SKILL_HERO_GRIM_S3",
+          "name": "Sao Chép",
+          "frame": [
+            1459,
+            24,
+            689,
+            642
+          ]
+        }
+      ]
+    },
+    {
+      "heroId": "HERO_ALCH_NEURO",
+      "name": "Neuro",
+      "slug": "neuro",
+      "source": "assets/skills/heroes-simple-dw-style-01/neuro.webp",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 193848,
+      "sha256": "1c70a0c0b1772a12eca226b0eead688390a998fac949d3fd5990464ee1309cf6",
+      "originalPng": "visual-previews/hero-skills-simple-dw-style-01/neuro.png",
+      "originalPngSha256": "a1b85c0627dd7659a58d11dfaed826d37a9ee2c5fd7d88eb3a408b52b5c34461",
+      "skills": [
+        {
+          "skillId": "SKILL_HERO_NEURO_S1",
+          "name": "Thuốc Câm",
+          "frame": [
+            11,
+            212,
+            502,
+            566
+          ]
+        },
+        {
+          "skillId": "SKILL_HERO_NEURO_S2",
+          "name": "Triệu Gọi",
+          "frame": [
+            524,
+            212,
+            488,
+            566
+          ]
+        },
+        {
+          "skillId": "SKILL_HERO_NEURO_S3",
+          "name": "Thuốc Cấm",
+          "frame": [
+            1023,
+            212,
+            501,
+            566
+          ]
+        }
+      ]
+    },
+    {
+      "heroId": "HERO_ALCH_RANUS",
+      "name": "Ranus",
+      "slug": "ranus",
+      "source": "assets/skills/heroes-simple-dw-style-01/ranus.webp",
+      "width": 2164,
+      "height": 727,
+      "bytes": 261404,
+      "sha256": "9038d2487dc78478391f5f7f5b57d478688c3ec8bcd31c069f347c2df931097a",
+      "originalPng": "visual-previews/hero-skills-simple-dw-style-01/ranus.png",
+      "originalPngSha256": "7cbe9477fb80d9fbae6eca05bfe482beca39c847ab1d16f2436f31ed982aaa0f",
+      "skills": [
+        {
+          "skillId": "SKILL_HERO_RANUS_S1",
+          "name": "Dịch Chuyển",
+          "frame": [
+            37,
+            39,
+            670,
+            642
+          ]
+        },
+        {
+          "skillId": "SKILL_HERO_RANUS_S2",
+          "name": "Thuật Cường Hóa",
+          "frame": [
+            749,
+            38,
+            670,
+            643
+          ]
+        },
+        {
+          "skillId": "SKILL_HERO_RANUS_S3",
+          "name": "Bùng Cháy",
+          "frame": [
+            1460,
+            38,
+            671,
+            644
+          ]
+        }
+      ]
+    }
+  ]
+}

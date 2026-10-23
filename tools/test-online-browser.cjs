@@ -76,6 +76,13 @@ const { chromium } = require("playwright"),
     await until(() => game().phase === "team");
     for (let i = 0; i < 2; i++) {
       const side = game().selecting;
+      for (const hero of require('../assets/skills/heroes-simple-dw-style-01/manifest.json').heroes) {
+        await pages[side - 1].locator('.heroes button').filter({hasText:new RegExp('^'+hero.name+'$')}).click();
+        const images=pages[side - 1].locator('.dwOnlineTeamSkill .dwSkillIcon > img');
+        await images.last().waitFor(); await images.evaluateAll(nodes=>Promise.all(nodes.map(image=>image.decode())));
+        assert.deepEqual(await images.evaluateAll(nodes=>nodes.map(image=>image.parentElement.dataset.art)),hero.skills.map(skill=>skill.skillId),'Online skill mapping '+hero.name);
+        assert(await images.evaluateAll((nodes,source)=>nodes.every(image=>new URL(image.src).pathname.endsWith('/'+source)),hero.source));
+      }
       await pages[side - 1].locator(".heroes button").filter({ hasText: /^Kazu$/ }).click();
       const icons = pages[side - 1].locator('.dwOnlineTeamSkill > .dwSkillIcon > img');
       await icons.last().waitFor();

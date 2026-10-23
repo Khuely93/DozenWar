@@ -8,24 +8,22 @@ window.DWPackUI = (() => {
     if (prepend) host.prepend(node); else host.append(node);
   };
   // Skill identity, independent of translated labels and button ordering.
-  const skillArt = Object.freeze({
-    SKILL_HERO_KAZU_S1: ['shield', [30, 270, 485, 478]],
-    SKILL_HERO_KAZU_S2: ['chain', [534, 270, 477, 478]],
-    SKILL_HERO_KAZU_S3: ['dragon', [1027, 270, 482, 478]]
-  });
   function skillIcons() {
     for (const node of document.querySelectorAll('[data-skill-id]')) {
-      const art = skillArt[node.dataset.skillId];
-      if (!art || node.querySelector(':scope > .dwSkillIcon')) continue;
-      // Display the original concept through an atlas viewport: no redrawing,
-      // CSS imitation of the gold rim, or destructive editing of the artwork.
-      const [key, [x, y, width, height]] = art;
+      const id = node.dataset.skillId, art = window.HeroSkillVisuals?.skills[id];
+      const existing = node.querySelector(':scope > .dwSkillIcon');
+      if (!art) { existing?.remove(); continue; }
+      if (existing?.dataset.art === id) continue;
+      existing?.remove();
+      const [x, y, width, height] = art.frame;
       const frame = document.createElement('span');
-      frame.className = 'dwSkillIcon dwFramedSkillIcon'; frame.dataset.art = key;
+      frame.className = 'dwSkillIcon dwFramedSkillIcon'; frame.dataset.art = id;
       frame.setAttribute('aria-hidden','true'); frame.style.aspectRatio = width + ' / ' + height;
+      // Fit both dimensions in the allotted icon size without stretching the art.
+      frame.style.setProperty('--dw-skill-scale',Math.min(1,width / height));
       const image = document.createElement('img'); image.alt = ''; image.draggable = false;
-      image.src = prefix + 'assets/skills/kazu-dw-style-01/framed-sheet.webp';
-      image.style.cssText = 'position:absolute;max-width:none;width:' + 1536 / width * 100 + '%;height:' + 1024 / height * 100 + '%;left:' + -x / width * 100 + '%;top:' + -y / height * 100 + '%;margin:0;border:0;';
+      image.src = prefix + art.source;
+      image.style.cssText = 'position:absolute;max-width:none;width:' + art.width / width * 100 + '%;height:' + art.height / height * 100 + '%;left:' + -x / width * 100 + '%;top:' + -y / height * 100 + '%;margin:0;border:0;';
       frame.append(image); node.prepend(frame);
     }
   }

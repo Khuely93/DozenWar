@@ -6420,7 +6420,7 @@ botDefense=function(){const pending=S.pending,d=pending&&S.units.find(u=>u.id===
 /* Hero targeting is displayed as a reviewable selection; map clicks and buttons share Core validation. */
 const HeroSkillUI={
   panel:document.createElement('section'),bar:document.createElement('div'),
-  button(text,action,disabled=false){const b=document.createElement('button');b.type='button';b.className='btn';b.textContent=text;b.disabled=disabled;b.onclick=action;return b},
+  button(text,action,disabled=false,skillId=null){const b=document.createElement('button');b.type='button';b.className='btn';b.textContent=text;b.disabled=disabled;b.onclick=action;if(skillId)b.dataset.skillId=skillId;return b},
   render(){
     this.panel.replaceChildren();const s=HeroCore.selection;this.panel.hidden=!s;
     if(s){const title=document.createElement('h3');title.textContent=unitSpec(s.h).name+' · '+s.sk.name+' · '+'★'.repeat(s.sk.star||0);title.dataset.skillId=s.sk.id;this.panel.append(title);
@@ -6438,7 +6438,7 @@ const HeroSkillUI={
       this.panel.append(this.button('XÁC NHẬN',()=>HeroCore.commit(),m==='DICE_WARD'&&s.dice.length!==2),this.button(s.equipmentRecovery?'BỎ QUA':'HỦY',()=>s.equipmentRecovery?EquipmentCore.skipRecovery():HeroCore.cancel(),!s.equipmentRecovery&&!!s.continuation&&!!S.heroSequence));
     }
     this.bar.replaceChildren();this.bar.hidden=S.phase!=='battle'||S.matchEnded||!!s;
-    if(!this.bar.hidden){for(const h of S.units.filter(u=>u.hero&&u.hp>0&&u.side!==S.battleSide&&u.side!==S.botSide))for(let n=1;n<=3;n++){const sk=heroSkill(h,n);if(sk?.mechanic&&HeroCore.canUse(h,n,sk))this.bar.append(this.button('🛡️ '+unitSpec(h).name+' · '+sk.name,()=>HeroCore.begin(h,n)))}}
+    if(!this.bar.hidden){for(const h of S.units.filter(u=>u.hero&&u.hp>0&&u.side!==S.battleSide&&u.side!==S.botSide))for(let n=1;n<=3;n++){const sk=heroSkill(h,n);if(sk?.mechanic&&HeroCore.canUse(h,n,sk))this.bar.append(this.button('🛡️ '+unitSpec(h).name+' · '+sk.name,()=>HeroCore.begin(h,n),false,sk.id))}}
   }
 };
 HeroSkillUI.panel.className='heroSkillPanel';HeroSkillUI.panel.hidden=true;HeroSkillUI.panel.setAttribute('aria-label','Chọn skill Hero');HeroSkillUI.bar.className='heroDefenseBar';CoreDOM.board.wrap.append(HeroSkillUI.panel,HeroSkillUI.bar);
@@ -6470,8 +6470,8 @@ renderSkills=function(){
 };
 const _heroPopup=showDefensePopup;
 showDefensePopup=function(d){if(HeroCore.selection)return;const result=_heroPopup(d);if(HeroCore.blocked(d,'defense'))defGuardChoice.disabled=true;return result};
-defHeroSkillChoice.onclick=()=>{if(!S.pending)return;const d=S.units.find(u=>u.id===S.pending.d);defCardList.replaceChildren();for(const c of defenseSkillChoices(d))defCardList.append(HeroSkillUI.button(unitSpec(c.hero).name+' · '+c.skill.name,()=>HeroCore.begin(c.hero,c.skillNo)));defCardList.classList.add('show')};
-atkSkillBtn.onclick=()=>{if(!S.selected?.hero)return;atkSkillList.replaceChildren();for(let n=1;n<=3;n++){const h=S.selected,sk=heroSkill(h,n);atkSkillList.append(HeroSkillUI.button(sk.name+' · '+'★'.repeat(sk.star||0),()=>{hideAttackPopup();HeroCore.begin(h,n)},!HeroCore.canUse(h,n,sk)))}atkSkillList.classList.toggle('show')};
+defHeroSkillChoice.onclick=()=>{if(!S.pending)return;const d=S.units.find(u=>u.id===S.pending.d);defCardList.replaceChildren();for(const c of defenseSkillChoices(d))defCardList.append(HeroSkillUI.button(unitSpec(c.hero).name+' · '+c.skill.name,()=>HeroCore.begin(c.hero,c.skillNo),false,c.skill.id));defCardList.classList.add('show')};
+atkSkillBtn.onclick=()=>{if(!S.selected?.hero)return;atkSkillList.replaceChildren();for(let n=1;n<=3;n++){const h=S.selected,sk=heroSkill(h,n);atkSkillList.append(HeroSkillUI.button(sk.name+' · '+'★'.repeat(sk.star||0),()=>{hideAttackPopup();HeroCore.begin(h,n)},!HeroCore.canUse(h,n,sk),sk.id))}atkSkillList.classList.toggle('show')};
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&HeroCore.selection){if(HeroCore.selection.equipmentRecovery)EquipmentCore.skipRecovery();else HeroCore.cancel()}});
 CoreBoardRenderer.registerLayer('HERO_SKILL_STATE',45,{
   hexClasses(c,u){const s=HeroCore.selection;if(!s||s.uiEquipmentStep)return '';if(u&&HeroCore.candidate(s.h,s.sk,u))return s.selected.includes(u.id)?' skill-selected':' skill-valid';if(!u&&['ESCAPE','SUMMON'].includes(s.sk.mechanic)){const valid=s.sk.mechanic==='ESCAPE'?HeroCore.escapeCells(s.h,s.sk).some(x=>x.q===c.q&&x.r===c.r):distU(s.h,c)===1&&HeroCore.cellAllowed({side:s.h.side,hero:false,id:null},c);if(valid)return ' hl'}return ''},
@@ -6771,7 +6771,7 @@ const CombatFlowUI={
   render(){
     const s=this.state;if(!s)return;this.dialog.replaceChildren();
     const title=document.createElement('h2');title.textContent='PLAYER '+s.h.side+' · TRANG BỊ '+(s.kind==='post'?'PHẢN SÁT THƯƠNG':s.kind==='def'?'PHÒNG THỦ':s.kind.startsWith('skill')?'CHO SKILL':'TẤN CÔNG');
-    const info=document.createElement('p');info.textContent=unitSpec(s.h).name+(s.sk?' · '+s.sk.name:'')+(s.multi?' · Chọn nhiều trang bị hợp lệ · Đã chọn '+s.cardUids.length:' · Chọn một lá bài hợp lệ');this.dialog.append(title,info);
+    const info=document.createElement('p');info.textContent=unitSpec(s.h).name+(s.sk?' · '+s.sk.name:'')+(s.multi?' · Chọn nhiều trang bị hợp lệ · Đã chọn '+s.cardUids.length:' · Chọn một lá bài hợp lệ');if(s.sk)info.dataset.skillId=s.sk.id;this.dialog.append(title,info);
     const list=document.createElement('div');list.className='combatEquipmentCards';const cards=this.cards(s.h,s.kind,s.sk);
     if(!cards.some(c=>c.uid===s.cardUid))s.cardUid=null;
     s.cardUids=s.cardUids.filter(uid=>cards.some(c=>c.uid===uid));
@@ -6853,8 +6853,8 @@ HeroSkillUI.render=function(){_flowSkillRender.call(this);const s=HeroCore.selec
 };
 const _flowSkills=renderSkills;
 renderSkills=function(){_flowSkills();for(const b of skillBar.querySelectorAll('button')){const h=S.units.find(u=>String(u.id)===b.dataset.heroId),n=Number(b.dataset.skillNo);if(h&&n)b.onclick=()=>CombatFlowUI.startSkill(h,n)}};
-atkSkillBtn.onclick=()=>{const h=S.selected;if(!h?.hero)return;atkSkillList.replaceChildren();for(let n=1;n<=3;n++){const sk=heroSkill(h,n);atkSkillList.append(HeroSkillUI.button(sk.name+' · '+'★'.repeat(sk.star||0),()=>CombatFlowUI.startSkill(h,n),!HeroCore.canUse(h,n,sk)))}atkSkillList.classList.toggle('show')};
-defHeroSkillChoice.onclick=()=>{const d=S.pending&&S.units.find(u=>u.id===S.pending.d);defCardList.replaceChildren();for(const c of defenseSkillChoices(d))defCardList.append(HeroSkillUI.button(unitSpec(c.hero).name+' · '+c.skill.name,()=>CombatFlowUI.startSkill(c.hero,c.skillNo)));defCardList.classList.add('show')};
+atkSkillBtn.onclick=()=>{const h=S.selected;if(!h?.hero)return;atkSkillList.replaceChildren();for(let n=1;n<=3;n++){const sk=heroSkill(h,n);atkSkillList.append(HeroSkillUI.button(sk.name+' · '+'★'.repeat(sk.star||0),()=>CombatFlowUI.startSkill(h,n),!HeroCore.canUse(h,n,sk),sk.id))}atkSkillList.classList.toggle('show')};
+defHeroSkillChoice.onclick=()=>{const d=S.pending&&S.units.find(u=>u.id===S.pending.d);defCardList.replaceChildren();for(const c of defenseSkillChoices(d))defCardList.append(HeroSkillUI.button(unitSpec(c.hero).name+' · '+c.skill.name,()=>CombatFlowUI.startSkill(c.hero,c.skillNo),false,c.skill.id));defCardList.classList.add('show')};
 const _flowSkillEntry=_beginSkillTargetInternal;
 _beginSkillTargetInternal=function(n){return heroSkill(S.selected,n)?.mechanic?CombatFlowUI.startSkill(S.selected,n):_flowSkillEntry(n)};
 const _flowUpdate=updateUI;
@@ -7058,7 +7058,7 @@ const DefenseFeedback={
   outcome(mechanic){return ({CANCEL:'Hủy đòn',ESCAPE:'Né đòn',HEAL:'Hồi máu',SWAP:'Đổi đơn vị nhận đòn',REDIRECT:'Chuyển hướng đòn',DICE_WARD:'Kích hoạt Phân Bóng',MORPH:'Biến đổi hệ',CONVERT:'Biến đổi hệ',COUNTER:'Chuẩn bị bắn trả',REVENGE:'Phản công',PUSH:'Đẩy lùi và trói',ROOT:'Khóa mục tiêu'})[mechanic]||'Đã dùng để phòng thủ'},
   receipt(h,item,kind,outcome){
     if(!h||!item)return;
-    this.queue.push({side:h.side,unit:unitSpec(h).name,name:item.name,star:item.star||0,kind,outcome,html:kind==='card'?cardHTML(item):null,training:S.selectedMode==='MODE_TRAINING_001'});
+    this.queue.push({side:h.side,unit:unitSpec(h).name,name:item.name,star:item.star||0,kind,outcome,skillId:kind==='skill'?item.id:null,html:kind==='card'?cardHTML(item):null,training:S.selectedMode==='MODE_TRAINING_001'});
     if(!this.active)this.next();
   },
   card(h,c,outcome){for(const part of EquipmentCore.parts(c)){const label=effectOf(part,'EFFECT_HEAL_1')?'Hồi máu':effectOf(part,'EFFECT_CANCEL_ATTACK')?'Hủy đòn':effectOf(part,'EFFECT_REFLECT_DAMAGE')?'Phản sát thương':effectOf(part,'EFFECT_COUNTER_BASE_ATTACK')?'Đánh trả':effectOf(part,'EFFECT_CANCEL_EQUIPMENT')?'Hủy trang bị':effectOf(part,'EFFECT_DAMAGE_REDUCE_1')?'Giảm sát thương':outcome;this.receipt(h,part,'card',label)}},
@@ -7071,7 +7071,7 @@ const DefenseFeedback={
     this.visual.replaceChildren();
     const face=document.createElement('div');face.className='defenseFeedbackFace';
     if(item.html)face.innerHTML=item.html;
-    else{const icon=document.createElement('span');icon.className='defenseFeedbackSkillIcon';icon.textContent='🛡';const title=document.createElement('strong');title.textContent=item.name;const stars=document.createElement('span');stars.textContent='★'.repeat(item.star);face.append(icon,title,stars)}
+    else{const icon=document.createElement('span');icon.className='defenseFeedbackSkillIcon';if(item.skillId&&window.HeroSkillVisuals?.skills[item.skillId])icon.dataset.skillId=item.skillId;else icon.textContent='🛡';const title=document.createElement('strong');title.textContent=item.name;const stars=document.createElement('span');stars.textContent='★'.repeat(item.star);face.append(icon,title,stars)}
     this.visual.append(face);
     for(let n=0;n<18;n++){const dot=document.createElement('i');dot.className='defenseFeedbackParticle';const angle=n*2.39996;dot.style.setProperty('--dx',Math.round(Math.cos(angle)*(85+n*5))+'px');dot.style.setProperty('--dy',Math.round(Math.sin(angle)*(110+n*7))+'px');dot.style.setProperty('--delay',(80+n*9)+'ms');this.visual.append(dot)}
     this.visual.classList.remove('playing');void this.visual.offsetWidth;this.visual.classList.add('playing');
@@ -7114,6 +7114,447 @@ const _feedbackTick=DuelTurnClock.tick;
 DuelTurnClock.tick=function(){if(DefenseFeedback.active){DefenseFeedback.pauseClock();return}return _feedbackTick.call(this)};
 const _feedbackReset=resetMatchState;
 resetMatchState=function(){DefenseFeedback.clear();DefenseFeedback.seenWard=new WeakSet();return _feedbackReset()};
+
+;
+/* Approved skill artwork. Presentation only; IDs come from game content. */
+window.HeroSkillVisuals = Object.freeze({
+  "style": "DW-STYLE-01",
+  "version": "1.74.0",
+  "skills": {
+    "SKILL_HERO_KAZU_S1": {
+      "heroId": "HERO_INF_KAZU",
+      "source": "assets/skills/heroes-simple-dw-style-01/kazu.webp",
+      "width": 2172,
+      "height": 724,
+      "frame": [
+        33,
+        32,
+        681,
+        652
+      ]
+    },
+    "SKILL_HERO_KAZU_S2": {
+      "heroId": "HERO_INF_KAZU",
+      "source": "assets/skills/heroes-simple-dw-style-01/kazu.webp",
+      "width": 2172,
+      "height": 724,
+      "frame": [
+        742,
+        33,
+        685,
+        650
+      ]
+    },
+    "SKILL_HERO_KAZU_S3": {
+      "heroId": "HERO_INF_KAZU",
+      "source": "assets/skills/heroes-simple-dw-style-01/kazu.webp",
+      "width": 2172,
+      "height": 724,
+      "frame": [
+        1462,
+        33,
+        679,
+        651
+      ]
+    },
+    "SKILL_HERO_RODOC_S1": {
+      "heroId": "HERO_INF_RODOC",
+      "source": "assets/skills/heroes-simple-dw-style-01/rodoc.webp",
+      "width": 2172,
+      "height": 724,
+      "frame": [
+        22,
+        24,
+        704,
+        657
+      ]
+    },
+    "SKILL_HERO_RODOC_S2": {
+      "heroId": "HERO_INF_RODOC",
+      "source": "assets/skills/heroes-simple-dw-style-01/rodoc.webp",
+      "width": 2172,
+      "height": 724,
+      "frame": [
+        742,
+        24,
+        692,
+        657
+      ]
+    },
+    "SKILL_HERO_RODOC_S3": {
+      "heroId": "HERO_INF_RODOC",
+      "source": "assets/skills/heroes-simple-dw-style-01/rodoc.webp",
+      "width": 2172,
+      "height": 724,
+      "frame": [
+        1448,
+        24,
+        702,
+        657
+      ]
+    },
+    "SKILL_HERO_EST_S1": {
+      "heroId": "HERO_INF_EST",
+      "source": "assets/skills/heroes-simple-dw-style-01/est.webp",
+      "width": 1536,
+      "height": 1024,
+      "frame": [
+        21,
+        204,
+        495,
+        502
+      ]
+    },
+    "SKILL_HERO_EST_S2": {
+      "heroId": "HERO_INF_EST",
+      "source": "assets/skills/heroes-simple-dw-style-01/est.webp",
+      "width": 1536,
+      "height": 1024,
+      "frame": [
+        526,
+        204,
+        484,
+        502
+      ]
+    },
+    "SKILL_HERO_EST_S3": {
+      "heroId": "HERO_INF_EST",
+      "source": "assets/skills/heroes-simple-dw-style-01/est.webp",
+      "width": 1536,
+      "height": 1024,
+      "frame": [
+        1021,
+        204,
+        494,
+        502
+      ]
+    },
+    "SKILL_HERO_MASK_S1": {
+      "heroId": "HERO_CAV_MASK",
+      "source": "assets/skills/heroes-simple-dw-style-01/mask.webp",
+      "width": 2172,
+      "height": 724,
+      "frame": [
+        15,
+        16,
+        704,
+        674
+      ]
+    },
+    "SKILL_HERO_MASK_S2": {
+      "heroId": "HERO_CAV_MASK",
+      "source": "assets/skills/heroes-simple-dw-style-01/mask.webp",
+      "width": 2172,
+      "height": 724,
+      "frame": [
+        737,
+        16,
+        698,
+        674
+      ]
+    },
+    "SKILL_HERO_MASK_S3": {
+      "heroId": "HERO_CAV_MASK",
+      "source": "assets/skills/heroes-simple-dw-style-01/mask.webp",
+      "width": 2172,
+      "height": 724,
+      "frame": [
+        1453,
+        16,
+        704,
+        674
+      ]
+    },
+    "SKILL_HERO_SOUL_S1": {
+      "heroId": "HERO_CAV_SOUL",
+      "source": "assets/skills/heroes-simple-dw-style-01/soul.webp",
+      "width": 1536,
+      "height": 1024,
+      "frame": [
+        17,
+        221,
+        501,
+        548
+      ]
+    },
+    "SKILL_HERO_SOUL_S2": {
+      "heroId": "HERO_CAV_SOUL",
+      "source": "assets/skills/heroes-simple-dw-style-01/soul.webp",
+      "width": 1536,
+      "height": 1024,
+      "frame": [
+        527,
+        221,
+        482,
+        548
+      ]
+    },
+    "SKILL_HERO_SOUL_S3": {
+      "heroId": "HERO_CAV_SOUL",
+      "source": "assets/skills/heroes-simple-dw-style-01/soul.webp",
+      "width": 1536,
+      "height": 1024,
+      "frame": [
+        1019,
+        220,
+        501,
+        549
+      ]
+    },
+    "SKILL_HERO_SIRI_S1": {
+      "heroId": "HERO_CAV_SIRI",
+      "source": "assets/skills/heroes-simple-dw-style-01/siri.webp",
+      "width": 1536,
+      "height": 1024,
+      "frame": [
+        17,
+        218,
+        494,
+        523
+      ]
+    },
+    "SKILL_HERO_SIRI_S2": {
+      "heroId": "HERO_CAV_SIRI",
+      "source": "assets/skills/heroes-simple-dw-style-01/siri.webp",
+      "width": 1536,
+      "height": 1024,
+      "frame": [
+        522,
+        218,
+        491,
+        523
+      ]
+    },
+    "SKILL_HERO_SIRI_S3": {
+      "heroId": "HERO_CAV_SIRI",
+      "source": "assets/skills/heroes-simple-dw-style-01/siri.webp",
+      "width": 1536,
+      "height": 1024,
+      "frame": [
+        1024,
+        218,
+        493,
+        523
+      ]
+    },
+    "SKILL_HERO_RAEN_S1": {
+      "heroId": "HERO_ARCH_RAEN",
+      "source": "assets/skills/heroes-simple-dw-style-01/raen.webp",
+      "width": 2172,
+      "height": 724,
+      "frame": [
+        23,
+        30,
+        694,
+        655
+      ]
+    },
+    "SKILL_HERO_RAEN_S2": {
+      "heroId": "HERO_ARCH_RAEN",
+      "source": "assets/skills/heroes-simple-dw-style-01/raen.webp",
+      "width": 2172,
+      "height": 724,
+      "frame": [
+        740,
+        30,
+        693,
+        655
+      ]
+    },
+    "SKILL_HERO_RAEN_S3": {
+      "heroId": "HERO_ARCH_RAEN",
+      "source": "assets/skills/heroes-simple-dw-style-01/raen.webp",
+      "width": 2172,
+      "height": 724,
+      "frame": [
+        1456,
+        30,
+        693,
+        655
+      ]
+    },
+    "SKILL_HERO_XACNAS_S1": {
+      "heroId": "HERO_ARCH_XACNAS",
+      "source": "assets/skills/heroes-simple-dw-style-01/xacnas.webp",
+      "width": 2172,
+      "height": 724,
+      "frame": [
+        28,
+        24,
+        685,
+        650
+      ]
+    },
+    "SKILL_HERO_XACNAS_S2": {
+      "heroId": "HERO_ARCH_XACNAS",
+      "source": "assets/skills/heroes-simple-dw-style-01/xacnas.webp",
+      "width": 2172,
+      "height": 724,
+      "frame": [
+        743,
+        24,
+        685,
+        650
+      ]
+    },
+    "SKILL_HERO_XACNAS_S3": {
+      "heroId": "HERO_ARCH_XACNAS",
+      "source": "assets/skills/heroes-simple-dw-style-01/xacnas.webp",
+      "width": 2172,
+      "height": 724,
+      "frame": [
+        1458,
+        24,
+        686,
+        649
+      ]
+    },
+    "SKILL_HERO_LUCY_S1": {
+      "heroId": "HERO_ARCH_LUCY",
+      "source": "assets/skills/heroes-simple-dw-style-01/lucy.webp",
+      "width": 2172,
+      "height": 724,
+      "frame": [
+        41,
+        34,
+        689,
+        618
+      ]
+    },
+    "SKILL_HERO_LUCY_S2": {
+      "heroId": "HERO_ARCH_LUCY",
+      "source": "assets/skills/heroes-simple-dw-style-01/lucy.webp",
+      "width": 2172,
+      "height": 724,
+      "frame": [
+        758,
+        34,
+        655,
+        618
+      ]
+    },
+    "SKILL_HERO_LUCY_S3": {
+      "heroId": "HERO_ARCH_LUCY",
+      "source": "assets/skills/heroes-simple-dw-style-01/lucy.webp",
+      "width": 2172,
+      "height": 724,
+      "frame": [
+        1442,
+        34,
+        691,
+        618
+      ]
+    },
+    "SKILL_HERO_GRIM_S1": {
+      "heroId": "HERO_ALCH_GRIM",
+      "source": "assets/skills/heroes-simple-dw-style-01/grim.webp",
+      "width": 2172,
+      "height": 724,
+      "frame": [
+        24,
+        25,
+        688,
+        640
+      ]
+    },
+    "SKILL_HERO_GRIM_S2": {
+      "heroId": "HERO_ALCH_GRIM",
+      "source": "assets/skills/heroes-simple-dw-style-01/grim.webp",
+      "width": 2172,
+      "height": 724,
+      "frame": [
+        742,
+        24,
+        687,
+        642
+      ]
+    },
+    "SKILL_HERO_GRIM_S3": {
+      "heroId": "HERO_ALCH_GRIM",
+      "source": "assets/skills/heroes-simple-dw-style-01/grim.webp",
+      "width": 2172,
+      "height": 724,
+      "frame": [
+        1459,
+        24,
+        689,
+        642
+      ]
+    },
+    "SKILL_HERO_NEURO_S1": {
+      "heroId": "HERO_ALCH_NEURO",
+      "source": "assets/skills/heroes-simple-dw-style-01/neuro.webp",
+      "width": 1536,
+      "height": 1024,
+      "frame": [
+        11,
+        212,
+        502,
+        566
+      ]
+    },
+    "SKILL_HERO_NEURO_S2": {
+      "heroId": "HERO_ALCH_NEURO",
+      "source": "assets/skills/heroes-simple-dw-style-01/neuro.webp",
+      "width": 1536,
+      "height": 1024,
+      "frame": [
+        524,
+        212,
+        488,
+        566
+      ]
+    },
+    "SKILL_HERO_NEURO_S3": {
+      "heroId": "HERO_ALCH_NEURO",
+      "source": "assets/skills/heroes-simple-dw-style-01/neuro.webp",
+      "width": 1536,
+      "height": 1024,
+      "frame": [
+        1023,
+        212,
+        501,
+        566
+      ]
+    },
+    "SKILL_HERO_RANUS_S1": {
+      "heroId": "HERO_ALCH_RANUS",
+      "source": "assets/skills/heroes-simple-dw-style-01/ranus.webp",
+      "width": 2164,
+      "height": 727,
+      "frame": [
+        37,
+        39,
+        670,
+        642
+      ]
+    },
+    "SKILL_HERO_RANUS_S2": {
+      "heroId": "HERO_ALCH_RANUS",
+      "source": "assets/skills/heroes-simple-dw-style-01/ranus.webp",
+      "width": 2164,
+      "height": 727,
+      "frame": [
+        749,
+        38,
+        670,
+        643
+      ]
+    },
+    "SKILL_HERO_RANUS_S3": {
+      "heroId": "HERO_ALCH_RANUS",
+      "source": "assets/skills/heroes-simple-dw-style-01/ranus.webp",
+      "width": 2164,
+      "height": 727,
+      "frame": [
+        1460,
+        38,
+        671,
+        644
+      ]
+    }
+  }
+});
 
 ;
 /* Regions of the original uploaded concept boards. All labels/data stay live. */
@@ -7569,24 +8010,22 @@ window.DWPackUI = (() => {
     if (prepend) host.prepend(node); else host.append(node);
   };
   // Skill identity, independent of translated labels and button ordering.
-  const skillArt = Object.freeze({
-    SKILL_HERO_KAZU_S1: ['shield', [30, 270, 485, 478]],
-    SKILL_HERO_KAZU_S2: ['chain', [534, 270, 477, 478]],
-    SKILL_HERO_KAZU_S3: ['dragon', [1027, 270, 482, 478]]
-  });
   function skillIcons() {
     for (const node of document.querySelectorAll('[data-skill-id]')) {
-      const art = skillArt[node.dataset.skillId];
-      if (!art || node.querySelector(':scope > .dwSkillIcon')) continue;
-      // Display the original concept through an atlas viewport: no redrawing,
-      // CSS imitation of the gold rim, or destructive editing of the artwork.
-      const [key, [x, y, width, height]] = art;
+      const id = node.dataset.skillId, art = window.HeroSkillVisuals?.skills[id];
+      const existing = node.querySelector(':scope > .dwSkillIcon');
+      if (!art) { existing?.remove(); continue; }
+      if (existing?.dataset.art === id) continue;
+      existing?.remove();
+      const [x, y, width, height] = art.frame;
       const frame = document.createElement('span');
-      frame.className = 'dwSkillIcon dwFramedSkillIcon'; frame.dataset.art = key;
+      frame.className = 'dwSkillIcon dwFramedSkillIcon'; frame.dataset.art = id;
       frame.setAttribute('aria-hidden','true'); frame.style.aspectRatio = width + ' / ' + height;
+      // Fit both dimensions in the allotted icon size without stretching the art.
+      frame.style.setProperty('--dw-skill-scale',Math.min(1,width / height));
       const image = document.createElement('img'); image.alt = ''; image.draggable = false;
-      image.src = prefix + 'assets/skills/kazu-dw-style-01/framed-sheet.webp';
-      image.style.cssText = 'position:absolute;max-width:none;width:' + 1536 / width * 100 + '%;height:' + 1024 / height * 100 + '%;left:' + -x / width * 100 + '%;top:' + -y / height * 100 + '%;margin:0;border:0;';
+      image.src = prefix + art.source;
+      image.style.cssText = 'position:absolute;max-width:none;width:' + art.width / width * 100 + '%;height:' + art.height / height * 100 + '%;left:' + -x / width * 100 + '%;top:' + -y / height * 100 + '%;margin:0;border:0;';
       frame.append(image); node.prepend(frame);
     }
   }

@@ -20,7 +20,8 @@ const report=await page.evaluate(()=>{
 });
 for(const t of report)console.log((t.ok?'PASS':'FAIL')+' | '+t.name+(t.error?' | '+t.error:''));assert(report.every(t=>t.ok));assert.deepEqual(errors,[]);
 // Exercise overlay input isolation, automatic dismissal, and the mobile layout in a real browser.
-await page.evaluate(()=>{ShellGameOverController.close();S.phase='battle';S.selectedMode='MODE_TRAINING_001';show('game');DefenseFeedback.receipt({id:'feedback-fixture',side:2,hero:true,definitionId:'HERO_ARCH_LUCY',name:'Lucy'},{name:'Phân Ảnh',star:1},'skill','Hủy đòn')});
+await page.evaluate(()=>{ShellGameOverController.close();S.phase='battle';S.selectedMode='MODE_TRAINING_001';show('game');DefenseFeedback.receipt({id:'feedback-fixture',side:2,hero:true,definitionId:'HERO_ARCH_LUCY',name:'Lucy'},{id:'SKILL_HERO_LUCY_S1',name:'Phân Ảnh',star:1},'skill','Hủy đòn');clearTimeout(DefenseFeedback.timer)});
+await page.locator('.defenseFeedbackSkillIcon .dwSkillIcon > img').waitFor();await page.locator('.defenseFeedbackSkillIcon .dwSkillIcon > img').evaluate(image=>image.decode());
 await page.setViewportSize({width:390,height:844});await page.screenshot({path:'/workspace/defense-feedback-mobile.png'});assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));await page.locator('.defenseFeedback button').click();assert(await page.evaluate(()=>!DefenseFeedback.active));
 await page.evaluate(()=>DefenseFeedback.receipt({id:'feedback-fixture',side:2,hero:true,definitionId:'HERO_ARCH_LUCY',name:'Lucy'},createEquipmentCardInstance('EQUIP_ARCH_DEF_001',2),'card','Hủy đòn'));await page.waitForTimeout(1100);assert(await page.evaluate(()=>!DefenseFeedback.active));assert.deepEqual(errors,[]);console.log('PASS | Mobile overlay fits, click skips, automatic dismissal');
 }finally{if(browser)await browser.close();server.close()}})().catch(e=>{console.error(e);process.exitCode=1});

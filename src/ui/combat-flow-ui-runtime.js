@@ -14,7 +14,7 @@ const CombatFlowUI={
   render(){
     const s=this.state;if(!s)return;this.dialog.replaceChildren();
     const title=document.createElement('h2');title.textContent='PLAYER '+s.h.side+' · TRANG BỊ '+(s.kind==='post'?'PHẢN SÁT THƯƠNG':s.kind==='def'?'PHÒNG THỦ':s.kind.startsWith('skill')?'CHO SKILL':'TẤN CÔNG');
-    const info=document.createElement('p');info.textContent=unitSpec(s.h).name+(s.sk?' · '+s.sk.name:'')+(s.multi?' · Chọn nhiều trang bị hợp lệ · Đã chọn '+s.cardUids.length:' · Chọn một lá bài hợp lệ');this.dialog.append(title,info);
+    const info=document.createElement('p');info.textContent=unitSpec(s.h).name+(s.sk?' · '+s.sk.name:'')+(s.multi?' · Chọn nhiều trang bị hợp lệ · Đã chọn '+s.cardUids.length:' · Chọn một lá bài hợp lệ');if(s.sk)info.dataset.skillId=s.sk.id;this.dialog.append(title,info);
     const list=document.createElement('div');list.className='combatEquipmentCards';const cards=this.cards(s.h,s.kind,s.sk);
     if(!cards.some(c=>c.uid===s.cardUid))s.cardUid=null;
     s.cardUids=s.cardUids.filter(uid=>cards.some(c=>c.uid===uid));
@@ -96,8 +96,8 @@ HeroSkillUI.render=function(){_flowSkillRender.call(this);const s=HeroCore.selec
 };
 const _flowSkills=renderSkills;
 renderSkills=function(){_flowSkills();for(const b of skillBar.querySelectorAll('button')){const h=S.units.find(u=>String(u.id)===b.dataset.heroId),n=Number(b.dataset.skillNo);if(h&&n)b.onclick=()=>CombatFlowUI.startSkill(h,n)}};
-atkSkillBtn.onclick=()=>{const h=S.selected;if(!h?.hero)return;atkSkillList.replaceChildren();for(let n=1;n<=3;n++){const sk=heroSkill(h,n);atkSkillList.append(HeroSkillUI.button(sk.name+' · '+'★'.repeat(sk.star||0),()=>CombatFlowUI.startSkill(h,n),!HeroCore.canUse(h,n,sk)))}atkSkillList.classList.toggle('show')};
-defHeroSkillChoice.onclick=()=>{const d=S.pending&&S.units.find(u=>u.id===S.pending.d);defCardList.replaceChildren();for(const c of defenseSkillChoices(d))defCardList.append(HeroSkillUI.button(unitSpec(c.hero).name+' · '+c.skill.name,()=>CombatFlowUI.startSkill(c.hero,c.skillNo)));defCardList.classList.add('show')};
+atkSkillBtn.onclick=()=>{const h=S.selected;if(!h?.hero)return;atkSkillList.replaceChildren();for(let n=1;n<=3;n++){const sk=heroSkill(h,n);atkSkillList.append(HeroSkillUI.button(sk.name+' · '+'★'.repeat(sk.star||0),()=>CombatFlowUI.startSkill(h,n),!HeroCore.canUse(h,n,sk),sk.id))}atkSkillList.classList.toggle('show')};
+defHeroSkillChoice.onclick=()=>{const d=S.pending&&S.units.find(u=>u.id===S.pending.d);defCardList.replaceChildren();for(const c of defenseSkillChoices(d))defCardList.append(HeroSkillUI.button(unitSpec(c.hero).name+' · '+c.skill.name,()=>CombatFlowUI.startSkill(c.hero,c.skillNo),false,c.skill.id));defCardList.classList.add('show')};
 const _flowSkillEntry=_beginSkillTargetInternal;
 _beginSkillTargetInternal=function(n){return heroSkill(S.selected,n)?.mechanic?CombatFlowUI.startSkill(S.selected,n):_flowSkillEntry(n)};
 const _flowUpdate=updateUI;

@@ -1,10 +1,10 @@
 {
   "style": "DW-STYLE-01",
   "revision": "SIMPLIFIED_AVATAR_EQUIPMENT",
-  "status": "DRAFT_FOR_REVIEW",
+  "status": "APPROVED_FOR_GAME",
   "heroCount": 12,
   "skillCount": 36,
-  "gameReplacements": false,
+  "gameReplacements": true,
   "designPrinciples": [
     "One dominant subject",
     "Broad cel-shaded planes",
@@ -22,7 +22,7 @@
       "heroId": "HERO_INF_KAZU",
       "name": "Kazu",
       "slug": "kazu",
-      "status": "DRAFT_FOR_REVIEW",
+      "status": "APPROVED_FOR_GAME",
       "png": "kazu.png",
       "preview": "kazu.webp",
       "previous": "../kazu-skills-dw-style-01/kazu-skills-dw-style-01.png",
@@ -66,7 +66,7 @@
       "heroId": "HERO_INF_RODOC",
       "name": "Rodoc",
       "slug": "rodoc",
-      "status": "DRAFT_FOR_REVIEW",
+      "status": "APPROVED_FOR_GAME",
       "png": "rodoc.png",
       "preview": "rodoc.webp",
       "previous": "../hero-skills-dw-style-01/rodoc.webp",
@@ -110,7 +110,7 @@
       "heroId": "HERO_INF_EST",
       "name": "Est",
       "slug": "est",
-      "status": "DRAFT_FOR_REVIEW",
+      "status": "APPROVED_FOR_GAME",
       "png": "est.png",
       "preview": "est.webp",
       "previous": "../hero-skills-dw-style-01/est.webp",
@@ -154,7 +154,7 @@
       "heroId": "HERO_CAV_MASK",
       "name": "Mask",
       "slug": "mask",
-      "status": "DRAFT_FOR_REVIEW",
+      "status": "APPROVED_FOR_GAME",
       "png": "mask.png",
       "preview": "mask.webp",
       "previous": "../hero-skills-dw-style-01/mask.webp",
@@ -198,7 +198,7 @@
       "heroId": "HERO_CAV_SOUL",
       "name": "Soul",
       "slug": "soul",
-      "status": "DRAFT_FOR_REVIEW",
+      "status": "APPROVED_FOR_GAME",
       "png": "soul.png",
       "preview": "soul.webp",
       "previous": "../hero-skills-dw-style-01/soul.webp",
@@ -242,7 +242,7 @@
       "heroId": "HERO_CAV_SIRI",
       "name": "Siri",
       "slug": "siri",
-      "status": "DRAFT_FOR_REVIEW",
+      "status": "APPROVED_FOR_GAME",
       "png": "siri.png",
       "preview": "siri.webp",
       "previous": "../hero-skills-dw-style-01/siri.webp",
@@ -286,7 +286,7 @@
       "heroId": "HERO_ARCH_RAEN",
       "name": "Raen",
       "slug": "raen",
-      "status": "DRAFT_FOR_REVIEW",
+      "status": "APPROVED_FOR_GAME",
       "png": "raen.png",
       "preview": "raen.webp",
       "previous": "../hero-skills-dw-style-01/raen.webp",
@@ -330,7 +330,7 @@
       "heroId": "HERO_ARCH_XACNAS",
       "name": "Xacnas",
       "slug": "xacnas",
-      "status": "DRAFT_FOR_REVIEW",
+      "status": "APPROVED_FOR_GAME",
       "png": "xacnas.png",
       "preview": "xacnas.webp",
       "previous": "../hero-skills-dw-style-01/xacnas.webp",
@@ -374,7 +374,7 @@
       "heroId": "HERO_ARCH_LUCY",
       "name": "Lucy",
       "slug": "lucy",
-      "status": "DRAFT_FOR_REVIEW",
+      "status": "APPROVED_FOR_GAME",
       "png": "lucy.png",
       "preview": "lucy.webp",
       "previous": "../hero-skills-dw-style-01/lucy.webp",
@@ -418,7 +418,7 @@
       "heroId": "HERO_ALCH_GRIM",
       "name": "Grim",
       "slug": "grim",
-      "status": "DRAFT_FOR_REVIEW",
+      "status": "APPROVED_FOR_GAME",
       "png": "grim.png",
       "preview": "grim.webp",
       "previous": "../hero-skills-dw-style-01/grim.webp",
@@ -462,7 +462,7 @@
       "heroId": "HERO_ALCH_NEURO",
       "name": "Neuro",
       "slug": "neuro",
-      "status": "DRAFT_FOR_REVIEW",
+      "status": "APPROVED_FOR_GAME",
       "png": "neuro.png",
       "preview": "neuro.webp",
       "previous": "../hero-skills-dw-style-01/neuro.webp",
@@ -506,7 +506,7 @@
       "heroId": "HERO_ALCH_RANUS",
       "name": "Ranus",
       "slug": "ranus",
-      "status": "DRAFT_FOR_REVIEW",
+      "status": "APPROVED_FOR_GAME",
       "png": "ranus.png",
       "preview": "ranus.webp",
       "previous": "../hero-skills-dw-style-01/ranus.webp",
@@ -547,6 +547,8 @@
       ]
     }
   ],
+  "approvedVersion": "1.74.0",
+  "runtimeManifest": "../../assets/skills/heroes-simple-dw-style-01/manifest.json",
   "downloads": [
     {
       "file": "01-infantry-cavalry-png.zip",
@@ -559,8 +561,8 @@
         "soul",
         "siri"
       ],
-      "bytes": 12175646,
-      "sha256": "9f3e2cc8f5e227bc3f07caa30a45d6d386e35cc937a36b9fcbdf7afe0bccb0cf"
+      "bytes": 12175679,
+      "sha256": "7b4aaa05b4278a99c0fb9a0761350b8b7adfd38169734e85cd48b097476bab0b"
     },
     {
       "file": "02-archers-alchemists-png.zip",
@@ -573,8 +575,8 @@
         "neuro",
         "ranus"
       ],
-      "bytes": 12026929,
-      "sha256": "fcac0a526a55aeb86a92220d6a15c75baf65d11d03993daec0f9d642dc334096"
+      "bytes": 12026962,
+      "sha256": "317fb6693b728405183be61bfc5d322c97ebdea30d91542653f022db7c7608d1"
     }
   ]
 }

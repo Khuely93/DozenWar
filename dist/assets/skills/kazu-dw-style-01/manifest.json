@@ -2,7 +2,7 @@
   "style": "DW-STYLE-01",
   "heroId": "HERO_INF_KAZU",
   "status": "INTEGRATED",
-  "note": "Active UI shows the original concept frames and colored backgrounds through atlas viewports. Earlier transparent derivatives remain archived. Gameplay unchanged.",
+  "note": "Archived Kazu concept and earlier transparent edits. Superseded in v1.74.0 by the approved simplified skill pack.",
   "entries": [
     {
       "skillId": "SKILL_HERO_KAZU_S1",
@@ -72,5 +72,6 @@
     "sha256": "5ef59928935fcd89cf4dcee85659d596dec7e28d115a4579649e44d9e03a873c",
     "bytes": 2064594,
     "decodedPixelsIdentical": true
-  }
+  },
+  "supersededBy": "assets/skills/heroes-simple-dw-style-01/manifest.json"
 }

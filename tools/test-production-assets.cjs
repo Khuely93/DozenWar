@@ -96,6 +96,27 @@ for (const entry of skillArt.entries) {
     assert.deepEqual(fs.readFileSync(path.join(root,'dist',file)),bytes);
   }
 }
+const approvedSkills = JSON.parse(read('assets/skills/heroes-simple-dw-style-01/manifest.json'));
+const skillCatalogContext = vm.createContext({window:{}});
+vm.runInContext(read('assets/skills/heroes-simple-dw-style-01/catalog.js'),skillCatalogContext);
+const skillCatalog = skillCatalogContext.window.HeroSkillVisuals;
+assert.equal(approvedSkills.status,'APPROVED_FOR_GAME');
+assert.equal(approvedSkills.heroes.length,12);
+assert.equal(Object.keys(skillCatalog.skills).length,36);
+for (const hero of approvedSkills.heroes) {
+  const definition = content.heroRegistry.get(hero.heroId), bytes = fs.readFileSync(path.join(root,hero.source));
+  assert.deepEqual(hero.skills.map(s=>s.skillId),Array.from(definition.skillIds),'Approved skill identity '+hero.name);
+  assert.equal(require('node:crypto').createHash('sha256').update(bytes).digest('hex'),hero.sha256,'Approved preview bytes '+hero.name);
+  assert.deepEqual(fs.readFileSync(path.join(root,'dist',hero.source)),bytes,'Production skill sheet '+hero.name);
+  for (const skill of hero.skills) {
+    const art=skillCatalog.skills[skill.skillId], [x,y,w,h]=art.frame;
+    assert.equal(art.heroId,hero.heroId); assert.equal(art.source,hero.source);
+    assert.deepEqual(Array.from(art.frame),skill.frame);
+    assert(x>=0 && y>=0 && w>0 && h>0 && x+w<=art.width && y+h<=art.height,'Valid skill viewport '+skill.skillId);
+  }
+}
+assert.deepEqual(fs.readFileSync(path.join(root,'dist/assets/skills/heroes-simple-dw-style-01/catalog.js')),fs.readFileSync(path.join(root,'assets/skills/heroes-simple-dw-style-01/catalog.js')));
+assert(read('dist/online/index.html').includes('../assets/skills/heroes-simple-dw-style-01/catalog.js'));
 const manifest = JSON.parse(read('project-manifest.json'));
 const built = JSON.parse(read('dist/build-manifest.json'));
 assert.equal(built.version, manifest.version, 'Production metadata version');

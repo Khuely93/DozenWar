@@ -4,7 +4,7 @@ const DefenseFeedback={
   outcome(mechanic){return ({CANCEL:'Hủy đòn',ESCAPE:'Né đòn',HEAL:'Hồi máu',SWAP:'Đổi đơn vị nhận đòn',REDIRECT:'Chuyển hướng đòn',DICE_WARD:'Kích hoạt Phân Bóng',MORPH:'Biến đổi hệ',CONVERT:'Biến đổi hệ',COUNTER:'Chuẩn bị bắn trả',REVENGE:'Phản công',PUSH:'Đẩy lùi và trói',ROOT:'Khóa mục tiêu'})[mechanic]||'Đã dùng để phòng thủ'},
   receipt(h,item,kind,outcome){
     if(!h||!item)return;
-    this.queue.push({side:h.side,unit:unitSpec(h).name,name:item.name,star:item.star||0,kind,outcome,html:kind==='card'?cardHTML(item):null,training:S.selectedMode==='MODE_TRAINING_001'});
+    this.queue.push({side:h.side,unit:unitSpec(h).name,name:item.name,star:item.star||0,kind,outcome,skillId:kind==='skill'?item.id:null,html:kind==='card'?cardHTML(item):null,training:S.selectedMode==='MODE_TRAINING_001'});
     if(!this.active)this.next();
   },
   card(h,c,outcome){for(const part of EquipmentCore.parts(c)){const label=effectOf(part,'EFFECT_HEAL_1')?'Hồi máu':effectOf(part,'EFFECT_CANCEL_ATTACK')?'Hủy đòn':effectOf(part,'EFFECT_REFLECT_DAMAGE')?'Phản sát thương':effectOf(part,'EFFECT_COUNTER_BASE_ATTACK')?'Đánh trả':effectOf(part,'EFFECT_CANCEL_EQUIPMENT')?'Hủy trang bị':effectOf(part,'EFFECT_DAMAGE_REDUCE_1')?'Giảm sát thương':outcome;this.receipt(h,part,'card',label)}},
@@ -17,7 +17,7 @@ const DefenseFeedback={
     this.visual.replaceChildren();
     const face=document.createElement('div');face.className='defenseFeedbackFace';
     if(item.html)face.innerHTML=item.html;
-    else{const icon=document.createElement('span');icon.className='defenseFeedbackSkillIcon';icon.textContent='🛡';const title=document.createElement('strong');title.textContent=item.name;const stars=document.createElement('span');stars.textContent='★'.repeat(item.star);face.append(icon,title,stars)}
+    else{const icon=document.createElement('span');icon.className='defenseFeedbackSkillIcon';if(item.skillId&&window.HeroSkillVisuals?.skills[item.skillId])icon.dataset.skillId=item.skillId;else icon.textContent='🛡';const title=document.createElement('strong');title.textContent=item.name;const stars=document.createElement('span');stars.textContent='★'.repeat(item.star);face.append(icon,title,stars)}
     this.visual.append(face);
     for(let n=0;n<18;n++){const dot=document.createElement('i');dot.className='defenseFeedbackParticle';const angle=n*2.39996;dot.style.setProperty('--dx',Math.round(Math.cos(angle)*(85+n*5))+'px');dot.style.setProperty('--dy',Math.round(Math.sin(angle)*(110+n*7))+'px');dot.style.setProperty('--delay',(80+n*9)+'ms');this.visual.append(dot)}
     this.visual.classList.remove('playing');void this.visual.offsetWidth;this.visual.classList.add('playing');

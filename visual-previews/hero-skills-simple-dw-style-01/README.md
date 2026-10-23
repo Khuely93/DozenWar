@@ -1,5 +1,5 @@
-# Simplified Hero skill concepts · DW-STYLE-01
+# Approved Hero skill art · DW-STYLE-01 · v1.74.0
 
-12 Hero triptychs / 36 skill illustrations, including Kazu. These revisions use the equipment cards' clear central item compositions and broad shading from approved Hero avatars. Each icon has a gold square frame, a calm slate backdrop, a dominant emblem and minimal effects. Earlier crowded concepts remain archived for comparison.
+The user approved all 36 simplified skill icons for the 12 Heroes. The runtime uses unchanged copies of the reviewed WebP sheets with individually measured viewports, registered by skill ID in `assets/skills/heroes-simple-dw-style-01/catalog.js`. Original PNG masters remain here for download and comparison.
 
-PNG masters stay unchanged; WebP previews are whole-image encodings. The gallery includes a small-size viewing row and accurate names, star costs and descriptions from game content. New images remain drafts until user confirmation. No game assets or rules are replaced by this design gallery.
+Icons appear in team selection, skill descriptions, combat HUD, targeting/equipment dialogs, defensive skill choices and receipts, and the online interface. Names, costs, eligibility and commands remain live game data. The implementation changes presentation only.

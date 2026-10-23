@@ -67,16 +67,16 @@
 .dwUI .dwTeamSkill { padding-top: 12px; font-size: 11px; text-align: center; border-color: #9d7a41; }
 .dwUI .dwTeamSkill > span:not(.dwSkillIcon) { display: block; margin: 5px 0; }
 .dwUI .dwTeamHero > .btn { grid-column: 1/-1; width: 100%; margin-top: 10px; font-size: 12px; }
-.dwSkillIcon { display: block; width: 100%; height: auto; aspect-ratio: 1; max-width: 90px; object-fit: contain; margin: 0 auto 6px; pointer-events: none; }
+.dwSkillIcon { display: block; --dw-skill-size: 90px; width: min(100%,calc(var(--dw-skill-size) * var(--dw-skill-scale,1))); height: auto; aspect-ratio: 1; max-width: 90px; object-fit: contain; margin: 0 auto 6px; pointer-events: none; }
 .dwFramedSkillIcon { position: relative; overflow: hidden; flex-shrink: 0; background: #10171c; }
 .dwConfirmDialog h3[data-skill-id], .heroSkillPanel h3[data-skill-id], .dwOnline h2[data-skill-id] { display: flex; align-items: center; gap: 12px; }
-.dwConfirmDialog h3 > .dwSkillIcon, .heroSkillPanel h3 > .dwSkillIcon, .dwOnline h2 > .dwSkillIcon { width: 56px; flex: 0 0 56px; margin: 0; }
+.dwConfirmDialog h3 > .dwSkillIcon, .heroSkillPanel h3 > .dwSkillIcon, .dwOnline h2 > .dwSkillIcon { --dw-skill-size: 56px; flex: 0 0 auto; margin: 0; }
 .dwUI.dwOnline .onlineTeamInfo > div { flex: 1; min-width: 0; }
 .dwOnlineTeamSkills { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 8px; max-width: 360px; }
 .dwOnlineTeamSkill { flex: 1 1 70px; text-align: center; font-size: 11px; }
-.dwUI.dwOnline .onlineTeamInfo .dwSkillIcon { width: 60px; max-width: 100%; height: auto; border: 0; }
-.dwOnline #controls .btn > .dwSkillIcon { width: 42px; vertical-align: middle; display: inline-block; margin: 0 6px 0 0; }
-.dwUI .dockSkills .dwSkillIcon { max-width: 65px; margin: 2px auto; }
+.dwUI.dwOnline .onlineTeamInfo .dwSkillIcon { --dw-skill-size: 60px; max-width: 100%; height: auto; border: 0; }
+.dwOnline #controls .btn > .dwSkillIcon { --dw-skill-size: 42px; vertical-align: middle; display: inline-block; margin: 0 6px 0 0; }
+.dwUI .dockSkills .dwSkillIcon { --dw-skill-size: 56px; max-width: 56px; margin: 2px auto; }
 .dwUI .dwTroopPicker { display: flex; flex-direction: column; gap: 14px; }
 .dwUI .troopList { gap: 12px; }
 .dwUI .troopList .choice { grid-template-columns: 55px minmax(0,1fr); padding: 10px; }
@@ -217,7 +217,7 @@
   .dwUI .dwDeployUnit img { width: 36px; height: 36px; }
   .dwUI #gameTitle { padding: 4px 8px; font-size: 10px; }
   .dwUI .dwDockTab { min-height: 47px; padding: 3px 8px; }
-  .dwUI .dockSkills .dwSkillIcon { max-width: 38px; }
+  .dwUI .dockSkills .dwSkillIcon { --dw-skill-size: 38px; max-width: 38px; }
   .dwUI .directDefensePanel { padding: 18px; }
   .dwUI .heroSkillPanel { padding: 18px; }
   .dwUI .heroSkillPanel > h3 { font-size: 16px; }
@@ -242,3 +242,13 @@
   .dwUI .dwDeployUnit img { width: 28px; height: 28px; }
   .dwUI .dwTrainingPreviewLayout { max-height: calc(100dvh - 16px); overflow: auto; }
 }
+
+.dwUI :is(.heroDefenseBar,#atkSkillList,#defCardList) .btn > .dwSkillIcon { --dw-skill-size: 30px; display: inline-block; vertical-align: middle; margin: 0 7px 0 0; }
+.combatEquipmentDialog [data-skill-id] { display: flex; align-items: center; gap: 10px; }
+.combatEquipmentDialog [data-skill-id] > .dwSkillIcon { --dw-skill-size: 48px; flex: 0 0 auto; margin: 0; }
+
+.defenseFeedbackSkillIcon[data-skill-id] { display: block; width: 100px; line-height: 1; }
+.defenseFeedbackSkillIcon > .dwSkillIcon { --dw-skill-size: 90px; margin: 0 auto; }
+
+.dwUI .dockSkills .skill small:empty { display: none; }
+@media (min-width:900px) { .dwUI .dockSkills .dockSkillStars { font-size: 18px; line-height: 1.15; } }

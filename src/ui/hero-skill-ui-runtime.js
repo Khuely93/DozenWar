@@ -1,7 +1,7 @@
 /* Hero targeting is displayed as a reviewable selection; map clicks and buttons share Core validation. */
 const HeroSkillUI={
   panel:document.createElement('section'),bar:document.createElement('div'),
-  button(text,action,disabled=false){const b=document.createElement('button');b.type='button';b.className='btn';b.textContent=text;b.disabled=disabled;b.onclick=action;return b},
+  button(text,action,disabled=false,skillId=null){const b=document.createElement('button');b.type='button';b.className='btn';b.textContent=text;b.disabled=disabled;b.onclick=action;if(skillId)b.dataset.skillId=skillId;return b},
   render(){
     this.panel.replaceChildren();const s=HeroCore.selection;this.panel.hidden=!s;
     if(s){const title=document.createElement('h3');title.textContent=unitSpec(s.h).name+' · '+s.sk.name+' · '+'★'.repeat(s.sk.star||0);title.dataset.skillId=s.sk.id;this.panel.append(title);
@@ -19,7 +19,7 @@ const HeroSkillUI={
       this.panel.append(this.button('XÁC NHẬN',()=>HeroCore.commit(),m==='DICE_WARD'&&s.dice.length!==2),this.button(s.equipmentRecovery?'BỎ QUA':'HỦY',()=>s.equipmentRecovery?EquipmentCore.skipRecovery():HeroCore.cancel(),!s.equipmentRecovery&&!!s.continuation&&!!S.heroSequence));
     }
     this.bar.replaceChildren();this.bar.hidden=S.phase!=='battle'||S.matchEnded||!!s;
-    if(!this.bar.hidden){for(const h of S.units.filter(u=>u.hero&&u.hp>0&&u.side!==S.battleSide&&u.side!==S.botSide))for(let n=1;n<=3;n++){const sk=heroSkill(h,n);if(sk?.mechanic&&HeroCore.canUse(h,n,sk))this.bar.append(this.button('🛡️ '+unitSpec(h).name+' · '+sk.name,()=>HeroCore.begin(h,n)))}}
+    if(!this.bar.hidden){for(const h of S.units.filter(u=>u.hero&&u.hp>0&&u.side!==S.battleSide&&u.side!==S.botSide))for(let n=1;n<=3;n++){const sk=heroSkill(h,n);if(sk?.mechanic&&HeroCore.canUse(h,n,sk))this.bar.append(this.button('🛡️ '+unitSpec(h).name+' · '+sk.name,()=>HeroCore.begin(h,n),false,sk.id))}}
   }
 };
 HeroSkillUI.panel.className='heroSkillPanel';HeroSkillUI.panel.hidden=true;HeroSkillUI.panel.setAttribute('aria-label','Chọn skill Hero');HeroSkillUI.bar.className='heroDefenseBar';CoreDOM.board.wrap.append(HeroSkillUI.panel,HeroSkillUI.bar);
@@ -51,8 +51,8 @@ renderSkills=function(){
 };
 const _heroPopup=showDefensePopup;
 showDefensePopup=function(d){if(HeroCore.selection)return;const result=_heroPopup(d);if(HeroCore.blocked(d,'defense'))defGuardChoice.disabled=true;return result};
-defHeroSkillChoice.onclick=()=>{if(!S.pending)return;const d=S.units.find(u=>u.id===S.pending.d);defCardList.replaceChildren();for(const c of defenseSkillChoices(d))defCardList.append(HeroSkillUI.button(unitSpec(c.hero).name+' · '+c.skill.name,()=>HeroCore.begin(c.hero,c.skillNo)));defCardList.classList.add('show')};
-atkSkillBtn.onclick=()=>{if(!S.selected?.hero)return;atkSkillList.replaceChildren();for(let n=1;n<=3;n++){const h=S.selected,sk=heroSkill(h,n);atkSkillList.append(HeroSkillUI.button(sk.name+' · '+'★'.repeat(sk.star||0),()=>{hideAttackPopup();HeroCore.begin(h,n)},!HeroCore.canUse(h,n,sk)))}atkSkillList.classList.toggle('show')};
+defHeroSkillChoice.onclick=()=>{if(!S.pending)return;const d=S.units.find(u=>u.id===S.pending.d);defCardList.replaceChildren();for(const c of defenseSkillChoices(d))defCardList.append(HeroSkillUI.button(unitSpec(c.hero).name+' · '+c.skill.name,()=>HeroCore.begin(c.hero,c.skillNo),false,c.skill.id));defCardList.classList.add('show')};
+atkSkillBtn.onclick=()=>{if(!S.selected?.hero)return;atkSkillList.replaceChildren();for(let n=1;n<=3;n++){const h=S.selected,sk=heroSkill(h,n);atkSkillList.append(HeroSkillUI.button(sk.name+' · '+'★'.repeat(sk.star||0),()=>{hideAttackPopup();HeroCore.begin(h,n)},!HeroCore.canUse(h,n,sk),sk.id))}atkSkillList.classList.toggle('show')};
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&HeroCore.selection){if(HeroCore.selection.equipmentRecovery)EquipmentCore.skipRecovery();else HeroCore.cancel()}});
 CoreBoardRenderer.registerLayer('HERO_SKILL_STATE',45,{
   hexClasses(c,u){const s=HeroCore.selection;if(!s||s.uiEquipmentStep)return '';if(u&&HeroCore.candidate(s.h,s.sk,u))return s.selected.includes(u.id)?' skill-selected':' skill-valid';if(!u&&['ESCAPE','SUMMON'].includes(s.sk.mechanic)){const valid=s.sk.mechanic==='ESCAPE'?HeroCore.escapeCells(s.h,s.sk).some(x=>x.q===c.q&&x.r===c.r):distU(s.h,c)===1&&HeroCore.cellAllowed({side:s.h.side,hero:false,id:null},c);if(valid)return ' hl'}return ''},

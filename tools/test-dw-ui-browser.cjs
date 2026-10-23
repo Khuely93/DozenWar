@@ -72,7 +72,7 @@ async function run() {
           const icons = page.locator('.dwTeamSkill > .dwSkillIcon > img');
           assert.equal(await icons.count(), 3, 'Kazu team preview has three framed skill icons');
           await icons.evaluateAll(images => Promise.all(images.map(image => image.decode())));
-          assert.deepEqual(await icons.evaluateAll(images => images.map(image => image.parentElement.dataset.art)), ['shield','chain','dragon']);
+          assert.deepEqual(await icons.evaluateAll(images => images.map(image => image.parentElement.dataset.art)), ['SKILL_HERO_KAZU_S1','SKILL_HERO_KAZU_S2','SKILL_HERO_KAZU_S3']);
           assert.equal(await page.locator('#confirmTeam').isEnabled(), true);
           await page.getByRole('button', { name: 'Bớt Bộ binh', exact: true }).click();
           assert.equal(await page.locator('#confirmTeam').isEnabled(), false, 'Incomplete formation cannot confirm');
@@ -123,6 +123,32 @@ async function run() {
         report.push({ id, title, viewport: viewport.width, ok: true });
         if (report.length % 10 === 0) console.log('Checked ' + report.length + ' UI states');
         await page.close();
+      }
+      // Every approved Hero must resolve the three correct icons in selection
+      // and combat, including portrait-shaped frames and mobile scaling.
+      for (const hero of require('../assets/skills/heroes-simple-dw-style-01/manifest.json').heroes) {
+        const page = await context.newPage(); await page.setViewportSize(viewport);
+        page.on('pageerror',error=>errors.push({hero:hero.name,error:error.message}));
+        page.on('response',response=>{if(response.status()>=400)missing.push(response.url());});
+        await page.goto('http://127.0.0.1:' + server.address().port + '/', {waitUntil:'load'});
+        await fixtures.install(page);
+        await page.evaluate(id=>{DW_UI_CAPTURE.clean();S.selectedMode='MODE_DUEL_001';S.winner=1;S.loser=2;dealCards();beginTeam(1);tempHeroDefinitionId=id;tempTroops={inf:3,arch:1,cav:1};renderTeamPicker();},hero.heroId);
+        await page.locator('.dwTeamSkill > .dwSkillIcon > img').last().waitFor({state:'attached'});
+        assert.deepEqual(await page.locator('.dwTeamSkill').evaluateAll(nodes=>nodes.map(n=>n.dataset.skillId)),hero.skills.map(s=>s.skillId));
+        await page.locator('.dwTeamSkill .dwSkillIcon > img').evaluateAll(images=>Promise.all(images.map(image=>image.decode())));
+        await page.evaluate(name=>{const {a}=DW_UI_CAPTURE.battle(name,name==='Kazu'?'Rodoc':'Kazu');selectUnit(a);},hero.name);
+        if(viewport.width<900)await page.getByRole('tab',{name:'KỸ NĂNG',exact:true}).click();
+        await page.evaluate(()=>new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve))));
+        const icons=page.locator('#skillBar .dwSkillIcon > img');
+        await icons.last().waitFor({state:'attached'}); await icons.evaluateAll(images=>Promise.all(images.map(image=>image.decode())));
+        const drawn=await page.evaluate(()=>{DWPackUI.update();return [...document.querySelectorAll('#skillBar .dwSkillIcon > img')].map(image=>{
+          const icon=image.parentElement,box=icon.getBoundingClientRect(),button=icon.parentElement.getBoundingClientRect();
+          return {id:icon.dataset.art,source:new URL(image.src).pathname,width:box.width,height:box.height,ratio:icon.style.aspectRatio,inside:box.left>=button.left-1&&box.right<=button.right+1&&box.top>=button.top-1&&box.bottom<=button.bottom+1};
+        });});
+        assert.deepEqual(drawn.map(i=>i.id),hero.skills.map(s=>s.skillId),hero.name+' HUD order');
+        for(const icon of drawn){const [w,h]=icon.ratio.split('/').map(Number);assert(icon.source.endsWith('/'+hero.source));assert(icon.width>0&&icon.height>0&&icon.width<=66&&icon.height<=66&&Math.abs(icon.height-icon.width*h/w)<1,JSON.stringify({hero:hero.name,icon}));assert(icon.inside,'Icon stays in its button: '+hero.name);}
+        await page.screenshot({path:path.join(output,'skills-'+hero.slug+'-'+viewport.width+'.png')});
+        report.push({id:'all-hero-skills-'+hero.slug,viewport:viewport.width,ok:true});await page.close();
       }
       console.log('PASS | ' + cases.length + ' UI states at ' + viewport.width + 'px');
     }

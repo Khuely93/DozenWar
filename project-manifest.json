@@ -1,8 +1,8 @@
 {
   "project": "DOZEN WAR II",
-  "version": "1.73.2",
+  "version": "1.74.0",
   "phase": "DUEL_RULE_MODE_1VS1_180_30",
-  "baseline": "v1.73.2 uses original framed Kazu skill artwork with colored backgrounds",
+  "baseline": "v1.74.0 integrates 36 approved simple skill icons for all twelve heroes",
   "entry": "index.html",
   "styles": "styles/main.css",
   "runtimeOrder": [
@@ -43,6 +43,7 @@
     "src/ui/direct-board-flow-runtime.js",
     "src/ui/direct-defense-flow-runtime.js",
     "src/ui/defense-feedback-runtime.js",
+    "assets/skills/heroes-simple-dw-style-01/catalog.js",
     "assets/ui/dw-style-01/pack.js",
     "assets/ui/dw-style-01/concept-skins.js",
     "src/presentation/dw-ui-runtime.js",
