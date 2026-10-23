@@ -1,0 +1,583 @@
+{
+  "note": "Maps reference states to conceptual UI families, not a claim of exact state-by-state screenshots or implementation. Six inactive legacy states remain reference-only.",
+  "mapped_active_states": 66,
+  "legacy_states": 6,
+  "states": [
+    {
+      "reference_id": "01-mode",
+      "title": "Chọn chế độ chơi",
+      "status": "mapped-to-concept-family",
+      "design_family": "Mẫu Chọn chế độ",
+      "design_url": "../ui-mode-dw-style-01/",
+      "reference_url": "../ui-reference-v1.71.1/1920x1080/01-mode/screen.png"
+    },
+    {
+      "reference_id": "02-mode-confirm",
+      "title": "Xác nhận chế độ Đối Đầu",
+      "status": "mapped-to-concept-family",
+      "design_family": "Chọn loại trận",
+      "design_url": "index.html#menus",
+      "reference_url": "../ui-reference-v1.71.1/1920x1080/02-mode-confirm/screen.png"
+    },
+    {
+      "reference_id": "03-mode-locked",
+      "title": "Thông tin chế độ Chiến Thần",
+      "status": "mapped-to-concept-family",
+      "design_family": "Chọn loại trận",
+      "design_url": "index.html#menus",
+      "reference_url": "../ui-reference-v1.71.1/1920x1080/03-mode-locked/screen.png"
+    },
+    {
+      "reference_id": "04-play-hub",
+      "title": "Chọn loại trận AI / Thường / Xếp hạng",
+      "status": "mapped-to-concept-family",
+      "design_family": "Chọn loại trận",
+      "design_url": "index.html#menus",
+      "reference_url": "../ui-reference-v1.71.1/1920x1080/04-play-hub/screen.png"
+    },
+    {
+      "reference_id": "05-ai-difficulty",
+      "title": "Chọn độ khó Bot",
+      "status": "mapped-to-concept-family",
+      "design_family": "Chọn loại trận",
+      "design_url": "index.html#menus",
+      "reference_url": "../ui-reference-v1.71.1/1920x1080/05-ai-difficulty/screen.png"
+    },
+    {
+      "reference_id": "06-casual",
+      "title": "Menu đánh thường",
+      "status": "mapped-to-concept-family",
+      "design_family": "Chọn loại trận",
+      "design_url": "index.html#menus",
+      "reference_url": "../ui-reference-v1.71.1/1920x1080/06-casual/screen.png"
+    },
+    {
+      "reference_id": "07-ranked",
+      "title": "Menu xếp hạng",
+      "status": "mapped-to-concept-family",
+      "design_family": "Chọn loại trận",
+      "design_url": "index.html#menus",
+      "reference_url": "../ui-reference-v1.71.1/1920x1080/07-ranked/screen.png"
+    },
+    {
+      "reference_id": "08-private-room",
+      "title": "Tạo phòng thử trong Play Hub",
+      "status": "mapped-to-concept-family",
+      "design_family": "Chọn loại trận",
+      "design_url": "index.html#menus",
+      "reference_url": "../ui-reference-v1.71.1/1920x1080/08-private-room/screen.png"
+    },
+    {
+      "reference_id": "09-matchmaking",
+      "title": "Trạng thái tìm trận",
+      "status": "mapped-to-concept-family",
+      "design_family": "Chọn loại trận",
+      "design_url": "index.html#menus",
+      "reference_url": "../ui-reference-v1.71.1/1920x1080/09-matchmaking/screen.png"
+    },
+    {
+      "reference_id": "10-ready",
+      "title": "Sẵn sàng trước trận",
+      "status": "mapped-to-concept-family",
+      "design_family": "Sẵn sàng · Xúc xắc · Nhận bài",
+      "design_url": "index.html#prematch",
+      "reference_url": "../ui-reference-v1.71.1/1920x1080/10-ready/screen.png"
+    },
+    {
+      "reference_id": "11-dice",
+      "title": "Tung xúc xắc",
+      "status": "mapped-to-concept-family",
+      "design_family": "Sẵn sàng · Xúc xắc · Nhận bài",
+      "design_url": "index.html#prematch",
+      "reference_url": "../ui-reference-v1.71.1/1920x1080/11-dice/screen.png"
+    },
+    {
+      "reference_id": "12-dice-result",
+      "title": "Kết quả tung xúc xắc",
+      "status": "mapped-to-concept-family",
+      "design_family": "Sẵn sàng · Xúc xắc · Nhận bài",
+      "design_url": "index.html#prematch",
+      "reference_url": "../ui-reference-v1.71.1/1920x1080/12-dice-result/screen.png"
+    },
+    {
+      "reference_id": "13-deal",
+      "title": "Nhận bài trang bị",
+      "status": "mapped-to-concept-family",
+      "design_family": "Sẵn sàng · Xúc xắc · Nhận bài",
+      "design_url": "index.html#prematch",
+      "reference_url": "../ui-reference-v1.71.1/1920x1080/13-deal/screen.png"
+    },
+    {
+      "reference_id": "14-team-empty",
+      "title": "Chọn Hero và lính — chưa đủ quân",
+      "status": "mapped-to-concept-family",
+      "design_family": "Chọn Hero & đội hình",
+      "design_url": "index.html#team",
+      "reference_url": "../ui-reference-v1.71.1/1920x1080/14-team-empty/screen.png"
+    },
+    {
+      "reference_id": "15-team-selected",
+      "title": "Chọn Hero và lính — đủ 5 quân",
+      "status": "mapped-to-concept-family",
+      "design_family": "Chọn Hero & đội hình",
+      "design_url": "index.html#team",
+      "reference_url": "../ui-reference-v1.71.1/1920x1080/15-team-selected/screen.png"
+    },
+    {
+      "reference_id": "16-deploy",
+      "title": "Triển khai quân trên bàn cờ",
+      "status": "mapped-to-concept-family",
+      "design_family": "Triển khai đội hình",
+      "design_url": "index.html#deploy",
+      "reference_url": "../ui-reference-v1.71.1/1920x1080/16-deploy/screen.png"
+    },
+    {
+      "reference_id": "17-deploy-menu",
+      "title": "Popup đặt quân vào ô",
+      "status": "mapped-to-concept-family",
+      "design_family": "Triển khai đội hình",
+      "design_url": "index.html#deploy",
+      "reference_url": "../ui-reference-v1.71.1/1920x1080/17-deploy-menu/screen.png"
+    },
+    {
+      "reference_id": "18-deploy-troops",
+      "title": "Popup chọn chủng lính để đặt",
+      "status": "mapped-to-concept-family",
+      "design_family": "Triển khai đội hình",
+      "design_url": "index.html#deploy",
+      "reference_url": "../ui-reference-v1.71.1/1920x1080/18-deploy-troops/screen.png"
+    },
+    {
+      "reference_id": "19-deploy-complete",
+      "title": "Đã xếp đủ quân — chờ xác nhận",
+      "status": "mapped-to-concept-family",
+      "design_family": "Triển khai đội hình",
+      "design_url": "index.html#deploy",
+      "reference_url": "../ui-reference-v1.71.1/1920x1080/19-deploy-complete/screen.png"
+    },
+    {
+      "reference_id": "20-battle",
+      "title": "Ingame — HUD và thanh Hero / Skill / Bài",
+      "status": "mapped-to-concept-family",
+      "design_family": "HUD trận đấu",
+      "design_url": "../ui-ingame-dw-style-01/#hud",
+      "reference_url": "../ui-reference-v1.71.1/1920x1080/20-battle/screen.png"
+    },
+    {
+      "reference_id": "21-hero-selected",
+      "title": "Ingame — chọn Hero và vùng di chuyển",
+      "status": "mapped-to-concept-family",
+      "design_family": "HUD trận đấu",
+      "design_url": "../ui-ingame-dw-style-01/#hud",
+      "reference_url": "../ui-reference-v1.71.1/1920x1080/21-hero-selected/screen.png"
+    },
+    {
+      "reference_id": "22-troop-selected",
+      "title": "Ingame — chọn quân lính",
+      "status": "mapped-to-concept-family",
+      "design_family": "HUD trận đấu",
+      "design_url": "../ui-ingame-dw-style-01/#hud",
+      "reference_url": "../ui-reference-v1.71.1/1920x1080/22-troop-selected/screen.png"
+    },
+    {
+      "reference_id": "23-combat-log",
+      "title": "Thông tin trận và Combat Log mở rộng",
+      "status": "mapped-to-concept-family",
+      "design_family": "HUD trận đấu",
+      "design_url": "../ui-ingame-dw-style-01/#hud",
+      "reference_url": "../ui-reference-v1.71.1/1920x1080/23-combat-log/screen.png"
+    },
+    {
+      "reference_id": "24-skill-target",
+      "title": "Kỹ năng chọn mục tiêu trên bàn cờ",
+      "status": "mapped-to-concept-family",
+      "design_family": "Hero · kỹ năng · trang bị",
+      "design_url": "../ui-ingame-dw-style-01/#hero",
+      "reference_url": "../ui-reference-v1.71.1/1920x1080/24-skill-target/screen.png"
+    },
+    {
+      "reference_id": "25-skill-morph",
+      "title": "Chọn chủng lính biến hình",
+      "status": "mapped-to-concept-family",
+      "design_family": "Kỹ năng đặc biệt",
+      "design_url": "index.html#skills",
+      "reference_url": "../ui-reference-v1.71.1/1920x1080/25-skill-morph/screen.png"
+    },
+    {
+      "reference_id": "26-skill-copy",
+      "title": "Chọn kỹ năng sao chép",
+      "status": "mapped-to-concept-family",
+      "design_family": "Kỹ năng đặc biệt",
+      "design_url": "index.html#skills",
+      "reference_url": "../ui-reference-v1.71.1/1920x1080/26-skill-copy/screen.png"
+    },
+    {
+      "reference_id": "27-skill-summon",
+      "title": "Triệu hồi — chủng lính và ô đích",
+      "status": "mapped-to-concept-family",
+      "design_family": "Kỹ năng đặc biệt",
+      "design_url": "index.html#skills",
+      "reference_url": "../ui-reference-v1.71.1/1920x1080/27-skill-summon/screen.png"
+    },
+    {
+      "reference_id": "28-equipment-dialog",
+      "title": "Hộp thoại chọn trang bị tấn công",
+      "status": "mapped-to-concept-family",
+      "design_family": "Hero · kỹ năng · trang bị",
+      "design_url": "../ui-ingame-dw-style-01/#hero",
+      "reference_url": "../ui-reference-v1.71.1/1920x1080/28-equipment-dialog/screen.png"
+    },
+    {
+      "reference_id": "29-equipment-actor",
+      "title": "Dùng bài — chọn quân nhận trang bị",
+      "status": "mapped-to-concept-family",
+      "design_family": "Hero · kỹ năng · trang bị",
+      "design_url": "../ui-ingame-dw-style-01/#hero",
+      "reference_url": "../ui-reference-v1.71.1/1920x1080/29-equipment-actor/screen.png"
+    },
+    {
+      "reference_id": "30-equipment-target",
+      "title": "Lao Móc — chọn mục tiêu của bài",
+      "status": "mapped-to-concept-family",
+      "design_family": "Hero · kỹ năng · trang bị",
+      "design_url": "../ui-ingame-dw-style-01/#hero",
+      "reference_url": "../ui-reference-v1.71.1/1920x1080/30-equipment-target/screen.png"
+    },
+    {
+      "reference_id": "31-defense",
+      "title": "Phòng thủ — Hero nhận đòn",
+      "status": "mapped-to-concept-family",
+      "design_family": "Phòng thủ · xác nhận · kết quả",
+      "design_url": "../ui-ingame-dw-style-01/#dialogs",
+      "reference_url": "../ui-reference-v1.71.1/1920x1080/31-defense/screen.png"
+    },
+    {
+      "reference_id": "32-guard",
+      "title": "Phòng thủ — Bộ binh đỡ đòn",
+      "status": "mapped-to-concept-family",
+      "design_family": "Kỹ năng đặc biệt",
+      "design_url": "index.html#skills",
+      "reference_url": "../ui-reference-v1.71.1/1920x1080/32-guard/screen.png"
+    },
+    {
+      "reference_id": "33-dice-ward",
+      "title": "Phòng thủ — chọn hai số xúc xắc",
+      "status": "mapped-to-concept-family",
+      "design_family": "Kỹ năng đặc biệt",
+      "design_url": "index.html#skills",
+      "reference_url": "../ui-reference-v1.71.1/1920x1080/33-dice-ward/screen.png"
+    },
+    {
+      "reference_id": "34-escape",
+      "title": "Phòng thủ — chọn ô thoát hiểm",
+      "status": "mapped-to-concept-family",
+      "design_family": "Kỹ năng đặc biệt",
+      "design_url": "index.html#skills",
+      "reference_url": "../ui-reference-v1.71.1/1920x1080/34-escape/screen.png"
+    },
+    {
+      "reference_id": "35-warning",
+      "title": "Cảnh báo thao tác ngoài tầm",
+      "status": "mapped-to-concept-family",
+      "design_family": "Phòng thủ · xác nhận · kết quả",
+      "design_url": "../ui-ingame-dw-style-01/#dialogs",
+      "reference_url": "../ui-reference-v1.71.1/1920x1080/35-warning/screen.png"
+    },
+    {
+      "reference_id": "36-win",
+      "title": "Cửa sổ chiến thắng",
+      "status": "mapped-to-concept-family",
+      "design_family": "Phòng thủ · xác nhận · kết quả",
+      "design_url": "../ui-ingame-dw-style-01/#dialogs",
+      "reference_url": "../ui-reference-v1.71.1/1920x1080/36-win/screen.png"
+    },
+    {
+      "reference_id": "37-lose",
+      "title": "Cửa sổ thất bại",
+      "status": "mapped-to-concept-family",
+      "design_family": "Phòng thủ · xác nhận · kết quả",
+      "design_url": "../ui-ingame-dw-style-01/#dialogs",
+      "reference_url": "../ui-reference-v1.71.1/1920x1080/37-lose/screen.png"
+    },
+    {
+      "reference_id": "38-draw",
+      "title": "Cửa sổ hòa trận",
+      "status": "mapped-to-concept-family",
+      "design_family": "Phòng thủ · xác nhận · kết quả",
+      "design_url": "../ui-ingame-dw-style-01/#dialogs",
+      "reference_url": "../ui-reference-v1.71.1/1920x1080/38-draw/screen.png"
+    },
+    {
+      "reference_id": "39-ranked-result",
+      "title": "Kết quả xếp hạng và thay đổi Elo",
+      "status": "mapped-to-concept-family",
+      "design_family": "Phản ứng trang bị & xếp hạng",
+      "design_url": "index.html#reactions",
+      "reference_url": "../ui-reference-v1.71.1/1920x1080/39-ranked-result/screen.png"
+    },
+    {
+      "reference_id": "40-rematch-wait",
+      "title": "Chờ đối thủ đồng ý đấu lại",
+      "status": "mapped-to-concept-family",
+      "design_family": "Phòng thủ · xác nhận · kết quả",
+      "design_url": "../ui-ingame-dw-style-01/#dialogs",
+      "reference_url": "../ui-reference-v1.71.1/1920x1080/40-rematch-wait/screen.png"
+    },
+    {
+      "reference_id": "41-legacy-unit-menu",
+      "title": "Menu đơn vị kiểu cũ — mẫu còn trong mã",
+      "status": "legacy-reference-only",
+      "design_family": "Khung cũ · chỉ lưu tham khảo",
+      "design_url": null,
+      "reference_url": "../ui-reference-v1.71.1/1920x1080/41-legacy-unit-menu/screen.png"
+    },
+    {
+      "reference_id": "42-legacy-attack",
+      "title": "Popup tấn công kiểu cũ — mẫu còn trong mã",
+      "status": "legacy-reference-only",
+      "design_family": "Khung cũ · chỉ lưu tham khảo",
+      "design_url": null,
+      "reference_url": "../ui-reference-v1.71.1/1920x1080/42-legacy-attack/screen.png"
+    },
+    {
+      "reference_id": "43-legacy-equipment",
+      "title": "Danh sách bài trong popup kiểu cũ",
+      "status": "legacy-reference-only",
+      "design_family": "Khung cũ · chỉ lưu tham khảo",
+      "design_url": null,
+      "reference_url": "../ui-reference-v1.71.1/1920x1080/43-legacy-equipment/screen.png"
+    },
+    {
+      "reference_id": "44-equipment-counter",
+      "title": "Phản ứng hủy trang bị đối thủ",
+      "status": "mapped-to-concept-family",
+      "design_family": "Phản ứng trang bị & xếp hạng",
+      "design_url": "index.html#reactions",
+      "reference_url": "../ui-reference-v1.71.1/1920x1080/44-equipment-counter/screen.png"
+    },
+    {
+      "reference_id": "45-defense-feedback-card",
+      "title": "Thông báo đã dùng bài phòng thủ",
+      "status": "mapped-to-concept-family",
+      "design_family": "Phản ứng trang bị & xếp hạng",
+      "design_url": "index.html#reactions",
+      "reference_url": "../ui-reference-v1.71.1/1920x1080/45-defense-feedback-card/screen.png"
+    },
+    {
+      "reference_id": "46-defense-feedback-skill",
+      "title": "Thông báo đã dùng kỹ năng phòng thủ",
+      "status": "mapped-to-concept-family",
+      "design_family": "Phản ứng trang bị & xếp hạng",
+      "design_url": "index.html#reactions",
+      "reference_url": "../ui-reference-v1.71.1/1920x1080/46-defense-feedback-skill/screen.png"
+    },
+    {
+      "reference_id": "47-equipment-steal",
+      "title": "Cướp trang bị — chọn bài đối thủ",
+      "status": "mapped-to-concept-family",
+      "design_family": "Phản ứng trang bị & xếp hạng",
+      "design_url": "index.html#reactions",
+      "reference_url": "../ui-reference-v1.71.1/1920x1080/47-equipment-steal/screen.png"
+    },
+    {
+      "reference_id": "48-post-hit",
+      "title": "Phản sát thương sau khi nhận đòn",
+      "status": "mapped-to-concept-family",
+      "design_family": "Phản ứng trang bị & xếp hạng",
+      "design_url": "index.html#reactions",
+      "reference_url": "../ui-reference-v1.71.1/1920x1080/48-post-hit/screen.png"
+    },
+    {
+      "reference_id": "49-ai-thinking",
+      "title": "Chỉ báo Bot đang tính toán",
+      "status": "mapped-to-concept-family",
+      "design_family": "HUD trận đấu",
+      "design_url": "../ui-ingame-dw-style-01/#hud",
+      "reference_url": "../ui-reference-v1.71.1/1920x1080/49-ai-thinking/screen.png"
+    },
+    {
+      "reference_id": "50-online-lobby",
+      "title": "Online — tên người chơi, tạo / vào phòng",
+      "status": "mapped-to-concept-family",
+      "design_family": "Online · Phòng chờ",
+      "design_url": "index.html#online",
+      "reference_url": "../ui-reference-v1.71.1/1920x1080/50-online-lobby/screen.png"
+    },
+    {
+      "reference_id": "51-online-room-wait",
+      "title": "Online — phòng chờ một người",
+      "status": "mapped-to-concept-family",
+      "design_family": "Online · Phòng chờ",
+      "design_url": "index.html#online",
+      "reference_url": "../ui-reference-v1.71.1/1920x1080/51-online-room-wait/screen.png"
+    },
+    {
+      "reference_id": "52-online-ready",
+      "title": "Online — hai người, sẵn sàng",
+      "status": "mapped-to-concept-family",
+      "design_family": "Online · Phòng chờ",
+      "design_url": "index.html#online",
+      "reference_url": "../ui-reference-v1.71.1/1920x1080/52-online-ready/screen.png"
+    },
+    {
+      "reference_id": "53-online-team",
+      "title": "Online — chọn Hero và 5 lính",
+      "status": "mapped-to-concept-family",
+      "design_family": "Chọn Hero & đội hình",
+      "design_url": "index.html#team",
+      "reference_url": "../ui-reference-v1.71.1/1920x1080/53-online-team/screen.png"
+    },
+    {
+      "reference_id": "54-online-team-wait",
+      "title": "Online — chờ đối thủ chọn đội hình",
+      "status": "mapped-to-concept-family",
+      "design_family": "Chọn Hero & đội hình",
+      "design_url": "index.html#team",
+      "reference_url": "../ui-reference-v1.71.1/1920x1080/54-online-team-wait/screen.png"
+    },
+    {
+      "reference_id": "55-online-deploy",
+      "title": "Online — xếp quân trên bàn cờ",
+      "status": "mapped-to-concept-family",
+      "design_family": "Triển khai đội hình",
+      "design_url": "index.html#deploy",
+      "reference_url": "../ui-reference-v1.71.1/1920x1080/55-online-deploy/screen.png"
+    },
+    {
+      "reference_id": "56-online-deploy-wait",
+      "title": "Online — chờ đối thủ xếp quân",
+      "status": "mapped-to-concept-family",
+      "design_family": "Triển khai đội hình",
+      "design_url": "index.html#deploy",
+      "reference_url": "../ui-reference-v1.71.1/1920x1080/56-online-deploy-wait/screen.png"
+    },
+    {
+      "reference_id": "57-online-battle",
+      "title": "Online — lượt chiến đấu và bài trên tay",
+      "status": "mapped-to-concept-family",
+      "design_family": "HUD trận đấu",
+      "design_url": "../ui-ingame-dw-style-01/#hud",
+      "reference_url": "../ui-reference-v1.71.1/1920x1080/57-online-battle/screen.png"
+    },
+    {
+      "reference_id": "58-online-move",
+      "title": "Online — chọn ô di chuyển",
+      "status": "mapped-to-concept-family",
+      "design_family": "HUD trận đấu",
+      "design_url": "../ui-ingame-dw-style-01/#hud",
+      "reference_url": "../ui-reference-v1.71.1/1920x1080/58-online-move/screen.png"
+    },
+    {
+      "reference_id": "59-online-skill",
+      "title": "Online — chọn mục tiêu kỹ năng",
+      "status": "mapped-to-concept-family",
+      "design_family": "Hero · kỹ năng · trang bị",
+      "design_url": "../ui-ingame-dw-style-01/#hero",
+      "reference_url": "../ui-reference-v1.71.1/1920x1080/59-online-skill/screen.png"
+    },
+    {
+      "reference_id": "60-online-attack-wait",
+      "title": "Online — chờ đối thủ phòng thủ",
+      "status": "mapped-to-concept-family",
+      "design_family": "Phòng thủ · xác nhận · kết quả",
+      "design_url": "../ui-ingame-dw-style-01/#dialogs",
+      "reference_url": "../ui-reference-v1.71.1/1920x1080/60-online-attack-wait/screen.png"
+    },
+    {
+      "reference_id": "61-online-defense",
+      "title": "Online — phòng thủ, đỡ đòn, bài và kỹ năng",
+      "status": "mapped-to-concept-family",
+      "design_family": "Phòng thủ · xác nhận · kết quả",
+      "design_url": "../ui-ingame-dw-style-01/#dialogs",
+      "reference_url": "../ui-reference-v1.71.1/1920x1080/61-online-defense/screen.png"
+    },
+    {
+      "reference_id": "62-online-lose",
+      "title": "Online — kết quả thua và đấu lại",
+      "status": "mapped-to-concept-family",
+      "design_family": "Phòng thủ · xác nhận · kết quả",
+      "design_url": "../ui-ingame-dw-style-01/#dialogs",
+      "reference_url": "../ui-reference-v1.71.1/1920x1080/62-online-lose/screen.png"
+    },
+    {
+      "reference_id": "63-online-win",
+      "title": "Online — kết quả thắng và đấu lại",
+      "status": "mapped-to-concept-family",
+      "design_family": "Phòng thủ · xác nhận · kết quả",
+      "design_url": "../ui-ingame-dw-style-01/#dialogs",
+      "reference_url": "../ui-reference-v1.71.1/1920x1080/63-online-win/screen.png"
+    },
+    {
+      "reference_id": "64-online-rematch",
+      "title": "Online — đã đồng ý, chờ đấu lại",
+      "status": "mapped-to-concept-family",
+      "design_family": "Phòng thủ · xác nhận · kết quả",
+      "design_url": "../ui-ingame-dw-style-01/#dialogs",
+      "reference_url": "../ui-reference-v1.71.1/1920x1080/64-online-rematch/screen.png"
+    },
+    {
+      "reference_id": "65-online-disconnect",
+      "title": "Online — mất kết nối và trạng thái khôi phục",
+      "status": "mapped-to-concept-family",
+      "design_family": "Online · Phòng chờ",
+      "design_url": "index.html#online",
+      "reference_url": "../ui-reference-v1.71.1/1920x1080/65-online-disconnect/screen.png"
+    },
+    {
+      "reference_id": "66-online-room-error",
+      "title": "Online — thông báo không vào được phòng",
+      "status": "mapped-to-concept-family",
+      "design_family": "Online · Phòng chờ",
+      "design_url": "index.html#online",
+      "reference_url": "../ui-reference-v1.71.1/1920x1080/66-online-room-error/screen.png"
+    },
+    {
+      "reference_id": "67-legacy-defense",
+      "title": "Popup phòng thủ kiểu cũ — mẫu còn trong mã",
+      "status": "legacy-reference-only",
+      "design_family": "Khung cũ · chỉ lưu tham khảo",
+      "design_url": null,
+      "reference_url": "../ui-reference-v1.71.1/1920x1080/67-legacy-defense/screen.png"
+    },
+    {
+      "reference_id": "68-legacy-skill-list",
+      "title": "Danh sách kỹ năng trong popup kiểu cũ",
+      "status": "legacy-reference-only",
+      "design_family": "Khung cũ · chỉ lưu tham khảo",
+      "design_url": null,
+      "reference_url": "../ui-reference-v1.71.1/1920x1080/68-legacy-skill-list/screen.png"
+    },
+    {
+      "reference_id": "69-legacy-reaction",
+      "title": "Khung phản ứng kiểu cũ — nút Guard / Resolve",
+      "status": "legacy-reference-only",
+      "design_family": "Khung cũ · chỉ lưu tham khảo",
+      "design_url": null,
+      "reference_url": "../ui-reference-v1.71.1/1920x1080/69-legacy-reaction/screen.png"
+    },
+    {
+      "reference_id": "70-training",
+      "title": "Đấu tập — thanh công cụ và bàn trống",
+      "status": "mapped-to-concept-family",
+      "design_family": "Đấu tập & điều khiển chung",
+      "design_url": "index.html#training",
+      "reference_url": "../ui-reference-v1.71.1/1920x1080/70-training/screen.png"
+    },
+    {
+      "reference_id": "71-training-unit",
+      "title": "Đấu tập — thêm Hero hoặc lính",
+      "status": "mapped-to-concept-family",
+      "design_family": "Đấu tập & điều khiển chung",
+      "design_url": "index.html#training",
+      "reference_url": "../ui-reference-v1.71.1/1920x1080/71-training-unit/screen.png"
+    },
+    {
+      "reference_id": "72-training-equipment",
+      "title": "Đấu tập — thêm trang bị",
+      "status": "mapped-to-concept-family",
+      "design_family": "Đấu tập & điều khiển chung",
+      "design_url": "index.html#training",
+      "reference_url": "../ui-reference-v1.71.1/1920x1080/72-training-equipment/screen.png"
+    }
+  ]
+}

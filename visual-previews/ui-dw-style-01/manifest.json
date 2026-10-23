@@ -1,0 +1,91 @@
+{
+  "style": "DW-STYLE-01",
+  "status": "draft-awaiting-user-approval",
+  "board_count": 14,
+  "boards": [
+    {
+      "title": "Chọn chế độ",
+      "file": "../ui-mode-dw-style-01/dozenwar-ui-mode-dw-style-01.png",
+      "url": "../ui-mode-dw-style-01/",
+      "description": "Khung chính, thẻ chế độ và trạng thái nút."
+    },
+    {
+      "title": "HUD trận đấu desktop",
+      "file": "../ui-ingame-dw-style-01/01-desktop-hud.png",
+      "url": "../ui-ingame-dw-style-01/#hud",
+      "description": "Bộ UI ingame trước · 1672 × 941 px."
+    },
+    {
+      "title": "Hero, kỹ năng, trang bị, chọn mục tiêu",
+      "file": "../ui-ingame-dw-style-01/02-hero-skills-equipment.png",
+      "url": "../ui-ingame-dw-style-01/#hero",
+      "description": "Bộ UI ingame trước · 1672 × 941 px."
+    },
+    {
+      "title": "Phòng thủ, xác nhận và kết quả",
+      "file": "../ui-ingame-dw-style-01/03-defense-results-dialogs.png",
+      "url": "../ui-ingame-dw-style-01/#dialogs",
+      "description": "Bộ UI ingame trước · 1672 × 941 px."
+    },
+    {
+      "title": "Ingame mobile",
+      "file": "../ui-ingame-dw-style-01/04-mobile-ingame.png",
+      "url": "../ui-ingame-dw-style-01/#mobile",
+      "description": "Bộ UI ingame trước · 1536 × 1024 px."
+    },
+    {
+      "title": "05 · Chọn loại trận",
+      "file": "../ui-remaining-dw-style-01/05-play-hub.png",
+      "url": "../ui-remaining-dw-style-01/#menus",
+      "description": "Đấu với máy, chọn độ khó, đánh thường, xếp hạng thử nghiệm, tìm trận và xác nhận chế độ."
+    },
+    {
+      "title": "06 · Online · Phòng chờ",
+      "file": "../ui-remaining-dw-style-01/06-online-lobby-room.png",
+      "url": "../ui-remaining-dw-style-01/#online",
+      "description": "Tạo/vào phòng, tên người chơi, mã phòng, hai vị trí người chơi, sẵn sàng và trạng thái kết nối."
+    },
+    {
+      "title": "07 · Sẵn sàng · Xúc xắc · Nhận bài",
+      "file": "../ui-remaining-dw-style-01/07-ready-dice-deal.png",
+      "url": "../ui-remaining-dw-style-01/#prematch",
+      "description": "Xác nhận sẵn sàng, tung xúc xắc, kết quả, nhận năm bài và hiển thị bài úp của đối thủ."
+    },
+    {
+      "title": "08 · Chọn Hero & đội hình",
+      "file": "../ui-remaining-dw-style-01/08-hero-team-selection.png",
+      "url": "../ui-remaining-dw-style-01/#team",
+      "description": "Khung cho 12 Hero, thông tin Hero, bộ đếm quân từng chủng, trạng thái chưa đủ/đủ năm lính và chờ đối thủ."
+    },
+    {
+      "title": "09 · Triển khai đội hình",
+      "file": "../ui-remaining-dw-style-01/09-deployment.png",
+      "url": "../ui-remaining-dw-style-01/#deploy",
+      "description": "Vùng đặt quân, danh sách quân đã xếp/còn lại, chọn chủng lính, hoàn tác và xác nhận đủ sáu đơn vị."
+    },
+    {
+      "title": "10 · Kỹ năng đặc biệt",
+      "file": "../ui-remaining-dw-style-01/10-special-skills.png",
+      "url": "../ui-remaining-dw-style-01/#skills",
+      "description": "Giả Dạng, Sao Chép, Triệu Hồi, Phân Bóng, Phong Bộ và chọn Bộ binh đỡ đòn."
+    },
+    {
+      "title": "11 · Phản ứng trang bị & xếp hạng",
+      "file": "../ui-remaining-dw-style-01/11-equipment-reactions-ranked.png",
+      "url": "../ui-remaining-dw-style-01/#reactions",
+      "description": "Hủy trang bị, Đánh Cắp, phản sát thương, thông báo phản ứng và kết quả Elo của phiên thử nghiệm."
+    },
+    {
+      "title": "12 · Đấu tập & điều khiển chung",
+      "file": "../ui-remaining-dw-style-01/12-training-system-kit.png",
+      "url": "../ui-remaining-dw-style-01/#training",
+      "description": "Thanh công cụ Đấu tập, thêm Hero/lính, thêm trang bị, ô nhập, danh sách chọn, bộ đếm, nút và thông báo."
+    },
+    {
+      "title": "13 · Mobile · Chuẩn bị trận",
+      "file": "../ui-remaining-dw-style-01/13-mobile-pregame.png",
+      "url": "../ui-remaining-dw-style-01/#mobile",
+      "description": "Ba bố cục màn dọc: phòng online, chọn đội và xếp quân; kèm mẫu sẵn sàng, xúc xắc và thanh hành động."
+    }
+  ]
+}

@@ -1,0 +1,73 @@
+﻿reference_id,title,status,design_family,design_url,reference_url
+01-mode,Chọn chế độ chơi,mapped-to-concept-family,Mẫu Chọn chế độ,../ui-mode-dw-style-01/,../ui-reference-v1.71.1/1920x1080/01-mode/screen.png
+02-mode-confirm,Xác nhận chế độ Đối Đầu,mapped-to-concept-family,Chọn loại trận,index.html#menus,../ui-reference-v1.71.1/1920x1080/02-mode-confirm/screen.png
+03-mode-locked,Thông tin chế độ Chiến Thần,mapped-to-concept-family,Chọn loại trận,index.html#menus,../ui-reference-v1.71.1/1920x1080/03-mode-locked/screen.png
+04-play-hub,Chọn loại trận AI / Thường / Xếp hạng,mapped-to-concept-family,Chọn loại trận,index.html#menus,../ui-reference-v1.71.1/1920x1080/04-play-hub/screen.png
+05-ai-difficulty,Chọn độ khó Bot,mapped-to-concept-family,Chọn loại trận,index.html#menus,../ui-reference-v1.71.1/1920x1080/05-ai-difficulty/screen.png
+06-casual,Menu đánh thường,mapped-to-concept-family,Chọn loại trận,index.html#menus,../ui-reference-v1.71.1/1920x1080/06-casual/screen.png
+07-ranked,Menu xếp hạng,mapped-to-concept-family,Chọn loại trận,index.html#menus,../ui-reference-v1.71.1/1920x1080/07-ranked/screen.png
+08-private-room,Tạo phòng thử trong Play Hub,mapped-to-concept-family,Chọn loại trận,index.html#menus,../ui-reference-v1.71.1/1920x1080/08-private-room/screen.png
+09-matchmaking,Trạng thái tìm trận,mapped-to-concept-family,Chọn loại trận,index.html#menus,../ui-reference-v1.71.1/1920x1080/09-matchmaking/screen.png
+10-ready,Sẵn sàng trước trận,mapped-to-concept-family,Sẵn sàng · Xúc xắc · Nhận bài,index.html#prematch,../ui-reference-v1.71.1/1920x1080/10-ready/screen.png
+11-dice,Tung xúc xắc,mapped-to-concept-family,Sẵn sàng · Xúc xắc · Nhận bài,index.html#prematch,../ui-reference-v1.71.1/1920x1080/11-dice/screen.png
+12-dice-result,Kết quả tung xúc xắc,mapped-to-concept-family,Sẵn sàng · Xúc xắc · Nhận bài,index.html#prematch,../ui-reference-v1.71.1/1920x1080/12-dice-result/screen.png
+13-deal,Nhận bài trang bị,mapped-to-concept-family,Sẵn sàng · Xúc xắc · Nhận bài,index.html#prematch,../ui-reference-v1.71.1/1920x1080/13-deal/screen.png
+14-team-empty,Chọn Hero và lính — chưa đủ quân,mapped-to-concept-family,Chọn Hero & đội hình,index.html#team,../ui-reference-v1.71.1/1920x1080/14-team-empty/screen.png
+15-team-selected,Chọn Hero và lính — đủ 5 quân,mapped-to-concept-family,Chọn Hero & đội hình,index.html#team,../ui-reference-v1.71.1/1920x1080/15-team-selected/screen.png
+16-deploy,Triển khai quân trên bàn cờ,mapped-to-concept-family,Triển khai đội hình,index.html#deploy,../ui-reference-v1.71.1/1920x1080/16-deploy/screen.png
+17-deploy-menu,Popup đặt quân vào ô,mapped-to-concept-family,Triển khai đội hình,index.html#deploy,../ui-reference-v1.71.1/1920x1080/17-deploy-menu/screen.png
+18-deploy-troops,Popup chọn chủng lính để đặt,mapped-to-concept-family,Triển khai đội hình,index.html#deploy,../ui-reference-v1.71.1/1920x1080/18-deploy-troops/screen.png
+19-deploy-complete,Đã xếp đủ quân — chờ xác nhận,mapped-to-concept-family,Triển khai đội hình,index.html#deploy,../ui-reference-v1.71.1/1920x1080/19-deploy-complete/screen.png
+20-battle,Ingame — HUD và thanh Hero / Skill / Bài,mapped-to-concept-family,HUD trận đấu,../ui-ingame-dw-style-01/#hud,../ui-reference-v1.71.1/1920x1080/20-battle/screen.png
+21-hero-selected,Ingame — chọn Hero và vùng di chuyển,mapped-to-concept-family,HUD trận đấu,../ui-ingame-dw-style-01/#hud,../ui-reference-v1.71.1/1920x1080/21-hero-selected/screen.png
+22-troop-selected,Ingame — chọn quân lính,mapped-to-concept-family,HUD trận đấu,../ui-ingame-dw-style-01/#hud,../ui-reference-v1.71.1/1920x1080/22-troop-selected/screen.png
+23-combat-log,Thông tin trận và Combat Log mở rộng,mapped-to-concept-family,HUD trận đấu,../ui-ingame-dw-style-01/#hud,../ui-reference-v1.71.1/1920x1080/23-combat-log/screen.png
+24-skill-target,Kỹ năng chọn mục tiêu trên bàn cờ,mapped-to-concept-family,Hero · kỹ năng · trang bị,../ui-ingame-dw-style-01/#hero,../ui-reference-v1.71.1/1920x1080/24-skill-target/screen.png
+25-skill-morph,Chọn chủng lính biến hình,mapped-to-concept-family,Kỹ năng đặc biệt,index.html#skills,../ui-reference-v1.71.1/1920x1080/25-skill-morph/screen.png
+26-skill-copy,Chọn kỹ năng sao chép,mapped-to-concept-family,Kỹ năng đặc biệt,index.html#skills,../ui-reference-v1.71.1/1920x1080/26-skill-copy/screen.png
+27-skill-summon,Triệu hồi — chủng lính và ô đích,mapped-to-concept-family,Kỹ năng đặc biệt,index.html#skills,../ui-reference-v1.71.1/1920x1080/27-skill-summon/screen.png
+28-equipment-dialog,Hộp thoại chọn trang bị tấn công,mapped-to-concept-family,Hero · kỹ năng · trang bị,../ui-ingame-dw-style-01/#hero,../ui-reference-v1.71.1/1920x1080/28-equipment-dialog/screen.png
+29-equipment-actor,Dùng bài — chọn quân nhận trang bị,mapped-to-concept-family,Hero · kỹ năng · trang bị,../ui-ingame-dw-style-01/#hero,../ui-reference-v1.71.1/1920x1080/29-equipment-actor/screen.png
+30-equipment-target,Lao Móc — chọn mục tiêu của bài,mapped-to-concept-family,Hero · kỹ năng · trang bị,../ui-ingame-dw-style-01/#hero,../ui-reference-v1.71.1/1920x1080/30-equipment-target/screen.png
+31-defense,Phòng thủ — Hero nhận đòn,mapped-to-concept-family,Phòng thủ · xác nhận · kết quả,../ui-ingame-dw-style-01/#dialogs,../ui-reference-v1.71.1/1920x1080/31-defense/screen.png
+32-guard,Phòng thủ — Bộ binh đỡ đòn,mapped-to-concept-family,Kỹ năng đặc biệt,index.html#skills,../ui-reference-v1.71.1/1920x1080/32-guard/screen.png
+33-dice-ward,Phòng thủ — chọn hai số xúc xắc,mapped-to-concept-family,Kỹ năng đặc biệt,index.html#skills,../ui-reference-v1.71.1/1920x1080/33-dice-ward/screen.png
+34-escape,Phòng thủ — chọn ô thoát hiểm,mapped-to-concept-family,Kỹ năng đặc biệt,index.html#skills,../ui-reference-v1.71.1/1920x1080/34-escape/screen.png
+35-warning,Cảnh báo thao tác ngoài tầm,mapped-to-concept-family,Phòng thủ · xác nhận · kết quả,../ui-ingame-dw-style-01/#dialogs,../ui-reference-v1.71.1/1920x1080/35-warning/screen.png
+36-win,Cửa sổ chiến thắng,mapped-to-concept-family,Phòng thủ · xác nhận · kết quả,../ui-ingame-dw-style-01/#dialogs,../ui-reference-v1.71.1/1920x1080/36-win/screen.png
+37-lose,Cửa sổ thất bại,mapped-to-concept-family,Phòng thủ · xác nhận · kết quả,../ui-ingame-dw-style-01/#dialogs,../ui-reference-v1.71.1/1920x1080/37-lose/screen.png
+38-draw,Cửa sổ hòa trận,mapped-to-concept-family,Phòng thủ · xác nhận · kết quả,../ui-ingame-dw-style-01/#dialogs,../ui-reference-v1.71.1/1920x1080/38-draw/screen.png
+39-ranked-result,Kết quả xếp hạng và thay đổi Elo,mapped-to-concept-family,Phản ứng trang bị & xếp hạng,index.html#reactions,../ui-reference-v1.71.1/1920x1080/39-ranked-result/screen.png
+40-rematch-wait,Chờ đối thủ đồng ý đấu lại,mapped-to-concept-family,Phòng thủ · xác nhận · kết quả,../ui-ingame-dw-style-01/#dialogs,../ui-reference-v1.71.1/1920x1080/40-rematch-wait/screen.png
+41-legacy-unit-menu,Menu đơn vị kiểu cũ — mẫu còn trong mã,legacy-reference-only,Khung cũ · chỉ lưu tham khảo,,../ui-reference-v1.71.1/1920x1080/41-legacy-unit-menu/screen.png
+42-legacy-attack,Popup tấn công kiểu cũ — mẫu còn trong mã,legacy-reference-only,Khung cũ · chỉ lưu tham khảo,,../ui-reference-v1.71.1/1920x1080/42-legacy-attack/screen.png
+43-legacy-equipment,Danh sách bài trong popup kiểu cũ,legacy-reference-only,Khung cũ · chỉ lưu tham khảo,,../ui-reference-v1.71.1/1920x1080/43-legacy-equipment/screen.png
+44-equipment-counter,Phản ứng hủy trang bị đối thủ,mapped-to-concept-family,Phản ứng trang bị & xếp hạng,index.html#reactions,../ui-reference-v1.71.1/1920x1080/44-equipment-counter/screen.png
+45-defense-feedback-card,Thông báo đã dùng bài phòng thủ,mapped-to-concept-family,Phản ứng trang bị & xếp hạng,index.html#reactions,../ui-reference-v1.71.1/1920x1080/45-defense-feedback-card/screen.png
+46-defense-feedback-skill,Thông báo đã dùng kỹ năng phòng thủ,mapped-to-concept-family,Phản ứng trang bị & xếp hạng,index.html#reactions,../ui-reference-v1.71.1/1920x1080/46-defense-feedback-skill/screen.png
+47-equipment-steal,Cướp trang bị — chọn bài đối thủ,mapped-to-concept-family,Phản ứng trang bị & xếp hạng,index.html#reactions,../ui-reference-v1.71.1/1920x1080/47-equipment-steal/screen.png
+48-post-hit,Phản sát thương sau khi nhận đòn,mapped-to-concept-family,Phản ứng trang bị & xếp hạng,index.html#reactions,../ui-reference-v1.71.1/1920x1080/48-post-hit/screen.png
+49-ai-thinking,Chỉ báo Bot đang tính toán,mapped-to-concept-family,HUD trận đấu,../ui-ingame-dw-style-01/#hud,../ui-reference-v1.71.1/1920x1080/49-ai-thinking/screen.png
+50-online-lobby,"Online — tên người chơi, tạo / vào phòng",mapped-to-concept-family,Online · Phòng chờ,index.html#online,../ui-reference-v1.71.1/1920x1080/50-online-lobby/screen.png
+51-online-room-wait,Online — phòng chờ một người,mapped-to-concept-family,Online · Phòng chờ,index.html#online,../ui-reference-v1.71.1/1920x1080/51-online-room-wait/screen.png
+52-online-ready,"Online — hai người, sẵn sàng",mapped-to-concept-family,Online · Phòng chờ,index.html#online,../ui-reference-v1.71.1/1920x1080/52-online-ready/screen.png
+53-online-team,Online — chọn Hero và 5 lính,mapped-to-concept-family,Chọn Hero & đội hình,index.html#team,../ui-reference-v1.71.1/1920x1080/53-online-team/screen.png
+54-online-team-wait,Online — chờ đối thủ chọn đội hình,mapped-to-concept-family,Chọn Hero & đội hình,index.html#team,../ui-reference-v1.71.1/1920x1080/54-online-team-wait/screen.png
+55-online-deploy,Online — xếp quân trên bàn cờ,mapped-to-concept-family,Triển khai đội hình,index.html#deploy,../ui-reference-v1.71.1/1920x1080/55-online-deploy/screen.png
+56-online-deploy-wait,Online — chờ đối thủ xếp quân,mapped-to-concept-family,Triển khai đội hình,index.html#deploy,../ui-reference-v1.71.1/1920x1080/56-online-deploy-wait/screen.png
+57-online-battle,Online — lượt chiến đấu và bài trên tay,mapped-to-concept-family,HUD trận đấu,../ui-ingame-dw-style-01/#hud,../ui-reference-v1.71.1/1920x1080/57-online-battle/screen.png
+58-online-move,Online — chọn ô di chuyển,mapped-to-concept-family,HUD trận đấu,../ui-ingame-dw-style-01/#hud,../ui-reference-v1.71.1/1920x1080/58-online-move/screen.png
+59-online-skill,Online — chọn mục tiêu kỹ năng,mapped-to-concept-family,Hero · kỹ năng · trang bị,../ui-ingame-dw-style-01/#hero,../ui-reference-v1.71.1/1920x1080/59-online-skill/screen.png
+60-online-attack-wait,Online — chờ đối thủ phòng thủ,mapped-to-concept-family,Phòng thủ · xác nhận · kết quả,../ui-ingame-dw-style-01/#dialogs,../ui-reference-v1.71.1/1920x1080/60-online-attack-wait/screen.png
+61-online-defense,"Online — phòng thủ, đỡ đòn, bài và kỹ năng",mapped-to-concept-family,Phòng thủ · xác nhận · kết quả,../ui-ingame-dw-style-01/#dialogs,../ui-reference-v1.71.1/1920x1080/61-online-defense/screen.png
+62-online-lose,Online — kết quả thua và đấu lại,mapped-to-concept-family,Phòng thủ · xác nhận · kết quả,../ui-ingame-dw-style-01/#dialogs,../ui-reference-v1.71.1/1920x1080/62-online-lose/screen.png
+63-online-win,Online — kết quả thắng và đấu lại,mapped-to-concept-family,Phòng thủ · xác nhận · kết quả,../ui-ingame-dw-style-01/#dialogs,../ui-reference-v1.71.1/1920x1080/63-online-win/screen.png
+64-online-rematch,"Online — đã đồng ý, chờ đấu lại",mapped-to-concept-family,Phòng thủ · xác nhận · kết quả,../ui-ingame-dw-style-01/#dialogs,../ui-reference-v1.71.1/1920x1080/64-online-rematch/screen.png
+65-online-disconnect,Online — mất kết nối và trạng thái khôi phục,mapped-to-concept-family,Online · Phòng chờ,index.html#online,../ui-reference-v1.71.1/1920x1080/65-online-disconnect/screen.png
+66-online-room-error,Online — thông báo không vào được phòng,mapped-to-concept-family,Online · Phòng chờ,index.html#online,../ui-reference-v1.71.1/1920x1080/66-online-room-error/screen.png
+67-legacy-defense,Popup phòng thủ kiểu cũ — mẫu còn trong mã,legacy-reference-only,Khung cũ · chỉ lưu tham khảo,,../ui-reference-v1.71.1/1920x1080/67-legacy-defense/screen.png
+68-legacy-skill-list,Danh sách kỹ năng trong popup kiểu cũ,legacy-reference-only,Khung cũ · chỉ lưu tham khảo,,../ui-reference-v1.71.1/1920x1080/68-legacy-skill-list/screen.png
+69-legacy-reaction,Khung phản ứng kiểu cũ — nút Guard / Resolve,legacy-reference-only,Khung cũ · chỉ lưu tham khảo,,../ui-reference-v1.71.1/1920x1080/69-legacy-reaction/screen.png
+70-training,Đấu tập — thanh công cụ và bàn trống,mapped-to-concept-family,Đấu tập & điều khiển chung,index.html#training,../ui-reference-v1.71.1/1920x1080/70-training/screen.png
+71-training-unit,Đấu tập — thêm Hero hoặc lính,mapped-to-concept-family,Đấu tập & điều khiển chung,index.html#training,../ui-reference-v1.71.1/1920x1080/71-training-unit/screen.png
+72-training-equipment,Đấu tập — thêm trang bị,mapped-to-concept-family,Đấu tập & điều khiển chung,index.html#training,../ui-reference-v1.71.1/1920x1080/72-training-equipment/screen.png

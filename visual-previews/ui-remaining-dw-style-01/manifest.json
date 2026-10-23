@@ -1,0 +1,117 @@
+{
+  "style": "DW-STYLE-01",
+  "status": "draft-awaiting-user-approval",
+  "kind": "visual-concept-boards",
+  "runtime_changed": false,
+  "note": "Image dimensions are exported canvas sizes, not measurements of UI components. Gameplay values and artwork are illustrative; implementation must use the existing approved game data and assets.",
+  "boards": [
+    {
+      "id": "05-play-hub",
+      "title": "Chọn loại trận",
+      "description": "Đấu với máy, chọn độ khó, đánh thường, xếp hạng thử nghiệm, tìm trận và xác nhận chế độ.",
+      "anchor": "menus",
+      "file": "05-play-hub.png",
+      "width": 1672,
+      "height": 941,
+      "bytes": 2335684,
+      "sha256": "950e4c4fcdd1bee7ce2b16fd23f8cb6ef3c5aab4981da09d0cd343b51d68e130",
+      "source_generated_file": "exec-71ab9978-4a88-49e0-bd69-22a3c90c86aa.png"
+    },
+    {
+      "id": "06-online-lobby-room",
+      "title": "Online · Phòng chờ",
+      "description": "Tạo/vào phòng, tên người chơi, mã phòng, hai vị trí người chơi, sẵn sàng và trạng thái kết nối.",
+      "anchor": "online",
+      "file": "06-online-lobby-room.png",
+      "width": 1672,
+      "height": 941,
+      "bytes": 2207712,
+      "sha256": "aed01e021f0b3bfe6f61120d93ee2cd085ccb3b6fa368ebdfdf3ac5099b58492",
+      "source_generated_file": "exec-d6722497-d909-473f-9295-d544910eeaa4.png"
+    },
+    {
+      "id": "07-ready-dice-deal",
+      "title": "Sẵn sàng · Xúc xắc · Nhận bài",
+      "description": "Xác nhận sẵn sàng, tung xúc xắc, kết quả, nhận năm bài và hiển thị bài úp của đối thủ.",
+      "anchor": "prematch",
+      "file": "07-ready-dice-deal.png",
+      "width": 1672,
+      "height": 941,
+      "bytes": 2375600,
+      "sha256": "ef0556a135b32b67242ae00717324f4a53ace21016cedccb1aca4b251b70be85",
+      "source_generated_file": "exec-71a15ef0-9387-4493-a264-86e2aa9c8d61.png"
+    },
+    {
+      "id": "08-hero-team-selection",
+      "title": "Chọn Hero & đội hình",
+      "description": "Khung cho 12 Hero, thông tin Hero, bộ đếm quân từng chủng, trạng thái chưa đủ/đủ năm lính và chờ đối thủ.",
+      "anchor": "team",
+      "file": "08-hero-team-selection.png",
+      "width": 1672,
+      "height": 941,
+      "bytes": 2467611,
+      "sha256": "02f657603bd1130fce233ebdc0a29c0e5e7495194c5e24f667db9e036aa2870b",
+      "source_generated_file": "exec-4056f3a4-ba81-4a5b-bc43-33cae38ddfde.png"
+    },
+    {
+      "id": "09-deployment",
+      "title": "Triển khai đội hình",
+      "description": "Vùng đặt quân, danh sách quân đã xếp/còn lại, chọn chủng lính, hoàn tác và xác nhận đủ sáu đơn vị.",
+      "anchor": "deploy",
+      "file": "09-deployment.png",
+      "width": 1672,
+      "height": 941,
+      "bytes": 2351799,
+      "sha256": "7a0893c50e459931c49612a2cab4f7d710cf3367ff0d0ae1f57c6edd8f4309fb",
+      "source_generated_file": "exec-55fbfd71-cd17-46d4-a57b-9191ab964205.png"
+    },
+    {
+      "id": "10-special-skills",
+      "title": "Kỹ năng đặc biệt",
+      "description": "Giả Dạng, Sao Chép, Triệu Hồi, Phân Bóng, Phong Bộ và chọn Bộ binh đỡ đòn.",
+      "anchor": "skills",
+      "file": "10-special-skills.png",
+      "width": 1673,
+      "height": 940,
+      "bytes": 2161634,
+      "sha256": "3664ffe390c9cb7d3b1ce5842066575d4bd512b12bd1c721966fbb087b66824a",
+      "source_generated_file": "exec-cb4d241e-a7b4-4ff4-9225-d09f2ad09930.png"
+    },
+    {
+      "id": "11-equipment-reactions-ranked",
+      "title": "Phản ứng trang bị & xếp hạng",
+      "description": "Hủy trang bị, Đánh Cắp, phản sát thương, thông báo phản ứng và kết quả Elo của phiên thử nghiệm.",
+      "anchor": "reactions",
+      "file": "11-equipment-reactions-ranked.png",
+      "width": 1672,
+      "height": 941,
+      "bytes": 2179391,
+      "sha256": "5f314d85f23a48ed50851191b5b47637e759f6d58856729cf5b6e9f9fb4decee",
+      "source_generated_file": "exec-230c11b3-dd22-48ef-a0fd-9f05f7ce02d1.png"
+    },
+    {
+      "id": "12-training-system-kit",
+      "title": "Đấu tập & điều khiển chung",
+      "description": "Thanh công cụ Đấu tập, thêm Hero/lính, thêm trang bị, ô nhập, danh sách chọn, bộ đếm, nút và thông báo.",
+      "anchor": "training",
+      "file": "12-training-system-kit.png",
+      "width": 1672,
+      "height": 941,
+      "bytes": 2182651,
+      "sha256": "7c947f259146f5ecaa83ed58f55841cfe6d4f6c77c662a3f641368eb824ec886",
+      "source_generated_file": "exec-b11eb124-adab-4375-b22c-fdbd7fd1f7a7.png"
+    },
+    {
+      "id": "13-mobile-pregame",
+      "title": "Mobile · Chuẩn bị trận",
+      "description": "Ba bố cục màn dọc: phòng online, chọn đội và xếp quân; kèm mẫu sẵn sàng, xúc xắc và thanh hành động.",
+      "anchor": "mobile",
+      "file": "13-mobile-pregame.png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2321713,
+      "sha256": "e183d2c2eb440f67829d4819e9bca6211c367f6b081ccc2a0bcd8197996d3365",
+      "source_generated_file": "exec-03e47bb5-0ead-4113-90f2-265f71de705e.png"
+    }
+  ]
+}
