@@ -1,0 +1,580 @@
+{
+  "style": "DW-STYLE-01",
+  "revision": "SIMPLIFIED_AVATAR_EQUIPMENT",
+  "status": "DRAFT_FOR_REVIEW",
+  "heroCount": 12,
+  "skillCount": 36,
+  "gameReplacements": false,
+  "designPrinciples": [
+    "One dominant subject",
+    "Broad cel-shaded planes",
+    "Calm slate background",
+    "Gold frame",
+    "Minimal contextual effects",
+    "Readable at 64px"
+  ],
+  "styleReferences": [
+    "assets/equipment-compact-dw-style-01/inf/EQUIP_INF_ATK_006.webp",
+    "assets/equipment-compact-dw-style-01/common/EQUIP_COMMON_ATK_003.webp"
+  ],
+  "heroes": [
+    {
+      "heroId": "HERO_INF_KAZU",
+      "name": "Kazu",
+      "slug": "kazu",
+      "status": "DRAFT_FOR_REVIEW",
+      "png": "kazu.png",
+      "preview": "kazu.webp",
+      "previous": "../kazu-skills-dw-style-01/kazu-skills-dw-style-01.png",
+      "identityReference": "assets/heroes/inf/kazu-avatar-background-dw-style-01.webp",
+      "skills": [
+        {
+          "id": "SKILL_HERO_KAZU_S1",
+          "name": "Khiên Rồng",
+          "star": 1,
+          "description": "Khiên Rồng · ★ · Hủy sát thương và hiệu ứng lên Kazu hoặc một lính cách 1 ô."
+        },
+        {
+          "id": "SKILL_HERO_KAZU_S2",
+          "name": "Khóa Xích",
+          "star": 2,
+          "description": "Khóa Xích · ★★ · Gây 2 sát thương, stun đến hết lượt công kế tiếp của bên bị stun."
+        },
+        {
+          "id": "SKILL_HERO_KAZU_S3",
+          "name": "Xích Quỷ Kazu",
+          "star": 3,
+          "description": "Xích Quỷ Kazu · ★★★ · Gây 1 sát thương rồi kéo 1 địch còn sống về hex trước mặt; đường và ô đích trống. Cấm Guard bộ binh."
+        }
+      ],
+      "prompt": "REDESIGN the THREE hero SKILL ICONS from attachment 4. The user explicitly rejects their excessive particles and visual noise. Use ONLY the SIMPLE CENTRAL ITEM ILLUSTRATION style in the equipment cards (attachments 1 and 2) and the broad confident shading of the Hero avatar (attachment 3). This is a major simplification, not a minor reduction of effects.\nDESIGN SYSTEM: thick clean dark outlines, 3-5 LARGE clearly separated shading planes per material, matte charcoal steel and old gold/bronze. Large iconic shapes like the equipment card item art. Very little edge wear; no fine scratches or microtexture. Each icon has ONE central focal emblem filling 65-75% of the square with comfortable negative space around it. At most one small secondary cue if specified. Must remain immediately legible at 48-64 pixels. Same calm desaturated dark slate-blue background in all three panels, subtle broad flat facets only, and at most one subdued color accent per action.\nKeep a COMPLETE square gold bevel frame for each icon, simplified straight edges, four tiny corner fittings, no elaborate gems or flourishes. The three frames match each other.\nREMOVE ALL flying rocks, sparks, debris, impact shards, high-contrast patterned backdrops, dense magic smoke, radiating speed rays, multiple glows, armies, enemies, battle scenes and decorative clutter. No explosive energy unless specifically requested; even fire/frost is one simple shape. Do not reproduce the equipment card title strips, text panels, costs or stars. No typography of any kind, no numbers, no watermark.\nLAYOUT: landscape 1536x1024, EXACTLY THREE equal SQUARE framed icons in one horizontal row, centered, about 470x470 each, with modest gaps and all frame sides/corners entirely inside the canvas. Dark plain charcoal margin outside panels. NO full-body Hero portrait. Retain this hero's own weapon type and identity palette. Mandatory left-to-right order:\nLEFT — Khiên Rồng: One large charcoal shield with a simple raised bronze dragon-head emblem; just one thin muted cyan protection arc behind it. No impacts, shards or attackers.\nGameplay meaning: Khiên Rồng · ★ · Hủy sát thương và hiệu ứng lên Kazu hoặc một lính cách 1 ô.\n\nCENTER — Khóa Xích: One large bronze shackle linking two short thick iron chain sections (only 3-4 clearly separated links on each side); one small muted blue stun accent.\nGameplay meaning: Khóa Xích · ★★ · Gây 2 sát thương, stun đến hết lượt công kế tiếp của bên bị stun.\n\nRIGHT — Xích Quỷ Kazu: One large bronze dragon-jaw grappling hook attached to four thick iron links; a single restrained crimson curved pull gesture. No enemy armor, flames or debris.\nGameplay meaning: Xích Quỷ Kazu · ★★★ · Gây 1 sát thương rồi kéo 1 địch còn sống về hex trước mặt; đường và ô đích trống. Cấm Guard bộ binh.",
+      "width": 2172,
+      "height": 724,
+      "pngBytes": 1956057,
+      "pngSha256": "32fcde4b8a7132568d3a26cc27cee23434b8160182e94e04e5df84a7dfa560c8",
+      "previewBytes": 216672,
+      "previewSha256": "dc79b3cc849183d79d5eb4585f87d635c275302c0ae56b116997a4f5d6ec8cfc",
+      "generatedSource": "exec-d79c115d-9f98-476b-bad7-d385f6cf626a.png",
+      "reviewWindow": [
+        32,
+        31,
+        2110,
+        654
+      ]
+    },
+    {
+      "heroId": "HERO_INF_RODOC",
+      "name": "Rodoc",
+      "slug": "rodoc",
+      "status": "DRAFT_FOR_REVIEW",
+      "png": "rodoc.png",
+      "preview": "rodoc.webp",
+      "previous": "../hero-skills-dw-style-01/rodoc.webp",
+      "identityReference": "assets/heroes/inf/rodoc-avatar-background-dw-style-01.webp",
+      "skills": [
+        {
+          "id": "SKILL_HERO_RODOC_S1",
+          "name": "Hồi Sức",
+          "star": 3,
+          "description": "Hồi Sức · ★★★ · Hồi 1 HP cho bộ binh còn sống. Khi nhận đòn, HP sau tổng hồi phải lớn hơn sát thương sẽ nhận."
+        },
+        {
+          "id": "SKILL_HERO_RODOC_S2",
+          "name": "Tiếng Thét Xung Trận",
+          "star": 1,
+          "description": "Tiếng Thét Xung Trận · ★ · +2 Move cho tối đa 2 bộ binh chưa Attack, được đi thêm ngay. Hết lượt công."
+        },
+        {
+          "id": "SKILL_HERO_RODOC_S3",
+          "name": "Chiến Thần",
+          "star": 1,
+          "description": "Chiến Thần · ★ · Gây 1 sát thương mỗi mục tiêu, tối đa 4 địch cùng đường thẳng; chọn qua lính/Hero nhưng không qua vật cản địa hình, không có xuyên mặc định."
+        }
+      ],
+      "prompt": "REDESIGN the THREE hero SKILL ICONS from attachment 4. The user explicitly rejects their excessive particles and visual noise. Use ONLY the SIMPLE CENTRAL ITEM ILLUSTRATION style in the equipment cards (attachments 1 and 2) and the broad confident shading of the Hero avatar (attachment 3). This is a major simplification, not a minor reduction of effects.\nDESIGN SYSTEM: thick clean dark outlines, 3-5 LARGE clearly separated shading planes per material, matte charcoal steel and old gold/bronze. Large iconic shapes like the equipment card item art. Very little edge wear; no fine scratches or microtexture. Each icon has ONE central focal emblem filling 65-75% of the square with comfortable negative space around it. At most one small secondary cue if specified. Must remain immediately legible at 48-64 pixels. Same calm desaturated dark slate-blue background in all three panels, subtle broad flat facets only, and at most one subdued color accent per action.\nKeep a COMPLETE square gold bevel frame for each icon, simplified straight edges, four tiny corner fittings, no elaborate gems or flourishes. The three frames match each other.\nREMOVE ALL flying rocks, sparks, debris, impact shards, high-contrast patterned backdrops, dense magic smoke, radiating speed rays, multiple glows, armies, enemies, battle scenes and decorative clutter. No explosive energy unless specifically requested; even fire/frost is one simple shape. Do not reproduce the equipment card title strips, text panels, costs or stars. No typography of any kind, no numbers, no watermark.\nLAYOUT: landscape 1536x1024, EXACTLY THREE equal SQUARE framed icons in one horizontal row, centered, about 470x470 each, with modest gaps and all frame sides/corners entirely inside the canvas. Dark plain charcoal margin outside panels. NO full-body Hero portrait. Retain this hero's own weapon type and identity palette. Mandatory left-to-right order:\nLEFT — Hồi Sức: One broad bronze armored gauntlet, lightly wrapped at the wrist, with a small soft green restorative leaf-shaped light over the palm. No realistic fingers close-up or other soldiers.\nGameplay meaning: Hồi Sức · ★★★ · Hồi 1 HP cho bộ binh còn sống. Khi nhận đòn, HP sau tổng hồi phải lớn hơn sát thương sẽ nhận.\n\nCENTER — Tiếng Thét Xung Trận: One bold simplified side-profile of Rodoc's shouting bearded head (long brown hair, braided beard), two clean amber sound arcs; plain calm background.\nGameplay meaning: Tiếng Thét Xung Trận · ★ · +2 Move cho tối đa 2 bộ binh chưa Attack, được đi thêm ngay. Hết lượt công.\n\nRIGHT — Chiến Thần: One broad straight steel sword angled across the icon, a SINGLE clean crimson straight slash streak. No armies, targets, rock fragments or explosive rays.\nGameplay meaning: Chiến Thần · ★ · Gây 1 sát thương mỗi mục tiêu, tối đa 4 địch cùng đường thẳng; chọn qua lính/Hero nhưng không qua vật cản địa hình, không có xuyên mặc định.",
+      "width": 2172,
+      "height": 724,
+      "pngBytes": 2117355,
+      "pngSha256": "f591aa537afa167cb0a34692b3e40196b19e8ee16bfaa71c152078a705d51de4",
+      "previewBytes": 252288,
+      "previewSha256": "f194a772aab2fabbf438ec2963d9f2e154aba9247a6f9a42ef7f1dbdcb9ad33b",
+      "generatedSource": "exec-c2dd977e-0f80-4628-a512-49cf8cd1292a.png",
+      "reviewWindow": [
+        21,
+        23,
+        2130,
+        659
+      ]
+    },
+    {
+      "heroId": "HERO_INF_EST",
+      "name": "Est",
+      "slug": "est",
+      "status": "DRAFT_FOR_REVIEW",
+      "png": "est.png",
+      "preview": "est.webp",
+      "previous": "../hero-skills-dw-style-01/est.webp",
+      "identityReference": "assets/heroes/inf/est-avatar-background-dw-style-01.webp",
+      "skills": [
+        {
+          "id": "SKILL_HERO_EST_S1",
+          "name": "Phi Thân",
+          "star": 1,
+          "description": "Phi Thân · ★ · Đổi chỗ với một lính đồng đội cách 3 ô; lính nhận đòn thay và được phòng thủ."
+        },
+        {
+          "id": "SKILL_HERO_EST_S2",
+          "name": "Phục Thù",
+          "star": 1,
+          "description": "Phục Thù · ★ · Gây 1 sát thương lên tối đa 2 địch đã đánh đồng đội cách Est 3 ô trong lượt công này, kể cả đồng đội đã chết."
+        },
+        {
+          "id": "SKILL_HERO_EST_S3",
+          "name": "Ác Mộng Phía Đông",
+          "star": 1,
+          "description": "Ác Mộng Phía Đông · ★ · +2 Move, +3 mục tiêu cho đòn đánh; dùng sát thương cơ bản và trang bị. Hết lượt công."
+        }
+      ],
+      "prompt": "REDESIGN the THREE hero SKILL ICONS from attachment 4. The user explicitly rejects their excessive particles and visual noise. Use ONLY the SIMPLE CENTRAL ITEM ILLUSTRATION style in the equipment cards (attachments 1 and 2) and the broad confident shading of the Hero avatar (attachment 3). This is a major simplification, not a minor reduction of effects.\nDESIGN SYSTEM: thick clean dark outlines, 3-5 LARGE clearly separated shading planes per material, matte charcoal steel and old gold/bronze. Large iconic shapes like the equipment card item art. Very little edge wear; no fine scratches or microtexture. Each icon has ONE central focal emblem filling 65-75% of the square with comfortable negative space around it. At most one small secondary cue if specified. Must remain immediately legible at 48-64 pixels. Same calm desaturated dark slate-blue background in all three panels, subtle broad flat facets only, and at most one subdued color accent per action.\nKeep a COMPLETE square gold bevel frame for each icon, simplified straight edges, four tiny corner fittings, no elaborate gems or flourishes. The three frames match each other.\nREMOVE ALL flying rocks, sparks, debris, impact shards, high-contrast patterned backdrops, dense magic smoke, radiating speed rays, multiple glows, armies, enemies, battle scenes and decorative clutter. No explosive energy unless specifically requested; even fire/frost is one simple shape. Do not reproduce the equipment card title strips, text panels, costs or stars. No typography of any kind, no numbers, no watermark.\nLAYOUT: landscape 1536x1024, EXACTLY THREE equal SQUARE framed icons in one horizontal row, centered, about 470x470 each, with modest gaps and all frame sides/corners entirely inside the canvas. Dark plain charcoal margin outside panels. NO full-body Hero portrait. Retain this hero's own weapon type and identity palette. Mandatory left-to-right order:\nLEFT — Phi Thân: One bronze infantry shoulder guard inside two simple opposing silver-blue swap arrows; compact clean symbol of exchanging positions.\nGameplay meaning: Phi Thân · ★ · Đổi chỗ với một lính đồng đội cách 3 ô; lính nhận đòn thay và được phòng thủ.\n\nCENTER — Phục Thù: One curved single-edged dao sword, one small burgundy cloth ribbon and a single red returning slash arc, concise retaliation.\nGameplay meaning: Phục Thù · ★ · Gây 1 sát thương lên tối đa 2 địch đã đánh đồng đội cách Est 3 ô trong lượt công này, kể cả đồng đội đã chết.\n\nRIGHT — Ác Mộng Phía Đông: One curved dao sword with three clean offset violet blade afterimages; a single subtle forward motion stroke. No full-body character or enemies.\nGameplay meaning: Ác Mộng Phía Đông · ★ · +2 Move, +3 mục tiêu cho đòn đánh; dùng sát thương cơ bản và trang bị. Hết lượt công.",
+      "width": 1536,
+      "height": 1024,
+      "pngBytes": 2324244,
+      "pngSha256": "34783c0eb28d26bd2e42f811bafe103139ad7d936f553f4790cb33fec78c5adf",
+      "previewBytes": 265722,
+      "previewSha256": "d540db43707948c730927982d4f82397c2613e62dc52d557705d9d95c07acb5f",
+      "generatedSource": "exec-1afd6aff-4641-497a-96ce-a5cefddc2ef7.png",
+      "reviewWindow": [
+        20,
+        203,
+        1496,
+        504
+      ]
+    },
+    {
+      "heroId": "HERO_CAV_MASK",
+      "name": "Mask",
+      "slug": "mask",
+      "status": "DRAFT_FOR_REVIEW",
+      "png": "mask.png",
+      "preview": "mask.webp",
+      "previous": "../hero-skills-dw-style-01/mask.webp",
+      "identityReference": "assets/heroes/cav/mask-avatar-background-dw-style-01.webp",
+      "skills": [
+        {
+          "id": "SKILL_HERO_MASK_S1",
+          "name": "Ma Kích",
+          "star": 1,
+          "description": "Ma Kích · ★ · Gây 1 sát thương lên tối đa 2 địch cùng đường thẳng cách 3 ô; chọn qua lính/Hero nhưng không qua vật cản địa hình, không lan."
+        },
+        {
+          "id": "SKILL_HERO_MASK_S2",
+          "name": "Phán Quyết",
+          "star": 1,
+          "description": "Phán Quyết · ★ · +1 lần đánh cho kỵ binh chưa Attack; mỗi lần có phòng thủ riêng. Hết lượt công."
+        },
+        {
+          "id": "SKILL_HERO_MASK_S3",
+          "name": "Cán Cân Công Lý",
+          "star": 4,
+          "description": "Cán Cân Công Lý · ★★★★ · Roll chẵn: 2 sát thương/hồi 2 HP; lẻ: 1/1. Mask vẫn hồi khi đòn bị né/hủy. Cấm Guard bộ binh."
+        }
+      ],
+      "prompt": "REDESIGN the THREE hero SKILL ICONS from attachment 4. The user explicitly rejects their excessive particles and visual noise. Use ONLY the SIMPLE CENTRAL ITEM ILLUSTRATION style in the equipment cards (attachments 1 and 2) and the broad confident shading of the Hero avatar (attachment 3). This is a major simplification, not a minor reduction of effects.\nDESIGN SYSTEM: thick clean dark outlines, 3-5 LARGE clearly separated shading planes per material, matte charcoal steel and old gold/bronze. Large iconic shapes like the equipment card item art. Very little edge wear; no fine scratches or microtexture. Each icon has ONE central focal emblem filling 65-75% of the square with comfortable negative space around it. At most one small secondary cue if specified. Must remain immediately legible at 48-64 pixels. Same calm desaturated dark slate-blue background in all three panels, subtle broad flat facets only, and at most one subdued color accent per action.\nKeep a COMPLETE square gold bevel frame for each icon, simplified straight edges, four tiny corner fittings, no elaborate gems or flourishes. The three frames match each other.\nREMOVE ALL flying rocks, sparks, debris, impact shards, high-contrast patterned backdrops, dense magic smoke, radiating speed rays, multiple glows, armies, enemies, battle scenes and decorative clutter. No explosive energy unless specifically requested; even fire/frost is one simple shape. Do not reproduce the equipment card title strips, text panels, costs or stars. No typography of any kind, no numbers, no watermark.\nLAYOUT: landscape 1536x1024, EXACTLY THREE equal SQUARE framed icons in one horizontal row, centered, about 470x470 each, with modest gaps and all frame sides/corners entirely inside the canvas. Dark plain charcoal margin outside panels. NO full-body Hero portrait. Retain this hero's own weapon type and identity palette. Mandatory left-to-right order:\nLEFT — Ma Kích: One dominant bronze/steel HALBERD head (spear point plus side axe), one clean diagonal blue strike accent; no targets or bodies.\nGameplay meaning: Ma Kích · ★ · Gây 1 sát thương lên tối đa 2 địch cùng đường thẳng cách 3 ô; chọn qua lính/Hero nhưng không qua vật cản địa hình, không lan.\n\nCENTER — Phán Quyết: One upright halberd with TWO restrained gold blade echoes, showing an additional attack; no mounted battle scene.\nGameplay meaning: Phán Quyết · ★ · +1 lần đánh cho kỵ binh chưa Attack; mỗi lần có phòng thủ riêng. Hết lượt công.\n\nRIGHT — Cán Cân Công Lý: One large bronze BALANCE SCALE, one pan with a small red stone and the other a small green stone; one small six-sided die at its base. No extra halberd, rubble or energy explosions.\nGameplay meaning: Cán Cân Công Lý · ★★★★ · Roll chẵn: 2 sát thương/hồi 2 HP; lẻ: 1/1. Mask vẫn hồi khi đòn bị né/hủy. Cấm Guard bộ binh.",
+      "width": 2172,
+      "height": 724,
+      "pngBytes": 2090769,
+      "pngSha256": "f710d8552013a1b27340285fa3811dff11a2d4ce56d4870e8545fc5540102c6c",
+      "previewBytes": 270970,
+      "previewSha256": "d1cac6fb3244de99fad0881a9171a707f2e2d633cb6360e0ffc21b7a93519cbb",
+      "generatedSource": "exec-555fe609-de93-4706-a275-8f443da6bddb.png",
+      "reviewWindow": [
+        14,
+        15,
+        2144,
+        676
+      ]
+    },
+    {
+      "heroId": "HERO_CAV_SOUL",
+      "name": "Soul",
+      "slug": "soul",
+      "status": "DRAFT_FOR_REVIEW",
+      "png": "soul.png",
+      "preview": "soul.webp",
+      "previous": "../hero-skills-dw-style-01/soul.webp",
+      "identityReference": "assets/heroes/cav/soul-avatar-background-dw-style-01.webp",
+      "skills": [
+        {
+          "id": "SKILL_HERO_SOUL_S1",
+          "name": "Ám Kỵ",
+          "star": 1,
+          "description": "Ám Kỵ · ★ · +1 sát thương và +1 Move trong lượt công; chưa Attack được đi thêm ngay."
+        },
+        {
+          "id": "SKILL_HERO_SOUL_S2",
+          "name": "Triệu Gọi Ám Hồn",
+          "star": 1,
+          "description": "Triệu Gọi Ám Hồn · ★ · Trả 1 HP, tạo kỵ binh mới tại hex trống cạnh Soul. Lính hành động ngay. Soul trả HP cuối vẫn chết/thua Duel."
+        },
+        {
+          "id": "SKILL_HERO_SOUL_S3",
+          "name": "Thây Độc",
+          "star": 3,
+          "description": "Thây Độc · ★★★ · Đổi chỗ với lính đồng đội, lính được phòng thủ. Kẻ đánh mất trực tiếp 1 HP kể cả đòn bị né/hủy."
+        }
+      ],
+      "prompt": "REDESIGN the THREE hero SKILL ICONS from attachment 4. The user explicitly rejects their excessive particles and visual noise. Use ONLY the SIMPLE CENTRAL ITEM ILLUSTRATION style in the equipment cards (attachments 1 and 2) and the broad confident shading of the Hero avatar (attachment 3). This is a major simplification, not a minor reduction of effects.\nDESIGN SYSTEM: thick clean dark outlines, 3-5 LARGE clearly separated shading planes per material, matte charcoal steel and old gold/bronze. Large iconic shapes like the equipment card item art. Very little edge wear; no fine scratches or microtexture. Each icon has ONE central focal emblem filling 65-75% of the square with comfortable negative space around it. At most one small secondary cue if specified. Must remain immediately legible at 48-64 pixels. Same calm desaturated dark slate-blue background in all three panels, subtle broad flat facets only, and at most one subdued color accent per action.\nKeep a COMPLETE square gold bevel frame for each icon, simplified straight edges, four tiny corner fittings, no elaborate gems or flourishes. The three frames match each other.\nREMOVE ALL flying rocks, sparks, debris, impact shards, high-contrast patterned backdrops, dense magic smoke, radiating speed rays, multiple glows, armies, enemies, battle scenes and decorative clutter. No explosive energy unless specifically requested; even fire/frost is one simple shape. Do not reproduce the equipment card title strips, text panels, costs or stars. No typography of any kind, no numbers, no watermark.\nLAYOUT: landscape 1536x1024, EXACTLY THREE equal SQUARE framed icons in one horizontal row, centered, about 470x470 each, with modest gaps and all frame sides/corners entirely inside the canvas. Dark plain charcoal margin outside panels. NO full-body Hero portrait. Retain this hero's own weapon type and identity palette. Mandatory left-to-right order:\nLEFT — Ám Kỵ: One massive single-edged GREAT DAO blade and one small dark horseshoe accent; a single muted violet curved motion line.\nGameplay meaning: Ám Kỵ · ★ · +1 sát thương và +1 Move trong lượt công; chưa Attack được đi thêm ngay.\n\nCENTER — Triệu Gọi Ám Hồn: One stylized ghostly teal-green armored WARHORSE HEAD as a single crest silhouette, with one small red life-energy gem below. No crowd of riders or fire.\nGameplay meaning: Triệu Gọi Ám Hồn · ★ · Trả 1 HP, tạo kỵ binh mới tại hex trống cạnh Soul. Lính hành động ngay. Soul trả HP cuối vẫn chết/thua Duel.\n\nRIGHT — Thây Độc: One empty dark infantry helmet with one clearly defined green poison droplet and a small violet shadow offset. A poisoned substitute/decoy, no bodies or attackers.\nGameplay meaning: Thây Độc · ★★★ · Đổi chỗ với lính đồng đội, lính được phòng thủ. Kẻ đánh mất trực tiếp 1 HP kể cả đòn bị né/hủy.",
+      "width": 1536,
+      "height": 1024,
+      "pngBytes": 2112206,
+      "pngSha256": "a38dd66685a976ef790d03a7021c4de4022ee0e446726ea58a7bade54f0fd8d4",
+      "previewBytes": 219916,
+      "previewSha256": "b4fec53f134765020f5fa63bdbca8954c0b95713e4ea669ab315645691762c15",
+      "generatedSource": "exec-af19cadb-a6de-45e4-b3c0-fa199ef814c5.png",
+      "reviewWindow": [
+        16,
+        219,
+        1505,
+        551
+      ]
+    },
+    {
+      "heroId": "HERO_CAV_SIRI",
+      "name": "Siri",
+      "slug": "siri",
+      "status": "DRAFT_FOR_REVIEW",
+      "png": "siri.png",
+      "preview": "siri.webp",
+      "previous": "../hero-skills-dw-style-01/siri.webp",
+      "identityReference": "assets/heroes/cav/siri-avatar-background-dw-style-01.webp",
+      "skills": [
+        {
+          "id": "SKILL_HERO_SIRI_S1",
+          "name": "Săn Người",
+          "star": 1,
+          "description": "Săn Người · ★ · Các đòn thường và skill Attack của Siri cấm Guard bộ binh trong lượt công."
+        },
+        {
+          "id": "SKILL_HERO_SIRI_S2",
+          "name": "Phong Bộ",
+          "star": 1,
+          "description": "Phong Bộ · ★ · Di chuyển tối đa 3 ô, xuyên quân, tuân địa hình; đổi ô đích hợp lệ để hủy sát thương và hiệu ứng."
+        },
+        {
+          "id": "SKILL_HERO_SIRI_S3",
+          "name": "Ám Phong",
+          "star": 1,
+          "description": "Ám Phong · ★ · +3 Move cho 1 đồng đội chưa Attack, gồm Siri; đi thêm ngay. Hết lượt công."
+        }
+      ],
+      "prompt": "REDESIGN the THREE hero SKILL ICONS from attachment 4. The user explicitly rejects their excessive particles and visual noise. Use ONLY the SIMPLE CENTRAL ITEM ILLUSTRATION style in the equipment cards (attachments 1 and 2) and the broad confident shading of the Hero avatar (attachment 3). This is a major simplification, not a minor reduction of effects.\nDESIGN SYSTEM: thick clean dark outlines, 3-5 LARGE clearly separated shading planes per material, matte charcoal steel and old gold/bronze. Large iconic shapes like the equipment card item art. Very little edge wear; no fine scratches or microtexture. Each icon has ONE central focal emblem filling 65-75% of the square with comfortable negative space around it. At most one small secondary cue if specified. Must remain immediately legible at 48-64 pixels. Same calm desaturated dark slate-blue background in all three panels, subtle broad flat facets only, and at most one subdued color accent per action.\nKeep a COMPLETE square gold bevel frame for each icon, simplified straight edges, four tiny corner fittings, no elaborate gems or flourishes. The three frames match each other.\nREMOVE ALL flying rocks, sparks, debris, impact shards, high-contrast patterned backdrops, dense magic smoke, radiating speed rays, multiple glows, armies, enemies, battle scenes and decorative clutter. No explosive energy unless specifically requested; even fire/frost is one simple shape. Do not reproduce the equipment card title strips, text panels, costs or stars. No typography of any kind, no numbers, no watermark.\nLAYOUT: landscape 1536x1024, EXACTLY THREE equal SQUARE framed icons in one horizontal row, centered, about 470x470 each, with modest gaps and all frame sides/corners entirely inside the canvas. Dark plain charcoal margin outside panels. NO full-body Hero portrait. Retain this hero's own weapon type and identity palette. Mandatory left-to-right order:\nLEFT — Săn Người: Two distinct curved DAO blades crossed neatly, with a small broken shield badge between them; no faces or prey scene.\nGameplay meaning: Săn Người · ★ · Các đòn thường và skill Attack của Siri cấm Guard bộ binh trong lượt công.\n\nCENTER — Phong Bộ: One readable bronze armored HORSE HOOF, one simple pale teal circular wind swoosh. No rider, opponents, flying stones.\nGameplay meaning: Phong Bộ · ★ · Di chuyển tối đa 3 ô, xuyên quân, tuân địa hình; đổi ô đích hợp lệ để hủy sát thương và hiệu ứng.\n\nRIGHT — Ám Phong: One large bronze HORSESHOE with three clean pale teal forward wind ribbons; orderly simple lines, no scenery.\nGameplay meaning: Ám Phong · ★ · +3 Move cho 1 đồng đội chưa Attack, gồm Siri; đi thêm ngay. Hết lượt công.",
+      "width": 1536,
+      "height": 1024,
+      "pngBytes": 2134873,
+      "pngSha256": "6ad35118f8409a003938989534831db16a5e118ea8a9a6693b39d2ba4dfce525",
+      "previewBytes": 197182,
+      "previewSha256": "3b1bcfd83e96683845917866f5e6919b06adec6407d6c9a541b9f6fed14cdf81",
+      "generatedSource": "exec-87f31711-01e5-4f3f-bd80-6cf9848c6237.png",
+      "reviewWindow": [
+        16,
+        217,
+        1502,
+        525
+      ]
+    },
+    {
+      "heroId": "HERO_ARCH_RAEN",
+      "name": "Raen",
+      "slug": "raen",
+      "status": "DRAFT_FOR_REVIEW",
+      "png": "raen.png",
+      "preview": "raen.webp",
+      "previous": "../hero-skills-dw-style-01/raen.webp",
+      "identityReference": "assets/heroes/arch/raen-avatar-background-dw-style-01.webp",
+      "skills": [
+        {
+          "id": "SKILL_HERO_RAEN_S1",
+          "name": "Viễn Tiễn",
+          "star": 1,
+          "description": "Viễn Tiễn · ★ · +1 tầm cho đòn thường và skill Attack của cung thủ chưa Attack. Hết lượt công."
+        },
+        {
+          "id": "SKILL_HERO_RAEN_S2",
+          "name": "Tên Lưới",
+          "star": 2,
+          "description": "Tên Lưới · ★★ · Sau khi đồng đội/Raen bị đánh, chọn địch trong tầm, đẩy tối đa 4 ô rồi trói hết lượt công đối phương. Vẫn được dùng trang bị."
+        },
+        {
+          "id": "SKILL_HERO_RAEN_S3",
+          "name": "Hàn Tiễn",
+          "star": 3,
+          "description": "Hàn Tiễn · ★★★ · Gây 1 sát thương, đóng băng tới hết lượt hiện tại khi trúng kể cả 0 damage; xuyên quân/vật cản. Cấm Guard bộ binh."
+        }
+      ],
+      "prompt": "REDESIGN the THREE hero SKILL ICONS from attachment 4. The user explicitly rejects their excessive particles and visual noise. Use ONLY the SIMPLE CENTRAL ITEM ILLUSTRATION style in the equipment cards (attachments 1 and 2) and the broad confident shading of the Hero avatar (attachment 3). This is a major simplification, not a minor reduction of effects.\nDESIGN SYSTEM: thick clean dark outlines, 3-5 LARGE clearly separated shading planes per material, matte charcoal steel and old gold/bronze. Large iconic shapes like the equipment card item art. Very little edge wear; no fine scratches or microtexture. Each icon has ONE central focal emblem filling 65-75% of the square with comfortable negative space around it. At most one small secondary cue if specified. Must remain immediately legible at 48-64 pixels. Same calm desaturated dark slate-blue background in all three panels, subtle broad flat facets only, and at most one subdued color accent per action.\nKeep a COMPLETE square gold bevel frame for each icon, simplified straight edges, four tiny corner fittings, no elaborate gems or flourishes. The three frames match each other.\nREMOVE ALL flying rocks, sparks, debris, impact shards, high-contrast patterned backdrops, dense magic smoke, radiating speed rays, multiple glows, armies, enemies, battle scenes and decorative clutter. No explosive energy unless specifically requested; even fire/frost is one simple shape. Do not reproduce the equipment card title strips, text panels, costs or stars. No typography of any kind, no numbers, no watermark.\nLAYOUT: landscape 1536x1024, EXACTLY THREE equal SQUARE framed icons in one horizontal row, centered, about 470x470 each, with modest gaps and all frame sides/corners entirely inside the canvas. Dark plain charcoal margin outside panels. NO full-body Hero portrait. Retain this hero's own weapon type and identity palette. Mandatory left-to-right order:\nLEFT — Viễn Tiễn: One clear compact CROSSBOW (wood stock, short bolt, two transverse bow limbs), one long thin amber range streak; not a handheld bow.\nGameplay meaning: Viễn Tiễn · ★ · +1 tầm cho đòn thường và skill Attack của cung thủ chưa Attack. Hết lượt công.\n\nCENTER — Tên Lưới: One large short crossbow BOLT with a small coarse folded capture NET opening around its tip; few broad net strands, no person or explosion.\nGameplay meaning: Tên Lưới · ★★ · Sau khi đồng đội/Raen bị đánh, chọn địch trong tầm, đẩy tối đa 4 ô rồi trói hết lượt công đối phương. Vẫn được dùng trang bị.\n\nRIGHT — Hàn Tiễn: One short crossbow BOLT with a single faceted ice-crystal arrowhead and one soft blue frost crescent; no frozen soldiers or shattered shields.\nGameplay meaning: Hàn Tiễn · ★★★ · Gây 1 sát thương, đóng băng tới hết lượt hiện tại khi trúng kể cả 0 damage; xuyên quân/vật cản. Cấm Guard bộ binh.",
+      "width": 2172,
+      "height": 724,
+      "pngBytes": 2063657,
+      "pngSha256": "f3926b808ad8dc6b5c38d61c8afd10633eae378dd9c70d2ddca16860d6a14414",
+      "previewBytes": 254468,
+      "previewSha256": "9b27229aa3886cf2079ec5a19371e0ee464bc0202f65dbb809ff052ae4480cfc",
+      "generatedSource": "exec-3a6054a3-873a-40af-9358-2e8a04f47f20.png",
+      "reviewWindow": [
+        22,
+        29,
+        2128,
+        657
+      ]
+    },
+    {
+      "heroId": "HERO_ARCH_XACNAS",
+      "name": "Xacnas",
+      "slug": "xacnas",
+      "status": "DRAFT_FOR_REVIEW",
+      "png": "xacnas.png",
+      "preview": "xacnas.webp",
+      "previous": "../hero-skills-dw-style-01/xacnas.webp",
+      "identityReference": "assets/heroes/arch/xacnas-avatar-background-dw-style-01.webp",
+      "skills": [
+        {
+          "id": "SKILL_HERO_XACNAS_S1",
+          "name": "Lời Chào Của Quỷ",
+          "star": 1,
+          "description": "Lời Chào Của Quỷ · ★ · +1 sát thương cho cung thủ chưa Attack, áp dụng đòn thường/skill Attack. Hết lượt công."
+        },
+        {
+          "id": "SKILL_HERO_XACNAS_S2",
+          "name": "Bão Phi Đao",
+          "star": 1,
+          "description": "Bão Phi Đao · ★ · Gây 1 sát thương mỗi mục tiêu, tối đa 2 địch trong tầm hiện tại, không cần cùng đường thẳng."
+        },
+        {
+          "id": "SKILL_HERO_XACNAS_S3",
+          "name": "Phân Bóng",
+          "star": 3,
+          "description": "Phân Bóng · ★★★ · Chọn 2 số xúc xắc cho cả lượt thủ; mỗi lần đánh roll riêng, sai số hủy đòn và hiệu ứng. Kết hợp Guard/skill/trang bị hợp lệ."
+        }
+      ],
+      "prompt": "REDESIGN the THREE hero SKILL ICONS from attachment 4. The user explicitly rejects their excessive particles and visual noise. Use ONLY the SIMPLE CENTRAL ITEM ILLUSTRATION style in the equipment cards (attachments 1 and 2) and the broad confident shading of the Hero avatar (attachment 3). This is a major simplification, not a minor reduction of effects.\nDESIGN SYSTEM: thick clean dark outlines, 3-5 LARGE clearly separated shading planes per material, matte charcoal steel and old gold/bronze. Large iconic shapes like the equipment card item art. Very little edge wear; no fine scratches or microtexture. Each icon has ONE central focal emblem filling 65-75% of the square with comfortable negative space around it. At most one small secondary cue if specified. Must remain immediately legible at 48-64 pixels. Same calm desaturated dark slate-blue background in all three panels, subtle broad flat facets only, and at most one subdued color accent per action.\nKeep a COMPLETE square gold bevel frame for each icon, simplified straight edges, four tiny corner fittings, no elaborate gems or flourishes. The three frames match each other.\nREMOVE ALL flying rocks, sparks, debris, impact shards, high-contrast patterned backdrops, dense magic smoke, radiating speed rays, multiple glows, armies, enemies, battle scenes and decorative clutter. No explosive energy unless specifically requested; even fire/frost is one simple shape. Do not reproduce the equipment card title strips, text panels, costs or stars. No typography of any kind, no numbers, no watermark.\nLAYOUT: landscape 1536x1024, EXACTLY THREE equal SQUARE framed icons in one horizontal row, centered, about 470x470 each, with modest gaps and all frame sides/corners entirely inside the canvas. Dark plain charcoal margin outside panels. NO full-body Hero portrait. Retain this hero's own weapon type and identity palette. Mandatory left-to-right order:\nLEFT — Lời Chào Của Quỷ: One SHORT BOW with one correctly nocked red-tipped arrow; a restrained deep red accent at the arrowhead, no demon face or other weapons.\nGameplay meaning: Lời Chào Của Quỷ · ★ · +1 sát thương cho cung thủ chưa Attack, áp dụng đòn thường/skill Attack. Hết lượt công.\n\nCENTER — Bão Phi Đao: Exactly THREE large bronze-edged THROWING KNIVES arranged in a clean fan, one small red motion curve; not arrows.\nGameplay meaning: Bão Phi Đao · ★ · Gây 1 sát thương mỗi mục tiêu, tối đa 2 địch trong tầm hiện tại, không cần cùng đường thẳng.\n\nRIGHT — Phân Bóng: Exactly TWO large worn six-sided DICE in front of a faint simple outline of Xacnas's fan-crested helmet. No repeated faces, incoming attacks, particles or bright spell blasts.\nGameplay meaning: Phân Bóng · ★★★ · Chọn 2 số xúc xắc cho cả lượt thủ; mỗi lần đánh roll riêng, sai số hủy đòn và hiệu ứng. Kết hợp Guard/skill/trang bị hợp lệ.",
+      "width": 2172,
+      "height": 724,
+      "pngBytes": 2036230,
+      "pngSha256": "caa69cd9d6f417fd5de2d95c5e12c44908dab1a61b6c3fb48b1987609ab8767f",
+      "previewBytes": 206844,
+      "previewSha256": "3a5fc48721be46b6e9956a9e544ca3a0b8d91b8bf8c96d7fa3c63519aa9b2200",
+      "generatedSource": "exec-ea082c6e-6e67-4264-887a-7a2ee61f3193.png",
+      "reviewWindow": [
+        27,
+        23,
+        2118,
+        652
+      ]
+    },
+    {
+      "heroId": "HERO_ARCH_LUCY",
+      "name": "Lucy",
+      "slug": "lucy",
+      "status": "DRAFT_FOR_REVIEW",
+      "png": "lucy.png",
+      "preview": "lucy.webp",
+      "previous": "../hero-skills-dw-style-01/lucy.webp",
+      "identityReference": "assets/heroes/arch/lucy-avatar-background-dw-style-01.webp",
+      "skills": [
+        {
+          "id": "SKILL_HERO_LUCY_S1",
+          "name": "Phân Ảnh",
+          "star": 1,
+          "description": "Phân Ảnh · ★ · Hủy sát thương và hiệu ứng của một đòn nhắm Lucy, không ảnh hưởng mục tiêu khác."
+        },
+        {
+          "id": "SKILL_HERO_LUCY_S2",
+          "name": "Bắn Trả",
+          "star": 1,
+          "description": "Bắn Trả · ★ · Sau sát thương, nếu Lucy sống, bắn tối đa 2 địch bằng tầm/sát thương cơ bản, không buff/trang bị; địch không được thủ."
+        },
+        {
+          "id": "SKILL_HERO_LUCY_S3",
+          "name": "Điên Cuồng",
+          "star": 1,
+          "description": "Điên Cuồng · ★ · Dùng tầm đánh cung thủ: cơ bản 3 ô theo đường thẳng, được tăng tầm bởi buff/trang bị. Bắn 2 lần trong cùng commit, mỗi lần 2 sát thương; chọn mục tiêu riêng, mở thủ riêng, được thêm buff/trang bị."
+        }
+      ],
+      "prompt": "REDESIGN the THREE hero SKILL ICONS from attachment 4. The user explicitly rejects their excessive particles and visual noise. Use ONLY the SIMPLE CENTRAL ITEM ILLUSTRATION style in the equipment cards (attachments 1 and 2) and the broad confident shading of the Hero avatar (attachment 3). This is a major simplification, not a minor reduction of effects.\nDESIGN SYSTEM: thick clean dark outlines, 3-5 LARGE clearly separated shading planes per material, matte charcoal steel and old gold/bronze. Large iconic shapes like the equipment card item art. Very little edge wear; no fine scratches or microtexture. Each icon has ONE central focal emblem filling 65-75% of the square with comfortable negative space around it. At most one small secondary cue if specified. Must remain immediately legible at 48-64 pixels. Same calm desaturated dark slate-blue background in all three panels, subtle broad flat facets only, and at most one subdued color accent per action.\nKeep a COMPLETE square gold bevel frame for each icon, simplified straight edges, four tiny corner fittings, no elaborate gems or flourishes. The three frames match each other.\nREMOVE ALL flying rocks, sparks, debris, impact shards, high-contrast patterned backdrops, dense magic smoke, radiating speed rays, multiple glows, armies, enemies, battle scenes and decorative clutter. No explosive energy unless specifically requested; even fire/frost is one simple shape. Do not reproduce the equipment card title strips, text panels, costs or stars. No typography of any kind, no numbers, no watermark.\nLAYOUT: landscape 1536x1024, EXACTLY THREE equal SQUARE framed icons in one horizontal row, centered, about 470x470 each, with modest gaps and all frame sides/corners entirely inside the canvas. Dark plain charcoal margin outside panels. NO full-body Hero portrait. Retain this hero's own weapon type and identity palette. Mandatory left-to-right order:\nLEFT — Phân Ảnh: One forest-green hood and mask with visible calm eyes, a single silver-green ghost outline offset behind it; no arrows striking the face or full body.\nGameplay meaning: Phân Ảnh · ★ · Hủy sát thương và hiệu ứng của một đòn nhắm Lucy, không ảnh hưởng mục tiêu khác.\n\nCENTER — Bắn Trả: One LONG BOW and one correctly nocked long arrow, a single small emerald returning U-shaped motion arc. No hands, faces or double bow strings.\nGameplay meaning: Bắn Trả · ★ · Sau sát thương, nếu Lucy sống, bắn tối đa 2 địch bằng tầm/sát thương cơ bản, không buff/trang bị; địch không được thủ.\n\nRIGHT — Điên Cuồng: Exactly TWO long arrows in parallel with two short restrained amber speed strokes, clean arrow anatomy; no character, bow, explosion or additional arrows.\nGameplay meaning: Điên Cuồng · ★ · Dùng tầm đánh cung thủ: cơ bản 3 ô theo đường thẳng, được tăng tầm bởi buff/trang bị. Bắn 2 lần trong cùng commit, mỗi lần 2 sát thương; chọn mục tiêu riêng, mở thủ riêng, được thêm buff/trang bị.",
+      "width": 2172,
+      "height": 724,
+      "pngBytes": 2199257,
+      "pngSha256": "34ceddf1fc7a7fc2ba2d932abbb4a49aa70c8221683bf9c12b9fbab20fb36f74",
+      "previewBytes": 251540,
+      "previewSha256": "0e97d40be9fe7c0b274b908c55ab9134a0ffb7db1e3fb183b3741b4ca30e4ff6",
+      "generatedSource": "exec-6d83407d-7dce-4f57-ac21-b4b79c3d7153.png",
+      "reviewWindow": [
+        40,
+        33,
+        2094,
+        620
+      ]
+    },
+    {
+      "heroId": "HERO_ALCH_GRIM",
+      "name": "Grim",
+      "slug": "grim",
+      "status": "DRAFT_FOR_REVIEW",
+      "png": "grim.png",
+      "preview": "grim.webp",
+      "previous": "../hero-skills-dw-style-01/grim.webp",
+      "identityReference": "assets/heroes/alch/grim-avatar-background-dw-style-01.webp",
+      "skills": [
+        {
+          "id": "SKILL_HERO_GRIM_S1",
+          "name": "Giả Dạng",
+          "star": 1,
+          "description": "Giả Dạng · ★ · Biến thành chủng lính hợp mode tới lần biến tiếp; giữ Hero và HP. Trang bị không hợp chủng trả về hand."
+        },
+        {
+          "id": "SKILL_HERO_GRIM_S2",
+          "name": "Cải Tạo Nhanh",
+          "star": 1,
+          "description": "Cải Tạo Nhanh · ★ · Đổi vĩnh viễn chủng 1 lính đồng đội, đầy HP chủng mới, giữ trạng thái hành động; được dùng thủ của chủng mới."
+        },
+        {
+          "id": "SKILL_HERO_GRIM_S3",
+          "name": "Sao Chép",
+          "star": 3,
+          "description": "Sao Chép · ★★★ · Dùng skill Hero địch đã dùng trong trận, kể cả Hero chết; dùng chỉ số/vị trí Grim, sao hiệu lực min(sao gốc,3)."
+        }
+      ],
+      "prompt": "REDESIGN the THREE hero SKILL ICONS from attachment 4. The user explicitly rejects their excessive particles and visual noise. Use ONLY the SIMPLE CENTRAL ITEM ILLUSTRATION style in the equipment cards (attachments 1 and 2) and the broad confident shading of the Hero avatar (attachment 3). This is a major simplification, not a minor reduction of effects.\nDESIGN SYSTEM: thick clean dark outlines, 3-5 LARGE clearly separated shading planes per material, matte charcoal steel and old gold/bronze. Large iconic shapes like the equipment card item art. Very little edge wear; no fine scratches or microtexture. Each icon has ONE central focal emblem filling 65-75% of the square with comfortable negative space around it. At most one small secondary cue if specified. Must remain immediately legible at 48-64 pixels. Same calm desaturated dark slate-blue background in all three panels, subtle broad flat facets only, and at most one subdued color accent per action.\nKeep a COMPLETE square gold bevel frame for each icon, simplified straight edges, four tiny corner fittings, no elaborate gems or flourishes. The three frames match each other.\nREMOVE ALL flying rocks, sparks, debris, impact shards, high-contrast patterned backdrops, dense magic smoke, radiating speed rays, multiple glows, armies, enemies, battle scenes and decorative clutter. No explosive energy unless specifically requested; even fire/frost is one simple shape. Do not reproduce the equipment card title strips, text panels, costs or stars. No typography of any kind, no numbers, no watermark.\nLAYOUT: landscape 1536x1024, EXACTLY THREE equal SQUARE framed icons in one horizontal row, centered, about 470x470 each, with modest gaps and all frame sides/corners entirely inside the canvas. Dark plain charcoal margin outside panels. NO full-body Hero portrait. Retain this hero's own weapon type and identity palette. Mandatory left-to-right order:\nLEFT — Giả Dạng: One combined emblem transitioning from purple hood to plain infantry helmet across a soft green alchemy curl; readable two halves of one silhouette, no faces or scenery.\nGameplay meaning: Giả Dạng · ★ · Biến thành chủng lính hợp mode tới lần biến tiếp; giữ Hero và HP. Trang bị không hợp chủng trả về hand.\n\nCENTER — Cải Tạo Nhanh: One bronze transmutation emblem containing a simple shield changing into a horseshoe, joined by ONE violet curved arrow. Few broad shapes, no complex sigil diagrams.\nGameplay meaning: Cải Tạo Nhanh · ★ · Đổi vĩnh viễn chủng 1 lính đồng đội, đầy HP chủng mới, giữ trạng thái hành động; được dùng thủ của chủng mới.\n\nRIGHT — Sao Chép: One small SHORT WAND above a thick open book; a single simple violet spell mark mirrored on its two pages. No runic text, diagrams, stars or portraits.\nGameplay meaning: Sao Chép · ★★★ · Dùng skill Hero địch đã dùng trong trận, kể cả Hero chết; dùng chỉ số/vị trí Grim, sao hiệu lực min(sao gốc,3).",
+      "width": 2172,
+      "height": 724,
+      "pngBytes": 2122863,
+      "pngSha256": "1359adfb73495865910b0910384b6b941d403ba1a1739f9ed51386e268e89b35",
+      "previewBytes": 242800,
+      "previewSha256": "dafdb1ecf5fcaa12eb4b9bd4290ad14f8ae9b39e591b19da6929ff134b4b9164",
+      "generatedSource": "exec-eb8cb3cd-7fb6-4343-ab92-8ca85aec8f6e.png",
+      "reviewWindow": [
+        23,
+        23,
+        2126,
+        644
+      ]
+    },
+    {
+      "heroId": "HERO_ALCH_NEURO",
+      "name": "Neuro",
+      "slug": "neuro",
+      "status": "DRAFT_FOR_REVIEW",
+      "png": "neuro.png",
+      "preview": "neuro.webp",
+      "previous": "../hero-skills-dw-style-01/neuro.webp",
+      "identityReference": "assets/heroes/alch/neuro-avatar-background-dw-style-01.webp",
+      "skills": [
+        {
+          "id": "SKILL_HERO_NEURO_S1",
+          "name": "Thuốc Câm",
+          "star": 4,
+          "description": "Thuốc Câm · ★★★★ · Khóa skill thủ 1 Hero tới hết lượt thủ hiện tại, không damage/commit; được né/hủy trước khi khóa, Guard/trang bị vẫn hợp lệ."
+        },
+        {
+          "id": "SKILL_HERO_NEURO_S2",
+          "name": "Triệu Gọi",
+          "star": 1,
+          "description": "Triệu Gọi · ★ · Sau khi từng có lính đồng đội chết, tạo mới lính đầy HP cạnh Neuro. Không tiêu thụ xác; giới hạn theo mode."
+        },
+        {
+          "id": "SKILL_HERO_NEURO_S3",
+          "name": "Thuốc Cấm",
+          "star": 1,
+          "description": "Thuốc Cấm · ★ · +2 Move cho tối đa 2 đồng đội chưa Attack, gồm Neuro; đi thêm ngay. Hết lượt công."
+        }
+      ],
+      "prompt": "REDESIGN the THREE hero SKILL ICONS from attachment 4. The user explicitly rejects their excessive particles and visual noise. Use ONLY the SIMPLE CENTRAL ITEM ILLUSTRATION style in the equipment cards (attachments 1 and 2) and the broad confident shading of the Hero avatar (attachment 3). This is a major simplification, not a minor reduction of effects.\nDESIGN SYSTEM: thick clean dark outlines, 3-5 LARGE clearly separated shading planes per material, matte charcoal steel and old gold/bronze. Large iconic shapes like the equipment card item art. Very little edge wear; no fine scratches or microtexture. Each icon has ONE central focal emblem filling 65-75% of the square with comfortable negative space around it. At most one small secondary cue if specified. Must remain immediately legible at 48-64 pixels. Same calm desaturated dark slate-blue background in all three panels, subtle broad flat facets only, and at most one subdued color accent per action.\nKeep a COMPLETE square gold bevel frame for each icon, simplified straight edges, four tiny corner fittings, no elaborate gems or flourishes. The three frames match each other.\nREMOVE ALL flying rocks, sparks, debris, impact shards, high-contrast patterned backdrops, dense magic smoke, radiating speed rays, multiple glows, armies, enemies, battle scenes and decorative clutter. No explosive energy unless specifically requested; even fire/frost is one simple shape. Do not reproduce the equipment card title strips, text panels, costs or stars. No typography of any kind, no numbers, no watermark.\nLAYOUT: landscape 1536x1024, EXACTLY THREE equal SQUARE framed icons in one horizontal row, centered, about 470x470 each, with modest gaps and all frame sides/corners entirely inside the canvas. Dark plain charcoal margin outside panels. NO full-body Hero portrait. Retain this hero's own weapon type and identity palette. Mandatory left-to-right order:\nLEFT — Thuốc Câm: One round green potion bottle in bronze bands, violet liquid mist forming ONE closed sealing loop over the cork; a tiny dim spell orb locked inside the loop. No shattering orb or dense smoke.\nGameplay meaning: Thuốc Câm · ★★★★ · Khóa skill thủ 1 Hero tới hết lượt thủ hiện tại, không damage/commit; được né/hủy trước khi khóa, Guard/trang bị vẫn hợp lệ.\n\nCENTER — Triệu Gọi: One thick open bronze-bound BOOK, one small pale green infantry HELMET silhouette rising from its center. No full knight, dead body, battlefield or beams.\nGameplay meaning: Triệu Gọi · ★ · Sau khi từng có lính đồng đội chết, tạo mới lính đầy HP cạnh Neuro. Không tiêu thụ xác; giới hạn theo mode.\n\nRIGHT — Thuốc Cấm: One round AMBER potion bottle with two small simple armored boot silhouettes behind its base and one amber forward swoosh. No explosive fire, rays, stone fragments or floating full legs.\nGameplay meaning: Thuốc Cấm · ★ · +2 Move cho tối đa 2 đồng đội chưa Attack, gồm Neuro; đi thêm ngay. Hết lượt công.",
+      "width": 1536,
+      "height": 1024,
+      "pngBytes": 2013765,
+      "pngSha256": "a1b85c0627dd7659a58d11dfaed826d37a9ee2c5fd7d88eb3a408b52b5c34461",
+      "previewBytes": 193848,
+      "previewSha256": "1c70a0c0b1772a12eca226b0eead688390a998fac949d3fd5990464ee1309cf6",
+      "generatedSource": "exec-69ec865c-cddf-483f-a506-2610c35471a3.png",
+      "reviewWindow": [
+        10,
+        211,
+        1515,
+        568
+      ]
+    },
+    {
+      "heroId": "HERO_ALCH_RANUS",
+      "name": "Ranus",
+      "slug": "ranus",
+      "status": "DRAFT_FOR_REVIEW",
+      "png": "ranus.png",
+      "preview": "ranus.webp",
+      "previous": "../hero-skills-dw-style-01/ranus.webp",
+      "identityReference": "assets/heroes/alch/ranus-avatar-background-dw-style-01.webp",
+      "skills": [
+        {
+          "id": "SKILL_HERO_RANUS_S1",
+          "name": "Dịch Chuyển",
+          "star": 1,
+          "description": "Dịch Chuyển · ★ · Dịch chuyển tới ô khác cách 4 ô, bỏ qua đường/quân/vật cản. Lượt thủ hủy đòn/hiệu ứng. Không tốn Move thường."
+        },
+        {
+          "id": "SKILL_HERO_RANUS_S2",
+          "name": "Thuật Cường Hóa",
+          "star": 1,
+          "description": "Thuật Cường Hóa · ★ · +1 lần đánh và +1 Move cho đồng đội chưa Attack, gồm Ranus; áp dụng đòn thường/skill Attack. Hết lượt công."
+        },
+        {
+          "id": "SKILL_HERO_RANUS_S3",
+          "name": "Bùng Cháy",
+          "star": 1,
+          "description": "Bùng Cháy · ★ · Gây 1 sát thương lên tối đa 4 địch quanh 2 ô, chọn qua quân/vật cản; được thêm chỉ số trang bị."
+        }
+      ],
+      "prompt": "REDESIGN the THREE hero SKILL ICONS from attachment 4. The user explicitly rejects their excessive particles and visual noise. Use ONLY the SIMPLE CENTRAL ITEM ILLUSTRATION style in the equipment cards (attachments 1 and 2) and the broad confident shading of the Hero avatar (attachment 3). This is a major simplification, not a minor reduction of effects.\nDESIGN SYSTEM: thick clean dark outlines, 3-5 LARGE clearly separated shading planes per material, matte charcoal steel and old gold/bronze. Large iconic shapes like the equipment card item art. Very little edge wear; no fine scratches or microtexture. Each icon has ONE central focal emblem filling 65-75% of the square with comfortable negative space around it. At most one small secondary cue if specified. Must remain immediately legible at 48-64 pixels. Same calm desaturated dark slate-blue background in all three panels, subtle broad flat facets only, and at most one subdued color accent per action.\nKeep a COMPLETE square gold bevel frame for each icon, simplified straight edges, four tiny corner fittings, no elaborate gems or flourishes. The three frames match each other.\nREMOVE ALL flying rocks, sparks, debris, impact shards, high-contrast patterned backdrops, dense magic smoke, radiating speed rays, multiple glows, armies, enemies, battle scenes and decorative clutter. No explosive energy unless specifically requested; even fire/frost is one simple shape. Do not reproduce the equipment card title strips, text panels, costs or stars. No typography of any kind, no numbers, no watermark.\nLAYOUT: landscape 1536x1024, EXACTLY THREE equal SQUARE framed icons in one horizontal row, centered, about 470x470 each, with modest gaps and all frame sides/corners entirely inside the canvas. Dark plain charcoal margin outside panels. NO full-body Hero portrait. Retain this hero's own weapon type and identity palette. Mandatory left-to-right order:\nLEFT — Dịch Chuyển: Exactly TWO clean violet-gold portal rings linked by ONE slim ribbon, with a small crowned scepter tip between them. No whole characters, rubble or scene.\nGameplay meaning: Dịch Chuyển · ★ · Dịch chuyển tới ô khác cách 4 ô, bỏ qua đường/quân/vật cản. Lượt thủ hủy đòn/hiệu ứng. Không tốn Move thường.\n\nCENTER — Thuật Cường Hóa: One clear gold feather-crowned SCEPTER HEAD with purple gem, two small pale gold echoes and ONE muted teal forward stroke; no armored fist or lightning.\nGameplay meaning: Thuật Cường Hóa · ★ · +1 lần đánh và +1 Move cho đồng đội chưa Attack, gồm Ranus; áp dụng đòn thường/skill Attack. Hết lượt công.\n\nRIGHT — Bùng Cháy: One ornate gold scepter tip holding ONE simple orange-red flame of three broad tongues. No enemies, fireball explosion, sparks, rocks, glowing rays or battlefield.\nGameplay meaning: Bùng Cháy · ★ · Gây 1 sát thương lên tối đa 4 địch quanh 2 ô, chọn qua quân/vật cản; được thêm chỉ số trang bị.",
+      "width": 2164,
+      "height": 727,
+      "pngBytes": 2133534,
+      "pngSha256": "7cbe9477fb80d9fbae6eca05bfe482beca39c847ab1d16f2436f31ed982aaa0f",
+      "previewBytes": 261404,
+      "previewSha256": "9038d2487dc78478391f5f7f5b57d478688c3ec8bcd31c069f347c2df931097a",
+      "generatedSource": "exec-b76dcd51-4b27-437a-a65d-04c9f8398045.png",
+      "reviewWindow": [
+        36,
+        37,
+        2096,
+        646
+      ]
+    }
+  ],
+  "downloads": [
+    {
+      "file": "01-infantry-cavalry-png.zip",
+      "title": "Bộ binh và kỵ binh",
+      "heroes": [
+        "kazu",
+        "rodoc",
+        "est",
+        "mask",
+        "soul",
+        "siri"
+      ],
+      "bytes": 12175646,
+      "sha256": "9f3e2cc8f5e227bc3f07caa30a45d6d386e35cc937a36b9fcbdf7afe0bccb0cf"
+    },
+    {
+      "file": "02-archers-alchemists-png.zip",
+      "title": "Cung thủ và giả kim",
+      "heroes": [
+        "xacnas",
+        "lucy",
+        "raen",
+        "grim",
+        "neuro",
+        "ranus"
+      ],
+      "bytes": 12026929,
+      "sha256": "fcac0a526a55aeb86a92220d6a15c75baf65d11d03993daec0f9d642dc334096"
+    }
+  ]
+}
