@@ -1,0 +1,49 @@
+{
+  "style": "DW-STYLE-01",
+  "status": "draft-awaiting-user-approval",
+  "kind": "visual-concept-boards",
+  "runtime_changed": false,
+  "note": "Dimensions refer to exported concept images, not measured UI elements. Gameplay copy, unit art and values are illustrative; implementation must use existing game data. These are not sliced production assets.",
+  "boards": [
+    {
+      "id": "01-desktop-hud",
+      "title": "HUD trận đấu desktop",
+      "file": "01-desktop-hud.png",
+      "width": 1672,
+      "height": 941,
+      "bytes": 2401278,
+      "sha256": "6cfebe33f5092ad893bf7a365914ea21bae0d3f671621a06f06e90393b631392",
+      "source_generated_file": "exec-7999b81d-4bd9-4f07-84e4-581d9218ad5a.png"
+    },
+    {
+      "id": "02-hero-skills-equipment",
+      "title": "Hero, kỹ năng, trang bị, chọn mục tiêu",
+      "file": "02-hero-skills-equipment.png",
+      "width": 1672,
+      "height": 941,
+      "bytes": 2410474,
+      "sha256": "369e3572c1a086227dcd22adba23cb5407c968f0b33a9aed0988f19d5e4b8d03",
+      "source_generated_file": "exec-f96ecd79-3407-477e-9237-1d2b1b064894.png"
+    },
+    {
+      "id": "03-defense-results-dialogs",
+      "title": "Phòng thủ, xác nhận và kết quả",
+      "file": "03-defense-results-dialogs.png",
+      "width": 1672,
+      "height": 941,
+      "bytes": 2199800,
+      "sha256": "595b70c975f1edcbab10fd49b322d5d49f3f0e1645e6019539c08b7439494cef",
+      "source_generated_file": "exec-a05b50b2-5917-4eb0-91fa-f9c559ad4ce7.png"
+    },
+    {
+      "id": "04-mobile-ingame",
+      "title": "Ingame mobile",
+      "file": "04-mobile-ingame.png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2273520,
+      "sha256": "2ca98fecfd8ba45accd008cc5e2fb463d598fa843affa7f54c00baaa083e4ccc",
+      "source_generated_file": "exec-234f24ec-635b-4f17-97ee-7da899735550.png"
+    }
+  ]
+}

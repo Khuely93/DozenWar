@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Bốn bảng thiết kế UI ingame DozenWar theo DW-STYLE-01: HUD, Hero và trang bị, phòng thủ và kết quả, mobile. Xem và tải ảnh PNG gốc.">
+<title>DozenWar — UI ingame DW-STYLE-01</title>
+<style>
+:root{color-scheme:dark;--gold:#e1bb76;--ink:#0c141b;--line:#5e5038;--muted:#aab9c5}*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:20px}body{margin:0;background:var(--ink);color:#efeae0;font:16px/1.6 system-ui,sans-serif}main{max-width:1740px;margin:auto;padding:clamp(16px,3vw,40px)}header{padding:12px 0 28px;border-bottom:1px solid var(--line)}.eyebrow{color:var(--gold);font-size:12px;font-weight:700;letter-spacing:.15em}h1{font-size:clamp(26px,4vw,44px);line-height:1.2;margin:14px 0}h2{font-size:clamp(21px,3vw,28px);margin:0;color:var(--gold)}p{color:var(--muted);max-width:900px;margin:10px 0 16px}a{color:#bcdcf1;text-underline-offset:4px}nav,.actions{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0}.button{display:inline-block;border:1px solid #6c7983;border-radius:5px;background:#1b2b37;padding:10px 16px;text-decoration:none;color:#fff;font-weight:600;min-height:44px}.button:hover,.button:focus-visible{background:#344857;outline:2px solid var(--gold);outline-offset:2px}.primary{background:#674b20;border-color:#ba944f}.primary:hover{background:#82612c}.status{display:inline-block;padding:3px 10px;border:1px solid #856f46;border-radius:4px;color:#e1c798;font-size:13px}.jump{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin:28px 0}.jump a{display:flex;flex-direction:column;gap:6px;text-decoration:none;color:#e5eaf0;border:1px solid var(--line);background:#13212c;border-radius:7px;padding:18px}.jump a:hover{border-color:var(--gold)}.jump strong{color:var(--gold)}.jump span{font-size:14px;color:var(--muted)}section{padding:30px 0;border-top:1px solid var(--line)}.meta{font-size:13px;letter-spacing:.03em;color:var(--muted)}figure{margin:18px 0 0}img{display:block;width:100%;height:auto;background:#13212c;border:1px solid #5e6670;border-radius:4px}figcaption{color:var(--muted);font-size:13px;margin-top:8px}.back{display:inline-block;margin-top:12px;font-size:14px}footer{padding:28px 0;border-top:1px solid var(--line);color:var(--muted);font-size:14px}@media(max-width:700px){.jump{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.jump a{padding:12px}nav .button{flex:1;text-align:center}section{padding:24px 0}}
+</style>
+</head>
+<body>
+<main id="top">
+<header>
+  <div class="eyebrow">DOZEN WAR II · DW-STYLE-01</div>
+  <h1>Bộ UI ingame</h1>
+  <span class="status">BẢN THỬ · CHỜ DUYỆT</span>
+  <p>Khung kim loại vàng cũ, nền đá tối và nét vẽ góc cạnh, tiếp nối mẫu Chọn chế độ. Gồm 4 bảng thiết kế cho desktop và mobile, kèm các trạng thái nút và khung tái sử dụng.</p>
+  <nav aria-label="Tải và xem tài liệu">
+    <a class="button primary" href="dozenwar-ui-ingame-dw-style-01.zip" download>Tải toàn bộ PNG · ZIP</a>
+    <a class="button" href="../ui-mode-dw-style-01/">Mẫu Chọn chế độ</a>
+    <a class="button" href="../ui-reference-v1.71.1/">Khung dây và số đo UI hiện tại</a>
+  </nav>
+  <p>Đây là ảnh concept tổng hợp, chưa phải các asset đã tách riêng hoặc UI đã áp dụng vào game. Nội dung và chỉ số trên hình dùng để minh họa bố cục; khi triển khai sẽ dùng dữ liệu thực của game.</p>
+</header>
+<div class="jump" aria-label="Các nhóm thiết kế">
+  <a href="#hud"><strong>01 · HUD trận đấu</strong><span>Lượt, thời gian, Hero, kỹ năng, trang bị, nhật ký.</span></a>
+  <a href="#hero"><strong>02 · Hero &amp; thao tác</strong><span>Thông tin đơn vị, chọn kỹ năng, trang bị, mục tiêu.</span></a>
+  <a href="#dialogs"><strong>03 · Phòng thủ &amp; kết quả</strong><span>Phản ứng, xác nhận, thông báo, thắng–thua–hòa.</span></a>
+  <a href="#mobile"><strong>04 · Ingame mobile</strong><span>Bàn cờ, tab ở đáy và bảng thao tác kéo mở.</span></a>
+</div>
+<section id="hud">
+  <h2>01 — HUD trận đấu</h2>
+  <p>Thanh lượt và bộ đếm giờ gọn ở phía trên. Ba cụm Hero, kỹ năng và trang bị ở đáy. Nhật ký có trạng thái đóng/mở; kèm mẫu nút và ô được chọn.</p>
+  <div class="actions"><a class="button" href="01-desktop-hud.png" target="_blank" rel="noopener">Mở ảnh gốc</a><a class="button" href="01-desktop-hud.png" download>Tải PNG</a></div>
+  <figure><a href="01-desktop-hud.png"><img src="01-desktop-hud.png" alt="UI trận đấu desktop với thanh lượt, đồng hồ, bàn cờ hex, nhật ký và khung Hero, kỹ năng, trang bị; bên dưới là các mẫu nút." fetchpriority="high"></a><figcaption>Ảnh concept — bấm ảnh để mở toàn kích thước.</figcaption></figure>
+  <a class="back" href="#top">↑ Về đầu trang</a>
+</section>
+<section id="hero">
+  <h2>02 — Hero · Kỹ năng · Trang bị</h2>
+  <p>Khung chân dung và chỉ số, nút di chuyển/tấn công, kỹ năng khả dụng hoặc bị vô hiệu hóa, cửa sổ chọn trang bị và chỉ dẫn chọn mục tiêu. Phần mô tả trang bị chừa chỗ cho nội dung thực.</p>
+  <div class="actions"><a class="button" href="02-hero-skills-equipment.png" target="_blank" rel="noopener">Mở ảnh gốc</a><a class="button" href="02-hero-skills-equipment.png" download>Tải PNG</a></div>
+  <figure><a href="02-hero-skills-equipment.png"><img src="02-hero-skills-equipment.png" alt="Bảng mẫu khung thông tin Kazu và Bộ binh, kỹ năng, cửa sổ trang bị và chọn mục tiêu theo DW-STYLE-01." loading="lazy"></a><figcaption>Trạng thái khung: trống, bình thường, đang chọn, không khả dụng.</figcaption></figure>
+  <a class="back" href="#top">↑ Về đầu trang</a>
+</section>
+<section id="dialogs">
+  <h2>03 — Phòng thủ · Xác nhận · Kết quả</h2>
+  <p>Cửa sổ phản ứng phòng thủ, xác nhận kết thúc lượt/chơi lại, thông báo lỗi/chờ đối thủ, màn thắng–thua–hòa và trạng thái sẵn sàng chơi lại.</p>
+  <div class="actions"><a class="button" href="03-defense-results-dialogs.png" target="_blank" rel="noopener">Mở ảnh gốc</a><a class="button" href="03-defense-results-dialogs.png" download>Tải PNG</a></div>
+  <figure><a href="03-defense-results-dialogs.png"><img src="03-defense-results-dialogs.png" alt="Bốn nhóm cửa sổ ingame: phản ứng phòng thủ, xác nhận thao tác, chiến thắng, thất bại và hòa." loading="lazy"></a><figcaption>Các cửa sổ dùng chung hình dáng khung; đổi điểm nhấn theo tình huống.</figcaption></figure>
+  <a class="back" href="#top">↑ Về đầu trang</a>
+</section>
+<section id="mobile">
+  <h2>04 — Ingame mobile</h2>
+  <p>Ba mẫu màn dọc: bàn cờ, chọn kỹ năng và phòng thủ. Tab Hero/Kỹ năng/Trang bị ở đáy; bảng thao tác mở từ dưới lên, thay cho việc xếp tất cả panel thành trang dài.</p>
+  <div class="actions"><a class="button" href="04-mobile-ingame.png" target="_blank" rel="noopener">Mở ảnh gốc</a><a class="button" href="04-mobile-ingame.png" download>Tải PNG</a></div>
+  <figure><a href="04-mobile-ingame.png"><img src="04-mobile-ingame.png" alt="Ba mẫu UI mobile DozenWar: bàn cờ, bảng kỹ năng Kazu và bảng phản ứng phòng thủ, với tab và nút ở đáy." loading="lazy"></a><figcaption>Bố cục mobile là đề xuất thiết kế để duyệt, chưa thay đổi giao diện game hiện tại.</figcaption></figure>
+  <a class="back" href="#top">↑ Về đầu trang</a>
+</section>
+<footer>DozenWar · DW-STYLE-01 · UI ingame concept v1. Ảnh gốc PNG và manifest kích thước/checksum nằm trong gói ZIP. Bản thử chưa được xác nhận làm chuẩn.</footer>
+</main>
+</body>
+</html>
