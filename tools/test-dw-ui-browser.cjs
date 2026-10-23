@@ -28,6 +28,42 @@ async function run() {
   try {
     browser = await chromium.launch(require('./helpers/browser.cjs').launchOptions());
     const context = await browser.newContext();
+    // Read the deployed files through Canvas: an RGBA header alone is not
+    // evidence that the cutout contains any actually transparent pixels.
+    const alphaPage = await context.newPage();
+    await alphaPage.goto('http://127.0.0.1:' + server.address().port + '/');
+    const pngAssets = JSON.parse(fs.readFileSync(path.join(root,'assets/ui/dw-style-01/manifest.json'))).assets;
+    const alpha = await alphaPage.evaluate(async assets => {
+      const result=[];
+      for (const art of assets) {
+        const image=new Image();image.src='./assets/ui/dw-style-01/'+art.file;await image.decode();
+        const canvas=document.createElement('canvas');canvas.width=image.naturalWidth;canvas.height=image.naturalHeight;
+        const ctx=canvas.getContext('2d');ctx.drawImage(image,0,0);
+        const pixels=ctx.getImageData(0,0,canvas.width,canvas.height).data;
+        let transparent=0;for(let i=3;i<pixels.length;i+=4)if(pixels[i]===0)transparent++;
+        result.push({name:art.name,width:canvas.width,height:canvas.height,transparent});
+      }
+      return result;
+    },pngAssets);
+    for (let i=0;i<pngAssets.length;i++) {
+      assert.equal(alpha[i].transparent,pngAssets[i].transparentPixels,'Decoded PNG alpha: '+alpha[i].name);
+      assert.equal(alpha[i].width,pngAssets[i].width);assert.equal(alpha[i].height,pngAssets[i].height);
+    }
+    const action = alphaPage.locator('#playDuelMode');
+    async function buttonState(file) {
+      const visible = await action.evaluate(host => [...host.querySelectorAll(':scope > .dwPngSkin')].filter(n=>getComputedStyle(n).display!=='none').map(n=>getComputedStyle(n).borderImageSource));
+      assert.equal(visible.length,1,'Exactly one PNG face, including while pressed outside the control');
+      assert(visible[0].includes('/png/buttons/'+file+'.png'),JSON.stringify({file,visible}));
+    }
+    await alphaPage.mouse.move(0,0);await buttonState('gold-normal');
+    await action.hover();await buttonState('gold-hover');
+    await alphaPage.mouse.down();await buttonState('gold-pressed');
+    await alphaPage.mouse.move(0,0);await buttonState('gold-pressed');
+    await alphaPage.mouse.up();await buttonState('gold-normal');
+    await action.evaluate(host=>{host.disabled=true;});
+    await alphaPage.waitForFunction(()=>document.getElementById('playDuelMode').dataset.dwArtwork==='disabled');
+    await action.hover({force:true});await buttonState('disabled-normal');
+    await alphaPage.close();
     for (const viewport of process.argv.includes('--layout-only') ? [] : [{ width: 1920, height: 1080 }, { width: 390, height: 844 }]) {
       for (const [id, title, , setup] of cases) {
         // Isolated documents keep rematch timers and Bot callbacks out of other states.
@@ -35,6 +71,7 @@ async function run() {
         await page.setViewportSize(viewport);
         page.on('pageerror', error => errors.push({ id, width: viewport.width, error: error.message }));
         page.on('response', response => { if (response.status() >= 400) missing.push(response.url()); });
+        page.on('request', request => { assert(!/assets\/ui\/dw-style-01\/(?:sheets\/|(?:hud-)?concept-atlas\.png)/.test(request.url()),'UI must load individual PNGs: '+request.url()); });
         await page.goto('http://127.0.0.1:' + server.address().port + '/', { waitUntil: 'load' });
         await fixtures.install(page);
         await page.evaluate(setup);
@@ -44,9 +81,9 @@ async function run() {
           return {
             themed: document.body.classList.contains('dwUI'),
             overflowX: document.documentElement.scrollWidth > innerWidth + 1,
-            frame: getComputedStyle(document.querySelector('.modeWrap > .dwAtlasSkin > .dwAtlasPiece')).backgroundImage,
+            frame: getComputedStyle(document.querySelector('.modeWrap > .dwPngSkin')).borderImageSource,
             detachedSkins: [...document.querySelectorAll('.dwConceptArt')].flatMap(host => {
-              const skin = [...host.querySelectorAll(':scope > .dwAtlasSkin')].find(node => node.getBoundingClientRect().width), parent = host.getBoundingClientRect();
+              const skin = [...host.querySelectorAll(':scope > .dwPngSkin')].find(node => node.getBoundingClientRect().width), parent = host.getBoundingClientRect();
               if (!skin || !parent.width || !parent.height) return [];
               const child = skin.getBoundingClientRect(), style = getComputedStyle(host);
               const width = parent.width - parseFloat(style.borderLeftWidth) - parseFloat(style.borderRightWidth);
@@ -57,7 +94,7 @@ async function run() {
             viewport: { width: innerWidth, height: innerHeight }
           };
         });
-        assert(state.themed && state.frame.includes('concept-atlas.png'), id + ' loads approved concept artwork');
+        assert(state.themed && state.frame.includes('/png/frames/panel.png'), id + ' loads isolated PNG artwork');
         assert(!state.overflowX, id + ' horizontal overflow at ' + viewport.width);
         assert.deepEqual(state.detachedSkins, [], id + ' artwork stays anchored to its own control');
         for (const bounds of state.dialogs) {

@@ -146,5 +146,21 @@ for (const file of ['pack.js','pack-runtime.js','pack.css','import-manifest.json
 assert(read('dist/index.html').includes('pack.css'));
 assert(read('dist/online/index.html').includes('pack.css'));
 assert(read('dist/online/index.html').includes('pack-runtime.js'));
+// Standalone UI files must keep their RGBA encoding and match the deployed bytes.
+const pngUI = JSON.parse(read('assets/ui/dw-style-01/manifest.json'));
+assert.equal(pngUI.assets.length,53,'Complete transparent UI pack');
+for (const entry of pngUI.assets) {
+  const bytes = fs.readFileSync(path.join(root,'assets/ui/dw-style-01',entry.file));
+  assert.equal(bytes.toString('hex',0,8),'89504e470d0a1a0a','PNG signature: '+entry.name);
+  assert.equal(bytes[25],6,'RGBA PNG: '+entry.name);
+  assert.equal(bytes.readUInt32BE(16),entry.width);
+  assert.equal(bytes.readUInt32BE(20),entry.height);
+  assert(entry.transparentPixels>0,'Real transparent exterior: '+entry.name);
+  assert.equal(require('node:crypto').createHash('sha256').update(bytes).digest('hex'),entry.sha256);
+  assert.deepEqual(fs.readFileSync(path.join(root,'dist/assets/ui/dw-style-01',entry.file)),bytes);
+}
+for (const file of ['pack.js','concept-skins.js']) {
+  assert(!/concept-atlas|sheets\/|backgroundSize.*source\.width|dwAtlas/.test(read('assets/ui/dw-style-01/'+file)), 'No runtime concept-board windows: '+file);
+}
 for (const relative of Object.values(built.bundles)) assert.ok(fs.existsSync(path.join(root, 'dist', relative)), 'Missing bundle: ' + relative);
-console.log('PASS | 12 compact DW-STYLE-01 troop colors (' + checked + ' legacy facing routes), 12 Hero board visuals, production bytes, version and bundles');
+console.log('PASS | 12 compact DW-STYLE-01 troop colors (' + checked + ' legacy facing routes), 12 Hero board visuals, 53 RGBA UI PNGs, production bytes, version and bundles');

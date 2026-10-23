@@ -1,6 +1,4 @@
-/* Approved artwork replaces the regenerated v1.72 panel/button treatment.
- * Only browser presentation windows are used; the source atlas stays intact.
- */
+/* Isolated PNG surfaces; corner geometry stays fixed at every viewport. */
 .dwArtAnchor { position: relative; }
 .dwUI .dwConceptArt {
   isolation: isolate;
@@ -9,25 +7,20 @@
   background: transparent !important;
 }
 .dwUI .dwConceptArt.btn::before, .dwUI .dwConceptArt.dwDockTab::before { display: none; }
-.dwAtlasSkin {
+.dwPngSkin {
   position: absolute; inset: 0; z-index: -1; pointer-events: none;
-  display: grid; grid-template-columns: var(--dw-cap-x) minmax(0, 1fr) var(--dw-cap-x);
-  grid-template-rows: var(--dw-cap-y) minmax(0, 1fr) var(--dw-cap-y);
+  display: block; border: 0 solid transparent; border-image-repeat: stretch;
 }
-.dwAtlasPiece { display: block; min-width: 0; min-height: 0; background-repeat: no-repeat; }
-.dwAtlasCrest { position: absolute; z-index: -1; top: -25px; left: calc(50% - 46px); width: 92px; height: 61px; pointer-events: none; clip-path: polygon(0 42%, 25% 34%, 50% 0, 75% 34%, 100% 42%, 75% 58%, 50% 100%, 25% 58%); }
-.dwAtlasSkin--hover, .dwAtlasSkin--pressed { display: none; }
-.dwConceptArt.btn:not(:disabled):hover > .dwAtlasSkin--normal,
-.dwConceptArt.dwDockTab:hover > .dwAtlasSkin--normal,
-.dwConceptArt.btn:not(:disabled):active > .dwAtlasSkin--hover,
-.dwConceptArt.dwDockTab:active > .dwAtlasSkin--hover { display: none; }
-.dwConceptArt.btn:not(:disabled):hover > .dwAtlasSkin--hover,
-.dwConceptArt.dwDockTab:hover > .dwAtlasSkin--hover,
-.dwConceptArt.btn:not(:disabled):active > .dwAtlasSkin--pressed,
-.dwConceptArt.dwDockTab:active > .dwAtlasSkin--pressed { display: grid; }
-/* HUD actions have one approved state, so keep it visible on hover/press. */
-.dwConceptArt[data-dw-artwork='move']:hover > .dwAtlasSkin--normal,
-.dwConceptArt[data-dw-artwork='attack']:hover > .dwAtlasSkin--normal { display: grid; }
+.dwPngCrest { position: absolute; z-index: -1; top: -26px; left: calc(50% - 30px); width: 60px; height: 60px; pointer-events: none; }
+.dwPngSkin--hover, .dwPngSkin--pressed { display: none; }
+.dwConceptArt.btn:not(:disabled):is(:hover,:active) > .dwPngSkin--normal,
+.dwConceptArt.dwDockTab:is(:hover,:active) > .dwPngSkin--normal,
+.dwConceptArt.btn:not(:disabled):active > .dwPngSkin--hover,
+.dwConceptArt.dwDockTab:active > .dwPngSkin--hover { display: none; }
+.dwConceptArt.btn:not(:disabled):hover:not(:active) > .dwPngSkin--hover,
+.dwConceptArt.dwDockTab:hover:not(:active) > .dwPngSkin--hover,
+.dwConceptArt.btn:not(:disabled):active > .dwPngSkin--pressed,
+.dwConceptArt.dwDockTab:active > .dwPngSkin--pressed { display: block; }
 .dwUI .dwConceptArt.btn:not(:disabled):hover, .dwUI .dwConceptArt.dwDockTab:hover,
 .dwUI .dwConceptArt.btn:not(:disabled):active, .dwUI .dwConceptArt.dwDockTab:active { filter: none; transform: none; }
 .dwUI .dwConceptArt.btn:disabled { opacity: 1; }

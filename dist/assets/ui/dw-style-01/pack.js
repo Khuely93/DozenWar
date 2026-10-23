@@ -1,55 +1,716 @@
-/* Regions of the original uploaded concept boards. All labels/data stay live. */
+/* Individual transparent PNG artwork. Original concept boards are archives only. */
 window.DWUIPack = (() => {
-  const keys = ['00-mode','01-desktop-hud','02-hero-skills-equipment','03-defense-results-dialogs','04-mobile-ingame','05-play-hub','06-online-lobby-room','07-ready-dice-deal','08-hero-team-selection','09-deployment','10-special-skills','11-equipment-reactions-ranked','12-training-system-kit','13-mobile-pregame'];
-  const base = new URL((document.body.classList.contains('dwOnline') ? '../' : './') + 'assets/ui/dw-style-01/sheets/', document.baseURI);
-  const sources = keys.map((key, index) => ({ url: new URL(key + '.webp', base).href, width: [4,13].includes(index) ? 1536 : index === 10 ? 1673 : 1672, height: [4,13].includes(index) ? 1024 : index === 10 ? 940 : 941 }));
-  const frame = (sheet, rect, cuts = [24,12,24,20], cap = [28,20]) => ({ sheet, rect, cuts, cap });
-  const frames = {
-    hub: frame(5,[254,68,1240,515],[54,14,54,26],[48,24]),
-    hubCard: frame(5,[313,170,344,375]),
-    lobby: frame(6,[101,157,708,580],[40,14,40,24],[38,22]),
-    room: frame(6,[820,158,785,578],[40,14,40,24],[38,22]),
-    ready: frame(7,[58,117,503,606]),
-    readyPlayer: frame(7,[85,308,450,126],[18,8,18,12],[22,12]),
-    dice: frame(7,[581,117,515,606]),
-    die: frame(7,[604,223,208,229],[18,8,18,18],[22,16]),
-    deal: frame(7,[1118,118,514,604]),
-    team: frame(8,[151,77,1370,657],[54,14,54,26],[48,24]),
-    deploy: frame(9,[1260,104,384,545]),
-    hero: frame(2,[25,83,826,345]),
-    equipment: frame(2,[24,449,890,464]),
-    defense: frame(3,[108,142,665,358]),
-    confirm: frame(3,[911,176,321,197]),
-    result: frame(3,[82,612,712,295]),
-    special: frame(10,[34,94,522,391]),
-    reaction: frame(11,[76,82,767,401]),
-    ranked: frame(11,[908,505,727,396]),
-    training: frame(12,[755,83,447,404]),
-    mobileBattle: frame(4,[105,81,420,817],[15,12,15,18],[20,18]),
-    mobileTeam: frame(13,[559,70,406,746],[18,12,18,18],[24,18]),
-    mobileRoom: frame(13,[104,69,437,747],[18,12,18,18],[24,18])
-  };
-  const parts = {
-    logo: [0,[151,7,342,59]],
-    sceneLeft: [0,[0,82,202,551]], sceneRight: [0,[1465,82,207,551]],
-    ai: [5,[382,181,224,140]], casual: [5,[768,181,236,140]], ranked: [5,[1158,180,226,142]],
-    win: [3,[303,557,260,73]], lose: [3,[1043,555,198,73]], draw: [3,[1434,626,170,61]],
-    shield: [2,[909,165,121,113]], chain: [2,[1068,163,128,115]], dragon: [2,[1225,163,127,115]],
-    cardBack: [7,[943,762,72,104]],
-    tabHero: [4,[224,939,31,26]], tabSkills: [4,[306,835,29,30]], tabCards: [4,[896,837,22,30]]
-  };
-  function piece(source, rect, className = '') {
+  const catalog = {
+  "frames": {
+    "panel": {
+      "file": "png/frames/panel.png",
+      "width": 798,
+      "height": 430,
+      "cuts": [
+        78,
+        90,
+        78,
+        90
+      ],
+      "cap": [
+        48,
+        36
+      ]
+    },
+    "card": {
+      "file": "png/frames/card.png",
+      "width": 608,
+      "height": 344,
+      "cuts": [
+        78,
+        90,
+        78,
+        90
+      ],
+      "cap": [
+        22,
+        22
+      ]
+    },
+    "locked": {
+      "file": "png/frames/locked.png",
+      "width": 609,
+      "height": 345,
+      "cuts": [
+        78,
+        90,
+        78,
+        90
+      ],
+      "cap": [
+        22,
+        22
+      ]
+    },
+    "hud": {
+      "file": "png/frames/hud.png",
+      "width": 824,
+      "height": 190,
+      "cuts": [
+        46,
+        90,
+        46,
+        90
+      ],
+      "cap": [
+        23,
+        15
+      ]
+    },
+    "hub": {
+      "file": "png/frames/hub.png",
+      "width": 589,
+      "height": 311,
+      "cuts": [
+        75,
+        90,
+        75,
+        90
+      ],
+      "cap": [
+        48,
+        36
+      ]
+    },
+    "hubCard": {
+      "file": "png/frames/hubCard.png",
+      "width": 226,
+      "height": 314,
+      "cuts": [
+        75,
+        41,
+        75,
+        41
+      ],
+      "cap": [
+        22,
+        22
+      ]
+    },
+    "lobby": {
+      "file": "png/frames/lobby.png",
+      "width": 400,
+      "height": 299,
+      "cuts": [
+        72,
+        72,
+        72,
+        72
+      ],
+      "cap": [
+        22,
+        22
+      ]
+    },
+    "room": {
+      "file": "png/frames/room.png",
+      "width": 453,
+      "height": 318,
+      "cuts": [
+        76,
+        82,
+        76,
+        82
+      ],
+      "cap": [
+        22,
+        22
+      ]
+    },
+    "ready": {
+      "file": "png/frames/ready.png",
+      "width": 285,
+      "height": 366,
+      "cuts": [
+        78,
+        51,
+        78,
+        51
+      ],
+      "cap": [
+        22,
+        22
+      ]
+    },
+    "readyPlayer": {
+      "file": "png/frames/readyPlayer.png",
+      "width": 458,
+      "height": 160,
+      "cuts": [
+        38,
+        82,
+        38,
+        82
+      ],
+      "cap": [
+        22,
+        22
+      ]
+    },
+    "dice": {
+      "file": "png/frames/dice.png",
+      "width": 408,
+      "height": 373,
+      "cuts": [
+        78,
+        73,
+        78,
+        73
+      ],
+      "cap": [
+        22,
+        22
+      ]
+    },
+    "die": {
+      "file": "png/frames/die.png",
+      "width": 256,
+      "height": 247,
+      "cuts": [
+        59,
+        46,
+        59,
+        46
+      ],
+      "cap": [
+        22,
+        22
+      ]
+    },
+    "deal": {
+      "file": "png/frames/deal.png",
+      "width": 398,
+      "height": 378,
+      "cuts": [
+        78,
+        72,
+        78,
+        72
+      ],
+      "cap": [
+        22,
+        22
+      ]
+    },
+    "team": {
+      "file": "png/frames/team.png",
+      "width": 772,
+      "height": 366,
+      "cuts": [
+        78,
+        90,
+        78,
+        90
+      ],
+      "cap": [
+        48,
+        36
+      ]
+    },
+    "deploy": {
+      "file": "png/frames/deploy.png",
+      "width": 347,
+      "height": 395,
+      "cuts": [
+        78,
+        62,
+        78,
+        62
+      ],
+      "cap": [
+        22,
+        22
+      ]
+    },
+    "special": {
+      "file": "png/frames/special.png",
+      "width": 605,
+      "height": 295,
+      "cuts": [
+        71,
+        90,
+        71,
+        90
+      ],
+      "cap": [
+        22,
+        22
+      ]
+    },
+    "training": {
+      "file": "png/frames/training.png",
+      "width": 548,
+      "height": 317,
+      "cuts": [
+        76,
+        90,
+        76,
+        90
+      ],
+      "cap": [
+        22,
+        22
+      ]
+    },
+    "mobileTeam": {
+      "file": "png/frames/mobileTeam.png",
+      "width": 315,
+      "height": 438,
+      "cuts": [
+        78,
+        57,
+        78,
+        57
+      ],
+      "cap": [
+        22,
+        22
+      ]
+    },
+    "mobileRoom": {
+      "file": "png/frames/mobileRoom.png",
+      "width": 297,
+      "height": 433,
+      "cuts": [
+        78,
+        53,
+        78,
+        53
+      ],
+      "cap": [
+        22,
+        22
+      ]
+    },
+    "hero": {
+      "file": "png/frames/hero.png",
+      "width": 494,
+      "height": 203,
+      "cuts": [
+        49,
+        89,
+        49,
+        89
+      ],
+      "cap": [
+        22,
+        22
+      ]
+    },
+    "equipment": {
+      "file": "png/frames/equipment.png",
+      "width": 477,
+      "height": 203,
+      "cuts": [
+        49,
+        86,
+        49,
+        86
+      ],
+      "cap": [
+        22,
+        22
+      ]
+    },
+    "defense": {
+      "file": "png/frames/defense.png",
+      "width": 483,
+      "height": 203,
+      "cuts": [
+        49,
+        87,
+        49,
+        87
+      ],
+      "cap": [
+        22,
+        22
+      ]
+    },
+    "confirm": {
+      "file": "png/frames/confirm.png",
+      "width": 308,
+      "height": 195,
+      "cuts": [
+        47,
+        55,
+        47,
+        55
+      ],
+      "cap": [
+        22,
+        22
+      ]
+    },
+    "result": {
+      "file": "png/frames/result.png",
+      "width": 557,
+      "height": 213,
+      "cuts": [
+        51,
+        90,
+        51,
+        90
+      ],
+      "cap": [
+        22,
+        22
+      ]
+    },
+    "ranked": {
+      "file": "png/frames/ranked.png",
+      "width": 575,
+      "height": 213,
+      "cuts": [
+        51,
+        90,
+        51,
+        90
+      ],
+      "cap": [
+        22,
+        22
+      ]
+    },
+    "mobileBattle": {
+      "file": "png/frames/mobileBattle.png",
+      "width": 310,
+      "height": 451,
+      "cuts": [
+        78,
+        56,
+        78,
+        56
+      ],
+      "cap": [
+        22,
+        22
+      ]
+    },
+    "reaction": {
+      "file": "png/frames/equipment.png",
+      "width": 477,
+      "height": 203,
+      "cuts": [
+        49,
+        86,
+        49,
+        86
+      ],
+      "cap": [
+        22,
+        22
+      ]
+    }
+  },
+  "buttons": {
+    "gold-normal": {
+      "file": "png/buttons/gold-normal.png",
+      "width": 379,
+      "height": 120,
+      "cuts": [
+        24,
+        24,
+        24,
+        24
+      ],
+      "cap": [
+        11,
+        8
+      ]
+    },
+    "gold-hover": {
+      "file": "png/buttons/gold-hover.png",
+      "width": 378,
+      "height": 120,
+      "cuts": [
+        24,
+        24,
+        24,
+        24
+      ],
+      "cap": [
+        11,
+        8
+      ]
+    },
+    "gold-pressed": {
+      "file": "png/buttons/gold-pressed.png",
+      "width": 380,
+      "height": 120,
+      "cuts": [
+        24,
+        24,
+        24,
+        24
+      ],
+      "cap": [
+        11,
+        8
+      ]
+    },
+    "blue-normal": {
+      "file": "png/buttons/blue-normal.png",
+      "width": 378,
+      "height": 119,
+      "cuts": [
+        24,
+        24,
+        24,
+        24
+      ],
+      "cap": [
+        11,
+        8
+      ]
+    },
+    "blue-hover": {
+      "file": "png/buttons/blue-hover.png",
+      "width": 378,
+      "height": 119,
+      "cuts": [
+        24,
+        24,
+        24,
+        24
+      ],
+      "cap": [
+        11,
+        8
+      ]
+    },
+    "blue-pressed": {
+      "file": "png/buttons/blue-pressed.png",
+      "width": 380,
+      "height": 119,
+      "cuts": [
+        24,
+        24,
+        24,
+        24
+      ],
+      "cap": [
+        11,
+        8
+      ]
+    },
+    "iron-normal": {
+      "file": "png/buttons/iron-normal.png",
+      "width": 378,
+      "height": 119,
+      "cuts": [
+        24,
+        24,
+        24,
+        24
+      ],
+      "cap": [
+        11,
+        8
+      ]
+    },
+    "iron-hover": {
+      "file": "png/buttons/iron-hover.png",
+      "width": 378,
+      "height": 120,
+      "cuts": [
+        24,
+        24,
+        24,
+        24
+      ],
+      "cap": [
+        11,
+        8
+      ]
+    },
+    "iron-pressed": {
+      "file": "png/buttons/iron-pressed.png",
+      "width": 380,
+      "height": 119,
+      "cuts": [
+        24,
+        24,
+        24,
+        24
+      ],
+      "cap": [
+        11,
+        8
+      ]
+    },
+    "disabled-normal": {
+      "file": "png/buttons/disabled-normal.png",
+      "width": 378,
+      "height": 119,
+      "cuts": [
+        24,
+        24,
+        24,
+        24
+      ],
+      "cap": [
+        11,
+        8
+      ]
+    },
+    "move-normal": {
+      "file": "png/buttons/move-normal.png",
+      "width": 376,
+      "height": 121,
+      "cuts": [
+        24,
+        24,
+        24,
+        24
+      ],
+      "cap": [
+        11,
+        8
+      ]
+    },
+    "attack-normal": {
+      "file": "png/buttons/attack-normal.png",
+      "width": 380,
+      "height": 121,
+      "cuts": [
+        24,
+        24,
+        24,
+        24
+      ],
+      "cap": [
+        11,
+        8
+      ]
+    },
+    "danger-normal": {
+      "file": "png/buttons/danger-normal.png",
+      "width": 378,
+      "height": 119,
+      "cuts": [
+        24,
+        24,
+        24,
+        24
+      ],
+      "cap": [
+        11,
+        8
+      ]
+    },
+    "danger-hover": {
+      "file": "png/buttons/danger-hover.png",
+      "width": 378,
+      "height": 120,
+      "cuts": [
+        24,
+        24,
+        24,
+        24
+      ],
+      "cap": [
+        11,
+        8
+      ]
+    },
+    "danger-pressed": {
+      "file": "png/buttons/danger-pressed.png",
+      "width": 380,
+      "height": 119,
+      "cuts": [
+        24,
+        24,
+        24,
+        24
+      ],
+      "cap": [
+        11,
+        8
+      ]
+    }
+  },
+  "parts": {
+    "logo": {
+      "file": "png/parts/logo.png",
+      "width": 524,
+      "height": 104
+    },
+    "crest": {
+      "file": "png/parts/crest.png",
+      "width": 220,
+      "height": 216
+    },
+    "ai": {
+      "file": "png/parts/ai.png",
+      "width": 364,
+      "height": 288
+    },
+    "casual": {
+      "file": "png/parts/casual.png",
+      "width": 342,
+      "height": 292
+    },
+    "ranked": {
+      "file": "png/parts/ranked.png",
+      "width": 371,
+      "height": 301
+    },
+    "win": {
+      "file": "png/parts/win.png",
+      "width": 446,
+      "height": 176
+    },
+    "lose": {
+      "file": "png/parts/lose.png",
+      "width": 519,
+      "height": 230
+    },
+    "draw": {
+      "file": "png/parts/draw.png",
+      "width": 337,
+      "height": 223
+    },
+    "tabHero": {
+      "file": "png/parts/tabHero.png",
+      "width": 184,
+      "height": 244
+    },
+    "tabSkills": {
+      "file": "png/parts/tabSkills.png",
+      "width": 239,
+      "height": 223
+    },
+    "tabCards": {
+      "file": "png/parts/tabCards.png",
+      "width": 194,
+      "height": 227
+    },
+    "hourglass": {
+      "file": "png/parts/hourglass.png",
+      "width": 160,
+      "height": 227
+    }
+  }
+};
+  const base = new URL((document.body.classList.contains('dwOnline') ? '../' : './') + 'assets/ui/dw-style-01/', document.baseURI);
+  for (const group of Object.values(catalog)) for (const item of Object.values(group)) item.url = new URL(item.file, base).href;
+  function sprite(key, className = '') {
+    const art = catalog.parts[key];
     const node = document.createElement('span');
     node.className = 'dwPackPiece ' + className;
-    node.setAttribute('aria-hidden','true');
-    const [x,y,w,h] = rect;
-    node.style.backgroundImage = `url("${source.url}")`;
-    node.style.backgroundSize = `${source.width / w * 100}% ${source.height / h * 100}%`;
-    node.style.backgroundPosition = `${x / (source.width - w) * 100}% ${y / (source.height - h) * 100}%`;
-    node.style.aspectRatio = w + '/' + h;
+    node.setAttribute('aria-hidden', 'true');
+    node.style.backgroundImage = 'url("' + art.url + '")';
+    node.style.backgroundSize = 'contain';
+    node.style.backgroundPosition = 'center';
+    node.style.aspectRatio = art.width + '/' + art.height;
     return node;
   }
-  function sprite(key, className) { const [sheet,rect] = parts[key]; return piece(sources[sheet],rect,className); }
   function frameFor(host) {
     const mobile = innerWidth < 900;
     if (host.matches('.dwConfirmDialog,.modeConfirmPopup')) return 'confirm';
@@ -78,5 +739,6 @@ window.DWUIPack = (() => {
     if (mobile && host.matches('.duelControlDock > .box,.onlineActorPanel,.onlineHandPanel')) return 'mobileBattle';
     return null;
   }
-  return { sources,frames,parts,piece,sprite,frameFor };
+
+  return { ...catalog, sprite, frameFor };
 })();

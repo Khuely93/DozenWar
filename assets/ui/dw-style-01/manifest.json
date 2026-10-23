@@ -1,63 +1,1048 @@
 {
   "style": "DW-STYLE-01",
-  "status": "APPROVED_FOR_GAME",
-  "usage": "All three user-uploaded DW-STYLE-01 UI packs. Per-screen frames, illustrations and live HTML controls. See import-manifest.json for originals and pixel verification.",
+  "version": "1.75.0",
+  "status": "INTEGRATED",
+  "usage": "Individual RGBA PNG artwork for all UI frames, button states and ornaments. Live labels stay HTML. No runtime windows into full concept boards.",
+  "processing": "Image editing derived from the approved originals: exterior background and printed labels removed, blank surfaces reconstructed, central crest separated. Individual PNG exports preserve edited source pixels without further painting. These are cleaned derivatives, not pixel-identical copies of the originals.",
+  "sources": [
+    {
+      "kit": "primary",
+      "source": "exec-ea7180e0-2a3e-41a2-b009-ed49890bd491.png",
+      "sha256": "adbb96c3da171c42886573d6cb1256eca04f225e8b3031d7ec5b906a9561c742"
+    },
+    {
+      "kit": "setup",
+      "source": "exec-a52b2afe-4168-4f09-8c22-ebb2febbe78d.png",
+      "sha256": "5c9a2ed9af5ec7687c4a44088aae31f5cea8f9fa72749350d637c786de39b765"
+    },
+    {
+      "kit": "context",
+      "source": "exec-59f6880c-2b13-4117-b9be-16dcf77d01e6.png",
+      "sha256": "683302c12a468ba7dc01330d7dfd0eae5cc4b451aced3e59ae822cd5f32a6fc7"
+    },
+    {
+      "kit": "combat",
+      "source": "exec-8f5729cd-5032-4524-9291-72ac99d7db4c.png",
+      "sha256": "fe5532e6dbb93db8d8685c7d49aed30276f5f79894493808e2d226b48772425f"
+    },
+    {
+      "kit": "buttons",
+      "source": "exec-5ec507f0-7082-48b9-8439-1d7324b86eaf.png",
+      "sha256": "98069e1400a261a13715b28465ab9b069a311f14e9497f8209aaf1f01c5661e7"
+    },
+    {
+      "kit": "ornaments",
+      "source": "exec-35f2ccbc-df8d-4df9-b648-a1099701154d.png",
+      "sha256": "65f6e1ecbc7f01f2902a6af23043890d9e9f50a9c9e4ea83268c399e970724c9"
+    }
+  ],
   "assets": [
     {
       "name": "panel",
-      "file": "panel.webp",
-      "width": 1254,
-      "height": 1254,
+      "group": "frames",
+      "file": "png/frames/panel.png",
+      "width": 798,
+      "height": 430,
       "alpha": true,
-      "bytes": 221030,
-      "sha256": "1fe3d2ab266f4e7d391445904391c647dc99a4fc0b5bbcfcfc28fde598e289ff",
-      "generatedSource": "exec-59a83cbc-9c1d-4e05-98dd-eb5e3b7c271d.png"
+      "transparentPixels": 11129,
+      "partialPixels": 332011,
+      "bytes": 678475,
+      "sha256": "4866bca924ba90bddf34720ce4dd3ba737df2a78e1db6e8b445daa5f584ea75e",
+      "source": "primary",
+      "exportRect": {
+        "left": 36,
+        "top": 81,
+        "width": 798,
+        "height": 430
+      }
     },
     {
-      "name": "button",
-      "file": "button.webp",
-      "width": 2172,
-      "height": 724,
+      "name": "card",
+      "group": "frames",
+      "file": "png/frames/card.png",
+      "width": 608,
+      "height": 344,
       "alpha": true,
-      "bytes": 248670,
-      "sha256": "cbff2c3ba33af9e5549470f855137d982379e64bb1c3ba9260488951ad9ef938",
-      "generatedSource": "exec-6da9c644-ef39-4fb8-bb87-80919e0b1c30.png"
+      "transparentPixels": 5556,
+      "partialPixels": 203596,
+      "bytes": 395595,
+      "sha256": "c8fca8356675a3aa0af89bb6eefbf63eef4e91b96cace74406359636cf387f12",
+      "source": "primary",
+      "exportRect": {
+        "left": 881,
+        "top": 124,
+        "width": 608,
+        "height": 344
+      }
     },
     {
-      "name": "fortress",
-      "file": "fortress.webp",
-      "width": 1983,
-      "height": 793,
-      "alpha": false,
-      "bytes": 96160,
-      "sha256": "622cf1069a1d470546d2f5d9b31c2e4b56ba5503cc49b88407dd216d217831a8",
-      "generatedSource": "exec-a80959b7-f6fc-4a01-b38f-f27a5001b5ff.png"
+      "name": "locked",
+      "group": "frames",
+      "file": "png/frames/locked.png",
+      "width": 609,
+      "height": 345,
+      "alpha": true,
+      "transparentPixels": 7227,
+      "partialPixels": 202878,
+      "bytes": 394417,
+      "sha256": "f734b27c7ae9d1256b1bbf2c1018e5fe59cfbb1ee254d84dd95ac7a04da97e75",
+      "source": "primary",
+      "exportRect": {
+        "left": 50,
+        "top": 573,
+        "width": 609,
+        "height": 345
+      }
     },
     {
-      "name": "approved-concept-atlas",
-      "file": "concept-atlas.png",
-      "width": 1672,
-      "height": 941,
-      "alpha": false,
-      "bytes": 2167581,
-      "sha256": "1088013ff4ebb63c8465772b8a97229e7feac8eb7114bd49baeb3f845d88269a",
-      "source": "visual-previews/ui-mode-dw-style-01/dozenwar-ui-mode-dw-style-01.png",
-      "processing": "Byte-identical original. Source windows selected only during browser rendering."
+      "name": "hud",
+      "group": "frames",
+      "file": "png/frames/hud.png",
+      "width": 824,
+      "height": 190,
+      "alpha": true,
+      "transparentPixels": 7207,
+      "partialPixels": 149353,
+      "bytes": 296845,
+      "sha256": "5f982698ad9d38404e770bf6cb7bb539acb4d91ab5567f61a8c4f9fd31698447",
+      "source": "primary",
+      "exportRect": {
+        "left": 680,
+        "top": 667,
+        "width": 824,
+        "height": 190
+      }
     },
     {
-      "name": "approved-hud-concept-atlas",
-      "file": "hud-concept-atlas.png",
-      "width": 1672,
-      "height": 941,
-      "alpha": false,
-      "bytes": 2401278,
-      "sha256": "6cfebe33f5092ad893bf7a365914ea21bae0d3f671621a06f06e90393b631392",
-      "source": "visual-previews/ui-ingame-dw-style-01/01-desktop-hud.png",
-      "processing": "Byte-identical original. Browser slices only."
+      "name": "hub",
+      "group": "frames",
+      "file": "png/frames/hub.png",
+      "width": 589,
+      "height": 311,
+      "alpha": true,
+      "transparentPixels": 3776,
+      "partialPixels": 178865,
+      "bytes": 311361,
+      "sha256": "2febf2f8e9045a8ea2460b00cbdcb46e7fdba05c09122db40b69df56a7973527",
+      "source": "setup",
+      "exportRect": {
+        "left": 18,
+        "top": 43,
+        "width": 589,
+        "height": 311
+      }
+    },
+    {
+      "name": "hubCard",
+      "group": "frames",
+      "file": "png/frames/hubCard.png",
+      "width": 226,
+      "height": 314,
+      "alpha": true,
+      "transparentPixels": 1460,
+      "partialPixels": 69414,
+      "bytes": 133637,
+      "sha256": "8bbad0cd470042af89e82107495cbb3d6da2572fde55cc46a1d0ba73027f6996",
+      "source": "setup",
+      "exportRect": {
+        "left": 611,
+        "top": 42,
+        "width": 226,
+        "height": 314
+      }
+    },
+    {
+      "name": "lobby",
+      "group": "frames",
+      "file": "png/frames/lobby.png",
+      "width": 400,
+      "height": 299,
+      "alpha": true,
+      "transparentPixels": 2885,
+      "partialPixels": 116701,
+      "bytes": 215728,
+      "sha256": "74961b7493b1dbbcfa5d5384d85f708901768c306b064be18cceeef49d8ffeaf",
+      "source": "setup",
+      "exportRect": {
+        "left": 840,
+        "top": 54,
+        "width": 400,
+        "height": 299
+      }
+    },
+    {
+      "name": "room",
+      "group": "frames",
+      "file": "png/frames/room.png",
+      "width": 453,
+      "height": 318,
+      "alpha": true,
+      "transparentPixels": 5893,
+      "partialPixels": 137941,
+      "bytes": 252809,
+      "sha256": "a4118348b8d7d3a52ce8a3c0b3efe8bda207c5cec6be0db4ab6d4f446325d91e",
+      "source": "setup",
+      "exportRect": {
+        "left": 20,
+        "top": 429,
+        "width": 453,
+        "height": 318
+      }
+    },
+    {
+      "name": "ready",
+      "group": "frames",
+      "file": "png/frames/ready.png",
+      "width": 285,
+      "height": 366,
+      "alpha": true,
+      "transparentPixels": 4305,
+      "partialPixels": 99751,
+      "bytes": 187389,
+      "sha256": "ea76f16fe8ecb40b376c5ccfc77adfe781d7818868e6b642eaa846558b091915",
+      "source": "setup",
+      "exportRect": {
+        "left": 490,
+        "top": 398,
+        "width": 285,
+        "height": 366
+      }
+    },
+    {
+      "name": "readyPlayer",
+      "group": "frames",
+      "file": "png/frames/readyPlayer.png",
+      "width": 458,
+      "height": 160,
+      "alpha": true,
+      "transparentPixels": 2703,
+      "partialPixels": 70463,
+      "bytes": 128644,
+      "sha256": "78156da1e1b3b546f3968e0f36fc813d55cd87bc37b5b4be33303ff9582505bf",
+      "source": "setup",
+      "exportRect": {
+        "left": 780,
+        "top": 505,
+        "width": 458,
+        "height": 160
+      }
+    },
+    {
+      "name": "dice",
+      "group": "frames",
+      "file": "png/frames/dice.png",
+      "width": 408,
+      "height": 373,
+      "alpha": true,
+      "transparentPixels": 5333,
+      "partialPixels": 146697,
+      "bytes": 271030,
+      "sha256": "daba5aa7ad123526613f1fcfedb299d5e6e269ab4684d8fe56ab08d0492469c8",
+      "source": "setup",
+      "exportRect": {
+        "left": 28,
+        "top": 801,
+        "width": 408,
+        "height": 373
+      }
+    },
+    {
+      "name": "die",
+      "group": "frames",
+      "file": "png/frames/die.png",
+      "width": 256,
+      "height": 247,
+      "alpha": true,
+      "transparentPixels": 2981,
+      "partialPixels": 60030,
+      "bytes": 123482,
+      "sha256": "e336a6b93517788e9817c7320e7124e80f9baa2fbf771cf260f14ea2efb21a9e",
+      "source": "setup",
+      "exportRect": {
+        "left": 503,
+        "top": 868,
+        "width": 256,
+        "height": 247
+      }
+    },
+    {
+      "name": "deal",
+      "group": "frames",
+      "file": "png/frames/deal.png",
+      "width": 398,
+      "height": 378,
+      "alpha": true,
+      "transparentPixels": 5484,
+      "partialPixels": 144838,
+      "bytes": 266009,
+      "sha256": "23166d40e1d8169a3480789258e88cf922dd0a8ed3613849ec61b3b3d9abcc77",
+      "source": "setup",
+      "exportRect": {
+        "left": 830,
+        "top": 796,
+        "width": 398,
+        "height": 378
+      }
+    },
+    {
+      "name": "team",
+      "group": "frames",
+      "file": "png/frames/team.png",
+      "width": 772,
+      "height": 366,
+      "alpha": true,
+      "transparentPixels": 9123,
+      "partialPixels": 273342,
+      "bytes": 488081,
+      "sha256": "807eaa0e283afb8ff9f94324858f1779d0f48c4b42674ac7ac4f30a9b990c433",
+      "source": "context",
+      "exportRect": {
+        "left": 34,
+        "top": 40,
+        "width": 772,
+        "height": 366
+      }
+    },
+    {
+      "name": "deploy",
+      "group": "frames",
+      "file": "png/frames/deploy.png",
+      "width": 347,
+      "height": 395,
+      "alpha": true,
+      "transparentPixels": 6690,
+      "partialPixels": 130295,
+      "bytes": 251608,
+      "sha256": "9e0f908b29ab79d3bf0f5fd095a36410736f40ab221ea1e72c2d1398718250c7",
+      "source": "context",
+      "exportRect": {
+        "left": 855,
+        "top": 15,
+        "width": 347,
+        "height": 395
+      }
+    },
+    {
+      "name": "special",
+      "group": "frames",
+      "file": "png/frames/special.png",
+      "width": 605,
+      "height": 295,
+      "alpha": true,
+      "transparentPixels": 4939,
+      "partialPixels": 173471,
+      "bytes": 310248,
+      "sha256": "108b3f5749d860d76ec741d562cacd72e8641ebd946104071e0f158b197e581f",
+      "source": "context",
+      "exportRect": {
+        "left": 36,
+        "top": 453,
+        "width": 605,
+        "height": 295
+      }
+    },
+    {
+      "name": "training",
+      "group": "frames",
+      "file": "png/frames/training.png",
+      "width": 548,
+      "height": 317,
+      "alpha": true,
+      "transparentPixels": 7360,
+      "partialPixels": 166235,
+      "bytes": 309935,
+      "sha256": "1e4824882d15c88f1f6bc6ec7f25703a75578fadc51a98f793895e764095314e",
+      "source": "context",
+      "exportRect": {
+        "left": 679,
+        "top": 446,
+        "width": 548,
+        "height": 317
+      }
+    },
+    {
+      "name": "mobileTeam",
+      "group": "frames",
+      "file": "png/frames/mobileTeam.png",
+      "width": 315,
+      "height": 438,
+      "alpha": true,
+      "transparentPixels": 8350,
+      "partialPixels": 129363,
+      "bytes": 249038,
+      "sha256": "74e64829eac23b6c527fa8f1ae54be5c212cc1cd56d80eab7457ee9cb828706d",
+      "source": "context",
+      "exportRect": {
+        "left": 182,
+        "top": 786,
+        "width": 315,
+        "height": 438
+      }
+    },
+    {
+      "name": "mobileRoom",
+      "group": "frames",
+      "file": "png/frames/mobileRoom.png",
+      "width": 297,
+      "height": 433,
+      "alpha": true,
+      "transparentPixels": 8595,
+      "partialPixels": 119774,
+      "bytes": 229471,
+      "sha256": "b8f97b34e6136be8f8687a4de42fa64c1510bda12c3a263b5f1fb4776fc044f2",
+      "source": "context",
+      "exportRect": {
+        "left": 780,
+        "top": 791,
+        "width": 297,
+        "height": 433
+      }
+    },
+    {
+      "name": "hero",
+      "group": "frames",
+      "file": "png/frames/hero.png",
+      "width": 494,
+      "height": 203,
+      "alpha": true,
+      "transparentPixels": 2174,
+      "partialPixels": 98108,
+      "bytes": 200520,
+      "sha256": "bd28e31b2f77039aabac88166e09cd6f71fbd2ca5e1e48feaf8fb0eaa95b3db6",
+      "source": "combat",
+      "exportRect": {
+        "left": 24,
+        "top": 68,
+        "width": 494,
+        "height": 203
+      }
+    },
+    {
+      "name": "equipment",
+      "group": "frames",
+      "file": "png/frames/equipment.png",
+      "width": 477,
+      "height": 203,
+      "alpha": true,
+      "transparentPixels": 1666,
+      "partialPixels": 95165,
+      "bytes": 191033,
+      "sha256": "ce2e7af4ae99e19c266078cabd6fc7969ff485c5b603eef0decc8dc5dc8ca2da",
+      "source": "combat",
+      "exportRect": {
+        "left": 536,
+        "top": 68,
+        "width": 477,
+        "height": 203
+      }
+    },
+    {
+      "name": "defense",
+      "group": "frames",
+      "file": "png/frames/defense.png",
+      "width": 483,
+      "height": 203,
+      "alpha": true,
+      "transparentPixels": 1799,
+      "partialPixels": 96250,
+      "bytes": 192520,
+      "sha256": "c8847544dc3ee3fcf9678665a515c1bf35e6dbfa9f3fef3b027c00ab710db67c",
+      "source": "combat",
+      "exportRect": {
+        "left": 1028,
+        "top": 68,
+        "width": 483,
+        "height": 203
+      }
+    },
+    {
+      "name": "confirm",
+      "group": "frames",
+      "file": "png/frames/confirm.png",
+      "width": 308,
+      "height": 195,
+      "alpha": true,
+      "transparentPixels": 2262,
+      "partialPixels": 57798,
+      "bytes": 121346,
+      "sha256": "a3ce70e49ee2cafe12bc30995478af21caba5f46529b9066fb3a0eff36f95fa9",
+      "source": "combat",
+      "exportRect": {
+        "left": 31,
+        "top": 316,
+        "width": 308,
+        "height": 195
+      }
+    },
+    {
+      "name": "result",
+      "group": "frames",
+      "file": "png/frames/result.png",
+      "width": 557,
+      "height": 213,
+      "alpha": true,
+      "transparentPixels": 2902,
+      "partialPixels": 115739,
+      "bytes": 224638,
+      "sha256": "4e82877cbf38505939ff0118bea67507be13f3aecd4a6dd1b1e247c2075dc162",
+      "source": "combat",
+      "exportRect": {
+        "left": 366,
+        "top": 305,
+        "width": 557,
+        "height": 213
+      }
+    },
+    {
+      "name": "ranked",
+      "group": "frames",
+      "file": "png/frames/ranked.png",
+      "width": 575,
+      "height": 213,
+      "alpha": true,
+      "transparentPixels": 3224,
+      "partialPixels": 119251,
+      "bytes": 232790,
+      "sha256": "7097f24040a07b02a52185c5b4056a776d5a81a474eca437242beac2aba382e6",
+      "source": "combat",
+      "exportRect": {
+        "left": 936,
+        "top": 305,
+        "width": 575,
+        "height": 213
+      }
+    },
+    {
+      "name": "mobileBattle",
+      "group": "frames",
+      "file": "png/frames/mobileBattle.png",
+      "width": 310,
+      "height": 451,
+      "alpha": true,
+      "transparentPixels": 6361,
+      "partialPixels": 133449,
+      "bytes": 265989,
+      "sha256": "e5a26f80a178ae7e5594d88aa558009d1930e47ece0b09469b73a036b16fbe20",
+      "source": "combat",
+      "exportRect": {
+        "left": 39,
+        "top": 529,
+        "width": 310,
+        "height": 451
+      }
+    },
+    {
+      "name": "gold-normal",
+      "group": "buttons",
+      "file": "png/buttons/gold-normal.png",
+      "width": 379,
+      "height": 120,
+      "alpha": true,
+      "transparentPixels": 1928,
+      "partialPixels": 43540,
+      "bytes": 91813,
+      "sha256": "3b48f4d5bcbb171d3fad52249d0e115983e78520b88dd7ef3fa636da373b7f65",
+      "source": "buttons",
+      "exportRect": {
+        "left": 29,
+        "top": 130,
+        "width": 379,
+        "height": 120
+      }
+    },
+    {
+      "name": "gold-hover",
+      "group": "buttons",
+      "file": "png/buttons/gold-hover.png",
+      "width": 378,
+      "height": 120,
+      "alpha": true,
+      "transparentPixels": 1463,
+      "partialPixels": 43897,
+      "bytes": 101734,
+      "sha256": "501b8e06454a493f0d726703dce3d4fe58bcc2e44239e57a308f20f0541a910d",
+      "source": "buttons",
+      "exportRect": {
+        "left": 438,
+        "top": 130,
+        "width": 378,
+        "height": 120
+      }
+    },
+    {
+      "name": "gold-pressed",
+      "group": "buttons",
+      "file": "png/buttons/gold-pressed.png",
+      "width": 380,
+      "height": 120,
+      "alpha": true,
+      "transparentPixels": 1917,
+      "partialPixels": 43623,
+      "bytes": 80828,
+      "sha256": "e6fb49611e008ba0059301ffb2bd5da1118d988385c5537c0ef061f13c8350e5",
+      "source": "buttons",
+      "exportRect": {
+        "left": 845,
+        "top": 130,
+        "width": 380,
+        "height": 120
+      }
+    },
+    {
+      "name": "blue-normal",
+      "group": "buttons",
+      "file": "png/buttons/blue-normal.png",
+      "width": 378,
+      "height": 119,
+      "alpha": true,
+      "transparentPixels": 2246,
+      "partialPixels": 42723,
+      "bytes": 94206,
+      "sha256": "4919e8fc21eea88365553bd0210c7f5e10af649be2b4a448efd5b469204ac2fc",
+      "source": "buttons",
+      "exportRect": {
+        "left": 29,
+        "top": 343,
+        "width": 378,
+        "height": 119
+      }
+    },
+    {
+      "name": "blue-hover",
+      "group": "buttons",
+      "file": "png/buttons/blue-hover.png",
+      "width": 378,
+      "height": 119,
+      "alpha": true,
+      "transparentPixels": 1756,
+      "partialPixels": 43225,
+      "bytes": 99868,
+      "sha256": "e15d38efe7589c6d79af8a61427bc3693c8f86077032c4fe442756b6ee4260a9",
+      "source": "buttons",
+      "exportRect": {
+        "left": 438,
+        "top": 343,
+        "width": 378,
+        "height": 119
+      }
+    },
+    {
+      "name": "blue-pressed",
+      "group": "buttons",
+      "file": "png/buttons/blue-pressed.png",
+      "width": 380,
+      "height": 119,
+      "alpha": true,
+      "transparentPixels": 2416,
+      "partialPixels": 42737,
+      "bytes": 81306,
+      "sha256": "0d92dba1a84e100e6f10adad05d38425a2e2850e9d1d70dc988b2a96904360fa",
+      "source": "buttons",
+      "exportRect": {
+        "left": 845,
+        "top": 343,
+        "width": 380,
+        "height": 119
+      }
+    },
+    {
+      "name": "iron-normal",
+      "group": "buttons",
+      "file": "png/buttons/iron-normal.png",
+      "width": 378,
+      "height": 119,
+      "alpha": true,
+      "transparentPixels": 2374,
+      "partialPixels": 42603,
+      "bytes": 79201,
+      "sha256": "30067a52b5b6111fdad19b00469befdb9055ca9d7f5d2c2d4737b4f4a18a1bed",
+      "source": "buttons",
+      "exportRect": {
+        "left": 29,
+        "top": 564,
+        "width": 378,
+        "height": 119
+      }
+    },
+    {
+      "name": "iron-hover",
+      "group": "buttons",
+      "file": "png/buttons/iron-hover.png",
+      "width": 378,
+      "height": 120,
+      "alpha": true,
+      "transparentPixels": 1924,
+      "partialPixels": 43373,
+      "bytes": 88604,
+      "sha256": "3e52660692ec9eca951390ae53dbe1c8dad5e4d6d31f99f87f95710203ee5840",
+      "source": "buttons",
+      "exportRect": {
+        "left": 438,
+        "top": 563,
+        "width": 378,
+        "height": 120
+      }
+    },
+    {
+      "name": "iron-pressed",
+      "group": "buttons",
+      "file": "png/buttons/iron-pressed.png",
+      "width": 380,
+      "height": 119,
+      "alpha": true,
+      "transparentPixels": 2558,
+      "partialPixels": 42596,
+      "bytes": 70106,
+      "sha256": "38f548a17f5d4ae3c0d07db22f6bc60ca9786b8d1e65985b2b3b3da004ca844d",
+      "source": "buttons",
+      "exportRect": {
+        "left": 845,
+        "top": 564,
+        "width": 380,
+        "height": 119
+      }
+    },
+    {
+      "name": "disabled-normal",
+      "group": "buttons",
+      "file": "png/buttons/disabled-normal.png",
+      "width": 378,
+      "height": 119,
+      "alpha": true,
+      "transparentPixels": 3074,
+      "partialPixels": 41558,
+      "bytes": 74691,
+      "sha256": "5bc65fd001c19002506e64432c190a6132d0f9fd72935b9c5a39cad6ebd73ed9",
+      "source": "buttons",
+      "exportRect": {
+        "left": 29,
+        "top": 784,
+        "width": 378,
+        "height": 119
+      }
+    },
+    {
+      "name": "move-normal",
+      "group": "buttons",
+      "file": "png/buttons/move-normal.png",
+      "width": 376,
+      "height": 121,
+      "alpha": true,
+      "transparentPixels": 2911,
+      "partialPixels": 42274,
+      "bytes": 90426,
+      "sha256": "12892e2daa9a36c731fde4f83ccaafccb38ed944eb85420e05263088b517f4e7",
+      "source": "buttons",
+      "exportRect": {
+        "left": 439,
+        "top": 782,
+        "width": 376,
+        "height": 121
+      }
+    },
+    {
+      "name": "attack-normal",
+      "group": "buttons",
+      "file": "png/buttons/attack-normal.png",
+      "width": 380,
+      "height": 121,
+      "alpha": true,
+      "transparentPixels": 3188,
+      "partialPixels": 42444,
+      "bytes": 86449,
+      "sha256": "8958fa49bccf0075292c4d8160d7ee7f9a6dac162a789058bb16832e36a6325a",
+      "source": "buttons",
+      "exportRect": {
+        "left": 846,
+        "top": 782,
+        "width": 380,
+        "height": 121
+      }
+    },
+    {
+      "name": "danger-normal",
+      "group": "buttons",
+      "file": "png/buttons/danger-normal.png",
+      "width": 378,
+      "height": 119,
+      "alpha": true,
+      "transparentPixels": 2385,
+      "partialPixels": 42357,
+      "bytes": 86792,
+      "sha256": "1edff5c761214b71ecc1bf6bd2b30fac80e61a0a774a68900ba04de0d81885e0",
+      "source": "buttons",
+      "exportRect": {
+        "left": 29,
+        "top": 996,
+        "width": 378,
+        "height": 119
+      }
+    },
+    {
+      "name": "danger-hover",
+      "group": "buttons",
+      "file": "png/buttons/danger-hover.png",
+      "width": 378,
+      "height": 120,
+      "alpha": true,
+      "transparentPixels": 2407,
+      "partialPixels": 42918,
+      "bytes": 94298,
+      "sha256": "d04305a52871a272b4905bf6f2baa4b2143f182652476eede86c6c34a46495a6",
+      "source": "buttons",
+      "exportRect": {
+        "left": 438,
+        "top": 995,
+        "width": 378,
+        "height": 120
+      }
+    },
+    {
+      "name": "danger-pressed",
+      "group": "buttons",
+      "file": "png/buttons/danger-pressed.png",
+      "width": 380,
+      "height": 119,
+      "alpha": true,
+      "transparentPixels": 2696,
+      "partialPixels": 42163,
+      "bytes": 72878,
+      "sha256": "9743b3e290bb3424f18f5b4efe0a422e334e7e8c0ee1760ff7debd5a7dfcd0e6",
+      "source": "buttons",
+      "exportRect": {
+        "left": 845,
+        "top": 996,
+        "width": 380,
+        "height": 119
+      }
+    },
+    {
+      "name": "logo",
+      "group": "parts",
+      "file": "png/parts/logo.png",
+      "width": 524,
+      "height": 104,
+      "alpha": true,
+      "transparentPixels": 10934,
+      "partialPixels": 43518,
+      "bytes": 119146,
+      "sha256": "d4edaff1bdeb2a2b531fc6ffd213915e7c65ec0d68ed5943c76122582c636344",
+      "source": "ornaments",
+      "exportRect": {
+        "left": 29,
+        "top": 157,
+        "width": 524,
+        "height": 104
+      }
+    },
+    {
+      "name": "crest",
+      "group": "parts",
+      "file": "png/parts/crest.png",
+      "width": 220,
+      "height": 216,
+      "alpha": true,
+      "transparentPixels": 25358,
+      "partialPixels": 22101,
+      "bytes": 68556,
+      "sha256": "8ec60e56aa04763b462d17f9327c53a615d70ca6ba1a07d6496f17caac7dec92",
+      "source": "ornaments",
+      "exportRect": {
+        "left": 580,
+        "top": 78,
+        "width": 220,
+        "height": 216
+      }
+    },
+    {
+      "name": "ai",
+      "group": "parts",
+      "file": "png/parts/ai.png",
+      "width": 364,
+      "height": 288,
+      "alpha": true,
+      "transparentPixels": 32071,
+      "partialPixels": 72443,
+      "bytes": 217755,
+      "sha256": "ba2f1cbcd566ab8fce1b9044b6acc0b534360a629b4cc5a6093f1f344bcd48ef",
+      "source": "ornaments",
+      "exportRect": {
+        "left": 865,
+        "top": 57,
+        "width": 364,
+        "height": 288
+      }
+    },
+    {
+      "name": "casual",
+      "group": "parts",
+      "file": "png/parts/casual.png",
+      "width": 342,
+      "height": 292,
+      "alpha": true,
+      "transparentPixels": 29542,
+      "partialPixels": 70185,
+      "bytes": 215525,
+      "sha256": "ea91610cfed18812b4bfcc8e3ba61aecf3552bafe3e55aec2dfde50a7f9fa12b",
+      "source": "ornaments",
+      "exportRect": {
+        "left": 42,
+        "top": 349,
+        "width": 342,
+        "height": 292
+      }
+    },
+    {
+      "name": "ranked",
+      "group": "parts",
+      "file": "png/parts/ranked.png",
+      "width": 371,
+      "height": 301,
+      "alpha": true,
+      "transparentPixels": 42821,
+      "partialPixels": 68783,
+      "bytes": 206733,
+      "sha256": "1ab3d339ad1486b046ae22436f1f99217fe2891550ebc81b3b23f6c00d2da79e",
+      "source": "ornaments",
+      "exportRect": {
+        "left": 419,
+        "top": 342,
+        "width": 371,
+        "height": 301
+      }
+    },
+    {
+      "name": "win",
+      "group": "parts",
+      "file": "png/parts/win.png",
+      "width": 446,
+      "height": 176,
+      "alpha": true,
+      "transparentPixels": 34907,
+      "partialPixels": 43390,
+      "bytes": 132486,
+      "sha256": "f081f12f7f20c6813dabef32c0ac61f06f1e4a4bd74be9bf8ad9d6c86b40d9ca",
+      "source": "ornaments",
+      "exportRect": {
+        "left": 795,
+        "top": 402,
+        "width": 446,
+        "height": 176
+      }
+    },
+    {
+      "name": "lose",
+      "group": "parts",
+      "file": "png/parts/lose.png",
+      "width": 519,
+      "height": 230,
+      "alpha": true,
+      "transparentPixels": 76409,
+      "partialPixels": 42866,
+      "bytes": 128644,
+      "sha256": "485ce1659cba2758ea991f535e1a8a3aada00b270490225b0189d4da83291a09",
+      "source": "ornaments",
+      "exportRect": {
+        "left": 6,
+        "top": 703,
+        "width": 519,
+        "height": 230
+      }
+    },
+    {
+      "name": "draw",
+      "group": "parts",
+      "file": "png/parts/draw.png",
+      "width": 337,
+      "height": 223,
+      "alpha": true,
+      "transparentPixels": 39701,
+      "partialPixels": 35383,
+      "bytes": 102713,
+      "sha256": "18c41f215652264eec52958c0b7c9b082a0d3e4b7ebf3ce7c0ba99cbbc3b6c10",
+      "source": "ornaments",
+      "exportRect": {
+        "left": 551,
+        "top": 706,
+        "width": 337,
+        "height": 223
+      }
+    },
+    {
+      "name": "tabHero",
+      "group": "parts",
+      "file": "png/parts/tabHero.png",
+      "width": 184,
+      "height": 244,
+      "alpha": true,
+      "transparentPixels": 12496,
+      "partialPixels": 32286,
+      "bytes": 98355,
+      "sha256": "9143a65fac89f90fd890aa3d49ad0c69a9dda9c605b3ab30c938e58e4a9946c9",
+      "source": "ornaments",
+      "exportRect": {
+        "left": 996,
+        "top": 687,
+        "width": 184,
+        "height": 244
+      }
+    },
+    {
+      "name": "tabSkills",
+      "group": "parts",
+      "file": "png/parts/tabSkills.png",
+      "width": 239,
+      "height": 223,
+      "alpha": true,
+      "transparentPixels": 26146,
+      "partialPixels": 27049,
+      "bytes": 85245,
+      "sha256": "28eb29803161c08dd074fae9353e6b2235bb85bc6239ecea06dae7f937a57273",
+      "source": "ornaments",
+      "exportRect": {
+        "left": 155,
+        "top": 977,
+        "width": 239,
+        "height": 223
+      }
+    },
+    {
+      "name": "tabCards",
+      "group": "parts",
+      "file": "png/parts/tabCards.png",
+      "width": 194,
+      "height": 227,
+      "alpha": true,
+      "transparentPixels": 13766,
+      "partialPixels": 30153,
+      "bytes": 90602,
+      "sha256": "75a7673e85c7c8eae347e2f71c1675186c949060ed221f585df09cbeb7b0f3bc",
+      "source": "ornaments",
+      "exportRect": {
+        "left": 558,
+        "top": 981,
+        "width": 194,
+        "height": 227
+      }
+    },
+    {
+      "name": "hourglass",
+      "group": "parts",
+      "file": "png/parts/hourglass.png",
+      "width": 160,
+      "height": 227,
+      "alpha": true,
+      "transparentPixels": 7301,
+      "partialPixels": 28899,
+      "bytes": 90344,
+      "sha256": "b16007b71c4d716cdc5a5c40fea92310887a23a9a695859d5d66361c595c2d01",
+      "source": "ornaments",
+      "exportRect": {
+        "left": 952,
+        "top": 977,
+        "width": 160,
+        "height": 227
+      }
     }
-  ],
-  "fidelity": {
-    "status": "INTEGRATED",
-    "note": "Artwork regions come from all 14 approved boards. Dynamic text and responsive layout remain HTML; no claim of identical pixels across viewport sizes."
-  }
+  ]
 }

@@ -1,0 +1,23 @@
+{
+  "version": "1.75.0",
+  "pngAssets": 53,
+  "rgbaAlphaVerifiedInBrowser": true,
+  "runtimeConceptSheetRequests": 0,
+  "productionBuild": "passed",
+  "browserStates": 128,
+  "browserErrors": [],
+  "browserMissingAssets": [],
+  "textStates": 312,
+  "textFailures": 0,
+  "textErrors": [],
+  "textMissingAssets": [],
+  "buttonStates": [
+    "normal",
+    "hover",
+    "pressed",
+    "pressed-outside",
+    "disabled"
+  ],
+  "onlineTwoSeatFlow": "passed",
+  "rulesHash": "d5bcc0ca56e33e301e05a6cb335071588b177400e6e2cf83459f2fca6c350db5"
+}

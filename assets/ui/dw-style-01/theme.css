@@ -3,8 +3,8 @@
   --dw-gold: #dfbc77;
   --dw-ivory: #f2ead8;
   --dw-muted: #aebcc5;
-  --dw-panel: url('./panel.webp');
-  --dw-button: url('./button.webp');
+  --dw-panel: url('./png/frames/panel.png');
+  --dw-button: url('./png/buttons/gold-normal.png');
   --dw-frame: 22px;
   --accent: #dfbc77;
   --text: #f2ead8;

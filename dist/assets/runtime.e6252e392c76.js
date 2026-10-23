@@ -7557,58 +7557,719 @@ window.HeroSkillVisuals = Object.freeze({
 });
 
 ;
-/* Regions of the original uploaded concept boards. All labels/data stay live. */
+/* Individual transparent PNG artwork. Original concept boards are archives only. */
 window.DWUIPack = (() => {
-  const keys = ['00-mode','01-desktop-hud','02-hero-skills-equipment','03-defense-results-dialogs','04-mobile-ingame','05-play-hub','06-online-lobby-room','07-ready-dice-deal','08-hero-team-selection','09-deployment','10-special-skills','11-equipment-reactions-ranked','12-training-system-kit','13-mobile-pregame'];
-  const base = new URL((document.body.classList.contains('dwOnline') ? '../' : './') + 'assets/ui/dw-style-01/sheets/', document.baseURI);
-  const sources = keys.map((key, index) => ({ url: new URL(key + '.webp', base).href, width: [4,13].includes(index) ? 1536 : index === 10 ? 1673 : 1672, height: [4,13].includes(index) ? 1024 : index === 10 ? 940 : 941 }));
-  const frame = (sheet, rect, cuts = [24,12,24,20], cap = [28,20]) => ({ sheet, rect, cuts, cap });
-  const frames = {
-    hub: frame(5,[254,68,1240,515],[54,14,54,26],[48,24]),
-    hubCard: frame(5,[313,170,344,375]),
-    lobby: frame(6,[101,157,708,580],[40,14,40,24],[38,22]),
-    room: frame(6,[820,158,785,578],[40,14,40,24],[38,22]),
-    ready: frame(7,[58,117,503,606]),
-    readyPlayer: frame(7,[85,308,450,126],[18,8,18,12],[22,12]),
-    dice: frame(7,[581,117,515,606]),
-    die: frame(7,[604,223,208,229],[18,8,18,18],[22,16]),
-    deal: frame(7,[1118,118,514,604]),
-    team: frame(8,[151,77,1370,657],[54,14,54,26],[48,24]),
-    deploy: frame(9,[1260,104,384,545]),
-    hero: frame(2,[25,83,826,345]),
-    equipment: frame(2,[24,449,890,464]),
-    defense: frame(3,[108,142,665,358]),
-    confirm: frame(3,[911,176,321,197]),
-    result: frame(3,[82,612,712,295]),
-    special: frame(10,[34,94,522,391]),
-    reaction: frame(11,[76,82,767,401]),
-    ranked: frame(11,[908,505,727,396]),
-    training: frame(12,[755,83,447,404]),
-    mobileBattle: frame(4,[105,81,420,817],[15,12,15,18],[20,18]),
-    mobileTeam: frame(13,[559,70,406,746],[18,12,18,18],[24,18]),
-    mobileRoom: frame(13,[104,69,437,747],[18,12,18,18],[24,18])
-  };
-  const parts = {
-    logo: [0,[151,7,342,59]],
-    sceneLeft: [0,[0,82,202,551]], sceneRight: [0,[1465,82,207,551]],
-    ai: [5,[382,181,224,140]], casual: [5,[768,181,236,140]], ranked: [5,[1158,180,226,142]],
-    win: [3,[303,557,260,73]], lose: [3,[1043,555,198,73]], draw: [3,[1434,626,170,61]],
-    shield: [2,[909,165,121,113]], chain: [2,[1068,163,128,115]], dragon: [2,[1225,163,127,115]],
-    cardBack: [7,[943,762,72,104]],
-    tabHero: [4,[224,939,31,26]], tabSkills: [4,[306,835,29,30]], tabCards: [4,[896,837,22,30]]
-  };
-  function piece(source, rect, className = '') {
+  const catalog = {
+  "frames": {
+    "panel": {
+      "file": "png/frames/panel.png",
+      "width": 798,
+      "height": 430,
+      "cuts": [
+        78,
+        90,
+        78,
+        90
+      ],
+      "cap": [
+        48,
+        36
+      ]
+    },
+    "card": {
+      "file": "png/frames/card.png",
+      "width": 608,
+      "height": 344,
+      "cuts": [
+        78,
+        90,
+        78,
+        90
+      ],
+      "cap": [
+        22,
+        22
+      ]
+    },
+    "locked": {
+      "file": "png/frames/locked.png",
+      "width": 609,
+      "height": 345,
+      "cuts": [
+        78,
+        90,
+        78,
+        90
+      ],
+      "cap": [
+        22,
+        22
+      ]
+    },
+    "hud": {
+      "file": "png/frames/hud.png",
+      "width": 824,
+      "height": 190,
+      "cuts": [
+        46,
+        90,
+        46,
+        90
+      ],
+      "cap": [
+        23,
+        15
+      ]
+    },
+    "hub": {
+      "file": "png/frames/hub.png",
+      "width": 589,
+      "height": 311,
+      "cuts": [
+        75,
+        90,
+        75,
+        90
+      ],
+      "cap": [
+        48,
+        36
+      ]
+    },
+    "hubCard": {
+      "file": "png/frames/hubCard.png",
+      "width": 226,
+      "height": 314,
+      "cuts": [
+        75,
+        41,
+        75,
+        41
+      ],
+      "cap": [
+        22,
+        22
+      ]
+    },
+    "lobby": {
+      "file": "png/frames/lobby.png",
+      "width": 400,
+      "height": 299,
+      "cuts": [
+        72,
+        72,
+        72,
+        72
+      ],
+      "cap": [
+        22,
+        22
+      ]
+    },
+    "room": {
+      "file": "png/frames/room.png",
+      "width": 453,
+      "height": 318,
+      "cuts": [
+        76,
+        82,
+        76,
+        82
+      ],
+      "cap": [
+        22,
+        22
+      ]
+    },
+    "ready": {
+      "file": "png/frames/ready.png",
+      "width": 285,
+      "height": 366,
+      "cuts": [
+        78,
+        51,
+        78,
+        51
+      ],
+      "cap": [
+        22,
+        22
+      ]
+    },
+    "readyPlayer": {
+      "file": "png/frames/readyPlayer.png",
+      "width": 458,
+      "height": 160,
+      "cuts": [
+        38,
+        82,
+        38,
+        82
+      ],
+      "cap": [
+        22,
+        22
+      ]
+    },
+    "dice": {
+      "file": "png/frames/dice.png",
+      "width": 408,
+      "height": 373,
+      "cuts": [
+        78,
+        73,
+        78,
+        73
+      ],
+      "cap": [
+        22,
+        22
+      ]
+    },
+    "die": {
+      "file": "png/frames/die.png",
+      "width": 256,
+      "height": 247,
+      "cuts": [
+        59,
+        46,
+        59,
+        46
+      ],
+      "cap": [
+        22,
+        22
+      ]
+    },
+    "deal": {
+      "file": "png/frames/deal.png",
+      "width": 398,
+      "height": 378,
+      "cuts": [
+        78,
+        72,
+        78,
+        72
+      ],
+      "cap": [
+        22,
+        22
+      ]
+    },
+    "team": {
+      "file": "png/frames/team.png",
+      "width": 772,
+      "height": 366,
+      "cuts": [
+        78,
+        90,
+        78,
+        90
+      ],
+      "cap": [
+        48,
+        36
+      ]
+    },
+    "deploy": {
+      "file": "png/frames/deploy.png",
+      "width": 347,
+      "height": 395,
+      "cuts": [
+        78,
+        62,
+        78,
+        62
+      ],
+      "cap": [
+        22,
+        22
+      ]
+    },
+    "special": {
+      "file": "png/frames/special.png",
+      "width": 605,
+      "height": 295,
+      "cuts": [
+        71,
+        90,
+        71,
+        90
+      ],
+      "cap": [
+        22,
+        22
+      ]
+    },
+    "training": {
+      "file": "png/frames/training.png",
+      "width": 548,
+      "height": 317,
+      "cuts": [
+        76,
+        90,
+        76,
+        90
+      ],
+      "cap": [
+        22,
+        22
+      ]
+    },
+    "mobileTeam": {
+      "file": "png/frames/mobileTeam.png",
+      "width": 315,
+      "height": 438,
+      "cuts": [
+        78,
+        57,
+        78,
+        57
+      ],
+      "cap": [
+        22,
+        22
+      ]
+    },
+    "mobileRoom": {
+      "file": "png/frames/mobileRoom.png",
+      "width": 297,
+      "height": 433,
+      "cuts": [
+        78,
+        53,
+        78,
+        53
+      ],
+      "cap": [
+        22,
+        22
+      ]
+    },
+    "hero": {
+      "file": "png/frames/hero.png",
+      "width": 494,
+      "height": 203,
+      "cuts": [
+        49,
+        89,
+        49,
+        89
+      ],
+      "cap": [
+        22,
+        22
+      ]
+    },
+    "equipment": {
+      "file": "png/frames/equipment.png",
+      "width": 477,
+      "height": 203,
+      "cuts": [
+        49,
+        86,
+        49,
+        86
+      ],
+      "cap": [
+        22,
+        22
+      ]
+    },
+    "defense": {
+      "file": "png/frames/defense.png",
+      "width": 483,
+      "height": 203,
+      "cuts": [
+        49,
+        87,
+        49,
+        87
+      ],
+      "cap": [
+        22,
+        22
+      ]
+    },
+    "confirm": {
+      "file": "png/frames/confirm.png",
+      "width": 308,
+      "height": 195,
+      "cuts": [
+        47,
+        55,
+        47,
+        55
+      ],
+      "cap": [
+        22,
+        22
+      ]
+    },
+    "result": {
+      "file": "png/frames/result.png",
+      "width": 557,
+      "height": 213,
+      "cuts": [
+        51,
+        90,
+        51,
+        90
+      ],
+      "cap": [
+        22,
+        22
+      ]
+    },
+    "ranked": {
+      "file": "png/frames/ranked.png",
+      "width": 575,
+      "height": 213,
+      "cuts": [
+        51,
+        90,
+        51,
+        90
+      ],
+      "cap": [
+        22,
+        22
+      ]
+    },
+    "mobileBattle": {
+      "file": "png/frames/mobileBattle.png",
+      "width": 310,
+      "height": 451,
+      "cuts": [
+        78,
+        56,
+        78,
+        56
+      ],
+      "cap": [
+        22,
+        22
+      ]
+    },
+    "reaction": {
+      "file": "png/frames/equipment.png",
+      "width": 477,
+      "height": 203,
+      "cuts": [
+        49,
+        86,
+        49,
+        86
+      ],
+      "cap": [
+        22,
+        22
+      ]
+    }
+  },
+  "buttons": {
+    "gold-normal": {
+      "file": "png/buttons/gold-normal.png",
+      "width": 379,
+      "height": 120,
+      "cuts": [
+        24,
+        24,
+        24,
+        24
+      ],
+      "cap": [
+        11,
+        8
+      ]
+    },
+    "gold-hover": {
+      "file": "png/buttons/gold-hover.png",
+      "width": 378,
+      "height": 120,
+      "cuts": [
+        24,
+        24,
+        24,
+        24
+      ],
+      "cap": [
+        11,
+        8
+      ]
+    },
+    "gold-pressed": {
+      "file": "png/buttons/gold-pressed.png",
+      "width": 380,
+      "height": 120,
+      "cuts": [
+        24,
+        24,
+        24,
+        24
+      ],
+      "cap": [
+        11,
+        8
+      ]
+    },
+    "blue-normal": {
+      "file": "png/buttons/blue-normal.png",
+      "width": 378,
+      "height": 119,
+      "cuts": [
+        24,
+        24,
+        24,
+        24
+      ],
+      "cap": [
+        11,
+        8
+      ]
+    },
+    "blue-hover": {
+      "file": "png/buttons/blue-hover.png",
+      "width": 378,
+      "height": 119,
+      "cuts": [
+        24,
+        24,
+        24,
+        24
+      ],
+      "cap": [
+        11,
+        8
+      ]
+    },
+    "blue-pressed": {
+      "file": "png/buttons/blue-pressed.png",
+      "width": 380,
+      "height": 119,
+      "cuts": [
+        24,
+        24,
+        24,
+        24
+      ],
+      "cap": [
+        11,
+        8
+      ]
+    },
+    "iron-normal": {
+      "file": "png/buttons/iron-normal.png",
+      "width": 378,
+      "height": 119,
+      "cuts": [
+        24,
+        24,
+        24,
+        24
+      ],
+      "cap": [
+        11,
+        8
+      ]
+    },
+    "iron-hover": {
+      "file": "png/buttons/iron-hover.png",
+      "width": 378,
+      "height": 120,
+      "cuts": [
+        24,
+        24,
+        24,
+        24
+      ],
+      "cap": [
+        11,
+        8
+      ]
+    },
+    "iron-pressed": {
+      "file": "png/buttons/iron-pressed.png",
+      "width": 380,
+      "height": 119,
+      "cuts": [
+        24,
+        24,
+        24,
+        24
+      ],
+      "cap": [
+        11,
+        8
+      ]
+    },
+    "disabled-normal": {
+      "file": "png/buttons/disabled-normal.png",
+      "width": 378,
+      "height": 119,
+      "cuts": [
+        24,
+        24,
+        24,
+        24
+      ],
+      "cap": [
+        11,
+        8
+      ]
+    },
+    "move-normal": {
+      "file": "png/buttons/move-normal.png",
+      "width": 376,
+      "height": 121,
+      "cuts": [
+        24,
+        24,
+        24,
+        24
+      ],
+      "cap": [
+        11,
+        8
+      ]
+    },
+    "attack-normal": {
+      "file": "png/buttons/attack-normal.png",
+      "width": 380,
+      "height": 121,
+      "cuts": [
+        24,
+        24,
+        24,
+        24
+      ],
+      "cap": [
+        11,
+        8
+      ]
+    },
+    "danger-normal": {
+      "file": "png/buttons/danger-normal.png",
+      "width": 378,
+      "height": 119,
+      "cuts": [
+        24,
+        24,
+        24,
+        24
+      ],
+      "cap": [
+        11,
+        8
+      ]
+    },
+    "danger-hover": {
+      "file": "png/buttons/danger-hover.png",
+      "width": 378,
+      "height": 120,
+      "cuts": [
+        24,
+        24,
+        24,
+        24
+      ],
+      "cap": [
+        11,
+        8
+      ]
+    },
+    "danger-pressed": {
+      "file": "png/buttons/danger-pressed.png",
+      "width": 380,
+      "height": 119,
+      "cuts": [
+        24,
+        24,
+        24,
+        24
+      ],
+      "cap": [
+        11,
+        8
+      ]
+    }
+  },
+  "parts": {
+    "logo": {
+      "file": "png/parts/logo.png",
+      "width": 524,
+      "height": 104
+    },
+    "crest": {
+      "file": "png/parts/crest.png",
+      "width": 220,
+      "height": 216
+    },
+    "ai": {
+      "file": "png/parts/ai.png",
+      "width": 364,
+      "height": 288
+    },
+    "casual": {
+      "file": "png/parts/casual.png",
+      "width": 342,
+      "height": 292
+    },
+    "ranked": {
+      "file": "png/parts/ranked.png",
+      "width": 371,
+      "height": 301
+    },
+    "win": {
+      "file": "png/parts/win.png",
+      "width": 446,
+      "height": 176
+    },
+    "lose": {
+      "file": "png/parts/lose.png",
+      "width": 519,
+      "height": 230
+    },
+    "draw": {
+      "file": "png/parts/draw.png",
+      "width": 337,
+      "height": 223
+    },
+    "tabHero": {
+      "file": "png/parts/tabHero.png",
+      "width": 184,
+      "height": 244
+    },
+    "tabSkills": {
+      "file": "png/parts/tabSkills.png",
+      "width": 239,
+      "height": 223
+    },
+    "tabCards": {
+      "file": "png/parts/tabCards.png",
+      "width": 194,
+      "height": 227
+    },
+    "hourglass": {
+      "file": "png/parts/hourglass.png",
+      "width": 160,
+      "height": 227
+    }
+  }
+};
+  const base = new URL((document.body.classList.contains('dwOnline') ? '../' : './') + 'assets/ui/dw-style-01/', document.baseURI);
+  for (const group of Object.values(catalog)) for (const item of Object.values(group)) item.url = new URL(item.file, base).href;
+  function sprite(key, className = '') {
+    const art = catalog.parts[key];
     const node = document.createElement('span');
     node.className = 'dwPackPiece ' + className;
-    node.setAttribute('aria-hidden','true');
-    const [x,y,w,h] = rect;
-    node.style.backgroundImage = `url("${source.url}")`;
-    node.style.backgroundSize = `${source.width / w * 100}% ${source.height / h * 100}%`;
-    node.style.backgroundPosition = `${x / (source.width - w) * 100}% ${y / (source.height - h) * 100}%`;
-    node.style.aspectRatio = w + '/' + h;
+    node.setAttribute('aria-hidden', 'true');
+    node.style.backgroundImage = 'url("' + art.url + '")';
+    node.style.backgroundSize = 'contain';
+    node.style.backgroundPosition = 'center';
+    node.style.aspectRatio = art.width + '/' + art.height;
     return node;
   }
-  function sprite(key, className) { const [sheet,rect] = parts[key]; return piece(sources[sheet],rect,className); }
   function frameFor(host) {
     const mobile = innerWidth < 900;
     if (host.matches('.dwConfirmDialog,.modeConfirmPopup')) return 'confirm';
@@ -7637,97 +8298,44 @@ window.DWUIPack = (() => {
     if (mobile && host.matches('.duelControlDock > .box,.onlineActorPanel,.onlineHandPanel')) return 'mobileBattle';
     return null;
   }
-  return { sources,frames,parts,piece,sprite,frameFor };
+
+  return { ...catalog, sprite, frameFor };
 })();
 
 ;
-/* Render windows of the approved board directly. No repainting or hue filters.
- * Nine slices preserve corner geometry while HTML labels remain live/selectable.
- * Source coordinates are in the original 1672 x 941 concept, not a resized copy.
- */
+/* Nine-slice each isolated RGBA PNG. Labels and game data remain live HTML. */
 (() => {
-  const atlas = new URL((document.body.classList.contains('dwOnline') ? '../' : './') + 'assets/ui/dw-style-01/concept-atlas.png', document.baseURI).href;
-  const hudAtlas = new URL('hud-concept-atlas.png', atlas).href;
   const buttonsSelector = '.btn:not(.skill),.dwDockTab';
   const panels = '.modeWrap,.playHubWrap,.readyWrap,.diceWrap,.selectWrap,.dealWrap,.modeCard,.playHubCard,.box,.readyCard,.dieBox,.hubPopup,.modeConfirmPopup,.gameOverPopup,.combatEquipmentDialog,.trainingDialog,.heroSkillPanel,.skillTargetPanel,.defensePopup,.attackPopup,.unitMenu,.deployMenu,.directDefensePanel,.dwDeploymentTray,.dwGameMenu,.onlineTeamInfo,.onlinePlayerSlot,.dwOnline #lobby,.dwOnline #room,.dwOnline #setup,.dwOnline #controls,.dwOnline .onlineHandPanel,.onlineActorPanel';
   const outer = '.modeWrap,.playHubWrap,.readyWrap,.diceWrap,.selectWrap,.dealWrap,.gameOverPopup';
-  function piece(rect, source = atlas) {
+
+  function skin(art, state = 'normal') {
     const node = document.createElement('span');
-    node.className = 'dwAtlasPiece';
-    const [x, y, width, height] = rect;
-    node.style.backgroundImage = `url("${source}")`;
-    const dimensions = window.DWUIPack?.sources.find(item => item.url === source) || {width:1672,height:941};
-    node.style.backgroundSize = `${dimensions.width / width * 100}% ${dimensions.height / height * 100}%`;
-    node.style.backgroundPosition = `${x / (dimensions.width - width) * 100}% ${y / (dimensions.height - height) * 100}%`;
-    return node;
-  }
-  function skin(rect, cuts, cap, state = 'normal', blank, source = atlas) {
-    const node = document.createElement('span');
-    node.className = 'dwAtlasSkin dwAtlasSkin--' + state;
+    node.className = 'dwPngSkin dwPngSkin--' + state;
     node.setAttribute('aria-hidden', 'true');
-    const [x, y, width, height] = rect, [left, top, right, bottom] = cuts;
-    node.style.setProperty('--dw-cap-x', cap[0] + 'px');
-    node.style.setProperty('--dw-cap-y', cap[1] + 'px');
-    const xs = [x, x + left, x + width - right], ys = [y, y + top, y + height - bottom];
-    const widths = [left, width - left - right, right], heights = [top, height - top - bottom, bottom];
-    for (let row = 0; row < 3; row++) for (let col = 0; col < 3; col++) {
-      node.append(piece(row === 1 && col === 1 && blank ? blank : [xs[col], ys[row], widths[col], heights[row]], source));
-    }
+    node.style.borderImageSource = 'url("' + art.url + '")';
+    node.style.borderImageSlice = art.cuts.join(' ') + ' fill';
+    node.style.borderImageWidth = art.cap[1] + 'px ' + art.cap[0] + 'px';
     return node;
   }
-  // The center fill comes from a text-free strip of each button. Text printed
-  // on the concept board is never included in the live label area.
-  const buttons = {
-    gold: [[818, 684, 170, 40], [1020, 683, 171, 41], [1224, 684, 172, 40]],
-    blue: [[813, 757, 183, 41], [1016, 757, 184, 41], [1217, 758, 187, 40]],
-    iron: [[819, 840, 109, 41], [960, 840, 104, 41], [1097, 840, 109, 41]],
-    move: [[1234, 744, 137, 43]],
-    attack: [[1398, 744, 140, 43]],
-    disabled: [[1431, 684, 184, 40]]
-  };
   function decorate(host) {
     const button = host.matches(buttonsSelector);
     const unitAction = host.id === 'moveBtn' ? 'move' : host.id === 'attackBtn' ? 'attack' : host.dataset.uiAction === 'unit' ? (host.textContent.startsWith('Di chuyển') ? 'move' : 'attack') : null;
-    const packFrame = !button && window.DWUIPack?.frameFor(host);
-    const kind = button ? (host.disabled ? 'disabled' : unitAction || (host.matches('.gold,[aria-selected="true"]') ? 'gold' : host.matches('.primary,.good') ? 'blue' : 'iron')) : packFrame ? 'pack:' + packFrame : host.matches('.dockHero,.dockSkills,.dockCards,.onlineActorPanel,.onlineHandPanel') ? 'hud' : host.matches(outer) ? 'panel' : host.matches('.locked') ? 'locked' : 'card';
-    if (host.dataset.dwArtwork === kind && host.querySelector(':scope > .dwAtlasSkin')) return;
-    for (const child of host.querySelectorAll(':scope > .dwAtlasSkin,:scope > .dwAtlasCrest')) child.remove();
+    const packFrame = !button && DWUIPack.frameFor(host);
+    const kind = button ? (host.disabled ? 'disabled' : unitAction || (host.matches('.danger,.bad') ? 'danger' : host.matches('.gold,[aria-selected="true"]') ? 'gold' : host.matches('.primary,.good') ? 'blue' : 'iron')) : packFrame || (host.matches('.dockHero,.dockSkills,.dockCards,.onlineActorPanel,.onlineHandPanel') ? 'hud' : host.matches(outer) ? 'panel' : host.matches('.locked') ? 'locked' : 'card');
+    if (host.dataset.dwArtwork === kind && host.querySelector(':scope > .dwPngSkin')) return;
+    for (const child of host.querySelectorAll(':scope > .dwPngSkin,:scope > .dwPngCrest')) child.remove();
     host.dataset.dwArtwork = kind;
     host.classList.add('dwConceptArt');
-    // A low-specificity class lets later phase rules still switch a panel to
-    // fixed/absolute positioning (notably the online result dialog).
     if (getComputedStyle(host).position === 'static') host.classList.add('dwArtAnchor');
     if (button) {
-      buttons[kind].forEach((rect, i) => {
-        const [x, y, w] = rect;
-        host.append(skin(rect, [10, 6, 10, 6], [11, 6], ['normal', 'hover', 'pressed'][i], [x + 24, y + 7, w - 48, 2], unitAction && !host.disabled ? hudAtlas : atlas));
-      });
-    } else if (packFrame) {
-      const config = DWUIPack.frames[packFrame];
-      const frame = skin(config.rect, config.cuts, config.cap, 'normal', undefined, DWUIPack.sources[config.sheet].url);
-      // Long edges use text-free strips. Some source boards print labels or
-      // banners near the edge; those must never be stretched into live UI.
-      frame.children[1].replaceWith(piece([400,76,200,12]));
-      frame.children[4].replaceWith(piece([80,736,230,92]));
-      frame.children[7].replaceWith(piece([90,858,216,16]));
-      host.append(frame);
-    } else if (kind === 'hud') {
-      host.append(skin([1007, 829, 626, 74], [25, 10, 25, 10], [23, 12], 'normal', [1033, 849, 155, 30], hudAtlas));
-    } else {
-      // Large frames use the full-size assembled frame, not the small kit
-      // thumbnail. Its middle is filled by the kit's empty stone surface.
-      const rect = kind === 'panel' ? [210, 76, 1248, 550] : kind === 'locked' ? [595, 698, 183, 175] : [386, 698, 192, 175];
-      host.append(skin(rect, kind === 'panel' ? [90, 54, 90, 55] : [19, 19, 19, 19], kind === 'panel' ? [76, 48] : [22, 22], 'normal', kind === 'panel' ? [80, 736, 230, 92] : undefined));
-      if (kind === 'panel') {
-        // The crest is a separate fixed-width ornament, never stretched along
-        // the full top edge with the frame's horizontal slice.
-        const topEdge = host.querySelector('.dwAtlasPiece:nth-child(2)');
-        topEdge.replaceWith(piece([400, 76, 200, 54]));
-        const crest = piece([790, 51, 91, 61]);
-        crest.classList.add('dwAtlasCrest');
-        crest.setAttribute('aria-hidden', 'true');
-        host.append(crest);
+      for (const state of ['normal','hover','pressed']) {
+        const key = kind + '-' + state;
+        host.append(skin(DWUIPack.buttons[key] || DWUIPack.buttons[kind + '-normal'],state));
       }
+    } else {
+      host.append(skin(DWUIPack.frames[kind]));
+      if (host.matches(outer) && !host.matches('.gameOverPopup')) host.append(DWUIPack.sprite('crest','dwPngCrest'));
     }
   }
   let scheduled = false;
@@ -7736,9 +8344,7 @@ window.DWUIPack = (() => {
     document.querySelectorAll(panels + ',' + buttonsSelector).forEach(decorate);
   }
   new MutationObserver(records => {
-    // Ignore the decorative nodes we just added; only application mutations
-    // require a new pass (labels/disabled state can change during a turn).
-    if (scheduled || !records.some(record => record.type === 'attributes' || [...record.addedNodes, ...record.removedNodes].some(node => !(node.nodeType === 1 && node.classList.contains('dwAtlasSkin')) && !(node.nodeType === 1 && node.classList.contains('dwAtlasCrest'))))) return;
+    if (scheduled || !records.some(record => record.type === 'attributes' || [...record.addedNodes, ...record.removedNodes].some(node => !(node.nodeType === 1 && node.matches('.dwPngSkin,.dwPngCrest'))))) return;
     scheduled = true;
     requestAnimationFrame(update);
   }).observe(document.body, { childList: true, subtree: true, attributes: true, attributeFilter: ['disabled', 'class', 'aria-selected', 'data-ui-kind', 'data-ranked'] });
@@ -8078,9 +8684,6 @@ window.DWPackUI = (() => {
   function update() {
     battleNotices();
     for (const brand of document.querySelectorAll('.brand')) add(brand,'logo','dwPackLogo');
-    if (!document.querySelector('.dwSceneLeft')) {
-      document.body.prepend(pack.sprite('sceneLeft','dwSceneLeft'),pack.sprite('sceneRight','dwSceneRight'));
-    }
     const cards = document.querySelectorAll('.playHubCard');
     ['ai','casual','ranked'].forEach((key,i) => add(cards[i],key,'dwHubIllustration'));
     for (const tab of document.querySelectorAll('.dwDockTab')) {
@@ -8118,7 +8721,7 @@ window.DWPackUI = (() => {
     }
   }
   let scheduled = false;
-  const decorative = node => node.nodeType === 1 && (node.matches('.dwPackPiece,.dwAtlasSkin,.dwAtlasCrest,.dwTrainingPreview') || node.closest('.dwTrainingPreview'));
+  const decorative = node => node.nodeType === 1 && (node.matches('.dwPackPiece,.dwPngSkin,.dwPngCrest,.dwTrainingPreview') || node.closest('.dwTrainingPreview'));
   new MutationObserver(records => {
     if (scheduled || !records.some(record => record.type === 'attributes' || [...record.addedNodes,...record.removedNodes].some(node => !decorative(node)))) return;
     scheduled = true;

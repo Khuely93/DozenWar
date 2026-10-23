@@ -76,9 +76,6 @@ window.DWPackUI = (() => {
   function update() {
     battleNotices();
     for (const brand of document.querySelectorAll('.brand')) add(brand,'logo','dwPackLogo');
-    if (!document.querySelector('.dwSceneLeft')) {
-      document.body.prepend(pack.sprite('sceneLeft','dwSceneLeft'),pack.sprite('sceneRight','dwSceneRight'));
-    }
     const cards = document.querySelectorAll('.playHubCard');
     ['ai','casual','ranked'].forEach((key,i) => add(cards[i],key,'dwHubIllustration'));
     for (const tab of document.querySelectorAll('.dwDockTab')) {
@@ -116,7 +113,7 @@ window.DWPackUI = (() => {
     }
   }
   let scheduled = false;
-  const decorative = node => node.nodeType === 1 && (node.matches('.dwPackPiece,.dwAtlasSkin,.dwAtlasCrest,.dwTrainingPreview') || node.closest('.dwTrainingPreview'));
+  const decorative = node => node.nodeType === 1 && (node.matches('.dwPackPiece,.dwPngSkin,.dwPngCrest,.dwTrainingPreview') || node.closest('.dwTrainingPreview'));
   new MutationObserver(records => {
     if (scheduled || !records.some(record => record.type === 'attributes' || [...record.addedNodes,...record.removedNodes].some(node => !decorative(node)))) return;
     scheduled = true;

@@ -10,7 +10,7 @@ async function inspectText(page) {
     let node;
     while ((node=walker.nextNode())) {
       const p=node.parentElement, raw=node.textContent, text=raw.trim();
-      if (!text || p.namespaceURI!=='http://www.w3.org/1999/xhtml' || p.closest('script,style,option,textarea,.dwAtlasSkin,.dwAtlasCrest,.dwPackPiece')) continue;
+      if (!text || p.namespaceURI!=='http://www.w3.org/1999/xhtml' || p.closest('script,style,option,textarea,.dwPngSkin,.dwPngCrest,.dwPackPiece')) continue;
       const s=getComputedStyle(p);
       if (!p.checkVisibility({checkOpacity:true,checkVisibilityCSS:true}) || parseFloat(s.fontSize)<1 || s.color==='rgba(0, 0, 0, 0)' || s.webkitTextFillColor==='rgba(0, 0, 0, 0)') continue;
       const range=document.createRange();range.setStart(node,raw.indexOf(text));range.setEnd(node,raw.indexOf(text)+text.length);
@@ -56,7 +56,7 @@ async function inspectText(page) {
     const decoration=[];
     for(const host of root.querySelectorAll('.dwConceptArt')){
       if(!host.checkVisibility({checkVisibilityCSS:true})||!host.getBoundingClientRect().width)continue;
-      const skins=[...host.querySelectorAll(':scope > .dwAtlasSkin')].filter(n=>getComputedStyle(n).display!=='none');
+      const skins=[...host.querySelectorAll(':scope > .dwPngSkin')].filter(n=>getComputedStyle(n).display!=='none');
       if(skins.length!==1)decoration.push({selector:label(host),visibleSkins:skins.length,kind:host.dataset.dwArtwork});
     }
     const layers=[];

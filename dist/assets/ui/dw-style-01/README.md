@@ -1,39 +1,30 @@
-# DW-STYLE-01 UI pack integration
+# DW-STYLE-01 transparent UI pack — v1.75.0
 
-The three ZIP archives supplied by the user contain fourteen concept boards,
-not individually exported transparent controls. `import-manifest.json` records
-every original PNG, its archive, original digest, runtime image digest, and size.
-Each full board was converted to **lossless WebP**; decoded RGBA pixels were
-compared byte-for-byte with the uploaded PNG before import.
+The live UI uses **53 individual RGBA PNGs** under `png/`: 26 frames,
+15 button states and 12 ornaments. PNGs contain real transparent pixels outside
+the silhouette. Dark stone panel interiors and colored button faces stay filled.
+There is no checkerboard baked into the images, and no printed sample labels.
 
-`pack.js` maps source windows to components. `concept-skins.js` renders frames
-as nine browser slices; text-free strips fill long edges and interiors so text
-printed on a concept board never becomes a live game value. `pack-runtime.js`
-adds illustrations/icons/previews around existing controls. `pack.css` implements
-desktop/mobile layouts. Actual Hero identities, skills, cards, room readiness,
-troop totals, eligibility, and outcomes continue to come from the game.
+The approved original boards remain unchanged in the archive. Image editing was
+used to remove their exterior backgrounds and labels, reconstruct blank surfaces,
+and separate the center crest. These cleaned derivatives follow the originals;
+they are not byte-identical extractions. `manifest.json` records edited source IDs,
+export rectangles, dimensions, alpha counts and final SHA-256 digests.
+`import-manifest.json` continues to verify the fourteen original concept boards.
 
-| Original board | Runtime use |
-| --- | --- |
-| Mode | Mode cards/buttons, logo, decorative scene edges |
-| 01 Desktop HUD | Bottom dock, move/attack actions |
-| 02 Hero / skills / equipment | Hero detail, Kazu skill symbols, equipment dialog |
-| 03 Defense / results / dialogs | Defense panel, confirmation, result frames/crest |
-| 04 Mobile ingame | Mobile dock frames and tab icons |
-| 05 Play hub | Three mode illustrations and hub/card frames |
-| 06 Online lobby / room | Lobby, room and readiness framing |
-| 07 Ready / dice / deal | Setup frames and player/die boxes |
-| 08 Hero / team selection | Team-selection frame, responsive roster/detail/troop layout |
-| 09 Deployment | Deployment tray and context menu |
-| 10 Special skills | Hero targeting/parameter panel and selected dice states |
-| 11 Reactions / ranked | Equipment reactions and ranked-result frame |
-| 12 Training / system kit | Training dialogs, live selection previews, common forms |
-| 13 Mobile pregame | Mobile team/lobby frames and stacked setup layout |
+`pack.js` references standalone PNG URLs and intrinsic dimensions. `concept-skins.js`
+uses CSS border-image nine-slicing of each individual frame/button to retain corner
+geometry at desktop and mobile sizes. The crest is a separate fixed-size PNG.
+No live UI frame, button or ornament selects a window of a full concept board.
+The reaction frame shares the equipment PNG; separate logical roles are retained.
 
-Annotations, sample statistics, fictional item descriptions and UI-kit labels
-from the boards are not game data. Concept strips outside the playable-screen
-area are not shown as full-screen backgrounds. A responsive game is not claimed
-to reproduce every pixel of a static board at all resolutions.
+All game labels, stats and controls remain live HTML. `pack-runtime.js` preserves
+native handlers and adds the isolated logo, hub illustrations, result ornaments
+and tab icons. The fortress scene is intentionally a full background image.
+Existing Hero/troop art, equipment art and approved skill-icon sheets are separate
+content assets and are unchanged by this UI-frame replacement.
 
-The gameplay/runtime compatibility hash remains unchanged. Visual verification
-uses actual source/production browser captures and the offline/online UI suites.
+Verification covers PNG integrity/alpha, no requests to UI concept sheets, button
+states, desktop/mobile layouts, text layers, and actual online/offline game flows.
+A public light/dark/checkerboard inspection page and a ZIP of all individual PNGs
+are provided in `visual-previews/ui-png-dw-style-01/`.

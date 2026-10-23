@@ -1,9 +1,6 @@
 /* Layouts and state treatments from all three uploaded DW-STYLE-01 UI packs. */
 .dwPackPiece { display: block; background-repeat: no-repeat; pointer-events: none; flex-shrink: 0; }
-.dwSceneLeft,.dwSceneRight { position: fixed; top: 0; bottom: 0; width: 12.5vw; height: 100dvh; z-index: -1; }
-.dwSceneLeft { left: 0; } .dwSceneRight { right: 0; }
 .dwUI { isolation: isolate; }
-.dwUI.dwMatchLayout .dwSceneLeft,.dwUI.dwMatchLayout .dwSceneRight,.dwUI.dwOnlineBattle .dwSceneLeft,.dwUI.dwOnlineBattle .dwSceneRight { display: none; }
 .dwUI .brand,.dwUI[data-ui-phase='mode'] .brand { font-size: 0; }
 .dwPackLogo { width: clamp(230px,25vw,390px); }
 .dwUI .bigNotice { color: #f1ca81; }
@@ -25,7 +22,6 @@
 .dwUI .playHubCard { padding: 28px; text-align: center; align-items: center; gap: 12px; }
 .dwUI .playHubCard::before { display: none; }
 .dwHubIllustration { width: min(85%,240px); margin: 0 auto; }
-.playHubCard:nth-child(3) .dwHubIllustration { clip-path: polygon(0 0,70% 0,70% 27%,100% 27%,100% 100%,0 100%); }
 .dwUI .playHubCard h2 { font-size: 30px; margin: 4px 0; }
 .dwUI .playHubCard > .hubBadge { position: absolute; right: 20px; top: 18px; font-size: 9px; }
 .dwUI .playHubCard > .hubBadge:not(.rank) { display: none; }
@@ -113,7 +109,7 @@
 .dwUI .gameOverPopup { padding: 30px; width: min(760px,100%); }
 .dwUI .gameOverTitle { font-size: 34px; padding-top: 36px; }
 .dwUI .gameOverTitle::before { display: none; }
-.dwResultCrown { position: relative; width: 180px; height: 51px; margin: -60px auto 0; clip-path: polygon(0 65%,15% 55%,25% 30%,37% 50%,50% 0,63% 50%,75% 30%,85% 55%,100% 65%,91% 100%,9% 100%); }
+.dwResultCrown { position: relative; width: 180px; height: 51px; margin: -60px auto 0; }
 .dwUI .resultCard { display: grid; grid-template-columns: 74px minmax(0,1fr); align-items: center; text-align: left; gap: 8px 12px; padding: 14px; }
 .dwUI .dwResultPortrait { grid-row: 1/3; width: 74px; height: 74px; margin: 0; }
 .dwUI .resultCard.win { background: linear-gradient(120deg,#133c53,#101c27); border-color: #62b9e3; }
@@ -141,7 +137,7 @@
 .dwUI.dwOnline #roomCode { text-transform: uppercase; letter-spacing: .12em; }
 .dwUI.dwOnline #room:not([data-phase='battle']) #roomLabel { font: 700 24px Georgia,serif; color: #e8bd6f; }
 .dwUI.dwOnline #room[data-phase='ready'] #setup { display: grid; grid-template-columns: minmax(0,1fr) 280px; gap: 12px 24px; }
-.dwUI.dwOnline #room[data-phase='ready'] #setup > :not(.dwRoomPreview):not(.dwAtlasSkin) { grid-column: 1; }
+.dwUI.dwOnline #room[data-phase='ready'] #setup > :not(.dwRoomPreview):not(.dwPngSkin) { grid-column: 1; }
 .dwUI.dwOnline .onlinePlayerSlots { grid-template-columns: 1fr; margin: 6px 0; }
 .dwUI.dwOnline #room[data-phase='ready'] :is(.arena,.onlineDock),.dwUI.dwOnline #room[data-phase='team'] > .arena { display: none; }
 .dwRoomPreview { grid-column: 2; grid-row: 1/5; align-self: center; width: 100%; border: 3px double #ac8c51; }
