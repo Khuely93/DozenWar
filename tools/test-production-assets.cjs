@@ -75,6 +75,17 @@ assert.equal(require('node:crypto').createHash('sha256').update(mapBytes).digest
 assert.deepEqual(fs.readFileSync(path.join(root,'dist',map.asset)),mapBytes,'Approved map production bytes');
 assert(read('dist/index.html').includes('data-duel-src="./'+map.asset+'"'));
 assert(read('dist/index.html').includes('data-backdrop-src="./'+map.asset+'"'));
+const skillArt = JSON.parse(read('assets/skills/kazu-dw-style-01/manifest.json'));
+assert.deepEqual(skillArt.entries.map(entry => entry.skillId), ['SKILL_HERO_KAZU_S1','SKILL_HERO_KAZU_S2','SKILL_HERO_KAZU_S3']);
+for (const entry of skillArt.entries) {
+  assert(content.heroRegistry.get('HERO_INF_KAZU').skillIds.includes(entry.skillId));
+  assert.equal(entry.transparent, true);
+  for (const [file,digest] of [[entry.asset,entry.sha256],[entry.png,entry.pngSha256]]) {
+    const bytes = fs.readFileSync(path.join(root,file));
+    assert.equal(require('node:crypto').createHash('sha256').update(bytes).digest('hex'),digest);
+    assert.deepEqual(fs.readFileSync(path.join(root,'dist',file)),bytes);
+  }
+}
 const manifest = JSON.parse(read('project-manifest.json'));
 const built = JSON.parse(read('dist/build-manifest.json'));
 assert.equal(built.version, manifest.version, 'Production metadata version');

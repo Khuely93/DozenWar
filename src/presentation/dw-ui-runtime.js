@@ -140,7 +140,7 @@ const DWStyleUI = {
       const skill = ContentViews.skill(id);
       if (!skill) continue;
       const row = this.element('div', 'dwTeamSkill', skill.name);
-      row.title = skill.description;
+      row.dataset.skillId = id; row.title = skill.description;
       row.append(this.element('span', '', '★'.repeat(skill.star || 0)));
       skillList.append(row);
     }
@@ -151,7 +151,8 @@ const DWStyleUI = {
       const title = this.element('h2', '', hero.name + ' · KỸ NĂNG'); title.id = 'dwConfirmTitle'; dialog.append(title);
       for (const id of hero.skillIds || []) {
         const skill = ContentViews.skill(id); if (!skill) continue;
-        dialog.append(this.element('h3', '', skill.name + ' · ' + '★'.repeat(skill.star || 0)),this.element('p', '', skill.description));
+        const heading = this.element('h3', '', skill.name + ' · ' + '★'.repeat(skill.star || 0)); heading.dataset.skillId = id;
+        dialog.append(heading,this.element('p', '', skill.description));
       }
       dialog.append(this.button('ĐÓNG', () => dialog.close())); dialog.showModal();
     }));

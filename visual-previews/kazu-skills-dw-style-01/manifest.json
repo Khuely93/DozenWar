@@ -12,5 +12,6 @@
     "Khóa Xích",
     "Xích Quỷ Kazu"
   ],
-  "note": "Original generated concept, unchanged. Published for viewing and download; no game assets replaced."
+  "note": "Original concept sheet unchanged; transparent standalone derivatives integrated in v1.73.1. See runtimeManifest.",
+  "runtimeManifest": "../../assets/skills/kazu-dw-style-01/manifest.json"
 }

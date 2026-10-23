@@ -68,6 +68,11 @@
     b.onclick = () => Promise.resolve(fn()).catch(showError);
     return b;
   }
+  function skillButton(skill, label, action) {
+    const button = btn(label, action);
+    button.dataset.skillId = skill.id;
+    return button;
+  }
   const messages = {
     STALE_STATE: "Trận đã thay đổi. Đã đồng bộ; hãy chọn lại hành động.",
     UNAUTHORIZED:
@@ -437,7 +442,14 @@
       const chosen = catalog.heroes.find((hero) => hero.id === teamHero);
       const info = el("div", undefined, "onlineTeamInfo");
       const portrait = el("img"); portrait.src = asset(chosen.avatar); portrait.alt = chosen.name;
-      const copy = el("div"); copy.append(el("h3", chosen.name), el("p", chosen.skills.map((skill) => skill.name).join(" · ")));
+      const copy = el("div"); copy.append(el("h3", chosen.name));
+      const skills = el("div", undefined, "dwOnlineTeamSkills");
+      for (const skill of chosen.skills) {
+        const item = el("div", skill.name, "dwOnlineTeamSkill");
+        item.dataset.skillId = skill.id; item.title = skill.description;
+        skills.append(item);
+      }
+      copy.append(skills);
       info.append(portrait, copy); box.append(info);
       const troopCounts = el("div", undefined, "onlineTroopCounts");
       for (const t of catalog.troops) {
@@ -534,12 +546,9 @@
   function renderDraft(box) {
     const p = effectivePreview(),
       sk = p?.skill;
-    box.append(
-      el(
-        "h2",
-        sk?.name || (draft.value.type === "MOVE" ? "Di chuyển" : "Đánh thường"),
-      ),
-    );
+    const heading = el("h2", sk?.name || (draft.value.type === "MOVE" ? "Di chuyển" : "Đánh thường"));
+    if (sk?.id) heading.dataset.skillId = sk.id;
+    box.append(heading);
     if (sk?.description) box.append(el("p", sk.description));
     if (draft.preview?.skill?.mechanic === "COPY")
       box.append(
@@ -740,13 +749,13 @@
       );
     for (const sk of a.skills) {
       box.append(
-        btn(sk.skill.name, () =>
+        skillButton(sk.skill, sk.skill.name, () =>
           startDraft({ type: "SKILL", actorId, skillNo: sk.n }, sk),
         ),
       );
       for (const attach of sk.attachments || [])
         box.append(
-          btn(sk.skill.name + " + " + cardName(attach.cardUid), () =>
+          skillButton(sk.skill, sk.skill.name + " + " + cardName(attach.cardUid), () =>
             startDraft(
               {
                 type: "SKILL",

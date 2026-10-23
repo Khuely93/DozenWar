@@ -67,7 +67,14 @@
 .dwUI .dwTeamSkill { padding-top: 12px; font-size: 11px; text-align: center; border-color: #9d7a41; }
 .dwUI .dwTeamSkill > span:not(.dwSkillIcon) { display: block; margin: 5px 0; }
 .dwUI .dwTeamHero > .btn { grid-column: 1/-1; width: 100%; margin-top: 10px; font-size: 12px; }
-.dwSkillIcon { width: 100%; max-width: 90px; margin: 0 auto 6px; border: 1px solid #8d703c; border-radius: 3px; }
+.dwSkillIcon { display: block; width: 100%; height: auto; aspect-ratio: 1; max-width: 90px; object-fit: contain; margin: 0 auto 6px; pointer-events: none; }
+.dwConfirmDialog h3[data-skill-id], .heroSkillPanel h3[data-skill-id], .dwOnline h2[data-skill-id] { display: flex; align-items: center; gap: 12px; }
+.dwConfirmDialog h3 > .dwSkillIcon, .heroSkillPanel h3 > .dwSkillIcon, .dwOnline h2 > .dwSkillIcon { width: 56px; flex: 0 0 56px; margin: 0; }
+.dwUI.dwOnline .onlineTeamInfo > div { flex: 1; min-width: 0; }
+.dwOnlineTeamSkills { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 8px; max-width: 360px; }
+.dwOnlineTeamSkill { flex: 1 1 70px; text-align: center; font-size: 11px; }
+.dwUI.dwOnline .onlineTeamInfo .dwSkillIcon { width: 60px; max-width: 100%; height: auto; border: 0; }
+.dwOnline #controls .btn > .dwSkillIcon { width: 42px; vertical-align: middle; display: inline-block; margin: 0 6px 0 0; }
 .dwUI .dockSkills .dwSkillIcon { max-width: 65px; margin: 2px auto; }
 .dwUI .dwTroopPicker { display: flex; flex-direction: column; gap: 14px; }
 .dwUI .troopList { gap: 12px; }

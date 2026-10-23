@@ -1,0 +1,47 @@
+{
+  "style": "DW-STYLE-01",
+  "heroId": "HERO_INF_KAZU",
+  "status": "INTEGRATED",
+  "note": "Standalone transparent edits of the archived concept sheet. PNG masters preserved; WebP runtime copies preserve alpha. Presentation only.",
+  "entries": [
+    {
+      "skillId": "SKILL_HERO_KAZU_S1",
+      "name": "Khiên Rồng",
+      "png": "assets/skills/kazu-dw-style-01/shield.png",
+      "asset": "assets/skills/kazu-dw-style-01/shield.webp",
+      "width": 1254,
+      "height": 1254,
+      "transparent": true,
+      "clearPixelFraction": 0.4033955775330744,
+      "pngSha256": "26ca4d42cd31c725afaf807936b579f362bdf718717b164e0e764f747d3400a0",
+      "sha256": "fdac52bacb8af40e4c0ed0c2088ce2ce5078e6f0bbc938406cf94d621867380f",
+      "bytes": 499980
+    },
+    {
+      "skillId": "SKILL_HERO_KAZU_S2",
+      "name": "Khóa Xích",
+      "png": "assets/skills/kazu-dw-style-01/chain.png",
+      "asset": "assets/skills/kazu-dw-style-01/chain.webp",
+      "width": 1254,
+      "height": 1254,
+      "transparent": true,
+      "clearPixelFraction": 0.35585711051588664,
+      "pngSha256": "7f789dd6bea7d4dff9b41661f7ae05b30f5cab9db17f9ced69b9f89ca3c0f350",
+      "sha256": "76f0c9c298e3f55886ec2a671b70b1c5880066a3b0533aa4a972af9694ce970b",
+      "bytes": 469180
+    },
+    {
+      "skillId": "SKILL_HERO_KAZU_S3",
+      "name": "Xích Quỷ Kazu",
+      "png": "assets/skills/kazu-dw-style-01/dragon.png",
+      "asset": "assets/skills/kazu-dw-style-01/dragon.webp",
+      "width": 1254,
+      "height": 1254,
+      "transparent": true,
+      "clearPixelFraction": 0.42510092107170927,
+      "pngSha256": "1fe1f32c726ea90071c403335a7cb7113c72e31587e3501e1fa2ef24725b6a60",
+      "sha256": "d23a861c5010ef24709fbdd6a88deb9853f4aebd129a940b617f18b24bf5456f",
+      "bytes": 414380
+    }
+  ]
+}

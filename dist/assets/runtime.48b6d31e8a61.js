@@ -6423,7 +6423,7 @@ const HeroSkillUI={
   button(text,action,disabled=false){const b=document.createElement('button');b.type='button';b.className='btn';b.textContent=text;b.disabled=disabled;b.onclick=action;return b},
   render(){
     this.panel.replaceChildren();const s=HeroCore.selection;this.panel.hidden=!s;
-    if(s){const title=document.createElement('h3');title.textContent=unitSpec(s.h).name+' · '+s.sk.name+' · '+'★'.repeat(s.sk.star||0);this.panel.append(title);
+    if(s){const title=document.createElement('h3');title.textContent=unitSpec(s.h).name+' · '+s.sk.name+' · '+'★'.repeat(s.sk.star||0);title.dataset.skillId=s.sk.id;this.panel.append(title);
       const desc=document.createElement('p');desc.textContent=s.sk.description||s.sk.name;this.panel.append(desc);
       if(HeroCore.notice){const note=document.createElement('p');note.textContent=HeroCore.notice;this.panel.append(note)}
       const m=s.sk.mechanic;
@@ -6464,7 +6464,7 @@ renderSkills=function(){
       if(S.equipmentReaction||HeroCore.selection||S.matchEnded||h.side===S.botSide||!HeroCore.canUse(h,n,sk))return;
       S.selected=h;hideAttackPopup();hideDefensePopup();HeroCore.begin(h,n);updateUI();
     },locked);
-    b.classList.add('skill');b.dataset.heroId=h.id;b.dataset.skillNo=n;
+    b.classList.add('skill');b.dataset.heroId=h.id;b.dataset.skillNo=n;b.dataset.skillId=sk.id;
     b.title=sk.description+(reason?' · '+reason:'');b.setAttribute('aria-label',sk.name+' · '+b.title);skillBar.append(b);
   }
 };
@@ -7448,7 +7448,7 @@ const DWStyleUI = {
       const skill = ContentViews.skill(id);
       if (!skill) continue;
       const row = this.element('div', 'dwTeamSkill', skill.name);
-      row.title = skill.description;
+      row.dataset.skillId = id; row.title = skill.description;
       row.append(this.element('span', '', '★'.repeat(skill.star || 0)));
       skillList.append(row);
     }
@@ -7459,7 +7459,8 @@ const DWStyleUI = {
       const title = this.element('h2', '', hero.name + ' · KỸ NĂNG'); title.id = 'dwConfirmTitle'; dialog.append(title);
       for (const id of hero.skillIds || []) {
         const skill = ContentViews.skill(id); if (!skill) continue;
-        dialog.append(this.element('h3', '', skill.name + ' · ' + '★'.repeat(skill.star || 0)),this.element('p', '', skill.description));
+        const heading = this.element('h3', '', skill.name + ' · ' + '★'.repeat(skill.star || 0)); heading.dataset.skillId = id;
+        dialog.append(heading,this.element('p', '', skill.description));
       }
       dialog.append(this.button('ĐÓNG', () => dialog.close())); dialog.showModal();
     }));
@@ -7567,6 +7568,23 @@ window.DWPackUI = (() => {
     const node = pack.sprite(key,className);
     if (prepend) host.prepend(node); else host.append(node);
   };
+  // Skill identity, independent of translated labels and button ordering.
+  const skillArt = Object.freeze({
+    SKILL_HERO_KAZU_S1: 'shield',
+    SKILL_HERO_KAZU_S2: 'chain',
+    SKILL_HERO_KAZU_S3: 'dragon'
+  });
+  function skillIcons() {
+    for (const node of document.querySelectorAll('[data-skill-id]')) {
+      const key = skillArt[node.dataset.skillId];
+      if (!key || node.querySelector(':scope > .dwSkillIcon')) continue;
+      const image = document.createElement('img');
+      image.className = 'dwSkillIcon'; image.alt = ''; image.setAttribute('aria-hidden','true');
+      image.draggable = false; image.width = 1254; image.height = 1254;
+      image.src = prefix + 'assets/skills/kazu-dw-style-01/' + key + '.webp';
+      node.prepend(image);
+    }
+  }
   function trainingPreview(dialog) {
     const choice = dialog.querySelector('select[aria-label="Hero hoặc lính"],select[aria-label="Trang bị"]');
     if (!choice || typeof ContentViews === 'undefined') return;
@@ -7594,12 +7612,7 @@ window.DWPackUI = (() => {
       const key = tab.dataset.tab || tab.dataset.onlineTab;
       if (key) add(tab,{hero:'tabHero',skills:'tabSkills',cards:'tabCards'}[key],'dwTabIcon');
     }
-    for (const node of document.querySelectorAll('.dwTeamSkill,.dockSkills .skill')) {
-      if (node.querySelector('.dwSkillIcon')) continue;
-      const title = node.textContent;
-      const key = /Khiên Rồng/.test(title) ? 'shield' : /Khóa Xích/.test(title) ? 'chain' : /Xích Quỷ/.test(title) ? 'dragon' : null;
-      if (key) add(node,key,'dwSkillIcon');
-    }
+    skillIcons();
     for (const title of document.querySelectorAll('.gameOverTitle,.onlineResult > h2')) {
       const text = title.textContent;
       const key = /HÒA|Hòa/.test(text) ? 'draw' : /THẤT|Thất|Thua|THUA/.test(text) ? 'lose' : 'win';

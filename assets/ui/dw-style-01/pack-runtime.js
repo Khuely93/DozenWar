@@ -7,6 +7,23 @@ window.DWPackUI = (() => {
     const node = pack.sprite(key,className);
     if (prepend) host.prepend(node); else host.append(node);
   };
+  // Skill identity, independent of translated labels and button ordering.
+  const skillArt = Object.freeze({
+    SKILL_HERO_KAZU_S1: 'shield',
+    SKILL_HERO_KAZU_S2: 'chain',
+    SKILL_HERO_KAZU_S3: 'dragon'
+  });
+  function skillIcons() {
+    for (const node of document.querySelectorAll('[data-skill-id]')) {
+      const key = skillArt[node.dataset.skillId];
+      if (!key || node.querySelector(':scope > .dwSkillIcon')) continue;
+      const image = document.createElement('img');
+      image.className = 'dwSkillIcon'; image.alt = ''; image.setAttribute('aria-hidden','true');
+      image.draggable = false; image.width = 1254; image.height = 1254;
+      image.src = prefix + 'assets/skills/kazu-dw-style-01/' + key + '.webp';
+      node.prepend(image);
+    }
+  }
   function trainingPreview(dialog) {
     const choice = dialog.querySelector('select[aria-label="Hero hoặc lính"],select[aria-label="Trang bị"]');
     if (!choice || typeof ContentViews === 'undefined') return;
@@ -34,12 +51,7 @@ window.DWPackUI = (() => {
       const key = tab.dataset.tab || tab.dataset.onlineTab;
       if (key) add(tab,{hero:'tabHero',skills:'tabSkills',cards:'tabCards'}[key],'dwTabIcon');
     }
-    for (const node of document.querySelectorAll('.dwTeamSkill,.dockSkills .skill')) {
-      if (node.querySelector('.dwSkillIcon')) continue;
-      const title = node.textContent;
-      const key = /Khiên Rồng/.test(title) ? 'shield' : /Khóa Xích/.test(title) ? 'chain' : /Xích Quỷ/.test(title) ? 'dragon' : null;
-      if (key) add(node,key,'dwSkillIcon');
-    }
+    skillIcons();
     for (const title of document.querySelectorAll('.gameOverTitle,.onlineResult > h2')) {
       const text = title.textContent;
       const key = /HÒA|Hòa/.test(text) ? 'draw' : /THẤT|Thất|Thua|THUA/.test(text) ? 'lose' : 'win';

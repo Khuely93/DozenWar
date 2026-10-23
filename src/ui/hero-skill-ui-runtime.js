@@ -4,7 +4,7 @@ const HeroSkillUI={
   button(text,action,disabled=false){const b=document.createElement('button');b.type='button';b.className='btn';b.textContent=text;b.disabled=disabled;b.onclick=action;return b},
   render(){
     this.panel.replaceChildren();const s=HeroCore.selection;this.panel.hidden=!s;
-    if(s){const title=document.createElement('h3');title.textContent=unitSpec(s.h).name+' · '+s.sk.name+' · '+'★'.repeat(s.sk.star||0);this.panel.append(title);
+    if(s){const title=document.createElement('h3');title.textContent=unitSpec(s.h).name+' · '+s.sk.name+' · '+'★'.repeat(s.sk.star||0);title.dataset.skillId=s.sk.id;this.panel.append(title);
       const desc=document.createElement('p');desc.textContent=s.sk.description||s.sk.name;this.panel.append(desc);
       if(HeroCore.notice){const note=document.createElement('p');note.textContent=HeroCore.notice;this.panel.append(note)}
       const m=s.sk.mechanic;
@@ -45,7 +45,7 @@ renderSkills=function(){
       if(S.equipmentReaction||HeroCore.selection||S.matchEnded||h.side===S.botSide||!HeroCore.canUse(h,n,sk))return;
       S.selected=h;hideAttackPopup();hideDefensePopup();HeroCore.begin(h,n);updateUI();
     },locked);
-    b.classList.add('skill');b.dataset.heroId=h.id;b.dataset.skillNo=n;
+    b.classList.add('skill');b.dataset.heroId=h.id;b.dataset.skillNo=n;b.dataset.skillId=sk.id;
     b.title=sk.description+(reason?' · '+reason:'');b.setAttribute('aria-label',sk.name+' · '+b.title);skillBar.append(b);
   }
 };

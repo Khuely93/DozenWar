@@ -69,6 +69,10 @@ async function run() {
         }
         if (id === '15-team-selected') {
           assert.equal(await page.locator('#heroChoices > button').count(), 12);
+          const icons = page.locator('.dwTeamSkill > img.dwSkillIcon');
+          assert.equal(await icons.count(), 3, 'Kazu team preview has three standalone skill icons');
+          await icons.evaluateAll(images => Promise.all(images.map(image => image.decode())));
+          assert.deepEqual(await icons.evaluateAll(images => images.map(image => image.src.split('/').pop())), ['shield.webp','chain.webp','dragon.webp']);
           assert.equal(await page.locator('#confirmTeam').isEnabled(), true);
           await page.getByRole('button', { name: 'Bớt Bộ binh', exact: true }).click();
           assert.equal(await page.locator('#confirmTeam').isEnabled(), false, 'Incomplete formation cannot confirm');
@@ -78,6 +82,8 @@ async function run() {
           await page.getByRole('button', { name: 'XEM KỸ NĂNG HERO', exact: true }).click();
           await page.locator('.dwConfirmDialog[open]').waitFor();
           assert.match(await page.locator('#dwConfirmTitle').textContent(), /Kazu/);
+          await page.locator('.dwConfirmDialog h3 > img.dwSkillIcon').last().waitFor();
+          assert.equal(await page.locator('.dwConfirmDialog h3 > img.dwSkillIcon').count(), 3);
           await page.locator('.dwConfirmDialog').getByRole('button', { name: 'ĐÓNG', exact: true }).click();
           assert.equal(await page.evaluate(() => JSON.stringify(S.teams)), teamBefore, 'Reading Hero skills preserves the formation');
         }
@@ -97,6 +103,10 @@ async function run() {
             await page.keyboard.press('ArrowRight');
             assert.equal(await page.getByRole('tab', { name: 'KỸ NĂNG', exact: true }).getAttribute('aria-selected'), 'true');
           }
+          const icons = page.locator('#skillBar [data-skill-id] > img.dwSkillIcon');
+          assert.equal(await icons.count(), 3, 'Kazu combat HUD resolves all skill IDs');
+          await icons.evaluateAll(images => Promise.all(images.map(image => image.decode())));
+          await page.screenshot({ path: path.join(output, 'kazu-skills-' + viewport.width + '.png') });
           const before = await page.evaluate(() => JSON.stringify(S.units));
           await page.getByLabel('Menu trận đấu', { exact: true }).click();
           await page.locator('.dwGameMenu').getByRole('button', { name: 'CHƠI LẠI', exact: true }).click();
