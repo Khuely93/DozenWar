@@ -1,8 +1,8 @@
 {
   "project": "DOZEN WAR II",
-  "version": "1.75.0",
+  "version": "1.75.1",
   "phase": "DUEL_RULE_MODE_1VS1_180_30",
-  "baseline": "v1.75.0 uses 53 isolated transparent PNG UI surfaces instead of runtime concept-board crops",
+  "baseline": "v1.75.1 keeps off-turn Hero skill choices, HUD and equipment ownership on the choosing player",
   "entry": "index.html",
   "styles": "styles/main.css",
   "runtimeOrder": [

@@ -67,10 +67,11 @@ window.DWPackUI = (() => {
     for (const node of document.querySelectorAll('.heroDefenseBar,.directDefensePanel')) {
       if (defenseChoices && node.parentElement !== defenseChoices) defenseChoices.append(node);
     }
-    // On a short landscape viewport the skill chooser extends beside the map.
-    // Hoist it out of the map's clipping context so its final buttons stay usable.
+    // Keep choices beside the notices, outside the board's scroll container.
+    // Focusing a board control must not scroll the chooser under those notices.
+    // On a short landscape viewport it also extends beyond the map's clip.
     const chooser = document.querySelector('.heroSkillPanel');
-    const parent = innerWidth < 900 && innerHeight <= 500 ? document.getElementById('gameScreen') : board;
+    const parent = innerWidth < 900 && innerHeight <= 500 ? document.getElementById('gameScreen') : stage;
     if (chooser && parent && chooser.parentElement !== parent) parent.append(chooser);
   }
   function update() {

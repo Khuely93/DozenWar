@@ -4,7 +4,7 @@ const HeroSkillUI={
   button(text,action,disabled=false,skillId=null){const b=document.createElement('button');b.type='button';b.className='btn';b.textContent=text;b.disabled=disabled;b.onclick=action;if(skillId)b.dataset.skillId=skillId;return b},
   render(){
     this.panel.replaceChildren();const s=HeroCore.selection;this.panel.hidden=!s;
-    if(s){const title=document.createElement('h3');title.textContent=unitSpec(s.h).name+' · '+s.sk.name+' · '+'★'.repeat(s.sk.star||0);title.dataset.skillId=s.sk.id;this.panel.append(title);
+    if(s){const title=document.createElement('h3');title.textContent='PLAYER '+s.h.side+' · '+unitSpec(s.h).name+' · '+s.sk.name+' · '+'★'.repeat(s.sk.star||0);title.dataset.skillId=s.sk.id;this.panel.append(title);
       const desc=document.createElement('p');desc.textContent=s.sk.description||s.sk.name;this.panel.append(desc);
       if(HeroCore.notice){const note=document.createElement('p');note.textContent=HeroCore.notice;this.panel.append(note)}
       const m=s.sk.mechanic;
@@ -27,9 +27,13 @@ const _heroUIUpdate=updateUI;
 updateUI=function(){const result=_heroUIUpdate();HeroSkillUI.render();if(HeroCore.selection)mainBtn.disabled=true;undoBtn.disabled=!!(HeroCore.selection||S.pending||S.heroSequence||S.matchEnded);return result};
 const _heroRenderSkills=renderSkills;
 HeroSkillUI.actor=function(){
+  // An off-turn skill choice still belongs to its caster. Turn/receiver
+  // ownership resumes when that choice is confirmed or cancelled.
+  const choosing=HeroCore.selection?.h;
+  if(choosing?.hero)return choosing;
   if(S.postHitReaction?.d.hero)return S.postHitReaction.d;
   const p=S.pending,receiver=p&&S.units.find(u=>u.id===(p.guard?p.guardUnitId:p.replacementTargetId||p.d));
-  const side=receiver?.side||S.battleSide;
+  const side=choosing?.side||receiver?.side||S.battleSide;
   const heroes=S.units.filter(u=>u.hero&&u.hp>0&&u.side===side);
   return heroes.find(u=>u.id===S.selected?.id)||heroes.find(h=>[1,2,3].some(n=>HeroCore.canUse(h,n,heroSkill(h,n))))||heroes[0];
 };

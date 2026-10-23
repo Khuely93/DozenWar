@@ -40,7 +40,9 @@ jobs:
       - name: Install test browser
         run: npx playwright install --with-deps chromium
       - name: Desktop and mobile UI states and interactions
-        run: npm run test:ui-browser
+        run: |
+          npm run test:ui-browser
+          npm run test:grim-ui
       - name: Two-player browser flow and server restart
         run: npm run test:online-browser
       - name: Delays, lost acknowledgements, disconnects and reloads
@@ -60,6 +62,8 @@ jobs:
             work/online-browser/*.png
             work/dw-ui/*.png
             work/dw-ui/*report.json
+            work/grim-disguise-fix/*.png
+            work/grim-disguise-fix/report.json
             work/online-network/*.png
             work/online-network/report.json
             work/online-load/ci.json

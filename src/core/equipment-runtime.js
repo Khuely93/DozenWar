@@ -150,7 +150,7 @@ const EquipmentCore={
     if(typeof handBar==='undefined'||typeof handOwner==='undefined')return;
     const reaction=S.equipmentReaction,p=S.pending;
     const receiver=p&&S.units.find(u=>u.id===(p.guard?p.guardUnitId:p.replacementTargetId||p.d));
-    const side=reaction?.side||receiver?.side||S.battleSide;
+    const side=reaction?.side||HeroCore.selection?.h.side||receiver?.side||S.battleSide;
     handOwner.textContent='PLAYER '+side+' · '+(reaction?'HỦY TRANG BỊ':receiver?'TRANG BỊ PHÒNG THỦ':'TRANG BỊ');
     handBar.replaceChildren();if(S.phase!=='battle'||side===S.botSide)return;
     for(const c of S.hands[side]||[]){
