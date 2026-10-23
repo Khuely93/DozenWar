@@ -84,8 +84,12 @@ for (const file of ['panel.webp', 'button.webp', 'fortress.webp', 'theme.css', '
 }
 assert(read('dist/index.html').includes('./assets/ui/dw-style-01/theme.css'));
 assert(read('dist/online/index.html').includes('../assets/ui/dw-style-01/theme.css'));
-assert.deepEqual(fs.readFileSync(path.join(root, 'assets/ui/dw-style-01/concept-atlas.png')), fs.readFileSync(path.join(root, 'visual-previews/ui-mode-dw-style-01/dozenwar-ui-mode-dw-style-01.png')), 'Concept atlas uses the unmodified approved source');
-assert.deepEqual(fs.readFileSync(path.join(root, 'assets/ui/dw-style-01/hud-concept-atlas.png')), fs.readFileSync(path.join(root, 'visual-previews/ui-ingame-dw-style-01/01-desktop-hud.png')), 'HUD atlas uses the unmodified approved source');
+// Approved board digests are pinned here so the Docker build can verify their
+// identity without shipping the design gallery in its build context.
+for (const [file, digest] of [
+  ['concept-atlas.png', '1088013ff4ebb63c8465772b8a97229e7feac8eb7114bd49baeb3f845d88269a'],
+  ['hud-concept-atlas.png', '6cfebe33f5092ad893bf7a365914ea21bae0d3f671621a06f06e90393b631392']
+]) assert.equal(require('node:crypto').createHash('sha256').update(fs.readFileSync(path.join(root, 'assets/ui/dw-style-01', file))).digest('hex'), digest, 'Unmodified approved UI artwork: ' + file);
 assert(read('dist/index.html').includes('concept-fidelity.css'));
 assert(read('dist/online/index.html').includes('concept-skins.js'));
 for (const relative of Object.values(built.bundles)) assert.ok(fs.existsSync(path.join(root, 'dist', relative)), 'Missing bundle: ' + relative);
