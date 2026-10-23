@@ -1,0 +1,512 @@
+{
+  "style": "DW-STYLE-01",
+  "status": "DRAFT_FOR_REVIEW",
+  "heroCount": 11,
+  "skillCount": 33,
+  "reference": "../kazu-skills-dw-style-01/kazu-skills-dw-style-01.png",
+  "gameReplacements": false,
+  "heroes": [
+    {
+      "heroId": "HERO_INF_RODOC",
+      "name": "Rodoc",
+      "slug": "rodoc",
+      "status": "DRAFT_FOR_REVIEW",
+      "png": "rodoc.png",
+      "preview": "rodoc.webp",
+      "identityReference": "assets/heroes/inf/rodoc-avatar-background-dw-style-01.webp",
+      "skills": [
+        {
+          "id": "SKILL_HERO_RODOC_S1",
+          "name": "Hồi Sức",
+          "star": 3,
+          "description": "Hồi Sức · ★★★ · Hồi 1 HP cho bộ binh còn sống. Khi nhận đòn, HP sau tổng hồi phải lớn hơn sát thương sẽ nhận."
+        },
+        {
+          "id": "SKILL_HERO_RODOC_S2",
+          "name": "Tiếng Thét Xung Trận",
+          "star": 1,
+          "description": "Tiếng Thét Xung Trận · ★ · +2 Move cho tối đa 2 bộ binh chưa Attack, được đi thêm ngay. Hết lượt công."
+        },
+        {
+          "id": "SKILL_HERO_RODOC_S3",
+          "name": "Chiến Thần",
+          "star": 1,
+          "description": "Chiến Thần · ★ · Gây 1 sát thương mỗi mục tiêu, tối đa 4 địch cùng đường thẳng; chọn qua lính/Hero nhưng không qua vật cản địa hình, không có xuyên mặc định."
+        }
+      ],
+      "prompt": "Create a NEW DozenWar hero SKILL ICON TRIPTYCH using attachment 1 (Kazu sheet) as the exact DW-STYLE-01 rendering and gold FRAME reference, and attachment 2 as this new hero's identity reference. Bold angular black ink contours, strong faceted cel shading, worn antique gold/bronze bevels, charcoal steel, painterly chips, dramatic controlled colored energy. Each of the THREE icons MUST have a complete matching gold square frame with clipped/riveted corners AND its own opaque dark colored magical background filling its entire panel, exactly like the Kazu reference. Never transparent cutouts. Never photorealism, glossy 3D, neon UI or modern symbols. Do not copy Kazu's dragon shield or chain motifs; use the motifs below. Large simple focal silhouettes readable at 64 pixels.\nLAYOUT: landscape 1536x1024, exactly THREE equal square framed panels in ONE horizontal row, about 470 pixels across each, well separated and entirely inside the canvas, centered vertically. All four gold frame sides and corners must be fully visible. Background outside panels is plain dark charcoal stone. NO titles, NO typography, NO labels, NO stars, NO numbers, NO watermark anywhere. Names and costs will be rendered separately in the game. Left-to-right panel order is mandatory. Correct physical weapon anatomy, no malformed hands, no redundant limbs.\n\nHERO: Rodoc. Male infantry veteran, long brown hair, thick braided beard, weathered bronze and charcoal armor, olive-green cloth, straight broad sword.\nLEFT PANEL — HOI SUC: a bronze-gauntleted hand firmly braces a cracked infantry breastplate as warm emerald and amber vitality repairs its cracks; solid protective restoration, not resurrection or a medicine bottle.\nActual gameplay: Hồi Sức · ★★★ · Hồi 1 HP cho bộ binh còn sống. Khi nhận đòn, HP sau tổng hồi phải lớn hơn sát thương sẽ nhận.\n\nCENTER PANEL — TIENG THET XUNG TRAN: close profile of Rodoc roaring with long hair and braided beard, powerful amber sound waves push two small infantry silhouettes forward; dominant shouting face and forward momentum.\nActual gameplay: Tiếng Thét Xung Trận · ★ · +2 Move cho tối đa 2 bộ binh chưa Attack, được đi thêm ngay. Hết lượt công.\n\nRIGHT PANEL — CHIEN THAN: Rodoc's broad straight steel sword drives one brilliant red-gold straight-line shockwave through a receding row of four enemy shield silhouettes; no curved spinning area explosion.\nActual gameplay: Chiến Thần · ★ · Gây 1 sát thương mỗi mục tiêu, tối đa 4 địch cùng đường thẳng; chọn qua lính/Hero nhưng không qua vật cản địa hình, không có xuyên mặc định.",
+      "width": 1536,
+      "height": 1024,
+      "pngBytes": 2897172,
+      "pngSha256": "4733258f6fde7f14021d537b18f0e5d99dd1afbd1b949cd5a2f63961c1cd36c6",
+      "previewBytes": 457706,
+      "previewSha256": "de34861086cd8f62806a667a69485a139da25ebcd66c5dc42190d34c01c968fa",
+      "generatedSource": "exec-e78c1445-794a-4345-a029-5bad9da69502.png",
+      "reviewWindow": [
+        15,
+        216,
+        1505,
+        510
+      ]
+    },
+    {
+      "heroId": "HERO_INF_EST",
+      "name": "Est",
+      "slug": "est",
+      "status": "DRAFT_FOR_REVIEW",
+      "png": "est.png",
+      "preview": "est.webp",
+      "identityReference": "assets/heroes/inf/est-avatar-background-dw-style-01.webp",
+      "skills": [
+        {
+          "id": "SKILL_HERO_EST_S1",
+          "name": "Phi Thân",
+          "star": 1,
+          "description": "Phi Thân · ★ · Đổi chỗ với một lính đồng đội cách 3 ô; lính nhận đòn thay và được phòng thủ."
+        },
+        {
+          "id": "SKILL_HERO_EST_S2",
+          "name": "Phục Thù",
+          "star": 1,
+          "description": "Phục Thù · ★ · Gây 1 sát thương lên tối đa 2 địch đã đánh đồng đội cách Est 3 ô trong lượt công này, kể cả đồng đội đã chết."
+        },
+        {
+          "id": "SKILL_HERO_EST_S3",
+          "name": "Ác Mộng Phía Đông",
+          "star": 1,
+          "description": "Ác Mộng Phía Đông · ★ · +2 Move, +3 mục tiêu cho đòn đánh; dùng sát thương cơ bản và trang bị. Hết lượt công."
+        }
+      ],
+      "prompt": "Create a NEW DozenWar hero SKILL ICON TRIPTYCH using attachment 1 (Kazu sheet) as the exact DW-STYLE-01 rendering and gold FRAME reference, and attachment 2 as this new hero's identity reference. Bold angular black ink contours, strong faceted cel shading, worn antique gold/bronze bevels, charcoal steel, painterly chips, dramatic controlled colored energy. Each of the THREE icons MUST have a complete matching gold square frame with clipped/riveted corners AND its own opaque dark colored magical background filling its entire panel, exactly like the Kazu reference. Never transparent cutouts. Never photorealism, glossy 3D, neon UI or modern symbols. Do not copy Kazu's dragon shield or chain motifs; use the motifs below. Large simple focal silhouettes readable at 64 pixels.\nLAYOUT: landscape 1536x1024, exactly THREE equal square framed panels in ONE horizontal row, about 470 pixels across each, well separated and entirely inside the canvas, centered vertically. All four gold frame sides and corners must be fully visible. Background outside panels is plain dark charcoal stone. NO titles, NO typography, NO labels, NO stars, NO numbers, NO watermark anywhere. Names and costs will be rendered separately in the game. Left-to-right panel order is mandatory. Correct physical weapon anatomy, no malformed hands, no redundant limbs.\n\nHERO: Est. Female infantry duelist, short asymmetrical brown undercut, angular charcoal and bronze armor, curved single-edged sword, burgundy waist cloth.\nLEFT PANEL — PHI THAN: Est's curved sword and armored silhouette exchange places with an allied infantry shield silhouette along two intertwined silver-blue motion arcs; clear position swap and protection.\nActual gameplay: Phi Thân · ★ · Đổi chỗ với một lính đồng đội cách 3 ô; lính nhận đòn thay và được phòng thủ.\n\nCENTER PANEL — PHUC THU: one dominant curved sword makes two compact crimson retaliatory slash trails toward two shadowed enemy armor shapes, broken allied shield in foreground.\nActual gameplay: Phục Thù · ★ · Gây 1 sát thương lên tối đa 2 địch đã đánh đồng đội cách Est 3 ô trong lượt công này, kể cả đồng đội đã chết.\n\nRIGHT PANEL — AC MONG PHIA DONG: Est's curved sword leading a fast violet-crimson forward afterimage, four distinct slash marks radiate from that blade; enhanced movement and multi-target assault, not a monster.\nActual gameplay: Ác Mộng Phía Đông · ★ · +2 Move, +3 mục tiêu cho đòn đánh; dùng sát thương cơ bản và trang bị. Hết lượt công.",
+      "width": 1536,
+      "height": 1024,
+      "pngBytes": 2908803,
+      "pngSha256": "1461fd2a968ea713587cfbd7fb07efb95a0d2d49529aeff8cfa674578b94b644",
+      "previewBytes": 466142,
+      "previewSha256": "0b894572301f3d970cba6168938ba372d971fea3e3916d3272676306b5c0c1c1",
+      "generatedSource": "exec-7121ede3-acc8-4be6-aa60-1103a82278c4.png",
+      "reviewWindow": [
+        19,
+        189,
+        1498,
+        556
+      ]
+    },
+    {
+      "heroId": "HERO_CAV_MASK",
+      "name": "Mask",
+      "slug": "mask",
+      "status": "DRAFT_FOR_REVIEW",
+      "png": "mask.png",
+      "preview": "mask.webp",
+      "identityReference": "assets/heroes/cav/mask-avatar-background-dw-style-01.webp",
+      "skills": [
+        {
+          "id": "SKILL_HERO_MASK_S1",
+          "name": "Ma Kích",
+          "star": 1,
+          "description": "Ma Kích · ★ · Gây 1 sát thương lên tối đa 2 địch cùng đường thẳng cách 3 ô; chọn qua lính/Hero nhưng không qua vật cản địa hình, không lan."
+        },
+        {
+          "id": "SKILL_HERO_MASK_S2",
+          "name": "Phán Quyết",
+          "star": 1,
+          "description": "Phán Quyết · ★ · +1 lần đánh cho kỵ binh chưa Attack; mỗi lần có phòng thủ riêng. Hết lượt công."
+        },
+        {
+          "id": "SKILL_HERO_MASK_S3",
+          "name": "Cán Cân Công Lý",
+          "star": 4,
+          "description": "Cán Cân Công Lý · ★★★★ · Roll chẵn: 2 sát thương/hồi 2 HP; lẻ: 1/1. Mask vẫn hồi khi đòn bị né/hủy. Cấm Guard bộ binh."
+        }
+      ],
+      "prompt": "Create a NEW DozenWar hero SKILL ICON TRIPTYCH using attachment 1 (Kazu sheet) as the exact DW-STYLE-01 rendering and gold FRAME reference, and attachment 2 as this new hero's identity reference. Bold angular black ink contours, strong faceted cel shading, worn antique gold/bronze bevels, charcoal steel, painterly chips, dramatic controlled colored energy. Each of the THREE icons MUST have a complete matching gold square frame with clipped/riveted corners AND its own opaque dark colored magical background filling its entire panel, exactly like the Kazu reference. Never transparent cutouts. Never photorealism, glossy 3D, neon UI or modern symbols. Do not copy Kazu's dragon shield or chain motifs; use the motifs below. Large simple focal silhouettes readable at 64 pixels.\nLAYOUT: landscape 1536x1024, exactly THREE equal square framed panels in ONE horizontal row, about 470 pixels across each, well separated and entirely inside the canvas, centered vertically. All four gold frame sides and corners must be fully visible. Background outside panels is plain dark charcoal stone. NO titles, NO typography, NO labels, NO stars, NO numbers, NO watermark anywhere. Names and costs will be rendered separately in the game. Left-to-right panel order is mandatory. Correct physical weapon anatomy, no malformed hands, no redundant limbs.\n\nHERO: Mask. Male armored cavalry judge, ornate silver/bronze helmet, dark steel plate, red cape, balance-scales brooch. Weapon is HALBERD (kích), never a sword or club.\nLEFT PANEL — MA KICH: dominant aged-steel HALBERD head thrusting along a blue-white straight impact trail through two receding enemy silhouettes; forceful precise linear strike.\nActual gameplay: Ma Kích · ★ · Gây 1 sát thương lên tối đa 2 địch cùng đường thẳng cách 3 ô; chọn qua lính/Hero nhưng không qua vật cản địa hình, không lan.\n\nCENTER PANEL — PHAN QUYET: a warhorse head and halberd with two successive amber attack echoes, compact forward motion; conveys an extra cavalry attack, not a holy cross.\nActual gameplay: Phán Quyết · ★ · +1 lần đánh cho kỵ binh chưa Attack; mỗi lần có phòng thủ riêng. Hết lượt công.\n\nRIGHT PANEL — CAN CAN CONG LY: large antique-gold balance scales, one pan holding crimson attack energy and other green restorative energy; a small worn six-sided die between pans, halberd motif behind.\nActual gameplay: Cán Cân Công Lý · ★★★★ · Roll chẵn: 2 sát thương/hồi 2 HP; lẻ: 1/1. Mask vẫn hồi khi đòn bị né/hủy. Cấm Guard bộ binh.",
+      "width": 1536,
+      "height": 1024,
+      "pngBytes": 2838049,
+      "pngSha256": "a0cf336a6d557f30f7f943d0d11218cf2668b7350e6f88e51adf8fdfc3dcaa38",
+      "previewBytes": 446590,
+      "previewSha256": "11ebdc09b54ab7cc3ff6848d0c2fbec64d3dc788facdfee544215a962e53f8b5",
+      "generatedSource": "exec-3d68a40e-e96b-48c7-a423-b57e6c30343a.png",
+      "reviewWindow": [
+        10,
+        218,
+        1516,
+        532
+      ]
+    },
+    {
+      "heroId": "HERO_CAV_SOUL",
+      "name": "Soul",
+      "slug": "soul",
+      "status": "DRAFT_FOR_REVIEW",
+      "png": "soul.png",
+      "preview": "soul.webp",
+      "identityReference": "assets/heroes/cav/soul-avatar-background-dw-style-01.webp",
+      "skills": [
+        {
+          "id": "SKILL_HERO_SOUL_S1",
+          "name": "Ám Kỵ",
+          "star": 1,
+          "description": "Ám Kỵ · ★ · +1 sát thương và +1 Move trong lượt công; chưa Attack được đi thêm ngay."
+        },
+        {
+          "id": "SKILL_HERO_SOUL_S2",
+          "name": "Triệu Gọi Ám Hồn",
+          "star": 1,
+          "description": "Triệu Gọi Ám Hồn · ★ · Trả 1 HP, tạo kỵ binh mới tại hex trống cạnh Soul. Lính hành động ngay. Soul trả HP cuối vẫn chết/thua Duel."
+        },
+        {
+          "id": "SKILL_HERO_SOUL_S3",
+          "name": "Thây Độc",
+          "star": 3,
+          "description": "Thây Độc · ★★★ · Đổi chỗ với lính đồng đội, lính được phòng thủ. Kẻ đánh mất trực tiếp 1 HP kể cả đòn bị né/hủy."
+        }
+      ],
+      "prompt": "Create a NEW DozenWar hero SKILL ICON TRIPTYCH using attachment 1 (Kazu sheet) as the exact DW-STYLE-01 rendering and gold FRAME reference, and attachment 2 as this new hero's identity reference. Bold angular black ink contours, strong faceted cel shading, worn antique gold/bronze bevels, charcoal steel, painterly chips, dramatic controlled colored energy. Each of the THREE icons MUST have a complete matching gold square frame with clipped/riveted corners AND its own opaque dark colored magical background filling its entire panel, exactly like the Kazu reference. Never transparent cutouts. Never photorealism, glossy 3D, neon UI or modern symbols. Do not copy Kazu's dragon shield or chain motifs; use the motifs below. Large simple focal silhouettes readable at 64 pixels.\nLAYOUT: landscape 1536x1024, exactly THREE equal square framed panels in ONE horizontal row, about 470 pixels across each, well separated and entirely inside the canvas, centered vertically. All four gold frame sides and corners must be fully visible. Background outside panels is plain dark charcoal stone. NO titles, NO typography, NO labels, NO stars, NO numbers, NO watermark anywhere. Names and costs will be rendered separately in the game. Left-to-right panel order is mandatory. Correct physical weapon anatomy, no malformed hands, no redundant limbs.\n\nHERO: Soul. Male dark cavalry, long black hair, pale stern face, skull ornament on aged dark armor, tattered olive-black cloak. Wields a huge single-edged GREAT DAO (đại đao), rides a dark warhorse.\nLEFT PANEL — AM KY: massive great-dao blade and black warhorse head surge together through spectral violet-green speed trails, empowered cavalry attack.\nActual gameplay: Ám Kỵ · ★ · +1 sát thương và +1 Move trong lượt công; chưa Attack được đi thêm ngay.\n\nCENTER PANEL — TRIEU GOI AM HON: a clearly readable spectral armored RIDER ON A HORSE forms from teal-green ectoplasm, rising out of one small crimson life-energy shard; cavalry summon, not a foot soldier.\nActual gameplay: Triệu Gọi Ám Hồn · ★ · Trả 1 HP, tạo kỵ binh mới tại hex trống cạnh Soul. Lính hành động ngay. Soul trả HP cuối vẫn chết/thua Duel.\n\nRIGHT PANEL — THAY DOC: poison-green shroud wraps an allied armored decoy silhouette swapping with Soul's shadow; an incoming blade strikes the decoy and green venom returns along the blade; no graphic gore.\nActual gameplay: Thây Độc · ★★★ · Đổi chỗ với lính đồng đội, lính được phòng thủ. Kẻ đánh mất trực tiếp 1 HP kể cả đòn bị né/hủy.",
+      "width": 1536,
+      "height": 1024,
+      "pngBytes": 2868105,
+      "pngSha256": "6c0d80fa507b154d7408e38168a594c27a2a9d7a4f78460f81dadb8326fc53f7",
+      "previewBytes": 432828,
+      "previewSha256": "ecf60dac1356d65df14b272d76102f0fe65929140699129449f75e0959d98123",
+      "generatedSource": "exec-8a75bcd4-2164-425e-adca-7af5cbd06640.png",
+      "reviewWindow": [
+        16,
+        220,
+        1503,
+        551
+      ]
+    },
+    {
+      "heroId": "HERO_CAV_SIRI",
+      "name": "Siri",
+      "slug": "siri",
+      "status": "DRAFT_FOR_REVIEW",
+      "png": "siri.png",
+      "preview": "siri.webp",
+      "identityReference": "assets/heroes/cav/siri-avatar-background-dw-style-01.webp",
+      "skills": [
+        {
+          "id": "SKILL_HERO_SIRI_S1",
+          "name": "Săn Người",
+          "star": 1,
+          "description": "Săn Người · ★ · Các đòn thường và skill Attack của Siri cấm Guard bộ binh trong lượt công."
+        },
+        {
+          "id": "SKILL_HERO_SIRI_S2",
+          "name": "Phong Bộ",
+          "star": 1,
+          "description": "Phong Bộ · ★ · Di chuyển tối đa 3 ô, xuyên quân, tuân địa hình; đổi ô đích hợp lệ để hủy sát thương và hiệu ứng."
+        },
+        {
+          "id": "SKILL_HERO_SIRI_S3",
+          "name": "Ám Phong",
+          "star": 1,
+          "description": "Ám Phong · ★ · +3 Move cho 1 đồng đội chưa Attack, gồm Siri; đi thêm ngay. Hết lượt công."
+        }
+      ],
+      "prompt": "Create a NEW DozenWar hero SKILL ICON TRIPTYCH using attachment 1 (Kazu sheet) as the exact DW-STYLE-01 rendering and gold FRAME reference, and attachment 2 as this new hero's identity reference. Bold angular black ink contours, strong faceted cel shading, worn antique gold/bronze bevels, charcoal steel, painterly chips, dramatic controlled colored energy. Each of the THREE icons MUST have a complete matching gold square frame with clipped/riveted corners AND its own opaque dark colored magical background filling its entire panel, exactly like the Kazu reference. Never transparent cutouts. Never photorealism, glossy 3D, neon UI or modern symbols. Do not copy Kazu's dragon shield or chain motifs; use the motifs below. Large simple focal silhouettes readable at 64 pixels.\nLAYOUT: landscape 1536x1024, exactly THREE equal square framed panels in ONE horizontal row, about 470 pixels across each, well separated and entirely inside the canvas, centered vertically. All four gold frame sides and corners must be fully visible. Background outside panels is plain dark charcoal stone. NO titles, NO typography, NO labels, NO stars, NO numbers, NO watermark anywhere. Names and costs will be rendered separately in the game. Left-to-right panel order is mandatory. Correct physical weapon anatomy, no malformed hands, no redundant limbs.\n\nHERO: Siri. Female cavalry warrior, black hair with two slim braids, dark feathered scale hood/crown and bronze armor. Weapon TWO separate curved DAO BLADES (song đao), rides a horse. Slate, bronze, wind teal.\nLEFT PANEL — SAN NGUOI: two crossed curved dao blades sharply part an obstructing infantry shield silhouette, crimson marked prey silhouette beyond; relentless hunt bypassing a guard.\nActual gameplay: Săn Người · ★ · Các đòn thường và skill Attack của Siri cấm Guard bộ binh trong lượt công.\n\nCENTER PANEL — PHONG BO: armored hoof and cloak sweep out of an incoming red blade's path in a silver-teal wind vortex; horse and rider escape afterimage, movement cancels the strike.\nActual gameplay: Phong Bộ · ★ · Di chuyển tối đa 3 ô, xuyên quân, tuân địa hình; đổi ô đích hợp lệ để hủy sát thương và hiệu ứng.\n\nRIGHT PANEL — AM PHONG: one dominant bronze horseshoe / armored hoof with three long teal-silver wind ribbons flowing forward; an ally silhouette is carried by the same tailwind, speed support.\nActual gameplay: Ám Phong · ★ · +3 Move cho 1 đồng đội chưa Attack, gồm Siri; đi thêm ngay. Hết lượt công.",
+      "width": 1536,
+      "height": 1024,
+      "pngBytes": 2980823,
+      "pngSha256": "2d10b3886ec561bfd6e801d5e40bb269877da417c240f31b9f50c63feea38580",
+      "previewBytes": 466540,
+      "previewSha256": "cb9809e31442e4ff798de6926ec4390d97e53903bfb7cbb7a4ffa25e8e97e70d",
+      "generatedSource": "exec-e161859a-1c1a-487a-b731-678210cc0574.png",
+      "reviewWindow": [
+        18,
+        217,
+        1497,
+        526
+      ]
+    },
+    {
+      "heroId": "HERO_ARCH_RAEN",
+      "name": "Raen",
+      "slug": "raen",
+      "status": "DRAFT_FOR_REVIEW",
+      "png": "raen.png",
+      "preview": "raen.webp",
+      "identityReference": "assets/heroes/arch/raen-avatar-background-dw-style-01.webp",
+      "skills": [
+        {
+          "id": "SKILL_HERO_RAEN_S1",
+          "name": "Viễn Tiễn",
+          "star": 1,
+          "description": "Viễn Tiễn · ★ · +1 tầm cho đòn thường và skill Attack của cung thủ chưa Attack. Hết lượt công."
+        },
+        {
+          "id": "SKILL_HERO_RAEN_S2",
+          "name": "Tên Lưới",
+          "star": 2,
+          "description": "Tên Lưới · ★★ · Sau khi đồng đội/Raen bị đánh, chọn địch trong tầm, đẩy tối đa 4 ô rồi trói hết lượt công đối phương. Vẫn được dùng trang bị."
+        },
+        {
+          "id": "SKILL_HERO_RAEN_S3",
+          "name": "Hàn Tiễn",
+          "star": 3,
+          "description": "Hàn Tiễn · ★★★ · Gây 1 sát thương, đóng băng tới hết lượt hiện tại khi trúng kể cả 0 damage; xuyên quân/vật cản. Cấm Guard bộ binh."
+        }
+      ],
+      "prompt": "Create a NEW DozenWar hero SKILL ICON TRIPTYCH using attachment 1 (Kazu sheet) as the exact DW-STYLE-01 rendering and gold FRAME reference, and attachment 2 as this new hero's identity reference. Bold angular black ink contours, strong faceted cel shading, worn antique gold/bronze bevels, charcoal steel, painterly chips, dramatic controlled colored energy. Each of the THREE icons MUST have a complete matching gold square frame with clipped/riveted corners AND its own opaque dark colored magical background filling its entire panel, exactly like the Kazu reference. Never transparent cutouts. Never photorealism, glossy 3D, neon UI or modern symbols. Do not copy Kazu's dragon shield or chain motifs; use the motifs below. Large simple focal silhouettes readable at 64 pixels.\nLAYOUT: landscape 1536x1024, exactly THREE equal square framed panels in ONE horizontal row, about 470 pixels across each, well separated and entirely inside the canvas, centered vertically. All four gold frame sides and corners must be fully visible. Background outside panels is plain dark charcoal stone. NO titles, NO typography, NO labels, NO stars, NO numbers, NO watermark anywhere. Names and costs will be rendered separately in the game. Left-to-right panel order is mandatory. Correct physical weapon anatomy, no malformed hands, no redundant limbs.\n\nHERO: Raen. Raen has EXACTLY TWO distinct human heads on ONE shared torso and shoulders, not two bodies. Long brown hair, olive-green scale armor, bronze trim. Weapon CROSSBOW with short bolts (not a bow). Frost forest palette.\nLEFT PANEL — VIEN TIEN: a dominant compact bronze-and-wood crossbow fires one short bolt down a long amber perspective trail past distant target rings; range enhancement.\nActual gameplay: Viễn Tiễn · ★ · +1 tầm cho đòn thường và skill Attack của cung thủ chưa Attack. Hết lượt công.\n\nCENTER PANEL — TEN LUOI: a crossbow bolt unfolds a heavy woven capture NET around a dark enemy silhouette, cyan impact gust visibly pushes it backward; net texture and bolt dominate.\nActual gameplay: Tên Lưới · ★★ · Sau khi đồng đội/Raen bị đánh, chọn địch trong tầm, đẩy tối đa 4 ô rồi trói hết lượt công đối phương. Vẫn được dùng trang bị.\n\nRIGHT PANEL — HAN TIEN: a large frost-encrusted crossbow bolt with a faceted blue ice crystal tip streaks through a cracked shield silhouette into a frozen enemy silhouette; crystalline frost impact. A subtle two-headed crest may appear, never a one-headed Raen portrait.\nActual gameplay: Hàn Tiễn · ★★★ · Gây 1 sát thương, đóng băng tới hết lượt hiện tại khi trúng kể cả 0 damage; xuyên quân/vật cản. Cấm Guard bộ binh.",
+      "width": 1536,
+      "height": 1024,
+      "pngBytes": 3022931,
+      "pngSha256": "13015e4aaba3787650122a1d1fa67647eb48f5e643e3b2373d5aa2e96d1d4e8e",
+      "previewBytes": 492156,
+      "previewSha256": "3c66f620111de3371ccd6a0f3f2fdb6a782dbff26840271ec09797b916f9ac5b",
+      "generatedSource": "exec-5e9db4dd-2149-4131-937a-f45efafed2ae.png",
+      "reviewWindow": [
+        17,
+        201,
+        1502,
+        535
+      ]
+    },
+    {
+      "heroId": "HERO_ARCH_XACNAS",
+      "name": "Xacnas",
+      "slug": "xacnas",
+      "status": "DRAFT_FOR_REVIEW",
+      "png": "xacnas.png",
+      "preview": "xacnas.webp",
+      "identityReference": "assets/heroes/arch/xacnas-avatar-background-dw-style-01.webp",
+      "skills": [
+        {
+          "id": "SKILL_HERO_XACNAS_S1",
+          "name": "Lời Chào Của Quỷ",
+          "star": 1,
+          "description": "Lời Chào Của Quỷ · ★ · +1 sát thương cho cung thủ chưa Attack, áp dụng đòn thường/skill Attack. Hết lượt công."
+        },
+        {
+          "id": "SKILL_HERO_XACNAS_S2",
+          "name": "Bão Phi Đao",
+          "star": 1,
+          "description": "Bão Phi Đao · ★ · Gây 1 sát thương mỗi mục tiêu, tối đa 2 địch trong tầm hiện tại, không cần cùng đường thẳng."
+        },
+        {
+          "id": "SKILL_HERO_XACNAS_S3",
+          "name": "Phân Bóng",
+          "star": 3,
+          "description": "Phân Bóng · ★★★ · Chọn 2 số xúc xắc cho cả lượt thủ; mỗi lần đánh roll riêng, sai số hủy đòn và hiệu ứng. Kết hợp Guard/skill/trang bị hợp lệ."
+        }
+      ],
+      "prompt": "Create a NEW DozenWar hero SKILL ICON TRIPTYCH using attachment 1 (Kazu sheet) as the exact DW-STYLE-01 rendering and gold FRAME reference, and attachment 2 as this new hero's identity reference. Bold angular black ink contours, strong faceted cel shading, worn antique gold/bronze bevels, charcoal steel, painterly chips, dramatic controlled colored energy. Each of the THREE icons MUST have a complete matching gold square frame with clipped/riveted corners AND its own opaque dark colored magical background filling its entire panel, exactly like the Kazu reference. Never transparent cutouts. Never photorealism, glossy 3D, neon UI or modern symbols. Do not copy Kazu's dragon shield or chain motifs; use the motifs below. Large simple focal silhouettes readable at 64 pixels.\nLAYOUT: landscape 1536x1024, exactly THREE equal square framed panels in ONE horizontal row, about 470 pixels across each, well separated and entirely inside the canvas, centered vertically. All four gold frame sides and corners must be fully visible. Background outside panels is plain dark charcoal stone. NO titles, NO typography, NO labels, NO stars, NO numbers, NO watermark anywhere. Names and costs will be rendered separately in the game. Left-to-right panel order is mandatory. Correct physical weapon anatomy, no malformed hands, no redundant limbs.\n\nHERO: Xacnas. Male archer, black/gray beard, tall fan-crested bronze helmet, olive scarf, heavy bronze scale armor. Weapon SHORT BOW and throwing knives at waist; not a crossbow or longbow.\nLEFT PANEL — LOI CHAO CUA QUY: a compact SHORT BOW and single arrow wrapped in controlled crimson demonic power, one small horned smoke silhouette amplifies the arrowhead; attack enhancement.\nActual gameplay: Lời Chào Của Quỷ · ★ · +1 sát thương cho cung thủ chưa Attack, áp dụng đòn thường/skill Attack. Hết lượt công.\n\nCENTER PANEL — BAO PHI DAO: fan of large bronze-edged THROWING KNIVES spins in a crimson-amber storm toward two receding armor targets, knives clearly distinct from arrows.\nActual gameplay: Bão Phi Đao · ★ · Gây 1 sát thương mỗi mục tiêu, tối đa 2 địch trong tầm hiện tại, không cần cùng đường thẳng.\n\nRIGHT PANEL — PHAN BONG: Xacnas's recognizable fan-crested helmet has two ghostly violet offset duplicates; TWO separate worn six-sided dice float beside them and incoming red arrow passes through an illusion; defensive shadow decoy.\nActual gameplay: Phân Bóng · ★★★ · Chọn 2 số xúc xắc cho cả lượt thủ; mỗi lần đánh roll riêng, sai số hủy đòn và hiệu ứng. Kết hợp Guard/skill/trang bị hợp lệ.",
+      "width": 1536,
+      "height": 1024,
+      "pngBytes": 2848820,
+      "pngSha256": "709ca8a843e2c4a4e24ae2944e3308f83565edf89b3ec8152fee8e48126b96ac",
+      "previewBytes": 446872,
+      "previewSha256": "98d09c4290527623d637699b5fec7a169820c86eb10d0695ab8087cb4784b7b6",
+      "generatedSource": "exec-6cabfc79-24e7-46a9-9907-59917d531ed1.png",
+      "reviewWindow": [
+        10,
+        210,
+        1516,
+        570
+      ]
+    },
+    {
+      "heroId": "HERO_ARCH_LUCY",
+      "name": "Lucy",
+      "slug": "lucy",
+      "status": "DRAFT_FOR_REVIEW",
+      "png": "lucy.png",
+      "preview": "lucy.webp",
+      "identityReference": "assets/heroes/arch/lucy-avatar-background-dw-style-01.webp",
+      "skills": [
+        {
+          "id": "SKILL_HERO_LUCY_S1",
+          "name": "Phân Ảnh",
+          "star": 1,
+          "description": "Phân Ảnh · ★ · Hủy sát thương và hiệu ứng của một đòn nhắm Lucy, không ảnh hưởng mục tiêu khác."
+        },
+        {
+          "id": "SKILL_HERO_LUCY_S2",
+          "name": "Bắn Trả",
+          "star": 1,
+          "description": "Bắn Trả · ★ · Sau sát thương, nếu Lucy sống, bắn tối đa 2 địch bằng tầm/sát thương cơ bản, không buff/trang bị; địch không được thủ."
+        },
+        {
+          "id": "SKILL_HERO_LUCY_S3",
+          "name": "Điên Cuồng",
+          "star": 1,
+          "description": "Điên Cuồng · ★ · Dùng tầm đánh cung thủ: cơ bản 3 ô theo đường thẳng, được tăng tầm bởi buff/trang bị. Bắn 2 lần trong cùng commit, mỗi lần 2 sát thương; chọn mục tiêu riêng, mở thủ riêng, được thêm buff/trang bị."
+        }
+      ],
+      "prompt": "Create a NEW DozenWar hero SKILL ICON TRIPTYCH using attachment 1 (Kazu sheet) as the exact DW-STYLE-01 rendering and gold FRAME reference, and attachment 2 as this new hero's identity reference. Bold angular black ink contours, strong faceted cel shading, worn antique gold/bronze bevels, charcoal steel, painterly chips, dramatic controlled colored energy. Each of the THREE icons MUST have a complete matching gold square frame with clipped/riveted corners AND its own opaque dark colored magical background filling its entire panel, exactly like the Kazu reference. Never transparent cutouts. Never photorealism, glossy 3D, neon UI or modern symbols. Do not copy Kazu's dragon shield or chain motifs; use the motifs below. Large simple focal silhouettes readable at 64 pixels.\nLAYOUT: landscape 1536x1024, exactly THREE equal square framed panels in ONE horizontal row, about 470 pixels across each, well separated and entirely inside the canvas, centered vertically. All four gold frame sides and corners must be fully visible. Background outside panels is plain dark charcoal stone. NO titles, NO typography, NO labels, NO stars, NO numbers, NO watermark anywhere. Names and costs will be rendered separately in the game. Left-to-right panel order is mandatory. Correct physical weapon anatomy, no malformed hands, no redundant limbs.\n\nHERO: Lucy. Female archer, long black hair, forest-green hood with lower face mask, bronze scale mantle, LONG BOW and back quiver full of long arrows. Woodland emerald/cyan palette.\nLEFT PANEL — PHAN ANH: masked green-hooded archer's head and longbow split into a silver-emerald illusory silhouette, a red incoming arrow passes harmlessly through the false image; distinct from dice defense, no dice.\nActual gameplay: Phân Ảnh · ★ · Hủy sát thương và hiệu ứng của một đòn nhắm Lucy, không ảnh hưởng mục tiêu khác.\n\nCENTER PANEL — BAN TRA: large longbow with a correctly nocked long arrow, TWO bright emerald return-arrow streaks reverse against a faint red incoming attack trail; forceful reactive countershot.\nActual gameplay: Bắn Trả · ★ · Sau sát thương, nếu Lucy sống, bắn tối đa 2 địch bằng tầm/sát thương cơ bản, không buff/trang bị; địch không được thủ.\n\nRIGHT PANEL — DIEN CUONG: close-up of Lucy's longbow loosing TWO separate heavy arrows in rapid succession, intense amber and crimson doubled flight trails, focused violent shooting burst; avoid many unrelated arrows.\nActual gameplay: Điên Cuồng · ★ · Dùng tầm đánh cung thủ: cơ bản 3 ô theo đường thẳng, được tăng tầm bởi buff/trang bị. Bắn 2 lần trong cùng commit, mỗi lần 2 sát thương; chọn mục tiêu riêng, mở thủ riêng, được thêm buff/trang bị.",
+      "width": 1536,
+      "height": 1024,
+      "pngBytes": 2853252,
+      "pngSha256": "22ed5d4b1041a221eb08d973da583c48a27983852c0de0770f465fd5ec990a9b",
+      "previewBytes": 445104,
+      "previewSha256": "c055d5237c745bbc9d34fd32cd89fa59ce7e1d36d881acca1f7cc8b2785dec07",
+      "generatedSource": "exec-877d44fb-02aa-46dd-b298-1536407e3d80.png",
+      "reviewWindow": [
+        2,
+        204,
+        1531,
+        538
+      ]
+    },
+    {
+      "heroId": "HERO_ALCH_GRIM",
+      "name": "Grim",
+      "slug": "grim",
+      "status": "DRAFT_FOR_REVIEW",
+      "png": "grim.png",
+      "preview": "grim.webp",
+      "identityReference": "assets/heroes/alch/grim-avatar-background-dw-style-01.webp",
+      "skills": [
+        {
+          "id": "SKILL_HERO_GRIM_S1",
+          "name": "Giả Dạng",
+          "star": 1,
+          "description": "Giả Dạng · ★ · Biến thành chủng lính hợp mode tới lần biến tiếp; giữ Hero và HP. Trang bị không hợp chủng trả về hand."
+        },
+        {
+          "id": "SKILL_HERO_GRIM_S2",
+          "name": "Cải Tạo Nhanh",
+          "star": 1,
+          "description": "Cải Tạo Nhanh · ★ · Đổi vĩnh viễn chủng 1 lính đồng đội, đầy HP chủng mới, giữ trạng thái hành động; được dùng thủ của chủng mới."
+        },
+        {
+          "id": "SKILL_HERO_GRIM_S3",
+          "name": "Sao Chép",
+          "star": 3,
+          "description": "Sao Chép · ★★★ · Dùng skill Hero địch đã dùng trong trận, kể cả Hero chết; dùng chỉ số/vị trí Grim, sao hiệu lực min(sao gốc,3)."
+        }
+      ],
+      "prompt": "Create a NEW DozenWar hero SKILL ICON TRIPTYCH using attachment 1 (Kazu sheet) as the exact DW-STYLE-01 rendering and gold FRAME reference, and attachment 2 as this new hero's identity reference. Bold angular black ink contours, strong faceted cel shading, worn antique gold/bronze bevels, charcoal steel, painterly chips, dramatic controlled colored energy. Each of the THREE icons MUST have a complete matching gold square frame with clipped/riveted corners AND its own opaque dark colored magical background filling its entire panel, exactly like the Kazu reference. Never transparent cutouts. Never photorealism, glossy 3D, neon UI or modern symbols. Do not copy Kazu's dragon shield or chain motifs; use the motifs below. Large simple focal silhouettes readable at 64 pixels.\nLAYOUT: landscape 1536x1024, exactly THREE equal square framed panels in ONE horizontal row, about 470 pixels across each, well separated and entirely inside the canvas, centered vertically. All four gold frame sides and corners must be fully visible. Background outside panels is plain dark charcoal stone. NO titles, NO typography, NO labels, NO stars, NO numbers, NO watermark anywhere. Names and costs will be rendered separately in the game. Left-to-right panel order is mandatory. Correct physical weapon anatomy, no malformed hands, no redundant limbs.\n\nHERO: Grim. Female alchemist, freckled face, wavy brown hair, purple hood, small SHORT magic wand, gold/bronze shoulder armor, amber gem and potion belt. Violet/emerald/amber alchemy.\nLEFT PANEL — GIA DANG: Grim's purple hood and amber gem dissolve into an empty infantry helmet through violet-green alchemical smoke; clear personal disguise/transformation, no extra faces.\nActual gameplay: Giả Dạng · ★ · Biến thành chủng lính hợp mode tới lần biến tiếp; giữ Hero và HP. Trang bị không hợp chủng trả về hand.\n\nCENTER PANEL — CAI TAO NHANH: an infantry shield changes into a cavalry horseshoe and archer arrowhead in a compact alchemical transmutation circle, golden wand sparks transform one unit's class; readable three equipment silhouettes.\nActual gameplay: Cải Tạo Nhanh · ★ · Đổi vĩnh viễn chủng 1 lính đồng đội, đầy HP chủng mới, giữ trạng thái hành động; được dùng thủ của chủng mới.\n\nRIGHT PANEL — SAO CHEP: short wand over an open arcane grimoire with two matching spectral spell sigils mirrored across its pages, violet copied energy flowing from one side to the other; replication, not a modern photocopier.\nActual gameplay: Sao Chép · ★★★ · Dùng skill Hero địch đã dùng trong trận, kể cả Hero chết; dùng chỉ số/vị trí Grim, sao hiệu lực min(sao gốc,3).",
+      "width": 1536,
+      "height": 1024,
+      "pngBytes": 2834329,
+      "pngSha256": "191c933b234caa5b803e107be54e8e1e7594955608b524b7ecae1cefb96f0fef",
+      "previewBytes": 432922,
+      "previewSha256": "e6f748e2108b7a79e2352047772b9372acef4bf5cd7b59ff6b704243f056d894",
+      "generatedSource": "exec-2c44eb55-3527-4af0-a7c9-1159d12ae986.png",
+      "reviewWindow": [
+        17,
+        211,
+        1502,
+        536
+      ]
+    },
+    {
+      "heroId": "HERO_ALCH_NEURO",
+      "name": "Neuro",
+      "slug": "neuro",
+      "status": "DRAFT_FOR_REVIEW",
+      "png": "neuro.png",
+      "preview": "neuro.webp",
+      "identityReference": "assets/heroes/alch/neuro-avatar-background-dw-style-01.webp",
+      "skills": [
+        {
+          "id": "SKILL_HERO_NEURO_S1",
+          "name": "Thuốc Câm",
+          "star": 4,
+          "description": "Thuốc Câm · ★★★★ · Khóa skill thủ 1 Hero tới hết lượt thủ hiện tại, không damage/commit; được né/hủy trước khi khóa, Guard/trang bị vẫn hợp lệ."
+        },
+        {
+          "id": "SKILL_HERO_NEURO_S2",
+          "name": "Triệu Gọi",
+          "star": 1,
+          "description": "Triệu Gọi · ★ · Sau khi từng có lính đồng đội chết, tạo mới lính đầy HP cạnh Neuro. Không tiêu thụ xác; giới hạn theo mode."
+        },
+        {
+          "id": "SKILL_HERO_NEURO_S3",
+          "name": "Thuốc Cấm",
+          "star": 1,
+          "description": "Thuốc Cấm · ★ · +2 Move cho tối đa 2 đồng đội chưa Attack, gồm Neuro; đi thêm ngay. Hết lượt công."
+        }
+      ],
+      "prompt": "Create a NEW DozenWar hero SKILL ICON TRIPTYCH using attachment 1 (Kazu sheet) as the exact DW-STYLE-01 rendering and gold FRAME reference, and attachment 2 as this new hero's identity reference. Bold angular black ink contours, strong faceted cel shading, worn antique gold/bronze bevels, charcoal steel, painterly chips, dramatic controlled colored energy. Each of the THREE icons MUST have a complete matching gold square frame with clipped/riveted corners AND its own opaque dark colored magical background filling its entire panel, exactly like the Kazu reference. Never transparent cutouts. Never photorealism, glossy 3D, neon UI or modern symbols. Do not copy Kazu's dragon shield or chain motifs; use the motifs below. Large simple focal silhouettes readable at 64 pixels.\nLAYOUT: landscape 1536x1024, exactly THREE equal square framed panels in ONE horizontal row, about 470 pixels across each, well separated and entirely inside the canvas, centered vertically. All four gold frame sides and corners must be fully visible. Background outside panels is plain dark charcoal stone. NO titles, NO typography, NO labels, NO stars, NO numbers, NO watermark anywhere. Names and costs will be rendered separately in the game. Left-to-right panel order is mandatory. Correct physical weapon anatomy, no malformed hands, no redundant limbs.\n\nHERO: Neuro. Male alchemist scholar, brown swept spiral hair with gray temples, charcoal scarf, bronze high-collar armor, thick grimoire carried on back, small round potion flasks, amber metalwork.\nLEFT PANEL — THUOC CAM (SILENCE skill): a heavy amber-green potion flask releases violet vapor which binds a bright enemy spell orb with crossed sealing bands; a muted broken sound ripple behind, no text or written prohibition symbol.\nActual gameplay: Thuốc Câm · ★★★★ · Khóa skill thủ 1 Hero tới hết lượt thủ hiện tại, không damage/commit; được né/hủy trước khi khóa, Guard/trang bị vẫn hợp lệ.\n\nCENTER PANEL — TRIEU GOI: a thick open bronze-bound grimoire emits emerald-gold magic forming a fresh armored foot soldier silhouette beside it, a faint fallen allied helmet lies below; summoning a new ally, not a mounted ghost.\nActual gameplay: Triệu Gọi · ★ · Sau khi từng có lính đồng đội chết, tạo mới lính đầy HP cạnh Neuro. Không tiêu thụ xác; giới hạn theo mode.\n\nRIGHT PANEL — THUOC CAM (FORBIDDEN TONIC speed skill): a clearly different red-amber potion flask with bronze cap bursts into two forward golden speed trails around TWO allied armored boots; movement stimulant, not a damage explosion.\nActual gameplay: Thuốc Cấm · ★ · +2 Move cho tối đa 2 đồng đội chưa Attack, gồm Neuro; đi thêm ngay. Hết lượt công.",
+      "width": 1536,
+      "height": 1024,
+      "pngBytes": 2853447,
+      "pngSha256": "617c718e950c44b9175f130e54f91ee5554f00656cba293ee8b8d70ddbbc65bd",
+      "previewBytes": 441600,
+      "previewSha256": "a319ddda4804a8e474ffbfa78cd4eb3c3d7417750cc71e380e68e094dc85284a",
+      "generatedSource": "exec-2070d590-a0d7-445c-bbc7-bbcfa3caec73.png",
+      "reviewWindow": [
+        11,
+        214,
+        1514,
+        571
+      ]
+    },
+    {
+      "heroId": "HERO_ALCH_RANUS",
+      "name": "Ranus",
+      "slug": "ranus",
+      "status": "DRAFT_FOR_REVIEW",
+      "png": "ranus.png",
+      "preview": "ranus.webp",
+      "identityReference": "assets/heroes/alch/ranus-avatar-background-dw-style-01.webp",
+      "skills": [
+        {
+          "id": "SKILL_HERO_RANUS_S1",
+          "name": "Dịch Chuyển",
+          "star": 1,
+          "description": "Dịch Chuyển · ★ · Dịch chuyển tới ô khác cách 4 ô, bỏ qua đường/quân/vật cản. Lượt thủ hủy đòn/hiệu ứng. Không tốn Move thường."
+        },
+        {
+          "id": "SKILL_HERO_RANUS_S2",
+          "name": "Thuật Cường Hóa",
+          "star": 1,
+          "description": "Thuật Cường Hóa · ★ · +1 lần đánh và +1 Move cho đồng đội chưa Attack, gồm Ranus; áp dụng đòn thường/skill Attack. Hết lượt công."
+        },
+        {
+          "id": "SKILL_HERO_RANUS_S3",
+          "name": "Bùng Cháy",
+          "star": 1,
+          "description": "Bùng Cháy · ★ · Gây 1 sát thương lên tối đa 4 địch quanh 2 ô, chọn qua quân/vật cản; được thêm chỉ số trang bị."
+        }
+      ],
+      "prompt": "Create a NEW DozenWar hero SKILL ICON TRIPTYCH using attachment 1 (Kazu sheet) as the exact DW-STYLE-01 rendering and gold FRAME reference, and attachment 2 as this new hero's identity reference. Bold angular black ink contours, strong faceted cel shading, worn antique gold/bronze bevels, charcoal steel, painterly chips, dramatic controlled colored energy. Each of the THREE icons MUST have a complete matching gold square frame with clipped/riveted corners AND its own opaque dark colored magical background filling its entire panel, exactly like the Kazu reference. Never transparent cutouts. Never photorealism, glossy 3D, neon UI or modern symbols. Do not copy Kazu's dragon shield or chain motifs; use the motifs below. Large simple focal silhouettes readable at 64 pixels.\nLAYOUT: landscape 1536x1024, exactly THREE equal square framed panels in ONE horizontal row, about 470 pixels across each, well separated and entirely inside the canvas, centered vertically. All four gold frame sides and corners must be fully visible. Background outside panels is plain dark charcoal stone. NO titles, NO typography, NO labels, NO stars, NO numbers, NO watermark anywhere. Names and costs will be rendered separately in the game. Left-to-right panel order is mandatory. Correct physical weapon anatomy, no malformed hands, no redundant limbs.\n\nHERO: Ranus. Female archmage/queen, long straight black hair, elaborate raven/skull bronze crown and feathered black-gold mantle, ornate MAGIC SCEPTER. Regal gold, violet magic and red fire.\nLEFT PANEL — DICH CHUYEN: two linked violet-gold portals, an ornate scepter / crowned mage silhouette dissolves at the first and reappears at the second; space folds around intervening stone, teleport rather than running.\nActual gameplay: Dịch Chuyển · ★ · Dịch chuyển tới ô khác cách 4 ô, bỏ qua đường/quân/vật cản. Lượt thủ hủy đòn/hiệu ứng. Không tốn Move thường.\n\nCENTER PANEL — THUAT CUONG HOA: dominant gold-crowned scepter head emits two successive amber striking echoes plus one turquoise forward speed ribbon around an ally gauntlet; combined extra attack and movement blessing.\nActual gameplay: Thuật Cường Hóa · ★ · +1 lần đánh và +1 Move cho đồng đội chưa Attack, gồm Ranus; áp dụng đòn thường/skill Attack. Hết lượt công.\n\nRIGHT PANEL — BUNG CHAY: massive faceted orange-crimson fireburst from a golden scepter head, four dark enemy silhouettes at the blast perimeter; clear area fire damage, no icy or healing imagery.\nActual gameplay: Bùng Cháy · ★ · Gây 1 sát thương lên tối đa 4 địch quanh 2 ô, chọn qua quân/vật cản; được thêm chỉ số trang bị.",
+      "width": 1536,
+      "height": 1024,
+      "pngBytes": 2903424,
+      "pngSha256": "84fdf5296104df02715911c70f610771bd94cd0da299995d75af1ec29beb94cd",
+      "previewBytes": 473884,
+      "previewSha256": "a7fdc709e4069909808b89e45dc0bf98b65e10ba79ccf5d47edebd8e9e00b278",
+      "generatedSource": "exec-fe3480ef-1336-4b34-929c-de9fa7e91b22.png",
+      "reviewWindow": [
+        21,
+        214,
+        1494,
+        555
+      ]
+    }
+  ],
+  "downloads": [
+    {
+      "file": "01-infantry-cavalry-png.zip",
+      "title": "Bộ binh và kỵ binh",
+      "heroes": [
+        "rodoc",
+        "est",
+        "mask",
+        "soul",
+        "siri"
+      ],
+      "bytes": 14151297,
+      "sha256": "6aba7a6a951eb51198c5cad4a555b29bfca3864ef6b4f426472dc4007fc474bc"
+    },
+    {
+      "file": "02-archers-alchemists-png.zip",
+      "title": "Cung thủ và giả kim",
+      "heroes": [
+        "xacnas",
+        "lucy",
+        "raen",
+        "grim",
+        "neuro",
+        "ranus"
+      ],
+      "bytes": 16872443,
+      "sha256": "2e8ff17f4cf0690320ac0e8fd59fbc9dd19b99aa591ed48c0d5fcb45138d5879"
+    }
+  ]
+}
