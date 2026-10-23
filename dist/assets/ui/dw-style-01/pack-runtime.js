@@ -9,19 +9,24 @@ window.DWPackUI = (() => {
   };
   // Skill identity, independent of translated labels and button ordering.
   const skillArt = Object.freeze({
-    SKILL_HERO_KAZU_S1: 'shield',
-    SKILL_HERO_KAZU_S2: 'chain',
-    SKILL_HERO_KAZU_S3: 'dragon'
+    SKILL_HERO_KAZU_S1: ['shield', [30, 270, 485, 478]],
+    SKILL_HERO_KAZU_S2: ['chain', [534, 270, 477, 478]],
+    SKILL_HERO_KAZU_S3: ['dragon', [1027, 270, 482, 478]]
   });
   function skillIcons() {
     for (const node of document.querySelectorAll('[data-skill-id]')) {
-      const key = skillArt[node.dataset.skillId];
-      if (!key || node.querySelector(':scope > .dwSkillIcon')) continue;
-      const image = document.createElement('img');
-      image.className = 'dwSkillIcon'; image.alt = ''; image.setAttribute('aria-hidden','true');
-      image.draggable = false; image.width = 1254; image.height = 1254;
-      image.src = prefix + 'assets/skills/kazu-dw-style-01/' + key + '.webp';
-      node.prepend(image);
+      const art = skillArt[node.dataset.skillId];
+      if (!art || node.querySelector(':scope > .dwSkillIcon')) continue;
+      // Display the original concept through an atlas viewport: no redrawing,
+      // CSS imitation of the gold rim, or destructive editing of the artwork.
+      const [key, [x, y, width, height]] = art;
+      const frame = document.createElement('span');
+      frame.className = 'dwSkillIcon dwFramedSkillIcon'; frame.dataset.art = key;
+      frame.setAttribute('aria-hidden','true'); frame.style.aspectRatio = width + ' / ' + height;
+      const image = document.createElement('img'); image.alt = ''; image.draggable = false;
+      image.src = prefix + 'assets/skills/kazu-dw-style-01/framed-sheet.webp';
+      image.style.cssText = 'position:absolute;max-width:none;width:' + 1536 / width * 100 + '%;height:' + 1024 / height * 100 + '%;left:' + -x / width * 100 + '%;top:' + -y / height * 100 + '%;margin:0;border:0;';
+      frame.append(image); node.prepend(frame);
     }
   }
   function trainingPreview(dialog) {

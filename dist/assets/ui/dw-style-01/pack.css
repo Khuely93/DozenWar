@@ -68,6 +68,7 @@
 .dwUI .dwTeamSkill > span:not(.dwSkillIcon) { display: block; margin: 5px 0; }
 .dwUI .dwTeamHero > .btn { grid-column: 1/-1; width: 100%; margin-top: 10px; font-size: 12px; }
 .dwSkillIcon { display: block; width: 100%; height: auto; aspect-ratio: 1; max-width: 90px; object-fit: contain; margin: 0 auto 6px; pointer-events: none; }
+.dwFramedSkillIcon { position: relative; overflow: hidden; flex-shrink: 0; background: #10171c; }
 .dwConfirmDialog h3[data-skill-id], .heroSkillPanel h3[data-skill-id], .dwOnline h2[data-skill-id] { display: flex; align-items: center; gap: 12px; }
 .dwConfirmDialog h3 > .dwSkillIcon, .heroSkillPanel h3 > .dwSkillIcon, .dwOnline h2 > .dwSkillIcon { width: 56px; flex: 0 0 56px; margin: 0; }
 .dwUI.dwOnline .onlineTeamInfo > div { flex: 1; min-width: 0; }

@@ -2,7 +2,7 @@
   "style": "DW-STYLE-01",
   "heroId": "HERO_INF_KAZU",
   "status": "INTEGRATED",
-  "note": "Standalone transparent edits of the archived concept sheet. PNG masters preserved; WebP runtime copies preserve alpha. Presentation only.",
+  "note": "Active UI shows the original concept frames and colored backgrounds through atlas viewports. Earlier transparent derivatives remain archived. Gameplay unchanged.",
   "entries": [
     {
       "skillId": "SKILL_HERO_KAZU_S1",
@@ -15,7 +15,13 @@
       "clearPixelFraction": 0.4033955775330744,
       "pngSha256": "26ca4d42cd31c725afaf807936b579f362bdf718717b164e0e764f747d3400a0",
       "sha256": "fdac52bacb8af40e4c0ed0c2088ce2ce5078e6f0bbc938406cf94d621867380f",
-      "bytes": 499980
+      "bytes": 499980,
+      "frame": [
+        30,
+        270,
+        485,
+        478
+      ]
     },
     {
       "skillId": "SKILL_HERO_KAZU_S2",
@@ -28,7 +34,13 @@
       "clearPixelFraction": 0.35585711051588664,
       "pngSha256": "7f789dd6bea7d4dff9b41661f7ae05b30f5cab9db17f9ced69b9f89ca3c0f350",
       "sha256": "76f0c9c298e3f55886ec2a671b70b1c5880066a3b0533aa4a972af9694ce970b",
-      "bytes": 469180
+      "bytes": 469180,
+      "frame": [
+        534,
+        270,
+        477,
+        478
+      ]
     },
     {
       "skillId": "SKILL_HERO_KAZU_S3",
@@ -41,7 +53,24 @@
       "clearPixelFraction": 0.42510092107170927,
       "pngSha256": "1fe1f32c726ea90071c403335a7cb7113c72e31587e3501e1fa2ef24725b6a60",
       "sha256": "d23a861c5010ef24709fbdd6a88deb9853f4aebd129a940b617f18b24bf5456f",
-      "bytes": 414380
+      "bytes": 414380,
+      "frame": [
+        1027,
+        270,
+        482,
+        478
+      ]
     }
-  ]
+  ],
+  "presentation": "ORIGINAL_FRAMED_ATLAS",
+  "framedAtlas": {
+    "png": "assets/skills/kazu-dw-style-01/framed-sheet.png",
+    "asset": "assets/skills/kazu-dw-style-01/framed-sheet.webp",
+    "width": 1536,
+    "height": 1024,
+    "pngSha256": "febbcd302f8187a3e8356f75d5f026b3bdd5d294f4ee994f13fc07006af76c0b",
+    "sha256": "5ef59928935fcd89cf4dcee85659d596dec7e28d115a4579649e44d9e03a873c",
+    "bytes": 2064594,
+    "decodedPixelsIdentical": true
+  }
 }

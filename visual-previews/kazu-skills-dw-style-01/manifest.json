@@ -12,6 +12,6 @@
     "Khóa Xích",
     "Xích Quỷ Kazu"
   ],
-  "note": "Original concept sheet unchanged; transparent standalone derivatives integrated in v1.73.1. See runtimeManifest.",
+  "note": "Original concept sheet unchanged; v1.73.2 displays its framed squares with colored backgrounds. Earlier transparent derivatives archived.",
   "runtimeManifest": "../../assets/skills/kazu-dw-style-01/manifest.json"
 }

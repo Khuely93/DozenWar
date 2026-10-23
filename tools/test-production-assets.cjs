@@ -76,10 +76,20 @@ assert.deepEqual(fs.readFileSync(path.join(root,'dist',map.asset)),mapBytes,'App
 assert(read('dist/index.html').includes('data-duel-src="./'+map.asset+'"'));
 assert(read('dist/index.html').includes('data-backdrop-src="./'+map.asset+'"'));
 const skillArt = JSON.parse(read('assets/skills/kazu-dw-style-01/manifest.json'));
+assert.equal(skillArt.presentation, 'ORIGINAL_FRAMED_ATLAS');
+const atlas = skillArt.framedAtlas;
+assert.equal(atlas.pngSha256, 'febbcd302f8187a3e8356f75d5f026b3bdd5d294f4ee994f13fc07006af76c0b', 'Original framed concept remains unchanged');
+for (const [file,digest] of [[atlas.asset,atlas.sha256],[atlas.png,atlas.pngSha256]]) {
+  const bytes = fs.readFileSync(path.join(root,file));
+  assert.equal(require('node:crypto').createHash('sha256').update(bytes).digest('hex'),digest);
+  assert.deepEqual(fs.readFileSync(path.join(root,'dist',file)),bytes);
+}
 assert.deepEqual(skillArt.entries.map(entry => entry.skillId), ['SKILL_HERO_KAZU_S1','SKILL_HERO_KAZU_S2','SKILL_HERO_KAZU_S3']);
 for (const entry of skillArt.entries) {
   assert(content.heroRegistry.get('HERO_INF_KAZU').skillIds.includes(entry.skillId));
-  assert.equal(entry.transparent, true);
+  const [x,y,w,h] = entry.frame;
+  assert(x >= 0 && y >= 0 && w > 0 && h > 0 && x+w <= atlas.width && y+h <= atlas.height, 'Framed viewport stays inside atlas');
+  assert.equal(entry.transparent, true, 'Earlier transparent masters remain archived');
   for (const [file,digest] of [[entry.asset,entry.sha256],[entry.png,entry.pngSha256]]) {
     const bytes = fs.readFileSync(path.join(root,file));
     assert.equal(require('node:crypto').createHash('sha256').update(bytes).digest('hex'),digest);

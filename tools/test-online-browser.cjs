@@ -77,9 +77,9 @@ const { chromium } = require("playwright"),
     for (let i = 0; i < 2; i++) {
       const side = game().selecting;
       await pages[side - 1].locator(".heroes button").filter({ hasText: /^Kazu$/ }).click();
-      const icons = pages[side - 1].locator('.dwOnlineTeamSkill > img.dwSkillIcon');
+      const icons = pages[side - 1].locator('.dwOnlineTeamSkill > .dwSkillIcon > img');
       await icons.last().waitFor();
-      assert.equal(await icons.count(), 3, 'Online Kazu uses the same transparent skill icons');
+      assert.equal(await icons.count(), 3, 'Online Kazu uses the same framed skill icons');
       await icons.evaluateAll(images => Promise.all(images.map(image => image.decode())));
       await pages[side - 1].screenshot({ path: path.join(screens, 'kazu-team-' + side + '.png'), fullPage: true });
       await pages[side - 1]
@@ -121,7 +121,7 @@ const { chromium } = require("playwright"),
     const defenderHero = game().units.find((u) => u.hero && u.side !== side),
       hp = defenderHero.hp;
     const skillButton = attacker.getByRole("button", { name: "Khóa Xích", exact: true });
-    await skillButton.locator('img.dwSkillIcon').waitFor();
+    await skillButton.locator('.dwSkillIcon > img').waitFor();
     assert.equal(await skillButton.getAttribute('data-skill-id'), 'SKILL_HERO_KAZU_S2');
     await skillButton.locator('img').evaluate(image => image.decode());
     await attacker.screenshot({ path: path.join(screens, 'kazu-skills.png') });
