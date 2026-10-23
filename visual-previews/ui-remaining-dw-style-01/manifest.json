@@ -1,6 +1,6 @@
 {
   "style": "DW-STYLE-01",
-  "status": "draft-awaiting-user-approval",
+  "status": "approved-implemented",
   "kind": "visual-concept-boards",
   "runtime_changed": false,
   "note": "Image dimensions are exported canvas sizes, not measurements of UI components. Gameplay values and artwork are illustrative; implementation must use the existing approved game data and assets.",
@@ -113,5 +113,6 @@
       "sha256": "e183d2c2eb440f67829d4819e9bca6211c367f6b081ccc2a0bcd8197996d3365",
       "source_generated_file": "exec-03e47bb5-0ead-4113-90f2-265f71de705e.png"
     }
-  ]
+  ],
+  "implemented_version": "1.72.0"
 }

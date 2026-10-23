@@ -35,9 +35,9 @@ for (const f of jsFiles) {
 const html = read('index.html');
 const scriptRefs = [...html.matchAll(/<script\s+defer\s+src="\.\/(.*?)"><\/script>/g)].map(m => m[1].split('?')[0]);
 check(JSON.stringify(scriptRefs) === JSON.stringify(manifest.runtimeOrder), 'index classic-script order matches runtimeOrder');
-const bannerVersion = html.match(/LATEST PLAYTEST v(\d+\.\d+\.\d+)/)?.[1];
-check(bannerVersion === manifest.version, 'banner version matches project manifest');
-check(/HERO \/ SKILL CONTENT READINESS/.test(html), 'Hero / Skill Content Readiness banner present');
+const buildVersion = html.match(/data-build-version="(\d+\.\d+\.\d+)"/)?.[1];
+check(buildVersion === manifest.version, 'document build version matches project manifest');
+check(html.includes('assets/ui/dw-style-01/theme.css'), 'DW-STYLE-01 presentation theme present');
 
 const allRuntime = (manifest.runtimeOrder || []).map(read).join('');
 const locked = [

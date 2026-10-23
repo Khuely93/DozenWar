@@ -39,6 +39,8 @@ jobs:
         run: npm run test:server
       - name: Install test browser
         run: npx playwright install --with-deps chromium
+      - name: Desktop and mobile UI states and interactions
+        run: npm run test:ui-browser
       - name: Two-player browser flow and server restart
         run: npm run test:online-browser
       - name: Delays, lost acknowledgements, disconnects and reloads
@@ -56,6 +58,8 @@ jobs:
           if-no-files-found: ignore
           path: |
             work/online-browser/*.png
+            work/dw-ui/*.png
+            work/dw-ui/*report.json
             work/online-network/*.png
             work/online-network/report.json
             work/online-load/ci.json

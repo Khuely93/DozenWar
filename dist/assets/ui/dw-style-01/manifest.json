@@ -1,0 +1,37 @@
+{
+  "style": "DW-STYLE-01",
+  "status": "APPROVED_FOR_GAME",
+  "usage": "Resizable presentation surfaces. Labels and controls remain HTML; gameplay data is unchanged.",
+  "assets": [
+    {
+      "name": "panel",
+      "file": "panel.webp",
+      "width": 1254,
+      "height": 1254,
+      "alpha": true,
+      "bytes": 221030,
+      "sha256": "1fe3d2ab266f4e7d391445904391c647dc99a4fc0b5bbcfcfc28fde598e289ff",
+      "generatedSource": "exec-59a83cbc-9c1d-4e05-98dd-eb5e3b7c271d.png"
+    },
+    {
+      "name": "button",
+      "file": "button.webp",
+      "width": 2172,
+      "height": 724,
+      "alpha": true,
+      "bytes": 248670,
+      "sha256": "cbff2c3ba33af9e5549470f855137d982379e64bb1c3ba9260488951ad9ef938",
+      "generatedSource": "exec-6da9c644-ef39-4fb8-bb87-80919e0b1c30.png"
+    },
+    {
+      "name": "fortress",
+      "file": "fortress.webp",
+      "width": 1983,
+      "height": 793,
+      "alpha": false,
+      "bytes": 96160,
+      "sha256": "622cf1069a1d470546d2f5d9b31c2e4b56ba5503cc49b88407dd216d217831a8",
+      "generatedSource": "exec-a80959b7-f6fc-4a01-b38f-f27a5001b5ff.png"
+    }
+  ]
+}

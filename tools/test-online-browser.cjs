@@ -196,9 +196,27 @@ const { chromium } = require("playwright"),
       fullPage: true,
     });
     await checkTeamCamera();
+    await defender.setViewportSize({ width: 390, height: 844 });
+    for (const label of ["HERO", "KỸ NĂNG", "TRANG BỊ"]) {
+      await defender.getByRole("tab", { name: label, exact: true }).click();
+      assert.equal(await defender.getByRole("tab", { name: label, exact: true }).getAttribute("aria-selected"), "true");
+    }
+    assert.equal(await defender.locator("#hand").isVisible(), true);
+    await defender.screenshot({ path: path.join(screens, "mobile-cards.png") });
+    const mobileLayout = await defender.evaluate(() => ({
+      overflow: document.documentElement.scrollWidth > innerWidth,
+      outside: [...document.querySelectorAll('body *')].map(node => ({ tag: node.tagName, id: node.id, className: node.getAttribute('class'), rect: node.getBoundingClientRect() })).filter(({rect}) => rect.width && (rect.left < -1 || rect.right > innerWidth + 1)).slice(0, 20).map(({tag,id,className,rect}) => ({tag,id,className,x:rect.x,width:rect.width}))
+    }));
+    assert.equal(mobileLayout.overflow, false, JSON.stringify(mobileLayout));
+    await attacker.locator("#leave").click();
+    await until(() => game().phase === "ended");
+    await defender.locator(".onlineResult .resultGrid").waitFor();
+    const resultBounds = await defender.locator("#setup").boundingBox();
+    assert(resultBounds.x >= 0 && resultBounds.y >= 0 && resultBounds.x + resultBounds.width <= 391 && resultBounds.y + resultBounds.height <= 845);
+    await defender.screenshot({ path: path.join(screens, "mobile-result.png") });
     assert.deepEqual(errors, []);
     console.log(
-      "Online browser: two independent seats, setup, skill attack, restart during defense, HP resolution, turn switch, reload/resume and move: PASS",
+      "Online browser: two independent seats, setup, skill attack, restart during defense, HP resolution, turn switch, reload/resume, move, mobile tabs and result dialog: PASS",
     );
   } finally {
     await browser.close();

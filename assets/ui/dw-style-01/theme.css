@@ -1,0 +1,508 @@
+/* DW-STYLE-01: shared presentation surfaces for offline and online. */
+:root {
+  --dw-gold: #dfbc77;
+  --dw-ivory: #f2ead8;
+  --dw-muted: #aebcc5;
+  --dw-panel: url('./panel.webp');
+  --dw-button: url('./button.webp');
+  --dw-frame: 22px;
+  --accent: #dfbc77;
+  --text: #f2ead8;
+  --muted: #aebcc5;
+  --line: #75613e;
+}
+body.dwUI {
+  color: var(--dw-ivory);
+  background: #0b141b url('./fortress.webp') center / cover fixed;
+  font: 14px/1.5 system-ui, 'Segoe UI', sans-serif;
+  accent-color: var(--dw-gold);
+}
+.dwUI *, .dwUI *::before, .dwUI *::after { box-sizing: border-box; }
+.dwUI [hidden] { display: none !important; }
+.dwUI :focus-visible { outline: 2px solid #ffe1a1; outline-offset: 3px; }
+.dwUI button, .dwUI input, .dwUI select { font: inherit; }
+.dwUI a { color: #bfdfef; }
+.dwUI h1, .dwUI h2, .dwUI .bigNotice, .dwUI .gameOverTitle {
+  font-family: Georgia, 'Times New Roman', serif;
+  color: var(--dw-gold);
+  text-shadow: 0 2px 3px #000;
+}
+.dwUI h3 { color: var(--dw-gold); font-size: 12px; letter-spacing: .065em; }
+.dwUI .muted, .dwUI p, .dwUI .playHubMeta, .dwUI .modeMeta { color: var(--dw-muted); }
+.dwUI .wrap { max-width: 1480px; padding: 22px 28px 32px; }
+.dwUI .top { min-height: 54px; margin-bottom: 18px; gap: 18px; }
+.dwUI .brand { font: 700 clamp(24px, 3vw, 36px)/1.1 Georgia, serif; letter-spacing: .015em; text-shadow: 0 3px 3px #000; }
+.dwUI .brand b { color: var(--dw-gold); }
+.dwUI .phase { font-size: 12px; letter-spacing: .06em; }
+.dwUI .grid { display: block; }
+.dwUI .grid > .side { display: none; }
+.dwUI .panel.main { border: 0; border-radius: 0; background: none; padding: 0; overflow: visible; }
+.dwUI :is(.modeWrap, .playHubWrap, .readyWrap, .diceWrap, .selectWrap, .dealWrap,
+ .modeCard, .playHubCard, .box, .readyCard, .dieBox, .hubPopup, .modeConfirmPopup,
+ .gameOverPopup, .combatEquipmentDialog, .trainingDialog, .heroSkillPanel,
+ .skillTargetPanel, .defensePopup, .attackPopup, .unitMenu, .deployMenu,
+ .directDefensePanel, .dwDeploymentTray, .dwGameMenu, .dwResultSummary,
+ .onlineTeamInfo, .onlinePlayerSlot, .dwOnline #lobby, .dwOnline #room,
+ .dwOnline #setup, .dwOnline #controls, .dwOnline .onlineHandPanel) {
+  border: 1px solid #75613e;
+  border-image-source: var(--dw-panel);
+  border-image-slice: 150 fill;
+  border-image-width: var(--dw-frame);
+  border-image-repeat: stretch;
+  border-radius: 0;
+  background: #0d1922;
+  box-shadow: 0 10px 26px #0005;
+  min-width: 0;
+}
+.dwUI :is(.modeWrap, .playHubWrap, .readyWrap, .diceWrap, .selectWrap, .dealWrap) {
+  --dw-frame: 32px;
+  padding: clamp(26px, 3vw, 48px);
+  gap: 24px;
+  min-height: min(690px, calc(100dvh - 125px));
+}
+.dwUI .modeWrap, .dwUI .playHubWrap { display: flex; flex-direction: column; justify-content: center; }
+.dwUI .bigNotice { font-size: clamp(25px, 3vw, 36px); line-height: 1.2; margin-bottom: 10px; }
+.dwUI .center > .muted { max-width: 760px; margin: auto; }
+.dwUI :is(.modeCard, .playHubCard, .readyCard, .dieBox, .box) { padding: 22px; }
+.dwUI .modeGrid { width: min(100%, 1040px); gap: 24px; margin: 16px auto 0; }
+.dwUI .modeCard { display: flex; flex-direction: column; gap: 16px; }
+.dwUI .modeCard h2 { color: var(--dw-ivory); font-size: 27px; }
+.dwUI .modeCard .row { gap: 12px; }
+.dwUI .modeMeta { display: grid; gap: 7px; line-height: 1.65; }
+.dwUI .modeMeta + a { margin-top: auto; }
+.dwUI .modeCard.locked { opacity: .68; filter: saturate(.3); }
+.dwUI .modeCard.locked h2::before { content: '◇ '; color: #8e979b; }
+.dwUI .dwModeActions { display: flex; flex-wrap: wrap; gap: 10px; }
+.dwUI :is(.modeBadge, .hubBadge, .modeContextPill, .pill, .roomPersistTag) {
+  border: 1px solid #8d7447; background: #0c1820; color: #dfc38a;
+  border-radius: 4px; padding: 5px 9px; font: 700 11px/1.3 system-ui;
+}
+.dwUI .modeBadge.live { color: #99dfc5; border-color: #438e7b; }
+.dwUI .playHubGrid { gap: 20px; width: 100%; margin: 12px 0 0; }
+.dwUI .playHubCard { display: flex; flex-direction: column; gap: 14px; }
+.dwUI .playHubCard::before { display: block; text-align: center; font: 50px/1 Georgia, serif; color: #c5a56a; padding: 8px 0; text-shadow: 0 3px #000; }
+.dwUI .playHubCard:nth-child(1)::before { content: '♜'; }
+.dwUI .playHubCard:nth-child(2)::before { content: '⚔'; }
+.dwUI .playHubCard:nth-child(3)::before { content: '♛'; }
+.dwUI .playHubCard h2 { font-size: 25px; color: var(--dw-ivory); }
+.dwUI .playHubMeta { min-height: 95px; line-height: 1.7; font-size: 13px; }
+.dwUI .playHubCard > .btn { margin-top: auto; }
+.dwUI .ratingBox { border-color: #6e5e43; background: #0a151d; border-radius: 3px; }
+.dwUI :is(.btn, .dwDockTab) {
+  position: relative; isolation: isolate; display: inline-flex; align-items: center; justify-content: center;
+  min-height: 44px; gap: 6px; padding: 11px 18px; margin: 0;
+  border: 0; border-radius: 3px; color: #f7efdf; background: #1a2a35;
+  font-size: 13px; font-weight: 800; line-height: 1.35; text-align: center;
+  text-shadow: 0 2px 2px #000; text-decoration: none; cursor: pointer;
+  transition: filter .15s, transform .12s;
+}
+.dwUI :is(.btn, .dwDockTab)::before {
+  content: ''; position: absolute; inset: -12px 0 -16px; z-index: -1; pointer-events: none;
+  background: var(--dw-button) center / 100% 100% no-repeat;
+  filter: grayscale(.9) brightness(.48);
+}
+.dwUI .btn.gold { background: #76511d; }
+.dwUI .btn.gold::before, .dwUI .dwDockTab[aria-selected='true']::before { filter: brightness(.82) saturate(.85); }
+.dwUI .btn.primary, .dwUI .btn.good { background: #163949; }
+.dwUI .btn.primary::before, .dwUI .btn.good::before { filter: grayscale(.35) sepia(.55) hue-rotate(173deg) saturate(2.7) brightness(.7); }
+.dwUI .btn.danger { background: #57232a; }
+.dwUI .btn.danger::before { filter: hue-rotate(320deg) saturate(1.4) brightness(.55); }
+.dwUI :is(.btn, .dwDockTab):not(:disabled):hover { filter: brightness(1.16); }
+.dwUI :is(.btn, .dwDockTab):not(:disabled):active { transform: translateY(1px); filter: brightness(.85); }
+.dwUI .btn:disabled { opacity: .6; cursor: not-allowed; background: #182129; }
+.dwUI .btn:disabled::before { filter: grayscale(1) brightness(.45); }
+.dwUI :is(.unitMenuClose, .deployMenuClose) { min-width: 36px; min-height: 36px; background: #1c2a33; border: 1px solid #8f7850; color: #f1dfb9; border-radius: 3px; }
+.dwUI :is(input, select) { min-height: 44px; padding: 10px 12px; border: 1px solid #887448; border-radius: 3px; color: var(--dw-ivory); background: #09151d; max-width: 100%; }
+.dwUI input:focus, .dwUI select:focus { border-color: #f0ca7b; }
+.dwUI input[aria-invalid='true'] { border-color: #e97771; }
+.dwUI :is(.hubOverlay, .modeConfirmOverlay, .gameOverOverlay) { background: #050b12c9; backdrop-filter: blur(5px); padding: 16px; z-index: 200; }
+.dwUI :is(.hubOverlay, .modeConfirmOverlay) { position: fixed; inset: 0; }
+.dwUI :is(.hubPopup, .modeConfirmPopup, .gameOverPopup) { padding: 30px; max-height: calc(100dvh - 32px); overflow-y: auto; }
+.dwUI .hubPopup { width: min(620px, 100%); }
+.dwUI .hubOption { padding: 15px; border-color: #5f6261; border-radius: 4px; background: #13242f; }
+.dwUI .hubOption:hover { border-color: var(--dw-gold); background: #1b303b; }
+.dwUI .readyTimer { color: var(--dw-gold); font: 700 64px/1 Georgia, serif; width: 112px; height: 112px; display: grid; place-items: center; border: 3px double #b99457; background: #0d1922; border-radius: 50%; }
+.dwUI .readyCard h3, .dwUI .dieBox h3 { color: #cce6f5; font-size: 17px; }
+.dwUI :is(.readyCard, .dieBox):last-child h3 { color: #eaa7a1; }
+.dwUI .die { color: #e7dbc0; text-shadow: 0 4px 3px #000; font-size: 100px; margin: 16px 0; }
+.dwUI .result { margin: 10px 0; }
+.dwUI .dwSetupSteps { display: flex; list-style: none; padding: 0; margin: 0 auto 20px; max-width: 700px; gap: 8px; justify-content: center; }
+.dwUI .dwSetupSteps li { flex: 1; display: flex; gap: 7px; align-items: center; justify-content: center; color: #889ca7; font-size: 12px; border-bottom: 2px solid #394951; padding: 8px 2px; }
+.dwUI .dwSetupSteps li[aria-current='step'] { color: #f1d08c; border-color: #dfb365; }
+.dwUI .dwSetupSteps .done { border-color: #639b8c; color: #acccc1; }
+.dwUI .teamCols { grid-template-columns: minmax(0, 1.45fr) minmax(0, .85fr) minmax(0, 1fr); gap: 18px; align-items: stretch; }
+.dwUI .teamCols > .box { padding: 20px; }
+.dwUI .heroList { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; }
+.dwUI .heroList .choice { padding: 7px 4px; border: 1px solid #5d6970; border-radius: 4px; background: #0b1b26; }
+.dwUI .heroList .choice .muted { display: none; }
+.dwUI .heroList .choice .sym { margin: 0 auto 5px; width: min(100%, 74px); aspect-ratio: 1; }
+.dwUI .heroList .choice.on { outline: 2px solid #e9bc61; outline-offset: 1px; background: #303428; box-shadow: 0 0 12px #c79a4333; }
+.dwUI .heroChoicePortrait { width: 100%; height: 100%; object-fit: cover; border-radius: 2px; }
+.dwUI .dwTeamHero img { width: min(100%, 150px); aspect-ratio: 1; object-fit: cover; border: 2px solid #ac884f; display: block; margin: 12px auto; }
+.dwUI .dwTeamHero h2 { margin: 8px 0; color: var(--dw-ivory); }
+.dwUI .dwTeamSkill { border-top: 1px solid #6f5b3a; padding: 9px 0; font-size: 12px; }
+.dwUI .dwTeamSkill span { color: #edc16a; margin-left: 6px; }
+.dwUI .troopList { grid-template-columns: 1fr; gap: 12px; }
+.dwUI .troopList .choice { display: grid; grid-template-columns: 52px 1fr; text-align: left; padding: 12px; border-color: #796540; border-radius: 3px; background: #0b1a24; }
+.dwUI .troopList .sym { grid-row: 1/4; display: grid; place-items: center; font-size: 30px; }
+.dwUI .countCtl { justify-content: flex-start; align-items: center; gap: 14px; }
+.dwUI .countCtl button { min-width: 36px; min-height: 36px; padding: 6px; }
+.dwUI .selectWrap > .box { width: 100%; padding: 18px 24px; }
+.dwUI #teamEquipmentHand { display: flex; gap: 14px; justify-content: center; overflow-x: auto; }
+.dwUI #teamEquipmentHand .card { flex: 0 0 90px; width: 90px; }
+.dwUI #confirmTeam { align-self: flex-end; margin-top: 10px; }
+.dwUI .resultGrid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+.dwUI .resultCard { border-radius: 4px; padding: 18px 12px; }
+.dwUI .dwResultPortrait { width: 76px; height: 76px; object-fit: cover; border: 1px solid #b6985b; margin: 0 auto 10px; display: block; }
+.dwUI .resultCard.win { background: #12382e; border-color: #4eac8a; }
+.dwUI .resultCard.lose { background: #321d24; border-color: #a45761; }
+.dwUI .gameOverPopup { width: min(600px, 100%); --dw-frame: 28px; }
+.dwUI .gameOverTitle { font-size: clamp(28px, 4vw, 38px); }
+.dwUI .gameOverTitle::before { content: '◇'; display: block; font-size: 38px; margin-bottom: 8px; }
+.dwUI .rematchMeta { background: #0c1922; border-color: #4c5354; border-radius: 3px; font-size: 12px; }
+.dwUI .rematchPlayer { border-color: #655c44; background: #0c1b25; border-radius: 3px; }
+.dwUI .rematchHint { line-height: 1.6; }
+.dwUI :is(.combatEquipmentDialog, .trainingDialog) { padding: 28px; max-width: calc(100vw - 24px); max-height: calc(100dvh - 24px); }
+.dwUI dialog::backdrop { background: #03090dc9; backdrop-filter: blur(4px); }
+.dwUI .combatEquipmentCards { gap: 16px; }
+.dwUI .combatEquipmentCards > .chosen { outline-color: #ffdf93; }
+.dwUI :is(.heroSkillPanel, .skillTargetPanel, .directDefensePanel, .defensePopup, .attackPopup, .deployMenu, .unitMenu) { padding: 20px; --dw-frame: 18px; }
+.dwUI .heroSkillPanel h3 { font-size: 16px; letter-spacing: 0; }
+.dwUI .heroTargetList { gap: 8px; }
+.dwUI .heroDefenseBar { gap: 10px; }
+.dwUI .directDefensePanel { bottom: 14px; width: min(610px, calc(100% - 28px)); }
+.dwUI .combatFlowStatus { top: 112px; border-radius: 3px; background: #0b1923f5; color: #e6d2a7; border-color: #a6874e; }
+.dwUI .directFlowWarning { border: 1px solid #c85d51; border-radius: 3px; color: #ffd0c5; background: #3b171df5; }
+.dwUI .trainingToolbar { border-radius: 0; background: #0b1923f5; border-color: #a68c54; padding: 8px 12px; }
+.dwUI .duelTimers { background: #0a1723f5; border: 3px double #b59450; border-radius: 3px; padding: 7px 18px; color: #f1d59b; box-shadow: 0 4px 12px #0009; }
+.dwUI .duelTimers .defenseClock { color: #9ddbdc; }
+.dwUI .duelMatchDetails { background: #0b1721f5; border: 1px solid #b49453; border-radius: 3px; }
+.dwUI .duelMatchDetails summary { min-height: 28px; display: list-item; }
+.dwUI .duelMatchDetails[open] { padding: 15px; box-shadow: 0 8px 26px #0009; }
+.dwUI .log { line-height: 1.65; }
+.dwUI .dwDockTabs { display: none; }
+.dwUI.dwMatchLayout { overflow: hidden; background: #0b1821; }
+.dwUI.dwMatchLayout .wrap { max-width: none; padding: 0; height: 100dvh; }
+.dwUI.dwMatchLayout .top, .dwUI.dwMatchLayout .dwSetupSteps { display: none; }
+.dwUI.dwMatchLayout .grid, .dwUI.dwMatchLayout .main { height: 100%; }
+.dwUI.dwMatchLayout #gameScreen.active { height: 100%; display: grid; grid-template-rows: 64px minmax(0, 1fr) var(--duel-dock-height); }
+.dwUI.dwMatchLayout .statusLine { align-items: center; flex-wrap: nowrap; padding: 8px 16px; background: #0c1b26; border-bottom: 1px solid #9e7f46; }
+.dwUI .statusLine > div:first-child { min-width: 0; }
+.dwUI .statusLine > .row { flex-wrap: nowrap; flex-shrink: 0; }
+.dwUI #gameTitle { color: #ecd29b; font-size: 14px; }
+.dwUI #gameHint { font-size: 12px; color: #a8bbc5; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.dwUI .duelControlDock { gap: 14px; padding: 12px 14px; background: #0c1a24; border-top: 1px solid #b08c4c; }
+.dwUI .duelControlDock > .box { padding: 19px; --dw-frame: 16px; overflow: hidden; }
+.dwUI .dockHero { grid-template-columns: 82px minmax(0, 1fr); gap: 8px 12px; }
+.dwUI .dockHero .actions { gap: 8px; }
+.dwUI .dockHero .btn { padding: 9px 12px; font-size: 12px; }
+.dwUI .dockPortrait { border-radius: 2px; min-height: 0; border: 1px solid #ae8d4f; }
+.dwUI .dockSkills .skill { border-radius: 3px; border: 1px solid #ac8a4d; background: #122532; padding: 12px 8px; display: flex; flex-direction: column; gap: 8px; }
+.dwUI .dockSkills .skill::before { display: none; }
+.dwUI .dockSkills .skill:disabled { opacity: .5; background: #101a22; border-color: #586168; }
+.dwUI .dockSkills .skill strong { font-size: 15px; }
+.dwUI .dockCards .handBar { gap: 9px; padding-bottom: 4px; }
+.dwUI .dockCards .card:has(.equipmentFullCard:not([hidden])) { max-width: 120px; }
+.dwUI .dwMatchMenu { position: relative; }
+.dwUI .dwMatchMenu > summary { list-style: none; min-width: 44px; padding: 9px; font-size: 22px; }
+.dwUI .dwMatchMenu > summary::-webkit-details-marker { display: none; }
+.dwUI .dwGameMenu { position: absolute; right: 0; top: calc(100% + 8px); z-index: 180; width: 240px; padding: 20px; display: grid; gap: 10px; }
+.dwUI .dwGameMenu small { color: #a6b6bf; text-align: center; }
+.dwUI .dwDeploymentTray { position: absolute; z-index: 6; top: 14px; right: 14px; width: 210px; max-height: calc(100% - 28px); overflow-y: auto; padding: 20px; }
+.dwUI .dwDeploymentTray h3 { margin: 0 0 12px; }
+.dwUI .dwDeployUnits { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+.dwUI .dwDeployUnit { text-align: center; font-size: 11px; color: #dce1dd; padding: 6px; background: #0d1d28; border: 1px solid #625d48; border-radius: 2px; }
+.dwUI .dwDeployUnit img { width: 48px; height: 48px; object-fit: contain; display: block; margin: auto auto 4px; }
+.dwUI .dwDeployUnit.placed { opacity: .5; }
+.dwUI .dwDeployCount { color: #e4c788; font-size: 13px; margin: 8px 0; }
+.dwUI .dwDeploymentTray p { font-size: 11px; margin: 10px 0 0; }
+.dwUI[data-ui-phase='deploy'] .duelControlDock { visibility: hidden; }
+.dwUI[data-ui-phase='deploy'] #gameScreen.active { grid-template-rows: 64px minmax(0, 1fr) 0; }
+.dwUI .dwMatchMenu .btn { width: 100%; }
+
+/* Online uses the same surfaces, while commands still come from the server. */
+.dwUI.dwOnline header { background: #091620e8; border-bottom: 1px solid #8e7343; padding: 14px 28px; gap: 20px; }
+.dwUI.dwOnline header a { font-family: Georgia, serif; }
+.dwUI.dwOnline #connection { font-size: 12px; color: #b1d3c8; border: 1px solid #3c796c; padding: 6px 10px; border-radius: 3px; }
+.dwUI.dwOnline main { max-width: 1480px; padding: 24px; }
+.dwUI.dwOnline section { background: transparent; border: 0; border-radius: 0; }
+.dwUI.dwOnline #lobby { max-width: 700px; padding: 40px; margin: 8vh auto; --dw-frame: 30px; }
+.dwUI.dwOnline #lobby h1 { font-size: 32px; margin-bottom: 25px; }
+.dwUI.dwOnline #lobby label { display: block; margin: 18px 0 10px; color: #ccb990; }
+.dwUI.dwOnline #lobby input { display: block; width: 100%; max-width: none; margin-top: 6px; }
+.dwUI.dwOnline #lobby button { min-width: 155px; }
+.dwUI.dwOnline #lobby p { margin-top: 28px; font-size: 13px; }
+.dwUI.dwOnline #room { padding: 24px; --dw-frame: 26px; }
+.dwUI.dwOnline .roomHeader { padding-bottom: 15px; gap: 12px; }
+.dwUI.dwOnline #clock { padding: 7px 12px; border: 1px solid #a8864b; background: #091923; border-radius: 3px; color: #f0d394; white-space: nowrap; }
+.dwUI.dwOnline #players { font-size: 13px; color: #bcc7cc; }
+.dwUI.dwOnline #setup { margin: 12px 0 18px; padding: 24px; }
+.dwUI.dwOnline #setup h2 { font-size: 25px; }
+.dwUI.dwOnline .arena { border-radius: 0; border: 1px solid #9c7f4b; }
+.dwUI.dwOnline .heroes { grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 12px; margin-bottom: 20px; }
+.dwUI.dwOnline .heroes button { display: flex; flex-direction: column; padding: 10px; border: 1px solid #786745; background: #0b1b26; border-radius: 3px; color: #f0e6d2; gap: 8px; }
+.dwUI.dwOnline .heroes button::before { display: none; }
+.dwUI.dwOnline .heroes button.selected { outline: 2px solid #edc574; background: #333629; }
+.dwUI.dwOnline .heroes img { width: 84px; aspect-ratio: 1; border-radius: 2px; }
+.dwUI.dwOnline .onlineTeamInfo { display: flex; gap: 15px; padding: 18px; margin: 12px 0; align-items: center; }
+.dwUI.dwOnline .onlineTeamInfo img { width: 76px; height: 76px; object-fit: contain; border: 1px solid #a48a52; }
+.dwUI.dwOnline .onlineTeamInfo h3 { margin: 0 0 4px; font-size: 19px; }
+.dwUI.dwOnline .onlineTeamInfo p { margin: 0; font-size: 12px; }
+.dwUI.dwOnline .onlineTroopCounts { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 15px; }
+.dwUI.dwOnline .onlineTroopCounts label { flex: 1 1 150px; margin: 0; }
+.dwUI.dwOnline .onlineTroopCounts input { width: 100%; }
+.dwUI.dwOnline .onlinePlayerSlots { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 18px 0; }
+.dwUI.dwOnline .onlinePlayerSlot { padding: 18px; border-color: #4e97be; }
+.dwUI.dwOnline .onlinePlayerSlot:nth-child(2) { border-color: #b15a5c; }
+.dwUI.dwOnline .onlinePlayerSlot strong, .dwUI.dwOnline .onlinePlayerSlot small { display: block; }
+.dwUI.dwOnline .onlinePlayerSlot small { color: #bccec9; margin-top: 6px; }
+.dwUI.dwOnline #controls { padding: 24px; margin: 15px 0; }
+.dwUI.dwOnline #controls > .btn { margin: 4px 7px 4px 0; }
+.dwUI.dwOnline .onlineHandPanel { padding: 22px; margin: 0; }
+.dwUI.dwOnline .hand { padding: 8px 2px; gap: 14px; }
+.dwUI.dwOnline .hand figcaption { color: #bdc6c9; line-height: 1.4; }
+.dwUI.dwOnline .onlineEvents { background: #0b1921eb; border: 1px solid #826d45; border-radius: 3px; margin-top: 14px; }
+.dwUI.dwOnline #notice { color: #f0cb95; background: #392b18f5; border: 1px solid #987742; border-radius: 3px; }
+.dwUI.dwOnline .onlineResult { padding: 15px; text-align: center; }
+.dwUI.dwOnline .onlineResult h2 { font-size: 36px; }
+.dwUI.dwOnline .onlineResult .resultGrid { margin: 18px auto; max-width: 600px; }
+.dwUI.dwOnline .onlineDock { display: grid; grid-template-columns: minmax(0, .85fr) minmax(0, 1.2fr) minmax(0, 1.4fr); gap: 14px; margin-top: 14px; }
+.dwUI.dwOnline .onlineDock, .dwUI.dwOnline .roomHeader, .dwUI.dwOnline .onlineHandPanel { min-width: 0; }
+.dwUI.dwOnline .hand { max-width: 100%; }
+.dwUI.dwOnlineBattle #room { grid-template-columns: minmax(0, 1fr); }
+.dwUI.dwOnlineBattle #room > * { min-width: 0; }
+.dwUI.dwOnline .onlineActorPanel { padding: 22px; border: 1px solid #75613e; border-image: var(--dw-panel) 150 fill / 19px / 0 stretch; background: #0d1922; }
+.dwUI.dwOnline .onlineActorPanel h3 { margin: 0 0 12px; }
+.dwUI.dwOnline .onlineActorPanel .row { margin-top: 12px; }
+.dwUI.dwOnline .onlineActorPanel .btn { font-size: 12px; padding: 9px 12px; }
+.dwUI.dwOnline .onlineActorIdentity { display: flex; align-items: center; gap: 12px; }
+.dwUI.dwOnline .onlineActorIdentity img { width: 64px; height: 64px; object-fit: cover; border: 1px solid #a58a50; }
+.dwUI.dwOnline .onlineActorIdentity p { margin: 4px 0; font-size: 12px; }
+.dwUI.dwOnline .onlineDock #controls { margin: 0; }
+.dwUI.dwOnline #room:not([data-phase='battle']) .onlineActorPanel { display: none; }
+.dwUI.dwOnline #room:not([data-phase='battle']) .onlineDock { display: block; }
+.dwUI.dwOnline #room[data-phase='team'] .arena { display: none; }
+.dwUI.dwOnline #room[data-phase='ready'] .arena { max-width: 500px; margin: 0 auto 20px; }
+.dwUI.dwOnline #room[data-phase='ready'] .arena svg { min-height: 0; max-height: 32dvh; }
+.dwUI.dwOnline #room[data-phase='ended'] #setup { position: fixed; left: 50%; top: 50%; transform: translate(-50%, -50%); width: min(650px, calc(100vw - 24px)); max-height: calc(100dvh - 32px); overflow-y: auto; z-index: 100; margin: 0; box-shadow: 0 0 0 100vmax #03090dbd; }
+.dwUI.dwOnline #room[data-phase='ended'] #setup .btn { margin: 8px; }
+@media (min-width: 900px) {
+  .dwUI.dwOnlineBattle { height: 100dvh; overflow: hidden; }
+  .dwUI.dwOnlineBattle header { height: 58px; padding-block: 9px; }
+  .dwUI.dwOnlineBattle main { max-width: none; padding: 0; height: calc(100dvh - 58px); }
+  .dwUI.dwOnlineBattle #room { padding: 0; border: 0; border-image: none; margin: 0; height: 100%; position: relative; display: grid; grid-template-rows: 58px minmax(0, 1fr) 250px; }
+  .dwUI.dwOnlineBattle .roomHeader { padding: 6px 16px; background: #0b1923; border-bottom: 1px solid #9b7b42; gap: 10px; }
+  .dwUI.dwOnlineBattle #setup { display: none; }
+  .dwUI.dwOnlineBattle .arena { border: 0; min-height: 0; }
+  .dwUI.dwOnlineBattle .arena > svg { height: 100%; max-height: none; }
+  .dwUI.dwOnlineBattle .onlineDock { margin: 0; padding: 12px; min-height: 0; background: #0c1922; border-top: 1px solid #a78343; }
+  .dwUI.dwOnlineBattle .onlineDock > section { min-height: 0; overflow: auto; margin: 0; padding: 18px; }
+  .dwUI.dwOnlineBattle .onlineDock h2 { font-size: 15px; }
+  .dwUI.dwOnlineBattle .onlineDock #controls > .btn { font-size: 12px; min-height: 38px; padding: 8px 12px; }
+  .dwUI.dwOnlineBattle .onlineEvents { position: absolute; bottom: 260px; left: 12px; z-index: 5; max-width: min(420px, 90%); margin: 0; background: #0b1923ef; }
+  .dwUI.dwOnlineBattle .hand img { width: 88px; max-height: 135px; }
+  .dwUI.dwOnlineBattle .hand figure { min-width: 88px; }
+  .dwUI.dwOnlineBattle #notice:not(:empty) { position: fixed; left: 50%; top: 120px; transform: translateX(-50%); z-index: 90; max-width: 90%; }
+}
+
+@media (min-width: 900px) and (max-height: 850px) {
+  .dwUI.dwMatchLayout #gameScreen.active { grid-template-rows: 58px minmax(0, 1fr) var(--duel-dock-height); }
+  .dwUI .duelControlDock { padding: 8px 10px; gap: 10px; }
+  .dwUI .duelControlDock > .box { padding: 15px; }
+  .dwUI .dockHero { grid-template-columns: 56px minmax(0, 1fr); gap: 5px 9px; }
+  .dwUI .dockHero .btn { font-size: 11px; padding: 7px 9px; min-height: 36px; }
+  .dwUI .dockSkills .skill strong { font-size: 13px; }
+  .dwUI .dockSkills .skill { gap: 5px; }
+  .dwUI .dwDeploymentTray { width: 185px; padding: 16px; }
+  .dwUI[data-ui-phase='deploy'] #gameScreen.active { grid-template-rows: 58px minmax(0, 1fr) 0; }
+}
+@media (max-width: 1150px) and (min-width: 900px) {
+  .dwUI .teamCols { grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); }
+  .dwUI .dwTeamHero { display: none; }
+}
+@media (max-width: 899px) {
+  .dwUI .wrap { padding: 12px 10px 20px; }
+  .dwUI .top { gap: 10px; margin: 3px 6px 14px; min-height: 42px; }
+  .dwUI .brand { font-size: 25px; }
+  .dwUI .phase { font-size: 10px; }
+  .dwUI :is(.modeWrap, .playHubWrap, .readyWrap, .diceWrap, .selectWrap, .dealWrap) { padding: 25px 20px; --dw-frame: 22px; min-height: calc(100dvh - 100px); gap: 20px; }
+  .dwUI .modeGrid, .dwUI .playHubGrid { grid-template-columns: 1fr; gap: 18px; }
+  .dwUI .modeCard, .dwUI .playHubCard { padding: 22px; gap: 12px; }
+  .dwUI .modeCard h2, .dwUI .playHubCard h2 { font-size: 24px; }
+  .dwUI .modeMeta { font-size: 13px; gap: 4px; }
+  .dwUI .playHubCard::before { font-size: 34px; padding: 0; }
+  .dwUI .playHubMeta { min-height: 0; }
+  .dwUI .readyCards { grid-template-columns: 1fr 1fr; gap: 12px; }
+  .dwUI .readyCard { padding: 20px 12px; }
+  .dwUI .readyCard .btn { width: 100%; padding-inline: 8px; font-size: 12px; }
+  .dwUI .diceArea { grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); gap: 8px; }
+  .dwUI .dieBox { padding: 20px 10px; }
+  .dwUI .dieBox .btn { padding-inline: 7px; font-size: 11px; }
+  .dwUI .die { font-size: 66px; }
+  .dwUI .vs { display: block; font-size: 22px; }
+  .dwUI .dealHands { grid-template-columns: 1fr; }
+  .dwUI .hand { grid-template-columns: repeat(5, minmax(65px, 1fr)); overflow-x: auto; }
+  .dwUI .dealHands .box { min-width: 0; padding: 18px; }
+  .dwUI .teamCols { grid-template-columns: 1fr; gap: 14px; }
+  .dwUI .dwTeamHero { display: grid; grid-template-columns: 62px minmax(0, 1fr); gap: 4px 12px; align-items: center; }
+  .dwUI .dwTeamHero > h3 { display: none; }
+  .dwUI .dwTeamHero > img { grid-row: 1/3; margin: 0; width: 62px; }
+  .dwUI .dwTeamHero > h2 { font-size: 23px; margin: 0; }
+  .dwUI .dwTeamHero > p { margin: 0; font-size: 12px; }
+  .dwUI .dwTeamSkills { grid-column: 1/-1; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+  .dwUI .dwTeamSkills .dwTeamSkill { font-size: 10px; padding: 8px 2px 0; }
+  .dwUI .dwTeamSkills .dwTeamSkill span { display: block; margin: 4px 0 0; }
+  .dwUI .teamCols > .box { padding: 19px; }
+  .dwUI .heroList { grid-template-columns: repeat(3, minmax(0, 1fr)); max-height: 380px; overflow-y: auto; padding: 3px; }
+  .dwUI .heroList .choice .sym { max-width: 72px; }
+  .dwUI #teamEquipmentHand { justify-content: flex-start; gap: 8px; }
+  .dwUI #teamEquipmentHand .card { flex-basis: 65px; width: 65px; }
+  .dwUI .selectWrap > .box { padding: 18px; }
+  .dwUI #confirmTeam { position: sticky; bottom: 10px; align-self: stretch; z-index: 3; box-shadow: 0 5px 20px #000b; }
+  .dwUI .dwSetupSteps { gap: 5px; margin: 0 3px 14px; }
+  .dwUI .dwSetupSteps li { font-size: 10px; gap: 4px; flex-direction: column; padding: 5px 1px; }
+  .dwUI :is(.hubPopup, .modeConfirmPopup, .gameOverPopup, .combatEquipmentDialog) { padding: 24px; }
+  .dwUI .resultGrid { gap: 8px; }
+  .dwUI .resultOutcome { font-size: 16px; }
+  .dwUI .gameOverActions { grid-template-columns: 1fr 1fr; }
+  .dwUI.dwMatchLayout #gameScreen.active { grid-template-rows: 62px minmax(0, 1fr) auto 54px; }
+  .dwUI.dwMatchLayout .statusLine { padding: 6px 9px; gap: 6px; }
+  .dwUI #gameTitle { font-size: 11px; }
+  .dwUI #gameHint { font-size: 10px; max-width: 31vw; }
+  .dwUI .statusLine > .row { gap: 6px; }
+  .dwUI .statusLine > .row > .btn { padding: 8px 10px; font-size: 10px; min-height: 40px; }
+  .dwUI .statusLine #resetBtn { display: none; }
+  .dwUI .statusLine #undoBtn { font-size: 0; width: 38px; min-width: 38px; padding: 8px; }
+  .dwUI .statusLine #undoBtn::after { content: '↶'; font-size: 22px; }
+  .dwUI .dwMatchMenu > summary { min-width: 38px; min-height: 40px; font-size: 20px; padding: 7px; }
+  .dwUI.dwMatchLayout .duelMapStage { display: block; min-height: 140px; overflow: clip; }
+  .dwUI.dwMatchLayout .duelMapStage > .boardWrap { width: 100%; height: 100%; max-width: none; aspect-ratio: auto; margin: 0 !important; }
+  .dwUI.dwMatchLayout .duelControlDock { display: block; height: auto; min-height: 168px; max-height: 31dvh; padding: 8px; overflow: hidden; }
+  .dwUI.dwMatchLayout .duelControlDock > .box { min-height: 150px; max-height: calc(31dvh - 16px); overflow: auto; padding: 15px; }
+  .dwUI .duelControlDock[data-tab='hero'] > :not(.dockHero),
+  .dwUI .duelControlDock[data-tab='skills'] > :not(.dockSkills),
+  .dwUI .duelControlDock[data-tab='cards'] > :not(.dockCards) { display: none; }
+  .dwUI .dockHero { grid-template-columns: 76px minmax(0, 1fr); gap: 6px 12px; }
+  .dwUI .dockPortrait { width: 76px; }
+  .dwUI .dockHero #unitInfo { font-size: 12px; }
+  .dwUI .dockHero .actions { flex-wrap: nowrap; }
+  .dwUI .dockHero .btn { min-height: 40px; padding: 9px 12px; font-size: 11px; }
+  .dwUI .dockSkills .skills { min-height: 105px; }
+  .dwUI .dockSkills .skill { min-height: 100px; }
+  .dwUI .dockSkills .skill strong { font-size: 12px; }
+  .dwUI .dockSkillStars { font-size: 17px; }
+  .dwUI .dockCards .handBar { min-height: 130px; height: 145px; overflow-x: auto; }
+  .dwUI .dockCards .card:has(.equipmentFullCard:not([hidden])) { height: 130px; max-width: 100px; }
+  .dwUI .dwDockTabs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 4px; padding: 3px 6px max(4px, env(safe-area-inset-bottom)); background: #0b1923; border-top: 1px solid #927642; }
+  .dwUI .dwDockTab { min-height: 44px; padding: 8px; font-size: 11px; border: 1px solid #665a42; }
+  .dwUI .dwDockTab[aria-selected='true'] { color: #ffe5a4; }
+  .dwUI .heroSkillPanel { top: 60px; right: 8px; width: calc(100% - 16px); max-height: calc(100% - 72px); padding: 18px; }
+  .dwUI .heroSkillPanel p { font-size: 12px; margin: 8px 0; }
+  .dwUI .heroTargetList { max-height: 110px; }
+  .dwUI .heroSkillPanel .btn { padding: 9px 12px; font-size: 12px; }
+  .dwUI .heroDefenseBar { bottom: 6px; left: 6px; right: 6px; }
+  .dwUI .heroDefenseBar .btn { font-size: 11px; padding: 7px 10px; }
+  .dwUI .directDefensePanel { bottom: 6px; padding: 15px; max-height: 44%; overflow: auto; }
+  .dwUI .directDefensePanel p { font-size: 11px; }
+  .dwUI .combatFlowStatus { top: 106px; max-width: calc(100vw - 18px); font-size: 11px; padding: 5px 9px; }
+  .dwUI .duelTimers { top: 6px; padding: 4px 9px; font-size: 11px; }
+  .dwUI .duelMatchDetails { bottom: 6px; left: 6px; max-width: calc(100% - 12px); padding: 6px 8px; }
+  .dwUI .duelMatchDetails summary { font-size: 10px; min-height: 22px; }
+  .dwUI .dwDeploymentTray { position: relative; top: auto; right: auto; width: 100%; padding: 14px; max-height: 175px; }
+  .dwUI .dwDeployUnits { display: flex; overflow-x: auto; gap: 7px; }
+  .dwUI .dwDeployUnit { flex: 0 0 58px; padding: 4px; font-size: 10px; }
+  .dwUI .dwDeployUnit img { width: 36px; height: 36px; }
+  .dwUI .dwDeploymentTray h3 { margin-bottom: 6px; font-size: 11px; }
+  .dwUI .dwDeploymentTray p { display: none; }
+  .dwUI .dwDeployCount { margin: 4px 0; font-size: 11px; }
+  .dwUI[data-ui-phase='deploy'] #gameScreen.active { grid-template-rows: 62px minmax(0, 1fr) auto; }
+  .dwUI[data-ui-phase='deploy'] .duelControlDock, .dwUI[data-ui-phase='deploy'] .dwDockTabs { display: none; }
+  .dwUI .trainingToolbar { position: static; max-height: 110px; overflow-y: auto; padding: 6px; grid-row: 2; gap: 5px; }
+  .dwUI .trainingToolbar button { font-size: 10px; min-height: 36px; padding: 6px 8px; }
+  .dwUI.dwTrainingLayout #gameScreen.active { grid-template-rows: 54px auto minmax(0, 1fr) auto 54px; }
+  .dwUI .combatEquipmentCards > .card { width: calc(50% - 10px); min-height: 0; }
+  .dwUI .combatEquipmentActions { gap: 10px; }
+  .dwUI .combatEquipmentActions .btn { flex: 1; font-size: 12px; padding: 10px; }
+  .dwUI.dwOnline header { padding: 12px; gap: 8px 14px; }
+  .dwUI.dwOnline header a { font-size: 22px; }
+  .dwUI.dwOnline header > span { font-size: 10px; }
+  .dwUI.dwOnline #connection { font-size: 10px; margin: 0; }
+  .dwUI.dwOnline main { padding: 10px; }
+  .dwUI.dwOnline #lobby { margin: 4vh auto; padding: 28px; }
+  .dwUI.dwOnline #lobby h1 { font-size: 27px; }
+  .dwUI.dwOnline #room { padding: 15px; --dw-frame: 18px; }
+  .dwUI.dwOnline #setup { padding: 18px; }
+  .dwUI.dwOnline .roomHeader { gap: 8px; font-size: 11px; }
+  .dwUI.dwOnline #clock { margin-left: auto; font-size: 11px; padding: 5px 8px; }
+  .dwUI.dwOnline #players { flex-basis: 100%; font-size: 11px; }
+  .dwUI.dwOnline #sync, .dwUI.dwOnline #leave { font-size: 10px; padding: 7px 10px; min-height: 36px; }
+  .dwUI.dwOnline .heroes { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; max-height: 390px; overflow: auto; padding: 3px; }
+  .dwUI.dwOnline .heroes button { padding: 7px 4px; font-size: 12px; }
+  .dwUI.dwOnline .heroes img { width: 66px; }
+  .dwUI.dwOnline .onlineTroopCounts { gap: 8px; }
+  .dwUI.dwOnline .onlineTroopCounts label { flex-basis: 80px; font-size: 12px; }
+  .dwUI.dwOnline .onlinePlayerSlots { grid-template-columns: 1fr; gap: 10px; }
+  .dwUI.dwOnline .arena svg { min-height: 280px; max-height: 60dvh; }
+  .dwUI.dwOnline #controls { padding: 18px; max-height: 44dvh; overflow-y: auto; }
+  .dwUI.dwOnline #controls .btn { font-size: 11px; padding: 9px 11px; }
+  .dwUI.dwOnline .onlineHandPanel { padding: 18px; }
+  .dwUI.dwOnline .hand img { width: 92px; }
+  .dwUI.dwOnline .onlineResult h2 { font-size: 30px; }
+  .dwUI.dwOnline .onlineDock { display: block; }
+  .dwUI.dwOnline #onlineTabs { display: none; }
+  .dwUI.dwOnlineBattle { height: 100dvh; overflow: hidden; }
+  .dwUI.dwOnlineBattle header { height: 48px; flex-wrap: nowrap; padding: 8px 10px; }
+  .dwUI.dwOnlineBattle header > span { display: none; }
+  .dwUI.dwOnlineBattle header #connection { margin-left: auto; }
+  .dwUI.dwOnlineBattle main { padding: 0; height: calc(100dvh - 48px); }
+  .dwUI.dwOnlineBattle #room { padding: 0; border: 0; border-image: none; height: 100%; margin: 0; display: grid; grid-template-rows: auto minmax(0, 1fr) auto 54px; position: relative; }
+  .dwUI.dwOnlineBattle .roomHeader { padding: 6px 8px; gap: 5px; background: #0b1923; border-bottom: 1px solid #937241; }
+  .dwUI.dwOnlineBattle #players { display: none; }
+  .dwUI.dwOnlineBattle #roomLabel { font-size: 10px; }
+  .dwUI.dwOnlineBattle #clock { margin-left: auto; font-size: 10px; }
+  .dwUI.dwOnlineBattle #onlineTurnAction { margin-left: auto; }
+  .dwUI.dwOnlineBattle #onlineTurnAction .btn { min-height: 36px; padding: 7px 12px; font-size: 10px; }
+  .dwUI.dwOnlineBattle #setup { display: none; }
+  .dwUI.dwOnlineBattle .arena { min-height: 130px; border: 0; }
+  .dwUI.dwOnlineBattle .arena > svg { min-height: 0; max-height: none; height: 100%; }
+  .dwUI.dwOnlineBattle .onlineDock { margin: 0; padding: 7px; min-height: 170px; max-height: 31dvh; background: #0a1822; border-top: 1px solid #987844; }
+  .dwUI.dwOnlineBattle .onlineDock > section { min-height: 155px; max-height: calc(31dvh - 14px); overflow: auto; padding: 15px; margin: 0; }
+  .dwUI.dwOnlineBattle .onlineDock h2 { font-size: 14px; }
+  .dwUI.dwOnlineBattle #onlineTabs { display: grid; }
+  .dwUI.dwOnlineBattle .onlineDock[data-tab='hero'] > :not(.onlineActorPanel),
+  .dwUI.dwOnlineBattle .onlineDock[data-tab='skills'] > :not(#controls),
+  .dwUI.dwOnlineBattle .onlineDock[data-tab='cards'] > :not(.onlineHandPanel) { display: none; }
+  .dwUI.dwOnlineBattle .onlineEvents { position: absolute; left: 6px; bottom: calc(31dvh + 60px); max-width: calc(100% - 12px); margin: 0; padding: 5px 8px; z-index: 5; font-size: 10px; background: #0b1923f0; }
+  .dwUI.dwOnlineBattle #notice:not(:empty) { position: fixed; top: 135px; left: 8px; right: 8px; z-index: 90; font-size: 12px; }
+}
+@media (max-width: 380px) {
+  .dwUI .modeCard h2 { font-size: 20px; }
+  .dwUI .modeCard .row { flex-wrap: wrap; }
+  .dwUI .btn { font-size: 12px; padding-inline: 12px; }
+  .dwUI .heroList .choice .sym { max-width: 58px; }
+}
+@media (max-width: 899px) and (max-height: 500px) {
+  .dwUI.dwMatchLayout #gameScreen.active { grid-template-rows: 48px minmax(90px, 1fr) 110px 44px; }
+  .dwUI.dwMatchLayout .duelMapStage { min-height: 90px; }
+  .dwUI.dwMatchLayout .duelControlDock { min-height: 110px; max-height: 110px; padding: 4px; }
+  .dwUI.dwMatchLayout .duelControlDock > .box { min-height: 100px; max-height: 100px; padding: 10px 14px; }
+  .dwUI .dockHero { grid-template-columns: 48px minmax(0, 1fr); gap: 2px 10px; }
+  .dwUI .dockPortrait { width: 48px; }
+  .dwUI .dockHero h3, .dwUI .dockSkills > h3, .dwUI .dockCards > h3 { margin-bottom: 2px; font-size: 10px; }
+  .dwUI .dockHero .btn { min-height: 30px; padding: 5px 9px; }
+  .dwUI .dockHero #unitInfo { font-size: 10px; }
+  .dwUI .dockSkills .skills, .dwUI .dockSkills .skill { min-height: 66px; gap: 3px; padding: 4px; }
+  .dwUI .dockSkills .skill strong { font-size: 11px; }
+  .dwUI .dockCards .handBar { min-height: 66px; height: 68px; }
+  .dwUI .dockCards .card:has(.equipmentFullCard:not([hidden])) { height: 66px; }
+  .dwUI .dwDockTabs { padding-block: 2px; }
+  .dwUI .dwDockTab { min-height: 38px; padding: 4px; }
+  .dwUI .heroSkillPanel { top: 45px; max-height: calc(100% - 50px); }
+  .dwUI[data-ui-phase='deploy'] #gameScreen.active { grid-template-rows: 48px minmax(90px, 1fr) 98px; }
+  .dwUI .dwDeploymentTray { max-height: 98px; padding: 8px 14px; }
+  .dwUI .dwDeploymentTray h3 { display: none; }
+  .dwUI .dwDeployUnit img { width: 28px; height: 28px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .dwUI *, .dwUI *::before, .dwUI *::after { transition: none !important; animation-duration: .001ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; }
+}

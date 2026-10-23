@@ -4,14 +4,15 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>DozenWar · Online 1v1</title>
-    <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="./style.css?v=1.72.0" />
+    <link rel="stylesheet" href="../assets/ui/dw-style-01/theme.css?v=1.72.0" />
     <script defer src="./config.js"></script>
-    <script defer src="../assets/heroes-camera-06/catalog.js?v=1.71.1"></script>
-    <script defer src="../assets/troops-camera-team/catalog.js?v=1.71.1"></script>
-<script defer src="../assets/heroes-camera-06/renderer.js?v=1.71.1"></script>
-    <script defer src="./client.js?v=1.71.1"></script>
+    <script defer src="../assets/heroes-camera-06/catalog.js?v=1.72.0"></script>
+    <script defer src="../assets/troops-camera-team/catalog.js?v=1.72.0"></script>
+<script defer src="../assets/heroes-camera-06/renderer.js?v=1.72.0"></script>
+    <script defer src="./client.js?v=1.72.0"></script>
   </head>
-  <body>
+  <body class="dwUI dwOnline" data-build-version="1.72.0">
     <header>
       <a href="../">DOZEN WAR <b>II</b></a
       ><span>ONLINE · ĐỐI ĐẦU 1V1</span
@@ -27,14 +28,14 @@
             maxlength="32"
             autocomplete="nickname"
             value="Player" /></label
-        ><button id="createRoom">Tạo phòng</button
+        ><button class="btn gold" id="createRoom">Tạo phòng</button
         ><label
           >Mã phòng<input
             id="roomCode"
             maxlength="8"
             autocomplete="off"
             spellcheck="false" /></label
-        ><button id="joinRoom">Vào phòng</button>
+        ><button class="btn primary" id="joinRoom">Vào phòng</button>
         <p>
           Gửi mã phòng cho người chơi còn lại. Hai người dùng hai trình duyệt
           hoặc thiết bị riêng.
@@ -44,8 +45,9 @@
         <div class="roomHeader">
           <strong id="roomLabel"></strong><span id="players"></span
           ><output id="clock"></output
-          ><button id="sync">Kết nối lại / Đồng bộ</button
-          ><button id="leave">Rời phòng</button>
+          ><button class="btn" id="sync">Kết nối lại / Đồng bộ</button
+          ><button class="btn" id="leave">Rời phòng</button>
+          <div id="onlineTurnAction"></div>
         </div>
         <div id="setup"></div>
         <div class="arena">
@@ -56,13 +58,21 @@
             role="img"
           ></svg>
         </div>
+        <div id="onlineDock" class="onlineDock" data-tab="hero">
+        <section id="onlineActorInfo" class="onlineActorPanel" aria-label="Hero hoặc đơn vị đang chọn"></section>
         <section id="controls" aria-label="Hành động"></section>
-        <section>
+        <section id="onlineCardsPanel" class="onlineHandPanel">
           <h2>Trang bị của bạn</h2>
           <div id="hand" class="hand"></div>
           <p id="opponentHand"></p>
         </section>
-        <details>
+        </div>
+        <nav id="onlineTabs" class="dwDockTabs" aria-label="Điều khiển trong trận" role="tablist">
+          <button type="button" class="dwDockTab" data-online-tab="hero" role="tab" aria-controls="onlineActorInfo" aria-selected="true">HERO</button>
+          <button type="button" class="dwDockTab" data-online-tab="skills" role="tab" aria-controls="controls" aria-selected="false" tabindex="-1">KỸ NĂNG</button>
+          <button type="button" class="dwDockTab" data-online-tab="cards" role="tab" aria-controls="onlineCardsPanel" aria-selected="false" tabindex="-1">TRANG BỊ</button>
+        </nav>
+        <details class="onlineEvents">
           <summary>Diễn biến trận</summary>
           <ol id="events"></ol>
         </details>

@@ -35,6 +35,7 @@
     deploySlot = 0,
     teamHero = "HERO_INF_KAZU";
   let clockReceived = 0;
+  let presentationTab = "hero";
   const counts = { inf: 3, arch: 1, cav: 1 };
   try {
     ({ session, outbox, ticket } = JSON.parse(
@@ -56,7 +57,12 @@
     return n;
   }
   function btn(label, fn, disabled = false) {
-    const b = el("button", label);
+    const b = el("button", label, "btn");
+    if (/^(Sẵn sàng|Xác nhận|Kết thúc lượt|Đấu lại|Chọn tiếp)/i.test(label)) b.classList.add("gold");
+    if (/^(Di chuyển|Đỡ đòn)/i.test(label)) b.classList.add("primary");
+    if (/^(Đánh thường|Nhận đòn)/i.test(label)) b.classList.add("danger");
+    if (/^(Di chuyển|Đánh thường)/i.test(label)) b.dataset.uiAction = "unit";
+    if (label === "Kết thúc lượt") b.dataset.uiAction = "turn";
     b.type = "button";
     b.disabled = disabled;
     b.onclick = () => Promise.resolve(fn()).catch(showError);
@@ -91,6 +97,7 @@
     $("notice").textContent = text || "";
   }
   function showError(error) {
+    if (["INVALID_ROOM", "ROOM_NOT_FOUND", "ROOM_FULL"].includes(error.message)) $("roomCode").setAttribute("aria-invalid", "true");
     transientNotice = transient.has(error.message);
     notice(
       messages[error.message] || "Hành động chưa hợp lệ: " + error.message,
@@ -373,11 +380,20 @@
     const box = $("setup"),
       g = state.game;
     box.replaceChildren();
+    box.classList.toggle("onlineResult", g.phase === "ended");
     if (g.phase === "ready") {
       box.append(
         el("h2", "Phòng chờ"),
         el("p", "Mã phòng: " + state.code + " · Bạn là Player " + state.side),
       );
+      const slots = el("div", undefined, "onlinePlayerSlots");
+      for (const side of [1, 2]) {
+        const player = state.players.find((p) => p.side === side);
+        const slot = el("div", undefined, "onlinePlayerSlot");
+        slot.append(el("strong", "P" + side + " · " + (player?.name || "Đang chờ người chơi…")), el("small", g.ready[side - 1] ? "✓ SẴN SÀNG" : "ĐANG CHỜ"));
+        slots.append(slot);
+      }
+      box.append(slots);
       box.append(
         btn(
           g.ready[state.side - 1] ? "Đã sẵn sàng" : "Sẵn sàng",
@@ -418,6 +434,12 @@
         heroes.append(b);
       }
       box.append(heroes);
+      const chosen = catalog.heroes.find((hero) => hero.id === teamHero);
+      const info = el("div", undefined, "onlineTeamInfo");
+      const portrait = el("img"); portrait.src = asset(chosen.avatar); portrait.alt = chosen.name;
+      const copy = el("div"); copy.append(el("h3", chosen.name), el("p", chosen.skills.map((skill) => skill.name).join(" · ")));
+      info.append(portrait, copy); box.append(info);
+      const troopCounts = el("div", undefined, "onlineTroopCounts");
       for (const t of catalog.troops) {
         const wrap = el("label", t.name),
           input = el("input");
@@ -430,8 +452,9 @@
           render();
         };
         wrap.append(input);
-        box.append(wrap);
+        troopCounts.append(wrap);
       }
+      box.append(troopCounts, el("p", "Tổng lính: " + Object.values(counts).reduce((a, b) => a + b, 0) + "/5"));
       box.append(
         btn(
           "Xác nhận đội hình",
@@ -471,6 +494,7 @@
         btn("Xác nhận xếp quân", () => command({ type: "DEPLOY", units })),
       );
     } else if (g.phase === "ended") {
+      box.classList.add("onlineResult");
       const r = g.result,
         win =
           r.resultType === "DRAW" ? "Hòa" : "Player " + r.winnerSide + " thắng";
@@ -485,6 +509,18 @@
               : "Trận đã được server ghi nhận.",
         ),
       );
+      const result = el("div", undefined, "resultGrid");
+      for (const side of [1, 2]) {
+        const player = state.players.find((p) => p.side === side);
+        const outcome = r.resultType === "DRAW" ? "HÒA" : r.winnerSide === side ? "CHIẾN THẮNG" : "THUA CUỘC";
+        const card = el("div", undefined, "resultCard " + (r.resultType === "DRAW" ? "draw" : r.winnerSide === side ? "win" : "lose"));
+        const heroUnit = g.units.find((u) => u.hero && u.side === side);
+        const hero = heroUnit && catalog.heroes.find((h) => h.id === heroUnit.definitionId);
+        if (hero?.avatar) { const image = el("img", undefined, "dwResultPortrait"); image.src = asset(hero.avatar); image.alt = hero.name; card.append(image); }
+        card.append(el("div", player?.name || "Player " + side, "resultPlayer"), el("div", outcome, "resultOutcome"), el("small", g.rematch.includes(side) ? "✓ SẴN SÀNG CHƠI LẠI" : "ĐANG QUYẾT ĐỊNH"));
+        result.append(card);
+      }
+      box.append(result);
       box.append(
         btn(
           g.rematch.includes(state.side) ? "Đang chờ đấu lại" : "Đấu lại",
@@ -492,6 +528,7 @@
           g.rematch.includes(state.side),
         ),
       );
+      box.append(btn("Rời phòng", () => $("leave").click()));
     }
   }
   function renderDraft(box) {
@@ -928,13 +965,70 @@
       board.append(n);
     }
   }
+  function syncPresentationTabs() {
+    $("onlineDock").dataset.tab = presentationTab;
+    const mobile = innerWidth < 900;
+    for (const button of $("onlineTabs").querySelectorAll("button")) {
+      const selected = button.dataset.onlineTab === presentationTab;
+      button.setAttribute("aria-selected", String(selected));
+      button.tabIndex = selected ? 0 : -1;
+      const panel = $(button.getAttribute("aria-controls"));
+      panel.setAttribute("role", mobile ? "tabpanel" : "region");
+      if (mobile && state?.game.phase === "battle") panel.setAttribute("aria-hidden", String(!selected));
+      else panel.removeAttribute("aria-hidden");
+    }
+  }
+  function renderPresentation() {
+    const g = state?.game;
+    document.body.classList.toggle("dwOnlineBattle", g?.phase === "battle");
+    document.body.dataset.uiPhase = g?.phase || "lobby";
+    $("onlineActorInfo").replaceChildren();
+    $("onlineTurnAction").replaceChildren();
+    if (!g) return;
+    const actor = unit(actorId) || g.units.find((u) => u.hero && u.side === state.side);
+    const box = $("onlineActorInfo");
+    box.append(el("h3", "HERO / ĐƠN VỊ ĐANG CHỌN"));
+    if (actor) {
+      const h = catalog.heroes.find((entry) => entry.id === actor.definitionId);
+      const identity = el("div", undefined, "onlineActorIdentity");
+      if (h?.avatar) { const image = el("img"); image.src = asset(h.avatar); image.alt = h.name; identity.append(image); }
+      const copy = el("div"); copy.append(el("strong", unitName(actor.id)), el("p", "HP " + actor.hp + " · Phe " + actor.side));
+      identity.append(copy); box.append(identity);
+    } else box.append(el("p", "Chọn một đơn vị của bạn trên bàn cờ."));
+    const controls = $("controls");
+    for (const label of controls.querySelectorAll("label")) {
+      if (label.textContent.startsWith("Quân điều khiển")) box.append(label);
+    }
+    const actions = el("div", undefined, "row");
+    for (const button of controls.querySelectorAll('[data-ui-action="unit"]')) actions.append(button);
+    box.append(actions);
+    for (const button of controls.querySelectorAll('[data-ui-action="turn"]')) $("onlineTurnAction").append(button);
+    if (draft || g.pending || g.reaction || Object.hasOwn(g.options || {}, "post")) presentationTab = "skills";
+    syncPresentationTabs();
+  }
+  $("onlineTabs").onclick = (event) => {
+    const button = event.target.closest("[data-online-tab]");
+    if (!button) return;
+    presentationTab = button.dataset.onlineTab;
+    syncPresentationTabs();
+  };
+  $("onlineTabs").onkeydown = (event) => {
+    if (!["ArrowLeft", "ArrowRight", "Home", "End"].includes(event.key)) return;
+    const buttons = [...$("onlineTabs").querySelectorAll("button")], index = buttons.indexOf(document.activeElement);
+    if (index < 0) return;
+    event.preventDefault();
+    const next = event.key === "Home" ? 0 : event.key === "End" ? 2 : (index + (event.key === "ArrowRight" ? 1 : 2)) % 3;
+    buttons[next].click(); buttons[next].focus();
+  };
+  $("roomCode").addEventListener("input", () => $("roomCode").removeAttribute("aria-invalid"));
+  window.addEventListener("resize", syncPresentationTabs);
   function render() {
     if (!catalog) return;
     $("createRoom").disabled = $("joinRoom").disabled =
       joining || !socket?.connected || !!session;
     $("lobby").hidden = !!state;
     $("room").hidden = !state;
-    if (!state) return;
+    if (!state) { renderPresentation(); return; }
     const g = state.game;
     $("room").dataset.revision = String(state.revision);
     $("room").dataset.phase = g.phase;
@@ -980,6 +1074,7 @@
         state.revision < ackRevision
       )
         b.disabled = true;
+    renderPresentation();
     updateClock();
   }
   function updateClock() {

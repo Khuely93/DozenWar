@@ -1,6 +1,6 @@
 {
   "style": "DW-STYLE-01",
-  "status": "draft-awaiting-user-approval",
+  "status": "approved-implemented",
   "board_count": 14,
   "boards": [
     {
@@ -87,5 +87,6 @@
       "url": "../ui-remaining-dw-style-01/#mobile",
       "description": "Ba bố cục màn dọc: phòng online, chọn đội và xếp quân; kèm mẫu sẵn sàng, xúc xắc và thanh hành động."
     }
-  ]
+  ],
+  "implemented_version": "1.72.0"
 }

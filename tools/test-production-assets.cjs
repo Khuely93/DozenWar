@@ -78,6 +78,11 @@ assert(read('dist/index.html').includes('data-backdrop-src="./'+map.asset+'"'));
 const manifest = JSON.parse(read('project-manifest.json'));
 const built = JSON.parse(read('dist/build-manifest.json'));
 assert.equal(built.version, manifest.version, 'Production metadata version');
-assert.equal(read('dist/index.html').match(/LATEST PLAYTEST v(\d+\.\d+\.\d+)/)?.[1], manifest.version, 'Production banner version');
+assert.equal(read('dist/index.html').match(/data-build-version="(\d+\.\d+\.\d+)"/)?.[1], manifest.version, 'Production document version');
+for (const file of ['panel.webp', 'button.webp', 'fortress.webp', 'theme.css']) {
+  assert.deepEqual(fs.readFileSync(path.join(root, 'dist/assets/ui/dw-style-01', file)), fs.readFileSync(path.join(root, 'assets/ui/dw-style-01', file)), 'Production UI surface ' + file);
+}
+assert(read('dist/index.html').includes('./assets/ui/dw-style-01/theme.css'));
+assert(read('dist/online/index.html').includes('../assets/ui/dw-style-01/theme.css'));
 for (const relative of Object.values(built.bundles)) assert.ok(fs.existsSync(path.join(root, 'dist', relative)), 'Missing bundle: ' + relative);
 console.log('PASS | 12 compact DW-STYLE-01 troop colors (' + checked + ' legacy facing routes), 12 Hero board visuals, production bytes, version and bundles');

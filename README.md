@@ -1,5 +1,17 @@
 # DOZEN WAR II
 
+## v1.72.0 — DW-STYLE-01 interface
+
+The approved UI direction is now used by menus, setup, Hero/team selection,
+deployment, the battle dock, skill/equipment dialogs, defense reactions, results,
+training and the online client. Resizable painted gold/iron frames and buttons
+keep text and hit targets as real HTML. Mobile has Hero / Skills / Equipment tabs
+and a compact selected-Hero preview. The technical header has been removed.
+
+Existing Hero, soldier, equipment and map art, gameplay hashes and the server
+engine are unchanged. See [UI implementation and checks](docs/UI_DW_STYLE_01.md).
+Run `npm run test:ui-browser` after building to verify desktop/mobile states.
+
 ## v1.71.1 — Fixed overhead team camera
 
 Blue Hero and soldier figures now show their back; red figures show their front,

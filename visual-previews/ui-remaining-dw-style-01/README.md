@@ -1,6 +1,6 @@
 # DozenWar — Các UI còn lại · DW-STYLE-01
 
-9 bảng mới; bản thử chờ duyệt. Chưa thay giao diện hoặc luật chơi trong game.
+9 bảng bổ sung đã được duyệt và áp dụng vào giao diện từ v1.72.0. Luật chơi không thay đổi.
 
 5. 05-play-hub.png — Đấu với máy, chọn độ khó, đánh thường, xếp hạng thử nghiệm, tìm trận và xác nhận chế độ.
 6. 06-online-lobby-room.png — Tạo/vào phòng, tên người chơi, mã phòng, hai vị trí người chơi, sẵn sàng và trạng thái kết nối.

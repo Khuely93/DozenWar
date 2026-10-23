@@ -245,8 +245,8 @@ const { FaultRelay } = require("./helpers/fault-relay.cjs"),
     );
     offset += 35000;
     await until(
-      () => game().pending === null,
-      "server expires absent defender",
+      () => game().pending === null && journal("TIMEOUT").length === 1,
+      "server expires absent defender and persists the timeout receipt",
     );
     assert.equal(game().units.find((u) => u.id === d.id).hp, initialHP - 1);
     assert.equal(journal("TIMEOUT").length, 1);
