@@ -252,3 +252,51 @@
 
 .dwUI .dockSkills .skill small:empty { display: none; }
 @media (min-width:900px) { .dwUI .dockSkills .dockSkillStars { font-size: 18px; line-height: 1.15; } }
+
+/* A single crisp shadow keeps small button labels from looking double-printed. */
+.dwUI :is(.btn,.dwDockTab) { text-shadow: 0 1px 1px #0009; }
+.dwUI.dwTrainingLayout .trainingToolbar { position: relative; inset: auto; grid-row: 2; }
+@media (min-width:900px) {
+  .dwUI.dwTrainingLayout #gameScreen.active { grid-template-rows: 64px auto minmax(0,1fr) 215px; }
+}
+
+/* Clock and action status share one layout; neither can cover the other when
+   defense adds a second timer line or an action adds more buttons. */
+.dwBattleNotices { position: absolute; top: 8px; left: 50%; transform: translateX(-50%); z-index: 75; display: flex; flex-direction: column; align-items: center; gap: 6px; width: max-content; max-width: calc(100% - 24px); pointer-events: none; }
+.dwUI .dwBattleNotices > :is(.duelTimers,.combatFlowStatus,.directFlowWarning,.aiThinking,.guardTargetHint) { position: relative; inset: auto; transform: none; margin: 0; max-width: 100%; }
+.dwUI .dwBattleNotices > .combatFlowStatus:not([hidden]) { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 6px; }
+.dwUI .dwBattleNotices .combatFlowStatus .btn { margin: 0; }
+.dwUI .heroSkillPanel { top: calc(var(--dw-notices-height, 70px) + 20px); max-height: calc(100% - var(--dw-notices-height, 70px) - 32px); }
+.dwDefenseChoices { position: absolute; bottom: 14px; left: 50%; transform: translateX(-50%); z-index: 100; display: flex; flex-direction: column; gap: 8px; width: min(610px,calc(100% - 28px)); max-height: max(60px,calc(100% - var(--dw-notices-height,70px) - 32px)); overflow: auto; }
+.dwDefenseChoices:not(:has(.directDefensePanel:not([hidden]),.heroDefenseBar:not([hidden]):not(:empty))) { display: none; }
+.dwUI .dwDefenseChoices > :is(.directDefensePanel,.heroDefenseBar) { position: relative; inset: auto; transform: none; width: 100%; max-height: none; margin: 0; overflow: visible; flex-shrink: 0; }
+.dwUI .dwDefenseChoices > .heroDefenseBar:empty { display: none; }
+.dwUI .dwDefenseChoices > .heroDefenseBar { justify-content: flex-end; }
+/* A legacy reaction refresh must not expose a second set of defense commands. */
+.dwUI:has(.directDefensePanel:not([hidden])) #reactionBox { display: none !important; }
+@media (max-width:899px) {
+  .dwBattleNotices { top: 6px; max-width: calc(100% - 18px); }
+  .dwUI .heroSkillPanel { top: calc(var(--dw-notices-height, 70px) + 14px); max-height: calc(100% - var(--dw-notices-height, 70px) - 22px); }
+  .dwDefenseChoices { bottom: 6px; max-height: min(60%,max(60px,calc(100% - var(--dw-notices-height,70px) - 22px))); }
+  /* Reaction choices take priority over the collapsible match log. The log
+     returns as soon as the choice is completed or cancelled. */
+  .dwUI:has(.directDefensePanel:not([hidden]),.heroSkillPanel:not([hidden]),.equipmentActionBar:not([hidden]):not(:empty)) .duelMatchDetails { display: none; }
+  .dwUI .duelMapStage:has(.duelMatchDetails[open]) .heroDefenseBar { display: none; }
+  /* The generic #controls height otherwise overrides the dock's smaller
+     viewport and puts the final action buttons behind the mobile tabs. */
+  .dwUI.dwOnlineBattle .onlineDock #controls { min-height: 0; max-height: calc(31dvh - 14px); overflow-y: auto; }
+}
+@media (max-width:899px) and (max-height:500px) {
+  .dwUI:has(.heroSkillPanel:not([hidden])) .dwBattleNotices { left: 8px; transform: none; max-width: calc(100% - 412px); }
+  .dwUI .heroSkillPanel { position: fixed; top: 56px; right: 8px; width: min(380px,calc(100vw - 16px)); max-height: calc(100dvh - 68px); }
+  .dwUI.dwTrainingLayout #gameScreen.active { grid-template-rows: 48px auto minmax(60px,1fr) 100px 44px; }
+  .dwUI.dwTrainingLayout .trainingToolbar { max-height: 64px; }
+  .dwUI.dwTrainingLayout .duelMapStage { min-height: 60px; }
+  .dwUI.dwTrainingLayout .duelControlDock { min-height: 100px; max-height: 100px; }
+  .dwUI.dwTrainingLayout .duelControlDock > .box { min-height: 92px; max-height: 92px; padding: 8px 14px; }
+  .dwUI.dwOnlineBattle #room { grid-template-rows: auto minmax(90px,1fr) 110px 44px; }
+  .dwUI.dwOnlineBattle .arena { min-height: 90px; }
+  .dwUI.dwOnlineBattle .onlineDock { min-height: 110px; max-height: 110px; padding: 4px; }
+  .dwUI.dwOnlineBattle .onlineDock > section { min-height: 100px; max-height: 100px; padding: 10px 14px; }
+  .dwUI.dwOnlineBattle .onlineDock #controls { max-height: 100px; }
+}

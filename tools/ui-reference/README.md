@@ -25,3 +25,15 @@ families, actual raster dimensions, crop bounds, frame templates and static
 UI-anchor coverage. The two unrendered legacy anchors are explicitly reported.
 
 The large reference output is excluded from the production Docker context.
+
+## UI text and stacking checks
+
+`npm run test:ui-text` reviews the 72 reference states plus six game-menu, confirmation, Hero-info and dock-tab states at 1920×1080, 1366×768, 390×844 and 844×390. It uses real local online rooms and Playwright clicks, and writes original screenshots, an HTML review index and measured text/layer findings under `work/ui-text-audit/review/`.
+
+The checks cover rendered HTML text intersections, text escaping controls, covered actions, conflicting notice/popup regions, horizontal overflow and duplicate visible artwork states. Deliberately covered modal backgrounds, SVG world labels, normal scroll clipping and font descender edges are excluded. The original artwork also requires visual review: DOM measurements cannot recognize words printed into a raster image.
+
+Representative screens and any failures are captured by default; `--capture-all` saves every state.
+
+Use `--only=25,31,online` or `--widths=390,844` after the script name for focused reruns. Build `dist/` first and keep it unchanged during a run.
+
+After fixing a finding, `--resume --only=31,35` retains passing records from the same release, automatically reruns every failed scenario, and refreshes the explicitly named scenarios. Use a full run after broad layout changes.

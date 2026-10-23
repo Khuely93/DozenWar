@@ -1,8 +1,8 @@
 {
   "project": "DOZEN WAR II",
-  "version": "1.74.0",
+  "version": "1.74.1",
   "phase": "DUEL_RULE_MODE_1VS1_180_30",
-  "baseline": "v1.74.0 integrates 36 approved simple skill icons for all twelve heroes",
+  "baseline": "v1.74.1 separates combat notices, skill and defense choices, and training controls to prevent UI text overlap",
   "entry": "index.html",
   "styles": "styles/main.css",
   "runtimeOrder": [

@@ -42,7 +42,7 @@ const DuelCamera={
       if(!this.isUI(e.target)&&Date.now()<this.suppressUntil){e.preventDefault();e.stopImmediatePropagation()}
     },true);
   },
-  isUI(target){return !!target.closest('button,select,input,details,.unitMenu,.deployMenu,.attackPopup,.defensePopup,.skillTargetPanel,.guardTargetHint,.reaction')},
+  isUI(target){return !!target.closest('button,select,input,details,.unitMenu,.deployMenu,.attackPopup,.defensePopup,.skillTargetPanel,.guardTargetHint,.reaction,.heroSkillPanel,.heroDefenseBar,.directDefensePanel,.dwDefenseChoices,.dwBattleNotices,.trainingToolbar')},
   resize(width,height){
     const id=S.matchSession?.matchId||null;
     if(id!==this.matchId){this.matchId=id;this.zoom=1.4;this.panX=this.panY=0;this.reactionKey=null;this.panMode=false}

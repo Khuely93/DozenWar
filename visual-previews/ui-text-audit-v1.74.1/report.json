@@ -1,0 +1,5726 @@
+{
+  "version": "1.74.1",
+  "states": 312,
+  "uniqueStates": 78,
+  "viewports": [
+    {
+      "width": 1920,
+      "height": 1080
+    },
+    {
+      "width": 1366,
+      "height": 768
+    },
+    {
+      "width": 844,
+      "height": 390
+    },
+    {
+      "width": 390,
+      "height": 844
+    }
+  ],
+  "failures": 0,
+  "pageErrors": [],
+  "missing": [],
+  "checks": [
+    "Rendered HTML text intersections",
+    "Text fits inside controls",
+    "Active buttons are not covered",
+    "Notices, timer and choice panels do not intersect",
+    "One visible artwork state per control",
+    "No horizontal page overflow"
+  ],
+  "excluded": [
+    "Intentional modal backdrops",
+    "SVG world labels",
+    "Normal clipping inside scrolling lists",
+    "Font descender edges"
+  ],
+  "statesReviewed": [
+    {
+      "id": "01-mode",
+      "title": "Chọn chế độ chơi",
+      "category": "Menu",
+      "client": "offline",
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "result": {
+        "textLines": 19,
+        "controls": 4,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "02-mode-confirm",
+      "title": "Xác nhận chế độ Đối Đầu",
+      "category": "Popup",
+      "client": "offline",
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "result": {
+        "textLines": 10,
+        "controls": 3,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "03-mode-locked",
+      "title": "Thông tin chế độ Chiến Thần",
+      "category": "Popup",
+      "client": "offline",
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "result": {
+        "textLines": 10,
+        "controls": 3,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "04-play-hub",
+      "title": "Chọn loại trận AI / Thường / Xếp hạng",
+      "category": "Menu",
+      "client": "offline",
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "result": {
+        "textLines": 23,
+        "controls": 4,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "05-ai-difficulty",
+      "title": "Chọn độ khó Bot",
+      "category": "Popup",
+      "client": "offline",
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "result": {
+        "textLines": 10,
+        "controls": 5,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "06-casual",
+      "title": "Menu đánh thường",
+      "category": "Popup",
+      "client": "offline",
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "result": {
+        "textLines": 10,
+        "controls": 4,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "07-ranked",
+      "title": "Menu xếp hạng",
+      "category": "Popup",
+      "client": "offline",
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "result": {
+        "textLines": 10,
+        "controls": 4,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "08-private-room",
+      "title": "Tạo phòng thử trong Play Hub",
+      "category": "Popup",
+      "client": "offline",
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "result": {
+        "textLines": 9,
+        "controls": 3,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "09-matchmaking",
+      "title": "Trạng thái tìm trận",
+      "category": "Popup",
+      "client": "offline",
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "result": {
+        "textLines": 10,
+        "controls": 4,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "10-ready",
+      "title": "Sẵn sàng trước trận",
+      "category": "Chuẩn bị",
+      "client": "offline",
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "result": {
+        "textLines": 15,
+        "controls": 2,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "11-dice",
+      "title": "Tung xúc xắc",
+      "category": "Chuẩn bị",
+      "client": "offline",
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "result": {
+        "textLines": 17,
+        "controls": 2,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "12-dice-result",
+      "title": "Kết quả tung xúc xắc",
+      "category": "Chuẩn bị",
+      "client": "offline",
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "result": {
+        "textLines": 20,
+        "controls": 3,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "13-deal",
+      "title": "Nhận bài trang bị",
+      "category": "Chuẩn bị",
+      "client": "offline",
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "result": {
+        "textLines": 11,
+        "controls": 1,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "14-team-empty",
+      "title": "Chọn Hero và lính — chưa đủ quân",
+      "category": "Đội hình",
+      "client": "offline",
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "result": {
+        "textLines": 49,
+        "controls": 20,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "15-team-selected",
+      "title": "Chọn Hero và lính — đủ 5 quân",
+      "category": "Đội hình",
+      "client": "offline",
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "result": {
+        "textLines": 49,
+        "controls": 20,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "16-deploy",
+      "title": "Triển khai quân trên bàn cờ",
+      "category": "Ingame",
+      "client": "offline",
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "result": {
+        "textLines": 17,
+        "controls": 3,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "17-deploy-menu",
+      "title": "Popup đặt quân vào ô",
+      "category": "Ingame",
+      "client": "offline",
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "result": {
+        "textLines": 23,
+        "controls": 6,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "18-deploy-troops",
+      "title": "Popup chọn chủng lính để đặt",
+      "category": "Ingame",
+      "client": "offline",
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "result": {
+        "textLines": 26,
+        "controls": 9,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "19-deploy-complete",
+      "title": "Đã xếp đủ quân — chờ xác nhận",
+      "category": "Ingame",
+      "client": "offline",
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "result": {
+        "textLines": 17,
+        "controls": 3,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "20-battle",
+      "title": "Ingame — HUD và thanh Hero / Skill / Bài",
+      "category": "Ingame",
+      "client": "offline",
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "result": {
+        "textLines": 26,
+        "controls": 14,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "21-hero-selected",
+      "title": "Ingame — chọn Hero và vùng di chuyển",
+      "category": "Ingame",
+      "client": "offline",
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "result": {
+        "textLines": 26,
+        "controls": 14,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "22-troop-selected",
+      "title": "Ingame — chọn quân lính",
+      "category": "Ingame",
+      "client": "offline",
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "result": {
+        "textLines": 26,
+        "controls": 14,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "23-combat-log",
+      "title": "Thông tin trận và Combat Log mở rộng",
+      "category": "Ingame",
+      "client": "offline",
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "result": {
+        "textLines": 32,
+        "controls": 14,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "24-skill-target",
+      "title": "Kỹ năng chọn mục tiêu trên bàn cờ",
+      "category": "Kỹ năng",
+      "client": "offline",
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "result": {
+        "textLines": 25,
+        "controls": 14,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "25-skill-morph",
+      "title": "Chọn chủng lính biến hình",
+      "category": "Kỹ năng",
+      "client": "offline",
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "result": {
+        "textLines": 31,
+        "controls": 16,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "26-skill-copy",
+      "title": "Chọn kỹ năng sao chép",
+      "category": "Kỹ năng",
+      "client": "offline",
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "result": {
+        "textLines": 31,
+        "controls": 16,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "27-skill-summon",
+      "title": "Triệu hồi — chủng lính và ô đích",
+      "category": "Kỹ năng",
+      "client": "offline",
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "result": {
+        "textLines": 35,
+        "controls": 19,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "28-equipment-dialog",
+      "title": "Hộp thoại chọn trang bị tấn công",
+      "category": "Trang bị",
+      "client": "offline",
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "result": {
+        "textLines": 5,
+        "controls": 7,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "29-equipment-actor",
+      "title": "Dùng bài — chọn quân nhận trang bị",
+      "category": "Trang bị",
+      "client": "offline",
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "result": {
+        "textLines": 26,
+        "controls": 14,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "30-equipment-target",
+      "title": "Lao Móc — chọn mục tiêu của bài",
+      "category": "Trang bị",
+      "client": "offline",
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "result": {
+        "textLines": 25,
+        "controls": 14,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "31-defense",
+      "title": "Phòng thủ — Hero nhận đòn",
+      "category": "Phòng thủ",
+      "client": "offline",
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "result": {
+        "textLines": 30,
+        "controls": 16,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "32-guard",
+      "title": "Phòng thủ — Bộ binh đỡ đòn",
+      "category": "Phòng thủ",
+      "client": "offline",
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "result": {
+        "textLines": 28,
+        "controls": 15,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "33-dice-ward",
+      "title": "Phòng thủ — chọn hai số xúc xắc",
+      "category": "Phòng thủ",
+      "client": "offline",
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "result": {
+        "textLines": 40,
+        "controls": 22,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "34-escape",
+      "title": "Phòng thủ — chọn ô thoát hiểm",
+      "category": "Phòng thủ",
+      "client": "offline",
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "result": {
+        "textLines": 27,
+        "controls": 14,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "35-warning",
+      "title": "Cảnh báo thao tác ngoài tầm",
+      "category": "Thông báo",
+      "client": "offline",
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "result": {
+        "textLines": 26,
+        "controls": 14,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "36-win",
+      "title": "Cửa sổ chiến thắng",
+      "category": "Kết quả",
+      "client": "offline",
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "result": {
+        "textLines": 15,
+        "controls": 2,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "37-lose",
+      "title": "Cửa sổ thất bại",
+      "category": "Kết quả",
+      "client": "offline",
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "result": {
+        "textLines": 15,
+        "controls": 2,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "38-draw",
+      "title": "Cửa sổ hòa trận",
+      "category": "Kết quả",
+      "client": "offline",
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "result": {
+        "textLines": 15,
+        "controls": 2,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "39-ranked-result",
+      "title": "Kết quả xếp hạng và thay đổi Elo",
+      "category": "Kết quả",
+      "client": "offline",
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "result": {
+        "textLines": 15,
+        "controls": 2,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "40-rematch-wait",
+      "title": "Chờ đối thủ đồng ý đấu lại",
+      "category": "Kết quả",
+      "client": "offline",
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "result": {
+        "textLines": 15,
+        "controls": 2,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "41-legacy-unit-menu",
+      "title": "Menu đơn vị kiểu cũ — mẫu còn trong mã",
+      "category": "Khung cũ",
+      "client": "offline",
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "result": {
+        "textLines": 48,
+        "controls": 21,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "42-legacy-attack",
+      "title": "Popup tấn công kiểu cũ — mẫu còn trong mã",
+      "category": "Khung cũ",
+      "client": "offline",
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "result": {
+        "textLines": 40,
+        "controls": 19,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "43-legacy-equipment",
+      "title": "Danh sách bài trong popup kiểu cũ",
+      "category": "Khung cũ",
+      "client": "offline",
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "result": {
+        "textLines": 38,
+        "controls": 25,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "44-equipment-counter",
+      "title": "Phản ứng hủy trang bị đối thủ",
+      "category": "Trang bị",
+      "client": "offline",
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "result": {
+        "textLines": 27,
+        "controls": 15,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "45-defense-feedback-card",
+      "title": "Thông báo đã dùng bài phòng thủ",
+      "category": "Thông báo",
+      "client": "offline",
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "result": {
+        "textLines": 5,
+        "controls": 1,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "46-defense-feedback-skill",
+      "title": "Thông báo đã dùng kỹ năng phòng thủ",
+      "category": "Thông báo",
+      "client": "offline",
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "result": {
+        "textLines": 7,
+        "controls": 14,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "47-equipment-steal",
+      "title": "Cướp trang bị — chọn bài đối thủ",
+      "category": "Trang bị",
+      "client": "offline",
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "result": {
+        "textLines": 35,
+        "controls": 22,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "48-post-hit",
+      "title": "Phản sát thương sau khi nhận đòn",
+      "category": "Phòng thủ",
+      "client": "offline",
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "result": {
+        "textLines": 28,
+        "controls": 15,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "49-ai-thinking",
+      "title": "Chỉ báo Bot đang tính toán",
+      "category": "Thông báo",
+      "client": "offline",
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "result": {
+        "textLines": 26,
+        "controls": 14,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "50-online-lobby",
+      "title": "Online — tên người chơi, tạo / vào phòng",
+      "category": "Online",
+      "notes": "",
+      "client": "online",
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "result": {
+        "textLines": 10,
+        "controls": 2,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "51-online-room-wait",
+      "title": "Online — phòng chờ một người",
+      "category": "Online",
+      "notes": "",
+      "client": "online",
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "result": {
+        "textLines": 18,
+        "controls": 3,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "52-online-ready",
+      "title": "Online — hai người, sẵn sàng",
+      "category": "Online",
+      "notes": "",
+      "client": "online",
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "result": {
+        "textLines": 18,
+        "controls": 3,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "53-online-team",
+      "title": "Online — chọn Hero và 5 lính",
+      "category": "Online",
+      "notes": "",
+      "client": "online",
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "result": {
+        "textLines": 33,
+        "controls": 15,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "54-online-team-wait",
+      "title": "Online — chờ đối thủ chọn đội hình",
+      "category": "Online",
+      "notes": "",
+      "client": "online",
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "result": {
+        "textLines": 22,
+        "controls": 2,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "55-online-deploy",
+      "title": "Online — xếp quân trên bàn cờ",
+      "category": "Online",
+      "notes": "",
+      "client": "online",
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "result": {
+        "textLines": 14,
+        "controls": 3,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "56-online-deploy-wait",
+      "title": "Online — chờ đối thủ xếp quân",
+      "category": "Online",
+      "notes": "",
+      "client": "online",
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "result": {
+        "textLines": 12,
+        "controls": 2,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "57-online-battle",
+      "title": "Online — lượt chiến đấu và bài trên tay",
+      "category": "Online",
+      "notes": "",
+      "client": "online",
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "result": {
+        "textLines": 33,
+        "controls": 8,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "58-online-move",
+      "title": "Online — chọn ô di chuyển",
+      "category": "Online",
+      "notes": "",
+      "client": "online",
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "result": {
+        "textLines": 24,
+        "controls": 4,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "59-online-skill",
+      "title": "Online — chọn mục tiêu kỹ năng",
+      "category": "Online",
+      "notes": "",
+      "client": "online",
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "result": {
+        "textLines": 25,
+        "controls": 4,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "60-online-attack-wait",
+      "title": "Online — chờ đối thủ phòng thủ",
+      "category": "Online",
+      "notes": "",
+      "client": "online",
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "result": {
+        "textLines": 23,
+        "controls": 2,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "61-online-defense",
+      "title": "Online — phòng thủ, đỡ đòn, bài và kỹ năng",
+      "category": "Online",
+      "notes": "",
+      "client": "online",
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "result": {
+        "textLines": 24,
+        "controls": 3,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "62-online-lose",
+      "title": "Online — kết quả thua và đấu lại",
+      "category": "Online",
+      "notes": "",
+      "client": "online",
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "result": {
+        "textLines": 21,
+        "controls": 4,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "63-online-win",
+      "title": "Online — kết quả thắng và đấu lại",
+      "category": "Online",
+      "notes": "",
+      "client": "online",
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "result": {
+        "textLines": 21,
+        "controls": 4,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "64-online-rematch",
+      "title": "Online — đã đồng ý, chờ đấu lại",
+      "category": "Online",
+      "notes": "",
+      "client": "online",
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "result": {
+        "textLines": 21,
+        "controls": 4,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "65-online-disconnect",
+      "title": "Online — mất kết nối và trạng thái khôi phục",
+      "category": "Online",
+      "notes": "",
+      "client": "online",
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "result": {
+        "textLines": 21,
+        "controls": 4,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "66-online-room-error",
+      "title": "Online — thông báo không vào được phòng",
+      "category": "Online",
+      "notes": "",
+      "client": "online",
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "result": {
+        "textLines": 11,
+        "controls": 2,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "67-legacy-defense",
+      "title": "Popup phòng thủ kiểu cũ — mẫu còn trong mã",
+      "category": "Khung cũ",
+      "client": "offline",
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "result": {
+        "textLines": 34,
+        "controls": 18,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "68-legacy-skill-list",
+      "title": "Danh sách kỹ năng trong popup kiểu cũ",
+      "category": "Khung cũ",
+      "client": "offline",
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "result": {
+        "textLines": 42,
+        "controls": 22,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "69-legacy-reaction",
+      "title": "Khung phản ứng kiểu cũ — nút Guard / Resolve",
+      "category": "Khung cũ",
+      "client": "offline",
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "result": {
+        "textLines": 30,
+        "controls": 16,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "70-training",
+      "title": "Đấu tập — thanh công cụ và bàn trống",
+      "category": "Đấu tập",
+      "client": "offline",
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "result": {
+        "textLines": 25,
+        "controls": 14,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "71-training-unit",
+      "title": "Đấu tập — thêm Hero hoặc lính",
+      "category": "Đấu tập",
+      "client": "offline",
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "result": {
+        "textLines": 4,
+        "controls": 2,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "72-training-equipment",
+      "title": "Đấu tập — thêm trang bị",
+      "category": "Đấu tập",
+      "client": "offline",
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "result": {
+        "textLines": 4,
+        "controls": 2,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "73-match-menu",
+      "title": "Menu trong trận",
+      "category": "Popup",
+      "client": "offline",
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "result": {
+        "textLines": 3,
+        "controls": 2,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "74-reset-confirm",
+      "title": "Xác nhận chơi lại",
+      "category": "Popup",
+      "client": "offline",
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "result": {
+        "textLines": 4,
+        "controls": 2,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "75-leave-confirm",
+      "title": "Xác nhận rời trận",
+      "category": "Popup",
+      "client": "offline",
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "result": {
+        "textLines": 4,
+        "controls": 2,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "76-hero-readonly",
+      "title": "Hộp thông tin ba kỹ năng Hero",
+      "category": "Popup",
+      "client": "offline",
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "result": {
+        "textLines": 8,
+        "controls": 1,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "77-skill-tab",
+      "title": "Tab kỹ năng trong trận",
+      "category": "Ingame",
+      "client": "offline",
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "result": {
+        "textLines": 26,
+        "controls": 14,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "78-equipment-tab",
+      "title": "Tab trang bị trong trận",
+      "category": "Ingame",
+      "client": "offline",
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "result": {
+        "textLines": 26,
+        "controls": 14,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "01-mode",
+      "title": "Chọn chế độ chơi",
+      "category": "Menu",
+      "client": "offline",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "result": {
+        "textLines": 19,
+        "controls": 4,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "02-mode-confirm",
+      "title": "Xác nhận chế độ Đối Đầu",
+      "category": "Popup",
+      "client": "offline",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "result": {
+        "textLines": 10,
+        "controls": 3,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "03-mode-locked",
+      "title": "Thông tin chế độ Chiến Thần",
+      "category": "Popup",
+      "client": "offline",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "result": {
+        "textLines": 10,
+        "controls": 3,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "04-play-hub",
+      "title": "Chọn loại trận AI / Thường / Xếp hạng",
+      "category": "Menu",
+      "client": "offline",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "result": {
+        "textLines": 23,
+        "controls": 4,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "05-ai-difficulty",
+      "title": "Chọn độ khó Bot",
+      "category": "Popup",
+      "client": "offline",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "result": {
+        "textLines": 10,
+        "controls": 5,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "06-casual",
+      "title": "Menu đánh thường",
+      "category": "Popup",
+      "client": "offline",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "result": {
+        "textLines": 10,
+        "controls": 4,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "07-ranked",
+      "title": "Menu xếp hạng",
+      "category": "Popup",
+      "client": "offline",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "result": {
+        "textLines": 10,
+        "controls": 4,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "08-private-room",
+      "title": "Tạo phòng thử trong Play Hub",
+      "category": "Popup",
+      "client": "offline",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "result": {
+        "textLines": 9,
+        "controls": 3,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "09-matchmaking",
+      "title": "Trạng thái tìm trận",
+      "category": "Popup",
+      "client": "offline",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "result": {
+        "textLines": 10,
+        "controls": 4,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "10-ready",
+      "title": "Sẵn sàng trước trận",
+      "category": "Chuẩn bị",
+      "client": "offline",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "result": {
+        "textLines": 15,
+        "controls": 2,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "11-dice",
+      "title": "Tung xúc xắc",
+      "category": "Chuẩn bị",
+      "client": "offline",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "result": {
+        "textLines": 17,
+        "controls": 2,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "12-dice-result",
+      "title": "Kết quả tung xúc xắc",
+      "category": "Chuẩn bị",
+      "client": "offline",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "result": {
+        "textLines": 19,
+        "controls": 3,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "13-deal",
+      "title": "Nhận bài trang bị",
+      "category": "Chuẩn bị",
+      "client": "offline",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "result": {
+        "textLines": 11,
+        "controls": 1,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "14-team-empty",
+      "title": "Chọn Hero và lính — chưa đủ quân",
+      "category": "Đội hình",
+      "client": "offline",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "result": {
+        "textLines": 31,
+        "controls": 20,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "15-team-selected",
+      "title": "Chọn Hero và lính — đủ 5 quân",
+      "category": "Đội hình",
+      "client": "offline",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "result": {
+        "textLines": 31,
+        "controls": 20,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "16-deploy",
+      "title": "Triển khai quân trên bàn cờ",
+      "category": "Ingame",
+      "client": "offline",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "result": {
+        "textLines": 17,
+        "controls": 3,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "17-deploy-menu",
+      "title": "Popup đặt quân vào ô",
+      "category": "Ingame",
+      "client": "offline",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "result": {
+        "textLines": 23,
+        "controls": 6,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "18-deploy-troops",
+      "title": "Popup chọn chủng lính để đặt",
+      "category": "Ingame",
+      "client": "offline",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "result": {
+        "textLines": 26,
+        "controls": 9,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "19-deploy-complete",
+      "title": "Đã xếp đủ quân — chờ xác nhận",
+      "category": "Ingame",
+      "client": "offline",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "result": {
+        "textLines": 17,
+        "controls": 3,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "20-battle",
+      "title": "Ingame — HUD và thanh Hero / Skill / Bài",
+      "category": "Ingame",
+      "client": "offline",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "result": {
+        "textLines": 26,
+        "controls": 14,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "21-hero-selected",
+      "title": "Ingame — chọn Hero và vùng di chuyển",
+      "category": "Ingame",
+      "client": "offline",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "result": {
+        "textLines": 26,
+        "controls": 14,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "22-troop-selected",
+      "title": "Ingame — chọn quân lính",
+      "category": "Ingame",
+      "client": "offline",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "result": {
+        "textLines": 26,
+        "controls": 14,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "23-combat-log",
+      "title": "Thông tin trận và Combat Log mở rộng",
+      "category": "Ingame",
+      "client": "offline",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "result": {
+        "textLines": 32,
+        "controls": 14,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "24-skill-target",
+      "title": "Kỹ năng chọn mục tiêu trên bàn cờ",
+      "category": "Kỹ năng",
+      "client": "offline",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "result": {
+        "textLines": 25,
+        "controls": 14,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "25-skill-morph",
+      "title": "Chọn chủng lính biến hình",
+      "category": "Kỹ năng",
+      "client": "offline",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "result": {
+        "textLines": 31,
+        "controls": 16,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "26-skill-copy",
+      "title": "Chọn kỹ năng sao chép",
+      "category": "Kỹ năng",
+      "client": "offline",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "result": {
+        "textLines": 31,
+        "controls": 16,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "27-skill-summon",
+      "title": "Triệu hồi — chủng lính và ô đích",
+      "category": "Kỹ năng",
+      "client": "offline",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "result": {
+        "textLines": 33,
+        "controls": 19,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "28-equipment-dialog",
+      "title": "Hộp thoại chọn trang bị tấn công",
+      "category": "Trang bị",
+      "client": "offline",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "result": {
+        "textLines": 5,
+        "controls": 7,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "29-equipment-actor",
+      "title": "Dùng bài — chọn quân nhận trang bị",
+      "category": "Trang bị",
+      "client": "offline",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "result": {
+        "textLines": 26,
+        "controls": 14,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "30-equipment-target",
+      "title": "Lao Móc — chọn mục tiêu của bài",
+      "category": "Trang bị",
+      "client": "offline",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "result": {
+        "textLines": 25,
+        "controls": 14,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "31-defense",
+      "title": "Phòng thủ — Hero nhận đòn",
+      "category": "Phòng thủ",
+      "client": "offline",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "result": {
+        "textLines": 31,
+        "controls": 16,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "32-guard",
+      "title": "Phòng thủ — Bộ binh đỡ đòn",
+      "category": "Phòng thủ",
+      "client": "offline",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "result": {
+        "textLines": 29,
+        "controls": 15,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "33-dice-ward",
+      "title": "Phòng thủ — chọn hai số xúc xắc",
+      "category": "Phòng thủ",
+      "client": "offline",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "result": {
+        "textLines": 41,
+        "controls": 22,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "34-escape",
+      "title": "Phòng thủ — chọn ô thoát hiểm",
+      "category": "Phòng thủ",
+      "client": "offline",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "result": {
+        "textLines": 27,
+        "controls": 14,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "35-warning",
+      "title": "Cảnh báo thao tác ngoài tầm",
+      "category": "Thông báo",
+      "client": "offline",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "result": {
+        "textLines": 26,
+        "controls": 14,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "36-win",
+      "title": "Cửa sổ chiến thắng",
+      "category": "Kết quả",
+      "client": "offline",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "result": {
+        "textLines": 15,
+        "controls": 2,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "37-lose",
+      "title": "Cửa sổ thất bại",
+      "category": "Kết quả",
+      "client": "offline",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "result": {
+        "textLines": 15,
+        "controls": 2,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "38-draw",
+      "title": "Cửa sổ hòa trận",
+      "category": "Kết quả",
+      "client": "offline",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "result": {
+        "textLines": 15,
+        "controls": 2,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "39-ranked-result",
+      "title": "Kết quả xếp hạng và thay đổi Elo",
+      "category": "Kết quả",
+      "client": "offline",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "result": {
+        "textLines": 15,
+        "controls": 2,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "40-rematch-wait",
+      "title": "Chờ đối thủ đồng ý đấu lại",
+      "category": "Kết quả",
+      "client": "offline",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "result": {
+        "textLines": 15,
+        "controls": 2,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "41-legacy-unit-menu",
+      "title": "Menu đơn vị kiểu cũ — mẫu còn trong mã",
+      "category": "Khung cũ",
+      "client": "offline",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "result": {
+        "textLines": 48,
+        "controls": 21,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "42-legacy-attack",
+      "title": "Popup tấn công kiểu cũ — mẫu còn trong mã",
+      "category": "Khung cũ",
+      "client": "offline",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "result": {
+        "textLines": 38,
+        "controls": 19,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "43-legacy-equipment",
+      "title": "Danh sách bài trong popup kiểu cũ",
+      "category": "Khung cũ",
+      "client": "offline",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "result": {
+        "textLines": 38,
+        "controls": 25,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "44-equipment-counter",
+      "title": "Phản ứng hủy trang bị đối thủ",
+      "category": "Trang bị",
+      "client": "offline",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "result": {
+        "textLines": 27,
+        "controls": 15,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "45-defense-feedback-card",
+      "title": "Thông báo đã dùng bài phòng thủ",
+      "category": "Thông báo",
+      "client": "offline",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "result": {
+        "textLines": 5,
+        "controls": 1,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "46-defense-feedback-skill",
+      "title": "Thông báo đã dùng kỹ năng phòng thủ",
+      "category": "Thông báo",
+      "client": "offline",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "result": {
+        "textLines": 7,
+        "controls": 14,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "47-equipment-steal",
+      "title": "Cướp trang bị — chọn bài đối thủ",
+      "category": "Trang bị",
+      "client": "offline",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "result": {
+        "textLines": 35,
+        "controls": 22,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "48-post-hit",
+      "title": "Phản sát thương sau khi nhận đòn",
+      "category": "Phòng thủ",
+      "client": "offline",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "result": {
+        "textLines": 29,
+        "controls": 15,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "49-ai-thinking",
+      "title": "Chỉ báo Bot đang tính toán",
+      "category": "Thông báo",
+      "client": "offline",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "result": {
+        "textLines": 26,
+        "controls": 14,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "50-online-lobby",
+      "title": "Online — tên người chơi, tạo / vào phòng",
+      "category": "Online",
+      "notes": "",
+      "client": "online",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "result": {
+        "textLines": 10,
+        "controls": 2,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "51-online-room-wait",
+      "title": "Online — phòng chờ một người",
+      "category": "Online",
+      "notes": "",
+      "client": "online",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "result": {
+        "textLines": 18,
+        "controls": 3,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "52-online-ready",
+      "title": "Online — hai người, sẵn sàng",
+      "category": "Online",
+      "notes": "",
+      "client": "online",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "result": {
+        "textLines": 18,
+        "controls": 3,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "53-online-team",
+      "title": "Online — chọn Hero và 5 lính",
+      "category": "Online",
+      "notes": "",
+      "client": "online",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "result": {
+        "textLines": 25,
+        "controls": 15,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "54-online-team-wait",
+      "title": "Online — chờ đối thủ chọn đội hình",
+      "category": "Online",
+      "notes": "",
+      "client": "online",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "result": {
+        "textLines": 19,
+        "controls": 2,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "55-online-deploy",
+      "title": "Online — xếp quân trên bàn cờ",
+      "category": "Online",
+      "notes": "",
+      "client": "online",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "result": {
+        "textLines": 14,
+        "controls": 3,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "56-online-deploy-wait",
+      "title": "Online — chờ đối thủ xếp quân",
+      "category": "Online",
+      "notes": "",
+      "client": "online",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "result": {
+        "textLines": 12,
+        "controls": 2,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "57-online-battle",
+      "title": "Online — lượt chiến đấu và bài trên tay",
+      "category": "Online",
+      "notes": "",
+      "client": "online",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "result": {
+        "textLines": 31,
+        "controls": 7,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "58-online-move",
+      "title": "Online — chọn ô di chuyển",
+      "category": "Online",
+      "notes": "",
+      "client": "online",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "result": {
+        "textLines": 25,
+        "controls": 4,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "59-online-skill",
+      "title": "Online — chọn mục tiêu kỹ năng",
+      "category": "Online",
+      "notes": "",
+      "client": "online",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "result": {
+        "textLines": 27,
+        "controls": 4,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "60-online-attack-wait",
+      "title": "Online — chờ đối thủ phòng thủ",
+      "category": "Online",
+      "notes": "",
+      "client": "online",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "result": {
+        "textLines": 24,
+        "controls": 2,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "61-online-defense",
+      "title": "Online — phòng thủ, đỡ đòn, bài và kỹ năng",
+      "category": "Online",
+      "notes": "",
+      "client": "online",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "result": {
+        "textLines": 27,
+        "controls": 4,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "62-online-lose",
+      "title": "Online — kết quả thua và đấu lại",
+      "category": "Online",
+      "notes": "",
+      "client": "online",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "result": {
+        "textLines": 20,
+        "controls": 4,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "63-online-win",
+      "title": "Online — kết quả thắng và đấu lại",
+      "category": "Online",
+      "notes": "",
+      "client": "online",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "result": {
+        "textLines": 20,
+        "controls": 4,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "64-online-rematch",
+      "title": "Online — đã đồng ý, chờ đấu lại",
+      "category": "Online",
+      "notes": "",
+      "client": "online",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "result": {
+        "textLines": 20,
+        "controls": 4,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "65-online-disconnect",
+      "title": "Online — mất kết nối và trạng thái khôi phục",
+      "category": "Online",
+      "notes": "",
+      "client": "online",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "result": {
+        "textLines": 20,
+        "controls": 4,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "66-online-room-error",
+      "title": "Online — thông báo không vào được phòng",
+      "category": "Online",
+      "notes": "",
+      "client": "online",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "result": {
+        "textLines": 11,
+        "controls": 2,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "67-legacy-defense",
+      "title": "Popup phòng thủ kiểu cũ — mẫu còn trong mã",
+      "category": "Khung cũ",
+      "client": "offline",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "result": {
+        "textLines": 33,
+        "controls": 18,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "68-legacy-skill-list",
+      "title": "Danh sách kỹ năng trong popup kiểu cũ",
+      "category": "Khung cũ",
+      "client": "offline",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "result": {
+        "textLines": 40,
+        "controls": 22,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "69-legacy-reaction",
+      "title": "Khung phản ứng kiểu cũ — nút Guard / Resolve",
+      "category": "Khung cũ",
+      "client": "offline",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "result": {
+        "textLines": 31,
+        "controls": 16,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "70-training",
+      "title": "Đấu tập — thanh công cụ và bàn trống",
+      "category": "Đấu tập",
+      "client": "offline",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "result": {
+        "textLines": 25,
+        "controls": 14,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "71-training-unit",
+      "title": "Đấu tập — thêm Hero hoặc lính",
+      "category": "Đấu tập",
+      "client": "offline",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "result": {
+        "textLines": 4,
+        "controls": 2,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "72-training-equipment",
+      "title": "Đấu tập — thêm trang bị",
+      "category": "Đấu tập",
+      "client": "offline",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "result": {
+        "textLines": 4,
+        "controls": 2,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "73-match-menu",
+      "title": "Menu trong trận",
+      "category": "Popup",
+      "client": "offline",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "result": {
+        "textLines": 3,
+        "controls": 2,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "74-reset-confirm",
+      "title": "Xác nhận chơi lại",
+      "category": "Popup",
+      "client": "offline",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "result": {
+        "textLines": 4,
+        "controls": 2,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "75-leave-confirm",
+      "title": "Xác nhận rời trận",
+      "category": "Popup",
+      "client": "offline",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "result": {
+        "textLines": 4,
+        "controls": 2,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "76-hero-readonly",
+      "title": "Hộp thông tin ba kỹ năng Hero",
+      "category": "Popup",
+      "client": "offline",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "result": {
+        "textLines": 8,
+        "controls": 1,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "77-skill-tab",
+      "title": "Tab kỹ năng trong trận",
+      "category": "Ingame",
+      "client": "offline",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "result": {
+        "textLines": 26,
+        "controls": 14,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "78-equipment-tab",
+      "title": "Tab trang bị trong trận",
+      "category": "Ingame",
+      "client": "offline",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "result": {
+        "textLines": 26,
+        "controls": 14,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "01-mode",
+      "title": "Chọn chế độ chơi",
+      "category": "Menu",
+      "client": "offline",
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "result": {
+        "textLines": 9,
+        "controls": 4,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "02-mode-confirm",
+      "title": "Xác nhận chế độ Đối Đầu",
+      "category": "Popup",
+      "client": "offline",
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "result": {
+        "textLines": 10,
+        "controls": 3,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "03-mode-locked",
+      "title": "Thông tin chế độ Chiến Thần",
+      "category": "Popup",
+      "client": "offline",
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "result": {
+        "textLines": 10,
+        "controls": 3,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "04-play-hub",
+      "title": "Chọn loại trận AI / Thường / Xếp hạng",
+      "category": "Menu",
+      "client": "offline",
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "result": {
+        "textLines": 5,
+        "controls": 4,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "05-ai-difficulty",
+      "title": "Chọn độ khó Bot",
+      "category": "Popup",
+      "client": "offline",
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "result": {
+        "textLines": 9,
+        "controls": 5,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "06-casual",
+      "title": "Menu đánh thường",
+      "category": "Popup",
+      "client": "offline",
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "result": {
+        "textLines": 9,
+        "controls": 4,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "07-ranked",
+      "title": "Menu xếp hạng",
+      "category": "Popup",
+      "client": "offline",
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "result": {
+        "textLines": 9,
+        "controls": 4,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "08-private-room",
+      "title": "Tạo phòng thử trong Play Hub",
+      "category": "Popup",
+      "client": "offline",
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "result": {
+        "textLines": 9,
+        "controls": 3,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "09-matchmaking",
+      "title": "Trạng thái tìm trận",
+      "category": "Popup",
+      "client": "offline",
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "result": {
+        "textLines": 9,
+        "controls": 4,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "10-ready",
+      "title": "Sẵn sàng trước trận",
+      "category": "Chuẩn bị",
+      "client": "offline",
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "result": {
+        "textLines": 9,
+        "controls": 2,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "11-dice",
+      "title": "Tung xúc xắc",
+      "category": "Chuẩn bị",
+      "client": "offline",
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "result": {
+        "textLines": 13,
+        "controls": 2,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "12-dice-result",
+      "title": "Kết quả tung xúc xắc",
+      "category": "Chuẩn bị",
+      "client": "offline",
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "result": {
+        "textLines": 13,
+        "controls": 3,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "13-deal",
+      "title": "Nhận bài trang bị",
+      "category": "Chuẩn bị",
+      "client": "offline",
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "result": {
+        "textLines": 9,
+        "controls": 1,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "14-team-empty",
+      "title": "Chọn Hero và lính — chưa đủ quân",
+      "category": "Đội hình",
+      "client": "offline",
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "result": {
+        "textLines": 9,
+        "controls": 20,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "15-team-selected",
+      "title": "Chọn Hero và lính — đủ 5 quân",
+      "category": "Đội hình",
+      "client": "offline",
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "result": {
+        "textLines": 9,
+        "controls": 20,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "16-deploy",
+      "title": "Triển khai quân trên bàn cờ",
+      "category": "Ingame",
+      "client": "offline",
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "result": {
+        "textLines": 12,
+        "controls": 2,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "17-deploy-menu",
+      "title": "Popup đặt quân vào ô",
+      "category": "Ingame",
+      "client": "offline",
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "result": {
+        "textLines": 18,
+        "controls": 5,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "18-deploy-troops",
+      "title": "Popup chọn chủng lính để đặt",
+      "category": "Ingame",
+      "client": "offline",
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "result": {
+        "textLines": 19,
+        "controls": 8,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "19-deploy-complete",
+      "title": "Đã xếp đủ quân — chờ xác nhận",
+      "category": "Ingame",
+      "client": "offline",
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "result": {
+        "textLines": 12,
+        "controls": 2,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "20-battle",
+      "title": "Ingame — HUD và thanh Hero / Skill / Bài",
+      "category": "Ingame",
+      "client": "offline",
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "result": {
+        "textLines": 16,
+        "controls": 8,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "21-hero-selected",
+      "title": "Ingame — chọn Hero và vùng di chuyển",
+      "category": "Ingame",
+      "client": "offline",
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "result": {
+        "textLines": 16,
+        "controls": 8,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "22-troop-selected",
+      "title": "Ingame — chọn quân lính",
+      "category": "Ingame",
+      "client": "offline",
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "result": {
+        "textLines": 16,
+        "controls": 8,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "23-combat-log",
+      "title": "Thông tin trận và Combat Log mở rộng",
+      "category": "Ingame",
+      "client": "offline",
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "result": {
+        "textLines": 16,
+        "controls": 7,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "24-skill-target",
+      "title": "Kỹ năng chọn mục tiêu trên bàn cờ",
+      "category": "Kỹ năng",
+      "client": "offline",
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "result": {
+        "textLines": 15,
+        "controls": 8,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "25-skill-morph",
+      "title": "Chọn chủng lính biến hình",
+      "category": "Kỹ năng",
+      "client": "offline",
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "result": {
+        "textLines": 18,
+        "controls": 10,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "26-skill-copy",
+      "title": "Chọn kỹ năng sao chép",
+      "category": "Kỹ năng",
+      "client": "offline",
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "result": {
+        "textLines": 19,
+        "controls": 10,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "27-skill-summon",
+      "title": "Triệu hồi — chủng lính và ô đích",
+      "category": "Kỹ năng",
+      "client": "offline",
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "result": {
+        "textLines": 20,
+        "controls": 13,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "28-equipment-dialog",
+      "title": "Hộp thoại chọn trang bị tấn công",
+      "category": "Trang bị",
+      "client": "offline",
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "result": {
+        "textLines": 0,
+        "controls": 7,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "29-equipment-actor",
+      "title": "Dùng bài — chọn quân nhận trang bị",
+      "category": "Trang bị",
+      "client": "offline",
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "result": {
+        "textLines": 16,
+        "controls": 8,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "30-equipment-target",
+      "title": "Lao Móc — chọn mục tiêu của bài",
+      "category": "Trang bị",
+      "client": "offline",
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "result": {
+        "textLines": 15,
+        "controls": 8,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "31-defense",
+      "title": "Phòng thủ — Hero nhận đòn",
+      "category": "Phòng thủ",
+      "client": "offline",
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "result": {
+        "textLines": 15,
+        "controls": 10,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "32-guard",
+      "title": "Phòng thủ — Bộ binh đỡ đòn",
+      "category": "Phòng thủ",
+      "client": "offline",
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "result": {
+        "textLines": 15,
+        "controls": 9,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "33-dice-ward",
+      "title": "Phòng thủ — chọn hai số xúc xắc",
+      "category": "Phòng thủ",
+      "client": "offline",
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "result": {
+        "textLines": 27,
+        "controls": 16,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "34-escape",
+      "title": "Phòng thủ — chọn ô thoát hiểm",
+      "category": "Phòng thủ",
+      "client": "offline",
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "result": {
+        "textLines": 15,
+        "controls": 8,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "35-warning",
+      "title": "Cảnh báo thao tác ngoài tầm",
+      "category": "Thông báo",
+      "client": "offline",
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "result": {
+        "textLines": 16,
+        "controls": 8,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "36-win",
+      "title": "Cửa sổ chiến thắng",
+      "category": "Kết quả",
+      "client": "offline",
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "result": {
+        "textLines": 12,
+        "controls": 2,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "37-lose",
+      "title": "Cửa sổ thất bại",
+      "category": "Kết quả",
+      "client": "offline",
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "result": {
+        "textLines": 12,
+        "controls": 2,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "38-draw",
+      "title": "Cửa sổ hòa trận",
+      "category": "Kết quả",
+      "client": "offline",
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "result": {
+        "textLines": 12,
+        "controls": 2,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "39-ranked-result",
+      "title": "Kết quả xếp hạng và thay đổi Elo",
+      "category": "Kết quả",
+      "client": "offline",
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "result": {
+        "textLines": 12,
+        "controls": 2,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "40-rematch-wait",
+      "title": "Chờ đối thủ đồng ý đấu lại",
+      "category": "Kết quả",
+      "client": "offline",
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "result": {
+        "textLines": 12,
+        "controls": 2,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "41-legacy-unit-menu",
+      "title": "Menu đơn vị kiểu cũ — mẫu còn trong mã",
+      "category": "Khung cũ",
+      "client": "offline",
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "result": {
+        "textLines": 21,
+        "controls": 15,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "42-legacy-attack",
+      "title": "Popup tấn công kiểu cũ — mẫu còn trong mã",
+      "category": "Khung cũ",
+      "client": "offline",
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "result": {
+        "textLines": 23,
+        "controls": 13,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "43-legacy-equipment",
+      "title": "Danh sách bài trong popup kiểu cũ",
+      "category": "Khung cũ",
+      "client": "offline",
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "result": {
+        "textLines": 23,
+        "controls": 19,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "44-equipment-counter",
+      "title": "Phản ứng hủy trang bị đối thủ",
+      "category": "Trang bị",
+      "client": "offline",
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "result": {
+        "textLines": 15,
+        "controls": 9,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "45-defense-feedback-card",
+      "title": "Thông báo đã dùng bài phòng thủ",
+      "category": "Thông báo",
+      "client": "offline",
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "result": {
+        "textLines": 3,
+        "controls": 1,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "46-defense-feedback-skill",
+      "title": "Thông báo đã dùng kỹ năng phòng thủ",
+      "category": "Thông báo",
+      "client": "offline",
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "result": {
+        "textLines": 5,
+        "controls": 8,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "47-equipment-steal",
+      "title": "Cướp trang bị — chọn bài đối thủ",
+      "category": "Trang bị",
+      "client": "offline",
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "result": {
+        "textLines": 21,
+        "controls": 15,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "48-post-hit",
+      "title": "Phản sát thương sau khi nhận đòn",
+      "category": "Phòng thủ",
+      "client": "offline",
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "result": {
+        "textLines": 15,
+        "controls": 9,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "49-ai-thinking",
+      "title": "Chỉ báo Bot đang tính toán",
+      "category": "Thông báo",
+      "client": "offline",
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "result": {
+        "textLines": 16,
+        "controls": 8,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "50-online-lobby",
+      "title": "Online — tên người chơi, tạo / vào phòng",
+      "category": "Online",
+      "notes": "",
+      "client": "online",
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "result": {
+        "textLines": 8,
+        "controls": 2,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "51-online-room-wait",
+      "title": "Online — phòng chờ một người",
+      "category": "Online",
+      "notes": "",
+      "client": "online",
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "result": {
+        "textLines": 7,
+        "controls": 3,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "52-online-ready",
+      "title": "Online — hai người, sẵn sàng",
+      "category": "Online",
+      "notes": "",
+      "client": "online",
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "result": {
+        "textLines": 10,
+        "controls": 3,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "53-online-team",
+      "title": "Online — chọn Hero và 5 lính",
+      "category": "Online",
+      "notes": "",
+      "client": "online",
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "result": {
+        "textLines": 11,
+        "controls": 15,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "54-online-team-wait",
+      "title": "Online — chờ đối thủ chọn đội hình",
+      "category": "Online",
+      "notes": "",
+      "client": "online",
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "result": {
+        "textLines": 7,
+        "controls": 2,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "55-online-deploy",
+      "title": "Online — xếp quân trên bàn cờ",
+      "category": "Online",
+      "notes": "",
+      "client": "online",
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "result": {
+        "textLines": 7,
+        "controls": 3,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "56-online-deploy-wait",
+      "title": "Online — chờ đối thủ xếp quân",
+      "category": "Online",
+      "notes": "",
+      "client": "online",
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "result": {
+        "textLines": 5,
+        "controls": 2,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "57-online-battle",
+      "title": "Online — lượt chiến đấu và bài trên tay",
+      "category": "Online",
+      "notes": "",
+      "client": "online",
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "result": {
+        "textLines": 15,
+        "controls": 7,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "58-online-move",
+      "title": "Online — chọn ô di chuyển",
+      "category": "Online",
+      "notes": "",
+      "client": "online",
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "result": {
+        "textLines": 13,
+        "controls": 7,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "59-online-skill",
+      "title": "Online — chọn mục tiêu kỹ năng",
+      "category": "Online",
+      "notes": "",
+      "client": "online",
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "result": {
+        "textLines": 14,
+        "controls": 7,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "60-online-attack-wait",
+      "title": "Online — chờ đối thủ phòng thủ",
+      "category": "Online",
+      "notes": "",
+      "client": "online",
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "result": {
+        "textLines": 13,
+        "controls": 5,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "61-online-defense",
+      "title": "Online — phòng thủ, đỡ đòn, bài và kỹ năng",
+      "category": "Online",
+      "notes": "",
+      "client": "online",
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "result": {
+        "textLines": 13,
+        "controls": 6,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "62-online-lose",
+      "title": "Online — kết quả thua và đấu lại",
+      "category": "Online",
+      "notes": "",
+      "client": "online",
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "result": {
+        "textLines": 12,
+        "controls": 4,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "63-online-win",
+      "title": "Online — kết quả thắng và đấu lại",
+      "category": "Online",
+      "notes": "",
+      "client": "online",
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "result": {
+        "textLines": 12,
+        "controls": 4,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "64-online-rematch",
+      "title": "Online — đã đồng ý, chờ đấu lại",
+      "category": "Online",
+      "notes": "",
+      "client": "online",
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "result": {
+        "textLines": 12,
+        "controls": 4,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "65-online-disconnect",
+      "title": "Online — mất kết nối và trạng thái khôi phục",
+      "category": "Online",
+      "notes": "",
+      "client": "online",
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "result": {
+        "textLines": 12,
+        "controls": 4,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "66-online-room-error",
+      "title": "Online — thông báo không vào được phòng",
+      "category": "Online",
+      "notes": "",
+      "client": "online",
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "result": {
+        "textLines": 5,
+        "controls": 2,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "67-legacy-defense",
+      "title": "Popup phòng thủ kiểu cũ — mẫu còn trong mã",
+      "category": "Khung cũ",
+      "client": "offline",
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "result": {
+        "textLines": 20,
+        "controls": 12,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "68-legacy-skill-list",
+      "title": "Danh sách kỹ năng trong popup kiểu cũ",
+      "category": "Khung cũ",
+      "client": "offline",
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "result": {
+        "textLines": 23,
+        "controls": 16,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "69-legacy-reaction",
+      "title": "Khung phản ứng kiểu cũ — nút Guard / Resolve",
+      "category": "Khung cũ",
+      "client": "offline",
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "result": {
+        "textLines": 15,
+        "controls": 10,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "70-training",
+      "title": "Đấu tập — thanh công cụ và bàn trống",
+      "category": "Đấu tập",
+      "client": "offline",
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "result": {
+        "textLines": 21,
+        "controls": 13,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "71-training-unit",
+      "title": "Đấu tập — thêm Hero hoặc lính",
+      "category": "Đấu tập",
+      "client": "offline",
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "result": {
+        "textLines": 4,
+        "controls": 2,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "72-training-equipment",
+      "title": "Đấu tập — thêm trang bị",
+      "category": "Đấu tập",
+      "client": "offline",
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "result": {
+        "textLines": 4,
+        "controls": 2,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "73-match-menu",
+      "title": "Menu trong trận",
+      "category": "Popup",
+      "client": "offline",
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "result": {
+        "textLines": 3,
+        "controls": 2,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "74-reset-confirm",
+      "title": "Xác nhận chơi lại",
+      "category": "Popup",
+      "client": "offline",
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "result": {
+        "textLines": 4,
+        "controls": 2,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "75-leave-confirm",
+      "title": "Xác nhận rời trận",
+      "category": "Popup",
+      "client": "offline",
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "result": {
+        "textLines": 4,
+        "controls": 2,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "76-hero-readonly",
+      "title": "Hộp thông tin ba kỹ năng Hero",
+      "category": "Popup",
+      "client": "offline",
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "result": {
+        "textLines": 6,
+        "controls": 1,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "77-skill-tab",
+      "title": "Tab kỹ năng trong trận",
+      "category": "Ingame",
+      "client": "offline",
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "result": {
+        "textLines": 21,
+        "controls": 9,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "78-equipment-tab",
+      "title": "Tab trang bị trong trận",
+      "category": "Ingame",
+      "client": "offline",
+      "viewport": {
+        "width": 844,
+        "height": 390
+      },
+      "result": {
+        "textLines": 13,
+        "controls": 11,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "01-mode",
+      "title": "Chọn chế độ chơi",
+      "category": "Menu",
+      "client": "offline",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "result": {
+        "textLines": 20,
+        "controls": 4,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "02-mode-confirm",
+      "title": "Xác nhận chế độ Đối Đầu",
+      "category": "Popup",
+      "client": "offline",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "result": {
+        "textLines": 10,
+        "controls": 3,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "03-mode-locked",
+      "title": "Thông tin chế độ Chiến Thần",
+      "category": "Popup",
+      "client": "offline",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "result": {
+        "textLines": 11,
+        "controls": 3,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "04-play-hub",
+      "title": "Chọn loại trận AI / Thường / Xếp hạng",
+      "category": "Menu",
+      "client": "offline",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "result": {
+        "textLines": 12,
+        "controls": 4,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "05-ai-difficulty",
+      "title": "Chọn độ khó Bot",
+      "category": "Popup",
+      "client": "offline",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "result": {
+        "textLines": 13,
+        "controls": 5,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "06-casual",
+      "title": "Menu đánh thường",
+      "category": "Popup",
+      "client": "offline",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "result": {
+        "textLines": 12,
+        "controls": 4,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "07-ranked",
+      "title": "Menu xếp hạng",
+      "category": "Popup",
+      "client": "offline",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "result": {
+        "textLines": 12,
+        "controls": 4,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "08-private-room",
+      "title": "Tạo phòng thử trong Play Hub",
+      "category": "Popup",
+      "client": "offline",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "result": {
+        "textLines": 11,
+        "controls": 3,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "09-matchmaking",
+      "title": "Trạng thái tìm trận",
+      "category": "Popup",
+      "client": "offline",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "result": {
+        "textLines": 12,
+        "controls": 4,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "10-ready",
+      "title": "Sẵn sàng trước trận",
+      "category": "Chuẩn bị",
+      "client": "offline",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "result": {
+        "textLines": 21,
+        "controls": 2,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "11-dice",
+      "title": "Tung xúc xắc",
+      "category": "Chuẩn bị",
+      "client": "offline",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "result": {
+        "textLines": 22,
+        "controls": 2,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "12-dice-result",
+      "title": "Kết quả tung xúc xắc",
+      "category": "Chuẩn bị",
+      "client": "offline",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "result": {
+        "textLines": 27,
+        "controls": 3,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "13-deal",
+      "title": "Nhận bài trang bị",
+      "category": "Chuẩn bị",
+      "client": "offline",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "result": {
+        "textLines": 17,
+        "controls": 1,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "14-team-empty",
+      "title": "Chọn Hero và lính — chưa đủ quân",
+      "category": "Đội hình",
+      "client": "offline",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "result": {
+        "textLines": 24,
+        "controls": 20,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "15-team-selected",
+      "title": "Chọn Hero và lính — đủ 5 quân",
+      "category": "Đội hình",
+      "client": "offline",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "result": {
+        "textLines": 24,
+        "controls": 20,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "16-deploy",
+      "title": "Triển khai quân trên bàn cờ",
+      "category": "Ingame",
+      "client": "offline",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "result": {
+        "textLines": 15,
+        "controls": 2,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "17-deploy-menu",
+      "title": "Popup đặt quân vào ô",
+      "category": "Ingame",
+      "client": "offline",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "result": {
+        "textLines": 21,
+        "controls": 5,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "18-deploy-troops",
+      "title": "Popup chọn chủng lính để đặt",
+      "category": "Ingame",
+      "client": "offline",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "result": {
+        "textLines": 23,
+        "controls": 8,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "19-deploy-complete",
+      "title": "Đã xếp đủ quân — chờ xác nhận",
+      "category": "Ingame",
+      "client": "offline",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "result": {
+        "textLines": 20,
+        "controls": 2,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "20-battle",
+      "title": "Ingame — HUD và thanh Hero / Skill / Bài",
+      "category": "Ingame",
+      "client": "offline",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "result": {
+        "textLines": 16,
+        "controls": 8,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "21-hero-selected",
+      "title": "Ingame — chọn Hero và vùng di chuyển",
+      "category": "Ingame",
+      "client": "offline",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "result": {
+        "textLines": 16,
+        "controls": 8,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "22-troop-selected",
+      "title": "Ingame — chọn quân lính",
+      "category": "Ingame",
+      "client": "offline",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "result": {
+        "textLines": 16,
+        "controls": 8,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "23-combat-log",
+      "title": "Thông tin trận và Combat Log mở rộng",
+      "category": "Ingame",
+      "client": "offline",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "result": {
+        "textLines": 20,
+        "controls": 7,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "24-skill-target",
+      "title": "Kỹ năng chọn mục tiêu trên bàn cờ",
+      "category": "Kỹ năng",
+      "client": "offline",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "result": {
+        "textLines": 15,
+        "controls": 8,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "25-skill-morph",
+      "title": "Chọn chủng lính biến hình",
+      "category": "Kỹ năng",
+      "client": "offline",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "result": {
+        "textLines": 20,
+        "controls": 10,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "26-skill-copy",
+      "title": "Chọn kỹ năng sao chép",
+      "category": "Kỹ năng",
+      "client": "offline",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "result": {
+        "textLines": 20,
+        "controls": 10,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "27-skill-summon",
+      "title": "Triệu hồi — chủng lính và ô đích",
+      "category": "Kỹ năng",
+      "client": "offline",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "result": {
+        "textLines": 24,
+        "controls": 13,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "28-equipment-dialog",
+      "title": "Hộp thoại chọn trang bị tấn công",
+      "category": "Trang bị",
+      "client": "offline",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "result": {
+        "textLines": 6,
+        "controls": 7,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "29-equipment-actor",
+      "title": "Dùng bài — chọn quân nhận trang bị",
+      "category": "Trang bị",
+      "client": "offline",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "result": {
+        "textLines": 16,
+        "controls": 8,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "30-equipment-target",
+      "title": "Lao Móc — chọn mục tiêu của bài",
+      "category": "Trang bị",
+      "client": "offline",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "result": {
+        "textLines": 15,
+        "controls": 8,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "31-defense",
+      "title": "Phòng thủ — Hero nhận đòn",
+      "category": "Phòng thủ",
+      "client": "offline",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "result": {
+        "textLines": 20,
+        "controls": 10,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "32-guard",
+      "title": "Phòng thủ — Bộ binh đỡ đòn",
+      "category": "Phòng thủ",
+      "client": "offline",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "result": {
+        "textLines": 17,
+        "controls": 9,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "33-dice-ward",
+      "title": "Phòng thủ — chọn hai số xúc xắc",
+      "category": "Phòng thủ",
+      "client": "offline",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "result": {
+        "textLines": 29,
+        "controls": 16,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "34-escape",
+      "title": "Phòng thủ — chọn ô thoát hiểm",
+      "category": "Phòng thủ",
+      "client": "offline",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "result": {
+        "textLines": 16,
+        "controls": 8,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "35-warning",
+      "title": "Cảnh báo thao tác ngoài tầm",
+      "category": "Thông báo",
+      "client": "offline",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "result": {
+        "textLines": 16,
+        "controls": 8,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "36-win",
+      "title": "Cửa sổ chiến thắng",
+      "category": "Kết quả",
+      "client": "offline",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "result": {
+        "textLines": 16,
+        "controls": 2,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "37-lose",
+      "title": "Cửa sổ thất bại",
+      "category": "Kết quả",
+      "client": "offline",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "result": {
+        "textLines": 16,
+        "controls": 2,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "38-draw",
+      "title": "Cửa sổ hòa trận",
+      "category": "Kết quả",
+      "client": "offline",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "result": {
+        "textLines": 17,
+        "controls": 2,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "39-ranked-result",
+      "title": "Kết quả xếp hạng và thay đổi Elo",
+      "category": "Kết quả",
+      "client": "offline",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "result": {
+        "textLines": 16,
+        "controls": 2,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "40-rematch-wait",
+      "title": "Chờ đối thủ đồng ý đấu lại",
+      "category": "Kết quả",
+      "client": "offline",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "result": {
+        "textLines": 16,
+        "controls": 2,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "41-legacy-unit-menu",
+      "title": "Menu đơn vị kiểu cũ — mẫu còn trong mã",
+      "category": "Khung cũ",
+      "client": "offline",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "result": {
+        "textLines": 38,
+        "controls": 15,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "42-legacy-attack",
+      "title": "Popup tấn công kiểu cũ — mẫu còn trong mã",
+      "category": "Khung cũ",
+      "client": "offline",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "result": {
+        "textLines": 33,
+        "controls": 13,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "43-legacy-equipment",
+      "title": "Danh sách bài trong popup kiểu cũ",
+      "category": "Khung cũ",
+      "client": "offline",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "result": {
+        "textLines": 32,
+        "controls": 19,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "44-equipment-counter",
+      "title": "Phản ứng hủy trang bị đối thủ",
+      "category": "Trang bị",
+      "client": "offline",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "result": {
+        "textLines": 16,
+        "controls": 9,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "45-defense-feedback-card",
+      "title": "Thông báo đã dùng bài phòng thủ",
+      "category": "Thông báo",
+      "client": "offline",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "result": {
+        "textLines": 5,
+        "controls": 1,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "46-defense-feedback-skill",
+      "title": "Thông báo đã dùng kỹ năng phòng thủ",
+      "category": "Thông báo",
+      "client": "offline",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "result": {
+        "textLines": 7,
+        "controls": 8,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "47-equipment-steal",
+      "title": "Cướp trang bị — chọn bài đối thủ",
+      "category": "Trang bị",
+      "client": "offline",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "result": {
+        "textLines": 22,
+        "controls": 15,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "48-post-hit",
+      "title": "Phản sát thương sau khi nhận đòn",
+      "category": "Phòng thủ",
+      "client": "offline",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "result": {
+        "textLines": 18,
+        "controls": 9,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "49-ai-thinking",
+      "title": "Chỉ báo Bot đang tính toán",
+      "category": "Thông báo",
+      "client": "offline",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "result": {
+        "textLines": 16,
+        "controls": 8,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "50-online-lobby",
+      "title": "Online — tên người chơi, tạo / vào phòng",
+      "category": "Online",
+      "notes": "",
+      "client": "online",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "result": {
+        "textLines": 11,
+        "controls": 2,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "51-online-room-wait",
+      "title": "Online — phòng chờ một người",
+      "category": "Online",
+      "notes": "",
+      "client": "online",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "result": {
+        "textLines": 18,
+        "controls": 3,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "52-online-ready",
+      "title": "Online — hai người, sẵn sàng",
+      "category": "Online",
+      "notes": "",
+      "client": "online",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "result": {
+        "textLines": 18,
+        "controls": 3,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "53-online-team",
+      "title": "Online — chọn Hero và 5 lính",
+      "category": "Online",
+      "notes": "",
+      "client": "online",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "result": {
+        "textLines": 23,
+        "controls": 15,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "54-online-team-wait",
+      "title": "Online — chờ đối thủ chọn đội hình",
+      "category": "Online",
+      "notes": "",
+      "client": "online",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "result": {
+        "textLines": 23,
+        "controls": 2,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "55-online-deploy",
+      "title": "Online — xếp quân trên bàn cờ",
+      "category": "Online",
+      "notes": "",
+      "client": "online",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "result": {
+        "textLines": 15,
+        "controls": 3,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "56-online-deploy-wait",
+      "title": "Online — chờ đối thủ xếp quân",
+      "category": "Online",
+      "notes": "",
+      "client": "online",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "result": {
+        "textLines": 13,
+        "controls": 2,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "57-online-battle",
+      "title": "Online — lượt chiến đấu và bài trên tay",
+      "category": "Online",
+      "notes": "",
+      "client": "online",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "result": {
+        "textLines": 17,
+        "controls": 7,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "58-online-move",
+      "title": "Online — chọn ô di chuyển",
+      "category": "Online",
+      "notes": "",
+      "client": "online",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "result": {
+        "textLines": 15,
+        "controls": 7,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "59-online-skill",
+      "title": "Online — chọn mục tiêu kỹ năng",
+      "category": "Online",
+      "notes": "",
+      "client": "online",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "result": {
+        "textLines": 18,
+        "controls": 7,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "60-online-attack-wait",
+      "title": "Online — chờ đối thủ phòng thủ",
+      "category": "Online",
+      "notes": "",
+      "client": "online",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "result": {
+        "textLines": 13,
+        "controls": 5,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "61-online-defense",
+      "title": "Online — phòng thủ, đỡ đòn, bài và kỹ năng",
+      "category": "Online",
+      "notes": "",
+      "client": "online",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "result": {
+        "textLines": 15,
+        "controls": 7,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "62-online-lose",
+      "title": "Online — kết quả thua và đấu lại",
+      "category": "Online",
+      "notes": "",
+      "client": "online",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "result": {
+        "textLines": 26,
+        "controls": 4,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "63-online-win",
+      "title": "Online — kết quả thắng và đấu lại",
+      "category": "Online",
+      "notes": "",
+      "client": "online",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "result": {
+        "textLines": 24,
+        "controls": 4,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "64-online-rematch",
+      "title": "Online — đã đồng ý, chờ đấu lại",
+      "category": "Online",
+      "notes": "",
+      "client": "online",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "result": {
+        "textLines": 24,
+        "controls": 4,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "65-online-disconnect",
+      "title": "Online — mất kết nối và trạng thái khôi phục",
+      "category": "Online",
+      "notes": "",
+      "client": "online",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "result": {
+        "textLines": 24,
+        "controls": 4,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "66-online-room-error",
+      "title": "Online — thông báo không vào được phòng",
+      "category": "Online",
+      "notes": "",
+      "client": "online",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "result": {
+        "textLines": 12,
+        "controls": 2,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "67-legacy-defense",
+      "title": "Popup phòng thủ kiểu cũ — mẫu còn trong mã",
+      "category": "Khung cũ",
+      "client": "offline",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "result": {
+        "textLines": 23,
+        "controls": 12,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "68-legacy-skill-list",
+      "title": "Danh sách kỹ năng trong popup kiểu cũ",
+      "category": "Khung cũ",
+      "client": "offline",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "result": {
+        "textLines": 37,
+        "controls": 16,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "69-legacy-reaction",
+      "title": "Khung phản ứng kiểu cũ — nút Guard / Resolve",
+      "category": "Khung cũ",
+      "client": "offline",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "result": {
+        "textLines": 20,
+        "controls": 10,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "70-training",
+      "title": "Đấu tập — thanh công cụ và bàn trống",
+      "category": "Đấu tập",
+      "client": "offline",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "result": {
+        "textLines": 20,
+        "controls": 13,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "71-training-unit",
+      "title": "Đấu tập — thêm Hero hoặc lính",
+      "category": "Đấu tập",
+      "client": "offline",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "result": {
+        "textLines": 4,
+        "controls": 2,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "72-training-equipment",
+      "title": "Đấu tập — thêm trang bị",
+      "category": "Đấu tập",
+      "client": "offline",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "result": {
+        "textLines": 4,
+        "controls": 2,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "73-match-menu",
+      "title": "Menu trong trận",
+      "category": "Popup",
+      "client": "offline",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "result": {
+        "textLines": 3,
+        "controls": 2,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "74-reset-confirm",
+      "title": "Xác nhận chơi lại",
+      "category": "Popup",
+      "client": "offline",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "result": {
+        "textLines": 5,
+        "controls": 2,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "75-leave-confirm",
+      "title": "Xác nhận rời trận",
+      "category": "Popup",
+      "client": "offline",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "result": {
+        "textLines": 4,
+        "controls": 2,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "76-hero-readonly",
+      "title": "Hộp thông tin ba kỹ năng Hero",
+      "category": "Popup",
+      "client": "offline",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "result": {
+        "textLines": 12,
+        "controls": 1,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "77-skill-tab",
+      "title": "Tab kỹ năng trong trận",
+      "category": "Ingame",
+      "client": "offline",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "result": {
+        "textLines": 21,
+        "controls": 9,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    },
+    {
+      "id": "78-equipment-tab",
+      "title": "Tab trang bị trong trận",
+      "category": "Ingame",
+      "client": "offline",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "result": {
+        "textLines": 13,
+        "controls": 11,
+        "issues": [],
+        "decoration": [],
+        "layers": [],
+        "overflowX": false
+      }
+    }
+  ]
+}

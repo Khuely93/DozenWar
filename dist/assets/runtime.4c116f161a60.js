@@ -5549,7 +5549,7 @@ const DuelCamera={
       if(!this.isUI(e.target)&&Date.now()<this.suppressUntil){e.preventDefault();e.stopImmediatePropagation()}
     },true);
   },
-  isUI(target){return !!target.closest('button,select,input,details,.unitMenu,.deployMenu,.attackPopup,.defensePopup,.skillTargetPanel,.guardTargetHint,.reaction')},
+  isUI(target){return !!target.closest('button,select,input,details,.unitMenu,.deployMenu,.attackPopup,.defensePopup,.skillTargetPanel,.guardTargetHint,.reaction,.heroSkillPanel,.heroDefenseBar,.directDefensePanel,.dwDefenseChoices,.dwBattleNotices,.trainingToolbar')},
   resize(width,height){
     const id=S.matchSession?.matchId||null;
     if(id!==this.matchId){this.matchId=id;this.zoom=1.4;this.panX=this.panY=0;this.reactionKey=null;this.panMode=false}
@@ -8045,7 +8045,38 @@ window.DWPackUI = (() => {
     const caption = document.createElement('figcaption'); caption.textContent = definition?.name || choice.selectedOptions[0]?.textContent || '';
     preview.append(caption); dialog.classList.add('dwTrainingPreviewLayout');
   }
+  // The turn clock can grow to two lines during defense. Keep action status
+  // in the same flowing stack instead of pinning it over that second line.
+  let notices, defenseChoices;
+  function battleNotices() {
+    const stage = document.querySelector('.duelMapStage');
+    if (!stage) return;
+    if (!notices) {
+      notices = document.createElement('div'); notices.className = 'dwBattleNotices';
+      stage.prepend(notices);
+      new ResizeObserver(() => {
+        stage.style.setProperty('--dw-notices-height', Math.ceil(notices.getBoundingClientRect().height) + 'px');
+      }).observe(notices);
+    }
+    for (const node of document.querySelectorAll('.duelTimers,.combatFlowStatus,.directFlowWarning,.aiThinking,.guardTargetHint')) {
+      if (node.parentElement !== notices) notices.append(node);
+    }
+    const board = stage.querySelector('.boardWrap');
+    if (board && !defenseChoices) {
+      defenseChoices = document.createElement('div'); defenseChoices.className = 'dwDefenseChoices';
+      board.append(defenseChoices);
+    }
+    for (const node of document.querySelectorAll('.heroDefenseBar,.directDefensePanel')) {
+      if (defenseChoices && node.parentElement !== defenseChoices) defenseChoices.append(node);
+    }
+    // On a short landscape viewport the skill chooser extends beside the map.
+    // Hoist it out of the map's clipping context so its final buttons stay usable.
+    const chooser = document.querySelector('.heroSkillPanel');
+    const parent = innerWidth < 900 && innerHeight <= 500 ? document.getElementById('gameScreen') : board;
+    if (chooser && parent && chooser.parentElement !== parent) parent.append(chooser);
+  }
   function update() {
+    battleNotices();
     for (const brand of document.querySelectorAll('.brand')) add(brand,'logo','dwPackLogo');
     if (!document.querySelector('.dwSceneLeft')) {
       document.body.prepend(pack.sprite('sceneLeft','dwSceneLeft'),pack.sprite('sceneRight','dwSceneRight'));
@@ -8094,6 +8125,7 @@ window.DWPackUI = (() => {
     requestAnimationFrame(() => { scheduled = false; update(); });
   }).observe(document.body,{subtree:true,childList:true,attributes:true,attributeFilter:['open']});
   document.addEventListener('change', event => { if (event.target.closest('.trainingDialog')) update(); });
+  window.addEventListener('resize', update);
   update();
   return { update };
 })();
