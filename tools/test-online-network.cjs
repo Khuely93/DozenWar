@@ -148,7 +148,7 @@ const { FaultRelay } = require("./helpers/fault-relay.cjs"),
     await active
       .getByRole("button", { name: "Đánh thường + Búa Chiến", exact: true })
       .click();
-    await active.locator('[data-unit="' + d.id + '"]').click();
+    await active.locator('[data-unit="' + d.id + '"] .unitHit').click();
     await active
       .getByRole("button", { name: "Xác nhận hành động", exact: true })
       .click();
