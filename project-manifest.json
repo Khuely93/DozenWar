@@ -1,8 +1,8 @@
 {
   "project": "DOZEN WAR II",
-  "version": "1.75.1",
+  "version": "1.75.2",
   "phase": "DUEL_RULE_MODE_1VS1_180_30",
-  "baseline": "v1.75.1 keeps off-turn Hero skill choices, HUD and equipment ownership on the choosing player",
+  "baseline": "v1.75.2 anchors deployment and battle to the viewport after scrolling team selection in a fresh browser",
   "entry": "index.html",
   "styles": "styles/main.css",
   "runtimeOrder": [

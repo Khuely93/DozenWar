@@ -210,6 +210,7 @@ const DWStyleUI = {
   sync() {
     if (!this.mounted) return;
     const match = document.getElementById('gameScreen').classList.contains('active') && ['deploy', 'battle'].includes(S.phase);
+    const enteringMatch = match && !document.body.classList.contains('dwMatchLayout');
     document.body.classList.toggle('dwMatchLayout', match);
     document.body.classList.toggle('dwTrainingLayout', match && TrainingMode.active());
     document.body.dataset.uiPhase = S.phase;
@@ -238,6 +239,9 @@ const DWStyleUI = {
       if (gameTitle.textContent !== title) gameTitle.textContent = title;
     } else this.tray.hidden = true;
     this.resultPortraits();
+    // Team selection can scroll the document on a short/new browser viewport.
+    // Enter the fixed match layout at its origin so its start action stays visible.
+    if (enteringMatch) window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
   }
 };
 const _dwStyleShow = show;

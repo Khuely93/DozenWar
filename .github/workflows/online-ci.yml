@@ -43,6 +43,7 @@ jobs:
         run: |
           npm run test:ui-browser
           npm run test:grim-ui
+          npm run test:deployment-ui
       - name: Two-player browser flow and server restart
         run: npm run test:online-browser
       - name: Delays, lost acknowledgements, disconnects and reloads
@@ -64,6 +65,8 @@ jobs:
             work/dw-ui/*report.json
             work/grim-disguise-fix/*.png
             work/grim-disguise-fix/report.json
+            work/deployment-start/*.png
+            work/deployment-start/report.json
             work/online-network/*.png
             work/online-network/report.json
             work/online-load/ci.json

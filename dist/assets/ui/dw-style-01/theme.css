@@ -182,7 +182,7 @@ body.dwUI {
 .dwUI .log { line-height: 1.65; }
 .dwUI .dwDockTabs { display: none; }
 .dwUI.dwMatchLayout { overflow: hidden; background: #0b1821; }
-.dwUI.dwMatchLayout .wrap { max-width: none; padding: 0; height: 100dvh; }
+.dwUI.dwMatchLayout .wrap { position: fixed; inset: 0; max-width: none; padding: 0; height: 100dvh; }
 .dwUI.dwMatchLayout .top, .dwUI.dwMatchLayout .dwSetupSteps { display: none; }
 .dwUI.dwMatchLayout .grid, .dwUI.dwMatchLayout .main { height: 100%; }
 .dwUI.dwMatchLayout #gameScreen.active { height: 100%; display: grid; grid-template-rows: 64px minmax(0, 1fr) var(--duel-dock-height); }

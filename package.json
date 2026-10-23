@@ -1,6 +1,6 @@
 {
   "name": "dozen-war-ii",
-  "version": "1.75.1",
+  "version": "1.75.2",
   "private": true,
   "description": "DOZEN WAR II \u2014 confirmed twelve heroes",
   "scripts": {
@@ -40,7 +40,8 @@
     "test:hero-facing": "node tools/test-hero-facing.cjs",
     "test:ui-browser": "node tools/test-dw-ui-browser.cjs",
     "test:ui-text": "node tools/test-ui-text-browser.cjs",
-    "test:grim-ui": "node tools/test-grim-disguise-browser.cjs"
+    "test:grim-ui": "node tools/test-grim-disguise-browser.cjs",
+    "test:deployment-ui": "node tools/test-deployment-start-browser.cjs"
   },
   "engines": {
     "node": ">=22"
