@@ -1,4 +1,4 @@
-# DW-STYLE-01 UI — v1.72.0
+# DW-STYLE-01 UI — v1.75.2
 
 The user approved applying the mode-selection, ingame and remaining UI concepts
 to the game. The implementation uses the approved illustration language with
@@ -55,12 +55,15 @@ the same existing action buttons into the appropriate visual panel; command
 IDs, authorization, retries and server validation are unchanged.
 
 Build/version metadata is in the document's data-build-version attribute and
-the match menu instead of a technical header. Version references are 1.72.0.
+the match menu instead of a technical header. The current production version is
+1.75.2; older UI direction notes below describe the shared DW-STYLE-01 implementation.
 
 ## Verification
 
 - npm run build: project/content/gameplay/bootstrap/result/visual/Hero/equipment/
   camera gates, production output and byte-identical asset checks.
+- npm run test:deployment-ui: six viewport sizes, including short desktop and mobile layouts; checks that deployment confirmation is visible and hit-testable before interaction, plus two fresh-browser AI games with both deployment orders.
+- v1.75.2 release verification recorded in the commit: build, eight deployment scenarios, 30 Grim ownership cases, responsive match layouts, two-seat online flow and a 312-state UI text audit. These are release-recorded results; consult CI artifacts for independently inspectable run evidence.
 - npm run test:ui-browser: 49 active offline states at 1920×1080 and 390×844;
   1366×768, 360×780 and 844×390 battle/deployment bounds; Hero count, valid and
   incomplete formations, mobile tabs/keyboard, cancelled restart, modal bounds,
