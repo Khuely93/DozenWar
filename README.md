@@ -1,6 +1,20 @@
 # DOZEN WAR II
 
-## v1.72.0 — DW-STYLE-01 interface
+## v1.75.2 — Deployment viewport fix and regression coverage
+
+The deployment and battle layout now anchors the match wrapper to the viewport.
+When entering deployment or battle after scrolling team selection, the UI resets
+the document scroll so the deployment confirmation and **BATTLE START** remain
+visible and actionable. This release includes a production-browser regression
+for six viewport sizes and two fresh-browser AI games with both deployment
+orders. The deployment UI test is part of CI.
+
+This is a presentation/layout fix; the release commit states that gameplay rules
+are unchanged. The build was rebuilt with production assets and version metadata
+updated to v1.75.2. See [UI implementation and checks](docs/UI_DW_STYLE_01.md)
+and [the v1.75.2 commit](https://github.com/Khuely93/DozenWar/commit/bcd7341e56fed6649e2a26f442ddfcc8d3e1045f).
+
+## v1.72.0 — DW-STYLE-01 interface (previous release)
 
 The approved UI direction is now used by menus, setup, Hero/team selection,
 deployment, the battle dock, skill/equipment dialogs, defense reactions, results,
